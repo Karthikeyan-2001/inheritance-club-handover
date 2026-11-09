@@ -21,6 +21,7 @@ Built for the CodersInPune Hackathon, Round 2.
 |---|---|---|
 | 0 | Scaffold, health route, test tooling, CI | done |
 | 1 | Schema, RLS, seed, demo login, role switcher | done |
+| 2 | Parsers: WhatsApp, Trello, minutes (.md/.docx), all stamped in IST | done |
 
 ## Stack
 
@@ -60,6 +61,22 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 | `pnpm db:push` | Apply migrations to the linked hosted project (`--remote`; the CLI targets local by default) |
 | `pnpm db:types` | Regenerate `src/lib/supabase/database.types.ts` |
 | `pnpm seed` / `seed:hosted` | Seed demo accounts and the synthetic club (local / hosted) |
+
+## Parsers
+
+`src/lib/parsers/` turns uploads into one `ParsedEvent` shape (author, IST timestamp, text, thread, small metadata). They are pure: no database access, no network.
+
+| Source | Parser | Notes |
+|---|---|---|
+| WhatsApp `.txt` (Android or iPhone) | `parseWhatsApp` | Drops system lines, deleted messages and attachments without text, and counts each. Unknown formats raise a clear error. |
+| Trello board `.json` | `parseTrello` | Cards, comments, member additions, list moves (a move into "Done" is flagged), completion and due-date changes. |
+| Minutes `.md` or `.docx` | `parseMinutesMarkdown`, `parseMinutesDocx` | One event per dated heading. |
+
+`parseUpload(filename, bytes)` picks the parser from the extension. Every parser returns `{ events, summary }`; the summary is the "what was read" report (counts, dropped items by reason, first and last date, warnings).
+
+**Everything is IST.** WhatsApp exports carry no time zone, so their times are read as IST, and Trello's UTC times are converted to IST. Timestamps are ISO 8601 strings ending `+05:30` (`src/lib/time.ts`). Numeric dates in minutes are read day-first.
+
+`data/samples/` holds format samples and year-long files; `data/scenarios/mini/` is a small scenario with a `ground-truth.json` that the tests check the parsers against.
 
 ## Roles and permissions
 

@@ -134,3 +134,16 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# --- Inheritance additions ---
+.env*
+!.env.example
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+supabase/.temp/
+supabase/.branches/

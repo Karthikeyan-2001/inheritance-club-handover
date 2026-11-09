@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { REVIEW_LABELS, TRUST_HELP, TRUST_LABELS } from "./commitments";
-import { groupLinked } from "@/lib/ledger-view";
+import { capitalise, groupLinked } from "@/lib/ledger-view";
 import { loadLinkData } from "./link-data";
 import { AlsoRecorded, CONTEXT_SELECT, ContextList, DocketLink, EVIDENCE_SELECT, EvidenceList, PossibleMatches, type ContextRow, type EvidenceRow } from "./obligation-parts";
 
@@ -69,7 +69,8 @@ export async function Recurring({ workspaceId }: { workspaceId: string }) {
   if (!rows.length) {
     return <p className="text-sm text-muted-foreground">No recurring duties yet. Import files, then use “Build the ledger”.</p>;
   }
-  const { links, docketByItem } = await loadLinkData(supabase, workspaceId);
+  const { links, docketByItem, error: linkError } = await loadLinkData(supabase, workspaceId);
+  if (linkError) return <p role="alert">Could not load how items are linked. Try again in a minute.</p>;
   const byId = new Map(rows.map((o) => [o.id, o]));
   const groups = groupLinked(rows.map((o) => o.id), links);
 
@@ -80,7 +81,7 @@ export async function Recurring({ workspaceId }: { workspaceId: string }) {
         return (
         <li key={o.id} id={`item-${o.id}`} className="scroll-mt-4 rounded-md border p-3 text-sm">
           <div className="flex flex-wrap items-start justify-between gap-2">
-            <p className="font-medium">{o.description.charAt(0).toUpperCase() + o.description.slice(1)}</p>
+            <p className="font-medium">{capitalise(o.description)}</p>
             <span className="flex flex-wrap gap-1">
               <Badge variant={o.trust_state === "contradicted" || o.trust_state === "gap" ? "destructive" : "secondary"}>Trust: {TRUST_LABELS[o.trust_state]}</Badge>
               <Badge variant="outline">{REVIEW_LABELS[o.review_state]}</Badge>
@@ -120,7 +121,7 @@ export async function Recurring({ workspaceId }: { workspaceId: string }) {
           {o.trust_state === "contradicted" && <p className="mt-2 text-xs text-muted-foreground">{TRUST_HELP.contradicted}</p>}
           <DocketLink entryId={o.trust_state === "contradicted" ? docketByItem.get(o.id) : undefined} />
           <EvidenceList evidence={o.evidence} kind="recurring" />
-          <AlsoRecorded records={g.also.map((id) => byId.get(id)!)} kind="recurring" trustLabels={TRUST_LABELS} />
+          <AlsoRecorded records={g.also.map((id) => byId.get(id)!)} kind="recurring" trustLabels={TRUST_LABELS} reviewLabels={REVIEW_LABELS} docketByItem={docketByItem} />
           <PossibleMatches items={g.possible.map((id) => ({ id, description: byId.get(id)!.description }))} />
           <ContextList items={o.context_items} />
         </li>

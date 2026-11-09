@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { groupLinked } from "@/lib/ledger-view";
+import { capitalise, groupLinked } from "@/lib/ledger-view";
 import { loadLinkData } from "./link-data";
 import { AlsoRecorded, CONTEXT_SELECT, ContextList, DocketLink, EVIDENCE_SELECT, EvidenceList, PossibleMatches, type ContextRow, type EvidenceRow } from "./obligation-parts";
 
@@ -54,8 +54,6 @@ export function statusLabel(status: Row["status"], checkedAt: string | null): st
   return STATUS_LABELS[status];
 }
 
-const capitalise = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-
 /** Commitments this role may read, each with its verified quotes and context. RLS filters the query. */
 export async function Commitments({ workspaceId }: { workspaceId: string }) {
   const supabase = await createSupabaseServerClient();
@@ -71,7 +69,8 @@ export async function Commitments({ workspaceId }: { workspaceId: string }) {
   if (!rows.length) {
     return <p className="text-sm text-muted-foreground">No commitments yet. Import files, then use “Build the ledger”.</p>;
   }
-  const { links, docketByItem } = await loadLinkData(supabase, workspaceId);
+  const { links, docketByItem, error: linkError } = await loadLinkData(supabase, workspaceId);
+  if (linkError) return <p role="alert">Could not load how items are linked. Try again in a minute.</p>;
   const byId = new Map(rows.map((o) => [o.id, o]));
   const groups = groupLinked(rows.map((o) => o.id), links);
 
@@ -99,7 +98,16 @@ export async function Commitments({ workspaceId }: { workspaceId: string }) {
             {o.trust_state === "contradicted" && <p className="mt-1 text-xs text-muted-foreground">{TRUST_HELP.contradicted}</p>}
             <DocketLink entryId={o.trust_state === "contradicted" ? docketByItem.get(o.id) : undefined} />
             <EvidenceList evidence={o.evidence} kind="commitment" />
-            <AlsoRecorded records={g.also.map((id) => byId.get(id)!)} kind="commitment" trustLabels={TRUST_LABELS} />
+            <AlsoRecorded
+              records={g.also.map((id) => {
+                const r = byId.get(id)!;
+                return { ...r, statusText: statusLabel(r.status, r.fulfilment_checked_at), statusBad: r.status === "contradicted" || r.status === "no_evidence" };
+              })}
+              kind="commitment"
+              trustLabels={TRUST_LABELS}
+              reviewLabels={REVIEW_LABELS}
+              docketByItem={docketByItem}
+            />
             <PossibleMatches items={g.possible.map((id) => ({ id, description: byId.get(id)!.description }))} />
             <ContextList items={o.context_items} />
           </li>

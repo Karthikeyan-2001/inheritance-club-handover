@@ -114,6 +114,8 @@ test.describe.serial("building the ledger", () => {
     await expect(kit).toContainText("Trust: Contradicted");
     await expect(kit).toContainText("One record says it was done and another says it was not.");
     await expect(kit.getByTestId("links")).toContainText("Also in");
+    // The folded record keeps its own anchor, so links to it land on this card.
+    await expect(kit.getByTestId("links").locator("section[id^=item-]")).toHaveCount(1);
 
     await page.getByRole("link", { name: "Docket", exact: true }).click();
     await expect(page.getByRole("link", { name: "Docket", exact: true })).toHaveAttribute("aria-current", "page");
@@ -149,10 +151,11 @@ test.describe.serial("building the ledger", () => {
     await signInAs(page, "Arun");
     await page.goto("/ledger");
     const kit = page.getByTestId("commitments").getByRole("listitem").filter({ hasText: "“I will return the soldering kit" }).first();
-    await kit.getByRole("link", { name: "See this conflict in the Docket" }).click();
+    await expect(kit.getByRole("link", { name: "See this conflict in the Docket" })).toHaveCount(2); // the card and its folded record
+    await kit.getByRole("link", { name: "See this conflict in the Docket" }).first().click();
     await expect(page).toHaveURL(/tab=docket#docket-/);
     const entry = page.getByTestId("docket").getByRole("listitem").filter({ hasText: "soldering kit" }).first();
-    await entry.getByRole("link", { name: "Open the item in the ledger" }).click();
+    await entry.getByRole("link", { name: /in the ledger$/ }).first().click();
     await expect(page).toHaveURL(/tab=commitments#item-/);
     await expect(page.getByRole("link", { name: "Commitments" })).toHaveAttribute("aria-current", "page");
   });
@@ -200,5 +203,27 @@ test.describe.serial("building the ledger", () => {
     await expect(kavya.getByText("That quote is not available to your role.")).toBeVisible();
     await expect(kavya.locator("body")).not.toContainText("vendor invoice");
     await other.close();
+  });
+
+  test("messages sent in the same minute are all shown around the quote", async ({ page }) => {
+    await signInAs(page, "Arun");
+    await importFile(
+      page,
+      "same-minute-chat.txt",
+      "text/plain",
+      [
+        "07/04/2026, 9:00 am - Priya: Great, thanks for booking the venue.",
+        "07/04/2026, 9:00 am - Arun: I will confirm the projector with Rohan by Friday.",
+        "07/04/2026, 9:00 am - Rohan: Noted, the hall key is with security.",
+      ].join("\n"),
+    );
+    await page.goto("/ledger");
+    await page.getByRole("button", { name: "Build the ledger" }).click();
+    await expect(page.getByTestId("pipeline-progress")).toContainText("finished", { timeout: 90_000 });
+    const item = page.getByTestId("commitments").getByRole("listitem").filter({ hasText: "confirm the projector" }).first();
+    await item.getByRole("link", { name: "Open source message" }).first().click();
+    const thread = page.getByTestId("source-thread");
+    await expect(thread).toContainText("thanks for booking the venue");
+    await expect(thread).toContainText("the hall key is with security");
   });
 });

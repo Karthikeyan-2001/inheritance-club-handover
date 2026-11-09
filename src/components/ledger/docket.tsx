@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { formatIst } from "@/lib/format";
+import { capitalise } from "@/lib/ledger-view";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { TYPE_LABELS } from "./obligation-parts";
 
@@ -43,8 +44,6 @@ function Claim({ label, quote, event }: { label: string; quote: string | null; e
   );
 }
 
-const capitalise = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-
 /**
  * Conflicts between records: one says an item was done, another says it was not. RLS returns
  * an entry only when the viewer can read both messages and the item. Items recorded twice can
@@ -63,13 +62,13 @@ export async function Docket({ workspaceId }: { workspaceId: string }) {
     );
   }
 
-  const groups = new Map<string, { row: Row; items: string[]; ids: string[]; links: { id: string; tab: string }[] }>();
+  const groups = new Map<string, { row: Row; items: string[]; ids: string[]; links: { id: string; tab: string; description: string }[] }>();
   for (const r of rows) {
     const key = `${r.claim_a_event}|${r.claim_b_event}`;
     const g = groups.get(key) ?? { row: r, items: [], ids: [], links: [] };
     g.ids.push(r.id);
     if (r.obligations && !g.items.includes(r.obligations.description)) g.items.push(r.obligations.description);
-    if (r.obligation_id && r.obligations) g.links.push({ id: r.obligation_id, tab: r.obligations.kind === "recurring" ? "recurring" : "commitments" });
+    if (r.obligation_id && r.obligations) g.links.push({ id: r.obligation_id, tab: r.obligations.kind === "recurring" ? "recurring" : "commitments", description: r.obligations.description });
     groups.set(key, g);
   }
 
@@ -96,11 +95,15 @@ export async function Docket({ workspaceId }: { workspaceId: string }) {
             {row.ruling ? `Ruling: ${row.ruling}${row.reason ? ` (${row.reason})` : ""}` : "Not ruled yet. The faculty advisor rules on conflicts during review."}
           </p>
           {links.length > 0 && (
-            <p className="mt-1 text-xs">
-              <Link href={`/ledger?tab=${links[0].tab}#item-${links[0].id}`} className="underline">
-                Open the item in the ledger
-              </Link>
-            </p>
+            <div className="mt-1 flex flex-col gap-0.5 text-xs">
+              {links.map((l) => (
+                <p key={l.id}>
+                  <Link href={`/ledger?tab=${l.tab}#item-${l.id}`} className="underline">
+                    {links.length > 1 ? `Open “${l.description}” in the ledger` : "Open the item in the ledger"}
+                  </Link>
+                </p>
+              ))}
+            </div>
           )}
         </li>
       ))}

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { TYPE_LABELS } from "@/components/ledger/obligation-parts";
 import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
 import { formatIst } from "@/lib/format";
-import { highlightSegments } from "@/lib/pipeline/locate";
+import { locateQuote, segmentsFor, type QuoteSpan } from "@/lib/pipeline/locate";
 import { getViewer } from "@/lib/session";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -25,8 +25,9 @@ type Msg = {
 const EVENT_SELECT = "id, author, ts, text, access_level, source_id, sources(filename, type)";
 const NEIGHBOURS = 2;
 
-function Message({ msg, quote }: { msg: Msg; quote?: string }) {
-  const parts = quote ? highlightSegments(msg.text, quote) : [{ text: msg.text, mark: false }];
+function Message({ msg, span, quoted }: { msg: Msg; span?: QuoteSpan | null; quoted?: boolean }) {
+  const parts = segmentsFor(msg.text, span ?? null);
+  const quote = quoted;
   return (
     <article className={quote ? "rounded-md border-2 border-primary p-3 text-sm" : "rounded-md border p-3 text-sm text-muted-foreground"} aria-label={`${msg.author ?? "Unknown"}, ${formatIst(msg.ts)}`}>
       <div className="mb-1 flex flex-wrap items-center gap-2">
@@ -75,7 +76,7 @@ async function EvidenceContent({ params, searchParams }: { params: PageProps<"/l
   const supabase = await createSupabaseServerClient();
   // RLS decides whether this quote, its item and its message are readable at all.
   const found = isContext
-    ? await supabase.from("context_items").select("id, quote, text, verified, event_id, obligation_id, obligations(description, kind)").eq("id", id).maybeSingle()
+    ? await supabase.from("context_items").select("id, quote, verified, event_id, obligation_id, obligations(description, kind)").eq("id", id).maybeSingle()
     : await supabase.from("evidence").select("id, quote, verified, event_id, obligation_id, obligations(description, kind)").eq("id", id).maybeSingle();
   if (found.error) return <p role="alert">Could not load the quote. Try again in a minute.</p>;
   // The query shape differs by table; both carry the fields used below.
@@ -86,7 +87,8 @@ async function EvidenceContent({ params, searchParams }: { params: PageProps<"/l
     obligation_id: string;
     obligations: { description: string; kind: "commitment" | "recurring" } | null;
   } | null;
-  if (!row || !row.quote) return <p>That quote is not available to your role. {back}</p>;
+  if (!row) return <p>That quote is not available to your role. {back}</p>;
+  if (!row.quote) return <p>No quote is kept for this note. {back}</p>;
 
   const itemTab = row.obligations?.kind === "recurring" ? "recurring" : "commitments";
   const itemLink = (
@@ -98,16 +100,20 @@ async function EvidenceContent({ params, searchParams }: { params: PageProps<"/l
   const { data: msg } = row.event_id ? await supabase.from("events").select(EVENT_SELECT).eq("id", row.event_id).maybeSingle() : { data: null };
   const event = msg as unknown as Msg | null;
 
+  // Neighbours in the same file, ordered by time then id so messages sent in the same minute
+  // are kept and the order is stable.
   let before: Msg[] = [];
   let after: Msg[] = [];
   if (event?.ts) {
+    const ts = `"${event.ts}"`;
     const [b, a] = await Promise.all([
-      supabase.from("events").select(EVENT_SELECT).eq("source_id", event.source_id).lt("ts", event.ts).order("ts", { ascending: false }).limit(NEIGHBOURS),
-      supabase.from("events").select(EVENT_SELECT).eq("source_id", event.source_id).gt("ts", event.ts).order("ts", { ascending: true }).limit(NEIGHBOURS),
+      supabase.from("events").select(EVENT_SELECT).eq("source_id", event.source_id).or(`ts.lt.${ts},and(ts.eq.${ts},id.lt.${event.id})`).order("ts", { ascending: false }).order("id", { ascending: false }).limit(NEIGHBOURS),
+      supabase.from("events").select(EVENT_SELECT).eq("source_id", event.source_id).or(`ts.gt.${ts},and(ts.eq.${ts},id.gt.${event.id})`).order("ts", { ascending: true }).order("id", { ascending: true }).limit(NEIGHBOURS),
     ]);
     before = ((b.data ?? []) as unknown as Msg[]).reverse();
     after = (a.data ?? []) as unknown as Msg[];
   }
+  const span = event ? locateQuote(event.text, row.quote) : null;
 
   return (
     <div className="flex flex-col gap-4">
@@ -125,10 +131,10 @@ async function EvidenceContent({ params, searchParams }: { params: PageProps<"/l
           </p>
           <div className="flex flex-col gap-2" data-testid="source-thread">
             {before.map((m) => <Message key={m.id} msg={m} />)}
-            <Message msg={event} quote={row.quote} />
+            <Message msg={event} span={span} quoted />
             {after.map((m) => <Message key={m.id} msg={m} />)}
           </div>
-          {!highlightSegments(event.text, row.quote).some((s) => s.mark) && (
+          {!span && (
             <p className="text-sm text-muted-foreground" role="status">The quote could not be placed in this message, so nothing is highlighted.</p>
           )}
         </>

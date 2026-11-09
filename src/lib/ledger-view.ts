@@ -1,7 +1,12 @@
 // Pure view logic for the ledger: grouping linked records into one card, and finding gaps.
 // Inputs are rows RLS already filtered, so nothing here can reveal an unreadable item.
 
+import type { TrustState } from "./pipeline/trust.ts";
+
 export type LinkVerdict = { a: string; b: string; verdict: "same" | "possible" };
+
+/** "lab inventory list" -> "Lab inventory list". */
+export const capitalise = (s: string): string => s.charAt(0).toUpperCase() + s.slice(1);
 
 export type CardGroup = {
   /** The item the card is about (the earliest of the group). */
@@ -48,7 +53,7 @@ export type GapInput = {
   kind: "commitment" | "recurring";
   description: string;
   status: "open" | "fulfilled" | "likely_fulfilled" | "no_evidence" | "contradicted";
-  trust_state: "corroborated" | "sourced" | "inferred" | "contradicted" | "gap";
+  trust_state: TrustState;
   next_due: string | null;
   fulfilment_checked_at: string | null;
 };

@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
 import { formatIst } from "@/lib/format";
+import { capitalise, type LinkVerdict } from "@/lib/ledger-view";
+import type { TrustState } from "@/lib/pipeline/trust";
 
 export const TYPE_LABELS = { whatsapp: "WhatsApp", trello: "Trello", minutes: "Minutes" } as const;
 
@@ -109,15 +111,20 @@ export function ContextList({ items }: { items: ContextRow[] }) {
 export const EVIDENCE_SELECT = "evidence(id, quote, relation, verified, inferred, events(ts, author, sources(filename, type)))";
 export const CONTEXT_SELECT = "context_items(id, kind, text, quote, verified, access_level, events(ts, author, sources(filename, type)))";
 
-export type LinkRow = { a: string; b: string; verdict: "same" | "possible" };
+export type LinkRow = LinkVerdict;
 
 /** What the grouped cards need from every item (commitment or duty). */
 export type CardItem = {
   id: string;
   description: string;
   access_level: AccessLevel;
-  trust_state: "corroborated" | "sourced" | "inferred" | "contradicted" | "gap";
+  trust_state: TrustState;
+  review_state: string;
   evidence: EvidenceRow[];
+  context_items: ContextRow[];
+  /** Commitments only: the status as it is shown on the item's own card. */
+  statusText?: string;
+  statusBad?: boolean;
 };
 
 /** "Also in Trello": where a linked record came from, taken from its own quotes. */
@@ -127,22 +134,39 @@ function recordedIn(item: CardItem): string {
 }
 
 /**
- * Other records of the same item, folded into its card, each with its own access level and
- * quotes. RLS already removed any record the viewer cannot read.
+ * Other records of the same item, folded into its card, each with its own access level,
+ * status, trust, quotes, notes and conflict link. Each keeps its own anchor (#item-<id>) so
+ * links to it land here. RLS already removed any record the viewer cannot read.
  */
-export function AlsoRecorded({ records, kind, trustLabels }: { records: CardItem[]; kind: "commitment" | "recurring"; trustLabels: Record<CardItem["trust_state"], string> }) {
+export function AlsoRecorded({
+  records,
+  kind,
+  trustLabels,
+  reviewLabels,
+  docketByItem,
+}: {
+  records: CardItem[];
+  kind: "commitment" | "recurring";
+  trustLabels: Record<TrustState, string>;
+  reviewLabels: Record<string, string>;
+  docketByItem: ReadonlyMap<string, string>;
+}) {
   if (records.length === 0) return null;
   return (
     <div className="mt-3 flex flex-col gap-2" data-testid="links">
       {records.map((r) => (
-        <section key={r.id} className="rounded-sm border border-dashed p-2" aria-label={recordedIn(r)}>
+        <section key={r.id} id={`item-${r.id}`} className="scroll-mt-4 rounded-sm border border-dashed p-2" aria-label={recordedIn(r)}>
           <p className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{recordedIn(r)}</span>
+            {r.statusText && <Badge variant={r.statusBad ? "destructive" : "outline"}>{r.statusText}</Badge>}
+            <Badge variant={r.trust_state === "contradicted" || r.trust_state === "gap" ? "destructive" : "outline"}>Trust: {trustLabels[r.trust_state]}</Badge>
+            <Badge variant="outline">{reviewLabels[r.review_state] ?? r.review_state}</Badge>
             <Badge variant={r.access_level === "everyone" ? "outline" : "secondary"}>{ACCESS_LABELS[r.access_level]}</Badge>
-            <Badge variant="outline">Trust: {trustLabels[r.trust_state]}</Badge>
           </p>
-          <p className="mt-1">{r.description.charAt(0).toUpperCase() + r.description.slice(1)}</p>
+          <p className="mt-1">{capitalise(r.description)}</p>
+          <DocketLink entryId={r.trust_state === "contradicted" ? docketByItem.get(r.id) : undefined} />
           <EvidenceList evidence={r.evidence} kind={kind} />
+          <ContextList items={r.context_items} />
         </section>
       ))}
     </div>

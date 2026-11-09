@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
-import { findGaps, type GapInput } from "@/lib/ledger-view";
+import { capitalise, findGaps, type GapInput } from "@/lib/ledger-view";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 type Row = GapInput & { access_level: AccessLevel };
@@ -40,7 +40,7 @@ export async function Gaps({ workspaceId }: { workspaceId: string }) {
         {gaps.map((g, i) => (
           <li key={`${g.id}-${i}`} className="rounded-md border p-3 text-sm">
             <div className="flex flex-wrap items-start justify-between gap-2">
-              <p className="font-medium">{g.description.charAt(0).toUpperCase() + g.description.slice(1)}</p>
+              <p className="font-medium">{capitalise(g.description)}</p>
               <span className="flex flex-wrap gap-1">
                 <Badge variant="outline">{g.kind === "recurring" ? "Recurring duty" : "Commitment"}</Badge>
                 <Badge variant={level.get(g.id) === "everyone" ? "outline" : "secondary"}>{ACCESS_LABELS[level.get(g.id) ?? "everyone"]}</Badge>

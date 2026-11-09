@@ -21,7 +21,7 @@ Read this first when resuming work. Last updated: 2026-11-09, at the end of Phas
 | 12 | Scoring, leak test, second scenario, end-to-end tests | later |
 | 13 | Hardening and docs | later |
 
-Tests at the end of Phase 7: 262 unit, 121 RLS integration, 25 Playwright, all passing. Lint, typecheck and build are clean.
+Tests at the end of Phase 7: 264 unit, 121 RLS integration, 26 Playwright, all passing. Lint, typecheck and build are clean.
 
 ## How the user works
 
@@ -148,7 +148,7 @@ Tests at the end of Phase 7: 262 unit, 121 RLS integration, 25 Playwright, all p
 
 ## Known gaps to pick up later
 
-- **Phase 7 (left):** the Gaps tab lists linked records separately (only the Commitments and Recurring tabs fold them into one card). The evidence pane's neighbours skip messages with equal timestamps (for example one minutes file's date-only entries).
+- **Phase 7 (left):** the Gaps tab lists linked records separately (only the Commitments and Recurring tabs fold them into one card).
 - **Phase 8:** rulings on docket entries (`ruling`, `ruled_by`, `reason`; the advisor). A reviewer's "not the same" must be remembered (a rejected link, or a `distinct` verdict) or the next run re-links it. Unlinking is already possible through RLS (`obligation_links_delete`) and is audited.
 - **Phase 8:** `approve_version()` snapshots evidence without `inferred`, and leaves out context items, links and trust. Add them to `version_items.item`, without breaking hashes of existing versions.
 - **Phase 8:** the pipeline can change the status (and now the trust) of items a reviewer has already accepted. Flag such items for re-review (or show the change in the version diff).

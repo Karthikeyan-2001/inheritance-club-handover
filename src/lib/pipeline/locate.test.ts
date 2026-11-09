@@ -17,6 +17,19 @@ describe("locateQuote", () => {
     const s = locateQuote(src, "I'll cover the cost of the broken soldering station - today");
     expect(s && src.slice(s.start, s.end)).toBe("I’ll cover the cost\nof the broken   soldering station — today");
   });
+  it("places a quote the verifier accepts when accents are decomposed", () => {
+    const src = "Bring the caf\u0065\u0301 receipt to Rohan tomorrow please";
+    const q = "the caf\u00e9 receipt to Rohan";
+    expect(verifyQuote(q, src).ok).toBe(true);
+    const s = locateQuote(src, q);
+    expect(s && src.slice(s.start, s.end)).toBe("the caf\u0065\u0301 receipt to Rohan");
+  });
+  it("places a quote ending a Greek word (final sigma)", () => {
+    const src = "Ο ΟΔΥΣΣΕΑΣ θα στείλει το αρχείο ΟΔΥΣΣΕΑΣ";
+    const q = "θα στείλει το αρχείο οδυσσεας";
+    expect(verifyQuote(q, src).ok).toBe(true);
+    expect(locateQuote(src, q)).not.toBeNull();
+  });
   it("returns null when the quote is not in the message", () => {
     expect(locateQuote(text, "we will email the speakers")).toBeNull();
     expect(locateQuote(text, "   ")).toBeNull();

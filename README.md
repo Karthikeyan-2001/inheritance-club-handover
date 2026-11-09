@@ -20,7 +20,7 @@ Built for the CodersInPune Hackathon, Round 2.
 | Phase | Scope | State |
 |---|---|---|
 | 0 | Scaffold, health route, test tooling, CI | done |
-| 1 | Schema, RLS, seed, demo login | in progress |
+| 1 | Schema, RLS, seed, demo login, role switcher | done |
 
 ## Stack
 
@@ -34,9 +34,13 @@ Requirements: Node 24, pnpm (via corepack), and Docker Desktop (for local Supaba
 export COREPACK_NPM_REGISTRY=https://registry.npmjs.org   # this shell only; lets corepack fetch pnpm
 corepack enable pnpm
 pnpm install
-cp .env.example .env.local   # then fill in values
+pnpm db:start                # local Supabase in Docker; prints URL and keys
+cp .env.example .env.local   # paste URL, publishable key, secret key; choose DEMO_USER_PASSWORD
+pnpm seed                    # four demo accounts + the synthetic demo club
 pnpm dev                     # http://localhost:3000
 ```
+
+Supabase Studio (a database browser) runs at http://127.0.0.1:54323 while the local stack is up. Deploying to hosted Supabase and Vercel is covered in [docs/deploy.md](docs/deploy.md).
 
 Packages always come from the public npm registry. The project `.npmrc` contains only `registry=https://registry.npmjs.org/`, with no tokens or auth. The `COREPACK_NPM_REGISTRY` export applies only to the current shell session, and no global config is changed.
 
@@ -47,13 +51,43 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 | `pnpm dev` | Dev server |
 | `pnpm build` | Production build (what Vercel runs) |
 | `pnpm lint` / `pnpm typecheck` | ESLint / TypeScript |
-| `pnpm test` | All Vitest projects (unit + RLS integration) |
-| `pnpm test:unit` / `pnpm test:rls` | One project only |
-| `pnpm e2e` | Playwright (starts the dev server; set `E2E_BASE_URL` to test a deployment) |
+| `pnpm test` | All Vitest projects. RLS tests are skipped (with a count) if Supabase env is missing |
+| `pnpm test:unit` | Unit tests only |
+| `pnpm test:rls` | RLS integration tests against local Supabase (fails if env is missing) |
+| `pnpm e2e` | Playwright: re-seeds, starts the dev server, tests login and role switching. Set `E2E_BASE_URL` to test a deployment read-only |
+| `pnpm db:start` / `db:stop` / `db:status` | Local Supabase stack |
+| `pnpm db:reset` | Re-create the local database from `supabase/migrations` |
+| `pnpm db:push` | Apply migrations to the linked hosted project |
+| `pnpm db:types` | Regenerate `src/lib/supabase/database.types.ts` |
+| `pnpm seed` / `seed:hosted` | Seed demo accounts and the synthetic club (local / hosted) |
+
+## Roles and permissions
+
+Permissions are enforced by Postgres row-level security (`supabase/migrations/0003`–`0004`). The UI never decides what a role can see.
+
+| Role | Can read |
+|---|---|
+| Faculty advisor | Everything |
+| Outgoing lead | Everyone, committee, finance, plus private items built only from files they uploaded |
+| Treasurer | Everyone, committee, finance |
+| Incoming lead | Everyone, committee |
+| Member | Everyone |
+
+Any role can also read items explicitly released to it, through `release_item()`, which is audited.
+
+How the guarantees are enforced:
+
+- **Inherited levels.** An obligation inherits the most restrictive level of the messages it cites; a trigger does this, so it doesn't depend on the import code.
+- **Immutable records.** Approved versions, version items, acknowledgements and audit rows can't be changed, even with the service role. Only `delete_workspace()` can remove them.
+- **Tests.** `tests/rls/` proves each role sees exactly its expected rows.
+
+Demo accounts (synthetic): `arun.demo@example.com` (outgoing lead), `meena.demo@example.com` (advisor), `kavya.demo@example.com` (incoming lead), `divya.demo@example.com` (treasurer).
 
 ## Health check
 
-`GET /api/health` → `{ "status": "ok", "service": "inheritance", "commit": "abc1234", "time": "..." }`
+`GET /api/health` → `{ "status": "ok", "service": "inheritance", "commit": "abc1234", "db": "ok", "time": "..." }`
+
+`db` is `ok`, `error` or `not_configured`; `status` is `degraded` unless `db` is `ok`.
 
 ## Docs
 

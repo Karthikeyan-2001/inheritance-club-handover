@@ -24,3 +24,11 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 - **`releases`** records explicit releases: the outgoing lead releasing a private item, or the advisor releasing an item to the incoming lead. Each release is written through a database function that also writes the audit log.
 - **`audit_log.access_level` / `private_uploaders`**: audit rows carry the access level of the row they describe, because they store before/after copies of it.
 - **`obligations.private_uploaders`**: who uploaded the private sources behind an obligation, so the outgoing lead can see private items derived only from their own files.
+
+## Permission model details (Phase 1)
+
+- **Automatic level inheritance.** A database trigger raises an obligation to the most restrictive level among the messages it cites, and records who uploaded any private sources behind it. Import code can't accidentally publish a private item at a lower level.
+- **Releases share the item, not the conversation.** Releasing a private obligation shows its description and verified quotes to the receiving role, but the full private message stays hidden.
+- **Audit visibility follows the item.** Audit rows store the access level of the item they describe. An audit row about an obligation is readable only while the reader can read that obligation. This stops private text from leaking through before/after copies.
+- **Workspace deletion.** `delete_workspace()` is the only way to remove immutable rows (versions, acknowledgements, audit log). It deletes the whole workspace at once.
+- **Acknowledgements are append-only.** Changing a decision adds a new row, and the latest row per item and user is the current answer (`latest_acks` view).

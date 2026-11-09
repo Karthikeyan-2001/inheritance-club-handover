@@ -39,3 +39,10 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 - **Dropped items are counted, not hidden.** System lines, deleted messages and attachments without text do not become events, but the import summary reports how many were dropped and why.
 - **Minutes become one event per dated heading.** Quotes are verified against the whole section, with markdown decoration stripped so a quote matches what a reader sees. Word files are read through their heading styles.
 - **Trello contributes history, not only cards.** Comments, list moves and completion changes become events, so a card that was moved to Done can later be compared with what people said afterwards.
+
+## Import flow (Phase 3)
+
+- **Files are not stored.** An upload is parsed on the server and only its messages, a counts-only summary and its SHA-256 fingerprint are kept. This avoids a second copy of sensitive chats to protect and delete. It also sets a practical limit of about 3.9 MB per import, from Vercel's request size cap. Supabase Storage can be added later if real exports turn out larger.
+- **Imports are atomic and checked by RLS.** `import_source()` runs as the uploader, so the same row-level policies that govern reading also govern writing. A failed import leaves nothing behind.
+- **Sensible defaults for access.** One-to-one chats (two people) default to private, as the brief requires. Files whose names mention money default to finance. The uploader can change either before importing.
+- **The shared demo club is protected.** Visitors cannot delete it; only the seed script can reset it. Per-visitor workspaces arrive with "Load demo club".

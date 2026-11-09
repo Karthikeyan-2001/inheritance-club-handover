@@ -58,3 +58,14 @@ Then **redeploy**. The login page is prerendered at build time, so the password 
 
 - Supabase Free pauses a project after about a week without activity. Before judging, open the dashboard and restore it if needed. A daily keep-alive ping is planned for a later phase.
 - The demo accounts are shared by every visitor. A later phase will give each "Load demo club" click its own workspace.
+
+## Updating the hosted database after a new phase
+
+When a phase adds a migration (Phase 3 adds `0007_import.sql`), apply it and re-seed:
+
+```bash
+pnpm db:push        # applies only the new migrations
+pnpm seed:hosted    # resets the demo club; Phase 3 also marks it as protected (is_demo)
+```
+
+Then redeploy on Vercel if the app code changed.

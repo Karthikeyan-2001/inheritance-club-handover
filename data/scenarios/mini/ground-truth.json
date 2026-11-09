@@ -24,7 +24,8 @@
     },
     {
       "id": "C3", "owedBy": "Rohan", "owedTo": "Bala sir (lab in-charge)", "deliverable": "Return borrowed ESP32 boards", "due": "2026-02-27",
-      "expectedStatus": "fulfilled", "expectedTrust": "corroborated",
+      "expectedStatus": "fulfilled", "expectedTrust": "sourced",
+      "trustNote": "Rohan's promise and Rohan's report, in the same chat: one person's word, so sourced, not corroborated.",
       "quote": { "file": "whatsapp-committee.txt", "text": "I'll return the borrowed ESP32 boards to Bala sir by Friday." },
       "evidence": [{ "relation": "fulfils", "file": "whatsapp-committee.txt", "text": "Returned all 8 boards, Bala sir signed the register" }]
     },
@@ -47,7 +48,8 @@
   "recurring": [
     {
       "id": "R1", "duty": "Get the HoD's permission letter before booking the lab", "cadence": "every semester",
-      "approval": "Permission letter approved by the HoD", "approver": "HoD",
+      "approval": "Permission letter approved by the HoD", "approver": "HoD", "expectedTrust": "corroborated",
+      "trustNote": "At committee level: the chat (Priya) and the Trello card agree.",
       "quotes": [
         { "file": "whatsapp-committee.txt", "text": "the HoD's permission letter has to be approved before booking, every semester" },
         { "file": "minutes.md", "text": "A signed HoD permission letter is required before every lab booking." },
@@ -56,7 +58,8 @@
     },
     {
       "id": "R2", "duty": "Book the auditorium for IoT Fest", "cadence": "every year",
-      "approval": "Dean's office approval, requested a month ahead", "approver": "Dean's office",
+      "approval": "Dean's office approval, requested a month ahead", "approver": "Dean's office", "expectedTrust": "sourced",
+      "trustNote": "At committee level only the chat states it; the minutes copy is finance-level and cannot corroborate a committee item.",
       "quotes": [
         { "file": "whatsapp-committee.txt", "text": "The auditorium needs the Dean's office approval, so apply a month ahead." },
         { "file": "minutes.md", "text": "Auditorium booking for IoT Fest needs the Dean's office approval, requested a month ahead." }
@@ -74,6 +77,27 @@
       "claimB": { "file": "whatsapp-committee.txt", "text": "Speakers are still asking for their certificates, nobody has sent them yet." }
     }
   ],
+  "matchProbes": {
+    "note": "Fixed pairs for the matching prompt, independent of what extraction finds. Items are C1-C5 and R1-R2 above, plus these restatements.",
+    "extraItems": [
+      { "id": "C1card", "kind": "commitment", "description": "Send certificates to workshop speakers", "owedBy": "Arun", "owedTo": "Workshop speakers",
+        "quote": { "file": "trello-board.json", "text": "Card: Send certificates to workshop speakers" } },
+      { "id": "C4card", "kind": "commitment", "description": "Print fest posters", "owedBy": "Kavya", "owedTo": "Club",
+        "quote": { "file": "trello-board.json", "text": "Card: Print fest posters" } },
+      { "id": "R1minutes", "kind": "recurring", "description": "A signed HoD permission letter before every lab booking", "approver": "HoD", "cadence": "before every lab booking",
+        "quote": { "file": "minutes.md", "text": "A signed HoD permission letter is required before every lab booking." } }
+    ],
+    "pairs": [
+      { "a": "C1", "b": "C1card", "expect": "same" },
+      { "a": "C4", "b": "C4card", "expect": "same" },
+      { "a": "R1", "b": "R1minutes", "expect": "same" },
+      { "a": "C1", "b": "C5", "expect": "different" },
+      { "a": "C3", "b": "C4", "expect": "different" },
+      { "a": "R1", "b": "R2", "expect": "different" },
+      { "a": "C1card", "b": "C4card", "expect": "different" },
+      { "a": "C2", "b": "C1", "expect": "different" }
+    ]
+  },
   "expectedDropped": {
     "whatsapp-committee.txt": { "system": 3, "deleted": 1, "media": 1 }
   }

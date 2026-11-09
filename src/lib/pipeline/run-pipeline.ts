@@ -20,9 +20,10 @@ import {
   postProcessFollowup,
   type FollowupTarget,
 } from "./fulfilment.ts";
+import { MATCH_SYSTEM, MatchSchema, batchPairs, buildMatchPrompt, planMatches, postProcessMatches, type MatchItem, type MatchPair } from "./match.ts";
 import { buildIdf, relatedEvents } from "./related.ts";
 import { emptyProgress, type RunProgress, type StepResult } from "./progress.ts";
-import { DUTIES_TASK, DUTY_CONTEXT_TASK, EXTRACT_TASK, FOLLOWUP_TASK, PLAN_FOLLOWUPS_TASK, STAGES, type JobKind } from "./tasks.ts";
+import { DUTIES_TASK, DUTY_CONTEXT_TASK, EXTRACT_TASK, FOLLOWUP_TASK, MATCH_TASK, PLAN_FOLLOWUPS_TASK, PLAN_MATCHES_TASK, STAGES, type JobKind } from "./tasks.ts";
 
 type Db = SupabaseClient<Database>;
 
@@ -99,21 +100,23 @@ const job = (workspaceId: string, runId: string, userId: string, kind: JobKind, 
 
 /**
  * Queue a run: commitments (one job per chunk), recurring duties (one job per batch of
- * candidate messages), and a planning job that queues the follow-up checks once the first two
- * stages are done. Payloads hold event ids only, never text.
+ * candidate messages), a planning job that queues the follow-up checks once the first two
+ * stages are done, and a planning job that matches items once they have been checked.
+ * Payloads hold ids only, never text.
  */
 export async function planRun(db: Db, workspaceId: string, userId: string): Promise<{ runId: string; total: number }> {
   const events = await loadReadableEvents(db, workspaceId);
   if (events.length === 0) throw new PlanError("There are no imported messages you can read yet. Import files first.");
   const chunks = chunkEvents(events);
   const batches = batchDutyEvents(dutyCandidates(events));
-  const steps = chunks.length + batches.length + 1;
+  const steps = chunks.length + batches.length + 2;
   if (steps > MAX_STEPS_PER_RUN) throw new PlanError(`That is too much to read in one run (${steps} steps, limit ${MAX_STEPS_PER_RUN}).`);
   const runId = crypto.randomUUID();
   const rows = [
     ...chunks.map((c, i) => job(workspaceId, runId, userId, EXTRACT_TASK, i + 1, chunks.length, { event_ids: c.events.map((e) => e.id) })),
     ...batches.map((b, i) => job(workspaceId, runId, userId, DUTIES_TASK, i + 1, batches.length, { event_ids: b.map((e) => e.id) })),
     job(workspaceId, runId, userId, PLAN_FOLLOWUPS_TASK, 1, 1),
+    job(workspaceId, runId, userId, PLAN_MATCHES_TASK, 1, 1),
   ];
   await insertJobs(db, rows);
   return { runId, total: rows.length };
@@ -143,6 +146,8 @@ export async function getRunProgress(db: Db, workspaceId: string, runId: string)
     for (const [k, n] of Object.entries(r.dropped ?? {})) p.dropped[k] = (p.dropped[k] ?? 0) + n;
     p.followup.evidence += r.evidenceAdded ?? 0;
     p.followup.context += r.contextAdded ?? 0;
+    p.matching.same += r.linked ?? 0;
+    p.matching.possible += r.possible ?? 0;
     if (r.status) p.followup.statuses[r.status] = (p.followup.statuses[r.status] ?? 0) + 1;
   }
   return p;
@@ -156,7 +161,7 @@ export type RunDeps = {
   today?: string;
 };
 
-type Payload = { chunk: number; of: number; event_ids?: string[]; obligation_id?: string };
+type Payload = { chunk: number; of: number; event_ids?: string[]; obligation_id?: string; pairs?: [string, string, number][] };
 
 type StepContext = { db: Db; workspaceId: string; runId: string; userId: string; payload: Payload; deps: RunDeps; step: StepResult };
 
@@ -293,11 +298,89 @@ async function followupStep({ db, workspaceId, payload, deps, step }: StepContex
   if (step.rejected) step.dropped.rejected_by_database = step.rejected;
 }
 
+type MatchRow = {
+  id: string; kind: "commitment" | "recurring"; description: string; owed_by: string | null; owed_to: string | null;
+  due_text: string | null; cadence: string | null; approver: string | null; access_level: MatchItem["level"];
+  evidence: { event_id: string; relation: string; quote: string; events: { ts: string | null; sources: { type: MatchItem["sources"][number]["sourceType"] } | null } | null }[];
+};
+const MATCH_COLUMNS = "id, kind, description, owed_by, owed_to, due_text, cadence, approver, access_level, evidence(event_id, relation, quote, events(ts, sources(type)))";
+
+/** Items the caller may read, with the readable messages that state them. Items with none are left out. */
+async function loadMatchItems(db: Db, workspaceId: string, ids?: string[]): Promise<MatchItem[]> {
+  let q = db.from("obligations").select(MATCH_COLUMNS).eq("workspace_id", workspaceId).neq("review_state", "rejected");
+  if (ids) q = q.in("id", ids);
+  const { data, error } = await q.order("created_at");
+  if (error) throw new Error(`Could not read obligations: ${error.message}`);
+  const items: MatchItem[] = [];
+  for (const o of (data ?? []) as unknown as MatchRow[]) {
+    const sources = o.evidence
+      .filter((e) => e.relation === "supports" && e.events)
+      .map((e) => ({ eventId: e.event_id, quote: e.quote, ts: e.events!.ts, sourceType: e.events!.sources?.type ?? "whatsapp" }))
+      .sort((a, b) => (a.ts ?? "").localeCompare(b.ts ?? "") || a.eventId.localeCompare(b.eventId));
+    if (sources.length === 0) continue;
+    items.push({
+      id: o.id, kind: o.kind, description: o.description, owedBy: o.owed_by, owedTo: o.owed_to, dueText: o.due_text,
+      cadence: o.cadence, approver: o.approver, level: o.access_level, sources,
+    });
+  }
+  return items;
+}
+
+async function linkPair(db: Db, workspaceId: string, p: MatchPair, verdict: "same" | "possible", method: "rule" | "model", step: StepResult) {
+  const { data, error } = await db.rpc("link_obligations", { p_workspace: workspaceId, p_a: p.a, p_b: p.b, p_verdict: verdict, p_method: method, p_score: p.score });
+  if (error) {
+    step.rejected++;
+    return;
+  }
+  const r = data?.[0];
+  if (r?.created && r.verdict === "same") step.linked = (step.linked ?? 0) + 1;
+  else if (r?.created) step.possible = (step.possible ?? 0) + 1;
+  else step.duplicates++;
+}
+
+/**
+ * Score every pair of readable items: link near-identical ones by rule, and queue the uncertain
+ * middle for the model in fixed batches (ids and scores only).
+ */
+async function planMatchesStep({ db, workspaceId, runId, userId, step }: StepContext) {
+  const items = await loadMatchItems(db, workspaceId);
+  const { data: aliases } = await db.from("aliases").select("canonical, variants").eq("workspace_id", workspaceId);
+  const plan = planMatches(items, aliases ?? []);
+  step.candidates = plan.rule.length + plan.ask.length;
+  for (const p of plan.rule) await linkPair(db, workspaceId, p, "same", "rule", step);
+  const batches = batchPairs(plan.ask);
+  await insertJobs(db, batches.map((b, i) => job(workspaceId, runId, userId, MATCH_TASK, i + 1, batches.length, { pairs: b.map((p) => [p.a, p.b, p.score]) })));
+  step.planned = batches.length;
+  if (plan.overLimit) step.dropped = { match_over_limit: plan.overLimit };
+  if (step.rejected) step.dropped.rejected_by_database = step.rejected;
+}
+
+/** Ask the model whether each pair in the batch is the same item; store its verdicts as links. */
+async function matchStep({ db, workspaceId, payload, deps, step }: StepContext) {
+  const pairs = (payload.pairs ?? []).map(([a, b, score]) => ({ a, b, score }));
+  const items = await loadMatchItems(db, workspaceId, [...new Set(pairs.flatMap((p) => [p.a, p.b]))]);
+  const byId = new Map(items.map((i) => [i.id, i]));
+  // Pairs whose items were removed (or are no longer readable) since planning are skipped.
+  const live = pairs.filter((p) => byId.has(p.a) && byId.has(p.b));
+  if (live.length === 0) return;
+  const { user, refs } = buildMatchPrompt(live, byId);
+  const res = await generateStructured({ schema: MatchSchema, system: MATCH_SYSTEM, user, modelTier: "fast", task: MATCH_TASK }, llmDeps(deps));
+  noteModel(step, res);
+  step.candidates = live.length;
+  const kept = postProcessMatches(res.data, refs);
+  step.dropped = kept.dropped as Record<string, number>;
+  for (const p of kept.same) await linkPair(db, workspaceId, p, "same", "model", step);
+  for (const p of kept.possible) await linkPair(db, workspaceId, p, "possible", "model", step);
+  if (step.rejected) step.dropped.rejected_by_database = step.rejected;
+}
+
 const STEPS: Record<JobKind, (c: StepContext) => Promise<void>> = {
   [EXTRACT_TASK]: extractStep,
   [DUTIES_TASK]: dutiesStep,
   [PLAN_FOLLOWUPS_TASK]: planFollowupsStep,
   [FOLLOWUP_TASK]: followupStep,
+  [PLAN_MATCHES_TASK]: planMatchesStep,
+  [MATCH_TASK]: matchStep,
 };
 
 /**

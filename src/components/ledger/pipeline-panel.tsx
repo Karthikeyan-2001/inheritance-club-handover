@@ -27,8 +27,12 @@ const DROP_LABELS: Record<string, string> = {
   known_at_lower_level: "already known from a less restricted record",
   mixed_visibility: "quotes from records with different access levels",
   ungrounded_note: "a note naming people or numbers not in its quoted message",
+  ungrounded_deliverable: "descriptions naming people or numbers not in their message (the quote is shown instead)",
   unrelated_context: "a note about something else",
   source_not_readable: "items whose source message you cannot read",
+  match_over_limit: "possible duplicates beyond this run's limit, not compared",
+  unknown_pair: "a match verdict for a pair that was not asked about",
+  no_verdict: "pairs the model gave no verdict on (left unlinked)",
 };
 
 const STATUS_WORDS: [string, string][] = [
@@ -128,6 +132,8 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
   const d = progress?.stages.find_duties;
   const f = progress?.stages.check_followup;
   const planned = (progress?.stages.plan_followups.done ?? 0) > 0;
+  const m = progress?.stages.match_items;
+  const matchPlanned = (progress?.stages.plan_matches.done ?? 0) > 0;
   const statuses = STATUS_WORDS.map(([k, label]) => [progress?.followup.statuses[k] ?? 0, label] as const).filter(([n]) => n > 0);
 
   return (
@@ -137,8 +143,8 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
       </h2>
       <p className="text-muted-foreground">
         Reads every message your role may read, in small steps, using {provider === "anthropic" ? "Anthropic's Claude API" : "a test model"} ({model}). It finds
-        promises made to people and recurring duties with their approvals, then checks each item for later follow-up and useful context. Code checks
-        that every quote really appears in the message it cites. Anything that fails is left out and counted, and an item with no follow-up is marked
+        promises made to people and recurring duties with their approvals, then checks each item for later follow-up and useful context, and links items recorded twice. Code checks
+        that every quote really appears in the message it cites, and a fixed rule sets each item’s trust. Anything that fails is left out and counted, and an item with no follow-up is marked
         “No evidence kept”. Results are drafts for review.
       </p>
       {canRun ? (
@@ -189,6 +195,18 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
                   {progress.followup.evidence + progress.followup.context > 0 &&
                     `; ${plural(progress.followup.evidence, "follow-up quote")} and ${plural(progress.followup.context, "context note")} added`}
                   .
+                </>
+              )}
+            </li>
+            <li>
+              Matching:{" "}
+              {!matchPlanned ? (
+                "waits for the follow-up checks."
+              ) : (
+                <>
+                  <strong>{plural(progress.matching.same, "item")} linked</strong> to another record of the same obligation
+                  {progress.matching.possible ? `, ${plural(progress.matching.possible, "possible match", "possible matches")} to review` : ""}
+                  {m && m.total > 0 ? ` (${m.done} of ${plural(m.total, "comparison")} by the model)` : ""}. Trust and the docket are then settled by the trust rule.
                 </>
               )}
             </li>

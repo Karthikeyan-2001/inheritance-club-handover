@@ -3,7 +3,7 @@ import { eventFor, miniEvents, miniTruth, type MiniEvent } from "../../../script
 import { MemoryLlmCache } from "../llm/cache-memory";
 import { FakeProvider } from "../llm/provider-fake";
 import { fakeHandlers } from "./provider";
-import { runInMemory, trigramSimilarity, type MemoryResult } from "./run-memory";
+import { runInMemory, type MemoryResult } from "./run-memory";
 import { normaliseForQuote } from "./verify";
 
 const ENV = { LLM_MODEL_FAST: "fake-fast", LLM_MODEL_STRONG: "fake-strong" };
@@ -51,6 +51,27 @@ describe("the whole pipeline on the mini scenario (fake model)", () => {
     }
   });
 
+  it("gives each commitment and committee-level duty the expected trust", () => {
+    for (const c of truth.commitments) expect([c.id, commitment(c.id)?.trust]).toEqual([c.id, c.expectedTrust]);
+    for (const r of truth.recurring) {
+      const ids = new Set(r.quotes.map((q) => eventFor(events, q)?.id));
+      const duty = res.duties.find((d) => d.level === "committee" && d.duty.quotes.some((q) => ids.has(q.event.id)));
+      expect([r.id, duty?.trust]).toEqual([r.id, r.expectedTrust]);
+    }
+  });
+
+  it("links each Trello card to the chat promise it restates, and never two different promises", () => {
+    const card = (name: string) => res.commitments.find((c) => c.candidate.quote === `Card: ${name}`);
+    const same = (a?: { id: string }, b?: { id: string }) =>
+      res.links.some((l) => l.verdict === "same" && a && b && [l.a, l.b].sort().join() === [a.id, b.id].sort().join());
+    expect(same(commitment("C1"), card("Send certificates to workshop speakers"))).toBe(true);
+    expect(same(commitment("C4"), card("Print fest posters"))).toBe(true);
+    const truthIds = new Set(truth.commitments.map((c) => commitment(c.id)?.id));
+    for (const l of res.links) expect(truthIds.has(l.a) && truthIds.has(l.b), `${l.a}-${l.b}`).toBe(false);
+    // The card borrows the chat's evidence, so it is contradicted too.
+    expect(card("Send certificates to workshop speakers")?.trust).toBe("contradicted");
+  });
+
   it("keeps the decoys out", () => {
     const decoys = new Set(truth.decoys.map((d) => eventFor(events, d)?.id));
     expect(res.commitments.some((c) => decoys.has(c.candidate.event.id))).toBe(false);
@@ -65,7 +86,9 @@ describe("the whole pipeline on the mini scenario (fake model)", () => {
   it("never mixes access levels in one prompt", () => {
     const finance = events.filter((e) => e.accessLevel === "finance").map((e) => e.text.split("\n")[0]);
     const committee = events.filter((e) => e.accessLevel === "committee").map((e) => e.text.split("\n")[0]);
-    for (const call of provider.calls.filter((c) => c.task !== "check_followup" && c.task !== "duty_context")) {
+    // Follow-up checks read related messages the requester may read; match prompts show two items
+    // side by side and get back only a verdict. Neither stores model-written text at a lower level.
+    for (const call of provider.calls.filter((c) => !["check_followup", "duty_context", "match_items"].includes(c.task))) {
       const hasFinance = finance.some((t) => call.user.includes(t));
       const hasCommittee = committee.some((t) => call.user.includes(t));
       expect(hasFinance && hasCommittee).toBe(false);
@@ -73,10 +96,17 @@ describe("the whole pipeline on the mini scenario (fake model)", () => {
   });
 });
 
-describe("trigramSimilarity", () => {
-  it("is close to pg_trgm for paraphrased duty names", () => {
-    expect(trigramSimilarity("Get HoD permission letter before lab booking", "Get the HoD's permission letter before booking the lab")).toBeGreaterThan(0.55);
-    expect(trigramSimilarity("Book the auditorium", "Return ESP32 boards")).toBeLessThan(0.2);
-    expect(trigramSimilarity("", "")).toBe(0);
+describe("the fixed matching probe of the eval", () => {
+  it("builds every planted item from a real quote, and the offline fake agrees with its expected verdicts", async () => {
+    const { matchProbe } = await import("../../../scripts/mini-scenario");
+    const { buildMatchPrompt, postProcessMatches } = await import("./match");
+    const { fakeMatch } = await import("./fake-pipeline");
+    const probe = matchProbe(await miniEvents(), miniTruth());
+    for (const p of probe.pairs) expect([p.a, p.b].every((id) => probe.items.has(id)), `${p.a}-${p.b}`).toBe(true);
+    const { user, refs } = buildMatchPrompt(probe.pairs, probe.items);
+    expect(refs.size).toBe(probe.pairs.length);
+    const kept = postProcessMatches(fakeMatch({ task: "match_items", model: "m", system: "", user, schema: null as never, maxTokens: 1, effort: "low" }), refs);
+    const wrongSame = kept.same.filter((s) => probe.pairs.find((p) => p.a === s.a && p.b === s.b)?.expect === "different");
+    expect(wrongSame).toEqual([]);
   });
 });

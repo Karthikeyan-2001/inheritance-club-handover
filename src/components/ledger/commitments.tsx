@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { CONTEXT_SELECT, ContextList, EVIDENCE_SELECT, EvidenceList, type ContextRow, type EvidenceRow } from "./obligation-parts";
+import { CONTEXT_SELECT, ContextList, EVIDENCE_SELECT, EvidenceList, LinkList, linksByItem, type ContextRow, type EvidenceRow, type LinkRow } from "./obligation-parts";
 
 export const TRUST_LABELS = {
   corroborated: "Corroborated",
@@ -9,6 +9,15 @@ export const TRUST_LABELS = {
   inferred: "Inferred",
   contradicted: "Contradicted",
   gap: "Gap: no evidence kept",
+} as const;
+
+/** What each trust state means, in the words of the trust rule (src/lib/pipeline/trust.ts). */
+export const TRUST_HELP = {
+  corroborated: "Two independent records (different files or different people) agree.",
+  sourced: "Backed by one record only.",
+  inferred: "Done only by inference: no record says so plainly.",
+  contradicted: "One record says it was done and another says it was not. See the Docket.",
+  gap: "No verified evidence is kept for this item.",
 } as const;
 
 export const REVIEW_LABELS = { draft: "Draft", accepted: "Accepted", rejected: "Rejected", edited: "Edited" } as const;
@@ -60,6 +69,8 @@ export async function Commitments({ workspaceId }: { workspaceId: string }) {
   if (!rows.length) {
     return <p className="text-sm text-muted-foreground">No commitments yet. Import files, then use “Build the ledger”.</p>;
   }
+  const { data: links } = await supabase.from("obligation_links").select("a, b, verdict").eq("workspace_id", workspaceId);
+  const linked = linksByItem((links ?? []) as LinkRow[], new Map(rows.map((o) => [o.id, o.description])));
 
   return (
     <ul className="flex flex-col gap-3" aria-label="Commitments" data-testid="commitments">
@@ -80,7 +91,9 @@ export async function Commitments({ workspaceId }: { workspaceId: string }) {
             {o.owed_by ?? "Someone"} owes {o.owed_to ?? "someone"}
             {o.due_text ? `, ${o.due_text}` : ""}
           </p>
+          <p className="mt-1 text-xs text-muted-foreground">Trust: {TRUST_HELP[o.trust_state]}</p>
           <EvidenceList evidence={o.evidence} kind="commitment" />
+          <LinkList items={linked.get(o.id)} />
           <ContextList items={o.context_items} />
         </li>
       ))}

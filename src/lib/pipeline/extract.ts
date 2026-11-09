@@ -4,7 +4,7 @@
 import { z } from "zod";
 import type { AccessLevel } from "../access.ts";
 import { formatIst } from "../format.ts";
-import { normaliseForQuote, verifyQuote } from "./verify.ts";
+import { noteGrounded, normaliseForQuote, verifyQuote } from "./verify.ts";
 
 export type PipelineEvent = {
   id: string;
@@ -17,6 +17,8 @@ export type PipelineEvent = {
   accessLevel?: AccessLevel;
   /** Who uploaded the file the message came from (matters for private files). */
   uploaderId?: string | null;
+  /** The file the message came from, when known (the trust rule counts distinct files). */
+  sourceId?: string | null;
 };
 
 /**
@@ -136,7 +138,23 @@ export type Candidate = {
   dueText: string | null;
 };
 
-export type DropReason = "unknown_message" | "quote_not_found" | "quote_too_short" | "non_binding" | "no_counterparty" | "no_deliverable" | "duplicate";
+export type DropReason =
+  | "unknown_message" | "quote_not_found" | "quote_too_short" | "non_binding" | "no_counterparty" | "no_deliverable" | "duplicate"
+  /** Not dropped: the claim is kept, but its description is replaced by the verified quote. */
+  | "ungrounded_deliverable";
+
+/**
+ * The model writes the deliverable; it may not name a person, organisation or number missing
+ * from the promise's own message (or its author). The first word is usually a verb ("Print
+ * fest posters"), so it is only checked when it looks like a name or code (an inner capital
+ * or a digit, as in "IoT" or "ESP32").
+ */
+export function deliverableGrounded(deliverable: string, eventText: string, author: string | null): boolean {
+  const first = deliverable.trim().split(/\s+/)[0] ?? "";
+  const nameLike = /[\p{Lu}\d]/u.test(first.slice(1));
+  const text = nameLike ? deliverable : deliverable.trim().replace(first, first.toLowerCase());
+  return noteGrounded(text, eventText, author ?? "");
+}
 
 // Deterministic backstop for the prompt's "ignore hedged statements" rule.
 export const HEDGE = /\b(maybe|might|will see|not sure|probably|perhaps|someday|if possible|try to)\b/i;
@@ -181,7 +199,12 @@ export function postProcess(output: ExtractionOutput, refs: Map<string, Pipeline
       continue;
     }
     seen.add(key);
-    kept.push({ event, quote: c.quote.trim(), owedBy: c.owed_by.trim() || event.author || "Unknown", owedTo, deliverable, dueText });
+    let description = deliverable;
+    if (description && !deliverableGrounded(description, event.text, event.author)) {
+      drop("ungrounded_deliverable");
+      description = c.quote.trim();
+    }
+    kept.push({ event, quote: c.quote.trim(), owedBy: c.owed_by.trim() || event.author || "Unknown", owedTo, deliverable: description, dueText });
   }
   return { kept, dropped };
 }

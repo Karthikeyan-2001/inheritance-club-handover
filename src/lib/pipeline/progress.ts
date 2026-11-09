@@ -1,7 +1,7 @@
 // Shapes of a run's step results and progress. Pure, so the browser can import it.
 
 import type { Usage } from "../llm/types.ts";
-import { DUTIES_TASK, EXTRACT_TASK, FOLLOWUP_TASK, PLAN_FOLLOWUPS_TASK, type JobKind } from "./tasks.ts";
+import { DUTIES_TASK, EXTRACT_TASK, FOLLOWUP_TASK, MATCH_TASK, PLAN_FOLLOWUPS_TASK, PLAN_MATCHES_TASK, type JobKind } from "./tasks.ts";
 
 export type StepResult = {
   kind: JobKind;
@@ -16,8 +16,11 @@ export type StepResult = {
   /** Refused by the database check. */
   rejected: number;
   dropped: Record<string, number>;
-  /** plan_followups: follow-up checks queued. */
+  /** plan_followups and plan_matches: jobs queued. */
   planned?: number;
+  /** plan_matches and match_items: new links as the same item, and new possible matches. */
+  linked?: number;
+  possible?: number;
   /** check_followup: evidence and context stored, and the resulting status (commitments). */
   evidenceAdded?: number;
   contextAdded?: number;
@@ -38,6 +41,7 @@ export type RunProgress = {
   stages: Record<JobKind, StageProgress>;
   dropped: Record<string, number>;
   followup: { evidence: number; context: number; statuses: Record<string, number> };
+  matching: { same: number; possible: number };
   cachedSteps: number;
   usage: Usage;
 };
@@ -47,7 +51,10 @@ const emptyStage = (): StageProgress => ({ total: 0, done: 0, failed: 0, pending
 export function emptyProgress(): RunProgress {
   return {
     total: 0, done: 0, failed: 0, pending: 0,
-    stages: { [EXTRACT_TASK]: emptyStage(), [DUTIES_TASK]: emptyStage(), [PLAN_FOLLOWUPS_TASK]: emptyStage(), [FOLLOWUP_TASK]: emptyStage() },
-    dropped: {}, followup: { evidence: 0, context: 0, statuses: {} }, cachedSteps: 0, usage: { inputTokens: 0, outputTokens: 0 },
+    stages: {
+      [EXTRACT_TASK]: emptyStage(), [DUTIES_TASK]: emptyStage(), [PLAN_FOLLOWUPS_TASK]: emptyStage(), [FOLLOWUP_TASK]: emptyStage(),
+      [PLAN_MATCHES_TASK]: emptyStage(), [MATCH_TASK]: emptyStage(),
+    },
+    dropped: {}, followup: { evidence: 0, context: 0, statuses: {} }, matching: { same: 0, possible: 0 }, cachedSteps: 0, usage: { inputTokens: 0, outputTokens: 0 },
   };
 }

@@ -43,6 +43,11 @@ describe.skipIf(!hasEnv)("delete_workspace", () => {
     ref.context = must("context", await a.from("context_items").insert({
       obligation_id: ref.obligation, kind: "contact", text: "AV room", access_level: "committee",
     }).select("id").single()).id;
+    const second = must("obligation 2", await a.from("obligations").insert({
+      workspace_id: ws, kind: "commitment", description: "Bring the projector to the lab", review_state: "draft",
+    }).select("id").single()).id;
+    const [x, y] = [ref.obligation, second].sort();
+    ok("link", await a.from("obligation_links").insert({ workspace_id: ws, a: x, b: y, verdict: "possible", method: "rule" }));
     ok("docket", await a.from("docket_entries").insert({ workspace_id: ws, claim_a_event: ref.event, claim_b_event: ref.event, summary: "t" }));
     ok("sealed", await a.from("sealed_items").insert({ workspace_id: ws, holder_role: "advisor", topic_label: "t" }));
     ok("alias", await a.from("aliases").insert({ workspace_id: ws, canonical: "t", kind: "person" }));
@@ -64,7 +69,7 @@ describe.skipIf(!hasEnv)("delete_workspace", () => {
   async function counts() {
     const a = admin();
     const byWs = ["memberships", "sources", "events", "obligations", "docket_entries", "sealed_items",
-      "aliases", "jobs", "versions", "version_items", "releases", "audit_log"] as const;
+      "aliases", "jobs", "obligation_links", "versions", "version_items", "releases", "audit_log"] as const;
     const out: Record<string, number> = {};
     out.workspaces = (await a.from("workspaces").select("*", { count: "exact", head: true }).eq("id", ws)).count ?? 0;
     for (const t of byWs) {

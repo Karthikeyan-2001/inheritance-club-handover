@@ -2,6 +2,7 @@
 // offline e2e). It reads the same prompt format a real model would and returns candidates.
 
 import type { ProviderRequest } from "../llm/types.ts";
+import { RECURRENCE } from "./cycles.ts";
 import type { ExtractionOutput } from "./extract.ts";
 
 const LINE = /^\[(m\d+)\] [^|]*\| [^|]*\| ([^:]+): (.*)$/;
@@ -22,6 +23,13 @@ export function fakeExtract(request: ProviderRequest): ExtractionOutput {
       const quote = p[0].trim();
       const to = quote.match(/\bto (?:all )?([A-Z][\w.]*(?: [A-Z][\w.]*)*|workshop speakers|the [a-z]+)/)?.[1] ?? "the club";
       commitments.push({ message: b.ref, quote, owed_by: b.author, owed_to: to, deliverable: quote.replace(PROMISE.exec(quote)?.[1] ?? "", "").trim(), due_text: quote.match(/\bby [^,.]+/)?.[0] ?? null });
+    }
+    // A Trello card with a due date is a task someone took on (the card restates it).
+    const card = b.text.match(/^Card: ([^\n]+)/);
+    if (card && /\nDue: /.test(b.text) && !RECURRENCE.test(b.text)) {
+      const name = card[1].trim();
+      const to = name.match(/\bto (?:all )?([A-Z][\w.]*(?: [A-Z][\w.]*)*|workshop speakers|the [a-z]+)/)?.[1] ?? "the club";
+      commitments.push({ message: b.ref, quote: `Card: ${name}`, owed_by: b.author, owed_to: to, deliverable: name, due_text: b.text.match(/\nDue: ([^\n]+)/)?.[1] ?? null });
     }
     for (const line of b.text.split("\n")) {
       const a = line.match(ACTION);

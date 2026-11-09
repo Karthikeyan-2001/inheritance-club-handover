@@ -51,6 +51,27 @@ describe("the whole pipeline on the mini scenario (fake model)", () => {
     }
   });
 
+  it("gives each commitment and committee-level duty the expected trust", () => {
+    for (const c of truth.commitments) expect([c.id, commitment(c.id)?.trust]).toEqual([c.id, c.expectedTrust]);
+    for (const r of truth.recurring) {
+      const ids = new Set(r.quotes.map((q) => eventFor(events, q)?.id));
+      const duty = res.duties.find((d) => d.level === "committee" && d.duty.quotes.some((q) => ids.has(q.event.id)));
+      expect([r.id, duty?.trust]).toEqual([r.id, r.expectedTrust]);
+    }
+  });
+
+  it("links each Trello card to the chat promise it restates, and never two different promises", () => {
+    const card = (name: string) => res.commitments.find((c) => c.candidate.quote === `Card: ${name}`);
+    const same = (a?: { id: string }, b?: { id: string }) =>
+      res.links.some((l) => l.verdict === "same" && a && b && [l.a, l.b].sort().join() === [a.id, b.id].sort().join());
+    expect(same(commitment("C1"), card("Send certificates to workshop speakers"))).toBe(true);
+    expect(same(commitment("C4"), card("Print fest posters"))).toBe(true);
+    const truthIds = new Set(truth.commitments.map((c) => commitment(c.id)?.id));
+    for (const l of res.links) expect(truthIds.has(l.a) && truthIds.has(l.b), `${l.a}-${l.b}`).toBe(false);
+    // The card borrows the chat's evidence, so it is contradicted too.
+    expect(card("Send certificates to workshop speakers")?.trust).toBe("contradicted");
+  });
+
   it("keeps the decoys out", () => {
     const decoys = new Set(truth.decoys.map((d) => eventFor(events, d)?.id));
     expect(res.commitments.some((c) => decoys.has(c.candidate.event.id))).toBe(false);
@@ -65,7 +86,9 @@ describe("the whole pipeline on the mini scenario (fake model)", () => {
   it("never mixes access levels in one prompt", () => {
     const finance = events.filter((e) => e.accessLevel === "finance").map((e) => e.text.split("\n")[0]);
     const committee = events.filter((e) => e.accessLevel === "committee").map((e) => e.text.split("\n")[0]);
-    for (const call of provider.calls.filter((c) => c.task !== "check_followup" && c.task !== "duty_context")) {
+    // Follow-up checks read related messages the requester may read; match prompts show two items
+    // side by side and get back only a verdict. Neither stores model-written text at a lower level.
+    for (const call of provider.calls.filter((c) => !["check_followup", "duty_context", "match_items"].includes(c.task))) {
       const hasFinance = finance.some((t) => call.user.includes(t));
       const hasCommittee = committee.some((t) => call.user.includes(t));
       expect(hasFinance && hasCommittee).toBe(false);

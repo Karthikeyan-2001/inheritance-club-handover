@@ -17,6 +17,8 @@ export type PipelineEvent = {
   accessLevel?: AccessLevel;
   /** Who uploaded the file the message came from (matters for private files). */
   uploaderId?: string | null;
+  /** The file the message came from, when known (the trust rule counts distinct files). */
+  sourceId?: string | null;
 };
 
 /**

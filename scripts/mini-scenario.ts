@@ -13,10 +13,10 @@ export type Quote = { file: string; text: string };
 export type MiniTruth = {
   files: Record<string, { type: string; accessLevel: AccessLevel }>;
   commitments: {
-    id: string; owedBy: string; owedTo: string; deliverable: string; expectedStatus: string; expectedAccess?: AccessLevel;
+    id: string; owedBy: string; owedTo: string; deliverable: string; expectedStatus: string; expectedTrust: string; expectedAccess?: AccessLevel;
     quote: Quote; evidence: (Quote & { relation: "fulfils" | "contradicts" })[];
   }[];
-  recurring: { id: string; duty: string; cadence: string; approval: string; approver: string; quotes: Quote[] }[];
+  recurring: { id: string; duty: string; cadence: string; approval: string; approver: string; expectedTrust: string; quotes: Quote[] }[];
   decoys: Quote[];
   contradictions: { id: string; commitment: string; claimA: Quote; claimB: Quote }[];
 };
@@ -33,7 +33,7 @@ export async function miniEvents(): Promise<MiniEvent[]> {
   for (const [file, meta] of Object.entries(truth.files)) {
     const r = await parseUpload(file, new Uint8Array(readFileSync(MINI_DIR + file)));
     r.events.forEach((e, i) =>
-      events.push({ id: `${file}#${i}`, file, author: e.author, ts: e.ts, text: e.text, threadId: e.threadId, sourceType: e.sourceType, accessLevel: meta.accessLevel }),
+      events.push({ id: `${file}#${i}`, file, sourceId: file, author: e.author, ts: e.ts, text: e.text, threadId: e.threadId, sourceType: e.sourceType, accessLevel: meta.accessLevel }),
     );
   }
   return events;

@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { formatIst } from "@/lib/format";
+import { capitalise } from "@/lib/ledger-view";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { TYPE_LABELS } from "./obligation-parts";
 
@@ -16,13 +18,14 @@ type Row = {
   reason: string | null;
   ruled_at: string | null;
   origin: "rule" | "manual";
+  obligation_id: string | null;
   obligations: { description: string; kind: "commitment" | "recurring" } | null;
   claim_a: ClaimEvent;
   claim_b: ClaimEvent;
 };
 
 const SELECT =
-  "id, claim_a_event, claim_b_event, summary, quote_a, quote_b, ruling, reason, ruled_at, origin, created_at, obligations(description, kind), " +
+  "id, obligation_id, claim_a_event, claim_b_event, summary, quote_a, quote_b, ruling, reason, ruled_at, origin, created_at, obligations(description, kind), " +
   "claim_a:events!docket_entries_claim_a_event_fkey(ts, author, sources(filename, type)), " +
   "claim_b:events!docket_entries_claim_b_event_fkey(ts, author, sources(filename, type))";
 
@@ -40,8 +43,6 @@ function Claim({ label, quote, event }: { label: string; quote: string | null; e
     </div>
   );
 }
-
-const capitalise = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 /**
  * Conflicts between records: one says an item was done, another says it was not. RLS returns
@@ -61,18 +62,23 @@ export async function Docket({ workspaceId }: { workspaceId: string }) {
     );
   }
 
-  const groups = new Map<string, { row: Row; items: string[] }>();
+  const groups = new Map<string, { row: Row; items: string[]; ids: string[]; links: { id: string; tab: string; description: string }[] }>();
   for (const r of rows) {
     const key = `${r.claim_a_event}|${r.claim_b_event}`;
-    const g = groups.get(key) ?? { row: r, items: [] };
+    const g = groups.get(key) ?? { row: r, items: [], ids: [], links: [] };
+    g.ids.push(r.id);
     if (r.obligations && !g.items.includes(r.obligations.description)) g.items.push(r.obligations.description);
+    if (r.obligation_id && r.obligations && !g.links.some((l) => l.id === r.obligation_id)) g.links.push({ id: r.obligation_id, tab: r.obligations.kind === "recurring" ? "recurring" : "commitments", description: r.obligations.description });
     groups.set(key, g);
   }
 
   return (
     <ul className="flex flex-col gap-3" aria-label="Docket" data-testid="docket">
-      {[...groups.values()].map(({ row, items }) => (
-        <li key={row.id} className="rounded-md border p-3 text-sm">
+      {[...groups.values()].map(({ row, items, ids, links }) => (
+        <li key={row.id} id={`docket-${row.id}`} className="scroll-mt-4 rounded-md border p-3 text-sm">
+          {ids.slice(1).map((id) => (
+            <span key={id} id={`docket-${id}`} />
+          ))}
           <div className="flex flex-wrap items-start justify-between gap-2">
             <p className="font-medium">{items.length ? items.map(capitalise).join(" / ") : "Conflicting records"}</p>
             <span className="flex flex-wrap gap-1">
@@ -88,6 +94,17 @@ export async function Docket({ workspaceId }: { workspaceId: string }) {
           <p className="mt-2 text-xs text-muted-foreground">
             {row.ruling ? `Ruling: ${row.ruling}${row.reason ? ` (${row.reason})` : ""}` : "Not ruled yet. The faculty advisor rules on conflicts during review."}
           </p>
+          {links.length > 0 && (
+            <div className="mt-1 flex flex-col gap-0.5 text-xs">
+              {links.map((l) => (
+                <p key={l.id}>
+                  <Link href={`/ledger?tab=${l.tab}#item-${l.id}`} className="underline">
+                    {links.length > 1 ? `Open “${l.description}” in the ledger` : "Open the item in the ledger"}
+                  </Link>
+                </p>
+              ))}
+            </div>
+          )}
         </li>
       ))}
     </ul>

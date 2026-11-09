@@ -2,7 +2,9 @@ import { Badge } from "@/components/ui/badge";
 import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { REVIEW_LABELS, TRUST_HELP, TRUST_LABELS } from "./commitments";
-import { CONTEXT_SELECT, ContextList, EVIDENCE_SELECT, EvidenceList, LinkList, linksByItem, type ContextRow, type EvidenceRow, type LinkRow } from "./obligation-parts";
+import { capitalise, groupLinked } from "@/lib/ledger-view";
+import { loadLinkData } from "./link-data";
+import { AlsoRecorded, CONTEXT_SELECT, ContextList, DocketLink, EVIDENCE_SELECT, EvidenceList, PossibleMatches, RecordedElsewhere, type CardFact, type ContextRow, type EvidenceRow } from "./obligation-parts";
 
 const PERIOD_LABELS = {
   semester: "Every semester",
@@ -48,6 +50,25 @@ function Fact({ label, children }: { label: string; children: React.ReactNode })
   );
 }
 
+/** The facts a duty's card shows, as text, for comparing a folded record with its card. */
+function dutyFacts(o: Row): CardFact[] {
+  return [
+    { label: "How often", value: `${o.period ? PERIOD_LABELS[o.period] : "Repeats"}${o.cadence ? ` (“${o.cadence}”)` : ""}` },
+    {
+      label: "Approval needed",
+      value: o.approval_required || o.approver ? `${o.approval_required ?? "Approval"}${o.approver ? `, from ${o.approver}` : ""}` : "None mentioned",
+    },
+    { label: "Start ahead", value: o.lead_time ?? "Not stated in the records" },
+    { label: "Usually done by", value: o.owed_by ?? "Not stated in the records" },
+    {
+      label: "Next due",
+      value: o.next_due
+        ? `${o.next_due_basis?.startsWith("Estimated") ? "About " : ""}${day(o.next_due)}${o.start_by ? `; start by ${day(o.start_by)}` : ""}`
+        : "Not derivable from the records",
+    },
+  ];
+}
+
 const NOT_STATED = <span className="text-muted-foreground">Not stated in the records</span>;
 
 /** Recurring duties this role may read, with approvals, timing and verified quotes. RLS filters the query. */
@@ -67,15 +88,19 @@ export async function Recurring({ workspaceId }: { workspaceId: string }) {
   if (!rows.length) {
     return <p className="text-sm text-muted-foreground">No recurring duties yet. Import files, then use “Build the ledger”.</p>;
   }
-  const { data: links } = await supabase.from("obligation_links").select("a, b, verdict").eq("workspace_id", workspaceId);
-  const linked = linksByItem((links ?? []) as LinkRow[], new Map(rows.map((o) => [o.id, o.description])));
+  const { links, docketByItem, error: linkError } = await loadLinkData(supabase, workspaceId);
+  if (linkError) return <p role="alert">Could not load how items are linked. Try again in a minute.</p>;
+  const byId = new Map(rows.map((o) => [o.id, o]));
+  const groups = groupLinked(rows.map((o) => o.id), links);
 
   return (
     <ul className="flex flex-col gap-3" aria-label="Recurring duties" data-testid="recurring">
-      {rows.map((o) => (
-        <li key={o.id} className="rounded-md border p-3 text-sm">
+      {groups.map((g) => {
+        const o = byId.get(g.primary)!;
+        return (
+        <li key={o.id} id={`item-${o.id}`} className="scroll-mt-4 rounded-md border p-3 text-sm">
           <div className="flex flex-wrap items-start justify-between gap-2">
-            <p className="font-medium">{o.description.charAt(0).toUpperCase() + o.description.slice(1)}</p>
+            <p className="font-medium">{capitalise(o.description)}</p>
             <span className="flex flex-wrap gap-1">
               <Badge variant={o.trust_state === "contradicted" || o.trust_state === "gap" ? "destructive" : "secondary"}>Trust: {TRUST_LABELS[o.trust_state]}</Badge>
               <Badge variant="outline">{REVIEW_LABELS[o.review_state]}</Badge>
@@ -112,12 +137,26 @@ export async function Recurring({ workspaceId }: { workspaceId: string }) {
               )}
             </Fact>
           </dl>
-          <p className="mt-2 text-xs text-muted-foreground">Trust: {TRUST_HELP[o.trust_state]}</p>
+          {o.trust_state === "contradicted" && <p className="mt-2 text-xs text-muted-foreground">{TRUST_HELP.contradicted}</p>}
+          <DocketLink entryIds={o.trust_state === "contradicted" ? docketByItem.get(o.id) : undefined} />
           <EvidenceList evidence={o.evidence} kind="recurring" />
-          <LinkList items={linked.get(o.id)} />
+          <AlsoRecorded
+            records={g.also.map((id) => {
+              const r = byId.get(id)!;
+              return { ...r, facts: dutyFacts(r) };
+            })}
+            kind="recurring"
+            trustLabels={TRUST_LABELS}
+            reviewLabels={REVIEW_LABELS}
+            docketByItem={docketByItem}
+            primaryFacts={dutyFacts(o)}
+          />
+          <RecordedElsewhere notes={g.elsewhere.map((e) => ({ ...e, toDescription: byId.get(e.to)!.description, tab: "recurring" }))} />
+          <PossibleMatches items={g.possible.map((id) => ({ id, description: byId.get(id)!.description }))} />
           <ContextList items={o.context_items} />
         </li>
-      ))}
+        );
+      })}
     </ul>
   );
 }

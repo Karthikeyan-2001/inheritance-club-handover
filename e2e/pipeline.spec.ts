@@ -25,10 +25,10 @@ const KIT_CHAT = [
 ].join("\n");
 const KIT_MINUTES = "# Committee minutes (SYNTHETIC)\n\n## 2026-03-07: Committee meeting\n\n### Actions\n\n- Arun to return the soldering kit to the Robotics club by Monday.\n";
 
-async function importFile(page: Page, name: string, mimeType: string, body: string) {
+async function importFile(page: Page, name: string, mimeType: string, body: string, level = "committee") {
   await page.goto("/import");
   await page.getByLabel("Files to import").setInputFiles({ name, mimeType, buffer: Buffer.from(body) });
-  await page.getByLabel("Who may see it").selectOption("committee");
+  await page.getByLabel("Who may see it").selectOption(level);
   await page.getByLabel("I am authorised to use this data.").check();
   await page.getByRole("button", { name: /^Import 1 file$/ }).click();
   await expect(page.getByText("What was read (1 of 1 imported)")).toBeVisible({ timeout: 20_000 });
@@ -113,10 +113,12 @@ test.describe.serial("building the ledger", () => {
     const kit = page.getByTestId("commitments").getByRole("listitem").filter({ hasText: "“I will return the soldering kit" }).first();
     await expect(kit).toContainText("Trust: Contradicted");
     await expect(kit).toContainText("One record says it was done and another says it was not.");
-    await expect(kit.getByTestId("links")).toContainText("Also recorded as:");
+    await expect(kit.getByTestId("links")).toContainText("Also in");
+    // The folded record keeps its own anchor, so links to it land on this card.
+    await expect(kit.getByTestId("links").locator("section[id^=item-]")).toHaveCount(1);
 
-    await page.getByRole("link", { name: "Docket" }).click();
-    await expect(page.getByRole("link", { name: "Docket" })).toHaveAttribute("aria-current", "page");
+    await page.getByRole("link", { name: "Docket", exact: true }).click();
+    await expect(page.getByRole("link", { name: "Docket", exact: true })).toHaveAttribute("aria-current", "page");
     const entry = page.getByTestId("docket").getByRole("listitem").filter({ hasText: "soldering kit" }).first();
     await expect(entry).toContainText("WhatsApp, 8 Mar 2026: says it was done. WhatsApp, 9 Mar 2026: says it was not.");
     await expect(entry).toContainText("“Returned the soldering kit to the Robotics club.”");
@@ -129,5 +131,101 @@ test.describe.serial("building the ledger", () => {
     await signInAs(page, "Kavya");
     await page.goto("/ledger?tab=docket");
     await expect(page.getByTestId("docket")).toContainText("still not returned");
+  });
+
+  test("a quote opens its source message with the quote highlighted and the messages around it", async ({ page }) => {
+    await signInAs(page, "Arun");
+    await page.goto("/ledger");
+    const kit = page.getByTestId("commitments").getByRole("listitem").filter({ hasText: "“I will return the soldering kit" }).first();
+    await kit.getByRole("link", { name: "Open source message" }).first().click();
+    await expect(page).toHaveURL(/\/ledger\/evidence\//);
+    await expect(page.getByRole("heading", { name: "Source message" })).toBeVisible();
+    await expect(page.getByTestId("source-message").locator("mark")).toHaveText(/return the soldering kit to the Robotics club by Monday/i);
+    await expect(page.getByTestId("source-thread")).toContainText("Returned the soldering kit to the Robotics club.");
+    await expect(page.getByText("The quote was checked against this message by code.")).toBeVisible();
+    await page.getByRole("link", { name: "Back to the item" }).click();
+    await expect(page).toHaveURL(/tab=commitments#item-/);
+  });
+
+  test("a contradicted item and its Docket entry link to each other", async ({ page }) => {
+    await signInAs(page, "Arun");
+    await page.goto("/ledger");
+    const kit = page.getByTestId("commitments").getByRole("listitem").filter({ hasText: "“I will return the soldering kit" }).first();
+    await expect(kit.getByRole("link", { name: "See this conflict in the Docket" })).toHaveCount(2); // the card and its folded record
+    await kit.getByRole("link", { name: "See this conflict in the Docket" }).first().click();
+    await expect(page).toHaveURL(/tab=docket#docket-/);
+    const entry = page.getByTestId("docket").getByRole("listitem").filter({ hasText: "soldering kit" }).first();
+    await entry.getByRole("link", { name: /in the ledger$/ }).first().click();
+    await expect(page).toHaveURL(/tab=commitments#item-/);
+    await expect(page.getByRole("link", { name: "Commitments" })).toHaveAttribute("aria-current", "page");
+  });
+
+  test("the Gaps tab lists what has no evidence and what would close it", async ({ page }) => {
+    await signInAs(page, "Arun");
+    await page.goto("/ledger");
+    await page.getByRole("link", { name: "Gaps" }).click();
+    await expect(page.getByRole("link", { name: "Gaps" })).toHaveAttribute("aria-current", "page");
+    const banner = page.getByTestId("gaps").getByRole("listitem").filter({ hasText: "sponsor banner" }).first();
+    await expect(banner).toContainText("No evidence kept of what happened after the promise.");
+    await expect(banner).toContainText("To close it:");
+    const duty = page.getByTestId("gaps").getByRole("listitem").filter({ hasText: "inventory audit" }).first();
+    await expect(duty).toContainText("No next date can be derived");
+    await expect(page.getByTestId("gaps")).not.toContainText("lab inventory list");
+  });
+
+  test("one legend explains the trust labels", async ({ page }) => {
+    await signInAs(page, "Arun");
+    await page.goto("/ledger");
+    const legend = page.getByTestId("trust-legend");
+    await legend.getByText("What the trust labels mean").click();
+    for (const word of ["Corroborated", "Sourced", "Inferred", "Contradicted", "Gap: no evidence kept"]) {
+      await expect(legend.getByText(word, { exact: true })).toBeVisible();
+    }
+    await expect(page.getByTestId("commitments")).not.toContainText("Backed by one record only.");
+  });
+
+  test("a quote from a finance-level file cannot be opened by the incoming lead", async ({ page, browser }) => {
+    await signInAs(page, "Arun");
+    await importFile(page, "budget-chat.txt", "text/plain", "10/03/2026, 5:00 pm - Arun: I will pay the vendor invoice for the printer by Friday.", "finance");
+    await page.goto("/ledger");
+    await page.getByRole("button", { name: "Build the ledger" }).click();
+    await expect(page.getByTestId("pipeline-progress")).toContainText("finished", { timeout: 90_000 });
+    const item = page.getByTestId("commitments").getByRole("listitem").filter({ hasText: "vendor invoice" }).first();
+    const href = await item.getByRole("link", { name: "Open source message" }).first().getAttribute("href");
+    expect(href).toMatch(/^\/ledger\/evidence\//);
+    await page.goto(href!);
+    await expect(page.getByTestId("source-message")).toContainText("vendor invoice");
+
+    const other = await browser.newContext();
+    const kavya = await other.newPage();
+    await signInAs(kavya, "Kavya");
+    await kavya.goto(href!);
+    await expect(kavya.getByText("That quote is not available to your role.")).toBeVisible();
+    await expect(kavya.locator("body")).not.toContainText("vendor invoice");
+    await other.close();
+  });
+
+  test("messages sent in the same minute are all shown around the quote", async ({ page }) => {
+    await signInAs(page, "Arun");
+    await importFile(
+      page,
+      "same-minute-chat.txt",
+      "text/plain",
+      [
+        "07/04/2026, 9:00 am - Priya: Great, thanks for booking the venue.",
+        "07/04/2026, 9:00 am - Arun: I will confirm the projector with Rohan by Friday.",
+        "07/04/2026, 9:00 am - Rohan: Noted, the hall key is with security.",
+      ].join("\n"),
+    );
+    await page.goto("/ledger");
+    await page.getByRole("button", { name: "Build the ledger" }).click();
+    await expect(page.getByTestId("pipeline-progress")).toContainText("finished", { timeout: 90_000 });
+    const item = page.getByTestId("commitments").getByRole("listitem").filter({ hasText: "confirm the projector" }).first();
+    await item.getByRole("link", { name: "Open source message" }).first().click();
+    const thread = page.getByTestId("source-thread");
+    await expect(thread).toContainText("thanks for booking the venue");
+    await expect(thread).toContainText("the hall key is with security");
+    // In the file's order, not by id: Priya, then the quoted message, then Rohan.
+    await expect(thread.locator("article")).toHaveText([/thanks for booking the venue/, /confirm the projector/, /hall key is with security/]);
   });
 });

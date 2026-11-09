@@ -42,7 +42,9 @@ export function SiteHeader() {
         </Suspense>
       </div>
       <div className="mx-auto w-full max-w-5xl px-6 pb-3">
-        <StepIndicator />
+        <Suspense fallback={null}>
+          <StepIndicator />
+        </Suspense>
       </div>
     </header>
   );

@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Commitments } from "@/components/ledger/commitments";
+import { Gaps } from "@/components/ledger/gaps";
+import { TrustLegend } from "@/components/ledger/trust-legend";
 import { Docket } from "@/components/ledger/docket";
 import { PipelinePanel } from "@/components/ledger/pipeline-panel";
 import { Recurring } from "@/components/ledger/recurring";
@@ -19,7 +21,7 @@ const TABS = [
   { key: "gaps", label: "Gaps" },
   { key: "timeline", label: "Timeline" },
 ] as const;
-const READY = new Set(["commitments", "recurring", "docket", "timeline"]);
+const READY = new Set(["commitments", "recurring", "docket", "gaps", "timeline"]);
 type TabKey = (typeof TABS)[number]["key"];
 
 function Tabs({ current }: { current: TabKey }) {
@@ -68,7 +70,7 @@ async function LedgerContent({ searchParams }: { searchParams: PageProps<"/ledge
   }
   if (!viewer.membership) return <p>Your account is not a member of a workspace.</p>;
   const sp = await searchParams;
-  const tab: TabKey = sp.tab === "timeline" || sp.tab === "recurring" || sp.tab === "docket" ? sp.tab : "commitments";
+  const tab: TabKey = sp.tab === "timeline" || sp.tab === "recurring" || sp.tab === "docket" || sp.tab === "gaps" ? sp.tab : "commitments";
   const { role, workspaceId } = viewer.membership;
   return (
     <div className="flex flex-col gap-6">
@@ -76,7 +78,12 @@ async function LedgerContent({ searchParams }: { searchParams: PageProps<"/ledge
       {tab === "timeline" ? (
         <Timeline workspaceId={workspaceId} params={parseTimelineParams(sp)} />
       ) : tab === "docket" ? (
-        <Docket workspaceId={workspaceId} />
+        <>
+          <TrustLegend />
+          <Docket workspaceId={workspaceId} />
+        </>
+      ) : tab === "gaps" ? (
+        <Gaps workspaceId={workspaceId} />
       ) : (
         <>
           <PipelinePanel
@@ -84,6 +91,7 @@ async function LedgerContent({ searchParams }: { searchParams: PageProps<"/ledge
             provider={process.env.LLM_PROVIDER === "fake" ? "fake" : "anthropic"}
             model={process.env.LLM_MODEL_FAST ?? "not configured"}
           />
+          <TrustLegend />
           {tab === "recurring" ? <Recurring workspaceId={workspaceId} /> : <Commitments workspaceId={workspaceId} />}
         </>
       )}

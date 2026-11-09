@@ -24,6 +24,7 @@ Built for the CodersInPune Hackathon, Round 2.
 | 2 | Parsers: WhatsApp, Trello, minutes (.md/.docx), all stamped in IST | done |
 | 3 | Connect (import) page and ledger timeline | done |
 | 4 | LLM adapter, commitment extraction, quote verifier | done |
+| 5 | Fulfilment, recurring duties with approvals, context notes | done |
 
 ## Stack
 
@@ -57,13 +58,14 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 | `pnpm test` | All Vitest projects. RLS tests are skipped (with a count) if Supabase env is missing |
 | `pnpm test:unit` | Unit tests only |
 | `pnpm test:rls` | RLS integration tests against local Supabase (fails if env is missing) |
-| `pnpm e2e` | Playwright: re-seeds, starts the dev server, tests login and role switching. Set `E2E_BASE_URL` to test a deployment read-only |
+| `pnpm e2e` | Playwright: re-seeds, clears the fake model's saved answers, starts the dev server with the fake model, and tests login, roles, import and building the ledger. Set `E2E_BASE_URL` to test a deployment read-only |
 | `pnpm db:start` / `db:stop` / `db:status` | Local Supabase stack |
 | `pnpm db:reset` | Re-create the local database from `supabase/migrations` |
 | `pnpm db:push` | Apply migrations to the linked hosted project (`--remote`; the CLI targets local by default) |
 | `pnpm db:types` | Regenerate `src/lib/supabase/database.types.ts` |
 | `pnpm seed` / `seed:hosted` | Seed demo accounts and the synthetic club (local / hosted) |
 | `pnpm eval:extract` | Extraction quality on the mini scenario (dry run; `-- --yes` calls the model) |
+| `pnpm eval:pipeline` | The whole pipeline (commitments, statuses, recurring duties, context) on the mini scenario (dry run; `-- --yes` calls the model; `--model <id>` compares another) |
 
 ## Parsers
 
@@ -88,14 +90,24 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 - **Upload limit**: about 3.9 MB per import, because Vercel caps request bodies at about 4.5 MB. A year of text-only chat is usually well under that.
 - **Sample files**: synthetic sample files to try the flow are linked from the page (`public/samples/mini/`).
 
-## Finding commitments (LLM)
+## Building the ledger (LLM)
 
-- **One adapter.** Every model call goes through `generateStructured()` in `src/lib/llm/adapter.ts`. It uses structured output validated with Zod, retries once on invalid output, caches responses by prompt hash in `llm_cache`, enforces a daily call budget (`LLM_MAX_CALLS_PER_DAY`), and returns typed errors (rate limit, timeout, refusal, invalid output, config, budget). Tiers map to `LLM_MODEL_FAST` and `LLM_MODEL_STRONG`. Providers are swappable: `anthropic`, or `fake` for offline tests.
-- **Extraction** (`src/lib/pipeline/extract.ts`) chunks messages by thread. The model returns candidates citing short message references. Code keeps a candidate only if its quote is verbatim in the cited message, it isn't hedged ("maybe", "will see"), and it names a counterparty and a deliverable. Everything else is dropped and counted by reason.
-- **Two quote checks.** `verify.ts` checks in TypeScript, and `add_extracted_commitment()` checks again in SQL before storing. A claim without a verified quote cannot be saved.
-- **Runs as small jobs.** "Find commitments" on `/ledger` queues one job per chunk. The browser calls `POST /api/jobs/run-next` until all are done, showing progress. Each step runs as the signed-in user, so the model only sees messages that user may read.
-- **Results are drafts.** They're stored with trust state "Sourced" and review state "Draft", and shown in the Commitments tab with their quotes.
-- **`pnpm eval:extract`** scores extraction on the mini scenario against its ground truth. It estimates cost without `--yes`, and calls the model only with `-- --yes`. Last run (Claude Haiku 5.5): 5 of 5 planted commitments found, 0 decoys kept, 0 quotes failing verification, about $0.001.
+One button on `/ledger`, **Build the ledger**, runs every step in order as small jobs. The browser calls `POST /api/jobs/run-next` until all are done, showing progress for each stage. Each step runs as the signed-in user, so the model only sees messages that user may read. Job records hold ids and counts, never text. Results are drafts for review.
+
+1. **Commitments** (`src/lib/pipeline/extract.ts`). Messages are chunked by thread. The model returns candidates citing short message references. Code keeps a candidate only if its quote is verbatim in the cited message, it isn't hedged ("maybe", "will see"), and it names a counterparty and a deliverable. Everything else is dropped and counted by reason.
+2. **Recurring duties** (`cycles.ts`). Code picks messages that mention cycles, rules or approvals. The model groups them into duties: how often, what approval is needed and from whom, how far ahead to start. The cadence, approver and lead time must appear in the duty's own quotes, or they are left blank (or the duty is dropped). Next-due and start-by dates are computed by code, from a stated month or one period after the last recorded instance, and the ledger says which ("Stated in the records" or "Estimated"). When neither is possible it says "Not derivable from the records".
+3. **Follow-up and context** (`fulfilment.ts`, `related.ts`). For each item, code picks the related messages: rare shared words, plus the same Trello card. The model reports later messages that say it was done, imply it was done, or say it was not done, plus up to five context notes: decisions, contacts, risks and dependencies. Code drops follow-ups that are unverified, dated before the promise, the promise itself, hedged or a question. It also drops notes that name a person or number not in their own message, or that are about something else.
+4. **Status from evidence alone** (`status.ts`, mirrored by `app.followup_status()` in SQL). Says done and not done: **Contradicted**. Says done: **Done**. Only implies done: **Likely done (inferred)**. Only says not done: **Open**. Nothing: **No evidence kept**. An item not yet checked says so.
+
+Safeguards:
+
+- **One adapter.** Every model call goes through `generateStructured()` in `src/lib/llm/adapter.ts`. It uses structured output validated with Zod, retries once on invalid output, caches responses by prompt hash in `llm_cache`, enforces a daily call budget (`LLM_MAX_CALLS_PER_DAY`), and returns typed errors. Tiers map to `LLM_MODEL_FAST` and `LLM_MODEL_STRONG`; every task currently uses the fast tier. Providers are swappable: `anthropic`, or `fake` for offline tests.
+- **Every check runs twice.** Quotes, dates and grounding are checked in TypeScript, then again inside the database functions that store them (`add_extracted_commitment()`, `add_recurring_duty()`, `record_followup()`). A claim without a verified quote cannot be saved.
+- **Prompts never mix access levels.** Commitment chunks and duty batches hold messages of one access level only (and one uploader for private files), so nothing the model writes can carry restricted text into a more open row. The database refuses a duty whose quotes span levels.
+- **Levels follow the evidence.** An item inherits the most restrictive message it cites, including follow-up evidence, so a status learned from finance minutes is visible only to finance readers. Each context note has the level of its own message.
+- **Audited.** Every stored item, quote, note and status change writes an audit row with the reason. Re-running finds nothing new, reuses saved answers and writes no new audit rows.
+
+**`pnpm eval:pipeline`** scores the whole pipeline on the mini scenario. It estimates cost without `--yes`, and calls the model only with `-- --yes`. Last run (Claude Haiku 5.5, 9 Nov 2026): 5 of 5 commitments, 0 decoys, 5 of 5 statuses right, 5 of 5 expected follow-up quotes, the contradiction detected, 2 of 2 recurring duties with the right approver, 12 calls, about $0.005.
 
 ## Roles and permissions
 
@@ -121,7 +133,7 @@ Demo accounts (synthetic): `arun.demo@example.com` (outgoing lead), `meena.demo@
 
 ## Troubleshooting
 
-- **`unable to get local issuer certificate` when calling the Anthropic API locally.** Your network re-signs HTTPS traffic with its own certificate, which your operating system trusts but Node's built-in list does not. `pnpm dev` and `pnpm eval:extract` already pass Node's `--use-system-ca`, so Node uses the operating system's trusted certificates. Certificate checking stays on. Vercel is not affected.
+- **`unable to get local issuer certificate` when calling the Anthropic API locally.** Your network re-signs HTTPS traffic with its own certificate, which your operating system trusts but Node's built-in list does not. `pnpm dev`, `pnpm eval:extract` and `pnpm eval:pipeline` already pass Node's `--use-system-ca`, so Node uses the operating system's trusted certificates. Certificate checking stays on. Vercel is not affected.
 
 ## Health check
 

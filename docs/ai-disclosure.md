@@ -16,18 +16,19 @@ The import pipeline sends source text to the Anthropic Claude API to:
 
 Safeguards that do **not** rely on the model:
 
-- All model calls go through one adapter (`src/lib/llm/adapter.ts`, from a later phase). Output is structured and validated with Zod, and responses are cached by prompt hash.
+- All model calls go through one adapter (`src/lib/llm/adapter.ts`). Output is structured and validated with Zod, and responses are cached by prompt hash.
 - Every extracted claim must carry a verbatim quote and an event id. Deterministic code checks that the quote appears in that event's text. Claims that fail are dropped and counted.
 - Trust states (corroborated / sourced / inferred / contradicted / gap) are set by a pure rule function, not by the model.
 - A model never sees rows the requesting role cannot read. Permissions are enforced by Postgres row-level security before anything is sent.
 - The import screen names the LLM provider and requires the uploader to confirm they are authorised to use the data.
 
-*Status (Phase 4): commitment extraction is live.*
+*Status (Phase 5): commitments, recurring duties, follow-up and context are live.*
 
-- **What is sent:** the text, author and IST time of messages the signed-in reviewer may read, in chunks, to the model named in `LLM_MODEL_FAST` (Claude Haiku 5.5 by default) via the Anthropic API.
-- **What comes back:** candidate commitments, each citing a message reference and a quote.
-- **What is stored:** only candidates whose quote verifies are stored, as drafts. Model responses are cached by prompt hash in `llm_cache`, which only the server can read.
-- **Testing without the API:** an offline rule-based stand-in (`LLM_PROVIDER=fake`) is used in automated tests, so tests never send data to the API.
+- **What is sent:** the text, author and IST time of messages the signed-in reviewer may read, to the model named in `LLM_MODEL_FAST` (Claude Haiku 5.5 by default) via the Anthropic API. Commitment chunks and duty batches each hold messages of one access level only. A follow-up check sends one item (its description, people and verified quotes) with up to 24 related messages that code picked.
+- **What comes back:** candidate commitments and recurring duties, each citing message references and quotes. For each item: quotes that say it was done, imply it was done, or say it was not done, and short context notes (decision, contact, risk, dependency), each citing a quote.
+- **What the model does not decide:** status (a fixed rule over verified quotes), dates (computed by code), which messages it reads (picked by code), and access levels (inherited from the cited messages by database triggers).
+- **What is stored:** only items whose quotes verify, as drafts. Context notes are kept only if they name no person or number missing from their own message and are about their item. Model responses are cached by prompt hash in `llm_cache`, which only the server can read.
+- **Testing without the API:** an offline rule-based stand-in (`LLM_PROVIDER=fake`) is used in automated tests, so tests never send data to the API. The paid evals (`pnpm eval:extract`, `pnpm eval:pipeline`) run only with an explicit `--yes`, against synthetic data.
 
 ## 3. Synthetic demo data: an LLM
 

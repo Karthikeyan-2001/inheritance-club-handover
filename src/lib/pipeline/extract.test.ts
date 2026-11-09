@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { parseUpload } from "../parsers/index";
-import { buildExtractionPrompt, chunkEvents, postProcess, type PipelineEvent } from "./extract";
+import { buildExtractionPrompt, chunkEvents, deliverableGrounded, postProcess, type PipelineEvent } from "./extract";
 import { fakeExtract } from "./fake-extract";
 
 const ev = (id: string, text: string, over: Partial<PipelineEvent> = {}): PipelineEvent => ({
@@ -81,6 +81,33 @@ describe("postProcess", () => {
 
   it("accepts references written with brackets", () => {
     expect(postProcess({ commitments: [c({ message: "[m1]" })] }, refs).kept).toHaveLength(1);
+  });
+});
+
+describe("deliverableGrounded", () => {
+  const chat = "I'll return the borrowed ESP32 boards to Bala sir by Friday.";
+  it("accepts a plain paraphrase whose names and numbers are in the message", () => {
+    expect(deliverableGrounded("Return borrowed ESP32 boards", chat, "Rohan")).toBe(true);
+    expect(deliverableGrounded("Print fest posters", "I will have the fest posters printed by 3 Feb.", "Kavya")).toBe(true);
+    expect(deliverableGrounded("Reimburse speaker travel of ₹2,400", "Speaker travel of ₹2,400 to Mr. R. Ganesan will be reimbursed", null)).toBe(true);
+    expect(deliverableGrounded("Organise the hackathon", "We'll run the hackathon in March.", "Divya")).toBe(true); // a leading verb is not a name
+    expect(deliverableGrounded("Arun sends the boards", "I'll send the boards.", "Arun")).toBe(true); // the speaker
+  });
+
+  it("refuses a person, organisation or number the message does not contain", () => {
+    expect(deliverableGrounded("Return ESP32 boards to Mr. Bala and Brightwave Labs", chat, "Rohan")).toBe(false);
+    expect(deliverableGrounded("Return 8 ESP32 boards", chat, "Rohan")).toBe(false);
+    expect(deliverableGrounded("IoT Fest boards", chat, "Rohan")).toBe(false); // a leading name is checked
+  });
+
+  it("postProcess keeps the claim but shows the verified quote instead, and counts it", () => {
+    const refs = new Map([["m1", ev("x", chat, { author: "Rohan" })]]);
+    const { kept, dropped } = postProcess({ commitments: [{
+      message: "m1", quote: "I'll return the borrowed ESP32 boards to Bala sir by Friday", owed_by: "Rohan", owed_to: "Bala sir",
+      deliverable: "Return 8 ESP32 boards to Brightwave Labs", due_text: "by Friday",
+    }] }, refs);
+    expect(kept.map((k) => k.deliverable)).toEqual(["I'll return the borrowed ESP32 boards to Bala sir by Friday"]);
+    expect(dropped).toEqual({ ungrounded_deliverable: 1 });
   });
 });
 

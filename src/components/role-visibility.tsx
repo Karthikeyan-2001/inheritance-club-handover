@@ -122,6 +122,14 @@ export async function RoleVisibility() {
             </ul>
           )}
         </div>
+        <div className="flex flex-wrap gap-3 md:col-span-2">
+          <Button asChild size="sm">
+            <Link href="/import">{role === "outgoing_lead" || role === "advisor" ? "Import files" : "See imported files"}</Link>
+          </Button>
+          <Button asChild size="sm" variant="outline">
+            <Link href="/ledger?tab=timeline">Open the timeline</Link>
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

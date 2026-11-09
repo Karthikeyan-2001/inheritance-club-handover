@@ -22,6 +22,7 @@ Built for the CodersInPune Hackathon, Round 2.
 | 0 | Scaffold, health route, test tooling, CI | done |
 | 1 | Schema, RLS, seed, demo login, role switcher | done |
 | 2 | Parsers: WhatsApp, Trello, minutes (.md/.docx), all stamped in IST | done |
+| 3 | Connect (import) page and ledger timeline | done |
 
 ## Stack
 
@@ -77,6 +78,13 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 **Everything is IST.** WhatsApp exports carry no time zone, so their times are read as IST, and Trello's UTC times are converted to IST. Timestamps are ISO 8601 strings ending `+05:30` (`src/lib/time.ts`). Numeric dates in minutes are read day-first.
 
 `data/samples/` holds format samples and year-long files; `data/scenarios/mini/` is a small scenario with a `ground-truth.json` that the tests check the parsers against.
+
+## Connect (import) and timeline
+
+- **`/import`**: the outgoing lead or advisor chooses files, and the app suggests who may see each one. One-to-one chats start as private, and files whose names mention money start as finance. The uploader confirms they are authorised to use the data and sees a notice naming the LLM provider. Each file is parsed on the server and saved with its events in one transaction by `import_source()`, running as the signed-in user, so RLS checks every row. The raw file is not stored; only its events, a "what was read" summary and its SHA-256 are kept. The page also lists the files your role may read, lets the uploader or advisor remove a file (with a reason, audited), edits aliases, and holds the delete-workspace control. The shared demo club cannot be deleted.
+- **`/ledger?tab=timeline`**: every message your role may read, grouped by IST day, filterable by file and text.
+- **Upload limit**: about 3.9 MB per import, because Vercel caps request bodies at about 4.5 MB. A year of text-only chat is usually well under that.
+- **Sample files**: synthetic sample files to try the flow are linked from the page (`public/samples/mini/`).
 
 ## Roles and permissions
 

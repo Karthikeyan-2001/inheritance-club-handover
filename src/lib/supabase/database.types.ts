@@ -119,14 +119,14 @@ isOneToOne: false
                   ]
                 },"events": {
                   Row: {
-                    "access_level": Database["public"]['Enums']["access_level"],"author": string | null,"id": string,"source_id": string,"text": string,"thread_id": string | null,"ts": string | null,"workspace_id": string
+                    "access_level": Database["public"]['Enums']["access_level"],"author": string | null,"id": string,"meta": NonNullable<Json>,"source_id": string,"text": string,"thread_id": string | null,"ts": string | null,"workspace_id": string
                   }
                   ComputedFields: never
                   Insert: {
-                    "access_level": Database["public"]['Enums']["access_level"],"author"?: string | null,"id"?: string,"source_id": string,"text": string,"thread_id"?: string | null,"ts"?: string | null,"workspace_id": string
+                    "access_level": Database["public"]['Enums']["access_level"],"author"?: string | null,"id"?: string,"meta"?: NonNullable<Json>,"source_id": string,"text": string,"thread_id"?: string | null,"ts"?: string | null,"workspace_id": string
                   }
                   Update: {
-                    "access_level"?: Database["public"]['Enums']["access_level"],"author"?: string | null,"id"?: string,"source_id"?: string,"text"?: string,"thread_id"?: string | null,"ts"?: string | null,"workspace_id"?: string
+                    "access_level"?: Database["public"]['Enums']["access_level"],"author"?: string | null,"id"?: string,"meta"?: NonNullable<Json>,"source_id"?: string,"text"?: string,"thread_id"?: string | null,"ts"?: string | null,"workspace_id"?: string
                   }
                   Relationships: [
                     {
@@ -291,14 +291,14 @@ isOneToOne: false
                   ]
                 },"sources": {
                   Row: {
-                    "access_level": Database["public"]['Enums']["access_level"],"filename": string,"id": string,"imported_at": string,"sha256": string,"type": Database["public"]['Enums']["source_type"],"uploaded_by": string | null,"workspace_id": string
+                    "access_level": Database["public"]['Enums']["access_level"],"event_count": number,"filename": string,"id": string,"imported_at": string,"read_summary": NonNullable<Json>,"sha256": string,"type": Database["public"]['Enums']["source_type"],"uploaded_by": string | null,"workspace_id": string
                   }
                   ComputedFields: never
                   Insert: {
-                    "access_level": Database["public"]['Enums']["access_level"],"filename": string,"id"?: string,"imported_at"?: string,"sha256": string,"type": Database["public"]['Enums']["source_type"],"uploaded_by"?: string | null,"workspace_id": string
+                    "access_level": Database["public"]['Enums']["access_level"],"event_count"?: number,"filename": string,"id"?: string,"imported_at"?: string,"read_summary"?: NonNullable<Json>,"sha256": string,"type": Database["public"]['Enums']["source_type"],"uploaded_by"?: string | null,"workspace_id": string
                   }
                   Update: {
-                    "access_level"?: Database["public"]['Enums']["access_level"],"filename"?: string,"id"?: string,"imported_at"?: string,"sha256"?: string,"type"?: Database["public"]['Enums']["source_type"],"uploaded_by"?: string | null,"workspace_id"?: string
+                    "access_level"?: Database["public"]['Enums']["access_level"],"event_count"?: number,"filename"?: string,"id"?: string,"imported_at"?: string,"read_summary"?: NonNullable<Json>,"sha256"?: string,"type"?: Database["public"]['Enums']["source_type"],"uploaded_by"?: string | null,"workspace_id"?: string
                   }
                   Relationships: [
                     {
@@ -357,14 +357,14 @@ isOneToOne: false
                   ]
                 },"workspaces": {
                   Row: {
-                    "created_at": string,"created_by": string | null,"id": string,"name": string
+                    "created_at": string,"created_by": string | null,"id": string,"is_demo": boolean,"name": string
                   }
                   ComputedFields: never
                   Insert: {
-                    "created_at"?: string,"created_by"?: string | null,"id"?: string,"name": string
+                    "created_at"?: string,"created_by"?: string | null,"id"?: string,"is_demo"?: boolean,"name": string
                   }
                   Update: {
-                    "created_at"?: string,"created_by"?: string | null,"id"?: string,"name"?: string
+                    "created_at"?: string,"created_by"?: string | null,"id"?: string,"is_demo"?: boolean,"name"?: string
                   }
                   Relationships: [
                     
@@ -395,11 +395,22 @@ isOneToOne: false
 "delete_workspace":
 { Args: { "p_reason": string,"p_workspace": string }; Returns: undefined
                            },
+"event_authors":
+{ Args: { "p_workspace": string }; Returns: {
+              "author": string,"events": number
+            }[]
+                           },
+"import_source":
+{ Args: { "p_access": Database["public"]['Enums']["access_level"],"p_events": Json,"p_filename": string,"p_reason": string,"p_sha256": string,"p_summary": Json,"p_type": Database["public"]['Enums']["source_type"],"p_workspace": string }; Returns: string
+                           },
 "ping":
 { Args: Record<PropertyKey, never>; Returns: boolean
                            },
 "release_item":
 { Args: { "p_reason": string,"p_target_id": string,"p_target_type": string,"p_to_role": Database["public"]['Enums']["app_role"] }; Returns: string
+                           },
+"remove_source":
+{ Args: { "p_reason": string,"p_source": string }; Returns: undefined
                            }
           }
           Enums: {

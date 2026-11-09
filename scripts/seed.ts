@@ -8,6 +8,7 @@
 // deleted (via delete_workspace) and rebuilt with fixed ids.
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { sha256Hex } from "../src/lib/hash.ts";
 import type { Database } from "../src/lib/supabase/database.types.ts";
 import { DEMO_USERS, type DemoUserKey } from "../src/lib/demo/demo-users.ts";
 import {
@@ -103,14 +104,16 @@ export async function seed(env: SeedEnv, log: (msg: string) => void = console.lo
     check("delete workspace", await admin.rpc("delete_workspace", { p_workspace: DEMO_WORKSPACE.id, p_reason: "seed reset" }));
   }
 
-  check("workspace", await admin.from("workspaces").insert({ id: DEMO_WORKSPACE.id, name: DEMO_WORKSPACE.name, created_by: users.arun }));
+  check("workspace", await admin.from("workspaces").insert({ id: DEMO_WORKSPACE.id, name: DEMO_WORKSPACE.name, created_by: users.arun, is_demo: true }));
   check("memberships", await admin.from("memberships").insert(
     DEMO_USERS.map((u) => ({ workspace_id: DEMO_WORKSPACE.id, user_id: users[u.key], role: u.role })),
   ));
 
   check("sources", await admin.from("sources").insert(SOURCES.map((s) => ({
     id: s.id, workspace_id: DEMO_WORKSPACE.id, type: s.type, filename: s.filename,
-    access_level: s.access_level, uploaded_by: users[s.uploadedBy], sha256: `synthetic-${s.key}`,
+    access_level: s.access_level, uploaded_by: users[s.uploadedBy], sha256: sha256Hex(`synthetic-${s.key}`),
+    event_count: EVENTS.filter((e) => e.source === s.key).length,
+    read_summary: { synthetic: true, note: "Seeded demo data" },
   }))));
 
   check("events", await admin.from("events").insert(EVENTS.map((e) => ({

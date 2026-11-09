@@ -95,3 +95,18 @@ describe("the whole pipeline on the mini scenario (fake model)", () => {
     }
   });
 });
+
+describe("the fixed matching probe of the eval", () => {
+  it("builds every planted item from a real quote, and the offline fake agrees with its expected verdicts", async () => {
+    const { matchProbe } = await import("../../../scripts/mini-scenario");
+    const { buildMatchPrompt, postProcessMatches } = await import("./match");
+    const { fakeMatch } = await import("./fake-pipeline");
+    const probe = matchProbe(await miniEvents(), miniTruth());
+    for (const p of probe.pairs) expect([p.a, p.b].every((id) => probe.items.has(id)), `${p.a}-${p.b}`).toBe(true);
+    const { user, refs } = buildMatchPrompt(probe.pairs, probe.items);
+    expect(refs.size).toBe(probe.pairs.length);
+    const kept = postProcessMatches(fakeMatch({ task: "match_items", model: "m", system: "", user, schema: null as never, maxTokens: 1, effort: "low" }), refs);
+    const wrongSame = kept.same.filter((s) => probe.pairs.find((p) => p.a === s.a && p.b === s.b)?.expect === "different");
+    expect(wrongSame).toEqual([]);
+  });
+});

@@ -1,0 +1,3234 @@
+01/11/2025, 8:58 am - Rohan: Good morning everyone 🙏
+01/11/2025, 8:59 am - Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
+01/11/2025, 8:59 am - Priya: Morning!
+01/11/2025, 9:00 am - Priya created group "IoT Club Committee"
+01/11/2025, 9:00 am - Priya added you
+01/11/2025, 9:01 am - Priya added Arun, Kavya, Divya, Rohan and Karthik
+01/11/2025, 9:01 am - Divya: Morning da
+01/11/2025, 9:05 am - Priya: Welcome all. This group is for planning the semester workshops and the annual IoT Fest.
+01/11/2025, 7:18 pm - Divya: What time is the committee call tonight?
+01/11/2025, 7:21 pm - Priya: 9 pm as usual
+01/11/2025, 7:22 pm - Karthik: Seri, bus la irukken so I will be on mute
+02/11/2025, 10:33 am - Arun: My laptop is acting up again, Arduino IDE keeps crashing
+02/11/2025, 10:35 am - Karthik: Try reinstalling the board package
+02/11/2025, 10:38 am - Rohan: Or use the lab PCs
+02/11/2025, 10:42 am - Arun: Will try that
+02/11/2025, 1:17 pm - Priya: Which DHT22 library did we use last time?
+02/11/2025, 1:21 pm - Divya: No idea, check the old project folder
+02/11/2025, 1:26 pm - Arun: It is in the shared drive under projects
+02/11/2025, 7:25 pm - Rohan: Anyone up for lunch at the canteen?
+02/11/2025, 7:29 pm - Divya: Give me 10 mins
+02/11/2025, 7:32 pm - Karthik: Count me in 👍
+02/11/2025, 7:36 pm - Rohan: Ok at 1
+03/11/2025, 8:25 am - Kavya: Birthday today! 🎂
+03/11/2025, 8:26 am - Divya: Happy birthday!!
+03/11/2025, 8:28 am - Arun: Treat venum da 👌
+03/11/2025, 9:11 am - Arun: Good morning everyone 😂
+03/11/2025, 9:17 am - Divya: Morning!
+03/11/2025, 9:19 am - Kavya: Morning da
+03/11/2025, 1:16 pm - Rohan: Anyone up for lunch at the canteen?
+03/11/2025, 1:20 pm - Divya: Give me 10 mins
+03/11/2025, 1:22 pm - Arun: Count me in 😂
+03/11/2025, 1:25 pm - Rohan: Ok at 1
+03/11/2025, 8:15 pm - Priya: Folks, for the November workshop we need to book the IoT lab.
+Remember: the HoD's permission letter must be approved before booking, every semester.
+Last year they rejected us without it. Apply at least two weeks ahead via the dept office.
+03/11/2025, 8:18 pm - Arun: Sure, I will get the permission letter signed by 14 November.
+03/11/2025, 11:00 pm - Kavya: Which soil moisture sensor library did we use last time?
+03/11/2025, 11:02 pm - Divya: No idea, check the old project folder
+03/11/2025, 11:04 pm - Rohan: It is in the shared drive under projects
+04/11/2025, 3:42 pm - Priya: My laptop is acting up again, Arduino IDE keeps crashing
+04/11/2025, 3:43 pm - Divya: Try reinstalling the board package
+04/11/2025, 3:47 pm - Karthik: Or use the lab PCs
+04/11/2025, 3:53 pm - Priya: Will try that
+04/11/2025, 8:56 pm - Karthik: Who has the key to the club cupboard?
+04/11/2025, 8:58 pm - Rohan: With Divya I think
+04/11/2025, 9:00 pm - Arun: Yes, I left it at the department office
+04/11/2025, 9:03 pm - Karthik: Ok will collect from there
+04/11/2025, 9:25 pm - Divya: Which OLED display library did we use last time?
+04/11/2025, 9:26 pm - Rohan: No idea, check the old project folder
+04/11/2025, 9:29 pm - Kavya: It is in the shared drive under projects
+04/11/2025, 11:50 pm - Arun: Lab record submission is tomorrow, right?
+04/11/2025, 11:56 pm - Rohan: Yes, Tuesday last hour
+05/11/2025, 12:01 am - Karthik: Nooo I haven't even started 😂
+05/11/2025, 10:46 am - Rohan: What time is the committee call tonight?
+05/11/2025, 10:50 am - Kavya: This message was deleted
+05/11/2025, 10:53 am - Karthik: Seri, bus la irukken so I will be on mute
+05/11/2025, 10:55 am - Karthik: <Media omitted>
+05/11/2025, 10:56 am - Karthik: Look at what the first years built
+05/11/2025, 10:57 am - Arun: That's actually impressive 👍
+05/11/2025, 7:43 pm - Kavya: Anyone up for lunch at the canteen?
+05/11/2025, 7:46 pm - Arun: Give me 10 mins
+05/11/2025, 7:47 pm - Divya: Count me in
+05/11/2025, 7:51 pm - Kavya: Ok at 1
+06/11/2025, 9:58 am - Karthik: <Media omitted>
+06/11/2025, 10:04 am - Karthik: Look at what the first years built
+06/11/2025, 10:09 am - Divya: That's actually impressive
+06/11/2025, 9:10 pm - Rohan: Which ESP32 library did we use last time?
+06/11/2025, 9:15 pm - Arun: No idea, check the old project folder
+06/11/2025, 9:19 pm - Karthik: It is in the shared drive under projects
+07/11/2025, 9:35 am - Priya: What time is the committee call tonight?
+07/11/2025, 9:38 am - Arun: 9 pm as usual
+07/11/2025, 9:43 am - Karthik: Seri, bus la irukken so I will be on mute
+07/11/2025, 11:01 am - Kavya: Has anyone used the ESP32 with the NodeMCU? Getting weird readings.
+07/11/2025, 11:02 am - Karthik: Check your wiring first, mine was a loose jumper wire.
+07/11/2025, 11:05 am - Priya: Also try a different power supply
+07/11/2025, 11:06 am - Kavya: That fixed it, thanks! 🙏
+07/11/2025, 1:22 pm - Rohan: The projector in the seminar hall is not working again
+07/11/2025, 1:25 pm - Arun: Report it to the dept office
+07/11/2025, 1:29 pm - Kavya: Already reported twice 😅
+07/11/2025, 10:25 pm - Priya: Anyone up for lunch at the canteen?
+07/11/2025, 10:27 pm - Divya: Give me 10 mins
+07/11/2025, 10:28 pm - Rohan: Count me in 👌
+07/11/2025, 10:29 pm - Kavya: https://example.com/post/7081 look at this 🙏
+07/11/2025, 10:33 pm - Priya: Ok at 1
+07/11/2025, 10:33 pm - Karthik: Haha this is so true
+07/11/2025, 10:35 pm - Rohan: Sending to the other group
+08/11/2025, 8:43 am - Arun: What time is the committee call tonight?
+08/11/2025, 8:44 am - Karthik: 9 pm as usual
+08/11/2025, 8:50 am - Kavya: Seri, bus la irukken so I will be on mute
+09/11/2025, 3:24 pm - Divya: My laptop is acting up again, Arduino IDE keeps crashing
+09/11/2025, 3:27 pm - Rohan: Try reinstalling the board package
+09/11/2025, 3:28 pm - Kavya: Or use the lab PCs
+09/11/2025, 3:29 pm - Divya: Will try that
+09/11/2025, 6:32 pm - Karthik: Exam timeatble is out, ugh 😅
+09/11/2025, 6:33 pm - Rohan: Which day is the first paper?
+09/11/2025, 6:37 pm - Karthik: Monday
+09/11/2025, 6:41 pm - Priya: Nobody has studied anything yet
+09/11/2025, 9:52 pm - Divya: Anyone up for lunch at the canteen?
+09/11/2025, 9:58 pm - Arun: Give me 10 mins
+09/11/2025, 10:02 pm - Priya: Count me in 🔥
+09/11/2025, 10:09 pm - Divya: Ok at 1
+10/11/2025, 8:12 am - Rohan: Machan canteen la samosa over da
+10/11/2025, 8:18 am - Arun: Appo naalaiku early ah poganum
+10/11/2025, 8:18 am - Kavya: Naalaiku Friday la, queue romba irukkum 🔥
+10/11/2025, 9:05 pm - Divya: Reminder that last year's fest budget was ₹30,000 and we overshot on food.
+10/11/2025, 10:57 pm - Karthik: Which relay board library did we use last time?
+10/11/2025, 11:03 pm - Kavya: No idea, check the old project foledr
+10/11/2025, 11:07 pm - Arun: It is in the shared drive under projects
+11/11/2025, 5:36 pm - Kavya: Does anyone have the datasheet for the OLED display?
+11/11/2025, 5:40 pm - Priya: https://example.com/datasheet/4197
+11/11/2025, 5:45 pm - Kavya: Perfect, thanks
+11/11/2025, 5:48 pm - Rohan: Anyone up for lunch at the canteen?
+11/11/2025, 5:52 pm - Kavya: Give me 10 mins
+11/11/2025, 5:55 pm - Rohan: Lab record submission is tomorrow, right?
+11/11/2025, 5:58 pm - Priya: Count me in
+11/11/2025, 6:00 pm - Rohan: Ok at 1
+11/11/2025, 6:01 pm - Kavya: Yes, Saturday last hour
+11/11/2025, 6:07 pm - Arun: Nooo I haven't even started 🙏
+12/11/2025, 9:45 am - Divya: Good morning everyone 😂
+12/11/2025, 9:49 am - Priya: Morning!
+12/11/2025, 9:50 am - Rohan: Morning da
+12/11/2025, 11:48 am - Divya: Does anyone have the datasheet for the relay board?
+12/11/2025, 11:51 am - Rohan: https://example.com/datasheet/3978
+12/11/2025, 11:52 am - Divya: Perfect, thanks
+12/11/2025, 4:46 pm - Rohan: Is the lab open today?
+12/11/2025, 4:51 pm - Priya: Bala sir said it is open till 5
+12/11/2025, 4:54 pm - Rohan: Thanks!
+12/11/2025, 5:07 pm - Divya: The projector in the seminar hall is not working again
+12/11/2025, 5:11 pm - Priya: Report it to the dept office
+12/11/2025, 5:12 pm - Arun: Already reported twice
+13/11/2025, 8:14 am - Divya: Good morning everyone 😅
+13/11/2025, 8:21 am - Arun: Morning!
+13/11/2025, 8:23 am - Rohan: Morning da
+13/11/2025, 11:14 am - Divya: Lab record submission is tomorrow, right?
+13/11/2025, 11:16 am - Arun: Yes, Wednesday last hour
+13/11/2025, 11:20 am - Rohan: Nooo I haven't even started 😂
+13/11/2025, 2:04 pm - Priya: The projector in the seminar hall is not working again
+13/11/2025, 2:11 pm - Rohan: Report it to the dept office
+13/11/2025, 2:12 pm - Karthik: Already reported twice 👍
+13/11/2025, 6:40 pm - Arun: <Media omitted>
+13/11/2025, 6:41 pm - Arun: Letter signed by HoD 👍
+13/11/2025, 10:52 pm - Kavya: <Media omitted>
+13/11/2025, 10:57 pm - Rohan: Nice one 👌
+13/11/2025, 11:00 pm - Rohan: Power cut in the lab block, class shifted
+13/11/2025, 11:02 pm - Karthik: Looks great
+13/11/2025, 11:05 pm - Arun: Where are we meeting now?
+13/11/2025, 11:06 pm - Rohan: Room 204
+13/11/2025, 11:06 pm - Priya: On the way
+14/11/2025, 9:05 am - Priya: Great. Booking the lab now for 29 Nov.
+14/11/2025, 9:42 am - Rohan: Does anyone have the datasheet for the Arduino Nano?
+14/11/2025, 9:45 am - Karthik: https://example.com/datasheet/6639
+14/11/2025, 9:50 am - Rohan: Perfect, thanks
+14/11/2025, 10:14 am - Rohan: Machan canteen la samosa over da
+14/11/2025, 10:19 am - Priya: Appo naalaiku early ah poganum
+14/11/2025, 10:23 am - Arun: Naalaiku Friday la, queue romba irukkum 😅
+14/11/2025, 8:18 pm - Divya: Enna da ippo network la problem ah?
+14/11/2025, 8:20 pm - Rohan: Illa illa, hostel wifi dhaan slow
+14/11/2025, 8:24 pm - Kavya: Konjam wait pannu, maybe it will come back
+14/11/2025, 9:21 pm - Kavya: <Media omitted>
+14/11/2025, 9:22 pm - Kavya: Look at what the first years built
+14/11/2025, 9:23 pm - Arun: That's actually impressive 👌
+15/11/2025, 3:28 pm - Karthik: Has anyone used the relay board with the soil moisture sensor? Getting weird readings.
+15/11/2025, 3:33 pm - Kavya: Check your wiring first, mine was a loose jumper wire.
+15/11/2025, 3:34 pm - Priya: Also try a different power supply
+15/11/2025, 3:36 pm - Karthik: That fixed it, thanks! 🙏
+15/11/2025, 5:33 pm - Karthik: Does anyone have the datasheet for the DHT22?
+15/11/2025, 5:34 pm - Priya: https://example.com/datasheet/9463
+15/11/2025, 5:39 pm - Karthik: Perfect, thanks
+15/11/2025, 7:37 pm - Divya: <Media omitted>
+15/11/2025, 7:38 pm - Karthik: Nice one 👌
+15/11/2025, 7:41 pm - Rohan: Looks great 🔥
+15/11/2025, 9:19 pm - Karthik: Which HC-SR04 library did we use last time?
+15/11/2025, 9:23 pm - Rohan: No idea, check the old project folder
+15/11/2025, 9:26 pm - Divya: It is in the shared drive under projects
+16/11/2025, 5:54 pm - Divya: Exam timetable is out, ugh
+16/11/2025, 5:59 pm - Karthik: Which day is the first paper?
+16/11/2025, 6:03 pm - Divya: Monday
+16/11/2025, 6:08 pm - Arun: Nobody has studied anything yet
+16/11/2025, 10:36 pm - Karthik: Power cut in the lab block, class shifted
+16/11/2025, 10:39 pm - Arun: Where are we meeting now?
+16/11/2025, 10:41 pm - Karthik: Room 204
+16/11/2025, 10:46 pm - Rohan: On the way
+17/11/2025, 9:50 am - Rohan: Exam timetable is out, ugh 👌
+17/11/2025, 9:55 am - Divya: Which day is the first paper?
+17/11/2025, 9:57 am - Rohan: Monday
+17/11/2025, 10:02 am - Karthik: Nobody has studied anything yet
+17/11/2025, 6:07 pm - Priya: The projector in the seminar hall is not working again
+17/11/2025, 6:12 pm - Arun: Report it to the dept office
+17/11/2025, 6:17 pm - Divya: Already reported twice 👌
+17/11/2025, 9:54 pm - Karthik: Which LoRa module library did we use last time?
+17/11/2025, 9:58 pm - Rohan: No idea, check the old project folder
+17/11/2025, 10:01 pm - Arun: It is in the shared drive under projects
+18/11/2025, 8:20 pm - Rohan: <Media omitted>
+18/11/2025, 8:25 pm - Arun: Nice one 👌
+18/11/2025, 8:29 pm - Karthik: Looks great
+19/11/2025, 10:03 am - Divya: My laptop is acting up again, Arduino IDE keeps crashing
+19/11/2025, 10:05 am - Karthik: Try reinstalling the board package
+19/11/2025, 10:10 am - Rohan: Or use the lab PCs
+19/11/2025, 10:14 am - Karthik: <Media omitted>
+19/11/2025, 10:16 am - Divya: Will try that
+19/11/2025, 10:17 am - Priya: Nice one 👌
+19/11/2025, 10:21 am - Rohan: Looks great
+19/11/2025, 10:33 am - Rohan: Does anyone have the datasheet for the Arduino Nano?
+19/11/2025, 10:36 am - Arun: This message was deleted
+19/11/2025, 10:38 am - Rohan: Perfect, thanks
+19/11/2025, 7:02 pm - Kavya: The projector in the seminar hall is not working again
+19/11/2025, 7:07 pm - Rohan: Report it to the dept office
+19/11/2025, 7:08 pm - Divya: Already reported twice 👌
+19/11/2025, 8:39 pm - Priya: Machan canteen la samosa over da
+19/11/2025, 8:40 pm - Arun: Appo naalaiku early ah poganum
+19/11/2025, 8:41 pm - Karthik: Naalaiku Friday la, queue romba irukkum 😂
+20/11/2025, 12:08 pm - Arun: Does anyone have the datasheet for the MQTT broker?
+20/11/2025, 12:14 pm - Priya: https://example.com/datasheet/3262
+20/11/2025, 12:15 pm - Arun: Perfect, thanks
+20/11/2025, 5:21 pm - Priya: Who has the key to the club cupboard?
+20/11/2025, 5:25 pm - Karthik: With Divya I think
+20/11/2025, 5:27 pm - Divya: Yes, I left it at the department office
+20/11/2025, 5:29 pm - Priya: Ok will collect from there
+20/11/2025, 10:49 pm - Kavya: https://example.com/post/6982 look at this
+20/11/2025, 10:54 pm - Arun: Haha this is so true
+20/11/2025, 10:58 pm - Divya: Sending to the other group
+21/11/2025, 12:09 pm - Karthik: Is anyone going to the library?
+21/11/2025, 12:13 pm - Rohan: I am, need anything?
+21/11/2025, 12:16 pm - Karthik: Return this book for me please
+21/11/2025, 12:17 pm - Rohan: Ok bring it to class
+21/11/2025, 8:40 pm - Kavya: Birthady today! 🎂
+21/11/2025, 8:40 pm - Priya: Happy birthday!!
+21/11/2025, 8:42 pm - Arun: Treat venum da 👍
+22/11/2025, 9:01 am - Rohan: Has anyone used the LoRa module with the relay board? Getting weird readings.
+22/11/2025, 9:05 am - Karthik: Check your wiring first, mine was a loose jumper wire.
+22/11/2025, 9:10 am - Kavya: Also try a different power supply
+22/11/2025, 9:10 am - Rohan: That fixed it, thanks! 😂
+22/11/2025, 1:21 pm - Priya: Is the lab open today?
+22/11/2025, 1:23 pm - Divya: Bala sir said it is open till 5
+22/11/2025, 1:28 pm - Priya: Thanks!
+23/11/2025, 11:42 am - Priya: Is anyone going to the library?
+23/11/2025, 11:48 am - Arun: I am, need anything?
+23/11/2025, 11:50 am - Priya: Return this book for me please
+23/11/2025, 11:51 am - Arun: Ok bring it to class
+23/11/2025, 2:14 pm - Arun: Machan canteen la samosa over da
+23/11/2025, 2:20 pm - Priya: Appo naalaiku early ah poganum
+23/11/2025, 2:26 pm - Divya: Naalaiku Friday la, queue romba irukkum
+24/11/2025, 7:42 pm - Kavya: Who has the key to the club cupboard?
+24/11/2025, 7:46 pm - Divya: With Divya I think
+24/11/2025, 7:47 pm - Karthik: Yes, I left it at the department office
+24/11/2025, 7:51 pm - Kavya: Ok will collect from there
+25/11/2025, 10:26 am - Kavya: My laptop is acting up again, Arduino IDE keeps crashing
+25/11/2025, 10:29 am - Arun: Try reinstalling the board package
+25/11/2025, 10:32 am - Rohan: Or use the lab PCs
+25/11/2025, 10:38 am - Kavya: Will try that
+25/11/2025, 1:51 pm - Divya: Which Arduino Nano library did we use last time?
+25/11/2025, 1:56 pm - Karthik: No idea, check the old project folder
+25/11/2025, 1:57 pm - Kavya: It is in the shared drive under projects
+25/11/2025, 7:15 pm - Kavya: The projector in the seminar hall is not working again
+25/11/2025, 7:16 pm - Arun: Report it to the dept office
+25/11/2025, 7:18 pm - Priya: Already reported twice 😂
+25/11/2025, 8:39 pm - Divya: Who has the key to the club cupboard?
+25/11/2025, 8:45 pm - Kavya: With Divya I think
+25/11/2025, 8:48 pm - Arun: This message was deleted
+25/11/2025, 8:49 pm - Divya: Ok will collect from there
+26/11/2025, 5:47 pm - Karthik: Machan canteen la samosa over da
+26/11/2025, 5:51 pm - Divya: Appo naalaiku early ah poganum
+26/11/2025, 5:53 pm - Rohan: Naalaiku Friday la, queue romba irukkum 🙏
+26/11/2025, 8:00 pm - Priya: <Media omitted>
+26/11/2025, 8:01 pm - Priya: Look at what the first years built
+26/11/2025, 8:06 pm - Rohan: That's actually impressive
+26/11/2025, 10:30 pm - Arun: Which ESP32 library did we use last time?
+26/11/2025, 10:32 pm - Karthik: No idea, check the old project folder
+26/11/2025, 10:33 pm - Kavya: It is in the shared drive under projects
+27/11/2025, 11:14 am - Arun: <Media omitted>
+27/11/2025, 11:18 am - Rohan: Nice one 👌
+27/11/2025, 11:21 am - Divya: Looks great
+27/11/2025, 1:39 pm - Divya: Exam timetable is out, ugh 👍
+27/11/2025, 1:42 pm - Kavya: Which day is the first paper?
+27/11/2025, 1:44 pm - Divya: Monday
+27/11/2025, 1:50 pm - Karthik: Nobody has studied anything yet
+27/11/2025, 7:05 pm - Karthik: https://example.com/post/9274 look at this 🔥
+27/11/2025, 7:08 pm - Divya: Haha this is so true
+27/11/2025, 7:09 pm - Rohan: Sending to the other group
+27/11/2025, 11:50 pm - Divya: Has anyone used the Raspberry Pi Pico with the LoRa module? Getting weird readings.
+27/11/2025, 11:56 pm - Arun: Check your wiring first, mine was a loose jumper wire.
+28/11/2025, 12:01 am - Rohan: Also try a different power supply
+28/11/2025, 12:06 am - Divya: That fixed it, thanks! 😂
+28/11/2025, 1:48 pm - Rohan: What time is the committee call tonight?
+28/11/2025, 1:51 pm - Karthik: 9 pm as usual
+28/11/2025, 1:51 pm - Kavya: Seri, bus la irukken so I will be on mute
+28/11/2025, 4:33 pm - Kavya: Has anyone used the servo motor with the DHT22? Getting weird readings.
+28/11/2025, 4:34 pm - Arun: Check your wiring first, mine was a loose jumper wire.
+28/11/2025, 4:40 pm - Priya: Also try a different power supply
+28/11/2025, 4:41 pm - Kavya: That fixed it, thanks! 😅
+28/11/2025, 11:55 pm - Priya: Enna da ippo network la problem ah?
+28/11/2025, 11:59 pm - Arun: Illa illa, hostel wifi dhaan slow
+29/11/2025, 12:01 am - Rohan: Konjam wait pannu, maybe it will come back
+29/11/2025, 5:30 pm - Priya: Workshop done! Thanks everyone, 62 attendees.
+29/11/2025, 7:10 pm - Arun: Does anyone have the datasheet for the relay board?
+29/11/2025, 7:11 pm - Rohan: https://example.com/datasheet/9911
+29/11/2025, 7:12 pm - Arun: Perfect, thanks
+30/11/2025, 12:24 pm - Rohan: <Media omitted>
+30/11/2025, 12:30 pm - Rohan: Look at what the first years biult
+30/11/2025, 12:35 pm - Kavya: That's actually impressive 👍
+30/11/2025, 6:15 pm - Arun: Which MQTT broker library did we use last time?
+30/11/2025, 6:16 pm - Rohan: No idea, check the old project folder
+30/11/2025, 6:18 pm - Priya: It is in the shared drive under projects
+30/11/2025, 9:37 pm - Karthik: Anyone free on Monday?
+30/11/2025, 9:42 pm - Divya: Free after 11
+30/11/2025, 9:48 pm - Kavya: Same here
+30/11/2025, 9:51 pm - Karthik: Ok let's see then
+01/12/2025, 8:00 pm - Priya: IoT Fest is our annual event, last year it was on 14 Feb. Let's take the same slot.
+The auditorium needs the Dean's office approval, apply a month ahead.
+01/12/2025, 8:06 pm - Priya: I'll book the auditorium for 14 Feb by 10 January.
+01/12/2025, 9:32 pm - Divya: What time is the committee call tonight?
+01/12/2025, 9:37 pm - Karthik: 9 pm as usual
+01/12/2025, 9:38 pm - Arun: Seri, bus la irukken so I will be on mute
+01/12/2025, 10:56 pm - Divya: Anyone free on Thursday?
+01/12/2025, 10:57 pm - Karthik: Free after 11
+01/12/2025, 11:01 pm - Priya: Same here
+01/12/2025, 11:05 pm - Divya: Ok let's see then
+02/12/2025, 9:44 am - Karthik: Does anyone have the datasheet for the servo motor?
+02/12/2025, 9:46 am - Rohan: https://example.com/datasheet/2300
+02/12/2025, 9:48 am - Karthik: Perfect, thanks
+02/12/2025, 8:27 pm - Arun: Anyone up for lunch at the canteen?
+02/12/2025, 8:28 pm - Karthik: Give me 10 mins
+02/12/2025, 8:34 pm - Divya: Count me in 🔥
+02/12/2025, 8:40 pm - Arun: Ok at 1
+03/12/2025, 7:54 pm - Arun: Exam timetable is out, ugh 👌
+03/12/2025, 7:56 pm - Karthik: Which day is the first paper?
+03/12/2025, 8:00 pm - Arun: Monday
+03/12/2025, 8:03 pm - Priya: Nobody has studied anything yet
+03/12/2025, 11:00 pm - Karthik: Who has the key to the club cupboard?
+03/12/2025, 11:03 pm - Rohan: With Divya I think
+03/12/2025, 11:08 pm - Arun: Yes, I left it at the department office
+03/12/2025, 11:08 pm - Karthik: Ok will collect from there
+04/12/2025, 9:47 am - Arun: Good morning everyone
+04/12/2025, 9:50 am - Rohan: Morning!
+04/12/2025, 9:51 am - Kavya: Morning da
+05/12/2025, 1:05 pm - Kavya: <Media omitted>
+05/12/2025, 1:09 pm - Priya: Nice one 👌
+05/12/2025, 1:10 pm - Rohan: Looks great
+05/12/2025, 6:14 pm - Karthik: Is the lab open today?
+05/12/2025, 6:18 pm - Arun: Bala sir said it is open till 5
+05/12/2025, 6:24 pm - Karthik: Thanks!
+05/12/2025, 9:39 pm - Kavya: The projector in the seminar hall is not working again
+05/12/2025, 9:44 pm - Arun: Report it to the dept office
+05/12/2025, 9:50 pm - Priya: Already reported twice 🙏
+06/12/2025, 9:48 am - Divya: Anyone free on Thursday?
+06/12/2025, 9:54 am - Arun: Free after 11
+06/12/2025, 9:56 am - Karthik: Same here
+06/12/2025, 9:59 am - Divya: Ok let's see then
+06/12/2025, 8:45 pm - Kavya: Exam timetable is out, ugh 🔥
+06/12/2025, 8:48 pm - Karthik: Which day is the first paper?
+06/12/2025, 8:54 pm - Kavya: Monday
+06/12/2025, 9:00 pm - Arun: Nobody has studied anything yet
+06/12/2025, 9:58 pm - Divya: My laptop is acting up again, Arduino IDE keeps crashing
+06/12/2025, 10:01 pm - Karthik: Try reinstalling the board package
+06/12/2025, 10:05 pm - Arun: Or use the lab PCs
+06/12/2025, 10:11 pm - Divya: Will try that
+07/12/2025, 2:15 pm - Priya: https://example.com/post/3872 look at this 🔥
+07/12/2025, 2:19 pm - Rohan: Haha this is so true
+07/12/2025, 2:20 pm - Arun: Sending to the other group
+09/12/2025, 11:22 am - Arun: Is anyone going to the library?
+09/12/2025, 11:27 am - Rohan: I am, need anything?
+09/12/2025, 11:32 am - Arun: Return this book for me please
+09/12/2025, 11:34 am - Rohan: Ok brnig it to class
+10/12/2025, 9:53 am - Kavya: Machan canteen la samosa over da
+10/12/2025, 9:58 am - Arun: Appo naalaiku early ah poganum
+10/12/2025, 10:02 am - Rohan: Naalaiku Friday la, queue romba irukkum 😂
+10/12/2025, 3:37 pm - Rohan: Does anyone have the datasheet for the DHT22?
+10/12/2025, 3:43 pm - Priya: https://example.com/datasheet/7725
+10/12/2025, 3:45 pm - Rohan: Perfect, thanks
+11/12/2025, 3:56 pm - Divya: Has anyone used the DHT22 with the soil moisture sensor? Getting weird readings.
+11/12/2025, 3:57 pm - Karthik: Check your wiring first, mine was a loose jumper wire.
+11/12/2025, 4:03 pm - Kavya: Also try a different power supply
+11/12/2025, 4:06 pm - Divya: That fixed it, thanks!
+12/12/2025, 12:40 pm - Karthik: https://example.com/post/6439 look at this 👌
+12/12/2025, 12:44 pm - Priya: Haha this is so true
+12/12/2025, 12:46 pm - Rohan: Sending to the other group
+14/12/2025, 2:36 pm - Rohan: Does anyone have the datasheet for the OLED display?
+14/12/2025, 2:37 pm - Priya: https://example.com/datasheet/2692
+14/12/2025, 2:40 pm - Rohan: Perfect, thanks
+15/12/2025, 10:37 am - Arun: My laptop is acting up again, Arduino IDE keeps crashing
+15/12/2025, 10:41 am - Rohan: Try reinstalling the board package
+15/12/2025, 10:44 am - Karthik: Or use the lab PCs
+15/12/2025, 10:47 am - Arun: Will try that
+15/12/2025, 2:36 pm - Kavya: The projector in the seminar hall is not working again
+15/12/2025, 2:42 pm - Divya: Report it to the dept office
+15/12/2025, 2:48 pm - Priya: Already reported twice 😂
+15/12/2025, 2:59 pm - Rohan: <Media omitted>
+15/12/2025, 3:01 pm - Rohan: Look at what the first years built
+15/12/2025, 3:04 pm - Divya: That's actually impressive
+15/12/2025, 7:20 pm - Priya: Can someone send the sponsorship proposal to Brightwave Labs? Contact is Ms. Nair.
+15/12/2025, 7:25 pm - Arun: I'll send the sponsorship proposal to Brightwave Labs by 20 January.
+15/12/2025, 10:06 pm - Rohan: https://example.com/post/7255 look at this 🔥
+15/12/2025, 10:08 pm - Arun: Haha this is so true
+15/12/2025, 10:09 pm - Kavya: Sending to the other group
+16/12/2025, 4:51 pm - Kavya: My laptop is acting up again, Arduino IDE keeps crashing
+16/12/2025, 4:56 pm - Arun: Try reinstalling the board package
+16/12/2025, 4:59 pm - Karthik: Or use the lab PCs
+16/12/2025, 5:02 pm - Kavya: Will try that
+16/12/2025, 10:50 pm - Karthik: Anyone up for lunch at the canteen?
+16/12/2025, 10:55 pm - Arun: Give me 10 mins
+16/12/2025, 10:59 pm - Divya: Count me in 👌
+16/12/2025, 11:05 pm - Karthik: Ok at 1
+17/12/2025, 7:45 am - Kavya: Good morning everyone
+17/12/2025, 7:48 am - Arun: Morning!
+17/12/2025, 7:51 am - Rohan: Morning da
+17/12/2025, 7:07 pm - Priya: https://example.com/post/4327 look at this
+17/12/2025, 7:08 pm - Divya: Haha this is so true
+17/12/2025, 7:12 pm - Karthik: Sending to the other group
+17/12/2025, 8:20 pm - Arun: Power cut in the lab block, class shifted
+17/12/2025, 8:27 pm - Karthik: Where are we meeting now?
+17/12/2025, 8:30 pm - Arun: Room 204
+17/12/2025, 8:35 pm - Kavya: On the way
+17/12/2025, 9:50 pm - Priya: Lab record submission is tomorrow, right?
+17/12/2025, 9:55 pm - Karthik: Yes, Thursday last hour
+17/12/2025, 9:55 pm - Kavya: Nooo I haven't even sarted
+18/12/2025, 12:44 pm - Priya: Which MQTT broker library did we use last time?
+18/12/2025, 12:46 pm - Arun: No idea, check the old project folder
+18/12/2025, 12:49 pm - Divya: It is in the shared drive under projects
+18/12/2025, 5:16 pm - Rohan: Is the lab open today?
+18/12/2025, 5:21 pm - Priya: Bala sir said it is open till 5
+18/12/2025, 5:26 pm - Rohan: Thanks!
+18/12/2025, 8:24 pm - Karthik: Is anyone going to the library?
+18/12/2025, 8:28 pm - Priya: I am, need anything?
+18/12/2025, 8:30 pm - Karthik: Return this book for me please
+18/12/2025, 8:32 pm - Priya: Ok bring it to class
+19/12/2025, 8:52 am - Kavya: Good morning everyone
+19/12/2025, 8:55 am - Karthik: Morning!
+19/12/2025, 8:57 am - Priya: Morning da
+19/12/2025, 10:39 am - Rohan: This message was deleted
+19/12/2025, 10:41 am - Priya: Where are we meeting now?
+19/12/2025, 10:46 am - Rohan: Room 204
+19/12/2025, 10:53 am - Arun: On the way
+19/12/2025, 3:32 pm - Karthik: Exam timetble is out, ugh 👍
+19/12/2025, 3:33 pm - Divya: Which day is the first paper?
+19/12/2025, 3:35 pm - Karthik: Monday
+19/12/2025, 3:41 pm - Rohan: Nobody has studied anything yet
+20/12/2025, 4:27 pm - Rohan: Birthady today! 🎂
+20/12/2025, 4:32 pm - Priya: Happy birthday!!
+20/12/2025, 4:36 pm - Divya: Treat venum da
+20/12/2025, 9:21 pm - Karthik: https://example.com/post/5275 look at this
+20/12/2025, 9:22 pm - Rohan: Haha this is so true
+20/12/2025, 9:26 pm - Priya: Sending to the other group
+21/12/2025, 4:19 pm - Rohan: What time is the committee call tonight?
+21/12/2025, 4:25 pm - Karthik: This message was deleted
+21/12/2025, 4:30 pm - Divya: Seri, bus la irukken so I will be on mute
+21/12/2025, 10:06 pm - Priya: My laptop is acting up again, Arduino IDE keeps crashing
+21/12/2025, 10:10 pm - Karthik: Try reinstalling the board package
+21/12/2025, 10:15 pm - Divya: Or use the lab PCs
+21/12/2025, 10:21 pm - Priya: Will try that
+22/12/2025, 4:20 pm - Divya: Is the lab open today?
+22/12/2025, 4:25 pm - Kavya: Bala sir said it is open till 5
+22/12/2025, 4:29 pm - Divya: Thanks!
+22/12/2025, 4:37 pm - Kavya: Machan canteen la samosa over da
+22/12/2025, 4:39 pm - Arun: Appo naalaiku early ah poganum
+22/12/2025, 4:45 pm - Rohan: Naalaiku Friday la, queue romba irukkum 👍
+22/12/2025, 9:37 pm - Rohan: <Media omitted>
+22/12/2025, 9:44 pm - Divya: Nice one 👌
+22/12/2025, 9:45 pm - Karthik: Looks great 👌
+22/12/2025, 10:37 pm - Karthik: <Media omitted>
+22/12/2025, 10:40 pm - Karthik: Look at what the frst years built
+22/12/2025, 10:43 pm - Divya: That's actually impressive
+22/12/2025, 11:57 pm - Kavya: What time is the committee call tonight?
+23/12/2025, 12:01 am - Priya: 9 pm as usual
+23/12/2025, 12:06 am - Arun: Seri, bus la irukken so I will be on mute
+23/12/2025, 9:25 am - Kavya: Has anyone used the LoRa module with the NodeMCU? Getting weird readings.
+23/12/2025, 9:31 am - Rohan: Check your wiring first, mine was a loose jumper wire.
+23/12/2025, 9:33 am - Arun: Also try a different power supply
+23/12/2025, 9:37 am - Kavya: That fixed it, thanks!
+23/12/2025, 10:31 am - Divya: Anyone free on Friday?
+23/12/2025, 10:37 am - Priya: Free after 11
+23/12/2025, 10:41 am - Arun: Same here
+23/12/2025, 10:42 am - Divya: This message was deleted
+23/12/2025, 2:36 pm - Kavya: Does anyone have the datasheet for the LoRa module?
+23/12/2025, 2:38 pm - Arun: https://example.com/datasheet/4885
+23/12/2025, 2:42 pm - Kavya: Perfect, thanks
+24/12/2025, 12:45 pm - Karthik: Who has the key to the club cupboard?
+24/12/2025, 12:46 pm - Priya: With Divya I think
+24/12/2025, 12:49 pm - Rohan: Yes, I left it at the departmnt office
+24/12/2025, 12:51 pm - Karthik: Ok will collect from there
+24/12/2025, 3:20 pm - Karthik: <Media omitted>
+24/12/2025, 3:24 pm - Arun: Nice one 👌
+24/12/2025, 3:27 pm - Rohan: Looks great 🔥
+24/12/2025, 6:51 pm - Rohan: <Media omitted>
+24/12/2025, 6:57 pm - Rohan: Look at what the first years built
+24/12/2025, 6:59 pm - Arun: That's actually impressive
+25/12/2025, 8:21 pm - Karthik: Has anyone used the servo motor with the relay board? Getting weird readings.
+25/12/2025, 8:25 pm - Arun: Check your wiring first, mine was a loose jumper wire.
+25/12/2025, 8:26 pm - Priya: This message was deleted
+25/12/2025, 8:26 pm - Karthik: That fixed it, thanks! 😂
+26/12/2025, 10:37 pm - Priya: Anyone free on Saturday?
+26/12/2025, 10:38 pm - Karthik: Free after 11
+26/12/2025, 10:41 pm - Divya: Same here
+26/12/2025, 10:44 pm - Priya: Ok let's see then
+28/12/2025, 9:49 pm - Arun: Is the lab open today?
+28/12/2025, 9:53 pm - Kavya: Bala sir said it is open till 5
+28/12/2025, 9:54 pm - Arun: Thanks!
+31/12/2025, 2:33 pm - Kavya: Birthday today! 🎂
+31/12/2025, 2:34 pm - Rohan: Happy birthday!!
+31/12/2025, 2:36 pm - Priya: Treat venum da
+03/01/2026, 9:41 am - Rohan: Is the lab open today?
+03/01/2026, 9:46 am - Priya: Bala sir said it is open till 5
+03/01/2026, 9:49 am - Rohan: Thanks!
+03/01/2026, 1:58 pm - Divya: Machan canteen la samosa over da
+03/01/2026, 2:02 pm - Kavya: Appo naalaiku early ah poganum
+03/01/2026, 2:05 pm - Karthik: Naalaiku Friday la, queue romba irukkum 👌
+04/01/2026, 6:06 pm - Karthik: https://example.com/post/6375 look at this 😅
+04/01/2026, 6:09 pm - Kavya: Haha this is so true
+04/01/2026, 6:11 pm - Priya: Sending to the other group
+04/01/2026, 7:15 pm - Priya: Anyone up for lunch at the canteen?
+04/01/2026, 7:19 pm - Kavya: Give me 10 mins
+04/01/2026, 7:24 pm - Karthik: Count me in 😅
+04/01/2026, 7:28 pm - Priya: Ok at 1
+05/01/2026, 8:53 am - Karthik: Which Raspberry Pi Pico library did we use last time?
+05/01/2026, 8:58 am - Priya: No idea, check the old project folder
+05/01/2026, 9:01 am - Kavya: It is in the shared drive under projects
+05/01/2026, 11:57 am - Karthik: <Media omitted>
+05/01/2026, 11:59 am - Arun: Nice one 👌
+05/01/2026, 12:05 pm - Kavya: Looks great 🙏
+05/01/2026, 6:56 pm - Kavya: Does anyone have the datasheet for the servo motor?
+05/01/2026, 6:58 pm - Divya: https://example.com/datasheet/5433
+05/01/2026, 7:03 pm - Kavya: Perfect, thanks
+05/01/2026, 11:57 pm - Priya: Exam timetable is out, ugh 🔥
+06/01/2026, 12:02 am - Arun: This message was deleted
+06/01/2026, 12:05 am - Priya: Monday
+06/01/2026, 12:11 am - Rohan: Nobody has studied anything yet
+06/01/2026, 9:23 am - Divya: Is the lab open today?
+06/01/2026, 9:26 am - Rohan: Bala sir said it is open till 5
+06/01/2026, 9:31 am - Divya: Thanks!
+06/01/2026, 10:41 pm - Divya: Exam timetable is out, ugh 👍
+06/01/2026, 10:47 pm - Arun: Which day is the first paper?
+06/01/2026, 10:52 pm - Divya: Monday
+06/01/2026, 10:55 pm - Kavya: Nobody has studied anything yet
+07/01/2026, 1:12 pm - Karthik: Which soil moisture sensor library did we use last time?
+07/01/2026, 1:16 pm - Priya: No idea, check the old project folder
+07/01/2026, 1:19 pm - Arun: It is in the shared drive under projects
+07/01/2026, 8:46 pm - Divya: Power cut in the lab block, class shifted
+07/01/2026, 8:51 pm - Karthik: Where are we meeting now?
+07/01/2026, 8:57 pm - Divya: Room 204
+07/01/2026, 9:01 pm - Priya: On the way
+07/01/2026, 10:18 pm - Rohan: <Media omitted>
+07/01/2026, 10:20 pm - Rohan: Look at what the first years built
+07/01/2026, 10:22 pm - Kavya: That's actually impressive
+08/01/2026, 9:50 am - Arun: What time is the committee call tonight?
+08/01/2026, 9:54 am - Priya: 9 pm as usual
+08/01/2026, 10:01 am - Divya: Seri, bus la irukken so I will be on mute
+08/01/2026, 12:29 pm - Priya: <Media omitted>
+08/01/2026, 12:35 pm - Priya: Look at what the first years built
+08/01/2026, 12:40 pm - Arun: That's actually impressive 🙏
+09/01/2026, 1:14 pm - Kavya: Birthday today! 🎂
+09/01/2026, 1:19 pm - Arun: Happy birthday!!
+09/01/2026, 1:20 pm - Rohan: This message was deleted
+09/01/2026, 1:54 pm - Kavya: Machan canteen la samosa over da
+09/01/2026, 2:00 pm - Rohan: Appo naalaiku early ah poganum
+09/01/2026, 2:03 pm - Priya: Naalaiku Friday la, queue romba irukkum 😂
+09/01/2026, 5:50 pm - Priya: Auditorium approved by the Dean's office. Letter is in the drive.
+10/01/2026, 10:24 am - Karthik: Is anyone going to the library?
+10/01/2026, 10:30 am - Arun: I am, need anything?
+10/01/2026, 10:33 am - Karthik: Return this book for me please
+10/01/2026, 10:35 am - Arun: Ok bring it to class
+10/01/2026, 10:09 pm - Karthik: Which soil moisture sensor library did we use last time?
+10/01/2026, 10:14 pm - Rohan: No idea, check the old project folder
+10/01/2026, 10:20 pm - Priya: It is in the shared drive under projects
+11/01/2026, 9:53 am - Arun: Anyone up for luch at the canteen?
+11/01/2026, 9:58 am - Karthik: Give me 10 mins
+11/01/2026, 10:00 am - Kavya: Count me in 😅
+11/01/2026, 10:07 am - Arun: Ok at 1
+11/01/2026, 12:38 pm - Arun: The projector in the seminar hall is not working again
+11/01/2026, 12:42 pm - Kavya: Report it to the dept office
+11/01/2026, 12:47 pm - Divya: Already reported twice 😂
+11/01/2026, 9:31 pm - Karthik: <Media omitted>
+11/01/2026, 9:35 pm - Karthik: Look at what the first years built
+11/01/2026, 9:36 pm - Rohan: That's actually impressive
+12/01/2026, 10:30 am - Meghna joined using this group's invite link
+12/01/2026, 1:48 pm - Priya: Is anyone going to the library?
+12/01/2026, 1:49 pm - Rohan: I am, need anything?
+12/01/2026, 1:55 pm - Priya: Return this book for me please
+12/01/2026, 1:58 pm - Rohan: Ok bring it to class
+13/01/2026, 8:30 am - Rohan: The projector in the seminar hall is not working again
+13/01/2026, 8:35 am - Meghna: Report it to the dept office
+13/01/2026, 8:41 am - Priya: This message was deleted
+13/01/2026, 6:31 pm - Meghna: Power cut in the lab block, class shifted
+13/01/2026, 6:33 pm - Kavya: Where are we meeting now?
+13/01/2026, 6:34 pm - Meghna: Room 204
+13/01/2026, 6:35 pm - Rohan: On the way
+13/01/2026, 7:48 pm - Karthik: Anyone up for lunch at the canteen?
+13/01/2026, 7:50 pm - Arun: Give me 10 mins
+13/01/2026, 7:52 pm - Priya: Count me in 😂
+13/01/2026, 7:55 pm - Karthik: Ok at 1
+14/01/2026, 8:41 am - Meghna: Good morning everyone
+14/01/2026, 8:48 am - Divya: Morning!
+14/01/2026, 8:48 am - Kavya: Morning da
+14/01/2026, 1:27 pm - Karthik: What time is the committee call tonight?
+14/01/2026, 1:32 pm - Priya: 9 pm as usual
+14/01/2026, 1:34 pm - Meghna: Seri, bus la irukken so I will be on mute
+14/01/2026, 7:41 pm - Karthik: Anyone free on Wednesday?
+14/01/2026, 7:47 pm - Rohan: Free after 11
+14/01/2026, 7:49 pm - Arun: Same here
+14/01/2026, 7:53 pm - Karthik: Ok let's see then
+14/01/2026, 9:46 pm - Meghna: Has anyone used the HC-SR04 with the srvo motor? Getting weird readings.
+14/01/2026, 9:49 pm - Rohan: Check your wiring first, mine was a loose jumper wire.
+14/01/2026, 9:51 pm - Priya: Also try a different pwoer supply
+14/01/2026, 9:58 pm - Meghna: That fiexd it, thanks! 😅
+15/01/2026, 1:53 pm - Meghna: Lab record submission is tomorrow, right?
+15/01/2026, 1:58 pm - Rohan: Yes, Friday last hour
+15/01/2026, 2:01 pm - Arun: Nooo I haven't even started 🙏
+15/01/2026, 7:17 pm - Rohan: Anyone free on Monday?
+15/01/2026, 7:23 pm - Kavya: Free after 11
+15/01/2026, 7:26 pm - Divya: Same here
+15/01/2026, 7:30 pm - Rohan: Ok let's see then
+15/01/2026, 8:37 pm - Divya: Is anyone going to the library?
+15/01/2026, 8:37 pm - Rohan: I am, need anything?
+15/01/2026, 8:42 pm - Divya: Rturn this book for me please
+15/01/2026, 8:43 pm - Rohan: Ok bring it to class
+15/01/2026, 9:49 pm - Rohan: What time is the committee call tonight?
+15/01/2026, 9:51 pm - Meghna: 9 pm as usual
+15/01/2026, 9:54 pm - Divya: Seri, bus la irukken so I will be on mute
+16/01/2026, 12:50 pm - Priya: Birthday today! 🎂
+16/01/2026, 12:53 pm - Priya: Exam timetable is out, ugh
+16/01/2026, 12:54 pm - Rohan: Happy birthday!!
+16/01/2026, 12:54 pm - Divya: Treat venum da 😅
+16/01/2026, 12:55 pm - Karthik: Which day is the first paper?
+16/01/2026, 1:00 pm - Priya: Monday
+16/01/2026, 1:06 pm - Divya: Nobody has studied anything yet
+16/01/2026, 4:37 pm - Meghna: Anyone up for luch at the canteen?
+16/01/2026, 4:39 pm - Divya: Give me 10 mins
+16/01/2026, 4:45 pm - Karthik: Count me in 😂
+16/01/2026, 4:49 pm - Meghna: Ok at 1
+16/01/2026, 8:35 pm - Arun: Enna da ippo network la problem ah?
+16/01/2026, 8:41 pm - Karthik: Illa illa, hostel wifi dhaan slow
+16/01/2026, 8:43 pm - Meghna: Konjam wait pannu, maybe it will come back 🔥
+17/01/2026, 10:23 am - Arun: Is the lab open today?
+17/01/2026, 10:24 am - Rohan: Bala sir said it is open till 5
+17/01/2026, 10:28 am - Arun: Thanks!
+17/01/2026, 10:02 pm - Divya: <Media omitted>
+17/01/2026, 10:07 pm - Priya: Nice one 👌
+17/01/2026, 10:12 pm - Meghna: Looks great
+18/01/2026, 9:18 pm - Divya: Exam timetable is out, ugh
+18/01/2026, 9:22 pm - Kavya: Which day is the first paper?
+18/01/2026, 9:24 pm - Divya: Monday
+18/01/2026, 9:29 pm - Rohan: Nobody has studied anything yet
+19/01/2026, 3:12 pm - Meghna: Exam timetable is out, ugh
+19/01/2026, 3:14 pm - Divya: Which day is the first paper?
+19/01/2026, 3:19 pm - Meghna: Monday
+19/01/2026, 3:21 pm - Arun: Nobody has studied anything yet
+19/01/2026, 6:34 pm - Kavya: Machan canteen la samosa over da
+19/01/2026, 6:34 pm - Karthik: Appo naalaiku early ah poganum
+19/01/2026, 6:40 pm - Meghna: Naalaiku Friday la, queue romba irkkum
+19/01/2026, 7:04 pm - Priya: What time is the committee call tonight?
+19/01/2026, 7:08 pm - Meghna: 9 pm as usual
+19/01/2026, 7:14 pm - Karthik: Seri, bus la irukken so I will be on mute
+19/01/2026, 8:02 pm - Priya: New semester reminder: the lab booking needs a fresh HoD permission letter. Same drill as November.
+19/01/2026, 8:10 pm - Arun: On it, I will submit the letter by 31 January.
+20/01/2026, 1:54 pm - Priya: Which HC-SR04 library did we use last time?
+20/01/2026, 1:56 pm - Karthik: No idea, check the old project folder
+20/01/2026, 2:01 pm - Divya: It is in the shared drive under projects
+20/01/2026, 7:03 pm - Rohan: What time is the committee call tonight?
+20/01/2026, 7:09 pm - Karthik: 9 pm as usual
+20/01/2026, 7:10 pm - Arun: Seri, bus la irukken so I will be on mute
+20/01/2026, 8:07 pm - Arun: <Media omitted>
+20/01/2026, 8:13 pm - Divya: Nice one 👌
+20/01/2026, 8:20 pm - Kavya: Looks great 🙏
+20/01/2026, 8:25 pm - Arun: https://example.com/post/2709 look at this 👍
+20/01/2026, 8:27 pm - Karthik: Haha this is so true
+20/01/2026, 8:29 pm - Kavya: Sending to the other group
+21/01/2026, 9:32 am - Kavya: Anyone free on Saturday?
+21/01/2026, 9:36 am - Rohan: Free after 11
+21/01/2026, 9:43 am - Meghna: Same here
+21/01/2026, 9:43 am - Kavya: Ok let's see then
+21/01/2026, 10:07 am - Priya: Power cut in the lab block, class shifted
+21/01/2026, 10:10 am - Meghna: Where are we meeting now?
+21/01/2026, 10:12 am - Priya: Room 204
+21/01/2026, 10:14 am - Divya: On the way
+21/01/2026, 12:10 pm - Arun: Sent the proposal to Ms. Nair yesterday.
+21/01/2026, 1:19 pm - Karthik: Lab record submission is tomorrow, right?
+21/01/2026, 1:24 pm - Meghna: Yes, Thursday last hour
+21/01/2026, 1:25 pm - Priya: Nooo I haven't even started
+21/01/2026, 4:37 pm - Divya: Birthday today! 🎂
+21/01/2026, 4:42 pm - Karthik: Happy birthday!!
+21/01/2026, 4:46 pm - Meghna: Treat venum da
+22/01/2026, 12:46 pm - Karthik: Who has the key to the club cupboard?
+22/01/2026, 12:49 pm - Rohan: With Divya I think
+22/01/2026, 12:54 pm - Priya: Yes, I left it at the department office
+22/01/2026, 12:57 pm - Karthik: Ok will collect from there
+22/01/2026, 1:39 pm - Meghna: Anyone up for lunch at the canteen?
+22/01/2026, 1:43 pm - Arun: Give me 10 mins
+22/01/2026, 1:49 pm - Rohan: Count me in
+22/01/2026, 1:50 pm - Meghna: Ok at 1
+22/01/2026, 6:30 pm - Meghna: Lab record submission is tomorrow, right?
+22/01/2026, 6:35 pm - Kavya: Yes, Tuesday last hour
+22/01/2026, 6:40 pm - Karthik: Nooo I haven't even satrted
+22/01/2026, 10:42 pm - Karthik: Does anyone have the datasheet for the HC-SR04?
+22/01/2026, 10:44 pm - Rohan: https://example.com/datasheet/1637
+22/01/2026, 10:48 pm - Karthik: Perfect, thanks
+23/01/2026, 7:48 am - Arun: Good morning everyone
+23/01/2026, 7:52 am - Kavya: Morning!
+23/01/2026, 7:53 am - Divya: Morning da
+23/01/2026, 10:24 am - Meghna: Enna da ippo network la problem ah?
+23/01/2026, 10:29 am - Rohan: Illa illa, hostel wifi dhaan slow
+23/01/2026, 10:35 am - Priya: Konjam wait pannu, maybe it will come back 😂
+23/01/2026, 4:15 pm - Arun: Letter approved for the Feb workshop.
+23/01/2026, 4:15 pm - Kavya: https://example.com/post/4391 look at this 👍
+23/01/2026, 4:17 pm - Karthik: Haha this is so true
+23/01/2026, 4:19 pm - Divya: Sending to the other group
+23/01/2026, 9:20 pm - Karthik: My laptop is acting up again, Arduino IDE keeps crashing
+23/01/2026, 9:23 pm - Arun: Try reinstalling the board package
+23/01/2026, 9:25 pm - Rohan: Or use the lab PCs
+23/01/2026, 9:29 pm - Karthik: Will try that
+24/01/2026, 6:28 pm - Arun: Machan canteen la samosa over da
+24/01/2026, 6:34 pm - Karthik: Appo naalaiku early ah poganum
+24/01/2026, 6:41 pm - Kavya: Naalaiku Friday la, queue romba irukkum 👍
+24/01/2026, 11:15 pm - Rohan: My laptop is acting up again, Arduino IDE keeps crashing
+24/01/2026, 11:18 pm - Divya: Try reinstalling the board package
+24/01/2026, 11:20 pm - Priya: Or use the lab PCs
+24/01/2026, 11:26 pm - Rohan: Will try that
+25/01/2026, 3:00 pm - Rohan: Machan canteen la samosa over da
+25/01/2026, 3:06 pm - Divya: Appo naalaiku early ah poganum
+25/01/2026, 3:12 pm - Arun: Naalaiku Friday la, queue romba irukkum 🙏
+25/01/2026, 3:52 pm - Karthik: Lab record submission is tomorrow, right?
+25/01/2026, 3:58 pm - Divya: Yes, Monday last hour
+25/01/2026, 4:02 pm - Arun: Nooo I haven't even started 👍
+25/01/2026, 8:28 pm - Meghna: Is the lab open today?
+25/01/2026, 8:33 pm - Divya: Bala sir said it is open till 5
+25/01/2026, 8:36 pm - Meghna: Thanks!
+25/01/2026, 11:39 pm - Arun: Anyone up for lunch at the canteen?
+25/01/2026, 11:45 pm - Priya: Give me 10 mins
+25/01/2026, 11:50 pm - Divya: Count me in
+25/01/2026, 11:54 pm - Arun: Ok at 1
+26/01/2026, 10:09 am - Karthik: Which soil moisture sensor library did we use last time?
+26/01/2026, 10:15 am - Priya: No idea, check the old project folder
+26/01/2026, 10:17 am - Rohan: It is in the shared drive under projects
+26/01/2026, 2:25 pm - Divya: Anyone free on Tuesday?
+26/01/2026, 2:30 pm - Priya: Free after 11
+26/01/2026, 2:32 pm - Kavya: Same here
+26/01/2026, 2:35 pm - Divya: Ok let's see then
+26/01/2026, 4:22 pm - Karthik: Lab record submission is tomorrow, right?
+26/01/2026, 4:24 pm - Rohan: Yes, Thursday last hour
+26/01/2026, 4:28 pm - Kavya: Nooo I haven't even started 👍
+26/01/2026, 9:17 pm - Arun: Anyone up for lunch at the canteen?
+26/01/2026, 9:18 pm - Meghna: Give me 10 mins
+26/01/2026, 9:21 pm - Priya: Does anyone have the datasheet for the OLED display?
+26/01/2026, 9:24 pm - Divya: Cunt me in 🔥
+26/01/2026, 9:26 pm - Divya: Is anyone going to the library?
+26/01/2026, 9:28 pm - Karthik: https://example.com/datasheet/4882
+26/01/2026, 9:30 pm - Priya: Perfect, thanks
+26/01/2026, 9:31 pm - Arun: Ok at 1
+26/01/2026, 9:33 pm - Priya: I am, need anything?
+26/01/2026, 9:33 pm - Divya: Return this book for me please
+26/01/2026, 9:36 pm - Priya: Ok bring it to class
+27/01/2026, 8:12 am - Meghna: Good morning everyone
+27/01/2026, 8:15 am - Rohan: Morning!
+27/01/2026, 8:16 am - Priya: Morning da
+27/01/2026, 12:48 pm - Divya: https://example.com/post/2112 look at this 🔥
+27/01/2026, 12:50 pm - Arun: Haha this is so true
+27/01/2026, 12:51 pm - Rohan: Sending to the other group
+27/01/2026, 3:45 pm - Kavya: <Media omitted>
+27/01/2026, 3:49 pm - Karthik: This message was deleted
+27/01/2026, 3:55 pm - Arun: Looks great
+27/01/2026, 8:22 pm - Arun: Enna da ippo network la problem ah?
+27/01/2026, 8:26 pm - Kavya: Illa illa, hostel wifi dhaan slow
+27/01/2026, 8:29 pm - Priya: Konjam wait pannu, maybe it will come back
+27/01/2026, 9:30 pm - Kavya: Birthday today! 🎂
+27/01/2026, 9:37 pm - Priya: Happy birthday!!
+27/01/2026, 9:39 pm - Arun: Treat venum da
+28/01/2026, 8:51 am - Arun: Birthday today! 🎂
+28/01/2026, 8:53 am - Kavya: <Media omitted>
+28/01/2026, 8:57 am - Kavya: Happy birthday!!
+28/01/2026, 8:58 am - Kavya: Look at what the first years built
+28/01/2026, 9:03 am - Divya: Treat venum da
+28/01/2026, 9:05 am - Karthik: That's actually impressive
+28/01/2026, 11:55 am - Rohan: Enna da ippo network la problem ah?
+28/01/2026, 11:56 am - Karthik: Illa illa, hostel wifi dhaan slow
+28/01/2026, 11:58 am - Meghna: Konjam wait pannu, maybe it will come back
+28/01/2026, 11:58 am - Meghna: The projector in the seminar hall is not working again
+28/01/2026, 12:03 pm - Divya: Report it to the dept office
+28/01/2026, 12:05 pm - Priya: Already reported twice 😅
+28/01/2026, 5:41 pm - Kavya: What time is the committee call tonight?
+28/01/2026, 5:47 pm - Meghna: 9 pm as usual
+28/01/2026, 5:51 pm - Priya: Seri, bus la irukken so I will be on mute
+28/01/2026, 7:20 pm - Kavya: My laptop is acting up again, Arduino IDE keeps crashing
+28/01/2026, 7:21 pm - Meghna: Try reinstalling the board pacakge
+28/01/2026, 7:22 pm - Rohan: Or use the lab PCs
+28/01/2026, 7:28 pm - Kavya: Will try that
+28/01/2026, 7:42 pm - Rohan: Machan canteen la samosa over da
+28/01/2026, 7:44 pm - Divya: Appo naalaiku early ah poganum
+28/01/2026, 7:48 pm - Kavya: This message was deleted
+28/01/2026, 8:40 pm - Kavya: I will have the fest posters printed by 3 Feb.
+28/01/2026, 10:20 pm - Priya: Exam timetable is out, ugh
+28/01/2026, 10:25 pm - Meghna: Which day is the first paper?
+28/01/2026, 10:28 pm - Priya: Monday
+28/01/2026, 10:34 pm - Karthik: Nobody has studied anything yet
+29/01/2026, 9:14 am - Rohan: Power cut in the lab block, class shifted
+29/01/2026, 9:15 am - Meghna: Good morning everyone
+29/01/2026, 9:18 am - Divya: Where are we meeting now?
+29/01/2026, 9:19 am - Rohan: Room 204
+29/01/2026, 9:19 am - Priya: Morning!
+29/01/2026, 9:22 am - Karthik: Morning da
+29/01/2026, 9:25 am - Arun: On the way
+29/01/2026, 12:11 pm - Meghna: https://example.com/post/8411 look at this 👍
+29/01/2026, 12:12 pm - Arun: Haha this is so true
+29/01/2026, 12:17 pm - Divya: Sending to the other group
+29/01/2026, 12:23 pm - Arun: <Media omitted>
+29/01/2026, 12:27 pm - Kavya: Nice one 👌
+29/01/2026, 12:28 pm - Rohan: Looks great 🙏
+29/01/2026, 3:41 pm - Priya: Anyone free on Wednesday?
+29/01/2026, 3:42 pm - Kavya: Free after 11
+29/01/2026, 3:47 pm - Arun: Same here
+29/01/2026, 3:51 pm - Priya: Ok let's see then
+29/01/2026, 9:33 pm - Rohan: <Media omitted>
+29/01/2026, 9:39 pm - Rohan: Look at what the first years built
+29/01/2026, 9:39 pm - Karthik: That's actually impressive
+29/01/2026, 10:57 pm - Rohan: Enna da ippo network la problem ah?
+29/01/2026, 10:59 pm - Priya: Illa illa, hostel wifi dhaan slow
+29/01/2026, 11:04 pm - Arun: Konjam wait pannu, maybe it will come back
+29/01/2026, 11:27 pm - Priya: Is anyone going to the library?
+29/01/2026, 11:29 pm - Rohan: I am, need anything?
+29/01/2026, 11:33 pm - Priya: Return this book for me please
+29/01/2026, 11:34 pm - Rohan: Ok bring it to class
+30/01/2026, 9:34 am - Meghna: <Media omitted>
+30/01/2026, 9:38 am - Meghna: Look at what the first years built
+30/01/2026, 9:43 am - Arun: That's actually impressive 😂
+30/01/2026, 3:14 pm - Karthik: Power cut in the lab block, class shfited
+30/01/2026, 3:19 pm - Rohan: This message was deleted
+30/01/2026, 3:22 pm - Karthik: Room 204
+30/01/2026, 3:28 pm - Divya: On the way
+30/01/2026, 3:47 pm - Divya: Anyone up for lunch at the canteen?
+30/01/2026, 3:47 pm - Priya: This message was deleted
+30/01/2026, 3:49 pm - Arun: Count me in 🔥
+30/01/2026, 3:52 pm - Divya: Ok at 1
+30/01/2026, 5:24 pm - Divya: Birthday today! 🎂
+30/01/2026, 5:29 pm - Kavya: Happy birthday!!
+30/01/2026, 5:33 pm - Rohan: Treat venum da 🔥
+30/01/2026, 9:41 pm - Arun: <Media omitted>
+30/01/2026, 9:46 pm - Priya: Nice one 👌
+30/01/2026, 9:52 pm - Kavya: This message was deleted
+30/01/2026, 11:21 pm - Arun: Enna da ippo network la problem ah?
+30/01/2026, 11:22 pm - Rohan: Illa illa, hostel wifi dhaan slow
+30/01/2026, 11:25 pm - Priya: Konjam wait pannu, maybe it will come back
+31/01/2026, 3:00 pm - Karthik: Anyone up for lunch at the canteen?
+31/01/2026, 3:03 pm - Divya: Give me 10 mins
+31/01/2026, 3:09 pm - Rohan: Count me in 😅
+31/01/2026, 3:14 pm - Karthik: Ok at 1
+31/01/2026, 5:24 pm - Meghna: <Media omitted>
+31/01/2026, 5:25 pm - Divya: Nice one 👌
+31/01/2026, 5:27 pm - Arun: Looks great
+31/01/2026, 7:26 pm - Kavya: <Media omitted>
+31/01/2026, 7:30 pm - Kavya: Look at what the first years built
+31/01/2026, 7:34 pm - Divya: That's actually impressive 🔥
+31/01/2026, 9:42 pm - Kavya: My laptop is acting up again, Arduino IDE keeps crashing
+31/01/2026, 9:45 pm - Divya: Try reinstalling the board package
+31/01/2026, 9:49 pm - Arun: Or use the lab PCs
+31/01/2026, 9:51 pm - Kavya: Will try that
+01/02/2026, 10:01 am - Rohan: Lab record submission is tomorrow, right?
+01/02/2026, 10:04 am - Arun: Yes, Tuesday last hour
+01/02/2026, 10:07 am - Meghna: Nooo I haven't even started 😅
+01/02/2026, 12:17 pm - Meghna: Has anyone used the MQTT broker with the DHT22? Getting weird readings.
+01/02/2026, 12:23 pm - Kavya: Check your wiring first, mine was a loose jumper wire.
+01/02/2026, 12:26 pm - Priya: Also try a different power supply
+01/02/2026, 12:30 pm - Meghna: That fixed it, thanks!
+01/02/2026, 5:36 pm - Priya: Aynone free on Thursday?
+01/02/2026, 5:38 pm - Rohan: Free after 11
+01/02/2026, 5:44 pm - Divya: Same here
+01/02/2026, 5:48 pm - Priya: Ok let's see then
+01/02/2026, 9:36 pm - Divya: <Media omitted>
+01/02/2026, 9:38 pm - Kavya: Nice one 👌
+01/02/2026, 9:39 pm - Priya: Looks great 😅
+01/02/2026, 9:43 pm - Divya: Does anyone have the datasheet for the OLED display?
+01/02/2026, 9:48 pm - Meghna: https://example.com/datasheet/8436
+01/02/2026, 9:50 pm - Divya: Perfect, thanks
+02/02/2026, 9:48 am - Priya: Good morning everyone 👌
+02/02/2026, 9:52 am - Divya: Morning!
+02/02/2026, 9:54 am - Karthik: Morning da
+02/02/2026, 4:31 pm - Divya: Exam timetable is out, ugh 👌
+02/02/2026, 4:35 pm - Kavya: Which day is the first paper?
+02/02/2026, 4:38 pm - Divya: Monday
+02/02/2026, 4:42 pm - Karthik: Nobody has studied anything yet
+02/02/2026, 6:43 pm - Karthik: Machan canteen la samosa over da
+02/02/2026, 6:49 pm - Divya: Appo naalaiku early ah poganum
+02/02/2026, 6:51 pm - Priya: Naalaiku Friday la, queue romba irukkum 😅
+02/02/2026, 8:13 pm - Priya: Which soil moisture sensor library did we use last time?
+02/02/2026, 8:17 pm - Karthik: No idea, check the old project folder
+02/02/2026, 8:23 pm - Divya: It is in the shared drive under projects
+02/02/2026, 9:00 pm - Rohan: Anyone free on Thursday?
+02/02/2026, 9:06 pm - Priya: Free after 11
+02/02/2026, 9:12 pm - Karthik: Same here
+02/02/2026, 9:18 pm - Rohan: Ok let's see then
+02/02/2026, 11:59 pm - Rohan: Anyone up for lunch at the canteen?
+03/02/2026, 12:06 am - Meghna: Give me 10 mins
+03/02/2026, 12:12 am - Priya: Count me in 👌
+03/02/2026, 12:17 am - Rohan: Ok at 1
+03/02/2026, 2:48 pm - Rohan: Who has the key to the club cupboard?
+03/02/2026, 2:54 pm - Meghna: With Divya I think
+03/02/2026, 2:56 pm - Karthik: Yes, I left it at the department office
+03/02/2026, 3:00 pm - Rohan: Ok will collect from there
+03/02/2026, 5:15 pm - Kavya: Posters printed, collecting tomorrow morning.
+03/02/2026, 5:21 pm - Meghna: Exam timetable is out, ugh 😅
+03/02/2026, 5:24 pm - Kavya: Which day is the first paper?
+03/02/2026, 5:27 pm - Meghna: Monday
+03/02/2026, 5:30 pm - Divya: Nobody has studied anything yet
+03/02/2026, 6:29 pm - Priya: Anyone free on Wednesday?
+03/02/2026, 6:35 pm - Kavya: Free after 11
+03/02/2026, 6:39 pm - Meghna: Same here
+03/02/2026, 6:40 pm - Priya: Ok let's see then
+03/02/2026, 8:05 pm - Kavya: https://example.com/post/9486 look at this 🙏
+03/02/2026, 8:09 pm - Rohan: Haha this is so true
+03/02/2026, 8:14 pm - Divya: Sending to the other group
+03/02/2026, 8:39 pm - Divya: What time is the committee call tonight?
+03/02/2026, 8:43 pm - Arun: 9 pm as usual
+03/02/2026, 8:49 pm - Karthik: Seri, bus la irukken so I will be on mute
+03/02/2026, 9:19 pm - Arun: Is anyone going to the library?
+03/02/2026, 9:19 pm - Divya: I am, need anything?
+03/02/2026, 9:26 pm - Arun: Return this book for me please
+03/02/2026, 9:31 pm - Divya: Ok bring it to class
+04/02/2026, 11:02 am - Divya: Exam timetable is out, ugh
+04/02/2026, 11:06 am - Rohan: Which day is the first paper?
+04/02/2026, 11:09 am - Divya: Monday
+04/02/2026, 11:12 am - Divya: My laptop is acting up again, Arduino IDE keeps crashing
+04/02/2026, 11:14 am - Kavya: Nobody has studied anything yet
+04/02/2026, 11:17 am - Meghna: Try reinstalling the board package
+04/02/2026, 11:23 am - Karthik: Or use the lab PCs
+04/02/2026, 11:29 am - Divya: Will try that
+04/02/2026, 12:30 pm - Priya: This message was deleted
+04/02/2026, 12:34 pm - Karthik: Check your wiring first, mine was a loose jumper wire.
+04/02/2026, 12:40 pm - Meghna: Also try a different power supply
+04/02/2026, 12:43 pm - Priya: That fixed it, thanks! 👌
+04/02/2026, 12:48 pm - Priya: Enna da ippo network la problem ah?
+04/02/2026, 12:51 pm - Rohan: Illa illa, hostel wifi dhaan slow
+04/02/2026, 12:52 pm - Divya: Konjam wait pannu, maybe it will come back 👍
+04/02/2026, 1:00 pm - Kavya: <Media omitted>
+04/02/2026, 1:01 pm - Kavya: Posters are up on all notice boards
+04/02/2026, 9:21 pm - Karthik: <Media omitted>
+04/02/2026, 9:24 pm - Arun: Nice one 👌
+04/02/2026, 9:30 pm - Meghna: Looks great 🔥
+04/02/2026, 9:50 pm - Meghna: Who has the key to the club cupboard?
+04/02/2026, 9:53 pm - Kavya: With Divya I think
+04/02/2026, 9:54 pm - Divya: Yes, I left it at the department office
+04/02/2026, 9:55 pm - Meghna: Ok will collect from there
+05/02/2026, 2:43 pm - Rohan: https://example.com/post/7873 look at this
+05/02/2026, 2:47 pm - Kavya: Haha this is so true
+05/02/2026, 2:50 pm - Priya: Sending to the other group
+05/02/2026, 4:30 pm - Rohan: I will set up the WiFi router for the fest hall before 6 Feb morning.
+05/02/2026, 5:43 pm - Rohan: <Media omitted>
+05/02/2026, 5:44 pm - Rohan: Look at what the first years built
+05/02/2026, 5:46 pm - Karthik: That's actually impressive
+05/02/2026, 7:59 pm - Kavya: Machan canteen la samosa over da
+05/02/2026, 8:05 pm - Karthik: Appo naalaiku early ah poganum
+05/02/2026, 8:11 pm - Rohan: Naalaiku Friday la, queue romba irukkum 👌
+05/02/2026, 9:13 pm - Divya: Anyone free on Wednesday?
+05/02/2026, 9:18 pm - Arun: Free after 11
+05/02/2026, 9:21 pm - Priya: Same here
+05/02/2026, 9:23 pm - Divya: Ok let's see then
+06/02/2026, 7:23 am - Priya: Good morning everyone
+06/02/2026, 7:27 am - Arun: Morning!
+06/02/2026, 7:33 am - Divya: Morning da
+06/02/2026, 8:34 am - Arun: What time is the committee call tonight?
+06/02/2026, 8:40 am - Karthik: 9 pm as usual
+06/02/2026, 8:46 am - Kavya: Seri, bus la irukken so I will be on mute
+06/02/2026, 9:03 am - Rohan: Power cut in the lab block, class shifted
+06/02/2026, 9:10 am - Kavya: Where are we meeting now?
+06/02/2026, 9:15 am - Rohan: Room 204
+06/02/2026, 9:16 am - Karthik: On the way
+06/02/2026, 12:52 pm - Arun: Has anyone used the HC-SR04 with the ESP32? Getting weird readings.
+06/02/2026, 12:53 pm - Divya: Check your wiring first, mine was a loose jumper wire.
+06/02/2026, 12:58 pm - Priya: Also try a different power supply
+06/02/2026, 1:02 pm - Arun: That fixed it, thanks! 🔥
+06/02/2026, 2:28 pm - Divya: Lab record submission is tomorrow, right?
+06/02/2026, 2:33 pm - Priya: Yes, Friay last hour
+06/02/2026, 2:37 pm - Kavya: Nooo I haven't even started
+06/02/2026, 2:54 pm - Rohan: The projector in the seminar hall is not working again
+06/02/2026, 2:59 pm - Meghna: Report it to the dept office
+06/02/2026, 3:04 pm - Divya: Already reported twice
+06/02/2026, 9:07 pm - Priya: Birthday today! 🎂
+06/02/2026, 9:09 pm - Divya: Happy birthday!!
+06/02/2026, 9:12 pm - Karthik: Treat venum da
+07/02/2026, 7:43 am - Divya: Good morning everyone 🔥
+07/02/2026, 7:47 am - Meghna: Morning!
+07/02/2026, 7:47 am - Arun: Morning da
+07/02/2026, 10:54 am - Rohan: Lab record submission is tomorrow, right?
+07/02/2026, 11:00 am - Arun: Yes, Saturday last hour
+07/02/2026, 11:05 am - Priya: Nooo I haven't even started 😂
+07/02/2026, 12:48 pm - Rohan: <Media omitted>
+07/02/2026, 12:51 pm - Rohan: Look at what the first years built
+07/02/2026, 12:58 pm - Kavya: That's actually impressive 🔥
+07/02/2026, 6:45 pm - Priya: Went to the fest hall today, the WiFi is still not working.
+07/02/2026, 6:50 pm - Rohan: Hmm, I thought the router was fine. Will look at it again.
+08/02/2026, 1:23 pm - Karthik: Has anyone used the Raspberry Pi Pico with the LoRa module? Getting weird readings.
+08/02/2026, 1:27 pm - Kavya: Check your wiring first, mine was a loose jumper wire.
+08/02/2026, 1:31 pm - Divya: Also try a different power supply
+08/02/2026, 1:34 pm - Karthik: That fixed it, thanks! 😅
+08/02/2026, 1:50 pm - Karthik: Who has the key to the club cupboard?
+08/02/2026, 1:54 pm - Rohan: With Diyva I think
+08/02/2026, 1:56 pm - Kavya: Yes, I left it at the department office
+08/02/2026, 2:01 pm - Karthik: Ok will collect from there
+08/02/2026, 8:40 pm - Karthik: The projector in the seminar hall is not working again
+08/02/2026, 8:45 pm - Meghna: Report it to the dept office
+08/02/2026, 8:48 pm - Rohan: Already reported twice
+08/02/2026, 9:54 pm - Meghna: Power cut in the lab block, class shifted
+08/02/2026, 9:56 pm - Kavya: Whree are we meeting now?
+08/02/2026, 9:59 pm - Meghna: Room 204
+08/02/2026, 10:01 pm - Arun: On the way
+09/02/2026, 8:48 am - Kavya: Has anyone used the servo motor with the LoRa module? Getting weird readings.
+09/02/2026, 8:53 am - Karthik: Check your wiring first, mine was a loose jumper wire.
+09/02/2026, 8:55 am - Priya: Also try a different power supply
+09/02/2026, 8:59 am - Kavya: That fixed it, thanks!
+09/02/2026, 12:32 pm - Arun: Exam timetable is out, ugh 😂
+09/02/2026, 12:34 pm - Karthik: Which day is the first paper?
+09/02/2026, 12:36 pm - Arun: Monday
+09/02/2026, 12:39 pm - Kavya: Nobody has studied anything yet
+09/02/2026, 1:19 pm - Kavya: Which soil moisture sensor library did we use last time?
+09/02/2026, 1:24 pm - Arun: No idea, check the old project folder
+09/02/2026, 1:31 pm - Karthik: It is in the shared drive under projects
+09/02/2026, 2:58 pm - Priya: Is the lab open today?
+09/02/2026, 2:59 pm - Kavya: Bala sir said it is open till 5
+09/02/2026, 3:01 pm - Priya: Thanks!
+09/02/2026, 10:05 pm - Kavya: The projector in the seminar hall is not working again
+09/02/2026, 10:08 pm - Meghna: Report it to the dept office
+09/02/2026, 10:09 pm - Divya: Already reported twice 😂
+09/02/2026, 10:40 pm - Kavya: https://example.com/post/5835 look at this
+09/02/2026, 10:45 pm - Rohan: Haha this is so true
+09/02/2026, 10:46 pm - Karthik: Sending to the other group
+10/02/2026, 8:12 am - Kavya: What time is the committee call tonight?
+10/02/2026, 8:15 am - Arun: 9 pm as usual
+10/02/2026, 8:21 am - Meghna: Seri, bus la irukken so I will be on mute
+10/02/2026, 11:28 am - Arun: Is the lab open today?
+10/02/2026, 11:35 am - Divya: Bala sir said it is open till 5
+10/02/2026, 11:36 am - Arun: Thanks!
+10/02/2026, 2:20 pm - Meghna: Anyone free on Thursday?
+10/02/2026, 2:22 pm - Karthik: Free after 11
+10/02/2026, 2:26 pm - Divya: Same here
+10/02/2026, 2:31 pm - Meghna: Ok let's see then
+10/02/2026, 2:35 pm - Arun: Birthday today! 🎂
+10/02/2026, 2:41 pm - Divya: Happy birthday!!
+10/02/2026, 2:43 pm - Rohan: Treat venum da
+10/02/2026, 6:00 pm - Priya: Brightwave confirmed ₹15,000 sponsorship!
+10/02/2026, 6:43 pm - Divya: <Media omitted>
+10/02/2026, 6:49 pm - Divya: Look at what the first years built
+10/02/2026, 6:54 pm - Priya: That's actually impressive 🙏
+10/02/2026, 10:55 pm - Priya: Machan catneen la samosa over da
+10/02/2026, 11:00 pm - Rohan: Appo naalaiku early ah poganum
+10/02/2026, 11:02 pm - Karthik: Naalaiku Friday la, queue romba irukkum 🙏
+11/02/2026, 9:15 am - Meghna: Has anyone used the Raspberry Pi Pico with the OLED display? Getting weird readings.
+11/02/2026, 9:21 am - Divya: Check your wiring first, mine was a loose jumper wire.
+11/02/2026, 9:23 am - Arun: Also try a different power supply
+11/02/2026, 9:28 am - Meghna: That fixed it, thanks!
+11/02/2026, 8:32 pm - Arun: Enna da ippo network la problem ah?
+11/02/2026, 8:33 pm - Priya: Illa illa, hostel wifi dhaan slow
+11/02/2026, 8:34 pm - Divya: Konjam wait pannu, maybe it will come back 😂
+11/02/2026, 8:48 pm - Arun: Anyone free on Monday?
+11/02/2026, 8:54 pm - Karthik: Free after 11
+11/02/2026, 9:00 pm - Kavya: Same here
+11/02/2026, 9:07 pm - Arun: Ok let's see then
+11/02/2026, 9:11 pm - Karthik: What time is the committee call tonight?
+11/02/2026, 9:12 pm - Divya: 9 pm as usual
+11/02/2026, 9:17 pm - Priya: Seri, bus la irukken so I will be on mute
+11/02/2026, 10:09 pm - Rohan: My laptop is acting up again, Arduino IDE keeps crashing
+11/02/2026, 10:13 pm - Arun: Try reinstalling the board package
+11/02/2026, 10:16 pm - Kavya: Or use the lab PCs
+11/02/2026, 10:21 pm - Rohan: Will try that
+12/02/2026, 12:15 pm - Kavya: The projector in the seminar hall is not working again
+12/02/2026, 12:16 pm - Karthik: Report it to the dept office
+12/02/2026, 12:18 pm - Priya: Already reported twice 🔥
+12/02/2026, 6:05 pm - Divya: https://example.com/post/6621 look at this
+12/02/2026, 6:07 pm - Rohan: Haha this is so true
+12/02/2026, 6:13 pm - Kavya: Sending to the other group
+12/02/2026, 7:59 pm - Arun: Is anyone going to the library?
+12/02/2026, 8:03 pm - Divya: I am, need anything?
+12/02/2026, 8:09 pm - Arun: Return this book for me please
+12/02/2026, 8:11 pm - Divya: Ok bring it to class
+12/02/2026, 11:02 pm - Kavya: <Media omitted>
+12/02/2026, 11:05 pm - Kavya: Look at what the first years built
+12/02/2026, 11:11 pm - Rohan: That's actually ipmressive
+12/02/2026, 11:21 pm - Meghna: My laptop is acting up again, Arduino IDE keeps crashing
+12/02/2026, 11:24 pm - Karthik: Try reinstalling the board package
+12/02/2026, 11:27 pm - Kavya: Or use the lab PCs
+12/02/2026, 11:30 pm - Meghna: Will try that
+13/02/2026, 9:38 am - Rohan: Who has the key to the club cupboard?
+13/02/2026, 9:43 am - Divya: With Divya I think
+13/02/2026, 9:45 am - Priya: This message was deleted
+13/02/2026, 9:52 am - Rohan: Ok will collect from there
+13/02/2026, 10:24 am - Arun: Anyone free on Thursday?
+13/02/2026, 10:27 am - Priya: Free after 11
+13/02/2026, 10:33 am - Kavya: Same here
+13/02/2026, 10:39 am - Arun: Ok let's see then
+13/02/2026, 10:53 am - Divya: Which Raspberry Pi Pico library did we use last time?
+13/02/2026, 10:57 am - Karthik: No idea, check the old project folder
+13/02/2026, 11:03 am - Rohan: It is in the shared drive under projects
+13/02/2026, 6:12 pm - Arun: Birthday today! 🎂
+13/02/2026, 6:14 pm - Meghna: Happy birthday!!
+13/02/2026, 6:17 pm - Karthik: Treat venum da
+13/02/2026, 10:28 pm - Karthik: The projector in the seminar hall is not working again
+13/02/2026, 10:30 pm - Meghna: Report it to the dept office
+13/02/2026, 10:34 pm - Priya: Anyone up for lunch at the canteen?
+13/02/2026, 10:37 pm - Arun: Already reported twice 🔥
+13/02/2026, 10:40 pm - Divya: Give me 10 mins
+13/02/2026, 10:46 pm - Karthik: Count me in 😂
+13/02/2026, 10:49 pm - Priya: Ok at 1
+14/02/2026, 8:30 am - Priya: Fest day! Everyone reach the auditorium by 9.
+14/02/2026, 12:23 pm - Arun: Does anyone have the datasheet for the NodeMCU?
+14/02/2026, 12:24 pm - Karthik: https://example.com/datasheet/5352
+14/02/2026, 12:30 pm - Arun: Perfect, thanks
+14/02/2026, 6:35 pm - Karthik: Who has the key to the club cupboard?
+14/02/2026, 6:39 pm - Priya: With Divya I think
+14/02/2026, 6:41 pm - Karthik: <Media omitted>
+14/02/2026, 6:41 pm - Arun: Yes, I left it at the department office
+14/02/2026, 6:44 pm - Kavya: Nice one 👌
+14/02/2026, 6:46 pm - Karthik: This message was deleted
+14/02/2026, 6:51 pm - Meghna: Looks great 😂
+14/02/2026, 7:25 pm - Karthik: Power cut in the lab block, class shifted
+14/02/2026, 7:26 pm - Priya: Where are we meeting now?
+14/02/2026, 7:28 pm - Karthik: Room 204
+14/02/2026, 7:31 pm - Kavya: On the way
+14/02/2026, 7:40 pm - Priya: That was brilliant. 180 people came, thank you all 🎉
+14/02/2026, 9:32 pm - Rohan: Anyone up for lunch at the canteen?
+14/02/2026, 9:35 pm - Kavya: Give me 10 mins
+14/02/2026, 9:37 pm - Meghna: Count me in 😅
+14/02/2026, 9:43 pm - Rohan: Ok at 1
+15/02/2026, 5:56 pm - Karthik: Power cut in the lab block, class shifted
+15/02/2026, 6:02 pm - Divya: Where are we meeting now?
+15/02/2026, 6:09 pm - Karthik: Room 204
+15/02/2026, 6:10 pm - Priya: On the way
+15/02/2026, 11:19 pm - Arun: Is the lab open today?
+15/02/2026, 11:21 pm - Kavya: Bala sir said it is open till 5
+15/02/2026, 11:26 pm - Arun: Thanks!
+16/02/2026, 8:25 am - Karthik: My laptop is acting up again, Arduino IDE keeps crashing
+16/02/2026, 8:28 am - Kavya: Try reinstalling the board package
+16/02/2026, 8:32 am - Arun: Or use the lab PCs
+16/02/2026, 8:36 am - Karthik: Will try that
+16/02/2026, 12:18 pm - Arun: Which soil moisture sensor library did we use last time?
+16/02/2026, 12:24 pm - Meghna: No idea, check the old project folder
+16/02/2026, 12:29 pm - Kavya: It is in the shared drive under projects
+16/02/2026, 12:37 pm - Meghna: Enna da ippo network la problem ah?
+16/02/2026, 12:44 pm - Rohan: Illa illa, hostel wifi dhaan slow
+16/02/2026, 12:49 pm - Priya: Konjam wait pannu, maybe it will come back 🙏
+16/02/2026, 8:24 pm - Karthik: This message was deleted
+16/02/2026, 8:30 pm - Kavya: Check your wiring first, mine was a loose jumper wire.
+16/02/2026, 8:34 pm - Priya: Also try a different power supply
+16/02/2026, 8:36 pm - Karthik: That fixed it, thanks! 👍
+17/02/2026, 9:03 am - Rohan: <Media omitted>
+17/02/2026, 9:06 am - Rohan: Look at what the first years built
+17/02/2026, 9:08 am - Priya: That's actually impressive 👍
+17/02/2026, 12:36 pm - Meghna: Power cut in the lab block, class shifted
+17/02/2026, 12:42 pm - Divya: Where are we meeting now?
+17/02/2026, 12:47 pm - Meghna: Room 204
+17/02/2026, 12:48 pm - Arun: On the way
+17/02/2026, 12:51 pm - Karthik: Exam timetable is out, ugh
+17/02/2026, 12:54 pm - Priya: Which day is the first paper?
+17/02/2026, 12:59 pm - Karthik: Monday
+17/02/2026, 1:00 pm - Divya: Nobody has studied anything yet
+18/02/2026, 12:57 pm - Karthik: Who has the key to the club cupboard?
+18/02/2026, 12:58 pm - Priya: With Divya I think
+18/02/2026, 1:03 pm - Kavya: Yes, I left it at the deaprtment office
+18/02/2026, 1:09 pm - Karthik: Ok will collect from there
+18/02/2026, 7:50 pm - Divya: Power cut in the lab block, class shifted
+18/02/2026, 7:56 pm - Arun: Where are we meeting now?
+18/02/2026, 8:01 pm - Divya: Room 204
+18/02/2026, 8:06 pm - Priya: On the way
+18/02/2026, 8:36 pm - Meghna: Anyone free on Monday?
+18/02/2026, 8:42 pm - Divya: Free after 11
+18/02/2026, 8:44 pm - Rohan: This message was deleted
+18/02/2026, 8:46 pm - Meghna: Ok let's see then
+19/02/2026, 9:40 am - Arun: Good morning everyone
+19/02/2026, 9:44 am - Meghna: Morning!
+19/02/2026, 9:50 am - Karthik: Morning da
+19/02/2026, 2:16 pm - Karthik: The projector in the seminar hall is not working again
+19/02/2026, 2:17 pm - Meghna: Report it to the dept office
+19/02/2026, 2:21 pm - Rohan: Already reported twice
+19/02/2026, 7:53 pm - Arun: Is the lab open today?
+19/02/2026, 7:53 pm - Meghna: Bala sir said it is open till 5
+19/02/2026, 7:57 pm - Arun: Thanks!
+19/02/2026, 9:26 pm - Meghna: Machan canteen la samosa over da
+19/02/2026, 9:28 pm - Karthik: Appo naalaiku early ah poganum
+19/02/2026, 9:32 pm - Arun: Naalaiku Friday la, queue romba irukkum
+19/02/2026, 9:37 pm - Meghna: Anyone free on Friday?
+19/02/2026, 9:44 pm - Divya: Free after 11
+19/02/2026, 9:47 pm - Priya: Same here
+19/02/2026, 9:52 pm - Meghna: Ok let's see then
+20/02/2026, 7:26 am - Kavya: Good morning everyone 🔥
+20/02/2026, 7:31 am - Rohan: Morning!
+20/02/2026, 7:37 am - Divya: Morning da
+20/02/2026, 9:49 pm - Meghna: Birthday today! 🎂
+20/02/2026, 9:53 pm - Arun: Happy birthday!!
+20/02/2026, 9:58 pm - Rohan: Treat venum da 👌
+20/02/2026, 10:03 pm - Divya: https://example.com/post/8433 look at this 🙏
+20/02/2026, 10:04 pm - Karthik: Haha this is so true
+20/02/2026, 10:06 pm - Priya: This message was deleted
+20/02/2026, 11:46 pm - Meghna: Has anyone used the Rasberry Pi Pico with the LoRa module? Getting weird readings.
+20/02/2026, 11:52 pm - Priya: Check your wiring first, mine was a loose jumper wire.
+20/02/2026, 11:57 pm - Rohan: Also try a different power supply
+20/02/2026, 11:58 pm - Meghna: That fixed it, thanks!
+21/02/2026, 9:38 am - Priya: <Media omitted>
+21/02/2026, 9:43 am - Priya: Look at what the first years built
+21/02/2026, 9:49 am - Kavya: That's actually impressive
+22/02/2026, 9:52 am - Rohan: My laptop is acting up again, Arduino IDE keeps crashing
+22/02/2026, 9:56 am - Arun: Try reinstalling the board package
+22/02/2026, 9:59 am - Meghna: Or use the lab PCs
+22/02/2026, 10:01 am - Rohan: Will try that
+23/02/2026, 8:18 am - Karthik: Birthday today! 🎂
+23/02/2026, 8:24 am - Rohan: Happy birthday!!
+23/02/2026, 8:27 am - Meghna: Treat venum da 🔥
+23/02/2026, 9:21 am - Divya: Lab record sbmission is tomorrow, right?
+23/02/2026, 9:27 am - Arun: Yes, Tuesday last hour
+23/02/2026, 9:28 am - Rohan: Nooo I haven't even started
+23/02/2026, 5:43 pm - Karthik: Which NodeMCU library did we use last time?
+23/02/2026, 5:47 pm - Divya: No idea, check the old project folder
+23/02/2026, 5:50 pm - Kavya: It is in the shared drive under projects
+23/02/2026, 7:10 pm - Rohan: I'll return the borrowed ESP32 boards to Bala sir by Friday.
+24/02/2026, 3:25 pm - Arun: Birthday today! 🎂
+24/02/2026, 3:30 pm - Meghna: Happy birthday!!
+24/02/2026, 3:36 pm - Rohan: Treat venum da 👍
+24/02/2026, 9:50 pm - Rohan: Which relay board library did we use last time?
+24/02/2026, 9:53 pm - Karthik: No idea, check the old project folder
+24/02/2026, 9:55 pm - Meghna: It is in the shared drive under projects
+25/02/2026, 6:20 pm - Rohan: <Media omitted>
+25/02/2026, 6:26 pm - Arun: Nice one 👌
+25/02/2026, 6:29 pm - Kavya: Looks great 😂
+26/02/2026, 9:03 am - Kavya: Power cut in the lab block, clss shifted
+26/02/2026, 9:07 am - Priya: Where are we meeting now?
+26/02/2026, 9:10 am - Kavya: Room 204
+26/02/2026, 9:15 am - Divya: On the way
+26/02/2026, 5:15 pm - Kavya: Who has the key to the club cupboard?
+26/02/2026, 5:22 pm - Rohan: With Divya I think
+26/02/2026, 5:28 pm - Divya: Yes, I left it at the department office
+26/02/2026, 5:29 pm - Kavya: Ok will collect from there
+26/02/2026, 6:26 pm - Priya: <Media omitted>
+26/02/2026, 6:31 pm - Priya: Look at what the first years built
+26/02/2026, 6:35 pm - Divya: That's actually impressive
+26/02/2026, 10:19 pm - Priya: Is anyone going to the library?
+26/02/2026, 10:25 pm - Meghna: I am, need anything?
+26/02/2026, 10:31 pm - Priya: Return this book for me please
+26/02/2026, 10:31 pm - Meghna: Ok bring it to class
+27/02/2026, 8:13 am - Divya: Good morning everyone
+27/02/2026, 8:16 am - Priya: Morning!
+27/02/2026, 8:21 am - Arun: Morning da
+27/02/2026, 9:54 am - Arun: Exam timetable is out, ugh 🔥
+27/02/2026, 9:55 am - Divya: Which day is the first paper?
+27/02/2026, 9:59 am - Arun: Monday
+27/02/2026, 10:02 am - Rohan: Nobody has studied anything yet
+27/02/2026, 5:20 pm - Rohan: <Media omitted>
+27/02/2026, 5:21 pm - Rohan: Returned all 8 boards, Bala sir signed the register
+27/02/2026, 6:34 pm - Rohan: Power cut in the lab block, class shifted
+27/02/2026, 6:35 pm - Meghna: Where are we meeting now?
+27/02/2026, 6:39 pm - Rohan: Room 204
+27/02/2026, 6:41 pm - Priya: On the way
+28/02/2026, 5:07 pm - Meghna: <Media omitted>
+28/02/2026, 5:09 pm - Karthik: Nice one 👌
+28/02/2026, 5:13 pm - Arun: Looks great 😅
+28/02/2026, 9:53 pm - Meghna: My laptop is acting up again, Arduino IDE keeps crashing
+28/02/2026, 9:57 pm - Kavya: Try reinstalling the board package
+28/02/2026, 10:01 pm - Arun: Or use the lab PCs
+28/02/2026, 10:07 pm - Meghna: Will try that
+01/03/2026, 4:40 pm - Divya: Is the lab open today?
+01/03/2026, 4:41 pm - Karthik: Bala sir said it is open till 5
+01/03/2026, 4:41 pm - Divya: Thanks!
+01/03/2026, 9:30 pm - Divya: Anyone free on Wednesday?
+01/03/2026, 9:32 pm - Priya: Free after 11
+01/03/2026, 9:38 pm - Meghna: Same here
+01/03/2026, 9:40 pm - Divya: Ok let's see then
+02/03/2026, 8:09 am - Arun: Birthday today! 🎂
+02/03/2026, 8:12 am - Rohan: Happy birthday!!
+02/03/2026, 8:13 am - Karthik: Treat venum da 👌
+02/03/2026, 10:52 am - Divya: My laptop is acting up again, Arduino IDE keeps crashing
+02/03/2026, 10:54 am - Arun: Try reinstalling the board package
+02/03/2026, 10:56 am - Meghna: Or use the lab PCs
+02/03/2026, 11:01 am - Divya: Will try that
+02/03/2026, 11:12 am - Karthik: Machan canteen la samosa over da
+02/03/2026, 11:14 am - Rohan: Appo naalaiku early ah poganum
+02/03/2026, 11:17 am - Arun: Naalaiku Friday la, queue romba irukkum 👌
+02/03/2026, 7:42 pm - Arun: Sure da, we will send the participation certificates to all workshop speakers by 15 March.
+02/03/2026, 10:12 pm - Arun: <Media omitted>
+02/03/2026, 10:17 pm - Arun: Look at what the first years built
+02/03/2026, 10:20 pm - Rohan: That's actually ipmressive 👌
+02/03/2026, 10:25 pm - Karthik: What time is the committee call tonight?
+02/03/2026, 10:26 pm - Divya: 9 pm as usual
+02/03/2026, 10:32 pm - Kavya: Seri, bus la irukken so I will be on mute
+03/03/2026, 5:11 pm - Meghna: Exam tmietable is out, ugh 🔥
+03/03/2026, 5:14 pm - Kavya: Which day is the first paper?
+03/03/2026, 5:16 pm - Meghna: Monday
+03/03/2026, 5:22 pm - Divya: Nobody has studied anything yet
+03/03/2026, 8:55 pm - Divya: Anynoe free on Wednesday?
+03/03/2026, 8:58 pm - Arun: Free after 11
+03/03/2026, 8:59 pm - Rohan: Same here
+03/03/2026, 9:05 pm - Divya: Ok let's see then
+03/03/2026, 9:18 pm - Meghna: Power cut in the lab block, class shifted
+03/03/2026, 9:22 pm - Priya: Whre are we meeting now?
+03/03/2026, 9:26 pm - Meghna: Room 204
+03/03/2026, 9:27 pm - Karthik: On the way
+03/03/2026, 10:05 pm - Meghna: Is anyone going to the library?
+03/03/2026, 10:07 pm - Divya: I am, need anything?
+03/03/2026, 10:09 pm - Meghna: Return this book for me please
+03/03/2026, 10:13 pm - Divya: Ok bring it to class
+04/03/2026, 9:05 pm - Arun: Is anyone going to the library?
+04/03/2026, 9:09 pm - Priya: I am, need anything?
+04/03/2026, 9:14 pm - Arun: Return this book for me please
+04/03/2026, 9:16 pm - Priya: Ok bring it to class
+04/03/2026, 9:25 pm - Arun: <Media omitted>
+04/03/2026, 9:26 pm - Arun: Look at what the first years built
+04/03/2026, 9:30 pm - Kavya: That's actually impressive 👌
+04/03/2026, 10:26 pm - Rohan: Lab record submission is tomorrow, right?
+04/03/2026, 10:30 pm - Karthik: Yes, Thursday last hour
+04/03/2026, 10:37 pm - Divya: Nooo I haven't even started 👌
+05/03/2026, 8:20 pm - Divya: Mr. Ganesan's travel claim is ₹2,400. I will reimburse him once he submits the bills.
+06/03/2026, 12:00 am - Meghna: Who has the key to the club cupboard?
+06/03/2026, 12:05 am - Karthik: With Divya I think
+06/03/2026, 12:12 am - Priya: Yes, I left it at the department office
+06/03/2026, 12:15 am - Meghna: Ok will collect from there
+06/03/2026, 9:27 am - Divya: Which soil moisture sensor library did we use last time?
+06/03/2026, 9:30 am - Meghna: No idea, check the old project folder
+06/03/2026, 9:33 am - Rohan: It is in the shared drive under projects
+06/03/2026, 10:12 am - Meghna: Machan canteen la saomsa over da
+06/03/2026, 10:16 am - Priya: Appo naalaiku early ah poganum
+06/03/2026, 10:19 am - Arun: Naalaiku Friday la, queue romba irukkum 😂
+06/03/2026, 2:43 pm - Karthik: <Media omitted>
+06/03/2026, 2:47 pm - Karthik: Look at what the first years built
+06/03/2026, 2:51 pm - Divya: That's actually impressive
+06/03/2026, 6:06 pm - Priya: <Media omitted>
+06/03/2026, 6:10 pm - Arun: Nice one 👌
+06/03/2026, 6:14 pm - Meghna: Looks great 🔥
+07/03/2026, 11:03 am - Priya: Enna da ippo network la problem ah?
+07/03/2026, 11:09 am - Divya: Illa illa, hostel wifi dhaan slow
+07/03/2026, 11:09 am - Kavya: Konjam wait pannu, maybe it will come back 🔥
+07/03/2026, 9:56 pm - Meghna: Exam timetable is out, ugh 😅
+07/03/2026, 10:01 pm - Priya: Which day is the first paper?
+07/03/2026, 10:02 pm - Meghna: Monday
+07/03/2026, 10:03 pm - Rohan: Nobody has studied anything yet
+07/03/2026, 11:47 pm - Divya: Has anyone used the OLED display with the HC-SR04? Getting weird readings.
+07/03/2026, 11:52 pm - Priya: Check your wiring first, mine was a loose jumper wire.
+07/03/2026, 11:54 pm - Meghna: Also try a different power supply
+07/03/2026, 11:57 pm - Divya: That fixed it, thanks! 👍
+08/03/2026, 10:28 am - Meghna: Which soil moisture sensor library did we use last time?
+08/03/2026, 10:33 am - Priya: No idea, check the old project folder
+08/03/2026, 10:36 am - Karthik: It is in the shared drive under projects
+08/03/2026, 7:14 pm - Divya: Anyone free on Tuesday?
+08/03/2026, 7:18 pm - Rohan: Free after 11
+08/03/2026, 7:22 pm - Arun: Same here
+08/03/2026, 7:26 pm - Divya: Ok let's see then
+09/03/2026, 6:18 pm - Kavya: Anyone up for lunch at the canteen?
+09/03/2026, 6:19 pm - Meghna: Give me 10 mins
+09/03/2026, 6:24 pm - Priya: Count me in 👍
+09/03/2026, 6:27 pm - Kavya: Ok at 1
+09/03/2026, 7:12 pm - Kavya changed this group's icon
+09/03/2026, 8:52 pm - Divya: Lab record submission is tomorrow, right?
+09/03/2026, 8:53 pm - Meghna: Yes, Monday last hour
+09/03/2026, 8:58 pm - Priya: Nooo I haven't even started
+10/03/2026, 12:43 pm - Priya: Enna da ippo network la problem ah?
+10/03/2026, 12:50 pm - Meghna: Illa illa, hostel wifi dhaan slow
+10/03/2026, 12:53 pm - Kavya: Konjam wait pannu, maybe it will come back 😅
+10/03/2026, 7:12 pm - Divya: Anynoe free on Tuesday?
+10/03/2026, 7:13 pm - Kavya: Free after 11
+10/03/2026, 7:16 pm - Arun: Same here
+10/03/2026, 7:17 pm - Divya: Ok let's see then
+10/03/2026, 8:05 pm - Meghna: Is the lab open today?
+10/03/2026, 8:07 pm - Divya: Bala sir said it is open till 5
+10/03/2026, 8:09 pm - Meghna: Thanks!
+11/03/2026, 10:14 am - Rohan: Is anyone going to the library?
+11/03/2026, 10:20 am - Priya: I am, need anything?
+11/03/2026, 10:22 am - Rohan: Return this book for me please
+11/03/2026, 10:25 am - Priya: Ok bring it to class
+11/03/2026, 7:00 pm - Meghna: Machan canteen la samosa over da
+11/03/2026, 7:01 pm - Divya: Appo naalaiku early ah poganum
+11/03/2026, 7:07 pm - Arun: Naalaiku Friday la, queue romba irukkum 😂
+11/03/2026, 9:40 pm - Rohan: Enna da ippo network la problem ah?
+11/03/2026, 9:46 pm - Meghna: Illa illa, hostel wifi dhaan slow
+11/03/2026, 9:48 pm - Arun: Konjam wait pannu, maybe it will come back 😂
+12/03/2026, 8:11 am - Priya: Does anyone have the datasheet for the Arduino Nano?
+12/03/2026, 8:12 am - Meghna: https://example.com/datasheet/7022
+12/03/2026, 8:13 am - Priya: Perfect, thanks
+12/03/2026, 7:27 pm - Kavya: Who has the key to the club cupboard?
+12/03/2026, 7:28 pm - Meghna: With Divya I think
+12/03/2026, 7:31 pm - Divya: Yes, I left it at the department office
+12/03/2026, 7:35 pm - Kavya: Ok will collect from there
+12/03/2026, 10:40 pm - Rohan: <Media omitted>
+12/03/2026, 10:45 pm - Rohan: Look at what the first years built
+12/03/2026, 10:47 pm - Meghna: That's actually impressive 😂
+12/03/2026, 11:40 pm - Priya: Machan canteen la samosa over da
+12/03/2026, 11:47 pm - Meghna: Appo naalaiku early ah poganum
+12/03/2026, 11:47 pm - Karthik: Naalaiku Friday la, queue romba irukkum 🙏
+13/03/2026, 12:29 pm - Divya: Machan canteen la samosa over da
+13/03/2026, 12:29 pm - Arun: Appo naalaiku early ah poganum
+13/03/2026, 12:35 pm - Rohan: Naalaiku Friday la, queue romba irukkum
+13/03/2026, 3:27 pm - Karthik: My laptop is acting up again, Arduino IDE keeps crashing
+13/03/2026, 3:31 pm - Priya: Try reinstalling the board package
+13/03/2026, 3:31 pm - Arun: Or use the lab PCs
+13/03/2026, 3:33 pm - Karthik: Will try that
+13/03/2026, 4:17 pm - Divya: <Media omitted>
+13/03/2026, 4:23 pm - Rohan: Nice one 👌
+13/03/2026, 4:23 pm - Arun: Looks great
+13/03/2026, 6:23 pm - Divya: What time is the committee call tonight?
+13/03/2026, 6:27 pm - Arun: 9 pm as usual
+13/03/2026, 6:33 pm - Karthik: Seri, bus la irukken so I will be on mute
+15/03/2026, 11:49 am - Arun: https://example.com/post/4436 look at this 🙏
+15/03/2026, 11:54 am - Karthik: Haha this is so true
+15/03/2026, 11:56 am - Kavya: Sending to the other group
+15/03/2026, 5:01 pm - Meghna: What time is the committee call tonight?
+15/03/2026, 5:06 pm - Divya: 9 pm as usual
+15/03/2026, 5:11 pm - Rohan: Seri, bus la irukken so I will be on mute
+16/03/2026, 9:30 am - Arun: Done, moved the certificates card to Done on Trello.
+16/03/2026, 9:57 am - Divya: Is anyone going to the library?
+16/03/2026, 9:59 am - Rohan: Power cut in the lab block, class shifted
+16/03/2026, 10:02 am - Karthik: I am, need anything?
+16/03/2026, 10:03 am - Divya: Return this book for me please
+16/03/2026, 10:04 am - Arun: Where are we meeting now?
+16/03/2026, 10:07 am - Karthik: Ok bring it to class
+16/03/2026, 10:08 am - Rohan: Room 204
+16/03/2026, 10:10 am - Divya: On the way
+17/03/2026, 12:02 pm - Kavya: Does anyone have the datasheet for the HC-SR04?
+17/03/2026, 12:04 pm - Rohan: https://example.com/datasheet/6655
+17/03/2026, 12:07 pm - Kavya: Perfect, thanks
+17/03/2026, 1:29 pm - Divya: Anyone free on Tuesday?
+17/03/2026, 1:33 pm - Rohan: Free after 11
+17/03/2026, 1:35 pm - Kavya: Same here
+17/03/2026, 1:39 pm - Divya: Ok let's see then
+17/03/2026, 3:54 pm - Priya: What time is the committee call tonight?
+17/03/2026, 3:56 pm - Meghna: 9 pm as usual
+17/03/2026, 3:59 pm - Divya: Seri, bus la irukken so I will be on mute
+18/03/2026, 2:57 pm - Priya: Is anyone going to the library?
+18/03/2026, 2:58 pm - Divya: I am, need anything?
+18/03/2026, 3:04 pm - Priya: Return this book for me please
+18/03/2026, 3:10 pm - Divya: Ok bring it to clsas
+18/03/2026, 8:10 pm - Priya: Speakers are still asking for their certificates, nobody has sent them yet.
+18/03/2026, 8:15 pm - Arun: Oh. I thought Kavya had the files, will check.
+18/03/2026, 8:44 pm - Divya: The projector in the seminar hall is not working again
+18/03/2026, 8:48 pm - Arun: Report it to the dept office
+18/03/2026, 8:51 pm - Karthik: Already reported twice 🙏
+18/03/2026, 10:01 pm - Arun: Anyone up for lunch at the canteen?
+18/03/2026, 10:04 pm - Divya: Give me 10 mins
+18/03/2026, 10:05 pm - Karthik: Count me in 😅
+18/03/2026, 10:08 pm - Arun: Ok at 1
+18/03/2026, 10:55 pm - Arun: Power cut in the lab block, class shifted
+18/03/2026, 10:56 pm - Kavya: Where are we meeting now?
+18/03/2026, 10:58 pm - Arun: Room 204
+18/03/2026, 11:03 pm - Meghna: On the way
+19/03/2026, 1:21 pm - Priya: Machan canteen la smaosa over da
+19/03/2026, 1:25 pm - Kavya: Appo naalaiku ealry ah poganum
+19/03/2026, 1:27 pm - Arun: Naalaiku Friday la, queue romba irukkum 😅
+19/03/2026, 8:08 pm - Divya: Does anyone have the datasheet for the ESP32?
+19/03/2026, 8:12 pm - Meghna: https://example.com/datasheet/8796
+19/03/2026, 8:17 pm - Divya: Perfect, thanks
+19/03/2026, 10:24 pm - Kavya: Lab record submission is tomorrow, right?
+19/03/2026, 10:25 pm - Karthik: Yes, Wednesday last hour
+19/03/2026, 10:29 pm - Divya: Nooo I haven't even started
+20/03/2026, 9:26 am - Rohan: Which NodeMCU library did we use last time?
+20/03/2026, 9:32 am - Kavya: No idea, check the old project folder
+20/03/2026, 9:37 am - Karthik: It is in the shared drive under projects
+20/03/2026, 11:24 am - Karthik: Power cut in the lab block, class shifted
+20/03/2026, 11:25 am - Divya: Where are we meeting now?
+20/03/2026, 11:25 am - Karthik: Room 204
+20/03/2026, 11:27 am - Meghna: On the way
+20/03/2026, 12:40 pm - Priya: Exam timetable is out, ugh 🔥
+20/03/2026, 12:42 pm - Rohan: Which day is the first paper?
+20/03/2026, 12:45 pm - Priya: Monday
+20/03/2026, 12:47 pm - Karthik: Nobody has studied anything yet
+20/03/2026, 8:31 pm - Rohan: <Media omitted>
+20/03/2026, 8:36 pm - Rohan: Look at what the first years built
+20/03/2026, 8:40 pm - Priya: That's actually impressive 😂
+21/03/2026, 9:26 am - Kavya: Lab record submission is tomorrow, right?
+21/03/2026, 9:31 am - Karthik: Yes, Tuesday last hour
+21/03/2026, 9:33 am - Divya: Nooo I haven't even started 🙏
+21/03/2026, 9:18 pm - Priya: Has anyone used the soil moisture sensor with the Arduino Nano? Getting weird readings.
+21/03/2026, 9:22 pm - Kavya: Check your wiring first, mine was a loose jumper wire.
+21/03/2026, 9:27 pm - Karthik: Also try a different power supply
+21/03/2026, 9:28 pm - Priya: That fixed it, thanks! 🔥
+22/03/2026, 4:25 pm - Arun: Has anyone used the soil moisture sensor with the ESP32? Getting weird readings.
+22/03/2026, 4:32 pm - Divya: Check your wiring first, mine was a loose jumper wire.
+22/03/2026, 4:33 pm - Kavya: Also try a different power supply
+22/03/2026, 4:35 pm - Arun: That fixed it, thanks! 👍
+23/03/2026, 8:44 am - Divya: Is the lab open today?
+23/03/2026, 8:44 am - Karthik: Bala sir said it is open till 5
+23/03/2026, 8:47 am - Divya: Thanks!
+23/03/2026, 11:02 am - Rohan: Who has the key to the club cupboard?
+23/03/2026, 11:04 am - Arun: With Divya I think
+23/03/2026, 11:06 am - Priya: Yes, I left it at the department office
+23/03/2026, 11:09 am - Rohan: Ok will collect from there
+23/03/2026, 12:02 pm - Arun: Which NodeMCU library did we use last time?
+23/03/2026, 12:09 pm - Divya: No idea, check the old project folder
+23/03/2026, 12:10 pm - Kavya: It is in the shared drive under projects
+24/03/2026, 7:18 pm - Meghna: Which soil moisture sensor library did we use last time?
+24/03/2026, 7:23 pm - Arun: No idea, chck the old project folder
+24/03/2026, 7:29 pm - Divya: It is in the shared drive under projects
+24/03/2026, 8:50 pm - Rohan: Who has the key to the club cupboard?
+24/03/2026, 8:50 pm - Karthik: With Divya I think
+24/03/2026, 8:55 pm - Priya: Yes, I left it at the department office
+24/03/2026, 8:58 pm - Rohan: Ok will collect from there
+24/03/2026, 10:18 pm - Arun: Is the lab open today?
+24/03/2026, 10:23 pm - Meghna: Bala sir said it is open till 5
+24/03/2026, 10:26 pm - Arun: Thanks!
+25/03/2026, 10:37 am - Arun: <Media omitted>
+25/03/2026, 10:37 am - Arun: Look at what the first years built
+25/03/2026, 10:41 am - Karthik: That's actually impressive 🔥
+25/03/2026, 7:53 pm - Meghna: Does anyone have the datasheet for the servo motor?
+25/03/2026, 7:55 pm - Arun: https://example.com/datasheet/7472
+25/03/2026, 7:59 pm - Meghna: Perfect, thanks
+25/03/2026, 9:49 pm - Karthik: Lab record submission is tomorrow, right?
+25/03/2026, 9:52 pm - Priya: Yes, Wednesday last hour
+25/03/2026, 9:54 pm - Divya: Nooo I haven't even stared 😅
+25/03/2026, 10:07 pm - Divya: Anyone up for lunch at the canteen?
+25/03/2026, 10:07 pm - Karthik: Give me 10 mins
+25/03/2026, 10:13 pm - Rohan: Count me in
+25/03/2026, 10:18 pm - Divya: Ok at 1
+26/03/2026, 7:37 pm - Karthik: Lab record submission is tomorrow, right?
+26/03/2026, 7:40 pm - Arun: Yes, Saturday last hour
+26/03/2026, 7:42 pm - Priya: Nooo I haven't even started 🔥
+26/03/2026, 9:22 pm - Rohan: Exam timetable is out, ugh 🔥
+26/03/2026, 9:24 pm - Arun: Which day is the first paper?
+26/03/2026, 9:25 pm - Rohan: Monday
+26/03/2026, 9:26 pm - Karthik: Nobody has studied anything yet
+27/03/2026, 9:52 am - Arun: Anyone up for lunch at the canteen?
+27/03/2026, 9:54 am - Divya: Give me 10 mins
+27/03/2026, 9:56 am - Priya: Count me in 👍
+27/03/2026, 9:58 am - Arun: Ok at 1
+27/03/2026, 12:40 pm - Divya: Bills received from Ganesan sir.
+27/03/2026, 2:24 pm - Meghna: Birthday today! 🎂
+27/03/2026, 2:28 pm - Arun: Happy birthday!!
+27/03/2026, 2:33 pm - Rohan: Treat venum da
+27/03/2026, 3:01 pm - Rohan: My laptop is acting up again, Arduino IDE keeps crashing
+27/03/2026, 3:04 pm - Kavya: Try reinstalling the board package
+27/03/2026, 3:07 pm - Arun: Or use the lab PCs
+27/03/2026, 3:10 pm - Rohan: Will try that
+27/03/2026, 9:44 pm - Meghna: Who has the key to the club cupboard?
+27/03/2026, 9:50 pm - Rohan: With Divya I think
+27/03/2026, 9:53 pm - Kavya: Yes, I left it at the department office
+27/03/2026, 9:58 pm - Meghna: Ok will collect from tere
+28/03/2026, 5:06 pm - Karthik: Exam timetable is out, ugh 👌
+28/03/2026, 5:10 pm - Divya: Which day is the first paper?
+28/03/2026, 5:13 pm - Karthik: Monday
+28/03/2026, 5:15 pm - Priya: Nobody has stuied anything yet
+28/03/2026, 8:23 pm - Priya: Anyone up for lunch at the canteen?
+28/03/2026, 8:25 pm - Arun: Give me 10 mins
+28/03/2026, 8:31 pm - Divya: Count me in 👌
+28/03/2026, 8:35 pm - Priya: Ok at 1
+29/03/2026, 10:23 am - Karthik: The projector in the seminar hall is not working again
+29/03/2026, 10:25 am - Arun: Report it to the dept office
+29/03/2026, 10:28 am - Priya: Already reported twice
+29/03/2026, 9:36 pm - Meghna: https://example.com/post/7195 look at this
+29/03/2026, 9:38 pm - Priya: Haha this is so true
+29/03/2026, 9:44 pm - Rohan: Sending to the other group
+29/03/2026, 10:49 pm - Priya: Which HC-SR04 library did we use last time?
+29/03/2026, 10:54 pm - Kavya: No idea, check the old project folder
+29/03/2026, 10:58 pm - Karthik: It is in the shared drive under projects
+30/03/2026, 9:22 am - Meghna: Power cut in the lab block, class shifted
+30/03/2026, 9:23 am - Karthik: Where are we meeting now?
+30/03/2026, 9:26 am - Meghna: Room 204
+30/03/2026, 9:29 am - Rohan: On the way
+30/03/2026, 5:12 pm - Arun: Exam timetable is out, ugh
+30/03/2026, 5:14 pm - Divya: Which day is the first paper?
+30/03/2026, 5:21 pm - Arun: Monday
+30/03/2026, 5:25 pm - Priya: Nobody has studied anything yet
+30/03/2026, 8:11 pm - Divya: Which Arduino Nano library did we use last time?
+30/03/2026, 8:13 pm - Meghna: This message was deleted
+30/03/2026, 8:14 pm - Arun: It is in the shared drive udner projects
+31/03/2026, 11:30 am - Divya: Lab record subimssion is tomorrow, right?
+31/03/2026, 11:35 am - Meghna: Yes, Tuesday last hour
+31/03/2026, 11:42 am - Priya: Nooo I haven't even started
+31/03/2026, 5:29 pm - Divya: <Media omitted>
+31/03/2026, 5:33 pm - Kavya: Nice one 👌
+31/03/2026, 5:34 pm - Priya: This message was deleted
+31/03/2026, 5:34 pm - Meghna: Machan canteen la samosa over da
+31/03/2026, 5:40 pm - Karthik: Appo naalaiku early ah poganum
+31/03/2026, 5:47 pm - Priya: Naalaiku Friday la, queue romba irukkum
+31/03/2026, 9:27 pm - Priya: The projector in the seminar hall is not working again
+31/03/2026, 9:30 pm - Rohan: Report it to the dept office
+31/03/2026, 9:35 pm - Divya: Already reported twice 👌
+31/03/2026, 10:23 pm - Arun: Is the lab open today?
+31/03/2026, 10:27 pm - Meghna: Bala sir said it is open till 5
+31/03/2026, 10:29 pm - Arun: Thanks!
+01/04/2026, 1:46 pm - Priya: My laptop is acting up again, Arduino IDE keeps crashing
+01/04/2026, 1:50 pm - Meghna: Try reinstalling the board package
+01/04/2026, 1:54 pm - Rohan: Or use the lab PCs
+01/04/2026, 1:57 pm - Priya: Will try that
+01/04/2026, 3:47 pm - Meghna: Does anyone have the datasheet for the MQTT broker?
+01/04/2026, 3:48 pm - Arun: https://example.com/datasheet/7821
+01/04/2026, 3:54 pm - Meghna: Perfect, thanks
+02/04/2026, 12:55 pm - Kavya: Does anyone have the datasheet for the soil moisture sensor?
+02/04/2026, 12:57 pm - Rohan: https://example.com/datasheet/6504
+02/04/2026, 1:02 pm - Kavya: Perfect, thanks
+02/04/2026, 7:37 pm - Arun: Anyone free on Tuesday?
+02/04/2026, 7:41 pm - Rohan: Free after 11
+02/04/2026, 7:41 pm - Meghna: Same here
+02/04/2026, 7:46 pm - Arun: Ok let's see then
+02/04/2026, 8:10 pm - Priya: Is anyone going to the library?
+02/04/2026, 8:13 pm - Divya: I am, need anything?
+02/04/2026, 8:17 pm - Priya: Return this book for me please
+02/04/2026, 8:22 pm - Divya: Ok bring it to class
+02/04/2026, 10:39 pm - Arun: Anyone up for lunch at the canteen?
+02/04/2026, 10:41 pm - Priya: Give me 10 mins
+02/04/2026, 10:42 pm - Karthik: Count me in
+02/04/2026, 10:47 pm - Arun: Ok at 1
+03/04/2026, 10:30 am - Arun: <Media omitted>
+03/04/2026, 10:34 am - Arun: Look at what the first years built
+03/04/2026, 10:38 am - Karthik: That's actually impressive
+03/04/2026, 11:24 pm - Arun: Is the lab open today?
+03/04/2026, 11:26 pm - Meghna: Bala sir said it is open till 5
+03/04/2026, 11:29 pm - Arun: Thanks!
+04/04/2026, 10:11 am - Arun: <Media omitted>
+04/04/2026, 10:14 am - Rohan: Nice one 👌
+04/04/2026, 10:19 am - Divya: Looks great 😂
+04/04/2026, 5:21 pm - Priya: Anyone free on Wednesday?
+04/04/2026, 5:23 pm - Karthik: Free after 11
+04/04/2026, 5:28 pm - Rohan: Same here
+04/04/2026, 5:29 pm - Priya: Ok let's see then
+04/04/2026, 6:54 pm - Priya: Which NodeMCU library did we use last time?
+04/04/2026, 6:56 pm - Arun: No idea, check the old project folder
+04/04/2026, 7:00 pm - Divya: It is in the shared drive under projects
+06/04/2026, 5:52 pm - Rohan: Machan canteen la samosa over da
+06/04/2026, 5:54 pm - Arun: Appo naalaiku early ah poganum
+06/04/2026, 5:54 pm - Kavya: Naalaiku Friday la, queue romba irukkum 😅
+06/04/2026, 8:26 pm - Karthik: Who has the key to the club cupboard?
+06/04/2026, 8:28 pm - Divya: With Divya I think
+06/04/2026, 8:28 pm - Meghna: This message was deleted
+06/04/2026, 8:34 pm - Karthik: Ok will collect from there
+06/04/2026, 11:18 pm - Arun: Lab record submission is tomorrow, right?
+06/04/2026, 11:24 pm - Kavya: Yes, Friday last hour
+06/04/2026, 11:25 pm - Meghna: Nooo I haven't even started 👌
+06/04/2026, 11:37 pm - Kavya: Enna da ippo network la problem ah?
+06/04/2026, 11:38 pm - Meghna: Illa illa, hostel wifi dhaan slow
+06/04/2026, 11:45 pm - Divya: Konjam wait pannu, maybe it will come back 👌
+07/04/2026, 8:00 am - Karthik: Good morning everyone
+07/04/2026, 8:05 am - Priya: Morning!
+07/04/2026, 8:07 am - Divya: Morning da
+07/04/2026, 10:29 am - Arun: Lab record submission is tomorrow, right?
+07/04/2026, 10:34 am - Divya: Yes, Wednesday last hour
+07/04/2026, 10:35 am - Karthik: Nooo I haven't even started
+07/04/2026, 7:22 pm - Meghna: The projector in the seminar hall is not working again
+07/04/2026, 7:26 pm - Divya: Report it to the dept office
+07/04/2026, 7:30 pm - Rohan: Already reported twice 🔥
+08/04/2026, 9:13 am - Divya: Has anyone used the HC-SR04 with the DHT22? Getting weird readings.
+08/04/2026, 9:13 am - Meghna: Check your wiring first, mine was a loose jumper wire.
+08/04/2026, 9:16 am - Karthik: Also try a different power supply
+08/04/2026, 9:21 am - Divya: That fixed it, thanks! 😅
+08/04/2026, 2:21 pm - Arun: Enna da ippo network la problem ah?
+08/04/2026, 2:22 pm - Divya: The projector in the seminar hall is not working again
+08/04/2026, 2:24 pm - Arun: Report it to the dept office
+08/04/2026, 2:24 pm - Rohan: Illa illa, hostel wifi dhaan slow
+08/04/2026, 2:24 pm - Priya: Already reported twice
+08/04/2026, 2:27 pm - Meghna: Konjam wait pannu, maybe it will come back 😅
+08/04/2026, 6:25 pm - Divya: <Media omitted>
+08/04/2026, 6:26 pm - Divya: Reimbursed ₹2,400 to Mr. Ganesan, UPI screenshot above
+09/04/2026, 6:31 pm - Priya: Lab record submission is tomorrow, right?
+09/04/2026, 6:33 pm - Rohan: Yes, Tuesday last hour
+09/04/2026, 6:36 pm - Meghna: Nooo I haven't even started 👍
+09/04/2026, 6:55 pm - Rohan: Anyone free on Monday?
+09/04/2026, 6:58 pm - Arun: Free after 11
+09/04/2026, 7:01 pm - Divya: Same here
+09/04/2026, 7:02 pm - Rohan: Ok let's see then
+09/04/2026, 9:38 pm - Kavya: Is anyone going to the library?
+09/04/2026, 9:44 pm - Arun: I am, need anything?
+09/04/2026, 9:46 pm - Kavya: Return this book for me please
+09/04/2026, 9:50 pm - Arun: Ok bring it to class
+10/04/2026, 11:10 am - Divya: The projector in the seminar hall is not working again
+10/04/2026, 11:13 am - Meghna: Report it to the dept office
+10/04/2026, 11:19 am - Arun: Already reported twice 😅
+10/04/2026, 11:35 am - Arun: Who has the key to the club cupboard?
+10/04/2026, 11:39 am - Rohan: With Divya I think
+10/04/2026, 11:42 am - Priya: Yes, I left it at the department office
+10/04/2026, 11:43 am - Arun: Ok will collect from there
+10/04/2026, 10:51 pm - Rohan: What time is the committee call tonight?
+10/04/2026, 10:53 pm - Priya: 9 pm as usual
+10/04/2026, 10:55 pm - Kavya: Seri, bus la irukken so I will be on mute
+10/04/2026, 11:11 pm - Priya: My laptop is acting up again, Arduino IDE keeps crashing
+10/04/2026, 11:14 pm - Arun: Try reinstalling the board package
+10/04/2026, 11:17 pm - Rohan: Or use the lab PCs
+10/04/2026, 11:20 pm - Priya: Will try that
+11/04/2026, 5:16 pm - Rohan: The projector in the seminar hall is not working again
+11/04/2026, 5:19 pm - Divya: Report it to the dept office
+11/04/2026, 5:19 pm - Priya: Already reported twice 👌
+11/04/2026, 10:15 pm - Rohan: Is anyone going to the library?
+11/04/2026, 10:17 pm - Meghna: I am, need anything?
+11/04/2026, 10:18 pm - Rohan: Return this book for me please
+11/04/2026, 10:24 pm - Meghna: Ok bring it to class
+11/04/2026, 10:38 pm - Kavya: https://example.com/post/2597 look at this 😅
+11/04/2026, 10:41 pm - Meghna: Haha this is so true
+11/04/2026, 10:46 pm - Arun: Sending to the other group
+12/04/2026, 8:53 am - Meghna: Anyone free on Tuesday?
+12/04/2026, 8:54 am - Priya: Free after 11
+12/04/2026, 8:58 am - Karthik: Same here
+12/04/2026, 9:02 am - Meghna: Ok let's see then
+12/04/2026, 11:00 am - Priya: Someone should send a thank-you note to Brightwave Labs after the fest.
+12/04/2026, 12:42 pm - Priya: Does anyone have the datasheet for the MQTT broker?
+12/04/2026, 12:45 pm - Kavya: https://example.com/datasheet/7178
+12/04/2026, 12:50 pm - Priya: Perfect, thanks
+12/04/2026, 7:42 pm - Priya: Is the lab open today?
+12/04/2026, 7:44 pm - Kavya: Bala sir said it is open till 5
+12/04/2026, 7:49 pm - Priya: Thanks!
+13/04/2026, 2:28 pm - Priya: <Media omitted>
+13/04/2026, 2:31 pm - Priya: Look at what the first years built
+13/04/2026, 2:32 pm - Kavya: That's actually impressive
+13/04/2026, 8:43 pm - Karthik: Enna da ippo network la problem ah?
+13/04/2026, 8:48 pm - Priya: Illa illa, hostel wifi dhaan slow
+13/04/2026, 8:51 pm - Rohan: Konjam wait pannu, maybe it will come back 😅
+13/04/2026, 9:32 pm - Arun: Anyone free on Monday?
+13/04/2026, 9:34 pm - Priya: Free after 11
+13/04/2026, 9:35 pm - Meghna: Same here
+13/04/2026, 9:39 pm - Arun: Ok let's see then
+14/04/2026, 9:51 am - Karthik: Good morning everyone
+14/04/2026, 9:58 am - Kavya: Morning!
+14/04/2026, 10:01 am - Divya: Morning da
+14/04/2026, 1:06 pm - Karthik: Lab record submission is tomorrow, right?
+14/04/2026, 1:07 pm - Meghna: Yes, Wednesday last hour
+14/04/2026, 1:11 pm - Kavya: Nooo I haven't even started 😂
+14/04/2026, 1:19 pm - Rohan: Is anyone going to the library?
+14/04/2026, 1:23 pm - Priya: I am, need anything?
+14/04/2026, 1:28 pm - Rohan: Return this book for me please
+14/04/2026, 1:33 pm - Priya: Ok bring it to class
+14/04/2026, 3:32 pm - Kavya: Does anyone have the datasheet for the HC-SR04?
+14/04/2026, 3:38 pm - Rohan: https://example.com/datasheet/8018
+14/04/2026, 3:43 pm - Kavya: Perfect, thanks
+15/04/2026, 8:31 am - Rohan: Is the lab open today?
+15/04/2026, 8:34 am - Kavya: Bala sir said it is open till 5
+15/04/2026, 8:40 am - Rohan: Thanks!
+15/04/2026, 9:41 am - Meghna: Exam timetable is out, ugh
+15/04/2026, 9:44 am - Priya: Which day is the first paper?
+15/04/2026, 9:50 am - Meghna: Monday
+15/04/2026, 9:52 am - Karthik: Nobody has studied anything yet
+15/04/2026, 9:57 pm - Divya: Does anyone have the datasheet for the OLED display?
+15/04/2026, 10:00 pm - Karthik: https://example.com/datasheet/8328
+15/04/2026, 10:06 pm - Divya: Perfect, thanks
+16/04/2026, 2:29 pm - Kavya: Anyone free on Tuesday?
+16/04/2026, 2:34 pm - Rohan: Free after 11
+16/04/2026, 2:39 pm - Arun: Same here
+16/04/2026, 2:43 pm - Kavya: Ok let's see then
+16/04/2026, 4:31 pm - Karthik: The projector in the seminar hall is not working again
+16/04/2026, 4:37 pm - Arun: Report it to the dept office
+16/04/2026, 4:37 pm - Kavya: Already reported twice 🔥
+16/04/2026, 5:26 pm - Divya: Is anyone going to the library?
+16/04/2026, 5:30 pm - Arun: I am, need anything?
+16/04/2026, 5:32 pm - Divya: Return this book for me please
+16/04/2026, 5:36 pm - Arun: Ok bring it to class
+17/04/2026, 10:12 pm - Karthik: Anyone up for lunch at the canteen?
+17/04/2026, 10:18 pm - Priya: Give me 10 mins
+17/04/2026, 10:24 pm - Kavya: Count me in
+17/04/2026, 10:26 pm - Karthik: Ok at 1
+18/04/2026, 7:37 am - Rohan: Good morning everyone 😅
+18/04/2026, 7:38 am - Priya: Morning!
+18/04/2026, 7:43 am - Arun: Morning da
+19/04/2026, 1:46 pm - Arun: My laptop is acting up again, Arduino IDE keeps crashing
+19/04/2026, 1:48 pm - Divya: Try reinstalling the board package
+19/04/2026, 1:52 pm - Priya: Or use the lab PCs
+19/04/2026, 1:55 pm - Arun: Will try that
+19/04/2026, 3:32 pm - Kavya: <Media omitted>
+19/04/2026, 3:32 pm - Kavya: Look at what the first years built
+19/04/2026, 3:36 pm - Karthik: That's actually impressive 🔥
+20/04/2026, 8:16 am - Arun: Good morning everyone
+20/04/2026, 8:23 am - Rohan: Morning!
+20/04/2026, 8:27 am - Priya: Morning da
+21/04/2026, 8:18 am - Divya: Good morning everyone
+21/04/2026, 8:23 am - Arun: Morning!
+21/04/2026, 8:26 am - Karthik: Morning da
+21/04/2026, 10:15 am - Meghna: Enna da ippo network la problem ah?
+21/04/2026, 10:19 am - Priya: Illa illa, hostel wifi dhaan slow
+21/04/2026, 10:21 am - Kavya: Konjam wait pannu, maybe it will come back 👍
+21/04/2026, 7:44 pm - Rohan: Lab record submission is tomorrow, right?
+21/04/2026, 7:47 pm - Priya: Yes, Tuesday last hour
+21/04/2026, 7:51 pm - Divya: Nooo I haven't even started 👌
+21/04/2026, 10:25 pm - Priya: Exam timetable is out, ugh 😂
+21/04/2026, 10:30 pm - Divya: Which day is the first paper?
+21/04/2026, 10:37 pm - Priya: Monday
+21/04/2026, 10:40 pm - Kavya: Nobody has studied anything yet
+22/04/2026, 10:09 am - Priya: Birthday today! 🎂
+22/04/2026, 10:15 am - Meghna: Happy birthday!!
+22/04/2026, 10:15 am - Arun: Treat venum da 😅
+22/04/2026, 10:34 am - Rohan: Power cut in the lab block, class shifted
+22/04/2026, 10:39 am - Arun: Where are we meeting now?
+22/04/2026, 10:41 am - Rohan: Room 204
+22/04/2026, 10:43 am - Kavya: On the way
+22/04/2026, 6:48 pm - Rohan: Is the lab open today?
+22/04/2026, 6:50 pm - Karthik: Bala sir said it is open till 5
+22/04/2026, 6:55 pm - Rohan: Thanks!
+22/04/2026, 8:40 pm - Kavya: <Media omitted>
+22/04/2026, 8:46 pm - Meghna: Nice one 👌
+22/04/2026, 8:51 pm - Divya: Looks great
+23/04/2026, 9:25 am - Karthik: https://example.com/post/4107 look at this 🔥
+23/04/2026, 9:26 am - Meghna: Haha this is so true
+23/04/2026, 9:31 am - Arun: Sending to the other group
+23/04/2026, 10:28 am - Meghna: The projector in the seminar hall is not working again
+23/04/2026, 10:31 am - Divya: Report it to the dept office
+23/04/2026, 10:34 am - Karthik: Already reported twice 👌
+23/04/2026, 6:13 pm - Karthik: Machan canteen la samosa over da
+23/04/2026, 6:17 pm - Divya: Appo naalaiku early ah poganum
+23/04/2026, 6:20 pm - Kavya: Naalaiku Friday la, queue romba irukkum
+24/04/2026, 10:13 pm - Priya: This message was deleted
+24/04/2026, 10:16 pm - Rohan: Appo naalaiku early ah poganum
+24/04/2026, 10:18 pm - Karthik: Naalaiku Friday la, queue romba irukkum 🙏
+25/04/2026, 12:49 pm - Meghna: Anyone up for lunch at the canteen?
+25/04/2026, 12:55 pm - Arun: Give me 10 mins
+25/04/2026, 1:01 pm - Kavya: Count me in 👌
+25/04/2026, 1:07 pm - Meghna: Ok at 1
+25/04/2026, 7:37 pm - Priya: Lab record submission is tomorrow, right?
+25/04/2026, 7:43 pm - Kavya: Yes, Saturday last hour
+25/04/2026, 7:46 pm - Meghna: Nooo I haven't even started
+26/04/2026, 9:35 pm - Divya: Does anyone have the datasheet for the NodeMCU?
+26/04/2026, 9:41 pm - Rohan: https://example.com/datasheet/5638
+26/04/2026, 9:46 pm - Divya: Perfect, thanks
+27/04/2026, 9:06 pm - Kavya: <Media omitted>
+27/04/2026, 9:09 pm - Kavya: Look at what the first years built
+27/04/2026, 9:14 pm - Rohan: That's actually imressive 🙏
+27/04/2026, 10:23 pm - Divya: What time is the committee call tonight?
+27/04/2026, 10:24 pm - Rohan: 9 pm as usual
+27/04/2026, 10:30 pm - Priya: Seri, bus la irukken so I will be on mute
+27/04/2026, 10:51 pm - Divya: Birthday today! 🎂
+27/04/2026, 10:54 pm - Kavya: Happy birthday!!
+27/04/2026, 10:57 pm - Karthik: Treat venum da 👍
+29/04/2026, 8:14 pm - Priya: Machan canteen la samosa over da
+29/04/2026, 8:19 pm - Rohan: Appo naalaiku early ah poganum
+29/04/2026, 8:25 pm - Kavya: Naalaiku Friday la, queue romba irukkum
+30/04/2026, 11:22 am - Karthik: Lab record submission is tomorrow, right?
+30/04/2026, 11:23 am - Priya: Yes, Thursday last hour
+30/04/2026, 11:28 am - Kavya: Nooo I haven't even started 👌
+30/04/2026, 11:21 pm - Kavya: Is anyone going to the library?
+30/04/2026, 11:27 pm - Arun: I am, need anything?
+30/04/2026, 11:28 pm - Kavya: Return this book for me please
+30/04/2026, 11:34 pm - Arun: Ok bring it to class
+01/05/2026, 1:33 pm - Karthik: The projector in the seminar hall is not working again
+01/05/2026, 1:38 pm - Priya: Report it to the dept office
+01/05/2026, 1:39 pm - Kavya: Already reported twice 😂
+01/05/2026, 8:34 pm - Meghna: Power cut in the lab block, class shifted
+01/05/2026, 8:38 pm - Kavya: Where are we meeting now?
+01/05/2026, 8:42 pm - Meghna: Room 204
+01/05/2026, 8:46 pm - Rohan: On the way
+02/05/2026, 12:32 pm - Arun: Machan canteen la samosa over da
+02/05/2026, 12:33 pm - Karthik: Appo naalaiku early ah poganum
+02/05/2026, 12:38 pm - Meghna: Naalaiku Friday la, queue romba irukkum 👌
+02/05/2026, 5:15 pm - Kavya: Is the lab open today?
+02/05/2026, 5:18 pm - Arun: Bala sir said it is open till 5
+02/05/2026, 5:21 pm - Kavya: Thanks!
+04/05/2026, 6:34 pm - Priya: Birthday today! 🎂
+04/05/2026, 6:38 pm - Meghna: Happy birthday!!
+04/05/2026, 6:43 pm - Kavya: Treat venum da 🔥
+05/05/2026, 8:43 pm - Karthik: The projector in the seminar hall is not working aain
+05/05/2026, 8:48 pm - Divya: Report it to the dept office
+05/05/2026, 8:49 pm - Priya: Already reported twice 😂
+06/05/2026, 10:56 am - Arun: Power cut in the lab block, class shifted
+06/05/2026, 10:58 am - Karthik: Where are we meeting now?
+06/05/2026, 11:03 am - Arun: Room 204
+06/05/2026, 11:06 am - Priya: On the way
+06/05/2026, 7:23 pm - Kavya: Machan canteen la samosa over da
+06/05/2026, 7:25 pm - Meghna: Appo naalaiku early ah poganum
+06/05/2026, 7:28 pm - Arun: Naalaiku Friday la, queue romba irukkum 😂
+07/05/2026, 9:24 pm - Meghna: <Media omitted>
+07/05/2026, 9:30 pm - Karthik: Nice one 👌
+07/05/2026, 9:36 pm - Divya: Loks great 👍
+08/05/2026, 7:22 pm - Karthik: Has anyone used the Arduino Nano with the LoRa module? Getting weird readings.
+08/05/2026, 7:24 pm - Kavya: Check your wiring first, mine was a loose jumper wire.
+08/05/2026, 7:29 pm - Rohan: Also try a dfiferent power supply
+08/05/2026, 7:29 pm - Karthik: That fixed it, thanks! 😅
+08/05/2026, 9:38 pm - Meghna: Is the lab open today?
+08/05/2026, 9:39 pm - Arun: Bala sir said it is open till 5
+08/05/2026, 9:40 pm - Meghna: Thanks!
+09/05/2026, 9:30 pm - Priya: We should probably do a hackathon someday.
+09/05/2026, 9:33 pm - Divya: Might look at sponsors for next year, not sure.
+10/05/2026, 7:33 pm - Karthik: Machan canteen la samosa over da
+10/05/2026, 7:39 pm - Meghna: Appo naalaiku early ah poganum
+10/05/2026, 7:44 pm - Rohan: Naalaiku Friday la, queue romba irukkum 👍
+11/05/2026, 5:10 pm - Rohan: Will see if the lab has extra sensors.
+11/05/2026, 10:32 pm - Divya: Birthday today! 🎂
+11/05/2026, 10:35 pm - Priya: Happy birthday!!
+11/05/2026, 10:41 pm - Arun: Treat venum da
+12/05/2026, 8:51 am - Divya: Is anyone going to the library?
+12/05/2026, 8:53 am - Kavya: I am, need anything?
+12/05/2026, 8:59 am - Divya: Return this book for me please
+12/05/2026, 9:02 am - Kavya: Ok bring it to class
+12/05/2026, 10:16 am - Arun: What time is the committee call tonight?
+12/05/2026, 10:18 am - Divya: 9 pm as usual
+12/05/2026, 10:22 am - Kavya: Seri, bus la irukken so I will be on mute
+13/05/2026, 6:07 pm - Priya: My laptop is acting up again, Arduino IDE keeps crashing
+13/05/2026, 6:09 pm - Meghna: Try reinstalling the board package
+13/05/2026, 6:15 pm - Rohan: Or use the lab PCs
+13/05/2026, 6:20 pm - Priya: Will try that
+13/05/2026, 8:19 pm - Arun: Anyone up for lunch at the canteen?
+13/05/2026, 8:25 pm - Meghna: Give me 10 mins
+13/05/2026, 8:31 pm - Karthik: Count me in 😅
+13/05/2026, 8:32 pm - Arun: Ok at 1
+14/05/2026, 8:33 pm - Rohan: Birthday today! 🎂
+14/05/2026, 8:34 pm - Arun: Happy birthday!!
+14/05/2026, 8:38 pm - Kavya: Treat venum da 👍
+14/05/2026, 9:15 pm - Karthik: Mahcan canteen la samosa over da
+14/05/2026, 9:15 pm - Priya: Appo naalaiku ealry ah poganum
+14/05/2026, 9:16 pm - Rohan: Lab record submission is tomorrow, right?
+14/05/2026, 9:17 pm - Karthik: Yes, Thursday last hour
+14/05/2026, 9:18 pm - Arun: Nooo I haven't even started 🙏
+14/05/2026, 9:18 pm - Rohan: Naalaiku Friday la, queue romba irukkum 😂
+15/05/2026, 10:09 am - Arun: Power cut in the lab block, class shifted
+15/05/2026, 10:14 am - Meghna: Where are we meeting now?
+15/05/2026, 10:16 am - Arun: Room 204
+15/05/2026, 10:17 am - Rohan: On the way
+15/05/2026, 8:03 pm - Priya: https://example.com/post/4666 look at this
+15/05/2026, 8:04 pm - Kavya: Haha this is so true
+15/05/2026, 8:10 pm - Karthik: Sending to the other gorup
+15/05/2026, 9:11 pm - Kavya: Anyone free on Saturday?
+15/05/2026, 9:17 pm - Divya: Free after 11
+15/05/2026, 9:19 pm - Arun: Same here
+15/05/2026, 9:20 pm - Kavya: Ok let's see then
+16/05/2026, 7:14 am - Priya: Good morning everyone 🔥
+16/05/2026, 7:17 am - Meghna: Morning!
+16/05/2026, 7:18 am - Karthik: Morning da
+16/05/2026, 4:53 pm - Rohan: Has anyone used the Arduino Nano with the DHT22? Getting weird readings.
+16/05/2026, 4:54 pm - Meghna: Check your wiring first, mine was a loose jumper wire.
+16/05/2026, 4:58 pm - Divya: Also try a different power supply
+16/05/2026, 5:04 pm - Rohan: That fixed it, thanks! 👍
+16/05/2026, 10:36 pm - Arun: What time is the committee call tonight?
+16/05/2026, 10:41 pm - Rohan: 9 pm as usual
+16/05/2026, 10:45 pm - Karthik: Seri, bus la irukken so I will be on mute
+17/05/2026, 9:32 am - Karthik: Power cut in the lab block, class shifted
+17/05/2026, 9:35 am - Kavya: Where are we meeting now?
+17/05/2026, 9:37 am - Karthik: Room 204
+17/05/2026, 9:43 am - Rohan: On the way
+18/05/2026, 7:24 am - Priya: Good morning everyone 🙏
+18/05/2026, 7:27 am - Divya: Morning!
+18/05/2026, 7:29 am - Rohan: Morning da
+18/05/2026, 5:26 pm - Meghna: Does anyone have the datasheet for the Arduino Nano?
+18/05/2026, 5:30 pm - Karthik: https://example.com/datasheet/9218
+18/05/2026, 5:31 pm - Meghna: Perfect, thanks
+18/05/2026, 8:03 pm - Kavya: Who has the key to the club cupboard?
+18/05/2026, 8:06 pm - Priya: With Divya I think
+18/05/2026, 8:11 pm - Rohan: Yes, I left it at the department office
+18/05/2026, 8:15 pm - Kavya: Ok will collect from there
+19/05/2026, 8:37 am - Meghna: My laptop is acting up again, Arduino IDE keeps crashing
+19/05/2026, 8:39 am - Karthik: Try reinstalling the board package
+19/05/2026, 8:44 am - Priya: Or use the lab PCs
+19/05/2026, 8:46 am - Meghna: Will try that
+19/05/2026, 10:36 am - Rohan: Is anyone going to the library?
+19/05/2026, 10:37 am - Karthik: I am, need anything?
+19/05/2026, 10:43 am - Rohan: Return this book for me please
+19/05/2026, 10:49 am - Karthik: Ok bring it to class
+19/05/2026, 5:54 pm - Meghna: Birthday today! 🎂
+19/05/2026, 6:00 pm - Kavya: Happy birthday!!
+19/05/2026, 6:06 pm - Arun: Treat venum da 🔥
+19/05/2026, 9:18 pm - Priya: Anyone free on Thursday?
+19/05/2026, 9:22 pm - Meghna: Free after 11
+19/05/2026, 9:29 pm - Arun: Same here
+19/05/2026, 9:34 pm - Priya: Ok let's see then
+21/05/2026, 6:23 pm - Arun: My laptop is acting up again, Arduino IDE keeps crashing
+21/05/2026, 6:25 pm - Divya: Try reinstalling the board package
+21/05/2026, 6:28 pm - Priya: Or use the lab PCs
+21/05/2026, 6:28 pm - Arun: Will try that
+21/05/2026, 8:31 pm - Divya: Which servo motor library did we use last time?
+21/05/2026, 8:32 pm - Rohan: No idea, check the old project folder
+21/05/2026, 8:34 pm - Kavya: It is in the shared drive under projects
+22/05/2026, 11:36 pm - Divya: Anyone free on Wednesday?
+22/05/2026, 11:40 pm - Arun: Free after 11
+22/05/2026, 11:46 pm - Priya: Same here
+22/05/2026, 11:49 pm - Divya: Ok let's see then
+28/05/2026, 6:49 pm - Rohan: Anyone up for lunch at the canteen?
+28/05/2026, 6:52 pm - Kavya: Give me 10 mins
+28/05/2026, 6:54 pm - Arun: Count me in
+28/05/2026, 6:57 pm - Rohan: Ok at 1
+28/05/2026, 9:44 pm - Karthik: Has anyone used the OLED display with the Arduino Nano? Getting weird readings.
+28/05/2026, 9:45 pm - Priya: Check your wiring first, mine was a loose jumper wire.
+28/05/2026, 9:48 pm - Meghna: Also try a different power supply
+28/05/2026, 9:48 pm - Karthik: That fixed it, thanks!
+01/06/2026, 8:34 pm - Rohan: This message was deleted
+01/06/2026, 8:39 pm - Divya: No idea, check the old project folder
+01/06/2026, 8:45 pm - Priya: It is in the shared drive under projects
+02/06/2026, 8:20 am - Karthik left
+02/06/2026, 12:48 pm - Meghna: My laptop is acting up again, Arduino IDE keeps crashing
+02/06/2026, 12:53 pm - Rohan: Try reinstalling the board package
+02/06/2026, 12:54 pm - Arun: Or use the lab PCs
+02/06/2026, 1:00 pm - Meghna: Will try that
+02/06/2026, 11:18 pm - Arun: Exam timetable is out, ugh 👌
+02/06/2026, 11:20 pm - Rohan: Which day is the first paper?
+02/06/2026, 11:23 pm - Arun: Monday
+02/06/2026, 11:29 pm - Divya: Nobody has studied anything yet
+04/06/2026, 12:10 pm - Divya: What time is the committee call tonight?
+04/06/2026, 12:14 pm - Priya: 9 pm as usual
+04/06/2026, 12:19 pm - Meghna: Seri, bus la irukken so I will be on mute
+07/06/2026, 9:54 pm - Kavya: Has anyone used the NodeMCU with the MQTT broker? Getting weird readings.
+07/06/2026, 9:59 pm - Rohan: Check your wiring first, mine was a loose jumper wire.
+07/06/2026, 10:05 pm - Arun: Also try a different power supply
+07/06/2026, 10:08 pm - Kavya: That fixed it, thanks!
+10/06/2026, 7:34 pm - Priya: <Media omitted>
+10/06/2026, 7:38 pm - Priya: Look at what the first years built
+10/06/2026, 7:39 pm - Divya: That's actually impressive 😅
+12/06/2026, 8:55 pm - Arun: Who has the key to the club cupboard?
+12/06/2026, 8:56 pm - Kavya: With Divya I think
+12/06/2026, 9:02 pm - Priya: Yes, I left it at the department office
+12/06/2026, 9:09 pm - Arun: Ok will collect from there
+14/06/2026, 10:16 pm - Divya: Machan canteen la samosa over da
+14/06/2026, 10:18 pm - Arun: Appo naalaiku early ah poganum
+14/06/2026, 10:23 pm - Kavya: Naalaiku Friday la, queue romba irukkum 🙏
+15/06/2026, 9:17 pm - Priya: Lab record submission is tomorrow, right?
+15/06/2026, 9:21 pm - Rohan: This message was deleted
+15/06/2026, 9:23 pm - Meghna: Nooo I haven't even started 🔥
+16/06/2026, 11:02 pm - Kavya: <Media omitted>
+16/06/2026, 11:08 pm - Arun: Nice one 👌
+16/06/2026, 11:13 pm - Meghna: Looks great 🙏
+17/06/2026, 5:10 pm - Meghna: Is the lab open today?
+17/06/2026, 5:14 pm - Arun: Bala sir said it is open till 5
+17/06/2026, 5:21 pm - Meghna: Thanks!
+19/06/2026, 9:09 pm - Meghna: Does anyone have the datasheet for the Raspberry Pi Pico?
+19/06/2026, 9:11 pm - Arun: https://example.com/datasheet/5101
+19/06/2026, 9:15 pm - Meghna: Perfect, thanks
+21/06/2026, 4:50 pm - Priya: Exam timetable is out, ugh
+21/06/2026, 4:54 pm - Rohan: Which day is the first paper?
+21/06/2026, 4:58 pm - Priya: Monday
+21/06/2026, 4:58 pm - Arun: Nobody has studied anything yet
+22/06/2026, 12:06 pm - Priya: Birthday today! 🎂
+22/06/2026, 12:10 pm - Kavya: Happy birthday!!
+22/06/2026, 12:12 pm - Meghna: Treat venum da
+23/06/2026, 10:59 am - Arun: Anyone up for lunch at the canteen?
+23/06/2026, 11:04 am - Kavya: Give me 10 mins
+23/06/2026, 11:05 am - Priya: Count me in 🔥
+23/06/2026, 11:08 am - Arun: Ok at 1
+24/06/2026, 9:24 pm - Meghna: Is anyone going to the library?
+24/06/2026, 9:27 pm - Divya: I am, need anything?
+24/06/2026, 9:33 pm - Meghna: Return this book for me please
+24/06/2026, 9:36 pm - Divya: Ok bring it to class
+25/06/2026, 3:10 pm - Priya: Exam timetable is out, ugh 👌
+25/06/2026, 3:17 pm - Rohan: Which day is the first paper?
+25/06/2026, 3:22 pm - Priya: Monday
+25/06/2026, 3:22 pm - Meghna: Nobody has studied anything yet
+28/06/2026, 9:56 am - Divya: Good morning everyone 😅
+28/06/2026, 10:02 am - Arun: Morning!
+28/06/2026, 10:04 am - Meghna: Morning da
+29/06/2026, 3:55 pm - Kavya: Birthday today! 🎂
+29/06/2026, 4:02 pm - Meghna: Happy birthday!!
+29/06/2026, 4:07 pm - Priya: Treat venum da
+29/06/2026, 11:56 pm - Meghna: https://example.com/post/7438 look at this 🔥
+29/06/2026, 11:59 pm - Kavya: Haha this is so true
+30/06/2026, 12:01 am - Priya: Sending to the other group
+30/06/2026, 3:04 pm - Meghna: Is anyone going to the library?
+30/06/2026, 3:07 pm - Priya: I am, need anything?
+30/06/2026, 3:10 pm - Meghna: Return this book for me please
+30/06/2026, 3:13 pm - Priya: Ok bring it to class
+01/07/2026, 5:54 pm - Meghna: The projector in the seminar hall is not working again
+01/07/2026, 5:56 pm - Priya: Report it to the dept office
+01/07/2026, 5:59 pm - Rohan: Already reported twice 👍
+03/07/2026, 10:35 am - Divya: Power cut in the lab block, class shifted
+03/07/2026, 10:42 am - Arun: Where are we meeting now?
+03/07/2026, 10:48 am - Divya: Room 204
+03/07/2026, 10:55 am - Meghna: On the way
+07/07/2026, 2:14 pm - Rohan: Machan canteen la samosa over da
+07/07/2026, 2:20 pm - Meghna: Appo naalaiku early ah poganum
+07/07/2026, 2:21 pm - Divya: Naalaiku Friday la, queue romba irukkum 😅
+07/07/2026, 11:05 pm - Rohan: Which Arduino Nano library did we use last time?
+07/07/2026, 11:09 pm - Meghna: This message was deleted
+07/07/2026, 11:16 pm - Priya: It is in the shared drive under projects
+08/07/2026, 9:51 am - Kavya: Exam tmetable is out, ugh
+08/07/2026, 9:51 am - Arun: Which day is the first paper?
+08/07/2026, 9:56 am - Kavya: Monday
+08/07/2026, 10:02 am - Divya: Nobody has studied anything yet
+10/07/2026, 1:35 pm - Divya: Exam timetable is out, ugh 😂
+10/07/2026, 1:38 pm - Rohan: Which day is the first paper?
+10/07/2026, 1:44 pm - Divya: Monday
+10/07/2026, 1:49 pm - Arun: Nobody has studied anything yet
+11/07/2026, 8:33 am - Priya: Exam timetable is out, ugh 🙏
+11/07/2026, 8:37 am - Divya: Which day is the first paper?
+11/07/2026, 8:43 am - Priya: Monday
+11/07/2026, 8:44 am - Meghna: Nobody has studied anything yet
+12/07/2026, 9:11 pm - Kavya: Anyone free on Monday?
+12/07/2026, 9:12 pm - Divya: Free after 11
+12/07/2026, 9:17 pm - Rohan: Same here
+12/07/2026, 9:18 pm - Kavya: Ok let's see then
+12/07/2026, 9:31 pm - Arun: <Media omitted>
+12/07/2026, 9:34 pm - Priya: Nice one 👌
+12/07/2026, 9:40 pm - Rohan: Looks great
+12/07/2026, 11:19 pm - Arun: Is the lab open today?
+12/07/2026, 11:23 pm - Rohan: Bala sir said it is open till 5
+12/07/2026, 11:25 pm - Arun: Thanks!
+13/07/2026, 3:28 pm - Kavya: Has anyone used the LoRa module with the ESP32? Getting weird readings.
+13/07/2026, 3:29 pm - Divya: Check your wiring first, mine was a loose jumper wire.
+13/07/2026, 3:30 pm - Rohan: Also try a different power supply
+13/07/2026, 3:36 pm - Kavya: That fixed it, thanks! 😂
+13/07/2026, 5:53 pm - Divya: What time is the committee call tonight?
+13/07/2026, 5:54 pm - Priya: 9 pm as uual
+13/07/2026, 5:57 pm - Arun: Seri, bus la irukken so I will be on mute
+13/07/2026, 10:18 pm - Divya: Is the lab open today?
+13/07/2026, 10:21 pm - Kavya: Bala sir said it is open till 5
+13/07/2026, 10:23 pm - Divya: Thanks!
+14/07/2026, 9:45 pm - Priya: <Media omitted>
+14/07/2026, 9:47 pm - Meghna: Nice one 👌
+14/07/2026, 9:50 pm - Rohan: Looks great 😅
+14/07/2026, 10:50 pm - Priya: Has anyone used the NodeMCU with the MQTT broker? Getting weird readings.
+14/07/2026, 10:52 pm - Rohan: Check your wiring first, mine was a loose jumper wire.
+14/07/2026, 10:59 pm - Arun: Also try a different power supply
+14/07/2026, 11:05 pm - Priya: That fixed it, thanks!
+15/07/2026, 8:10 am - Kavya: Which HC-SR04 library did we use last time?
+15/07/2026, 8:14 am - Rohan: No idea, check the old project folder
+15/07/2026, 8:15 am - Meghna: It is in the shared drive under projects
+15/07/2026, 10:47 pm - Rohan: Who has the key to the club cupboard?
+15/07/2026, 10:51 pm - Arun: Is the lab open today?
+15/07/2026, 10:52 pm - Divya: With Divya I think
+15/07/2026, 10:54 pm - Rohan: Bala sir said it is open till 5
+15/07/2026, 10:55 pm - Kavya: Yes, I left it at the department office
+15/07/2026, 10:57 pm - Arun: Thanks!
+15/07/2026, 10:58 pm - Rohan: Ok will collect from there
+16/07/2026, 11:07 am - Divya: Exam timetable is out, ugh 😅
+16/07/2026, 11:10 am - Kavya: Which day is the first paper?
+16/07/2026, 11:15 am - Divya: Monday
+16/07/2026, 11:16 am - Rohan: Nobody has studied anything yet
+16/07/2026, 6:06 pm - Rohan: Does anyone have the datasheet for the DHT22?
+16/07/2026, 6:09 pm - Priya: https://example.com/datasheet/8559
+16/07/2026, 6:11 pm - Rohan: Perfect, thanks
+17/07/2026, 2:59 pm - Divya: Is anyone going to the library?
+17/07/2026, 3:05 pm - Meghna: I am, need anything?
+17/07/2026, 3:09 pm - Divya: Return this book for me please
+17/07/2026, 3:11 pm - Meghna: Ok bring it to class
+17/07/2026, 3:57 pm - Rohan: Which MQTT broker library did we use last time?
+17/07/2026, 4:01 pm - Kavya: No idea, check the old project folder
+17/07/2026, 4:04 pm - Meghna: It is in the shared drive under projects
+17/07/2026, 8:30 pm - Divya: Birthday today! 🎂
+17/07/2026, 8:30 pm - Priya: Happy birthday!!
+17/07/2026, 8:33 pm - Arun: Treat venum da
+18/07/2026, 1:11 pm - Priya: Birthday today! 🎂
+18/07/2026, 1:16 pm - Rohan: Happy birthday!!
+18/07/2026, 1:20 pm - Arun: Treat venum da
+18/07/2026, 7:29 pm - Kavya: <Media omitted>
+18/07/2026, 7:32 pm - Kavya: Look at what the first years built
+18/07/2026, 7:33 pm - Divya: That's actually impressive 👍
+19/07/2026, 8:35 pm - Divya: Has anyone used the MQTT broker with the LoRa module? Getting weird readings.
+19/07/2026, 8:41 pm - Meghna: Check your wiring first, mine was a loose jumper wire.
+19/07/2026, 8:46 pm - Arun: Also try a different power supply
+19/07/2026, 8:47 pm - Divya: That fixed it, thanks! 😂
+20/07/2026, 9:16 am - Priya: What time is the committee call tonight?
+20/07/2026, 9:21 am - Divya: 9 pm as usual
+20/07/2026, 9:22 am - Kavya: Seri, bus la irukken so I will be on mute
+20/07/2026, 2:58 pm - Divya: Enna da ippo network la problem ah?
+20/07/2026, 3:00 pm - Priya: Illa illa, hostel wifi dhaan slow
+20/07/2026, 3:01 pm - Meghna: Konjam wait pannu, maybe it will come back 👌
+20/07/2026, 3:10 pm - Kavya: Who has the key to the club cupboard?
+20/07/2026, 3:12 pm - Arun: With Divya I think
+20/07/2026, 3:13 pm - Divya: Yes, I left it at the department office
+20/07/2026, 3:17 pm - Kavya: Ok will collect from there
+20/07/2026, 8:00 pm - Arun: Reminder: the club registration renewal with Student Affairs is due every August, and it needs the Dean's signature.
+20/07/2026, 8:04 pm - Arun: I will submit the renewal form by 10 August.
+21/07/2026, 8:21 am - Arun: <Media omitted>
+21/07/2026, 8:25 am - Arun: Look at what the first years built
+21/07/2026, 8:27 am - Rohan: That's actually impressive 👍
+21/07/2026, 10:11 pm - Rohan: This message was deleted
+21/07/2026, 10:14 pm - Meghna: Happy birthday!!
+21/07/2026, 10:21 pm - Kavya: Treat venum da
+22/07/2026, 7:02 pm - Arun: Which Raspberry Pi Pico library did we use last time?
+22/07/2026, 7:04 pm - Rohan: No idea, check the old project folder
+22/07/2026, 7:07 pm - Meghna: It is in the shared drive under projects
+22/07/2026, 8:56 pm - Meghna: Lab record submission is tomorrow, right?
+22/07/2026, 8:58 pm - Rohan: Yes, Wednesday last hour
+22/07/2026, 9:03 pm - Arun: This message was deleted
+23/07/2026, 8:35 am - Priya: Lab record submission is tomorrow, right?
+23/07/2026, 8:38 am - Rohan: Yes, Wednesday last hour
+23/07/2026, 8:41 am - Kavya: Nooo I haven't even started
+23/07/2026, 12:04 pm - Kavya: Who has the key to the club cupboard?
+23/07/2026, 12:08 pm - Divya: With Divya I think
+23/07/2026, 12:11 pm - Rohan: Yes, I left it at the department office
+23/07/2026, 12:12 pm - Kavya: Ok will collect from there
+23/07/2026, 5:05 pm - Arun: Power cut in the lab block, class shifted
+23/07/2026, 5:07 pm - Priya: Where are we meeting now?
+23/07/2026, 5:14 pm - Arun: Room 204
+23/07/2026, 5:15 pm - Divya: On the way
+23/07/2026, 11:05 pm - Divya: <Media omitted>
+23/07/2026, 11:05 pm - Divya: Look at what the first years built
+23/07/2026, 11:06 pm - Rohan: That's actually impressive 👌
+24/07/2026, 6:10 pm - Kavya: Has anyone used the Arduino Nano with the DHT22? Getting weird readings.
+24/07/2026, 6:10 pm - Meghna: Check your wiring first, mine was a loose jumper wire.
+24/07/2026, 6:11 pm - Divya: Also try a different power supply
+24/07/2026, 6:14 pm - Kavya: That fxied it, thanks! 😂
+24/07/2026, 8:00 pm - Rohan: Who has the key to the club cupboard?
+24/07/2026, 8:03 pm - Priya: With Divya I think
+24/07/2026, 8:06 pm - Arun: Yes, I left it at the department office
+24/07/2026, 8:09 pm - Rohan: Ok will collect from there
+24/07/2026, 9:45 pm - Rohan: Does anyone have the datasheet for the soil moisture sensor?
+24/07/2026, 9:51 pm - Divya: https://example.com/datasheet/4377
+24/07/2026, 9:52 pm - Rohan: Perfect, thanks
+25/07/2026, 4:19 pm - Arun: Is the lab open today?
+25/07/2026, 4:22 pm - Kavya: Bala sir said it is open till 5
+25/07/2026, 4:24 pm - Arun: Thanks!
+25/07/2026, 6:42 pm - Rohan: Does anyone have the datasheet for the LoRa module?
+25/07/2026, 6:48 pm - Meghna: https://example.com/datasheet/7511
+25/07/2026, 6:51 pm - Rohan: Perfect, thnks
+27/07/2026, 8:54 am - Arun: Enna da ippo network la problem ah?
+27/07/2026, 8:58 am - Rohan: Illa illa, hostel wifi dhaan slow
+27/07/2026, 9:01 am - Kavya: Konjam wait pannu, maybe it will come back
+27/07/2026, 3:25 pm - Kavya: <Media omitted>
+27/07/2026, 3:28 pm - Kavya: Look at what the first years built
+27/07/2026, 3:30 pm - Priya: That's actually impressive 👌
+27/07/2026, 7:45 pm - Priya: Aug semester is starting. Permission letter for the lab again please. Kavya can you take this one?
+27/07/2026, 7:50 pm - Kavya: Ok, I will submit the letter by 7 August.
+27/07/2026, 9:34 pm - Arun: Machan canteen la samosa over da
+27/07/2026, 9:37 pm - Rohan: Appo naalaiku early ah poganum
+27/07/2026, 9:38 pm - Divya: Naalaiku Friday la, queue romba irukkum 🙏
+28/07/2026, 10:17 am - Rohan: This message was deleted
+28/07/2026, 10:21 am - Meghna: With Divya I think
+28/07/2026, 10:21 am - Priya: Yes, I left it at the department office
+28/07/2026, 10:28 am - Rohan: Ok will collect from there
+28/07/2026, 8:59 pm - Kavya: Birthday today! 🎂
+28/07/2026, 9:01 pm - Priya: Happy birthday!!
+28/07/2026, 9:07 pm - Rohan: Treat venum da 😂
+29/07/2026, 9:14 pm - Rohan: Is the lab open today?
+29/07/2026, 9:16 pm - Arun: Bala sir said it is open till 5
+29/07/2026, 9:21 pm - Rohan: Thanks!
+29/07/2026, 9:37 pm - Arun: Who has the key to the club cupboard?
+29/07/2026, 9:37 pm - Rohan: With Divya I think
+29/07/2026, 9:38 pm - Priya: Yes, I left it at the department office
+29/07/2026, 9:42 pm - Arun: Ok will collect from there
+30/07/2026, 7:23 am - Priya: Good morning everyone
+30/07/2026, 7:27 am - Divya: Morning!
+30/07/2026, 7:29 am - Kavya: Morning da
+30/07/2026, 9:31 am - Divya: https://example.com/post/4757 look at this 🙏
+30/07/2026, 9:31 am - Kavya: Haha this is so true
+30/07/2026, 9:35 am - Rohan: Sending to the other group
+30/07/2026, 3:18 pm - Meghna: Exam timetable is out, ugh 👍
+30/07/2026, 3:20 pm - Priya: Which day is the first paper?
+30/07/2026, 3:23 pm - Meghna: Monday
+30/07/2026, 3:25 pm - Rohan: Nobody has studied anything yet
+30/07/2026, 5:15 pm - Priya: Lab record submission is tomorrow, right?
+30/07/2026, 5:17 pm - Divya: Yes, Wednesday last hour
+30/07/2026, 5:19 pm - Meghna: Nooo I haven't even started 😂
+30/07/2026, 9:48 pm - Divya: Does anyone have the datasheet for the relay board?
+30/07/2026, 9:53 pm - Kavya: https://example.com/datasheet/9772
+30/07/2026, 9:58 pm - Divya: Perfect, thanks
+31/07/2026, 8:22 am - Rohan: Good mornng everyone 🙏
+31/07/2026, 8:26 am - Priya: Morning!
+31/07/2026, 8:28 am - Meghna: Morning da
+31/07/2026, 9:56 am - Kavya: Power cut in the lab block, class shifted
+31/07/2026, 9:58 am - Arun: Where are we meeting now?
+31/07/2026, 10:03 am - Kavya: Room 204
+31/07/2026, 10:03 am - Meghna: On the way
+31/07/2026, 12:41 pm - Rohan: <Media omitted>
+31/07/2026, 12:46 pm - Priya: Nice one 👌
+31/07/2026, 12:52 pm - Kavya: Looks great
+31/07/2026, 4:38 pm - Rohan: The projector in the seminar hall is not working again
+31/07/2026, 4:44 pm - Arun: Report it to the dept office
+31/07/2026, 4:49 pm - Divya: Already reported twice 🙏
+31/07/2026, 7:28 pm - Meghna: https://example.com/post/6658 look at this 👌
+31/07/2026, 7:33 pm - Priya: Haha this is so true
+31/07/2026, 7:34 pm - Divya: Sending to the other group
+01/08/2026, 11:02 am - Priya changed the group description
+01/08/2026, 12:00 pm - Priya: Last August Arun handled the registration renewal, so whoever takes over, please remember it.
+01/08/2026, 9:34 pm - Priya: My laptop is acting up again, Arduino IDE keeps crashing
+01/08/2026, 9:39 pm - Kavya: Try reinstalling the board package
+01/08/2026, 9:42 pm - Divya: Or use the lab PCs
+01/08/2026, 9:45 pm - Priya: Will try that
+02/08/2026, 8:52 am - Divya: Good morning everyone 😂
+02/08/2026, 8:57 am - Arun: Morning!
+02/08/2026, 9:02 am - Rohan: Morning da
+02/08/2026, 7:35 pm - Arun: Which MQTT broker library did we use last time?
+02/08/2026, 7:40 pm - Priya: No idea, check the old project folder
+02/08/2026, 7:41 pm - Kavya: It is in the shared drive under projects
+03/08/2026, 11:07 am - Kavya: The projector in the seminar hall is not working again
+03/08/2026, 11:14 am - Arun: Report it to the dept office
+03/08/2026, 11:17 am - Divya: Already reported twice 👍
+03/08/2026, 2:46 pm - Meghna: Who has the key to the club cupboard?
+03/08/2026, 2:53 pm - Kavya: With Divya I think
+03/08/2026, 2:57 pm - Divya: Yes, I left it at the department office
+03/08/2026, 3:02 pm - Meghna: Ok will collect from there
+03/08/2026, 4:34 pm - Divya: Power cut in the lab block, class shifted
+03/08/2026, 4:36 pm - Arun: Where are we meeting now?
+03/08/2026, 4:42 pm - Divya: Room 204
+03/08/2026, 4:47 pm - Rohan: On the way
+03/08/2026, 7:26 pm - Arun: Does anyone have the datasheet for the relay board?
+03/08/2026, 7:32 pm - Priya: https://example.com/datasheet/3496
+03/08/2026, 7:35 pm - Arun: Perfect, thanks
+03/08/2026, 10:43 pm - Rohan: Anyone free on Friday?
+03/08/2026, 10:46 pm - Priya: Free after 11
+03/08/2026, 10:50 pm - Divya: Same here
+03/08/2026, 10:53 pm - Rohan: Ok let's see then
+03/08/2026, 11:44 pm - Meghna: Birthday today! 🎂
+03/08/2026, 11:46 pm - Divya: Happy birthday!!
+03/08/2026, 11:52 pm - Rohan: Treat venum da 🙏
+04/08/2026, 4:33 pm - Rohan: The projector in the seminar hall is not working again
+04/08/2026, 4:35 pm - Divya: Report it to the dept office
+04/08/2026, 4:42 pm - Meghna: Already reported twice 👍
+04/08/2026, 10:02 pm - Rohan: Birthday today! 🎂
+04/08/2026, 10:08 pm - Arun: Happy birthday!!
+04/08/2026, 10:14 pm - Meghna: Treat venum da 🔥
+04/08/2026, 10:29 pm - Meghna: This message was deleted
+04/08/2026, 10:33 pm - Priya: Bala sir said it is open till 5
+04/08/2026, 10:36 pm - Meghna: Thanks!
+05/08/2026, 1:51 pm - Meghna: <Media omitted>
+05/08/2026, 1:52 pm - Meghna: Look at what the first years built
+05/08/2026, 1:58 pm - Priya: That's actually impressive
+05/08/2026, 3:11 pm - Divya: Anyone up for lunch at the canteen?
+05/08/2026, 3:18 pm - Arun: Give me 10 mins
+05/08/2026, 3:22 pm - Priya: Cunt me in 😂
+05/08/2026, 3:24 pm - Divya: Ok at 1
+05/08/2026, 6:48 pm - Priya: https://example.com/post/2016 look at this
+05/08/2026, 6:51 pm - Divya: Haha this is so true
+05/08/2026, 6:52 pm - Meghna: Sending to the other group
+05/08/2026, 9:40 pm - Divya: Is anyone going to the library?
+05/08/2026, 9:40 pm - Kavya: I am, need anything?
+05/08/2026, 9:44 pm - Divya: Return this book for me please
+05/08/2026, 9:45 pm - Kavya: Ok bring it to class
+06/08/2026, 9:36 am - Rohan: Does anyone have the datasheet for the ESP32?
+06/08/2026, 9:36 am - Divya: https://example.com/datasheet/7758
+06/08/2026, 9:42 am - Rohan: Perfect, thnaks
+06/08/2026, 11:16 am - Divya: https://example.com/post/4453 look at this
+06/08/2026, 11:19 am - Rohan: Haha this is so true
+06/08/2026, 11:25 am - Meghna: Sending to the other group
+06/08/2026, 2:20 pm - Kavya: Submitted. HoD office says it takes 5 working days.
+07/08/2026, 1:07 pm - Kavya: Who has the key to the club cupboard?
+07/08/2026, 1:09 pm - Arun: With Divya I think
+07/08/2026, 1:12 pm - Meghna: Yes, I left it at the department office
+07/08/2026, 1:15 pm - Kavya: Ok will collect from there
+07/08/2026, 6:32 pm - Rohan: What time is the committee call tonight?
+07/08/2026, 6:36 pm - Meghna: 9 pm as usual
+07/08/2026, 6:41 pm - Arun: Seri, bus la irukken so I will be on mute
+07/08/2026, 10:59 pm - Rohan: This message was deleted
+07/08/2026, 10:59 pm - Divya: Appo naalaiku early ah poganum
+07/08/2026, 11:02 pm - Meghna: Naalaiku Friday la, queue romba irukkum
+07/08/2026, 11:58 pm - Kavya: Lab record submission is tomorrow, right?
+08/08/2026, 12:03 am - Priya: Yes, Friday last hour
+08/08/2026, 12:05 am - Rohan: Nooo I haven't even started
+08/08/2026, 9:31 am - Divya: What time is the committee call tonight?
+08/08/2026, 9:35 am - Priya: 9 pm as usual
+08/08/2026, 9:40 am - Rohan: Seri, bus la irukken so I will be on mute
+08/08/2026, 7:50 pm - Meghna: Enna da ippo network la problem ah?
+08/08/2026, 7:53 pm - Rohan: Illa illa, hostel wifi dhaan slow
+08/08/2026, 7:59 pm - Priya: Konjam wait pannu, maybe it will come back 👌
+08/08/2026, 9:54 pm - Rohan: The projector in the seminar hall is not working again
+08/08/2026, 9:56 pm - Priya: Report it to the dept office
+08/08/2026, 9:58 pm - Meghna: Already reported twice
+08/08/2026, 10:32 pm - Rohan: Is the lab open today?
+08/08/2026, 10:36 pm - Divya: Bala sir said it is open till 5
+08/08/2026, 10:40 pm - Rohan: Thanks!
+08/08/2026, 10:51 pm - Divya: <Media omitted>
+08/08/2026, 10:56 pm - Meghna: Nice one 👌
+08/08/2026, 11:02 pm - Rohan: Looks great 👌
+09/08/2026, 9:37 am - Kavya: Who has the key to the club cupboard?
+09/08/2026, 9:40 am - Meghna: With Divya I think
+09/08/2026, 9:41 am - Priya: Yes, I left it at the department office
+09/08/2026, 9:44 am - Kavya: Ok will collect from tehre
+09/08/2026, 7:00 pm - Arun: Renewal form submitted.
+09/08/2026, 8:09 pm - Rohan: Machan canteen la samosa over da
+09/08/2026, 8:12 pm - Arun: Appo naalaiku early ah poganum
+09/08/2026, 8:15 pm - Meghna: Naalaiku Friday la, queue romba irukkum 🔥
+09/08/2026, 8:25 pm - Meghna: <Media omitted>
+09/08/2026, 8:30 pm - Meghna: Look at what the first years built
+09/08/2026, 8:33 pm - Arun: That's actually impressive
+10/08/2026, 2:05 pm - Priya: The projector in the seminar hall is not working again
+10/08/2026, 2:10 pm - Arun: Report it to the dept office
+10/08/2026, 2:13 pm - Kavya: Already reported twice
+10/08/2026, 3:47 pm - Meghna: Which relay board library did we use last time?
+10/08/2026, 3:50 pm - Arun: No idea, check the old project folder
+10/08/2026, 3:54 pm - Divya: It is in the shared drive under projects
+10/08/2026, 9:11 pm - Arun: <Media omitted>
+10/08/2026, 9:18 pm - Arun: Look at what the first years built
+10/08/2026, 9:24 pm - Rohan: That's actually impressive 🔥
+10/08/2026, 9:32 pm - Priya: https://example.com/post/9043 look at this
+10/08/2026, 9:37 pm - Meghna: Haha this is so true
+10/08/2026, 9:38 pm - Rohan: Sending to the other group
+10/08/2026, 9:55 pm - Rohan: Who has the key to the club cupboard?
+10/08/2026, 9:57 pm - Divya: With Divya I think
+10/08/2026, 9:58 pm - Kavya: Yes, I left it at the department office
+10/08/2026, 10:00 pm - Rohan: Ok will collect from there
+11/08/2026, 9:55 am - Rohan: Good morning everyone 👍
+11/08/2026, 10:00 am - Kavya: Morning!
+11/08/2026, 10:04 am - Priya: Morning da
+11/08/2026, 10:57 am - Priya: https://example.com/post/8039 look at this 😅
+11/08/2026, 10:58 am - Kavya: Haha this is so true
+11/08/2026, 11:01 am - Rohan: Sending to the other group
+11/08/2026, 5:29 pm - Meghna: Who has the key to the club cupboard?
+11/08/2026, 5:35 pm - Rohan: With Divya I think
+11/08/2026, 5:39 pm - Priya: Yes, I left it at the department office
+11/08/2026, 5:43 pm - Meghna: Ok will collect from there
+12/08/2026, 9:13 pm - Priya: Lab record submission is tomorrow, right?
+12/08/2026, 9:18 pm - Rohan: Yes, Thursday last hour
+12/08/2026, 9:20 pm - Arun: Nooo I haven't even started
+13/08/2026, 12:00 pm - Arun: Enna da ippo netwrk la problem ah?
+13/08/2026, 12:05 pm - Divya: Illa illa, hostel wifi dhaan slow
+13/08/2026, 12:06 pm - Priya: Konjam wait pannu, maybe it will come back 👍
+13/08/2026, 12:56 pm - Kavya: Who has the key to the club cupboard?
+13/08/2026, 1:00 pm - Meghna: With Divya I think
+13/08/2026, 1:04 pm - Arun: Yes, I left it at the department office
+13/08/2026, 1:06 pm - Kavya: Ok will collect from there
+13/08/2026, 6:00 pm - Kavya: Anyone free on Monday?
+13/08/2026, 6:04 pm - Rohan: Free after 11
+13/08/2026, 6:06 pm - Priya: Same here
+13/08/2026, 6:12 pm - Kavya: Ok let's see then
+13/08/2026, 8:02 pm - Divya: Exam timetable is out, ugh 😂
+13/08/2026, 8:06 pm - Meghna: Which day is the first paper?
+13/08/2026, 8:09 pm - Divya: Monday
+13/08/2026, 8:13 pm - Arun: Nobody has studied anything yet
+14/08/2026, 1:31 pm - Divya: https://example.com/post/7802 look at this 😅
+14/08/2026, 1:36 pm - Kavya: Haha this is so true
+14/08/2026, 1:42 pm - Rohan: Sending to the other group
+14/08/2026, 3:05 pm - Kavya: Approved. Lab booked for 22 Aug.
+14/08/2026, 3:37 pm - Meghna: Who has the key to the club cupboard?
+14/08/2026, 3:43 pm - Rohan: This message was deleted
+14/08/2026, 3:44 pm - Kavya: Yes, I left it at the department ofice
+14/08/2026, 3:50 pm - Meghna: Ok will collect from there
+14/08/2026, 9:23 pm - Rohan: What time is the committee call tonight?
+14/08/2026, 9:26 pm - Divya: 9 pm as usual
+14/08/2026, 9:31 pm - Priya: Seri, bus la irukken so I will be on mute
+15/08/2026, 12:50 pm - Kavya: Has anyone used the Arduino Nano with the ESP32? Getting weird readings.
+15/08/2026, 12:52 pm - Rohan: Check your wiring first, mine was a loose jumper wire.
+15/08/2026, 12:53 pm - Meghna: Also try a different power supply
+15/08/2026, 12:55 pm - Kavya: That fixed it, thanks!
+15/08/2026, 3:07 pm - Meghna: Machan canteen la samosa over da
+15/08/2026, 3:12 pm - Arun: Appo naalaiku early ah poganum
+15/08/2026, 3:15 pm - Priya: Naalaiku Friday la, queue romba irukkum 👌
+15/08/2026, 8:30 pm - Rohan: Anyone free on Tuesday?
+15/08/2026, 8:33 pm - Priya: Free after 11
+15/08/2026, 8:39 pm - Kavya: Same here
+15/08/2026, 8:43 pm - Rohan: Ok let's see then
+16/08/2026, 10:12 pm - Priya: Who has the key to the club cupboard?
+16/08/2026, 10:13 pm - Arun: With Divya I think
+16/08/2026, 10:14 pm - Meghna: Yes, I left it at the department office
+16/08/2026, 10:19 pm - Priya: Ok will collect from there
+17/08/2026, 4:30 pm - Divya: Which LoRa module library did we use last time?
+17/08/2026, 4:33 pm - Rohan: No idea, check the old project folder
+17/08/2026, 4:36 pm - Kavya: It is in the shared drive under projects
+17/08/2026, 4:44 pm - Priya: What time is the committee call tonight?
+17/08/2026, 4:49 pm - Meghna: 9 pm as usual
+17/08/2026, 4:49 pm - Divya: Seri, bus la irukken so I will be on mute
+18/08/2026, 9:35 am - Kavya: Birthday today! 🎂
+18/08/2026, 9:39 am - Priya: Happy birthday!!
+18/08/2026, 9:42 am - Divya: Treat venum da
+18/08/2026, 12:27 pm - Meghna: <Media omitted>
+18/08/2026, 12:29 pm - Kavya: Nice one 👌
+18/08/2026, 12:30 pm - Divya: Looks great
+18/08/2026, 3:55 pm - Arun: What time is the committee call tonight?
+18/08/2026, 4:01 pm - Rohan: 9 pm as usual
+18/08/2026, 4:06 pm - Divya: Seri, bus la irukken so I will be on mute
+18/08/2026, 7:37 pm - Arun: Is anyone going to the library?
+18/08/2026, 7:41 pm - Rohan: I am, need anything?
+18/08/2026, 7:44 pm - Arun: Return this book for me please
+18/08/2026, 7:46 pm - Rohan: Ok bring it to class
+18/08/2026, 8:03 pm - Priya: Who has the key to the club cupboard?
+18/08/2026, 8:08 pm - Rohan: With Divya I think
+18/08/2026, 8:14 pm - Kavya: Yes, I left it at the department office
+18/08/2026, 8:18 pm - Priya: Ok will collect from there
+19/08/2026, 8:46 am - Meghna: Birthday today! 🎂
+19/08/2026, 8:52 am - Arun: Happy birthday!!
+19/08/2026, 8:55 am - Priya: Treat venum da 😅
+19/08/2026, 1:55 pm - Meghna: Is the lab open today?
+19/08/2026, 1:56 pm - Kavya: Bala sir said it is open till 5
+19/08/2026, 1:59 pm - Meghna: Thanks!
+19/08/2026, 2:43 pm - Arun: Exam timetable is out, ugh
+19/08/2026, 2:43 pm - Priya: Which day is the first paper?
+19/08/2026, 2:47 pm - Arun: Monday
+19/08/2026, 2:52 pm - Meghna: Nobody has studied anything yet
+19/08/2026, 7:51 pm - Meghna: Machan canteen la samosa over da
+19/08/2026, 7:58 pm - Divya: Appo naalaiku early ah poganum
+19/08/2026, 7:58 pm - Priya: Naalaiku Friday la, queue romba irukkum 🙏
+20/08/2026, 7:09 am - Rohan: Good morning everyone
+20/08/2026, 7:15 am - Priya: Morning!
+20/08/2026, 7:16 am - Kavya: Morning da
+20/08/2026, 4:31 pm - Arun: Lab record submission is tomorrow, right?
+20/08/2026, 4:34 pm - Rohan: Yes, Friday last hour
+20/08/2026, 4:35 pm - Divya: Nooo I haven't even started 👍
+20/08/2026, 9:15 pm - Arun: Machan canteen la samosa over da
+20/08/2026, 9:19 pm - Meghna: Appo naalaiku early ah pgoanum
+20/08/2026, 9:20 pm - Kavya: Naalaiku Friday la, queue romba irukkum
+20/08/2026, 10:22 pm - Kavya: Has anyone used the Arduino Nano with the MQTT broker? Getting weird readings.
+20/08/2026, 10:24 pm - Meghna: Check your wiring first, mine was a loose jumper wire.
+20/08/2026, 10:29 pm - Priya: Also try a different power supply
+20/08/2026, 10:34 pm - Kavya: That fixed it, thanks!
+21/08/2026, 9:20 am - Priya: Has anyone used the servo motor with the Arduino Nano? Getting weird readings.
+21/08/2026, 9:26 am - Kavya: Check your wiring first, mine was a loose jumper wire.
+21/08/2026, 9:32 am - Divya: Also try a different power supply
+21/08/2026, 9:34 am - Priya: That fixed it, thanks! 🙏
+21/08/2026, 1:37 pm - Divya: <Media omitted>
+21/08/2026, 1:38 pm - Meghna: Nice one 👌
+21/08/2026, 1:42 pm - Kavya: Looks great
+21/08/2026, 6:04 pm - Kavya: The projector in the seminar hall is not working again
+21/08/2026, 6:05 pm - Arun: Report it to the dept office
+21/08/2026, 6:09 pm - Priya: Already reported twice
+22/08/2026, 8:11 pm - Divya: Exam timetable is out, ugh 👌
+22/08/2026, 8:17 pm - Arun: Which day is the frst paper?
+22/08/2026, 8:19 pm - Divya: Monday
+22/08/2026, 8:23 pm - Priya: Nobody has studied anything yet
+22/08/2026, 9:45 pm - Meghna: Anyone free on Monday?
+22/08/2026, 9:51 pm - Kavya: Free after 11
+22/08/2026, 9:52 pm - Priya: Same here
+22/08/2026, 9:56 pm - Meghna: Ok let's see then
+23/08/2026, 6:29 pm - Arun: <Media omitted>
+23/08/2026, 6:34 pm - Divya: Nice one 👌
+23/08/2026, 6:39 pm - Rohan: Looks great 👍
+24/08/2026, 7:40 am - Meghna: Good morning everyone 🙏
+24/08/2026, 7:44 am - Rohan: Morning!
+24/08/2026, 7:46 am - Kavya: Morning da
+24/08/2026, 11:32 am - Priya: Birthday today! 🎂
+24/08/2026, 11:37 am - Kavya: Happy birthday!!
+24/08/2026, 11:40 am - Rohan: Treat venum da 👍
+24/08/2026, 10:27 pm - Divya: What time is the committee call tonight?
+24/08/2026, 10:31 pm - Kavya: 9 pm as usual
+24/08/2026, 10:33 pm - Priya: Seri, bus la irukken so I will be on mute
+24/08/2026, 11:55 pm - Kavya: Does anyone have the datasheet for the servo motor?
+24/08/2026, 11:58 pm - Rohan: https://example.com/datasheet/3296
+25/08/2026, 12:01 am - Kavya: Perfect, thanks
+25/08/2026, 8:11 am - Priya: Which HC-SR04 library did we use last time?
+25/08/2026, 8:12 am - Rohan: No idea, check the old project folder
+25/08/2026, 8:15 am - Kavya: It is in the shared drive under projects
+25/08/2026, 9:06 pm - Divya: Anyone free on Friday?
+25/08/2026, 9:12 pm - Rohan: This message was deleted
+25/08/2026, 9:17 pm - Priya: Same here
+25/08/2026, 9:20 pm - Divya: Ok let's see then
+25/08/2026, 10:03 pm - Divya: Anyone up for lunch at the canteen?
+25/08/2026, 10:09 pm - Rohan: Give me 10 mins
+25/08/2026, 10:15 pm - Kavya: Count me in 😅
+25/08/2026, 10:20 pm - Divya: Ok at 1
+26/08/2026, 12:14 pm - Meghna: The projector in the seminar hall is not working again
+26/08/2026, 12:17 pm - Divya: Report it to the dept office
+26/08/2026, 12:21 pm - Rohan: Already reported twice
+26/08/2026, 5:49 pm - Kavya: Does anyone have the datasheet for the HC-SR04?
+26/08/2026, 5:52 pm - Meghna: https://example.com/datasheet/4763
+26/08/2026, 5:53 pm - Kavya: Perfect, thanks
+26/08/2026, 6:47 pm - Meghna: <Media omitted>
+26/08/2026, 6:47 pm - Divya: Nice one 👌
+26/08/2026, 6:50 pm - Kavya: Looks great 🙏
+27/08/2026, 4:29 pm - Meghna: Lab record submission is tomorrow, right?
+27/08/2026, 4:35 pm - Kavya: Yes, Tuesday last hour
+27/08/2026, 4:41 pm - Divya: Nooo I haven't even started 🔥
+27/08/2026, 7:31 pm - Priya: Is anyone going to the library?
+27/08/2026, 7:33 pm - Divya: I am, need anything?
+27/08/2026, 7:37 pm - Priya: Reutrn this book for me please
+27/08/2026, 7:38 pm - Divya: Ok bring it to class
+28/08/2026, 6:33 pm - Meghna: Birthday today! 🎂
+28/08/2026, 6:37 pm - Arun: Happy birthday!!
+28/08/2026, 6:40 pm - Rohan: Treat venum da
+28/08/2026, 8:12 pm - Meghna: Enna da ippo network la problem ah?
+28/08/2026, 8:13 pm - Arun: Illa illa, hostel wifi dhaan slow
+28/08/2026, 8:14 pm - Divya: Konjam wait pannu, maybe it will come back
+28/08/2026, 9:32 pm - Priya: Has anyone used the LoRa module with the ESP32? Getting weird readings.
+28/08/2026, 9:38 pm - Kavya: Check your wiring first, mine was a loose jumper wire.
+28/08/2026, 9:39 pm - Rohan: Also try a different power supply
+28/08/2026, 9:42 pm - Priya: That fixed it, thanks! 👍
+29/08/2026, 7:07 am - Divya: Good morning everyone
+29/08/2026, 7:12 am - Rohan: Morning!
+29/08/2026, 7:15 am - Meghna: Morning da
+29/08/2026, 7:01 pm - Divya: My laptop is acting up again, Arduino IDE keeps crashing
+29/08/2026, 7:04 pm - Rohan: Try reinstalling the board package
+29/08/2026, 7:06 pm - Arun: Or use the lab PCs
+29/08/2026, 7:10 pm - Divya: Will try that
+30/08/2026, 12:30 pm - Priya: Dean signed the renewal, we are registered for the year.
+30/08/2026, 7:35 pm - Priya: <Media omitted>
+30/08/2026, 7:39 pm - Kavya: Nice one 👌
+30/08/2026, 7:44 pm - Rohan: Looks great 😅
+30/08/2026, 7:45 pm - Priya: The projector in the seminar hall is not working again
+30/08/2026, 7:47 pm - Arun: Report it to the dept office
+30/08/2026, 7:52 pm - Meghna: Already reported twice
+31/08/2026, 5:28 pm - Arun: Has anyone used the LoRa module with the MQTT broker? Getting weird readings.
+31/08/2026, 5:32 pm - Kavya: Check your wiring first, mine was a loose jumper wire.
+31/08/2026, 5:35 pm - Priya: Also try a different power supply
+31/08/2026, 5:35 pm - Arun: That fiexd it, thanks! 😅
+31/08/2026, 7:47 pm - Divya: What time is the committee call tonight?
+31/08/2026, 7:53 pm - Arun: 9 pm as usual
+31/08/2026, 7:58 pm - Meghna: Seri, bus la irukken so I will be on mute
+31/08/2026, 8:08 pm - Kavya: <Media omitted>
+31/08/2026, 8:13 pm - Kavya: Look at what the first years built
+31/08/2026, 8:15 pm - Priya: That's actually impressive
+31/08/2026, 9:47 pm - Arun: Does anyone have the datasheet for the NodeMCU?
+31/08/2026, 9:53 pm - Divya: https://example.com/datasheet/6429
+31/08/2026, 9:59 pm - Arun: Perfect, thanks
+01/09/2026, 9:41 am - Meghna: Who has the key to the club cupboard?
+01/09/2026, 9:44 am - Rohan: With Divya I think
+01/09/2026, 9:49 am - Arun: Yes, I left it at the department office
+01/09/2026, 9:55 am - Meghna: Ok will collect from there
+01/09/2026, 9:58 am - Arun: Good morning everyone
+01/09/2026, 10:03 am - Divya: Morning!
+01/09/2026, 10:05 am - Priya: Morning da
+01/09/2026, 12:07 pm - Priya: <Media omitted>
+01/09/2026, 12:11 pm - Meghna: Nice one 👌
+01/09/2026, 12:15 pm - Kavya: Looks great 🔥
+01/09/2026, 1:21 pm - Kavya: Power cut in the lab block, class shifted
+01/09/2026, 1:26 pm - Divya: Where are we meeting now?
+01/09/2026, 1:29 pm - Kavya: Room 204
+01/09/2026, 1:30 pm - Meghna: On the way
+01/09/2026, 8:17 pm - Rohan: Exam timetable is out, ugh 👍
+01/09/2026, 8:21 pm - Priya: Which day is the first paper?
+01/09/2026, 8:23 pm - Rohan: Monday
+01/09/2026, 8:28 pm - Meghna: Nobody has studied anything yet
+01/09/2026, 10:41 pm - Meghna: Anyone up for lunch at the canteen?
+01/09/2026, 10:46 pm - Priya: Give me 10 mins
+01/09/2026, 10:49 pm - Arun: Count me in
+01/09/2026, 10:51 pm - Meghna: Ok at 1
+02/09/2026, 8:22 am - Rohan: Is the lab open today?
+02/09/2026, 8:24 am - Meghna: This message was deleted
+02/09/2026, 8:27 am - Rohan: Thanks!
+02/09/2026, 11:33 am - Kavya: <Media omitted>
+02/09/2026, 11:35 am - Rohan: Nice one 👌
+02/09/2026, 11:37 am - Arun: Looks great
+02/09/2026, 8:56 pm - Meghna: Does anyone have the datasheet for the servo motor?
+02/09/2026, 8:59 pm - Arun: https://example.com/datasheet/4266
+02/09/2026, 9:02 pm - Meghna: Perfect, thanks
+03/09/2026, 11:30 am - Meghna: Anyne free on Wednesday?
+03/09/2026, 11:36 am - Priya: Free after 11
+03/09/2026, 11:38 am - Arun: Same here
+03/09/2026, 11:42 am - Meghna: Ok let's see then
+03/09/2026, 9:11 pm - Arun: This message was deleted
+03/09/2026, 9:14 pm - Divya: Happy birthday!!
+03/09/2026, 9:15 pm - Kavya: Treat venum da 🙏
+04/09/2026, 10:28 am - Kavya: Enna da ippo network la problem ah?
+04/09/2026, 10:30 am - Priya: Illa illa, hostel wifi dhaan slow
+04/09/2026, 10:36 am - Divya: Konjam wait pannu, maybe it will come back
+04/09/2026, 10:41 pm - Priya: What time is the committee call tonight?
+04/09/2026, 10:45 pm - Kavya: 9 pm as usual
+04/09/2026, 10:47 pm - Meghna: Seri, bus la irukken so I will be on mute
+05/09/2026, 6:41 pm - Meghna: Is the lab open today?
+05/09/2026, 6:42 pm - Arun: Bala sir said it is open till 5
+05/09/2026, 6:43 pm - Meghna: Thanks!
+05/09/2026, 8:24 pm - Priya: Exam timetable is out, ugh 👍
+05/09/2026, 8:25 pm - Divya: Which day is the first paper?
+05/09/2026, 8:31 pm - Priya: Monday
+05/09/2026, 8:33 pm - Kavya: Nobody has studied anything yet
+06/09/2026, 12:50 pm - Divya: <Media omitted>
+06/09/2026, 12:51 pm - Divya: Look at what the first years built
+06/09/2026, 12:58 pm - Kavya: That's actually impressive 😂
+06/09/2026, 8:53 pm - Priya: Does anyone have the datasheet for the MQTT broker?
+06/09/2026, 8:56 pm - Arun: This message was deleted
+06/09/2026, 9:02 pm - Priya: Perfect, thanks
+07/09/2026, 8:57 am - Kavya: Machan canteen la samosa over da
+07/09/2026, 9:01 am - Priya: Appo naalaiku early ah poganum
+07/09/2026, 9:04 am - Divya: Naalaiku Friday la, queue romba irukkum 😅
+07/09/2026, 2:49 pm - Rohan: What time is the committee call tonight?
+07/09/2026, 2:54 pm - Priya: 9 pm as usual
+07/09/2026, 2:57 pm - Arun: Seri, bus la irukken so I will be on mute
+07/09/2026, 7:20 pm - Meghna: Has anyone used the ESP32 with the relay board? Getting weird readings.
+07/09/2026, 7:24 pm - Arun: Check your wiring first, mine was a loose jumper wire.
+07/09/2026, 7:26 pm - Kavya: Also try a different power supply
+07/09/2026, 7:29 pm - Meghna: That fixed it, thanks! 👍
+07/09/2026, 7:41 pm - Arun: Power cut in the lab block, class shifted
+07/09/2026, 7:43 pm - Meghna: Where are we meeting now?
+07/09/2026, 7:44 pm - Arun: Room 204
+07/09/2026, 7:51 pm - Priya: On the way
+07/09/2026, 8:42 pm - Divya: Is the lab open today?
+07/09/2026, 8:46 pm - Rohan: Bala sir said it is open till 5
+07/09/2026, 8:51 pm - Divya: Thanks!
+08/09/2026, 9:24 am - Kavya: My laptop is acting up again, Arduino IDE keeps crashing
+08/09/2026, 9:26 am - Rohan: Try reinstalling the board package
+08/09/2026, 9:29 am - Arun: Or use the lab PCs
+08/09/2026, 9:31 am - Kavya: Will try that
+08/09/2026, 2:25 pm - Rohan: <Media omitted>
+08/09/2026, 2:28 pm - Priya: Nice one 👌
+08/09/2026, 2:31 pm - Meghna: Looks great 👌
+08/09/2026, 7:24 pm - Divya: What time is the committee call tonight?
+08/09/2026, 7:27 pm - Rohan: 9 pm as usual
+08/09/2026, 7:34 pm - Priya: Seri, bus la irukken so I will be on mute
+09/09/2026, 10:53 am - Rohan: Which HC-SR04 librry did we use last time?
+09/09/2026, 10:57 am - Divya: No idea, check the old project folder
+09/09/2026, 10:59 am - Kavya: It is in the shared drive under projects
+09/09/2026, 8:13 pm - Rohan: Who has the key to the club cupboard?
+09/09/2026, 8:14 pm - Divya: With Divya I think
+09/09/2026, 8:18 pm - Meghna: Yes, I left it at the department office
+09/09/2026, 8:22 pm - Rohan: Ok will collect from there
+09/09/2026, 9:09 pm - Divya: Lab record submission is tomorrow, right?
+09/09/2026, 9:10 pm - Priya: Yes, Friday last hour
+09/09/2026, 9:15 pm - Rohan: Nooo I haven't even started 😂
+09/09/2026, 10:18 pm - Divya: <Media omitted>
+09/09/2026, 10:20 pm - Divya: Look at what the first yeras built
+09/09/2026, 10:22 pm - Arun: That's actually impressive 😂
+10/09/2026, 10:42 am - Kavya: Anyone up for lunch at the canteen?
+10/09/2026, 10:43 am - Rohan: Give me 10 mins
+10/09/2026, 10:49 am - Priya: Count me in 👍
+10/09/2026, 10:52 am - Kavya: Ok at 1
+10/09/2026, 9:01 pm - Divya: Exam timetable is out, ugh
+10/09/2026, 9:06 pm - Kavya: Which day is the first paper?
+10/09/2026, 9:10 pm - Divya: Monday
+10/09/2026, 9:13 pm - Meghna: Nobody has studied anything yet
+10/09/2026, 10:21 pm - Kavya: https://example.com/post/9276 look at this 🔥
+10/09/2026, 10:26 pm - Priya: Haha this is so true
+10/09/2026, 10:32 pm - Rohan: Sending to the other group
+11/09/2026, 9:33 am - Priya: Exam timetable is out, ugh 😂
+11/09/2026, 9:37 am - Arun: Which day is the first paper?
+11/09/2026, 9:39 am - Priya: Monday
+11/09/2026, 9:40 am - Divya: Good morning everyone 😅
+11/09/2026, 9:43 am - Arun: Morning!
+11/09/2026, 9:44 am - Rohan: Morning da
+11/09/2026, 9:44 am - Rohan: Nobody has studied anything yet
+11/09/2026, 12:23 pm - Divya: Machan canteen la samosa over da
+11/09/2026, 12:29 pm - Priya: Appo naalaiku early ah poganum
+11/09/2026, 12:33 pm - Arun: Naalaiku Friday la, queue romba irukkum 👍
+11/09/2026, 1:35 pm - Divya: Has anyone used the OLED display with the relay board? Getting weird readings.
+11/09/2026, 1:39 pm - Rohan: Check your wiring first, mine was a loose jumper wire.
+11/09/2026, 1:42 pm - Kavya: This message was deleted
+11/09/2026, 1:46 pm - Divya: That fxed it, thanks!
+11/09/2026, 8:53 pm - Divya: Is anyone going to the library?
+11/09/2026, 8:59 pm - Meghna: I am, need anything?
+11/09/2026, 9:01 pm - Divya: Return this book for me please
+11/09/2026, 9:04 pm - Meghna: Ok bing it to class
+11/09/2026, 10:56 pm - Priya: Which Raspberry Pi Pico library did we use last time?
+11/09/2026, 10:58 pm - Divya: No idea, check the old project folder
+11/09/2026, 11:04 pm - Arun: It is in the shared drive under projects
+12/09/2026, 3:42 pm - Arun: Exam timetable is out, ugh 😂
+12/09/2026, 3:48 pm - Meghna: Whch day is the first paper?
+12/09/2026, 3:52 pm - Arun: Monday
+12/09/2026, 3:57 pm - Kavya: Nobody has studied anything yet
+12/09/2026, 10:22 pm - Divya: Does anyone have the datasheet for the relay board?
+12/09/2026, 10:23 pm - Meghna: https://example.com/datasheet/5907
+12/09/2026, 10:28 pm - Divya: Perfect, thanks
+13/09/2026, 5:55 pm - Meghna: Power cut in the lab block, class shifted
+13/09/2026, 5:58 pm - Kavya: Where are we meeting now?
+13/09/2026, 6:03 pm - Meghna: Room 204
+13/09/2026, 6:07 pm - Arun: On the way
+13/09/2026, 10:33 pm - Arun: Machan canteen la samosa over da
+13/09/2026, 10:34 pm - Divya: Appo naalaiku early ah poganum
+13/09/2026, 10:37 pm - Priya: Naalaiku Friday la, queue romba irukkum 😂
+14/09/2026, 8:20 am - Rohan: Anyone up for lunch at the canteen?
+14/09/2026, 8:21 am - Arun: Give me 10 mins
+14/09/2026, 8:27 am - Kavya: Count me in
+14/09/2026, 8:29 am - Rohan: Ok at 1
+14/09/2026, 7:11 pm - Arun: Does anyone have the datasheet for the LoRa module?
+14/09/2026, 7:16 pm - Rohan: https://example.com/datasheet/7852
+14/09/2026, 7:18 pm - Arun: Perfect, thanks
+14/09/2026, 7:24 pm - Divya: Anyone free on Tuesday?
+14/09/2026, 7:30 pm - Kavya: Free after 11
+14/09/2026, 7:30 pm - Meghna: My laptop is acting up again, Arduino IDE keeps crashing
+14/09/2026, 7:32 pm - Kavya: Try reinstalling the board package
+14/09/2026, 7:35 pm - Rohan: Same here
+14/09/2026, 7:36 pm - Arun: Or use the lab PCs
+14/09/2026, 7:39 pm - Divya: Ok let's see then
+14/09/2026, 7:43 pm - Meghna: Will try that
+15/09/2026, 7:14 pm - Kavya: <Media omitted>
+15/09/2026, 7:16 pm - Arun: Lab record submission is tomorrow, right?
+15/09/2026, 7:19 pm - Kavya: Look at what the frist years built
+15/09/2026, 7:21 pm - Rohan: That's actually impressive 🔥
+15/09/2026, 7:21 pm - Meghna: Yes, Tuesday last hour
+15/09/2026, 7:28 pm - Rohan: Nooo I haven't even started 😅
+15/09/2026, 8:41 pm - Divya: Exam timetable is out, ugh
+15/09/2026, 8:45 pm - Meghna: Which day is the first paper?
+15/09/2026, 8:47 pm - Divya: Monday
+15/09/2026, 8:50 pm - Priya: Nobody has studied anything yet
+16/09/2026, 12:45 pm - Meghna: Who has the key to the club cupboard?
+16/09/2026, 12:51 pm - Kavya: With Divya I think
+16/09/2026, 12:54 pm - Arun: Yes, I left it at the department office
+16/09/2026, 1:00 pm - Meghna: Ok will collect from there
+16/09/2026, 3:45 pm - Kavya: My laptop is acting up again, Arduino IDE keeps crashing
+16/09/2026, 3:51 pm - Rohan: Try reinstalling the board package
+16/09/2026, 3:57 pm - Divya: Or use the lab PCs
+16/09/2026, 4:01 pm - Kavya: Will try that
+16/09/2026, 9:55 pm - Rohan: Is anyone going to the library?
+16/09/2026, 10:01 pm - Priya: I am, need anything?
+16/09/2026, 10:03 pm - Rohan: Return this book for me please
+16/09/2026, 10:06 pm - Priya: Ok bring it to class
+17/09/2026, 4:26 pm - Rohan: <Media omitted>
+17/09/2026, 4:30 pm - Rohan: Look at what the first years built
+17/09/2026, 4:35 pm - Priya: That's actually impressive 🙏
+17/09/2026, 5:28 pm - Kavya: Is the lab open today?
+17/09/2026, 5:33 pm - Divya: Bala sir said it is open till 5
+17/09/2026, 5:37 pm - Kavya: Thanks!
+17/09/2026, 10:24 pm - Meghna: What time is the committee call tonight?
+17/09/2026, 10:30 pm - Kavya: 9 pm as usual
+17/09/2026, 10:36 pm - Rohan: Seri, bus la irukken so I will be on mute
+18/09/2026, 8:33 pm - Meghna: Power cut in the lab block, class shifted
+18/09/2026, 8:39 pm - Rohan: Where are we meeting now?
+18/09/2026, 8:43 pm - Meghna: Room 204
+18/09/2026, 8:49 pm - Priya: On the way
+18/09/2026, 10:21 pm - Priya: Has anyone used the Arduino Nano with the NodeMCU? Getting weird readings.
+18/09/2026, 10:23 pm - Kavya: Check your wiring first, mine was a loose jumper wire.
+18/09/2026, 10:25 pm - Meghna: Also try a different power supply
+18/09/2026, 10:31 pm - Priya: That fixed it, thanks! 👌
+18/09/2026, 10:43 pm - Rohan: <Media omitted>
+18/09/2026, 10:49 pm - Meghna: Nice one 👌
+18/09/2026, 10:51 pm - Arun: Looks gerat 😂
+18/09/2026, 11:52 pm - Priya: Is anyone going to the library?
+18/09/2026, 11:58 pm - Arun: I am, need anything?
+19/09/2026, 12:01 am - Priya: Return this book for me please
+19/09/2026, 12:01 am - Arun: Ok bring it to class
+19/09/2026, 9:39 am - Meghna: My laptop is acting up again, Arduino IDE keeps crashing
+19/09/2026, 9:45 am - Divya: Try reinstalling the borad package
+19/09/2026, 9:48 am - Priya: Or use the lab PCs
+19/09/2026, 9:53 am - Meghna: Will try that
+19/09/2026, 9:29 pm - Kavya: Does anyone have the datasheet for the LoRa module?
+19/09/2026, 9:31 pm - Priya: https://example.com/datasheet/1175
+19/09/2026, 9:32 pm - Kavya: Perfect, thanks
+19/09/2026, 9:47 pm - Rohan: Lab record submission is tomorrow, right?
+19/09/2026, 9:53 pm - Priya: Yes, Wednesday last hour
+19/09/2026, 9:57 pm - Divya: Nooo I haven't even started 😅
+20/09/2026, 8:20 am - Meghna: Good morning everyone
+20/09/2026, 8:22 am - Rohan: Morning!
+20/09/2026, 8:22 am - Priya: Morning da
+20/09/2026, 9:15 pm - Divya: Is anyone going to the library?
+20/09/2026, 9:15 pm - Rohan: I am, need anything?
+20/09/2026, 9:17 pm - Divya: Return this book for me please
+20/09/2026, 9:19 pm - Rohan: Ok bring it to class
+20/09/2026, 10:47 pm - Divya: The projector in the seminar hall is not working again
+20/09/2026, 10:49 pm - Rohan: Report it to the dept office
+20/09/2026, 10:53 pm - Kavya: Already reported twice 🙏
+20/09/2026, 11:06 pm - Divya: Is the lab open today?
+20/09/2026, 11:06 pm - Rohan: Bala sir said it is open till 5
+20/09/2026, 11:10 pm - Divya: Thanks!
+21/09/2026, 8:19 am - Kavya: Machan canteen la samosa over da
+21/09/2026, 8:23 am - Divya: Appo naalaiku early ah poganum
+21/09/2026, 8:28 am - Arun: Naalaiku Friday la, queue romba irukkum
+21/09/2026, 9:19 am - Arun: My laptop is acting up again, Arduino IDE keeps crashing
+21/09/2026, 9:25 am - Rohan: Try reinstalling the board package
+21/09/2026, 9:27 am - Priya: Or use the lab PCs
+21/09/2026, 9:30 am - Arun: Will try that
+21/09/2026, 5:47 pm - Arun: Power cut in the lab block, class shifted
+21/09/2026, 5:48 pm - Priya: Where are we meeting now?
+21/09/2026, 5:49 pm - Arun: Room 204
+21/09/2026, 5:54 pm - Rohan: On the way
+21/09/2026, 7:20 pm - Arun: Lab record submission is tomorrow, right?
+21/09/2026, 7:21 pm - Divya: Yes, Tuesday last hour
+21/09/2026, 7:27 pm - Meghna: Nooo I haven't even started 👍
+22/09/2026, 12:21 pm - Rohan: https://example.com/post/8038 look at this
+22/09/2026, 12:26 pm - Meghna: Haha this is so true
+22/09/2026, 12:31 pm - Priya: Sending to the other group
+22/09/2026, 4:03 pm - Arun: Does anyone have the datasheet for the MQTT broker?
+22/09/2026, 4:07 pm - Rohan: https://example.com/datasheet/1450
+22/09/2026, 4:10 pm - Arun: Perfect, thanks
+22/09/2026, 6:12 pm - Meghna: My laptop is acting up again, Arduino IDE keeps crashing
+22/09/2026, 6:14 pm - Arun: Try reinstalling the board package
+22/09/2026, 6:15 pm - Rohan: Or use the lab PCs
+22/09/2026, 6:18 pm - Meghna: Will try that
+22/09/2026, 9:24 pm - Rohan: Anyone free on Wednesday?
+22/09/2026, 9:28 pm - Kavya: Free after 11
+22/09/2026, 9:29 pm - Priya: Same here
+22/09/2026, 9:31 pm - Rohan: Ok let's see then
+23/09/2026, 10:54 am - Arun: <Media omitted>
+23/09/2026, 11:01 am - Arun: Look at what the first years built
+23/09/2026, 11:07 am - Divya: That's actually impressive 😂
+23/09/2026, 8:59 pm - Rohan: <Media omitted>
+23/09/2026, 9:02 pm - Meghna: Nice one 👌
+23/09/2026, 9:08 pm - Kavya: Looks great 👌
+23/09/2026, 9:54 pm - Arun: Which ESP32 library did we use last time?
+23/09/2026, 9:57 pm - Priya: No idea, check the old project folder
+23/09/2026, 9:59 pm - Meghna: It is in the shared drive under projects
+23/09/2026, 10:42 pm - Meghna: Exam timetable is out, ugh
+23/09/2026, 10:44 pm - Rohan: Which day is the first paper?
+23/09/2026, 10:49 pm - Meghna: Monday
+23/09/2026, 10:53 pm - Kavya: Nobody has studied anything yet
+24/09/2026, 8:34 am - Priya: <Media omitted>
+24/09/2026, 8:36 am - Arun: Nice one 👌
+24/09/2026, 8:38 am - Meghna: Looks great 😅
+24/09/2026, 9:08 am - Priya: Has anyone used the OLED display with the DHT22? Getting weird readings.
+24/09/2026, 9:08 am - Arun: Check your wiring first, mine was a loose jumper wire.
+24/09/2026, 9:10 am - Rohan: Also try a different power supply
+24/09/2026, 9:12 am - Priya: That fixed it, thanks! 👍
+24/09/2026, 12:17 pm - Kavya: Birthday today! 🎂
+24/09/2026, 12:21 pm - Priya: Happy birthday!!
+24/09/2026, 12:24 pm - Meghna: Treat venum da
+24/09/2026, 2:34 pm - Divya: Anyone free on Wednesday?
+24/09/2026, 2:39 pm - Arun: Free after 11
+24/09/2026, 2:43 pm - Meghna: Same here
+24/09/2026, 2:45 pm - Divya: Ok let's see then
+24/09/2026, 6:21 pm - Kavya: Which HC-SR04 library did we use last time?
+24/09/2026, 6:24 pm - Arun: No idea, check the old project folder
+24/09/2026, 6:26 pm - Rohan: It is in the shared drive under projects
+24/09/2026, 7:10 pm - Priya: Is anyone going to the library?
+24/09/2026, 7:16 pm - Arun: I am, need anything?
+24/09/2026, 7:20 pm - Priya: Return this book for me please
+24/09/2026, 7:22 pm - Arun: Ok bring it to class
+25/09/2026, 9:50 am - Priya: Good morning evreyone
+25/09/2026, 9:54 am - Arun: Morning!
+25/09/2026, 9:58 am - Divya: Morning da
+25/09/2026, 10:46 am - Divya: This message was deleted
+25/09/2026, 10:50 am - Arun: Happy birthday!!
+25/09/2026, 10:56 am - Kavya: Treat venum da 😂
+25/09/2026, 9:07 pm - Priya: Which DHT22 library did we use last time?
+25/09/2026, 9:12 pm - Meghna: No idea, check the old project folder
+25/09/2026, 9:17 pm - Divya: It is in the shared drive under projects
+26/09/2026, 1:42 pm - Meghna: Has anyone used the relay board with the HC-SR04? Getting weird readings.
+26/09/2026, 1:48 pm - Arun: Check your wiring first, mine was a loose jumper wire.
+26/09/2026, 1:51 pm - Priya: Also try a different power supply
+26/09/2026, 1:54 pm - Meghna: That fixed it, thanks!
+26/09/2026, 6:49 pm - Divya: Who has the key to the club cupboard?
+26/09/2026, 6:52 pm - Meghna: With Divya I think
+26/09/2026, 6:56 pm - Arun: Yes, I left it at the department office
+26/09/2026, 7:01 pm - Divya: Ok will collect from there
+27/09/2026, 2:00 pm - Arun: Anyone free on Friday?
+27/09/2026, 2:02 pm - Divya: Free after 11
+27/09/2026, 2:06 pm - Rohan: Same here
+27/09/2026, 2:12 pm - Arun: Ok let's see then
+27/09/2026, 5:41 pm - Divya: What time is the committee call tonight?
+27/09/2026, 5:45 pm - Kavya: 9 pm as usual
+27/09/2026, 5:46 pm - Rohan: Seri, bus la irukken so I will be on mute
+28/09/2026, 12:18 pm - Divya: Who has the key to the club cupboard?
+28/09/2026, 12:21 pm - Meghna: With Divya I think
+28/09/2026, 12:27 pm - Priya: Yes, I left it at the department office
+28/09/2026, 12:33 pm - Divya: Ok will collect from there
+28/09/2026, 1:05 pm - Meghna: Has ayone used the HC-SR04 with the MQTT broker? Getting weird readings.
+28/09/2026, 1:05 pm - Priya: Check your wiring first, mine was a loose jumper wire.
+28/09/2026, 1:12 pm - Rohan: Also try a different power supply
+28/09/2026, 1:17 pm - Meghna: That fixed it, thanks!
+28/09/2026, 10:06 pm - Kavya: Is the lab open today?
+28/09/2026, 10:08 pm - Rohan: Bala sir said it is open till 5
+28/09/2026, 10:12 pm - Kavya: Thanks!
+29/09/2026, 11:43 am - Meghna: Enna da ippo network la problem ah?
+29/09/2026, 11:48 am - Priya: Illa illa, hostel wifi dhaan slow
+29/09/2026, 11:49 am - Kavya: Konjam wait pannu, maybe it will come back
+29/09/2026, 5:52 pm - Meghna: <Media omitted>
+29/09/2026, 5:57 pm - Meghna: Look at what the first years built
+29/09/2026, 6:03 pm - Rohan: That's actually impressive 😂
+29/09/2026, 10:26 pm - Meghna: Anyone up for lunch at the canteen?
+29/09/2026, 10:31 pm - Priya: Give me 10 mins
+29/09/2026, 10:34 pm - Divya: Count me in
+29/09/2026, 10:39 pm - Meghna: Ok at 1
+29/09/2026, 10:45 pm - Divya: <Media omitted>
+29/09/2026, 10:49 pm - Arun: Nice one 👌
+29/09/2026, 10:54 pm - Kavya: Looks great
+29/09/2026, 11:08 pm - Meghna: Exam timetable is out, ugh 😅
+29/09/2026, 11:12 pm - Divya: Which day is the first paper?
+29/09/2026, 11:12 pm - Meghna: Monday
+29/09/2026, 11:13 pm - Rohan: Nobody has studied anything yet
+30/09/2026, 2:33 pm - Kavya: Who has the key to the club cupboard?
+30/09/2026, 2:33 pm - Rohan: With Divya I think
+30/09/2026, 2:36 pm - Arun: Yes, I left it at the department office
+30/09/2026, 2:38 pm - Kavya: Ok will collect from there
+30/09/2026, 6:28 pm - Divya: https://example.com/post/8463 look at this 😂
+30/09/2026, 6:30 pm - Rohan: Haha this is so true
+30/09/2026, 6:36 pm - Meghna: Sending to the other group
+30/09/2026, 8:09 pm - Arun: Power cut in the lab block, class shifted
+30/09/2026, 8:15 pm - Meghna: Where are we meeting now?
+30/09/2026, 8:16 pm - Arun: Room 204
+30/09/2026, 8:19 pm - Kavya: On the way
+30/09/2026, 10:08 pm - Priya: What time is the committee call tonight?
+30/09/2026, 10:14 pm - Arun: 9 pm as usual
+30/09/2026, 10:15 pm - Rohan: Seri, bus la irukken so I will be on mute
+01/10/2026, 8:12 am - Priya: Good morning everyone 👍
+01/10/2026, 8:18 am - Divya: Morning!
+01/10/2026, 8:24 am - Meghna: Morning da
+01/10/2026, 8:48 am - Rohan: Birthday today! 🎂
+01/10/2026, 8:50 am - Priya: Happy birthday!!
+01/10/2026, 8:54 am - Kavya: Treat venum da 😅
+01/10/2026, 12:31 pm - Rohan: <Media omitted>
+01/10/2026, 12:32 pm - Rohan: Look at what the first years built
+01/10/2026, 12:36 pm - Meghna: That's actually impressive 🙏
+01/10/2026, 6:45 pm - Rohan: Which ESP32 library did we use last time?
+01/10/2026, 6:50 pm - Arun: No idea, check the old project folder
+01/10/2026, 6:53 pm - Meghna: It is in the shared drive under projects
+01/10/2026, 9:08 pm - Meghna: Enna da ippo network la problem ah?
+01/10/2026, 9:12 pm - Divya: Illa illa, hostel wifi dhaan slow
+01/10/2026, 9:16 pm - Priya: Konjam wait pannu, maybe it will come back
+02/10/2026, 12:15 pm - Priya: Birthday today! 🎂
+02/10/2026, 12:18 pm - Kavya: Happy birthday!!
+02/10/2026, 12:21 pm - Divya: Treat venum da
+02/10/2026, 8:34 pm - Divya: Is the lab open today?
+02/10/2026, 8:37 pm - Kavya: Bala sir said it is open till 5
+02/10/2026, 8:40 pm - Divya: Thanks!
+02/10/2026, 8:47 pm - Rohan: Does anyone have the datasheet for the HC-SR04?
+02/10/2026, 8:49 pm - Divya: https://example.com/datasheet/1012
+02/10/2026, 8:51 pm - Rohan: Perfect, thanks
+03/10/2026, 7:18 pm - Divya: Anyone free on Monday?
+03/10/2026, 7:18 pm - Rohan: Free after 11
+03/10/2026, 7:23 pm - Priya: Same here
+03/10/2026, 7:28 pm - Divya: Ok let's see then
+04/10/2026, 12:00 pm - Priya: Machan canteen la samosa over da
+04/10/2026, 12:04 pm - Kavya: Appo naalaiku early ah poganum
+04/10/2026, 12:07 pm - Meghna: Naalaiku Friday la, queue romba irukkum 🔥
+04/10/2026, 5:29 pm - Kavya: Anyone free on Tuesday?
+04/10/2026, 5:35 pm - Rohan: Free after 11
+04/10/2026, 5:36 pm - Meghna: Same here
+04/10/2026, 5:40 pm - Kavya: Ok let's see then
+05/10/2026, 8:16 am - Kavya: Good morning everyone
+05/10/2026, 8:21 am - Priya: Morning!
+05/10/2026, 8:23 am - Divya: Morning da
+05/10/2026, 10:58 am - Meghna: Anyone free on Tuesday?
+05/10/2026, 11:00 am - Priya: Free after 11
+05/10/2026, 11:02 am - Divya: Same here
+05/10/2026, 11:02 am - Meghna: Ok let's see then
+05/10/2026, 4:05 pm - Divya: Power cut in the lab block, class shifted
+05/10/2026, 4:06 pm - Rohan: Where are we meeting now?
+05/10/2026, 4:10 pm - Divya: Room 204
+05/10/2026, 4:15 pm - Priya: On the way
+05/10/2026, 8:30 pm - Priya: November workshop is on 21 Nov. Permission letter needed again, don't forget the HoD sign before booking.
+05/10/2026, 8:39 pm - Rohan: Has anyone used the relay board with the MQTT broker? Getting weird readings.
+05/10/2026, 8:44 pm - Meghna: Check your wiring first, mine was a loose jumper wire.
+05/10/2026, 8:47 pm - Priya: Also try a different power supply
+05/10/2026, 8:52 pm - Rohan: That fixed it, thanks! 👌
+06/10/2026, 1:27 pm - Divya: <Media omitted>
+06/10/2026, 1:30 pm - Priya: Nice one 👌
+06/10/2026, 1:36 pm - Arun: Looks great 👌
+06/10/2026, 5:46 pm - Rohan: What time is the committee call tonight?
+06/10/2026, 5:48 pm - Meghna: 9 pm as usual
+06/10/2026, 5:51 pm - Divya: Seri, bus la irukken so I will be on mute
+07/10/2026, 12:03 pm - Arun: <Media omitted>
+07/10/2026, 12:06 pm - Arun: Look at what the first years built
+07/10/2026, 12:11 pm - Meghna: That's actually impressive 😂
+07/10/2026, 1:22 pm - Rohan: Birthday today! 🎂
+07/10/2026, 1:26 pm - Arun: Happy birthday!!
+07/10/2026, 1:30 pm - Kavya: Treat venum da 😅
+07/10/2026, 9:29 pm - Meghna: Lab record submission is tomorrow, right?
+07/10/2026, 9:31 pm - Divya: Yes, Friday last hour
+07/10/2026, 9:31 pm - Arun: Nooo I haven't even started 🙏
+07/10/2026, 10:06 pm - Meghna: Which Raspberry Pi Pico library did we use last time?
+07/10/2026, 10:07 pm - Priya: No idea, check the old project folder
+07/10/2026, 10:13 pm - Kavya: It is in the shared drive under projects
+08/10/2026, 12:26 pm - Kavya: Is anyone going to the library?
+08/10/2026, 12:28 pm - Arun: I am, need anything?
+08/10/2026, 12:33 pm - Kavya: Return this book for me please
+08/10/2026, 12:39 pm - Arun: Ok bring it to class
+08/10/2026, 5:50 pm - Meghna: My laptop is acting up again, Arduino IDE keeps crashing
+08/10/2026, 5:53 pm - Priya: Try reinstalling the board package
+08/10/2026, 5:56 pm - Divya: Or use the lab PCs
+08/10/2026, 6:02 pm - Meghna: Will try that
+08/10/2026, 9:17 pm - Priya: Anyone up for lunch at the canteen?
+08/10/2026, 9:18 pm - Arun: Give me 10 mins
+08/10/2026, 9:24 pm - Divya: Count me in 👍
+08/10/2026, 9:26 pm - Priya: Ok at 1
+09/10/2026, 9:16 am - Kavya: Birthday today! 🎂
+09/10/2026, 9:19 am - Arun: Happy birthday!!
+09/10/2026, 9:23 am - Meghna: Treat venum da 🔥
+09/10/2026, 10:39 am - Rohan: Enna da ippo network la problem ah?
+09/10/2026, 10:41 am - Kavya: Illa illa, hostel wifi dhaan slow
+09/10/2026, 10:44 am - Divya: This message was deleted
+09/10/2026, 8:27 pm - Meghna: The projector in the seminar hall is not working again
+09/10/2026, 8:30 pm - Divya: Report it to the dept office
+09/10/2026, 8:31 pm - Kavya: Already reported twice 😅
+09/10/2026, 10:19 pm - Meghna: Does anyone have the datasheet for the servo motor?
+09/10/2026, 10:22 pm - Arun: https://example.com/datasheet/1229
+09/10/2026, 10:23 pm - Meghna: Perfect, thanks
+10/10/2026, 1:14 pm - Divya: The projector in the seminar hall is not working again
+10/10/2026, 1:18 pm - Meghna: Report it to the dept office
+10/10/2026, 1:24 pm - Kavya: Already reported twice 🙏
+10/10/2026, 8:47 pm - Kavya: <Media omitted>
+10/10/2026, 8:52 pm - Kavya: Look at what the first years built
+10/10/2026, 8:58 pm - Meghna: That's actually impressive 😂
+10/10/2026, 10:11 pm - Rohan: Anyone up for lunch at the canteen?
+10/10/2026, 10:12 pm - Kavya: Give me 10 mins
+10/10/2026, 10:18 pm - Meghna: Count me in 👍
+10/10/2026, 10:24 pm - Rohan: Ok at 1
+11/10/2026, 1:10 pm - Arun: Enna da ippo network la problem ah?
+11/10/2026, 1:15 pm - Priya: Illa illa, hostel wifi dhaan slow
+11/10/2026, 1:20 pm - Kavya: Konjam wait pannu, maybe it will come back 👍
+11/10/2026, 1:40 pm - Divya: Power cut in the lab block, class shifted
+11/10/2026, 1:45 pm - Kavya: Where are we meeting now?
+11/10/2026, 1:50 pm - Divya: Room 204
+11/10/2026, 1:55 pm - Meghna: On the way
+12/10/2026, 10:52 am - Meghna: Is the lab open today?
+12/10/2026, 10:57 am - Priya: Bala sir said it is open till 5
+12/10/2026, 11:00 am - Meghna: Thanks!
+12/10/2026, 5:54 pm - Rohan: https://example.com/post/6413 look at this 👍
+12/10/2026, 5:57 pm - Priya: Haha this is so true
+12/10/2026, 5:58 pm - Arun: Sending to the other group
+12/10/2026, 8:40 pm - Rohan: Anyone free on Saturday?
+12/10/2026, 8:45 pm - Meghna: Free after 11
+12/10/2026, 8:48 pm - Arun: Same here
+12/10/2026, 8:51 pm - Rohan: Ok let's see then
+12/10/2026, 9:15 pm - Priya: Start planning IoT Fest for Feb 2027 by December. The Dean's office approval for the auditorium takes a month.
+12/10/2026, 10:05 pm - Divya: Which ESP32 library did we use last time?
+12/10/2026, 10:05 pm - Priya: No idea, check the old project folder
+12/10/2026, 10:10 pm - Arun: It is in the shared drive under projects
+13/10/2026, 9:36 am - Priya: Birthay today! 🎂
+13/10/2026, 9:39 am - Rohan: Happy birthday!!
+13/10/2026, 9:39 am - Meghna: Treat venum da 🔥
+13/10/2026, 11:40 am - Rohan: Machan canteen la samosa over da
+13/10/2026, 11:45 am - Kavya: Appo naalaiku ealry ah poganum
+13/10/2026, 11:48 am - Meghna: Naalaiku Friday la, queue romba irukkum 🙏
+13/10/2026, 7:42 pm - Divya: Which ESP32 library did we use last time?
+13/10/2026, 7:46 pm - Arun: No idea, check the old project folder
+13/10/2026, 7:50 pm - Priya: It is in the shared drive under projects
+13/10/2026, 9:43 pm - Arun: The projector in the seminar hall is not working again
+13/10/2026, 9:46 pm - Divya: Report it to the dept office
+13/10/2026, 9:49 pm - Priya: Already reported twice 👍
+14/10/2026, 5:51 pm - Divya: Anyone up for lunch at the canteen?
+14/10/2026, 5:53 pm - Arun: Give me 10 mins
+14/10/2026, 5:57 pm - Meghna: Count me in
+14/10/2026, 6:00 pm - Divya: Ok at 1
+14/10/2026, 6:59 pm - Arun: Which MQTT broker library did we use last time?
+14/10/2026, 7:06 pm - Priya: No idea, check the old project folder
+14/10/2026, 7:08 pm - Kavya: It is in the shared drive under projects
+14/10/2026, 10:55 pm - Meghna: Exam timetable is out, ugh 👍
+14/10/2026, 11:00 pm - Rohan: Which day is the first paper?
+14/10/2026, 11:07 pm - Meghna: Monday
+14/10/2026, 11:13 pm - Priya: Nbody has studied anything yet
+14/10/2026, 11:58 pm - Rohan: <Media omitted>
+15/10/2026, 12:00 am - Rohan: Look at what the first years built
+15/10/2026, 12:04 am - Meghna: That's actually impressive 👍
+15/10/2026, 12:46 pm - Kavya: Anyone free on Friday?
+15/10/2026, 12:51 pm - Rohan: This message was deleted
+15/10/2026, 12:57 pm - Meghna: Same here
+15/10/2026, 12:59 pm - Kavya: Ok let's see then
+15/10/2026, 1:20 pm - Divya: Who has the key to the club cupboard?
+15/10/2026, 1:26 pm - Arun: With Divya I tink
+15/10/2026, 1:32 pm - Kavya: Yes, I left it at the department office
+15/10/2026, 1:39 pm - Divya: Ok will collect from there
+15/10/2026, 9:07 pm - Arun: Does anyone have the datasheet for the servo motor?
+15/10/2026, 9:13 pm - Priya: https://example.com/datasheet/8346
+15/10/2026, 9:14 pm - Arun: Perfect, thanks
+16/10/2026, 12:57 pm - Rohan: Machan canteen la samosa over da
+16/10/2026, 1:01 pm - Divya: Appo naalaiku early ah poganum
+16/10/2026, 1:03 pm - Kavya: Naalaiku Friday la, queue romba irukkum 😂
+16/10/2026, 8:18 pm - Kavya: Which relay board library did we use last time?
+16/10/2026, 8:22 pm - Arun: No idea, check the old project folder
+16/10/2026, 8:24 pm - Divya: It is in the shared drive under projects
+17/10/2026, 8:46 am - Arun: Does anyone have the datasheet for the LoRa module?
+17/10/2026, 8:48 am - Kavya: https://example.com/datasheet/8232
+17/10/2026, 8:52 am - Arun: Perfect, thanks
+18/10/2026, 8:58 pm - Priya: Does anyone have the datasheet for the NodeMCU?
+18/10/2026, 9:02 pm - Kavya: https://example.com/datasheet/4468
+18/10/2026, 9:07 pm - Priya: Perfect, thanks
+19/10/2026, 7:22 am - Meghna: Good morning everyone 👌
+19/10/2026, 7:26 am - Kavya: Morning!
+19/10/2026, 7:31 am - Arun: Morning da
+19/10/2026, 10:33 am - Meghna: Has anyone used the relay board with the servo motor? Getting weird readings.
+19/10/2026, 10:39 am - Divya: Check your wiring first, mine was a loose jumper wire.
+19/10/2026, 10:43 am - Rohan: Also try a different power supply
+19/10/2026, 10:44 am - Meghna: That fixed it, thanks! 😂
+19/10/2026, 10:48 am - Rohan: What time is the committee call tonight?
+19/10/2026, 10:54 am - Divya: 9 pm as usual
+19/10/2026, 10:56 am - Priya: Seri, bus la irukken so I will be on mute
+19/10/2026, 8:56 pm - Meghna: Lab record submission is tomorrow, right?
+19/10/2026, 8:57 pm - Kavya: Yes, Saturday last hour
+19/10/2026, 9:01 pm - Divya: Nooo I haven't even started 👌
+20/10/2026, 2:45 pm - Kavya: Is anyone going to the library?
+20/10/2026, 2:48 pm - Arun: I am, need anything?
+20/10/2026, 2:52 pm - Kavya: Return this book for me please
+20/10/2026, 2:53 pm - Arun: Ok bring it to class
+20/10/2026, 7:47 pm - Priya: The projector in the seminar hall is not working again
+20/10/2026, 7:49 pm - Rohan: Report it to the dept office
+20/10/2026, 7:54 pm - Meghna: Already reported twice 😅
+20/10/2026, 9:32 pm - Rohan: Birthday today! 🎂
+20/10/2026, 9:36 pm - Divya: Happy birthday!!
+20/10/2026, 9:39 pm - Kavya: Treat venum da
+21/10/2026, 7:20 am - Priya: Good morning everyone 😅
+21/10/2026, 7:27 am - Arun: Morning!
+21/10/2026, 7:31 am - Kavya: Morning da
+21/10/2026, 2:01 pm - Kavya: Exam timetable is out, ugh
+21/10/2026, 2:08 pm - Arun: Which day is the first paper?
+21/10/2026, 2:10 pm - Kavya: Monday
+21/10/2026, 2:12 pm - Priya: Nobody has studied anything yet
+21/10/2026, 8:26 pm - Meghna: Does anyone have the datasheet for the NodeMCU?
+21/10/2026, 8:30 pm - Rohan: https://example.com/datasheet/3779
+21/10/2026, 8:34 pm - Meghna: Perfect, thanks
+21/10/2026, 8:47 pm - Rohan: <Media omitted>
+21/10/2026, 8:48 pm - Rohan: Look at what the first years built
+21/10/2026, 8:50 pm - Kavya: That's actually impressive
+21/10/2026, 10:47 pm - Kavya: Who has the key to the club cupboard?
+21/10/2026, 10:51 pm - Arun: With Divya I think
+21/10/2026, 10:54 pm - Divya: Yes, I left it at the department office
+21/10/2026, 11:00 pm - Kavya: Ok will collect from there
+22/10/2026, 3:36 pm - Rohan: Brithday today! 🎂
+22/10/2026, 3:42 pm - Priya: Happy birthday!!
+22/10/2026, 3:47 pm - Divya: Treat venum da
+22/10/2026, 5:07 pm - Priya: https://example.com/post/7490 look at this 👍
+22/10/2026, 5:08 pm - Meghna: Haha this is so true
+22/10/2026, 5:11 pm - Divya: Sending to the other group
+22/10/2026, 9:03 pm - Divya: <Media omitted>
+22/10/2026, 9:03 pm - Priya: Nice one 👌
+22/10/2026, 9:08 pm - Rohan: Looks great
+23/10/2026, 8:09 am - Meghna: Does anyone have the datasheet for the servo motor?
+23/10/2026, 8:15 am - Rohan: https://example.com/datasheet/2894
+23/10/2026, 8:20 am - Meghna: Perfect, thanks
+23/10/2026, 9:19 am - Rohan: Lab record submission is tomorrow, right?
+23/10/2026, 9:20 am - Divya: Yes, Tuesday last hour
+23/10/2026, 9:21 am - Kavya: Nooo I haven't even started 😂
+23/10/2026, 5:37 pm - Meghna: Enna da ippo network la problem ah?
+23/10/2026, 5:44 pm - Priya: Illa illa, hostel wifi dhaan slow
+23/10/2026, 5:49 pm - Divya: Konjam wait pannu, maybe it will come back
+23/10/2026, 6:50 pm - Meghna: Has anyone used the ESP32 with the DHT22? Getting weird readings.
+23/10/2026, 6:57 pm - Priya: Check your wiring first, mine was a loose jumper wire.
+23/10/2026, 7:01 pm - Arun: Also try a different power supply
+23/10/2026, 7:07 pm - Meghna: That fixed it, thanks! 👌
+24/10/2026, 10:05 am - Priya: Remember we need the HoD's permission letter before booking the lab.
+Last sem they rejected us without it.
+Please apply at least two weeks ahead.
+24/10/2026, 10:07 am - Arun: Sure, I will get the permission letter signed by 31 October.
+24/10/2026, 10:09 am - Kavya: <Media omitted>
+24/10/2026, 10:10 am - Kavya: Draft poster for the workshop 👆
+24/10/2026, 10:12 am - +91 00000 00001: Hi, I am the lab assistant. Which date are you planning?
+24/10/2026, 10:14 am - Arun: 21 November, sir. Will confirm after the letter.
+24/10/2026, 10:15 am - Priya: This message was deleted
+24/10/2026, 10:16 am - Divya: Updated budget for snacks is ₹4,500 <This message was edited>
+24/10/2026, 10:20 am - You deleted this message
+24/10/2026, 10:22 am - Arun: Maybe I'll check the projector too, will see.
+24/10/2026, 12:05 pm - Priya: Lab booking pannalama? Letter first da.
+25/10/2026, 7:06 pm - Kavya: This message was deleted
+25/10/2026, 7:09 pm - Meghna: No idea, check the old project folder
+25/10/2026, 7:11 pm - Divya: It is in the shared drive under projects
+25/10/2026, 8:42 pm - Arun: Is the lab open today?
+25/10/2026, 8:48 pm - Kavya: Bala sir said it is open till 5
+25/10/2026, 8:52 pm - Arun: Thanks!
+25/10/2026, 11:41 pm - Priya: Is anyone going to the library?
+25/10/2026, 11:42 pm - Divya: I am, need anything?
+25/10/2026, 11:43 pm - Priya: Return this book for me please
+25/10/2026, 11:45 pm - Divya: Ok bring it to class
+26/10/2026, 10:28 am - Priya: My laptop is acting up again, Arduino IDE keeps crashing
+26/10/2026, 10:28 am - Meghna: Try reinstalling the board package
+26/10/2026, 10:29 am - Rohan: Or use the lab PCs
+26/10/2026, 10:34 am - Priya: Will try that
+26/10/2026, 10:39 am - Priya: Exam timetable is out, ugh 🙏
+26/10/2026, 10:42 am - Rohan: Which day is the first paper?
+26/10/2026, 10:45 am - Priya: Monday
+26/10/2026, 10:45 am - Arun: Nobody has studied anything yet
+26/10/2026, 3:49 pm - Kavya: Birthday today! 🎂
+26/10/2026, 3:53 pm - Divya: Happy birthday!!
+26/10/2026, 3:55 pm - Priya: Treat venum da 👍
+26/10/2026, 9:00 pm - Arun: Seniors are leaving soon, we need a handover doc. I'll write it by 15 November.
+27/10/2026, 8:21 am - Arun: Has anyone used the soil moisture sensor with the relay board? Getting weird readings.
+27/10/2026, 8:23 am - Priya: Check your wiring first, mine was a loose jumper wire.
+27/10/2026, 8:29 am - Divya: Also try a different power supply
+27/10/2026, 8:34 am - Arun: That fixed it, thanks!
+27/10/2026, 8:04 pm - Arun: Enna da ippo network la problem ah?
+27/10/2026, 8:07 pm - Kavya: Illa illa, hostel wifi dhaan slow
+27/10/2026, 8:12 pm - Priya: Konjam wait pannu, maybe it will come back
+27/10/2026, 8:46 pm - Priya: Which relay board library did we use last time?
+27/10/2026, 8:48 pm - Kavya: No idea, check the old project folder
+27/10/2026, 8:50 pm - Arun: It is in the shared drive under projects
+27/10/2026, 10:11 pm - Arun: Is anyone going to the library?
+27/10/2026, 10:16 pm - Divya: I am, need anything?
+27/10/2026, 10:19 pm - Arun: Return this book for me please
+27/10/2026, 10:19 pm - Divya: Ok bring it to class
+28/10/2026, 11:41 am - Meghna: Who has the key to the club cupboard?
+28/10/2026, 11:43 am - Kavya: With Divya I think
+28/10/2026, 11:44 am - Rohan: Yes, I left it at the department office
+28/10/2026, 11:48 am - Meghna: This message was deleted
+28/10/2026, 4:28 pm - Meghna: https://example.com/post/9510 look at this 👍
+28/10/2026, 4:30 pm - Kavya: Haha this is so true
+28/10/2026, 4:33 pm - Arun: Sending to the other group
+28/10/2026, 8:26 pm - Kavya: Power cut in the lab block, class shifted
+28/10/2026, 8:33 pm - Divya: Where are we meeting now?
+28/10/2026, 8:39 pm - Kavya: Room 204
+28/10/2026, 8:41 pm - Meghna: On the way
+28/10/2026, 11:15 pm - Kavya: Machan canteen la samosa over da
+28/10/2026, 11:21 pm - Divya: Appo naalaiku early ah poganum
+28/10/2026, 11:22 pm - Meghna: Does anyone have the datasheet for the servo motor?
+28/10/2026, 11:23 pm - Meghna: Naalaiku Friday la, queue romba irukkum
+28/10/2026, 11:26 pm - Kavya: https://example.com/datasheet/5931
+28/10/2026, 11:29 pm - Meghna: Perfect, thanks
+29/10/2026, 7:39 pm - Meghna: <Media omitted>
+29/10/2026, 7:42 pm - Meghna: This message was deleted
+29/10/2026, 7:43 pm - Divya: That's actually impressive 🔥
+29/10/2026, 9:04 pm - Divya: Has anyone used the relay board with the servo motor? Getting weird readings.
+29/10/2026, 9:06 pm - Meghna: Check your wiring first, mine was a loose jumper wire.
+29/10/2026, 9:11 pm - Kavya: Also try a different power supply
+29/10/2026, 9:13 pm - Divya: That fixed it, thanks!
+29/10/2026, 9:50 pm - Meghna: What time is the committee call tonight?
+29/10/2026, 9:56 pm - Priya: 9 pm as usual
+29/10/2026, 10:02 pm - Rohan: Seri, bus la irukken so I will be on mute
+29/10/2026, 10:57 pm - Meghna: The projector in the seminar hall is not working again
+29/10/2026, 11:02 pm - Kavya: Report it to the dept office
+29/10/2026, 11:08 pm - Divya: Already reported twice 😅
+30/10/2026, 5:36 pm - Rohan: Is anyone going to the library?
+30/10/2026, 5:39 pm - Arun: I am, need anything?
+30/10/2026, 5:41 pm - Rohan: Return this book for me please
+30/10/2026, 5:44 pm - Arun: Ok bring it to class
+30/10/2026, 8:01 pm - Kavya: Anyone up for lunch at the canteen?
+30/10/2026, 8:06 pm - Rohan: Give me 10 mins
+30/10/2026, 8:12 pm - Divya: This message was deleted
+30/10/2026, 8:14 pm - Kavya: Ok at 1
+30/10/2026, 8:21 pm - Rohan: Anoyne free on Tuesday?
+30/10/2026, 8:23 pm - Divya: Free after 11
+30/10/2026, 8:26 pm - Arun: Same here
+30/10/2026, 8:29 pm - Rohan: Ok let's see then
+30/10/2026, 9:30 pm - Divya: Enna da ippo network la problem ah?
+30/10/2026, 9:31 pm - Meghna: Illa illa, hostel wifi dhaan slow
+30/10/2026, 9:33 pm - Priya: Konjam wait pannu, maybe it will come back 👌
+30/10/2026, 10:19 pm - Divya: Whch HC-SR04 library did we use last time?
+30/10/2026, 10:22 pm - Priya: No idea, check the old project folder
+30/10/2026, 10:23 pm - Arun: It is in the shared drive under projects
+30/10/2026, 10:27 pm - Priya: Exam timetable is out, ugh 👍
+30/10/2026, 10:34 pm - Divya: Which day is the first paper?
+30/10/2026, 10:36 pm - Priya: Monday
+30/10/2026, 10:42 pm - Rohan: Nobody has studied anything yet
+31/10/2026, 1:19 pm - Rohan: Power cut in the lab block, class shifted
+31/10/2026, 1:21 pm - Divya: Where are we meeting now?
+31/10/2026, 1:27 pm - Rohan: Room 204
+31/10/2026, 1:32 pm - Meghna: On the way

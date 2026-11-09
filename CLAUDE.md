@@ -29,4 +29,4 @@ Next.js (App Router) + TypeScript, Tailwind + shadcn/ui, Supabase (Postgres, Aut
 - Environment variables are listed in `.env.example`; real values are never committed.
 
 ## Definition of done for any feature
-Works on the deployed app, has a test, handles the empty and error states, writes to the audit log if it changes data, and respects RLS.
+Works on the deployed app, has a test, handles the empty and error states, writes to the audit log if it changes data, and respects RLS. 

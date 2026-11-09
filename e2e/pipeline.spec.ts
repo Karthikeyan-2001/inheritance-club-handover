@@ -1,0 +1,85 @@
+import { expect, test, type Page } from "@playwright/test";
+
+// Runs against the offline fake language model (LLM_PROVIDER=fake, set in playwright.config.ts).
+
+async function signInAs(page: Page, name: string) {
+  await page.goto("/login");
+  await page.getByRole("button", { name: `Sign in as ${name}` }).click();
+  await expect(page).toHaveURL("/");
+}
+
+const CHAT = [
+  "05/03/2026, 7:00 pm - Arun: I will send the lab inventory list to Bala sir by Friday.",
+  "05/03/2026, 7:05 pm - Rohan: Maybe I'll check the spare sensors, will see.",
+  "05/03/2026, 7:10 pm - Priya: ok",
+  "05/03/2026, 7:12 pm - Priya: Reminder: the lab inventory audit happens every semester, and Bala sir needs the list a week ahead.",
+  "06/03/2026, 6:00 pm - Arun: I will print the sponsor banner for the Robotics club by Monday.",
+  "07/03/2026, 11:00 am - Arun: Sent the lab inventory list to Bala sir.",
+].join("\n");
+
+test.describe.serial("building the ledger", () => {
+  test("the outgoing lead builds the ledger: commitments, follow-up and the hedge left out", async ({ page }) => {
+    await signInAs(page, "Arun");
+    await page.goto("/import");
+    await page.getByLabel("Files to import").setInputFiles({ name: "inventory-chat.txt", mimeType: "text/plain", buffer: Buffer.from(CHAT) });
+    await page.getByLabel("Who may see it").selectOption("committee");
+    await page.getByLabel("I am authorised to use this data.").check();
+    await page.getByRole("button", { name: /^Import 1 file$/ }).click();
+    await expect(page.getByText("What was read (1 of 1 imported)")).toBeVisible({ timeout: 20_000 });
+
+    await page.goto("/ledger");
+    await expect(page.getByRole("link", { name: "Commitments" })).toHaveAttribute("aria-current", "page");
+    await page.getByRole("button", { name: "Build the ledger" }).click();
+    const progress = page.getByTestId("pipeline-progress");
+    await expect(progress).toContainText("finished", { timeout: 90_000 });
+    await expect(progress).toContainText("hedged, not a firm promise");
+    await expect(progress).toContainText(/Follow-up: checked \d+ of \d+ items/);
+
+    const list = page.getByTestId("commitments");
+    const done = list.getByRole("listitem").filter({ hasText: "lab inventory list" }).first();
+    await expect(done).toContainText("“I will send the lab inventory list to Bala sir by Friday”");
+    await expect(done).toContainText("The promise");
+    await expect(done).toContainText("Says it was done");
+    await expect(done).toContainText("“Sent the lab inventory list to Bala sir.”");
+    await expect(done.getByText("Done", { exact: true })).toBeVisible();
+    await expect(done).toContainText("Trust: Sourced");
+    await expect(done).toContainText("Draft");
+    await expect(done).toContainText("quote checked against the message");
+
+    const banner = list.getByRole("listitem").filter({ hasText: "sponsor banner" }).first();
+    await expect(banner).toContainText("No evidence kept");
+    await expect(list).not.toContainText("spare sensors");
+  });
+
+  test("the Recurring tab shows the duty with its cadence and lead time", async ({ page }) => {
+    await signInAs(page, "Arun");
+    await page.goto("/ledger?tab=recurring");
+    await expect(page.getByRole("link", { name: "Recurring" })).toHaveAttribute("aria-current", "page");
+    const duty = page.getByTestId("recurring").getByRole("listitem").filter({ hasText: "inventory audit" }).first();
+    await expect(duty).toContainText("Every semester");
+    await expect(duty).toContainText("a week ahead");
+    await expect(duty).toContainText("States the duty");
+    await expect(duty).toContainText("Not derivable from the records");
+  });
+
+  test("running it again finds nothing new and reuses saved answers", async ({ page }) => {
+    await signInAs(page, "Arun");
+    await page.goto("/ledger");
+    await page.getByRole("button", { name: "Build the ledger" }).click();
+    const progress = page.getByTestId("pipeline-progress");
+    await expect(progress).toContainText("finished", { timeout: 90_000 });
+    await expect(progress).toContainText("found 0 new commitments");
+    await expect(progress).toContainText("0 new recurring duties");
+    await expect(progress).toContainText("reused saved answers");
+  });
+
+  test("the incoming lead sees committee items but cannot run the pipeline", async ({ page }) => {
+    await signInAs(page, "Kavya");
+    await page.goto("/ledger");
+    await expect(page.getByText("Only the outgoing lead or the faculty advisor can run this.")).toBeVisible();
+    await expect(page.getByRole("button", { name: "Build the ledger" })).toHaveCount(0);
+    await expect(page.getByTestId("commitments")).toContainText("lab inventory list");
+    await page.goto("/ledger?tab=recurring");
+    await expect(page.getByTestId("recurring")).toContainText("inventory audit");
+  });
+});

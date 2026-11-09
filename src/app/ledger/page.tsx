@@ -2,7 +2,8 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Commitments } from "@/components/ledger/commitments";
-import { ExtractionPanel } from "@/components/ledger/extraction-panel";
+import { PipelinePanel } from "@/components/ledger/pipeline-panel";
+import { Recurring } from "@/components/ledger/recurring";
 import { Timeline } from "@/components/ledger/timeline";
 import { Button } from "@/components/ui/button";
 import { getViewer } from "@/lib/session";
@@ -17,7 +18,7 @@ const TABS = [
   { key: "gaps", label: "Gaps" },
   { key: "timeline", label: "Timeline" },
 ] as const;
-const READY = new Set(["commitments", "timeline"]);
+const READY = new Set(["commitments", "recurring", "timeline"]);
 type TabKey = (typeof TABS)[number]["key"];
 
 function Tabs({ current }: { current: TabKey }) {
@@ -66,7 +67,7 @@ async function LedgerContent({ searchParams }: { searchParams: PageProps<"/ledge
   }
   if (!viewer.membership) return <p>Your account is not a member of a workspace.</p>;
   const sp = await searchParams;
-  const tab: TabKey = sp.tab === "timeline" ? "timeline" : "commitments";
+  const tab: TabKey = sp.tab === "timeline" || sp.tab === "recurring" ? sp.tab : "commitments";
   const { role, workspaceId } = viewer.membership;
   return (
     <div className="flex flex-col gap-6">
@@ -75,12 +76,12 @@ async function LedgerContent({ searchParams }: { searchParams: PageProps<"/ledge
         <Timeline workspaceId={workspaceId} params={parseTimelineParams(sp)} />
       ) : (
         <>
-          <ExtractionPanel
+          <PipelinePanel
             canRun={role === "outgoing_lead" || role === "advisor"}
             provider={process.env.LLM_PROVIDER === "fake" ? "fake" : "anthropic"}
             model={process.env.LLM_MODEL_FAST ?? "not configured"}
           />
-          <Commitments workspaceId={workspaceId} />
+          {tab === "recurring" ? <Recurring workspaceId={workspaceId} /> : <Commitments workspaceId={workspaceId} />}
         </>
       )}
     </div>
@@ -93,11 +94,11 @@ export default function LedgerPage(props: PageProps<"/ledger">) {
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-semibold tracking-tight">Ledger</h1>
         <p className="max-w-3xl text-muted-foreground">
-          Commitments found in the records your role may read, each with a quote checked against its source. Recurring duties, conflicts and
-          gaps arrive in later steps; the timeline shows every imported message.
+          Commitments and recurring duties found in the records your role may read. Every quote is checked against its source, and each item
+          shows what happened next, or “No evidence kept”. Conflicts and gaps arrive in later steps; the timeline shows every imported message.
         </p>
       </div>
-      <Suspense fallback={<p className="text-muted-foreground">Loading the timeline…</p>}>
+      <Suspense fallback={<p className="text-muted-foreground">Loading the ledger…</p>}>
         <LedgerContent searchParams={props.searchParams} />
       </Suspense>
     </main>

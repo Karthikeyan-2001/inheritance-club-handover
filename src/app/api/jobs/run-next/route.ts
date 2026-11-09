@@ -2,7 +2,7 @@ import { z } from "zod";
 import { SupabaseLlmCache } from "@/lib/llm/cache-supabase";
 import { LlmError } from "@/lib/llm/errors";
 import { pipelineProvider } from "@/lib/pipeline/provider";
-import { getRunProgress, runNextJob } from "@/lib/pipeline/run-extraction";
+import { getRunProgress, runNextStep } from "@/lib/pipeline/run-pipeline";
 import { getViewer } from "@/lib/session";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -13,7 +13,7 @@ const Body = z.object({ runId: z.uuid() });
 
 const json = (body: unknown, status = 200) => Response.json(body, { status, headers: { "cache-control": "no-store" } });
 
-/** Run the caller's next queued step of an extraction run, and report progress. */
+/** Run the caller's next queued step of a pipeline run, and report progress. */
 export async function POST(request: Request) {
   const body = Body.safeParse(await request.json().catch(() => null));
   if (!body.success) return json({ error: "A run id is required." }, 400);
@@ -22,19 +22,20 @@ export async function POST(request: Request) {
   if (!viewer) return json({ error: "Please sign in first." }, 401);
   if (!viewer.membership) return json({ error: "You are not a member of a workspace." }, 403);
   const { role, workspaceId } = viewer.membership;
-  if (role !== "outgoing_lead" && role !== "advisor") return json({ error: "Only the outgoing lead or the advisor can run extraction." }, 403);
+  if (role !== "outgoing_lead" && role !== "advisor") return json({ error: "Only the outgoing lead or the advisor can build the ledger." }, 403);
 
   const db = await createSupabaseServerClient();
   let deps;
   try {
     deps = { provider: pipelineProvider(), cache: new SupabaseLlmCache() };
   } catch (err) {
-    return json({ error: err instanceof LlmError ? err.message : "Extraction is not configured on this server." }, 503);
+    return json({ error: err instanceof LlmError ? err.message : "The language model is not configured on this server." }, 503);
   }
   try {
-    const step = await runNextJob(db, workspaceId, body.data.runId, deps);
+    const step = await runNextStep(db, workspaceId, body.data.runId, viewer.userId, deps);
     const progress = await getRunProgress(db, workspaceId, body.data.runId);
-    return json({ done: step === null, step, progress });
+    // Nothing claimable but work left: an earlier stage is still running in another request.
+    return json({ done: progress.pending === 0, waiting: step === null && progress.pending > 0, step, progress });
   } catch (err) {
     console.error("run-next failed", err);
     return json({ error: "This step could not be run. Try again." }, 500);

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { PipelineEvent } from "./extract";
-import { buildFollowupPrompt, noteGrounded, postProcessFollowup, type FollowupOutput, type FollowupTarget } from "./fulfilment";
+import { buildFollowupPrompt, contextRelated, noteGrounded, postProcessFollowup, type FollowupOutput, type FollowupTarget } from "./fulfilment";
 
 const ev = (id: string, ts: string | null, text: string, over: Partial<PipelineEvent> = {}): PipelineEvent => ({
   id, author: "Arun", ts, text, threadId: "wa:x", sourceType: "whatsapp", ...over,
@@ -92,6 +92,8 @@ describe("postProcessFollowup", () => {
   });
 
   it("keeps grounded context from any time, at most five, and drops ungrounded notes", () => {
+    const reimburse = { ...target, description: "Reimburse speaker travel", owedTo: "Mr. R. Ganesan" };
+    const out = (_f: FollowupOutput["followups"], context: FollowupOutput["context"]) => postProcessFollowup({ followups: [], context }, refs, reimburse);
     const ctx = (over: Partial<FollowupOutput["context"][number]>): FollowupOutput["context"][number] => ({
       message: refOf("m"), quote: "will be reimbursed after he submits bills", kind: "dependency", note: "Mr. R. Ganesan must submit bills first.", ...over,
     });
@@ -120,5 +122,22 @@ describe("noteGrounded", () => {
     expect(noteGrounded("Brightwave Labs is the sponsor.", "they said yes", "Sponsorship proposal to Brightwave Labs")).toBe(true);
     expect(noteGrounded("Pay 2400 rupees.", "₹2,400 to be paid", "")).toBe(true);
     expect(noteGrounded("Pay 3000 rupees.", "₹2,400 to be paid", "")).toBe(false);
+  });
+});
+
+describe("contextRelated", () => {
+  // Notes from the first live eval (2026-11-09, claude-haiku-5-5) on the mini scenario.
+  const sponsorship = "I'll send the sponsorship proposal to Brightwave Labs by 20 January Sponsorship proposal Brightwave Labs";
+  const boards = "Return borrowed ESP32 boards Bala sir I'll return the borrowed ESP32 boards to Bala sir by Friday";
+  const lab = "Get the HoD's permission letter approved before booking the lab HoD";
+
+  it("drops a note about another item, even when one word ('Labs') led the retrieval astray", () => {
+    expect(contextRelated("The HoD's permission letter was rejected last semester when it was missing.", "Last sem they rejected us without it.", sponsorship)).toBe(false);
+  });
+
+  it("keeps notes about the item itself", () => {
+    expect(contextRelated("Bala sir is the person the ESP32 boards were borrowed from.", "return the borrowed ESP32 boards to Bala sir by Friday", boards)).toBe(true);
+    expect(contextRelated("The HoD rejected the club's lab request last semester when the permission letter was missing.", "Last sem they rejected us without it.", lab)).toBe(true);
+    expect(contextRelated("Apply for the letter two weeks before the booking.", "Apply two weeks ahead.", lab)).toBe(true);
   });
 });

@@ -6,6 +6,7 @@
 import { z } from "zod";
 import { HEDGE, recordLine, type PipelineEvent } from "./extract.ts";
 import { byTime, timeOf } from "./related.ts";
+import { contentTokens } from "./text.ts";
 import { normaliseForQuote, verifyQuote } from "./verify.ts";
 
 export type FollowupTarget = {
@@ -103,7 +104,7 @@ export type KeptContext = { event: PipelineEvent; quote: string; kind: "decision
 
 export type FollowupDropReason =
   | "unknown_message" | "quote_not_found" | "quote_too_short" | "cites_promise" | "before_promise" | "undated"
-  | "non_binding" | "question" | "no_note" | "ungrounded_note" | "over_limit" | "duplicate";
+  | "non_binding" | "question" | "no_note" | "ungrounded_note" | "unrelated_context" | "over_limit" | "duplicate";
 
 export const MAX_CONTEXT = 5;
 const MAX_NOTE = 300;
@@ -114,6 +115,13 @@ const NOTE_WORDS = new Set(
   don't need needs must should contact before after only if when apply talk remind note watch confirm collect pay return submit
   bring use plan start call email message follow wait from with for and or but not no yes also once until by on in at to of`.split(/\s+/),
 );
+
+/** A context note must be about the item: its note or quote shares a content word with it. */
+export function contextRelated(note: string, quote: string, targetText: string): boolean {
+  const want = contentTokens(targetText);
+  for (const w of contentTokens(`${note} ${quote}`)) if (want.has(w)) return true;
+  return false;
+}
 
 /**
  * A context note is stored at the level of the one message it cites, but the model wrote it
@@ -140,7 +148,7 @@ export function noteGrounded(note: string, eventText: string, targetText: string
 export function postProcessFollowup(
   output: { followups?: FollowupOutput["followups"]; context: FollowupOutput["context"] },
   refs: Map<string, PipelineEvent>,
-  target: Pick<FollowupTarget, "sourceEventIds" | "description" | "owedBy" | "owedTo" | "approver">,
+  target: Pick<FollowupTarget, "sourceEventIds" | "description" | "owedBy" | "owedTo" | "approver"> & { sourceQuotes?: string[] },
 ): { evidence: KeptEvidence[]; context: KeptContext[]; dropped: Partial<Record<FollowupDropReason, number>> } {
   const dropped: Partial<Record<FollowupDropReason, number>> = {};
   const drop = (r: FollowupDropReason) => (dropped[r] = (dropped[r] ?? 0) + 1);
@@ -209,6 +217,10 @@ export function postProcessFollowup(
     }
     if (!noteGrounded(note, event.text, [target.description, target.owedBy, target.owedTo, target.approver].filter(Boolean).join(" "))) {
       drop("ungrounded_note");
+      continue;
+    }
+    if (!contextRelated(note, c.quote, [target.description, target.owedTo, target.approver, ...(target.sourceQuotes ?? [])].filter(Boolean).join(" "))) {
+      drop("unrelated_context");
       continue;
     }
     const key = `${c.kind}|${event.id}|${normaliseForQuote(c.quote)}`;

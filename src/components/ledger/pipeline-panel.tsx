@@ -27,6 +27,7 @@ const DROP_LABELS: Record<string, string> = {
   known_at_lower_level: "already known from a less restricted record",
   mixed_visibility: "quotes from records with different access levels",
   ungrounded_note: "a note naming people or numbers not in its quoted message",
+  unrelated_context: "a note about something else",
   source_not_readable: "items whose source message you cannot read",
 };
 

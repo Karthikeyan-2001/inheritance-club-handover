@@ -617,7 +617,8 @@ grant execute on all functions in schema app to anon, authenticated, service_rol
 
 select set_config('app.audit_reason', 'Docket entry tied to the item whose evidence it cites (migration 0011)', true);
 update public.docket_entries d
-   set obligation_id = m.obligation_id, quote_a = m.qa, quote_b = m.qb
+   -- Every entry so far came from the seed or the pipeline, never from a reviewer.
+   set obligation_id = m.obligation_id, quote_a = m.qa, quote_b = m.qb, origin = 'rule'
   from (
     select distinct on (d2.id) d2.id, a.obligation_id, a.quote as qa, b.quote as qb
     from public.docket_entries d2

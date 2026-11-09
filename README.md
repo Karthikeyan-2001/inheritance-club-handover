@@ -23,6 +23,7 @@ Built for the CodersInPune Hackathon, Round 2.
 | 1 | Schema, RLS, seed, demo login, role switcher | done |
 | 2 | Parsers: WhatsApp, Trello, minutes (.md/.docx), all stamped in IST | done |
 | 3 | Connect (import) page and ledger timeline | done |
+| 4 | LLM adapter, commitment extraction, quote verifier | done |
 
 ## Stack
 
@@ -62,6 +63,7 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 | `pnpm db:push` | Apply migrations to the linked hosted project (`--remote`; the CLI targets local by default) |
 | `pnpm db:types` | Regenerate `src/lib/supabase/database.types.ts` |
 | `pnpm seed` / `seed:hosted` | Seed demo accounts and the synthetic club (local / hosted) |
+| `pnpm eval:extract` | Extraction quality on the mini scenario (dry run; `-- --yes` calls the model) |
 
 ## Parsers
 
@@ -85,6 +87,15 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 - **`/ledger?tab=timeline`**: every message your role may read, grouped by IST day, filterable by file and text.
 - **Upload limit**: about 3.9 MB per import, because Vercel caps request bodies at about 4.5 MB. A year of text-only chat is usually well under that.
 - **Sample files**: synthetic sample files to try the flow are linked from the page (`public/samples/mini/`).
+
+## Finding commitments (LLM)
+
+- **One adapter.** Every model call goes through `generateStructured()` in `src/lib/llm/adapter.ts`. It uses structured output validated with Zod, retries once on invalid output, caches responses by prompt hash in `llm_cache`, enforces a daily call budget (`LLM_MAX_CALLS_PER_DAY`), and returns typed errors (rate limit, timeout, refusal, invalid output, config, budget). Tiers map to `LLM_MODEL_FAST` and `LLM_MODEL_STRONG`. Providers are swappable: `anthropic`, or `fake` for offline tests.
+- **Extraction** (`src/lib/pipeline/extract.ts`) chunks messages by thread. The model returns candidates citing short message references. Code keeps a candidate only if its quote is verbatim in the cited message, it isn't hedged ("maybe", "will see"), and it names a counterparty and a deliverable. Everything else is dropped and counted by reason.
+- **Two quote checks.** `verify.ts` checks in TypeScript, and `add_extracted_commitment()` checks again in SQL before storing. A claim without a verified quote cannot be saved.
+- **Runs as small jobs.** "Find commitments" on `/ledger` queues one job per chunk. The browser calls `POST /api/jobs/run-next` until all are done, showing progress. Each step runs as the signed-in user, so the model only sees messages that user may read.
+- **Results are drafts.** They're stored with trust state "Sourced" and review state "Draft", and shown in the Commitments tab with their quotes.
+- **`pnpm eval:extract`** scores extraction on the mini scenario against its ground truth. It estimates cost without `--yes`, and calls the model only with `-- --yes`.
 
 ## Roles and permissions
 

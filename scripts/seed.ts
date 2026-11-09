@@ -138,10 +138,12 @@ export async function seed(env: SeedEnv, log: (msg: string) => void = console.lo
     id: c.id, obligation_id: byKey(OBLIGATIONS, c.obligation).id, kind: c.kind, text: c.text, access_level: c.access_level,
   }))));
 
-  check("docket_entries", await admin.from("docket_entries").insert(DOCKET_ENTRIES.map((d) => ({
-    id: d.id, workspace_id: DEMO_WORKSPACE.id, claim_a_event: byKey(EVENTS, d.claimA).id,
-    claim_b_event: byKey(EVENTS, d.claimB).id, summary: d.summary,
-  }))));
+  // The trust rule has already opened these entries; give them their fixture ids and summaries.
+  check("docket_entries", await admin.from("docket_entries").upsert(DOCKET_ENTRIES.map((d) => ({
+    id: d.id, workspace_id: DEMO_WORKSPACE.id, obligation_id: byKey(OBLIGATIONS, d.obligation).id,
+    claim_a_event: byKey(EVENTS, d.claimA).id, claim_b_event: byKey(EVENTS, d.claimB).id,
+    quote_a: d.quoteA, quote_b: d.quoteB, summary: d.summary, origin: "rule",
+  })), { onConflict: "obligation_id,claim_a_event,claim_b_event" }));
 
   check("sealed_items", await admin.from("sealed_items").insert(SEALED_ITEMS.map((s) => ({
     id: s.id, workspace_id: DEMO_WORKSPACE.id, obligation_id: byKey(OBLIGATIONS, s.obligation).id,

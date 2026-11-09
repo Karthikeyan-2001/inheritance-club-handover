@@ -144,10 +144,15 @@ export const CONTEXT_ITEMS = [
   kind: "decision" | "contact" | "risk" | "dependency"; access_level: Level; text: string;
 }[];
 
+// The trust rule makes this entry itself once O2's evidence says both done and not done
+// (migration 0011); the seed then gives it a fixed id and a hand-written summary.
 export const DOCKET_ENTRIES = [
-  { key: "D1", id: fid(7, 1), claimA: "E9", claimB: "E8",
+  { key: "D1", id: fid(7, 1), obligation: "O2", claimA: "E9", claimB: "E8",
+    quoteA: "Card moved to Done: Send certificates to workshop speakers", quoteB: "nobody has sent them yet",
     summary: "Trello card says the speaker certificates were sent; the committee chat two days later says they were not." },
-] as const satisfies readonly { key: string; id: string; claimA: EventKey; claimB: EventKey; summary: string }[];
+] as const satisfies readonly {
+  key: string; id: string; obligation: ObligationKey; claimA: EventKey; claimB: EventKey; quoteA: string; quoteB: string; summary: string;
+}[];
 
 export const SEALED_ITEMS = [
   { key: "SI1", id: fid(8, 1), obligation: "O6", holder_role: "advisor", topic_label: "Hall booking dispute", approvedBy: "meena" },

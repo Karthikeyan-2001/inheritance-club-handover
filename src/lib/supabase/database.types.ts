@@ -93,14 +93,14 @@ isOneToOne: false
                   ]
                 },"docket_entries": {
                   Row: {
-                    "claim_a_event": string,"claim_b_event": string,"id": string,"reason": string | null,"ruled_at": string | null,"ruled_by": string | null,"ruling": string | null,"summary": string,"workspace_id": string
+                    "claim_a_event": string,"claim_b_event": string,"created_at": string,"id": string,"obligation_id": string | null,"origin": string,"quote_a": string | null,"quote_b": string | null,"reason": string | null,"ruled_at": string | null,"ruled_by": string | null,"ruling": string | null,"summary": string,"workspace_id": string
                   }
                   ComputedFields: never
                   Insert: {
-                    "claim_a_event": string,"claim_b_event": string,"id"?: string,"reason"?: string | null,"ruled_at"?: string | null,"ruled_by"?: string | null,"ruling"?: string | null,"summary": string,"workspace_id": string
+                    "claim_a_event": string,"claim_b_event": string,"created_at"?: string,"id"?: string,"obligation_id"?: string | null,"origin"?: string,"quote_a"?: string | null,"quote_b"?: string | null,"reason"?: string | null,"ruled_at"?: string | null,"ruled_by"?: string | null,"ruling"?: string | null,"summary": string,"workspace_id": string
                   }
                   Update: {
-                    "claim_a_event"?: string,"claim_b_event"?: string,"id"?: string,"reason"?: string | null,"ruled_at"?: string | null,"ruled_by"?: string | null,"ruling"?: string | null,"summary"?: string,"workspace_id"?: string
+                    "claim_a_event"?: string,"claim_b_event"?: string,"created_at"?: string,"id"?: string,"obligation_id"?: string | null,"origin"?: string,"quote_a"?: string | null,"quote_b"?: string | null,"reason"?: string | null,"ruled_at"?: string | null,"ruled_by"?: string | null,"ruling"?: string | null,"summary"?: string,"workspace_id"?: string
                   }
                   Relationships: [
                     {
@@ -114,6 +114,12 @@ isOneToOne: false
       columns: ["claim_b_event"]
 isOneToOne: false
       referencedRelation: "events"
+      referencedColumns: ["id"]
+    },{
+      foreignKeyName: "docket_entries_obligation_id_fkey"
+      columns: ["obligation_id"]
+isOneToOne: false
+      referencedRelation: "obligations"
       referencedColumns: ["id"]
     },{
       foreignKeyName: "docket_entries_workspace_id_fkey"
@@ -223,6 +229,38 @@ isOneToOne: false
                   Relationships: [
                     {
       foreignKeyName: "memberships_workspace_id_fkey"
+      columns: ["workspace_id"]
+isOneToOne: false
+      referencedRelation: "workspaces"
+      referencedColumns: ["id"]
+    }
+                  ]
+                },"obligation_links": {
+                  Row: {
+                    "a": string,"b": string,"created_at": string,"created_by": string | null,"id": string,"method": string,"score": number | null,"verdict": string,"workspace_id": string
+                  }
+                  ComputedFields: never
+                  Insert: {
+                    "a": string,"b": string,"created_at"?: string,"created_by"?: string | null,"id"?: string,"method": string,"score"?: number | null,"verdict": string,"workspace_id": string
+                  }
+                  Update: {
+                    "a"?: string,"b"?: string,"created_at"?: string,"created_by"?: string | null,"id"?: string,"method"?: string,"score"?: number | null,"verdict"?: string,"workspace_id"?: string
+                  }
+                  Relationships: [
+                    {
+      foreignKeyName: "obligation_links_a_fkey"
+      columns: ["a"]
+isOneToOne: false
+      referencedRelation: "obligations"
+      referencedColumns: ["id"]
+    },{
+      foreignKeyName: "obligation_links_b_fkey"
+      columns: ["b"]
+isOneToOne: false
+      referencedRelation: "obligations"
+      referencedColumns: ["id"]
+    },{
+      foreignKeyName: "obligation_links_workspace_id_fkey"
       columns: ["workspace_id"]
 isOneToOne: false
       referencedRelation: "workspaces"
@@ -456,6 +494,11 @@ isOneToOne: false
                            },
 "import_source":
 { Args: { "p_access": Database["public"]['Enums']["access_level"],"p_events": Json,"p_filename": string,"p_reason": string,"p_sha256": string,"p_summary": Json,"p_type": Database["public"]['Enums']["source_type"],"p_workspace": string }; Returns: string
+                           },
+"link_obligations":
+{ Args: { "p_a": string,"p_b": string,"p_method": string,"p_score": number,"p_verdict": string,"p_workspace": string }; Returns: {
+              "created": boolean,"link_id": string,"verdict": string
+            }[]
                            },
 "ping":
 { Args: Record<PropertyKey, never>; Returns: boolean

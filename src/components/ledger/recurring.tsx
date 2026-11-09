@@ -1,8 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { REVIEW_LABELS, TRUST_LABELS } from "./commitments";
-import { CONTEXT_SELECT, ContextList, EVIDENCE_SELECT, EvidenceList, type ContextRow, type EvidenceRow } from "./obligation-parts";
+import { REVIEW_LABELS, TRUST_HELP, TRUST_LABELS } from "./commitments";
+import { CONTEXT_SELECT, ContextList, EVIDENCE_SELECT, EvidenceList, LinkList, linksByItem, type ContextRow, type EvidenceRow, type LinkRow } from "./obligation-parts";
 
 const PERIOD_LABELS = {
   semester: "Every semester",
@@ -67,6 +67,8 @@ export async function Recurring({ workspaceId }: { workspaceId: string }) {
   if (!rows.length) {
     return <p className="text-sm text-muted-foreground">No recurring duties yet. Import files, then use “Build the ledger”.</p>;
   }
+  const { data: links } = await supabase.from("obligation_links").select("a, b, verdict").eq("workspace_id", workspaceId);
+  const linked = linksByItem((links ?? []) as LinkRow[], new Map(rows.map((o) => [o.id, o.description])));
 
   return (
     <ul className="flex flex-col gap-3" aria-label="Recurring duties" data-testid="recurring">
@@ -110,7 +112,9 @@ export async function Recurring({ workspaceId }: { workspaceId: string }) {
               )}
             </Fact>
           </dl>
+          <p className="mt-2 text-xs text-muted-foreground">Trust: {TRUST_HELP[o.trust_state]}</p>
           <EvidenceList evidence={o.evidence} kind="recurring" />
+          <LinkList items={linked.get(o.id)} />
           <ContextList items={o.context_items} />
         </li>
       ))}

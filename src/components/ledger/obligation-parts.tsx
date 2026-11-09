@@ -99,3 +99,45 @@ export function ContextList({ items }: { items: ContextRow[] }) {
 
 export const EVIDENCE_SELECT = "evidence(id, quote, relation, verified, inferred, events(ts, author, sources(filename, type)))";
 export const CONTEXT_SELECT = "context_items(id, kind, text, quote, verified, access_level, events(ts, author, sources(filename, type)))";
+
+export type LinkRow = { a: string; b: string; verdict: "same" | "possible" };
+export type LinkedItem = { id: string; description: string; verdict: LinkRow["verdict"] };
+
+/** For each item, the other items it is linked to (RLS returned only links whose both items are readable). */
+export function linksByItem(links: readonly LinkRow[], descriptions: ReadonlyMap<string, string>): Map<string, LinkedItem[]> {
+  const out = new Map<string, LinkedItem[]>();
+  const add = (from: string, to: string, verdict: LinkRow["verdict"]) => {
+    const description = descriptions.get(to);
+    if (!description || !descriptions.has(from)) return;
+    out.set(from, [...(out.get(from) ?? []), { id: to, description, verdict }]);
+  };
+  for (const l of links) {
+    add(l.a, l.b, l.verdict);
+    add(l.b, l.a, l.verdict);
+  }
+  for (const list of out.values()) list.sort((x, y) => (x.verdict === y.verdict ? x.description.localeCompare(y.description) : x.verdict === "same" ? -1 : 1));
+  return out;
+}
+
+/** Other records of the same item, and possible matches (shown, never used as evidence). */
+export function LinkList({ items }: { items: LinkedItem[] | undefined }) {
+  if (!items?.length) return null;
+  const same = items.filter((i) => i.verdict === "same");
+  const possible = items.filter((i) => i.verdict === "possible");
+  return (
+    <div className="mt-3 flex flex-col gap-1 text-xs" data-testid="links">
+      {same.length > 0 && (
+        <p>
+          <span className="font-medium uppercase tracking-wide text-muted-foreground">Also recorded as: </span>
+          {same.map((i) => `“${i.description}”`).join("; ")}
+        </p>
+      )}
+      {possible.length > 0 && (
+        <p>
+          <span className="font-medium uppercase tracking-wide text-muted-foreground">Possible match (not used as evidence): </span>
+          {possible.map((i) => `“${i.description}”`).join("; ")}
+        </p>
+      )}
+    </div>
+  );
+}

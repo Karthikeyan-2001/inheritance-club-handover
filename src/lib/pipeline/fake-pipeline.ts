@@ -112,7 +112,7 @@ export function fakeMatch(request: ProviderRequest): MatchOutput {
     if (!a || !b) continue;
     const shared = [...a].filter((t) => b.has(t)).length;
     const overlap = shared / Math.max(1, a.size + b.size - shared);
-    verdicts.push({ pair: ref, verdict: overlap >= 0.4 ? "same" : overlap >= 0.2 ? "unsure" : "different" });
+    verdicts.push({ pair: ref, verdict: overlap >= 0.5 ? "same" : overlap >= 0.34 ? "unsure" : "different" });
   }
   return { verdicts };
 }

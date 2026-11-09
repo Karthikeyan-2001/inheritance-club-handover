@@ -17,6 +17,23 @@ const CHAT = [
   "07/03/2026, 11:00 am - Arun: Sent the lab inventory list to Bala sir.",
 ].join("\n");
 
+// One promise in the chat and again in the minutes; done by one record, disputed by another person.
+const KIT_CHAT = [
+  "06/03/2026, 6:30 pm - Arun: I will return the soldering kit to the Robotics club by Monday.",
+  "08/03/2026, 10:00 am - Arun: Returned the soldering kit to the Robotics club.",
+  "09/03/2026, 5:00 pm - Priya: The Robotics club says the soldering kit is still not returned.",
+].join("\n");
+const KIT_MINUTES = "# Committee minutes (SYNTHETIC)\n\n## 2026-03-07: Committee meeting\n\n### Actions\n\n- Arun to return the soldering kit to the Robotics club by Monday.\n";
+
+async function importFile(page: Page, name: string, mimeType: string, body: string) {
+  await page.goto("/import");
+  await page.getByLabel("Files to import").setInputFiles({ name, mimeType, buffer: Buffer.from(body) });
+  await page.getByLabel("Who may see it").selectOption("committee");
+  await page.getByLabel("I am authorised to use this data.").check();
+  await page.getByRole("button", { name: /^Import 1 file$/ }).click();
+  await expect(page.getByText("What was read (1 of 1 imported)")).toBeVisible({ timeout: 20_000 });
+}
+
 test.describe.serial("building the ledger", () => {
   test("the outgoing lead builds the ledger: commitments, follow-up and the hedge left out", async ({ page }) => {
     await signInAs(page, "Arun");
@@ -81,5 +98,36 @@ test.describe.serial("building the ledger", () => {
     await expect(page.getByTestId("commitments")).toContainText("lab inventory list");
     await page.goto("/ledger?tab=recurring");
     await expect(page.getByTestId("recurring")).toContainText("inventory audit");
+  });
+
+  test("an item recorded twice is linked, and a done-versus-not-done conflict lands in the Docket", async ({ page }) => {
+    await signInAs(page, "Arun");
+    await importFile(page, "kit-chat.txt", "text/plain", KIT_CHAT);
+    await importFile(page, "kit-minutes.md", "text/markdown", KIT_MINUTES);
+    await page.goto("/ledger");
+    await page.getByRole("button", { name: "Build the ledger" }).click();
+    const progress = page.getByTestId("pipeline-progress");
+    await expect(progress).toContainText("finished", { timeout: 90_000 });
+    await expect(progress).toContainText(/Matching: \d+ items? linked/);
+
+    const kit = page.getByTestId("commitments").getByRole("listitem").filter({ hasText: "“I will return the soldering kit" }).first();
+    await expect(kit).toContainText("Trust: Contradicted");
+    await expect(kit).toContainText("One record says it was done and another says it was not.");
+    await expect(kit.getByTestId("links")).toContainText("Also recorded as:");
+
+    await page.getByRole("link", { name: "Docket" }).click();
+    await expect(page.getByRole("link", { name: "Docket" })).toHaveAttribute("aria-current", "page");
+    const entry = page.getByTestId("docket").getByRole("listitem").filter({ hasText: "soldering kit" }).first();
+    await expect(entry).toContainText("WhatsApp, 8 Mar 2026: says it was done. WhatsApp, 9 Mar 2026: says it was not.");
+    await expect(entry).toContainText("“Returned the soldering kit to the Robotics club.”");
+    await expect(entry).toContainText("“The Robotics club says the soldering kit is still not returned.”");
+    await expect(entry).toContainText("Awaiting a ruling");
+    await expect(page.getByTestId("docket").getByRole("listitem").filter({ hasText: "soldering kit" })).toHaveCount(1);
+  });
+
+  test("the incoming lead sees the same conflict, because both records are committee-level", async ({ page }) => {
+    await signInAs(page, "Kavya");
+    await page.goto("/ledger?tab=docket");
+    await expect(page.getByTestId("docket")).toContainText("still not returned");
   });
 });

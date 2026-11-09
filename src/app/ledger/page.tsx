@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Commitments } from "@/components/ledger/commitments";
+import { Docket } from "@/components/ledger/docket";
 import { PipelinePanel } from "@/components/ledger/pipeline-panel";
 import { Recurring } from "@/components/ledger/recurring";
 import { Timeline } from "@/components/ledger/timeline";
@@ -18,7 +19,7 @@ const TABS = [
   { key: "gaps", label: "Gaps" },
   { key: "timeline", label: "Timeline" },
 ] as const;
-const READY = new Set(["commitments", "recurring", "timeline"]);
+const READY = new Set(["commitments", "recurring", "docket", "timeline"]);
 type TabKey = (typeof TABS)[number]["key"];
 
 function Tabs({ current }: { current: TabKey }) {
@@ -67,13 +68,15 @@ async function LedgerContent({ searchParams }: { searchParams: PageProps<"/ledge
   }
   if (!viewer.membership) return <p>Your account is not a member of a workspace.</p>;
   const sp = await searchParams;
-  const tab: TabKey = sp.tab === "timeline" || sp.tab === "recurring" ? sp.tab : "commitments";
+  const tab: TabKey = sp.tab === "timeline" || sp.tab === "recurring" || sp.tab === "docket" ? sp.tab : "commitments";
   const { role, workspaceId } = viewer.membership;
   return (
     <div className="flex flex-col gap-6">
       <Tabs current={tab} />
       {tab === "timeline" ? (
         <Timeline workspaceId={workspaceId} params={parseTimelineParams(sp)} />
+      ) : tab === "docket" ? (
+        <Docket workspaceId={workspaceId} />
       ) : (
         <>
           <PipelinePanel
@@ -95,7 +98,9 @@ export default function LedgerPage(props: PageProps<"/ledger">) {
         <h1 className="text-3xl font-semibold tracking-tight">Ledger</h1>
         <p className="max-w-3xl text-muted-foreground">
           Commitments and recurring duties found in the records your role may read. Every quote is checked against its source, and each item
-          shows what happened next, or “No evidence kept”. Conflicts and gaps arrive in later steps; the timeline shows every imported message.
+          shows what happened next, or “No evidence kept”. Trust is set by a fixed rule: corroborated when two independent records agree, sourced
+          when one record backs it, inferred when completion is only implied, contradicted when records disagree (listed in the Docket), and a gap
+          when no evidence is kept. The timeline shows every imported message.
         </p>
       </div>
       <Suspense fallback={<p className="text-muted-foreground">Loading the ledger…</p>}>

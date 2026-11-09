@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS=--use-system-ca next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -22,7 +22,7 @@
     "seed": "node --env-file=.env.local scripts/seed.ts",
     "db:types": "supabase gen types --schema public > src/lib/supabase/database.types.ts",
     "seed:hosted": "node --env-file=.env.hosted.local scripts/seed.ts --remote",
-    "eval:extract": "node --env-file=.env.local scripts/eval-extract.ts"
+    "eval:extract": "node --use-system-ca --env-file=.env.local scripts/eval-extract.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.6.0",

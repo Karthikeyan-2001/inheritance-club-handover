@@ -95,7 +95,7 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 - **Two quote checks.** `verify.ts` checks in TypeScript, and `add_extracted_commitment()` checks again in SQL before storing. A claim without a verified quote cannot be saved.
 - **Runs as small jobs.** "Find commitments" on `/ledger` queues one job per chunk. The browser calls `POST /api/jobs/run-next` until all are done, showing progress. Each step runs as the signed-in user, so the model only sees messages that user may read.
 - **Results are drafts.** They're stored with trust state "Sourced" and review state "Draft", and shown in the Commitments tab with their quotes.
-- **`pnpm eval:extract`** scores extraction on the mini scenario against its ground truth. It estimates cost without `--yes`, and calls the model only with `-- --yes`.
+- **`pnpm eval:extract`** scores extraction on the mini scenario against its ground truth. It estimates cost without `--yes`, and calls the model only with `-- --yes`. Last run (Claude Haiku 5.5): 5 of 5 planted commitments found, 0 decoys kept, 0 quotes failing verification, about $0.001.
 
 ## Roles and permissions
 
@@ -118,6 +118,10 @@ How the guarantees are enforced:
 - **Tests.** `tests/rls/` proves each role sees exactly its expected rows.
 
 Demo accounts (synthetic): `arun.demo@example.com` (outgoing lead), `meena.demo@example.com` (advisor), `kavya.demo@example.com` (incoming lead), `divya.demo@example.com` (treasurer).
+
+## Troubleshooting
+
+- **`unable to get local issuer certificate` when calling the Anthropic API locally.** Your network re-signs HTTPS traffic with its own certificate, which your operating system trusts but Node's built-in list does not. `pnpm dev` and `pnpm eval:extract` already pass Node's `--use-system-ca`, so Node uses the operating system's trusted certificates. Certificate checking stays on. Vercel is not affected.
 
 ## Health check
 

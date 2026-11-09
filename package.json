@@ -11,7 +11,7 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "test:unit": "vitest run --project unit",
-    "test:rls": "vitest run --project rls",
+    "test:rls": "RLS_REQUIRED=1 vitest run --project rls",
     "test:watch": "vitest",
     "e2e": "playwright test",
     "db:start": "supabase start",

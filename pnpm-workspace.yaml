@@ -1,4 +1,3 @@
-registry: https://registry.npmjs.org/
 allowBuilds:
   sharp: false
   unrs-resolver: false

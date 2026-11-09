@@ -31,13 +31,14 @@ Next.js (App Router, TypeScript strict), Tailwind CSS + shadcn/ui, Supabase (Pos
 Requirements: Node 24, pnpm (via corepack), and Docker Desktop (for local Supabase, from Phase 1).
 
 ```bash
+export COREPACK_NPM_REGISTRY=https://registry.npmjs.org   # this shell only; lets corepack fetch pnpm
 corepack enable pnpm
 pnpm install
 cp .env.example .env.local   # then fill in values
 pnpm dev                     # http://localhost:3000
 ```
 
-If your machine has a global npm registry mirror configured, installs still use the public registry. This repo pins it in `.npmrc` and `pnpm-workspace.yaml`. If pnpm itself fails to download, run once with `pnpm_config_registry=https://registry.npmjs.org/`.
+Packages always come from the public npm registry. The project `.npmrc` contains only `registry=https://registry.npmjs.org/`, with no tokens or auth. The `COREPACK_NPM_REGISTRY` export applies only to the current shell session, and no global config is changed.
 
 ## Scripts
 

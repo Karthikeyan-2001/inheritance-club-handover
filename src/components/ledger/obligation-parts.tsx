@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
 import { formatIst } from "@/lib/format";
@@ -40,13 +41,21 @@ function relationLabel(e: EvidenceRow, kind: "commitment" | "recurring"): string
 
 const ORDER = { supports: 0, past_instance: 1, fulfils: 2, contradicts: 3 } as const;
 
-function SourceLine({ event, verified }: { event: SourceEvent; verified: boolean }) {
+function SourceLine({ event, verified, href }: { event: SourceEvent; verified: boolean; href?: string }) {
   return (
     <p className="mt-1 pl-3 text-xs text-muted-foreground">
       {event
         ? `${event.author ?? "Unknown"}, ${formatIst(event.ts)}${event.sources ? ` · ${TYPE_LABELS[event.sources.type]} · ${event.sources.filename}` : ""}`
         : "Quote shared with your role; the full message is not visible to you."}
       {verified ? " · quote checked against the message" : ""}
+      {href && (
+        <>
+          {" · "}
+          <Link href={href} className="underline">
+            Open source message
+          </Link>
+        </>
+      )}
     </p>
   );
 }
@@ -61,7 +70,7 @@ export function EvidenceList({ evidence, kind }: { evidence: EvidenceRow[]; kind
         <li key={ev.id} data-relation={ev.relation}>
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{relationLabel(ev, kind)}</p>
           <blockquote className="border-l-2 pl-3">“{ev.quote}”</blockquote>
-          <SourceLine event={ev.events} verified={ev.verified} />
+          <SourceLine event={ev.events} verified={ev.verified} href={`/ledger/evidence/${ev.id}`} />
         </li>
       ))}
     </ul>
@@ -87,7 +96,7 @@ export function ContextList({ items }: { items: ContextRow[] }) {
             {c.quote && (
               <>
                 <blockquote className="mt-1 border-l-2 pl-3">“{c.quote}”</blockquote>
-                <SourceLine event={c.events} verified={c.verified} />
+                <SourceLine event={c.events} verified={c.verified} href={`/ledger/evidence/${c.id}?kind=context`} />
               </>
             )}
           </li>
@@ -101,43 +110,64 @@ export const EVIDENCE_SELECT = "evidence(id, quote, relation, verified, inferred
 export const CONTEXT_SELECT = "context_items(id, kind, text, quote, verified, access_level, events(ts, author, sources(filename, type)))";
 
 export type LinkRow = { a: string; b: string; verdict: "same" | "possible" };
-export type LinkedItem = { id: string; description: string; verdict: LinkRow["verdict"] };
 
-/** For each item, the other items it is linked to (RLS returned only links whose both items are readable). */
-export function linksByItem(links: readonly LinkRow[], descriptions: ReadonlyMap<string, string>): Map<string, LinkedItem[]> {
-  const out = new Map<string, LinkedItem[]>();
-  const add = (from: string, to: string, verdict: LinkRow["verdict"]) => {
-    const description = descriptions.get(to);
-    if (!description || !descriptions.has(from)) return;
-    out.set(from, [...(out.get(from) ?? []), { id: to, description, verdict }]);
-  };
-  for (const l of links) {
-    add(l.a, l.b, l.verdict);
-    add(l.b, l.a, l.verdict);
-  }
-  for (const list of out.values()) list.sort((x, y) => (x.verdict === y.verdict ? x.description.localeCompare(y.description) : x.verdict === "same" ? -1 : 1));
-  return out;
+/** What the grouped cards need from every item (commitment or duty). */
+export type CardItem = {
+  id: string;
+  description: string;
+  access_level: AccessLevel;
+  trust_state: "corroborated" | "sourced" | "inferred" | "contradicted" | "gap";
+  evidence: EvidenceRow[];
+};
+
+/** "Also in Trello": where a linked record came from, taken from its own quotes. */
+function recordedIn(item: CardItem): string {
+  const types = [...new Set(item.evidence.map((e) => e.events?.sources?.type).filter((t): t is keyof typeof TYPE_LABELS => Boolean(t)))];
+  return types.length ? `Also in ${types.map((t) => TYPE_LABELS[t]).join(" and ")}` : "Also recorded";
 }
 
-/** Other records of the same item, and possible matches (shown, never used as evidence). */
-export function LinkList({ items }: { items: LinkedItem[] | undefined }) {
-  if (!items?.length) return null;
-  const same = items.filter((i) => i.verdict === "same");
-  const possible = items.filter((i) => i.verdict === "possible");
+/**
+ * Other records of the same item, folded into its card, each with its own access level and
+ * quotes. RLS already removed any record the viewer cannot read.
+ */
+export function AlsoRecorded({ records, kind, trustLabels }: { records: CardItem[]; kind: "commitment" | "recurring"; trustLabels: Record<CardItem["trust_state"], string> }) {
+  if (records.length === 0) return null;
   return (
-    <div className="mt-3 flex flex-col gap-1 text-xs" data-testid="links">
-      {same.length > 0 && (
-        <p>
-          <span className="font-medium uppercase tracking-wide text-muted-foreground">Also recorded as: </span>
-          {same.map((i) => `“${i.description}”`).join("; ")}
-        </p>
-      )}
-      {possible.length > 0 && (
-        <p>
-          <span className="font-medium uppercase tracking-wide text-muted-foreground">Possible match (not used as evidence): </span>
-          {possible.map((i) => `“${i.description}”`).join("; ")}
-        </p>
-      )}
+    <div className="mt-3 flex flex-col gap-2" data-testid="links">
+      {records.map((r) => (
+        <section key={r.id} className="rounded-sm border border-dashed p-2" aria-label={recordedIn(r)}>
+          <p className="flex flex-wrap items-center gap-2">
+            <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{recordedIn(r)}</span>
+            <Badge variant={r.access_level === "everyone" ? "outline" : "secondary"}>{ACCESS_LABELS[r.access_level]}</Badge>
+            <Badge variant="outline">Trust: {trustLabels[r.trust_state]}</Badge>
+          </p>
+          <p className="mt-1">{r.description.charAt(0).toUpperCase() + r.description.slice(1)}</p>
+          <EvidenceList evidence={r.evidence} kind={kind} />
+        </section>
+      ))}
     </div>
+  );
+}
+
+/** Possible matches: a quiet note. They are never merged and never used as evidence. */
+export function PossibleMatches({ items }: { items: { id: string; description: string }[] }) {
+  if (items.length === 0) return null;
+  return (
+    <p className="mt-3 text-xs text-muted-foreground" data-testid="possible-matches">
+      <span className="font-medium uppercase tracking-wide">Possible match (not used as evidence): </span>
+      {items.map((i) => `“${i.description}”`).join("; ")}
+    </p>
+  );
+}
+
+/** A contradicted item points at its conflict; the Docket points back. */
+export function DocketLink({ entryId }: { entryId: string | undefined }) {
+  if (!entryId) return null;
+  return (
+    <p className="mt-2 text-xs">
+      <Link href={`/ledger?tab=docket#docket-${entryId}`} className="underline">
+        See this conflict in the Docket
+      </Link>
+    </p>
   );
 }

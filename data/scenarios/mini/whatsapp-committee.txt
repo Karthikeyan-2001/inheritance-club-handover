@@ -1,0 +1,19 @@
+05/01/2026, 9:00 am - Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them.
+05/01/2026, 9:00 am - Priya created group "IoT Club Committee"
+05/01/2026, 9:00 am - Priya added you
+10/01/2026, 7:30 pm - Priya: IoT Fest is our annual event. The auditorium needs the Dean's office approval, so apply a month ahead.
+10/01/2026, 7:35 pm - Priya: For the lab, remember the HoD's permission letter has to be approved before booking, every semester.
+Last sem they rejected us without it.
+10/01/2026, 7:40 pm - Arun: I'll send the sponsorship proposal to Brightwave Labs by 20 January.
+10/01/2026, 7:42 pm - Kavya: I will have the fest posters printed by 3 Feb.
+12/01/2026, 6:10 pm - Rohan: Maybe I'll check the projector too, will see.
+12/01/2026, 6:15 pm - Divya: We should probably do a hackathon someday.
+12/01/2026, 6:16 pm - Arun: <Media omitted>
+03/02/2026, 5:20 pm - Kavya: Posters printed, collecting tomorrow morning.
+04/02/2026, 1:00 pm - Kavya: Posters are up on all notice boards
+23/02/2026, 7:10 pm - Rohan: I'll return the borrowed ESP32 boards to Bala sir by Friday.
+27/02/2026, 5:21 pm - Rohan: Returned all 8 boards, Bala sir signed the register
+02/03/2026, 7:42 pm - Arun: Sure da, we will send the participation certificates to all workshop speakers by 15 March.
+16/03/2026, 9:30 am - Arun: Done, moved the certificates card to Done on Trello.
+18/03/2026, 8:10 pm - Priya: Speakers are still asking for their certificates, nobody has sent them yet.
+18/03/2026, 8:11 pm - You deleted this message

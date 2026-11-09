@@ -32,3 +32,10 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 - **Audit visibility follows the item.** Audit rows store the access level of the item they describe. An audit row about an obligation is readable only while the reader can read that obligation. This stops private text from leaking through before/after copies.
 - **Workspace deletion.** `delete_workspace()` is the only way to remove immutable rows (versions, acknowledgements, audit log). It deletes the whole workspace at once.
 - **Acknowledgements are append-only.** Changing a decision adds a new row, and the latest row per item and user is the current answer (`latest_acks` view).
+
+## Parsers and time (Phase 2)
+
+- **One time zone, IST.** Chat exports have no time zone and clubs are in India, so every timestamp is stored as an IST (`+05:30`) ISO string. Trello's UTC times are converted. This keeps ordering consistent across WhatsApp, Trello and minutes, which matters for fulfilment ("later events") and for the Trello-done-versus-chat contradiction check.
+- **Dropped items are counted, not hidden.** System lines, deleted messages and attachments without text do not become events, but the import summary reports how many were dropped and why.
+- **Minutes become one event per dated heading.** Quotes are verified against the whole section, with markdown decoration stripped so a quote matches what a reader sees. Word files are read through their heading styles.
+- **Trello contributes history, not only cards.** Comments, list moves and completion changes become events, so a card that was moved to Done can later be compared with what people said afterwards.

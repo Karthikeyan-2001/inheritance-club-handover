@@ -46,3 +46,11 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 - **Imports are atomic and checked by RLS.** `import_source()` runs as the uploader, so the same row-level policies that govern reading also govern writing. A failed import leaves nothing behind.
 - **Sensible defaults for access.** One-to-one chats (two people) default to private, as the brief requires. Files whose names mention money default to finance. The uploader can change either before importing.
 - **The shared demo club is protected.** Visitors cannot delete it; only the seed script can reset it. Per-visitor workspaces arrive with "Load demo club".
+
+## Language model use (Phase 4)
+
+- **Structured outputs instead of forced tool use.** The brief asked for tool use as the structured-output mechanism. Current Claude Sonnet and Opus models reject forced tool calls, so the adapter uses the documented replacement, `output_config.format` with a JSON schema generated from Zod. The guarantee is the same: output must match the schema, and it is validated again with Zod.
+- **The quote check runs twice.** It runs once in TypeScript and once inside the database function that stores a commitment. A bug in the application cannot store an unverified claim.
+- **Extraction runs as the person who started it.** Every read and write goes through their session and RLS, so the model never receives a message that person cannot read. Job records hold message ids only, never text.
+- **A deterministic hedge filter backs up the prompt.** Quotes containing "maybe", "might", "will see", "not sure" and similar are dropped by code even if the model returns them.
+- **A daily budget and a response cache.** Repeated runs over the same messages reuse saved answers. A per-day limit on uncached calls protects the hosted demo from runaway cost.

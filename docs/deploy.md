@@ -45,7 +45,14 @@ In **Project → Settings → Environment Variables**, add:
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | hosted publishable key |
 | `DEMO_USER_PASSWORD` | same as in `.env.hosted.local` |
 
-Do **not** add `SUPABASE_SECRET_KEY` to Vercel yet: the app does not use it in Phase 1, and leaving it out keeps the deployment least-privileged.
+From Phase 4, also add these, marked **Sensitive**:
+
+| Name | Value |
+|---|---|
+| `ANTHROPIC_API_KEY` | your Anthropic key (set a monthly spend limit in the Console) |
+| `SUPABASE_SECRET_KEY` | hosted secret key; used only on the server, for the LLM response cache |
+
+and, not sensitive: `LLM_MODEL_FAST=claude-haiku-5-5`, `LLM_MODEL_STRONG=claude-sonnet-5-5`, `LLM_MAX_CALLS_PER_DAY=500` (lower it if you want a tighter cap).
 
 Then **redeploy**. The login page is prerendered at build time, so the password shown there comes from the build.
 
@@ -61,7 +68,7 @@ Then **redeploy**. The login page is prerendered at build time, so the password 
 
 ## Updating the hosted database after a new phase
 
-When a phase adds a migration (Phase 3 adds `0007_import.sql`), apply it and re-seed:
+When a phase adds a migration (Phase 3 adds `0007_import.sql`, Phase 4 adds `0008_extraction.sql`), apply it and re-seed:
 
 ```bash
 pnpm db:push        # applies only the new migrations

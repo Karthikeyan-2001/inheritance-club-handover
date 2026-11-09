@@ -171,14 +171,14 @@ isOneToOne: false
                   ]
                 },"jobs": {
                   Row: {
-                    "attempts": number,"created_at": string,"id": string,"kind": string,"payload": NonNullable<Json>,"result": Json | null,"status": Database["public"]['Enums']["job_status"],"workspace_id": string
+                    "attempts": number,"created_at": string,"finished_at": string | null,"id": string,"kind": string,"payload": NonNullable<Json>,"result": Json | null,"started_at": string | null,"status": Database["public"]['Enums']["job_status"],"workspace_id": string
                   }
                   ComputedFields: never
                   Insert: {
-                    "attempts"?: number,"created_at"?: string,"id"?: string,"kind": string,"payload"?: NonNullable<Json>,"result"?: Json | null,"status"?: Database["public"]['Enums']["job_status"],"workspace_id": string
+                    "attempts"?: number,"created_at"?: string,"finished_at"?: string | null,"id"?: string,"kind": string,"payload"?: NonNullable<Json>,"result"?: Json | null,"started_at"?: string | null,"status"?: Database["public"]['Enums']["job_status"],"workspace_id": string
                   }
                   Update: {
-                    "attempts"?: number,"created_at"?: string,"id"?: string,"kind"?: string,"payload"?: NonNullable<Json>,"result"?: Json | null,"status"?: Database["public"]['Enums']["job_status"],"workspace_id"?: string
+                    "attempts"?: number,"created_at"?: string,"finished_at"?: string | null,"id"?: string,"kind"?: string,"payload"?: NonNullable<Json>,"result"?: Json | null,"started_at"?: string | null,"status"?: Database["public"]['Enums']["job_status"],"workspace_id"?: string
                   }
                   Relationships: [
                     {
@@ -191,14 +191,14 @@ isOneToOne: false
                   ]
                 },"llm_cache": {
                   Row: {
-                    "created_at": string,"hash": string,"response": NonNullable<Json>
+                    "created_at": string,"hash": string,"model": string | null,"response": NonNullable<Json>,"usage": NonNullable<Json>
                   }
                   ComputedFields: never
                   Insert: {
-                    "created_at"?: string,"hash": string,"response": NonNullable<Json>
+                    "created_at"?: string,"hash": string,"model"?: string | null,"response": NonNullable<Json>,"usage"?: NonNullable<Json>
                   }
                   Update: {
-                    "created_at"?: string,"hash"?: string,"response"?: NonNullable<Json>
+                    "created_at"?: string,"hash"?: string,"model"?: string | null,"response"?: NonNullable<Json>,"usage"?: NonNullable<Json>
                   }
                   Relationships: [
                     
@@ -389,9 +389,33 @@ isOneToOne: false
                 }
           }
           Functions: {
-            "approve_version":
+            "add_extracted_commitment":
+{ Args: { "p_deliverable": string,"p_due_text": string,"p_event": string,"p_owed_by": string,"p_owed_to": string,"p_quote": string,"p_workspace": string }; Returns: {
+              "created": boolean,"obligation_id": string
+            }[]
+                           },
+"approve_version":
 { Args: { "p_reason": string,"p_workspace": string }; Returns: string
                            },
+"claim_next_job":
+{ Args: { "p_kind": string,"p_run": string,"p_workspace": string }; Returns: {
+              "attempts": number,
+"created_at": string,
+"finished_at": string | null,
+"id": string,
+"kind": string,
+"payload": NonNullable<Json>,
+"result": Json | null,
+"started_at": string | null,
+"status": Database["public"]['Enums']["job_status"],
+"workspace_id": string
+            }[]
+                          SetofOptions: {
+        from: "*"
+        to: "jobs"
+        isOneToOne: false
+        isSetofReturn: true
+      } },
 "delete_workspace":
 { Args: { "p_reason": string,"p_workspace": string }; Returns: undefined
                            },

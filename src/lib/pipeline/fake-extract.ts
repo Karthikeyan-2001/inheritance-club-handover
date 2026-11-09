@@ -1,0 +1,32 @@
+// Rule-based stand-in for the extraction model, used only with LLM_PROVIDER=fake (tests and
+// offline e2e). It reads the same prompt format a real model would and returns candidates.
+
+import type { ProviderRequest } from "../llm/types.ts";
+import type { ExtractionOutput } from "./extract.ts";
+
+const LINE = /^\[(m\d+)\] [^|]*\| [^|]*\| ([^:]+): (.*)$/;
+const PROMISE = /\b(I will|I'll|we will|we'll|I will have)\b[^.!?\n]*/i;
+const ACTION = /^-?\s*([A-Z][a-z]+) to (.+?)\.?\s*$/m;
+
+export function fakeExtract(request: ProviderRequest): ExtractionOutput {
+  const commitments: ExtractionOutput["commitments"] = [];
+  const blocks: { ref: string; author: string; text: string }[] = [];
+  for (const raw of request.user.split("\n")) {
+    const m = raw.match(LINE);
+    if (m) blocks.push({ ref: m[1], author: m[2].trim(), text: m[3] });
+    else if (blocks.length && raw.startsWith("    ")) blocks[blocks.length - 1].text += `\n${raw.slice(4)}`;
+  }
+  for (const b of blocks) {
+    const p = b.text.match(PROMISE);
+    if (p) {
+      const quote = p[0].trim();
+      const to = quote.match(/\bto (?:all )?([A-Z][\w.]*(?: [A-Z][\w.]*)*|workshop speakers|the [a-z]+)/)?.[1] ?? "the club";
+      commitments.push({ message: b.ref, quote, owed_by: b.author, owed_to: to, deliverable: quote.replace(PROMISE.exec(quote)?.[1] ?? "", "").trim(), due_text: quote.match(/\bby [^,.]+/)?.[0] ?? null });
+    }
+    for (const line of b.text.split("\n")) {
+      const a = line.match(ACTION);
+      if (a) commitments.push({ message: b.ref, quote: `${a[1]} to ${a[2]}`.trim(), owed_by: a[1], owed_to: "the committee", deliverable: a[2].trim(), due_text: a[2].match(/\bby [^,.]+/)?.[0] ?? null });
+    }
+  }
+  return { commitments };
+}

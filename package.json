@@ -21,9 +21,11 @@
     "db:push": "supabase db push --remote",
     "seed": "node --env-file=.env.local scripts/seed.ts",
     "db:types": "supabase gen types --schema public > src/lib/supabase/database.types.ts",
-    "seed:hosted": "node --env-file=.env.hosted.local scripts/seed.ts --remote"
+    "seed:hosted": "node --env-file=.env.hosted.local scripts/seed.ts --remote",
+    "eval:extract": "node --env-file=.env.local scripts/eval-extract.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.119.0",
     "class-variance-authority": "^0.7.1",

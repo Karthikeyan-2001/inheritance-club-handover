@@ -1,0 +1,263 @@
+{
+  "id": "b8367887cc4b65a7bb42bf3c",
+  "name": "IoT Club Mini Board (SYNTHETIC)",
+  "desc": "Synthetic.",
+  "closed": false,
+  "dateLastActivity": "2026-03-20T09:00:00.000Z",
+  "members": [
+    {
+      "id": "31865bb1732614108cce3f9d",
+      "fullName": "Priya",
+      "username": "priya_synthetic"
+    },
+    {
+      "id": "e21207e7277d734ddd859bd2",
+      "fullName": "Arun",
+      "username": "arun_synthetic"
+    },
+    {
+      "id": "90322f4aa53ae79661a4b67d",
+      "fullName": "Kavya",
+      "username": "kavya_synthetic"
+    }
+  ],
+  "lists": [
+    {
+      "id": "f000ef5abd4cc96f5df8db74",
+      "name": "To Do",
+      "closed": false,
+      "idBoard": "b8367887cc4b65a7bb42bf3c",
+      "pos": 16384
+    },
+    {
+      "id": "df62e973e34196141bb67199",
+      "name": "Done",
+      "closed": false,
+      "idBoard": "b8367887cc4b65a7bb42bf3c",
+      "pos": 32768
+    }
+  ],
+  "cards": [
+    {
+      "id": "ce7af47187c49b266339d622",
+      "idShort": 1,
+      "name": "Send certificates to workshop speakers",
+      "desc": "Certificates for the March speakers.",
+      "idList": "df62e973e34196141bb67199",
+      "idBoard": "b8367887cc4b65a7bb42bf3c",
+      "idMembers": [],
+      "idLabels": [],
+      "idChecklists": [],
+      "pos": 16384,
+      "due": "2026-03-15T12:00:00.000Z",
+      "dueComplete": true,
+      "closed": false,
+      "dateLastActivity": "2026-03-20T09:00:00.000Z",
+      "labels": []
+    },
+    {
+      "id": "e129b0422f4ce9dbf8509a34",
+      "idShort": 2,
+      "name": "Get HoD permission letter for lab booking",
+      "desc": "Needed before every lab booking (every semester). Apply two weeks ahead.",
+      "idList": "f000ef5abd4cc96f5df8db74",
+      "idBoard": "b8367887cc4b65a7bb42bf3c",
+      "idMembers": [],
+      "idLabels": [],
+      "idChecklists": [],
+      "pos": 32768,
+      "due": "2026-01-31T12:00:00.000Z",
+      "dueComplete": false,
+      "closed": false,
+      "dateLastActivity": "2026-03-20T09:00:00.000Z",
+      "labels": []
+    },
+    {
+      "id": "055dcf0081b02a6cda3e7ddb",
+      "idShort": 3,
+      "name": "Print fest posters",
+      "desc": "",
+      "idList": "df62e973e34196141bb67199",
+      "idBoard": "b8367887cc4b65a7bb42bf3c",
+      "idMembers": [],
+      "idLabels": [],
+      "idChecklists": [],
+      "pos": 49152,
+      "due": "2026-02-03T12:00:00.000Z",
+      "dueComplete": true,
+      "closed": false,
+      "dateLastActivity": "2026-03-20T09:00:00.000Z",
+      "labels": []
+    }
+  ],
+  "checklists": [],
+  "actions": [
+    {
+      "id": "ac47591b97940b35389c7efe",
+      "idMemberCreator": "31865bb1732614108cce3f9d",
+      "type": "commentCard",
+      "date": "2026-03-20T09:00:00.000Z",
+      "data": {
+        "board": {
+          "id": "b8367887cc4b65a7bb42bf3c",
+          "name": "Mini board"
+        },
+        "card": {
+          "id": "ce7af47187c49b266339d622",
+          "name": "Send certificates to workshop speakers",
+          "idShort": 1
+        },
+        "text": "Speakers say they have not received the certificates."
+      },
+      "memberCreator": {
+        "id": "31865bb1732614108cce3f9d",
+        "fullName": "Priya",
+        "username": "priya_synthetic"
+      }
+    },
+    {
+      "id": "b70cb06932234a7cc9e2af51",
+      "idMemberCreator": "e21207e7277d734ddd859bd2",
+      "type": "updateCard",
+      "date": "2026-03-16T04:00:00.000Z",
+      "data": {
+        "board": {
+          "id": "b8367887cc4b65a7bb42bf3c",
+          "name": "Mini board"
+        },
+        "card": {
+          "id": "ce7af47187c49b266339d622",
+          "name": "Send certificates to workshop speakers",
+          "idShort": 1
+        },
+        "listBefore": {
+          "id": "f000ef5abd4cc96f5df8db74",
+          "name": "To Do"
+        },
+        "listAfter": {
+          "id": "df62e973e34196141bb67199",
+          "name": "Done"
+        },
+        "old": {
+          "idList": "f000ef5abd4cc96f5df8db74"
+        }
+      },
+      "memberCreator": {
+        "id": "e21207e7277d734ddd859bd2",
+        "fullName": "Arun",
+        "username": "arun_synthetic"
+      }
+    },
+    {
+      "id": "ac6c877e5ce28c2815edca55",
+      "idMemberCreator": "e21207e7277d734ddd859bd2",
+      "type": "createCard",
+      "date": "2026-03-02T09:00:00.000Z",
+      "data": {
+        "board": {
+          "id": "b8367887cc4b65a7bb42bf3c",
+          "name": "Mini board"
+        },
+        "card": {
+          "id": "ce7af47187c49b266339d622",
+          "name": "Send certificates to workshop speakers",
+          "idShort": 1
+        },
+        "list": {
+          "id": "f000ef5abd4cc96f5df8db74",
+          "name": "To Do"
+        }
+      },
+      "memberCreator": {
+        "id": "e21207e7277d734ddd859bd2",
+        "fullName": "Arun",
+        "username": "arun_synthetic"
+      }
+    },
+    {
+      "id": "51fdd832fdcb6acc3510ecad",
+      "idMemberCreator": "90322f4aa53ae79661a4b67d",
+      "type": "updateCard",
+      "date": "2026-02-04T07:30:00.000Z",
+      "data": {
+        "board": {
+          "id": "b8367887cc4b65a7bb42bf3c",
+          "name": "Mini board"
+        },
+        "card": {
+          "id": "055dcf0081b02a6cda3e7ddb",
+          "name": "Print fest posters",
+          "idShort": 3
+        },
+        "listBefore": {
+          "id": "f000ef5abd4cc96f5df8db74",
+          "name": "To Do"
+        },
+        "listAfter": {
+          "id": "df62e973e34196141bb67199",
+          "name": "Done"
+        },
+        "old": {
+          "idList": "f000ef5abd4cc96f5df8db74"
+        }
+      },
+      "memberCreator": {
+        "id": "90322f4aa53ae79661a4b67d",
+        "fullName": "Kavya",
+        "username": "kavya_synthetic"
+      }
+    },
+    {
+      "id": "1b2a172c409c80cf96af0709",
+      "idMemberCreator": "90322f4aa53ae79661a4b67d",
+      "type": "createCard",
+      "date": "2026-01-28T14:00:00.000Z",
+      "data": {
+        "board": {
+          "id": "b8367887cc4b65a7bb42bf3c",
+          "name": "Mini board"
+        },
+        "card": {
+          "id": "055dcf0081b02a6cda3e7ddb",
+          "name": "Print fest posters",
+          "idShort": 3
+        },
+        "list": {
+          "id": "f000ef5abd4cc96f5df8db74",
+          "name": "To Do"
+        }
+      },
+      "memberCreator": {
+        "id": "90322f4aa53ae79661a4b67d",
+        "fullName": "Kavya",
+        "username": "kavya_synthetic"
+      }
+    },
+    {
+      "id": "e7c38f538224e4bcb5c25d1a",
+      "idMemberCreator": "31865bb1732614108cce3f9d",
+      "type": "createCard",
+      "date": "2026-01-10T14:00:00.000Z",
+      "data": {
+        "board": {
+          "id": "b8367887cc4b65a7bb42bf3c",
+          "name": "Mini board"
+        },
+        "card": {
+          "id": "e129b0422f4ce9dbf8509a34",
+          "name": "Get HoD permission letter for lab booking",
+          "idShort": 2
+        },
+        "list": {
+          "id": "f000ef5abd4cc96f5df8db74",
+          "name": "To Do"
+        }
+      },
+      "memberCreator": {
+        "id": "31865bb1732614108cce3f9d",
+        "fullName": "Priya",
+        "username": "priya_synthetic"
+      }
+    }
+  ]
+}

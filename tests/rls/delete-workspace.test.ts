@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { admin, hasEnv, removeMember, resetDemo, signInAll, type Client, type Viewer } from "./support.ts";
+import { admin, hasEnv, cleanup, resetDemo, signInAll, type Client, type Viewer } from "./support.ts";
 
 // Builds a throwaway workspace with a row in every table (including immutable ones), then
 // proves delete_workspace() removes all of it and that only reviewers may call it.
@@ -58,7 +58,7 @@ describe.skipIf(!hasEnv)("delete_workspace", () => {
   });
 
   afterAll(async () => {
-    await removeMember();
+    await cleanup();
   });
 
   async function counts() {

@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { CONTEXT_ITEMS, DEMO_WORKSPACE, OBLIGATIONS, byKey } from "../../src/lib/demo/fixture.ts";
-import { admin, hasEnv, keys, removeMember, resetDemo, signInAll, type Client, type Viewer } from "./support.ts";
+import { admin, hasEnv, keys, cleanup, resetDemo, signInAll, type Client, type Viewer } from "./support.ts";
 
 const O = (k: string) => byKey(OBLIGATIONS, k).id;
 const WS = DEMO_WORKSPACE.id;
@@ -14,7 +14,7 @@ describe.skipIf(!hasEnv)("approve_version and immutable versions", () => {
     as = await signInAll();
   });
   afterAll(async () => {
-    await removeMember();
+    await cleanup();
   });
 
   it("is rejected for everyone except the advisor", async () => {
@@ -124,7 +124,7 @@ describe.skipIf(!hasEnv)("release_item", () => {
     as = await signInAll();
   });
   afterAll(async () => {
-    await removeMember();
+    await cleanup();
   });
 
   const release = (c: Client, target: string, type: "obligation" | "context_item" = "obligation", reason = "test") =>
@@ -180,7 +180,7 @@ describe.skipIf(!hasEnv)("audit log", () => {
     as = await signInAll();
   });
   afterAll(async () => {
-    await removeMember();
+    await cleanup();
   });
 
   it("every change to an obligation writes actor, action, before and after", async () => {

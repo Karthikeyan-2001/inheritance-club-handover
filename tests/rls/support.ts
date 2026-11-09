@@ -96,11 +96,13 @@ export async function resetDemo(): Promise<Record<Viewer, string>> {
   return { ...users, member: memberId };
 }
 
-export async function removeMember(): Promise<void> {
+/** Remove the temporary member and restore the pristine demo workspace for the app. */
+export async function cleanup(): Promise<void> {
   const a = admin();
   const { data } = await a.auth.admin.listUsers({ page: 1, perPage: 1000 });
   const u = data?.users.find((x) => x.email === MEMBER_EMAIL);
   if (u) await a.auth.admin.deleteUser(u.id);
+  await seed(mustEnv(), () => {});
 }
 
 const KEY_BY_ID = new Map<string, string>(

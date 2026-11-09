@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { DEMO_WORKSPACE, OBLIGATIONS, byKey } from "../../src/lib/demo/fixture.ts";
 import { EXPECTED } from "./expected.ts";
-import { anon, hasEnv, keys, removeMember, resetDemo, signInAll, type Client, type Viewer } from "./support.ts";
+import { anon, hasEnv, keys, cleanup, resetDemo, signInAll, type Client, type Viewer } from "./support.ts";
 
 const VIEWERS: Viewer[] = ["meena", "arun", "divya", "kavya", "member"];
 const TABLES = Object.keys(EXPECTED) as (keyof typeof EXPECTED)[];
@@ -14,7 +14,7 @@ describe.skipIf(!hasEnv)("RLS: each role sees a different slice of the same tabl
     as = await signInAll();
   });
   afterAll(async () => {
-    await removeMember();
+    await cleanup();
   });
 
   for (const table of TABLES) {
@@ -72,7 +72,7 @@ describe.skipIf(!hasEnv)("RLS: no leaks", () => {
     as = await signInAll();
   });
   afterAll(async () => {
-    await removeMember();
+    await cleanup();
   });
 
   const O = (k: string) => byKey(OBLIGATIONS, k).id;

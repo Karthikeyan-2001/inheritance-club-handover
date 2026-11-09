@@ -1,0 +1,26 @@
+# Changes from Round 1
+
+This file records where the Round 2 build differs from what was proposed in Round 1, and why.
+
+> **TODO (developer):** add a short summary of the Round 1 submission here, so each change below has a baseline.
+
+## Retrieval and matching
+
+- **Embeddings dropped for Round 2.** Matching mentions across sources uses an alias table, candidate pairs within a date window that share an entity, `pg_trgm` similarity ranking, and a model verdict (same / different / unsure, where unsure is treated as different and surfaced as a possible match). This avoids an embedding provider and vector storage on free tiers, and keeps each match decision explainable.
+
+## Processing model
+
+- **Client-driven job runner.** Vercel Hobby limits how long a serverless function can run, and Supabase Free has no background workers. Long imports are therefore split into small steps stored in a `jobs` table. The browser polls `POST /api/jobs/run-next` and shows progress until all steps are done.
+
+## Access for judges
+
+- **Demo accounts.** Four pre-seeded synthetic accounts (outgoing lead Arun, advisor Dr. Meena, incoming lead Kavya, treasurer Divya) with one-click login and a role switcher. Their credentials are shown on the login page because the data is synthetic. Row-level security still applies to every account, so switching roles shows what each role can really read.
+
+## Schema additions (for leak-safe permissions)
+
+Row-level security filters whole rows, not values inside JSON, so a few additions keep restricted text from leaking:
+
+- **`version_items`** holds one immutable row per obligation per approved version, with its own access level. `versions.snapshot`/`diff` contain only ids and hashes, and each role's diff is built from the items it can read.
+- **`releases`** records explicit releases: the outgoing lead releasing a private item, or the advisor releasing an item to the incoming lead. Each release is written through a database function that also writes the audit log.
+- **`audit_log.access_level` / `private_uploaders`**: audit rows carry the access level of the row they describe, because they store before/after copies of it.
+- **`obligations.private_uploaders`**: who uploaded the private sources behind an obligation, so the outgoing lead can see private items derived only from their own files.

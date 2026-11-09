@@ -21,7 +21,7 @@ Read this first when resuming work. Last updated: 2026-11-09, at the end of Phas
 | 12 | Scoring, leak test, second scenario, end-to-end tests | later |
 | 13 | Hardening and docs | later |
 
-Tests at the end of Phase 7: 264 unit, 121 RLS integration, 26 Playwright, all passing. Lint, typecheck and build are clean.
+Tests at the end of Phase 7: 266 unit, 121 RLS integration, 26 Playwright, all passing. Lint, typecheck and build are clean.
 
 ## How the user works
 
@@ -34,8 +34,9 @@ Tests at the end of Phase 7: 264 unit, 121 RLS integration, 26 Playwright, all p
 ## Outstanding user tasks (for Phase 7)
 
 1. Merge `build/phase-7`.
-2. Redeploy on Vercel. No migration, no new environment variables, no paid model calls.
-3. Optional: on the live app, open any quote's **Open source message** link, then the **Gaps** tab.
+2. Hosted database: `pnpm db:push` applies 0012 (`events.seq`, and `import_source` inserting in file order). Existing rows are numbered in their stored order, which for one file is its import order. No re-seed is needed.
+3. Redeploy on Vercel. No new environment variables, no paid model calls.
+4. Optional: on the live app, open any quote's **Open source message** link, then the **Gaps** tab.
 
 ## Environment facts
 
@@ -65,6 +66,7 @@ Tests at the end of Phase 7: 264 unit, 121 RLS integration, 26 Playwright, all p
 | 0009 | The `likely_fulfilled` status, in its own migration (a new enum value cannot be used in the transaction that adds it). |
 | 0010 | `evidence.inferred`; obligations `fulfilment_checked_at`, `period`, `cadence`, `lead_time`, `start_by`, `next_due_basis`; `context_items.event_id`, `quote`, `verified`, `private_uploaders` (trigger `context_item_provenance`, and `app.can_read_context_item` uses the item's own uploaders). `app.followup_status()` (the status rule), `record_followup()`, `add_recurring_duty()` (one visibility per duty; same-level merge; skips a duty already known at a lower level), `claim_next_run_job()` (stage by stage). Helpers: `app.quote_in`, `app.grounded_in`, `app.visibility_key`, `app.obligation_since`, `app.try_uuid`. |
 | 0011 | Matching, trust, docket. `obligation_links` (a < b, `same` or `possible`, `rule` or `model`; readable only if both items are; audited at the more restricted item's level by `app.audit_link`). `app.effective_evidence()` (own verified evidence plus that of `same`-linked items at the same or a less restricted level; private only from the same uploaders). `app.trust_rule()` and `app.status_rule()` over it; `app.followup_status()` now uses it. `app.obligation_provenance()` sets trust on every write, and status of checked commitments on derived updates. `app.touch_obligations()`, `app.with_linked()`, `app.sync_docket()` (opens and closes rule-made entries), `app.docket_summary()`, `app.person()`. `docket_entries.obligation_id`, `quote_a`, `quote_b`, `origin`, unique (obligation, claims); docket RLS also requires the item. `link_obligations()` (security invoker; upgrades possible to same, never downgrades). `audit_row()` attributes docket rows to their item. |
+| 0012 | `events.seq` (identity, the order within its file; index on `source_id, seq`). `import_source` now inserts in file order (`jsonb_array_elements … with ordinality`; `jsonb_to_recordset` cannot take ordinality with a column list). |
 
 ### Code (`src/lib/`)
 
@@ -97,7 +99,7 @@ Tests at the end of Phase 7: 264 unit, 121 RLS integration, 26 Playwright, all p
 | `/login` | Demo logins. |
 | `/import` | Connect: upload, access level per file, authorisation checkbox, what was read, files, aliases, delete workspace. |
 | `/ledger` | "Build the ledger" panel (`pipeline-panel.tsx`); Commitments and Recurring tabs (`commitments.tsx`, `recurring.tsx`; shared `obligation-parts.tsx` with `AlsoRecorded`, `PossibleMatches`, `DocketLink`; `link-data.ts` loads links and docket ids; grouping in `src/lib/ledger-view.ts`); Docket tab (`docket.tsx`, one entry per pair of claims, anchors `#docket-<id>`); Gaps tab (`gaps.tsx`, `findGaps`); Timeline tab; `trust-legend.tsx`. Item cards have anchors `#item-<id>`. |
-| `/ledger/evidence/[id]` | The source message for one quote (`?kind=context` for a context note), highlighted with `src/lib/pipeline/locate.ts` and shown with two neighbours either side. All reads go through RLS. |
+| `/ledger/evidence/[id]` | The source message for one quote (`?kind=context` for a context note), highlighted with `src/lib/pipeline/locate.ts` and shown with two neighbours either side in file order (`seq`). All reads go through RLS; a query error is shown as an error, never as "not visible to your role". |
 | `/api/jobs/run-next` | One job per POST (`maxDuration` 60). Returns `done` and `waiting` (an earlier stage still running elsewhere). |
 | `/api/health` | Health check. |
 
@@ -148,7 +150,7 @@ Tests at the end of Phase 7: 264 unit, 121 RLS integration, 26 Playwright, all p
 
 ## Known gaps to pick up later
 
-- **Phase 7 (left):** the Gaps tab lists linked records separately (only the Commitments and Recurring tabs fold them into one card).
+- **Phase 7 (left):** the Gaps tab lists linked records separately (only the Commitments and Recurring tabs fold them into one card); each gap names its linked twins and why their evidence does not count.
 - **Phase 8:** rulings on docket entries (`ruling`, `ruled_by`, `reason`; the advisor). A reviewer's "not the same" must be remembered (a rejected link, or a `distinct` verdict) or the next run re-links it. Unlinking is already possible through RLS (`obligation_links_delete`) and is audited.
 - **Phase 8:** `approve_version()` snapshots evidence without `inferred`, and leaves out context items, links and trust. Add them to `version_items.item`, without breaking hashes of existing versions.
 - **Phase 8:** the pipeline can change the status (and now the trust) of items a reviewer has already accepted. Flag such items for re-review (or show the change in the version diff).
@@ -162,6 +164,10 @@ Tests at the end of Phase 7: 264 unit, 121 RLS integration, 26 Playwright, all p
 - The evidence pane is a page (`/ledger/evidence/[id]`), not a dialog, so it has a URL, works without JavaScript and is easy to test under RLS.
 - Linked records fold into the earliest item's card by direct `same` links only.
 - The header's step indicator is now inside `<Suspense>`: dynamic routes failed prerender checks without it.
+- Folded records show their own facts (owed by, to, due; or cadence, approval, next due), marked "Differs from the card" where they disagree with the card's own record.
+- `same` links that grouping cannot fold (A–B, B–C) are listed on both cards as "Also linked as the same item, on its own card".
+- A gap is still reported per record when a linked twin has evidence: the trust rule already borrows wherever it may, so a remaining gap is real at that record's level.
+- An item with several conflicts links to each, open ones first.
 - The Gaps empty state ("No gaps among the N items you can read") is covered by unit tests of `findGaps`, not Playwright, because the e2e workspace always has gaps.
 
 ## Claude Code model per phase (recommendation)

@@ -131,14 +131,14 @@ isOneToOne: false
                   ]
                 },"events": {
                   Row: {
-                    "access_level": Database["public"]['Enums']["access_level"],"author": string | null,"id": string,"meta": NonNullable<Json>,"source_id": string,"text": string,"thread_id": string | null,"ts": string | null,"workspace_id": string
+                    "access_level": Database["public"]['Enums']["access_level"],"author": string | null,"id": string,"meta": NonNullable<Json>,"seq": number,"source_id": string,"text": string,"thread_id": string | null,"ts": string | null,"workspace_id": string
                   }
                   ComputedFields: never
                   Insert: {
-                    "access_level": Database["public"]['Enums']["access_level"],"author"?: string | null,"id"?: string,"meta"?: NonNullable<Json>,"source_id": string,"text": string,"thread_id"?: string | null,"ts"?: string | null,"workspace_id": string
+                    "access_level": Database["public"]['Enums']["access_level"],"author"?: string | null,"id"?: string,"meta"?: NonNullable<Json>,"seq"?: never,"source_id": string,"text": string,"thread_id"?: string | null,"ts"?: string | null,"workspace_id": string
                   }
                   Update: {
-                    "access_level"?: Database["public"]['Enums']["access_level"],"author"?: string | null,"id"?: string,"meta"?: NonNullable<Json>,"source_id"?: string,"text"?: string,"thread_id"?: string | null,"ts"?: string | null,"workspace_id"?: string
+                    "access_level"?: Database["public"]['Enums']["access_level"],"author"?: string | null,"id"?: string,"meta"?: NonNullable<Json>,"seq"?: never,"source_id"?: string,"text"?: string,"thread_id"?: string | null,"ts"?: string | null,"workspace_id"?: string
                   }
                   Relationships: [
                     {

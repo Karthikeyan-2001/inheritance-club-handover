@@ -5,9 +5,9 @@ describe("groupLinked", () => {
   const order = ["a", "b", "c", "d"];
   it("folds a same-linked record into the earliest item's card", () => {
     expect(groupLinked(order, [{ a: "b", b: "a", verdict: "same" }])).toEqual([
-      { primary: "a", also: ["b"], possible: [] },
-      { primary: "c", also: [], possible: [] },
-      { primary: "d", also: [], possible: [] },
+      { primary: "a", also: ["b"], possible: [], elsewhere: [] },
+      { primary: "c", also: [], possible: [], elsewhere: [] },
+      { primary: "d", also: [], possible: [], elsewhere: [] },
     ]);
   });
   it("does not chain: A-B and B-C make A with B, and C alone", () => {
@@ -16,16 +16,19 @@ describe("groupLinked", () => {
       { a: "b", b: "c", verdict: "same" },
     ]);
     expect(g.map((x) => [x.primary, x.also])).toEqual([["a", ["b"]], ["c", []], ["d", []]]);
+    // ...but the B-C link is not lost: both cards note it.
+    expect(g[0].elsewhere).toEqual([{ from: "b", to: "c" }]);
+    expect(g[1].elsewhere).toEqual([{ from: "c", to: "b" }]);
   });
   it("keeps possible matches as a note, not a merge", () => {
     const g = groupLinked(order, [{ a: "a", b: "c", verdict: "possible" }]);
-    expect(g[0]).toEqual({ primary: "a", also: [], possible: ["c"] });
+    expect(g[0]).toEqual({ primary: "a", also: [], possible: ["c"], elsewhere: [] });
     expect(g.map((x) => x.primary)).toEqual(["a", "b", "c", "d"]);
   });
   it("ignores links to items the viewer cannot read", () => {
     expect(groupLinked(["a", "b"], [{ a: "a", b: "hidden", verdict: "same" }])).toEqual([
-      { primary: "a", also: [], possible: [] },
-      { primary: "b", also: [], possible: [] },
+      { primary: "a", also: [], possible: [], elsewhere: [] },
+      { primary: "b", also: [], possible: [], elsewhere: [] },
     ]);
   });
   it("handles no items", () => {
@@ -47,6 +50,13 @@ describe("findGaps", () => {
     expect(findGaps([{ ...base, trust_state: "gap" }])).toHaveLength(1);
     expect(findGaps([{ ...base, status: "open", fulfilment_checked_at: null }])[0].what).toBe("Not yet checked for follow-up.");
     expect(findGaps([{ ...base, status: "open" }])).toEqual([]);
+  });
+  it("lists a linked twin on a gap so the tab can explain why its evidence does not count", () => {
+    const twin = { ...base, id: "2", description: "y", status: "fulfilled" as const };
+    const g = findGaps([{ ...base, trust_state: "gap" }, twin], [{ a: "1", b: "2", verdict: "same" }]);
+    expect(g).toHaveLength(1);
+    expect(g[0].twins).toEqual([{ id: "2", description: "y", trust_state: "sourced" }]);
+    expect(findGaps([{ ...base, trust_state: "gap" }, twin], [{ a: "1", b: "2", verdict: "possible" }])[0].twins).toEqual([]);
   });
   it("flags a duty with no derivable next date, not one that has it", () => {
     const duty = { ...base, kind: "recurring" as const, status: "open" as const, fulfilment_checked_at: null };

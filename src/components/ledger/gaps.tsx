@@ -3,6 +3,8 @@ import { Badge } from "@/components/ui/badge";
 import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
 import { capitalise, findGaps, type GapInput } from "@/lib/ledger-view";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { TRUST_LABELS } from "./commitments";
+import { loadLinkData } from "./link-data";
 
 type Row = GapInput & { access_level: AccessLevel };
 
@@ -22,8 +24,10 @@ export async function Gaps({ workspaceId }: { workspaceId: string }) {
   const rows = (data ?? []) as unknown as Row[];
   if (!rows.length) return <p className="text-sm text-muted-foreground">Nothing in the ledger yet. Import files, then use “Build the ledger”.</p>;
 
+  const { links, error: linkError } = await loadLinkData(supabase, workspaceId);
+  if (linkError) return <p role="alert">Could not load how items are linked. Try again in a minute.</p>;
   const level = new Map(rows.map((r) => [r.id, r.access_level]));
-  const gaps = findGaps(rows);
+  const gaps = findGaps(rows, links);
   if (!gaps.length) {
     return (
       <p className="text-sm" role="status" data-testid="gaps-empty">
@@ -48,6 +52,12 @@ export async function Gaps({ workspaceId }: { workspaceId: string }) {
             </div>
             <p className="mt-1">{g.what}</p>
             <p className="mt-1 text-xs text-muted-foreground">To close it: {g.closeWith}</p>
+            {g.twins.length > 0 && (
+              <p className="mt-1 text-xs text-muted-foreground" data-testid="gap-twins">
+                Also recorded as {g.twins.map((t) => `“${t.description}” (trust: ${TRUST_LABELS[t.trust_state]})`).join("; ")}. Evidence from a linked record
+                counts here only when that record is at the same or a less restricted access level, so this record keeps its own gap.
+              </p>
+            )}
             <p className="mt-1 text-xs">
               <Link href={`/ledger?tab=${g.kind === "recurring" ? "recurring" : "commitments"}#item-${g.id}`} className="underline">
                 Open the item

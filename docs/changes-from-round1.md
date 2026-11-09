@@ -84,4 +84,6 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 - **Conflicts link both ways.** A contradicted item links to its Docket entry, and the entry links back to the item.
 - **The Gaps tab is live.** It lists items with no kept evidence, promises with no follow-up, promises not yet checked, and duties with no derivable next date, each with what would close the gap. Only items the role may read count, so a gap is a gap in what that role can see.
 - **One trust legend** replaces the repeated sentence on each card. Contradicted cards keep their own one-line explanation.
-- No AI use changed in this phase, and no migration was needed.
+- **Messages keep their file order.** Events now carry `seq`, their position in the file, so the evidence pane shows the messages around a quote in the order they were written, even when many share one minute (WhatsApp) or one date (minutes).
+- **Folded records keep their facts.** A record folded into another card still shows who owes whom and when (or how often and the next date), with any disagreement with the card marked. Links that cannot be folded are listed, so none is hidden.
+- No AI use changed in this phase.

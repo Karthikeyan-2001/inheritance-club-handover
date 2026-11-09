@@ -19,23 +19,23 @@ type Msg = {
   text: string;
   access_level: AccessLevel;
   source_id: string;
+  seq: number;
   sources: { filename: string; type: keyof typeof TYPE_LABELS } | null;
 };
 
-const EVENT_SELECT = "id, author, ts, text, access_level, source_id, sources(filename, type)";
+const EVENT_SELECT = "id, author, ts, text, access_level, source_id, seq, sources(filename, type)";
 const NEIGHBOURS = 2;
 
 function Message({ msg, span, quoted }: { msg: Msg; span?: QuoteSpan | null; quoted?: boolean }) {
   const parts = segmentsFor(msg.text, span ?? null);
-  const quote = quoted;
   return (
-    <article className={quote ? "rounded-md border-2 border-primary p-3 text-sm" : "rounded-md border p-3 text-sm text-muted-foreground"} aria-label={`${msg.author ?? "Unknown"}, ${formatIst(msg.ts)}`}>
+    <article className={quoted ? "rounded-md border-2 border-primary p-3 text-sm" : "rounded-md border p-3 text-sm text-muted-foreground"} aria-label={`${msg.author ?? "Unknown"}, ${formatIst(msg.ts)}`}>
       <div className="mb-1 flex flex-wrap items-center gap-2">
         <span className="font-medium text-foreground">{msg.author ?? "Unknown"}</span>
         <span>{formatIst(msg.ts)}</span>
         <Badge variant={msg.access_level === "everyone" ? "outline" : "secondary"}>{ACCESS_LABELS[msg.access_level]}</Badge>
       </div>
-      <p className="whitespace-pre-wrap break-words" data-testid={quote ? "source-message" : undefined}>
+      <p className="whitespace-pre-wrap break-words" data-testid={quoted ? "source-message" : undefined}>
         {parts.map((p, i) =>
           p.mark ? (
             <mark key={i} className="rounded-sm bg-yellow-200 px-0.5 text-foreground dark:bg-yellow-700/60">
@@ -97,19 +97,22 @@ async function EvidenceContent({ params, searchParams }: { params: PageProps<"/l
     </Link>
   );
 
-  const { data: msg } = row.event_id ? await supabase.from("events").select(EVENT_SELECT).eq("id", row.event_id).maybeSingle() : { data: null };
-  const event = msg as unknown as Msg | null;
+  const msgResult = row.event_id ? await supabase.from("events").select(EVENT_SELECT).eq("id", row.event_id).maybeSingle() : { data: null, error: null };
+  // An error is not the same as "your role cannot read it": say which one it is.
+  if (msgResult.error) return <p role="alert">Could not load the source message. Try again in a minute.</p>;
+  const event = msgResult.data as unknown as Msg | null;
 
-  // Neighbours in the same file, ordered by time then id so messages sent in the same minute
-  // are kept and the order is stable.
+  // Neighbours in the same file, in the file's own order (seq), so messages sent in the same
+  // minute, or minutes sections sharing a date, appear as they were written. RLS filters them.
   let before: Msg[] = [];
   let after: Msg[] = [];
-  if (event?.ts) {
-    const ts = `"${event.ts}"`;
+  let neighboursFailed = false;
+  if (event) {
     const [b, a] = await Promise.all([
-      supabase.from("events").select(EVENT_SELECT).eq("source_id", event.source_id).or(`ts.lt.${ts},and(ts.eq.${ts},id.lt.${event.id})`).order("ts", { ascending: false }).order("id", { ascending: false }).limit(NEIGHBOURS),
-      supabase.from("events").select(EVENT_SELECT).eq("source_id", event.source_id).or(`ts.gt.${ts},and(ts.eq.${ts},id.gt.${event.id})`).order("ts", { ascending: true }).order("id", { ascending: true }).limit(NEIGHBOURS),
+      supabase.from("events").select(EVENT_SELECT).eq("source_id", event.source_id).lt("seq", event.seq).order("seq", { ascending: false }).limit(NEIGHBOURS),
+      supabase.from("events").select(EVENT_SELECT).eq("source_id", event.source_id).gt("seq", event.seq).order("seq", { ascending: true }).limit(NEIGHBOURS),
     ]);
+    neighboursFailed = Boolean(b.error || a.error);
     before = ((b.data ?? []) as unknown as Msg[]).reverse();
     after = (a.data ?? []) as unknown as Msg[];
   }
@@ -134,6 +137,9 @@ async function EvidenceContent({ params, searchParams }: { params: PageProps<"/l
             <Message msg={event} span={span} quoted />
             {after.map((m) => <Message key={m.id} msg={m} />)}
           </div>
+          {neighboursFailed && (
+            <p className="text-sm" role="alert">Could not load the messages around it. Try again in a minute.</p>
+          )}
           {!span && (
             <p className="text-sm text-muted-foreground" role="status">The quote could not be placed in this message, so nothing is highlighted.</p>
           )}

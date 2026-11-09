@@ -3,7 +3,7 @@ import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { capitalise, groupLinked } from "@/lib/ledger-view";
 import { loadLinkData } from "./link-data";
-import { AlsoRecorded, CONTEXT_SELECT, ContextList, DocketLink, EVIDENCE_SELECT, EvidenceList, PossibleMatches, type ContextRow, type EvidenceRow } from "./obligation-parts";
+import { AlsoRecorded, CONTEXT_SELECT, RecordedElsewhere, type CardFact, ContextList, DocketLink, EVIDENCE_SELECT, EvidenceList, PossibleMatches, type ContextRow, type EvidenceRow } from "./obligation-parts";
 
 export const TRUST_LABELS = {
   corroborated: "Corroborated",
@@ -54,6 +54,14 @@ export function statusLabel(status: Row["status"], checkedAt: string | null): st
   return STATUS_LABELS[status];
 }
 
+function commitmentFacts(o: Pick<Row, "owed_by" | "owed_to" | "due_text">): CardFact[] {
+  return [
+    { label: "Owed by", value: o.owed_by ?? "Not stated" },
+    { label: "Owed to", value: o.owed_to ?? "Not stated" },
+    { label: "Due", value: o.due_text ?? "Not stated" },
+  ];
+}
+
 /** Commitments this role may read, each with its verified quotes and context. RLS filters the query. */
 export async function Commitments({ workspaceId }: { workspaceId: string }) {
   const supabase = await createSupabaseServerClient();
@@ -96,17 +104,26 @@ export async function Commitments({ workspaceId }: { workspaceId: string }) {
               {o.due_text ? `, ${o.due_text}` : ""}
             </p>
             {o.trust_state === "contradicted" && <p className="mt-1 text-xs text-muted-foreground">{TRUST_HELP.contradicted}</p>}
-            <DocketLink entryId={o.trust_state === "contradicted" ? docketByItem.get(o.id) : undefined} />
+            <DocketLink entryIds={o.trust_state === "contradicted" ? docketByItem.get(o.id) : undefined} />
             <EvidenceList evidence={o.evidence} kind="commitment" />
             <AlsoRecorded
               records={g.also.map((id) => {
                 const r = byId.get(id)!;
-                return { ...r, statusText: statusLabel(r.status, r.fulfilment_checked_at), statusBad: r.status === "contradicted" || r.status === "no_evidence" };
+                return {
+                  ...r,
+                  statusText: statusLabel(r.status, r.fulfilment_checked_at),
+                  statusBad: r.status === "contradicted" || r.status === "no_evidence",
+                  facts: commitmentFacts(r),
+                };
               })}
+              primaryFacts={commitmentFacts(o)}
               kind="commitment"
               trustLabels={TRUST_LABELS}
               reviewLabels={REVIEW_LABELS}
               docketByItem={docketByItem}
+            />
+            <RecordedElsewhere
+              notes={g.elsewhere.map((e) => ({ ...e, toDescription: byId.get(e.to)!.description, tab: "commitments" }))}
             />
             <PossibleMatches items={g.possible.map((id) => ({ id, description: byId.get(id)!.description }))} />
             <ContextList items={o.context_items} />

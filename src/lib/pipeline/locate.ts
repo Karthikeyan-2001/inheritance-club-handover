@@ -36,16 +36,26 @@ export function locateQuote(text: string, quote: string): QuoteSpan | null {
   const wantStart = at;
   const wantEnd = at + q.length;
   const bounds = boundaries(text);
-  const len = bounds.map((b) => foldKeepEdges(text.slice(0, b)).length);
-  let start = 0;
-  for (let k = 0; k < bounds.length; k++) if (len[k] <= wantStart) start = bounds[k];
-  let end = text.length;
-  for (let k = 0; k < bounds.length; k++) {
-    if (len[k] >= wantEnd) {
-      end = bounds[k];
-      break;
+  // Normalised prefix length never decreases as the prefix grows (whitespace collapses,
+  // composition merges, nothing un-writes), so binary search finds the boundaries in
+  // O(n log n) instead of normalising every prefix.
+  const lenAt = (k: number) => foldKeepEdges(text.slice(0, bounds[k])).length;
+  /** Smallest k with lenAt(k) >= target, or bounds.length if none. */
+  const firstAtLeast = (target: number) => {
+    let lo = 0;
+    let hi = bounds.length;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (lenAt(mid) >= target) hi = mid;
+      else lo = mid + 1;
     }
-  }
+    return lo;
+  };
+  // Start: the last boundary whose prefix is still at or before the match start.
+  const afterStart = firstAtLeast(wantStart + 1);
+  let start = bounds[Math.max(0, afterStart - 1)];
+  const endK = firstAtLeast(wantEnd);
+  let end = endK < bounds.length ? bounds[endK] : text.length;
   // Keep combining marks with their base character.
   while (start > 0 && /\p{M}/u.test(text.charAt(start))) start--;
   while (end < text.length && /\p{M}/u.test(text.charAt(end))) end++;

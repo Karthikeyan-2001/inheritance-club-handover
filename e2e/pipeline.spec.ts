@@ -225,5 +225,7 @@ test.describe.serial("building the ledger", () => {
     const thread = page.getByTestId("source-thread");
     await expect(thread).toContainText("thanks for booking the venue");
     await expect(thread).toContainText("the hall key is with security");
+    // In the file's order, not by id: Priya, then the quoted message, then Rohan.
+    await expect(thread.locator("article")).toHaveText([/thanks for booking the venue/, /confirm the projector/, /hall key is with security/]);
   });
 });

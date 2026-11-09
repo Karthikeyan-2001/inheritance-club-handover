@@ -125,7 +125,37 @@ export type CardItem = {
   /** Commitments only: the status as it is shown on the item's own card. */
   statusText?: string;
   statusBad?: boolean;
+  /** Who, whom, when, how often: the facts the item's own card would show. */
+  facts?: CardFact[];
 };
+
+export type CardFact = { label: string; value: string };
+
+/** A folded record's facts, marking any that differ from the card it is folded into. */
+function FactList({ facts, primary }: { facts: CardFact[]; primary: CardFact[] }) {
+  if (!facts.length) return null;
+  const main = new Map(primary.map((f) => [f.label, f.value]));
+  return (
+    <dl className="mt-1 grid gap-x-4 gap-y-0.5 text-xs sm:grid-cols-[max-content_1fr]">
+      {facts.map((f) => {
+        const differs = main.has(f.label) && main.get(f.label) !== f.value;
+        return (
+          <div key={f.label} className="contents">
+            <dt className="text-muted-foreground">{f.label}</dt>
+            <dd>
+              {f.value}
+              {differs && (
+                <Badge variant="destructive" className="ml-2">
+                  Differs from the card
+                </Badge>
+              )}
+            </dd>
+          </div>
+        );
+      })}
+    </dl>
+  );
+}
 
 /** "Also in Trello": where a linked record came from, taken from its own quotes. */
 function recordedIn(item: CardItem): string {
@@ -144,12 +174,14 @@ export function AlsoRecorded({
   trustLabels,
   reviewLabels,
   docketByItem,
+  primaryFacts = [],
 }: {
   records: CardItem[];
   kind: "commitment" | "recurring";
   trustLabels: Record<TrustState, string>;
   reviewLabels: Record<string, string>;
-  docketByItem: ReadonlyMap<string, string>;
+  docketByItem: ReadonlyMap<string, string[]>;
+  primaryFacts?: CardFact[];
 }) {
   if (records.length === 0) return null;
   return (
@@ -164,7 +196,8 @@ export function AlsoRecorded({
             <Badge variant={r.access_level === "everyone" ? "outline" : "secondary"}>{ACCESS_LABELS[r.access_level]}</Badge>
           </p>
           <p className="mt-1">{capitalise(r.description)}</p>
-          <DocketLink entryId={r.trust_state === "contradicted" ? docketByItem.get(r.id) : undefined} />
+          <FactList facts={r.facts ?? []} primary={primaryFacts} />
+          <DocketLink entryIds={r.trust_state === "contradicted" ? docketByItem.get(r.id) : undefined} />
           <EvidenceList evidence={r.evidence} kind={kind} />
           <ContextList items={r.context_items} />
         </section>
@@ -184,14 +217,37 @@ export function PossibleMatches({ items }: { items: { id: string; description: s
   );
 }
 
-/** A contradicted item points at its conflict; the Docket points back. */
-export function DocketLink({ entryId }: { entryId: string | undefined }) {
-  if (!entryId) return null;
+/**
+ * `same` links to records shown on another card (links do not chain, so they are not folded
+ * here). Listed so that no link is lost.
+ */
+export function RecordedElsewhere({ notes }: { notes: { from: string; to: string; toDescription: string; tab: string }[] }) {
+  if (notes.length === 0) return null;
   return (
-    <p className="mt-2 text-xs">
-      <Link href={`/ledger?tab=docket#docket-${entryId}`} className="underline">
-        See this conflict in the Docket
-      </Link>
+    <p className="mt-3 text-xs text-muted-foreground" data-testid="recorded-elsewhere">
+      <span className="font-medium uppercase tracking-wide">Also linked as the same item, on its own card: </span>
+      {notes.map((n, i) => (
+        <span key={`${n.from}-${n.to}`}>
+          {i > 0 ? "; " : ""}
+          <Link href={`/ledger?tab=${n.tab}#item-${n.to}`} className="underline">
+            “{n.toDescription}”
+          </Link>
+        </span>
+      ))}
+    </p>
+  );
+}
+
+/** A contradicted item points at its conflicts (open ones first); the Docket points back. */
+export function DocketLink({ entryIds }: { entryIds: readonly string[] | undefined }) {
+  if (!entryIds?.length) return null;
+  return (
+    <p className="mt-2 flex flex-wrap gap-x-3 text-xs">
+      {entryIds.map((id, i) => (
+        <Link key={id} href={`/ledger?tab=docket#docket-${id}`} className="underline">
+          {entryIds.length === 1 ? "See this conflict in the Docket" : `See conflict ${i + 1} of ${entryIds.length} in the Docket`}
+        </Link>
+      ))}
     </p>
   );
 }

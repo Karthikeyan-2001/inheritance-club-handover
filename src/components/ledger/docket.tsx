@@ -68,7 +68,7 @@ export async function Docket({ workspaceId }: { workspaceId: string }) {
     const g = groups.get(key) ?? { row: r, items: [], ids: [], links: [] };
     g.ids.push(r.id);
     if (r.obligations && !g.items.includes(r.obligations.description)) g.items.push(r.obligations.description);
-    if (r.obligation_id && r.obligations) g.links.push({ id: r.obligation_id, tab: r.obligations.kind === "recurring" ? "recurring" : "commitments", description: r.obligations.description });
+    if (r.obligation_id && r.obligations && !g.links.some((l) => l.id === r.obligation_id)) g.links.push({ id: r.obligation_id, tab: r.obligations.kind === "recurring" ? "recurring" : "commitments", description: r.obligations.description });
     groups.set(key, g);
   }
 

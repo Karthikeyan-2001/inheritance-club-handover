@@ -52,3 +52,14 @@ describe("highlightSegments", () => {
     expect(highlightSegments("Just this.", "something else entirely")).toEqual([{ text: "Just this.", mark: false }]);
   });
 });
+
+describe("locateQuote on long messages", () => {
+  it("places a quote near the end of a long message quickly", () => {
+    const filler = "The committee discussed the venue, the budget and the — schedule.   ".repeat(120);
+    const text = `${filler}Arun will send the sponsor’s invoice to Priya by Friday.`;
+    const t0 = performance.now();
+    const s = locateQuote(text, "Arun will send the sponsor's invoice to Priya");
+    expect(performance.now() - t0).toBeLessThan(200);
+    expect(s && text.slice(s.start, s.end)).toBe("Arun will send the sponsor’s invoice to Priya");
+  });
+});

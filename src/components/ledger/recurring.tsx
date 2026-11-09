@@ -4,7 +4,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { REVIEW_LABELS, TRUST_HELP, TRUST_LABELS } from "./commitments";
 import { capitalise, groupLinked } from "@/lib/ledger-view";
 import { loadLinkData } from "./link-data";
-import { AlsoRecorded, CONTEXT_SELECT, ContextList, DocketLink, EVIDENCE_SELECT, EvidenceList, PossibleMatches, type ContextRow, type EvidenceRow } from "./obligation-parts";
+import { AlsoRecorded, CONTEXT_SELECT, ContextList, DocketLink, EVIDENCE_SELECT, EvidenceList, PossibleMatches, RecordedElsewhere, type CardFact, type ContextRow, type EvidenceRow } from "./obligation-parts";
 
 const PERIOD_LABELS = {
   semester: "Every semester",
@@ -48,6 +48,25 @@ function Fact({ label, children }: { label: string; children: React.ReactNode })
       <dd>{children}</dd>
     </div>
   );
+}
+
+/** The facts a duty's card shows, as text, for comparing a folded record with its card. */
+function dutyFacts(o: Row): CardFact[] {
+  return [
+    { label: "How often", value: `${o.period ? PERIOD_LABELS[o.period] : "Repeats"}${o.cadence ? ` (“${o.cadence}”)` : ""}` },
+    {
+      label: "Approval needed",
+      value: o.approval_required || o.approver ? `${o.approval_required ?? "Approval"}${o.approver ? `, from ${o.approver}` : ""}` : "None mentioned",
+    },
+    { label: "Start ahead", value: o.lead_time ?? "Not stated in the records" },
+    { label: "Usually done by", value: o.owed_by ?? "Not stated in the records" },
+    {
+      label: "Next due",
+      value: o.next_due
+        ? `${o.next_due_basis?.startsWith("Estimated") ? "About " : ""}${day(o.next_due)}${o.start_by ? `; start by ${day(o.start_by)}` : ""}`
+        : "Not derivable from the records",
+    },
+  ];
 }
 
 const NOT_STATED = <span className="text-muted-foreground">Not stated in the records</span>;
@@ -119,9 +138,20 @@ export async function Recurring({ workspaceId }: { workspaceId: string }) {
             </Fact>
           </dl>
           {o.trust_state === "contradicted" && <p className="mt-2 text-xs text-muted-foreground">{TRUST_HELP.contradicted}</p>}
-          <DocketLink entryId={o.trust_state === "contradicted" ? docketByItem.get(o.id) : undefined} />
+          <DocketLink entryIds={o.trust_state === "contradicted" ? docketByItem.get(o.id) : undefined} />
           <EvidenceList evidence={o.evidence} kind="recurring" />
-          <AlsoRecorded records={g.also.map((id) => byId.get(id)!)} kind="recurring" trustLabels={TRUST_LABELS} reviewLabels={REVIEW_LABELS} docketByItem={docketByItem} />
+          <AlsoRecorded
+            records={g.also.map((id) => {
+              const r = byId.get(id)!;
+              return { ...r, facts: dutyFacts(r) };
+            })}
+            kind="recurring"
+            trustLabels={TRUST_LABELS}
+            reviewLabels={REVIEW_LABELS}
+            docketByItem={docketByItem}
+            primaryFacts={dutyFacts(o)}
+          />
+          <RecordedElsewhere notes={g.elsewhere.map((e) => ({ ...e, toDescription: byId.get(e.to)!.description, tab: "recurring" }))} />
           <PossibleMatches items={g.possible.map((id) => ({ id, description: byId.get(id)!.description }))} />
           <ContextList items={o.context_items} />
         </li>

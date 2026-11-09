@@ -6,6 +6,7 @@ import type { ProviderRequest } from "../llm/types.ts";
 import type { DutyOutput } from "./cycles.ts";
 import { RECURRENCE } from "./cycles.ts";
 import type { DutyContextOutput, FollowupOutput } from "./fulfilment.ts";
+import type { MatchOutput } from "./match.ts";
 import { contentTokens, sentences } from "./text.ts";
 
 type Block = { ref: string; author: string; text: string };
@@ -97,4 +98,21 @@ export function fakeDutyContext(request: ProviderRequest): DutyContextOutput {
     }
   }
   return { context };
+}
+
+const ITEM = /^ {2}[AB]: (?:Commitment|Recurring duty): ([^|]*)/;
+
+/** Same when the two descriptions share most content words; unsure when some; else different. */
+export function fakeMatch(request: ProviderRequest): MatchOutput {
+  const verdicts: MatchOutput["verdicts"] = [];
+  for (const block of request.user.split("\n\n")) {
+    const ref = block.match(/^Pair (p\d+)/)?.[1];
+    if (!ref) continue;
+    const [a, b] = block.split("\n").map((l) => l.match(ITEM)?.[1]).filter((d): d is string => Boolean(d)).map((d) => contentTokens(d));
+    if (!a || !b) continue;
+    const shared = [...a].filter((t) => b.has(t)).length;
+    const overlap = shared / Math.max(1, a.size + b.size - shared);
+    verdicts.push({ pair: ref, verdict: overlap >= 0.4 ? "same" : overlap >= 0.2 ? "unsure" : "different" });
+  }
+  return { verdicts };
 }

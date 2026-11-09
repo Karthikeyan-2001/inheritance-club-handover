@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { contentTokens, sentenceContaining, sentences, stem } from "./text";
+import { contentTokens, sentenceContaining, sentences, stem, trigramSimilarity } from "./text";
 
 describe("stem", () => {
   it("joins the word forms that link a promise to its follow-up", () => {
@@ -30,5 +30,13 @@ describe("sentences", () => {
     expect(sentenceContaining("Hi all. IoT Fest is our  annual event. Book early.", "our annual EVENT")).toBe("IoT Fest is our  annual event.");
     expect(sentenceContaining("Nothing here.", "annual")).toBeNull();
     expect(sentenceContaining("Anything.", " ")).toBeNull();
+  });
+});
+
+describe("trigramSimilarity", () => {
+  it("is close to pg_trgm for paraphrased duty names", () => {
+    expect(trigramSimilarity("Get HoD permission letter before lab booking", "Get the HoD's permission letter before booking the lab")).toBeGreaterThan(0.55);
+    expect(trigramSimilarity("Book the auditorium", "Return ESP32 boards")).toBeLessThan(0.2);
+    expect(trigramSimilarity("", "")).toBe(0);
   });
 });

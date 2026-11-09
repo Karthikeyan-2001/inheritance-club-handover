@@ -3,7 +3,7 @@ import { eventFor, miniEvents, miniTruth, type MiniEvent } from "../../../script
 import { MemoryLlmCache } from "../llm/cache-memory";
 import { FakeProvider } from "../llm/provider-fake";
 import { fakeHandlers } from "./provider";
-import { runInMemory, trigramSimilarity, type MemoryResult } from "./run-memory";
+import { runInMemory, type MemoryResult } from "./run-memory";
 import { normaliseForQuote } from "./verify";
 
 const ENV = { LLM_MODEL_FAST: "fake-fast", LLM_MODEL_STRONG: "fake-strong" };
@@ -70,13 +70,5 @@ describe("the whole pipeline on the mini scenario (fake model)", () => {
       const hasCommittee = committee.some((t) => call.user.includes(t));
       expect(hasFinance && hasCommittee).toBe(false);
     }
-  });
-});
-
-describe("trigramSimilarity", () => {
-  it("is close to pg_trgm for paraphrased duty names", () => {
-    expect(trigramSimilarity("Get HoD permission letter before lab booking", "Get the HoD's permission letter before booking the lab")).toBeGreaterThan(0.55);
-    expect(trigramSimilarity("Book the auditorium", "Return ESP32 boards")).toBeLessThan(0.2);
-    expect(trigramSimilarity("", "")).toBe(0);
   });
 });

@@ -3,8 +3,8 @@ import { AnthropicProvider } from "../llm/provider-anthropic.ts";
 import { FakeProvider } from "../llm/provider-fake.ts";
 import type { LlmProvider } from "../llm/types.ts";
 import { fakeExtract } from "./fake-extract.ts";
-import { fakeDuties, fakeDutyContext, fakeFollowup } from "./fake-pipeline.ts";
-import { DUTIES_TASK, DUTY_CONTEXT_TASK, EXTRACT_TASK, FOLLOWUP_TASK } from "./tasks.ts";
+import { fakeDuties, fakeDutyContext, fakeFollowup, fakeMatch } from "./fake-pipeline.ts";
+import { DUTIES_TASK, DUTY_CONTEXT_TASK, EXTRACT_TASK, FOLLOWUP_TASK, MATCH_TASK } from "./tasks.ts";
 
 /** The provider the pipeline uses: Anthropic by default; LLM_PROVIDER=fake for offline tests. */
 export function pipelineProvider(env: Record<string, string | undefined> = process.env): LlmProvider {
@@ -17,5 +17,5 @@ export function pipelineProvider(env: Record<string, string | undefined> = proce
 
 /** Offline handlers for every pipeline task. */
 export function fakeHandlers() {
-  return { [EXTRACT_TASK]: fakeExtract, [DUTIES_TASK]: fakeDuties, [FOLLOWUP_TASK]: fakeFollowup, [DUTY_CONTEXT_TASK]: fakeDutyContext };
+  return { [EXTRACT_TASK]: fakeExtract, [DUTIES_TASK]: fakeDuties, [FOLLOWUP_TASK]: fakeFollowup, [DUTY_CONTEXT_TASK]: fakeDutyContext, [MATCH_TASK]: fakeMatch };
 }

@@ -56,3 +56,21 @@ export function sentenceContaining(text: string, words: string): string | null {
   if (!needle) return null;
   return sentences(text).find((s) => s.toLowerCase().replace(/\s+/g, " ").includes(needle)) ?? null;
 }
+
+/** pg_trgm-style similarity (shared trigrams over all trigrams of padded words). */
+export function trigramSimilarity(a: string, b: string): number {
+  const grams = (s: string) => {
+    const out = new Set<string>();
+    for (const w of s.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(Boolean)) {
+      const p = `  ${w} `;
+      for (let i = 0; i + 3 <= p.length; i++) out.add(p.slice(i, i + 3));
+    }
+    return out;
+  };
+  const ga = grams(a);
+  const gb = grams(b);
+  let shared = 0;
+  for (const g of ga) if (gb.has(g)) shared++;
+  const union = ga.size + gb.size - shared;
+  return union === 0 ? 0 : shared / union;
+}

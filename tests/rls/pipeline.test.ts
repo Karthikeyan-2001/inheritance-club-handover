@@ -78,6 +78,46 @@ describe.skipIf(!hasEnv)("the staged pipeline under RLS (fake model)", () => {
     expect([...stages].sort()).toEqual(stages);
   });
 
+  it("links the Trello card to the chat promise it restates, and settles trust from both", async () => {
+    const p = await getRunProgress(as.arun, WS, runId);
+    expect(p.stages.plan_matches.done).toBe(1);
+    expect(p.matching.same).toBeGreaterThanOrEqual(2);
+
+    const { data: items } = await as.arun
+      .from("obligations")
+      .select("id, kind, trust_state, status, evidence(quote, relation)")
+      .eq("review_state", "draft");
+    const by = (quote: string) => items?.find((o) => o.evidence.some((e) => e.relation === "supports" && e.quote.includes(quote)));
+    const chatCerts = by("participation certificates");
+    const cardCerts = by("Card: Send certificates");
+    const { data: links } = await as.arun.from("obligation_links").select("a, b, verdict, method");
+    const linked = (x?: { id: string }, y?: { id: string }) =>
+      links?.find((l) => x && y && [l.a, l.b].sort().join() === [x.id, y.id].sort().join());
+    expect(linked(chatCerts, cardCerts)).toMatchObject({ verdict: "same" });
+    expect(linked(by("fest posters printed"), by("Card: Print fest posters"))).toMatchObject({ verdict: "same" });
+
+    // Rule B: a second record from another file or person corroborates; one person repeating themselves does not.
+    expect(chatCerts).toMatchObject({ trust_state: "contradicted", status: "contradicted" });
+    expect(cardCerts).toMatchObject({ trust_state: "contradicted" });
+    expect(by("fest posters printed")).toMatchObject({ trust_state: "corroborated", status: "fulfilled" });
+    expect(by("ESP32 boards")).toMatchObject({ trust_state: "sourced", status: "fulfilled" });
+    expect(by("Brightwave Labs")).toMatchObject({ trust_state: "sourced", status: "no_evidence" });
+  });
+
+  it("shows each role only the links and docket entries whose items it can read", async () => {
+    const readable = async (v: Viewer) => new Set(((await as[v].from("obligations").select("id")).data ?? []).map((o) => o.id));
+    for (const v of ["arun", "divya", "kavya", "member"] as const) {
+      const ids = await readable(v);
+      const { data: links } = await as[v].from("obligation_links").select("a, b");
+      for (const l of links ?? []) expect(ids.has(l.a) && ids.has(l.b), v).toBe(true);
+      const { data: docket } = await as[v].from("docket_entries").select("obligation_id");
+      for (const d of docket ?? []) expect(d.obligation_id === null || ids.has(d.obligation_id), v).toBe(true);
+    }
+    const { data } = await as.kavya.from("docket_entries").select("quote_b").not("obligation_id", "is", null);
+    expect(data?.some((d) => d.quote_b?.includes("not received") || d.quote_b?.includes("nobody has sent"))).toBe(true);
+    expect((await as.member.from("docket_entries").select("id")).data).toEqual([]);
+  });
+
   it("never sends the model a message the requester cannot read", () => {
     expect(provider.calls.length).toBeGreaterThan(0);
     for (const call of provider.calls) expect(call.user).not.toContain("hall booking letter");
@@ -159,7 +199,8 @@ describe.skipIf(!hasEnv)("the staged pipeline under RLS (fake model)", () => {
     expect(p.stages.extract_commitments.created).toBe(0);
     expect(p.stages.find_duties.created).toBe(0);
     expect(p.followup.evidence + p.followup.context).toBe(0);
-    expect(p.cachedSteps).toBe(p.total - 1); // every model step; the planning step calls no model
+    expect(p.cachedSteps).toBe(p.total - 2); // every model step; the two planning steps call no model
+    expect(p.matching).toEqual({ same: 0, possible: 0 });
     expect(provider.calls.length).toBe(callsBefore);
     expect((await as.meena.from("audit_log").select("id", { count: "exact", head: true })).count).toBe(auditBefore);
   });

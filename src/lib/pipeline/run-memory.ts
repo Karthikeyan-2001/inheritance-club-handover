@@ -12,6 +12,7 @@ import { DUTY_CONTEXT_SYSTEM, DutyContextSchema, FOLLOWUP_SYSTEM, FollowupSchema
 import { buildIdf, relatedEvents } from "./related.ts";
 import { followupStatus, type FollowupStatus } from "./status.ts";
 import { DUTIES_TASK, DUTY_CONTEXT_TASK, EXTRACT_TASK, FOLLOWUP_TASK } from "./tasks.ts";
+import { trigramSimilarity } from "./text.ts";
 import { normaliseForQuote } from "./verify.ts";
 
 export type MemoryCommitment = { candidate: Candidate; evidence: KeptEvidence[]; context: KeptContext[]; status: FollowupStatus };
@@ -23,24 +24,6 @@ export type MemoryResult = {
   usage: Usage;
   calls: number;
 };
-
-/** pg_trgm-style similarity (shared trigrams over all trigrams of padded words). */
-export function trigramSimilarity(a: string, b: string): number {
-  const grams = (s: string) => {
-    const out = new Set<string>();
-    for (const w of s.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter(Boolean)) {
-      const p = `  ${w} `;
-      for (let i = 0; i + 3 <= p.length; i++) out.add(p.slice(i, i + 3));
-    }
-    return out;
-  };
-  const ga = grams(a);
-  const gb = grams(b);
-  let shared = 0;
-  for (const g of ga) if (gb.has(g)) shared++;
-  const union = ga.size + gb.size - shared;
-  return union === 0 ? 0 : shared / union;
-}
 
 const sameQuote = (a: DutyQuote, b: DutyQuote) => a.event.id === b.event.id && normaliseForQuote(a.quote) === normaliseForQuote(b.quote);
 const maxLevel = (d: KeptDuty) => mostRestrictive(d.quotes.map((q) => q.event.accessLevel ?? "everyone"));

@@ -1,7 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import { ACCESS_LABELS, type AccessLevel } from "@/lib/access";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { CONTEXT_SELECT, ContextList, EVIDENCE_SELECT, EvidenceList, LinkList, linksByItem, type ContextRow, type EvidenceRow, type LinkRow } from "./obligation-parts";
+import { groupLinked } from "@/lib/ledger-view";
+import { loadLinkData } from "./link-data";
+import { AlsoRecorded, CONTEXT_SELECT, ContextList, DocketLink, EVIDENCE_SELECT, EvidenceList, PossibleMatches, type ContextRow, type EvidenceRow } from "./obligation-parts";
 
 export const TRUST_LABELS = {
   corroborated: "Corroborated",
@@ -69,34 +71,40 @@ export async function Commitments({ workspaceId }: { workspaceId: string }) {
   if (!rows.length) {
     return <p className="text-sm text-muted-foreground">No commitments yet. Import files, then use “Build the ledger”.</p>;
   }
-  const { data: links } = await supabase.from("obligation_links").select("a, b, verdict").eq("workspace_id", workspaceId);
-  const linked = linksByItem((links ?? []) as LinkRow[], new Map(rows.map((o) => [o.id, o.description])));
+  const { links, docketByItem } = await loadLinkData(supabase, workspaceId);
+  const byId = new Map(rows.map((o) => [o.id, o]));
+  const groups = groupLinked(rows.map((o) => o.id), links);
 
   return (
     <ul className="flex flex-col gap-3" aria-label="Commitments" data-testid="commitments">
-      {rows.map((o) => (
-        <li key={o.id} className="rounded-md border p-3 text-sm">
-          <div className="flex flex-wrap items-start justify-between gap-2">
-            <p className="font-medium">{capitalise(o.description)}</p>
-            <span className="flex flex-wrap gap-1">
-              <Badge variant={o.status === "contradicted" || o.status === "no_evidence" ? "destructive" : o.status === "fulfilled" ? "default" : "outline"}>
-                {statusLabel(o.status, o.fulfilment_checked_at)}
-              </Badge>
-              <Badge variant={o.trust_state === "contradicted" || o.trust_state === "gap" ? "destructive" : "secondary"}>Trust: {TRUST_LABELS[o.trust_state]}</Badge>
-              <Badge variant="outline">{REVIEW_LABELS[o.review_state]}</Badge>
-              <Badge variant={o.access_level === "everyone" ? "outline" : "secondary"}>{ACCESS_LABELS[o.access_level]}</Badge>
-            </span>
-          </div>
-          <p className="mt-1 text-muted-foreground">
-            {o.owed_by ?? "Someone"} owes {o.owed_to ?? "someone"}
-            {o.due_text ? `, ${o.due_text}` : ""}
-          </p>
-          <p className="mt-1 text-xs text-muted-foreground">Trust: {TRUST_HELP[o.trust_state]}</p>
-          <EvidenceList evidence={o.evidence} kind="commitment" />
-          <LinkList items={linked.get(o.id)} />
-          <ContextList items={o.context_items} />
-        </li>
-      ))}
+      {groups.map((g) => {
+        const o = byId.get(g.primary)!;
+        return (
+          <li key={o.id} id={`item-${o.id}`} className="scroll-mt-4 rounded-md border p-3 text-sm">
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <p className="font-medium">{capitalise(o.description)}</p>
+              <span className="flex flex-wrap gap-1">
+                <Badge variant={o.status === "contradicted" || o.status === "no_evidence" ? "destructive" : o.status === "fulfilled" ? "default" : "outline"}>
+                  {statusLabel(o.status, o.fulfilment_checked_at)}
+                </Badge>
+                <Badge variant={o.trust_state === "contradicted" || o.trust_state === "gap" ? "destructive" : "secondary"}>Trust: {TRUST_LABELS[o.trust_state]}</Badge>
+                <Badge variant="outline">{REVIEW_LABELS[o.review_state]}</Badge>
+                <Badge variant={o.access_level === "everyone" ? "outline" : "secondary"}>{ACCESS_LABELS[o.access_level]}</Badge>
+              </span>
+            </div>
+            <p className="mt-1 text-muted-foreground">
+              {o.owed_by ?? "Someone"} owes {o.owed_to ?? "someone"}
+              {o.due_text ? `, ${o.due_text}` : ""}
+            </p>
+            {o.trust_state === "contradicted" && <p className="mt-1 text-xs text-muted-foreground">{TRUST_HELP.contradicted}</p>}
+            <DocketLink entryId={o.trust_state === "contradicted" ? docketByItem.get(o.id) : undefined} />
+            <EvidenceList evidence={o.evidence} kind="commitment" />
+            <AlsoRecorded records={g.also.map((id) => byId.get(id)!)} kind="commitment" trustLabels={TRUST_LABELS} />
+            <PossibleMatches items={g.possible.map((id) => ({ id, description: byId.get(id)!.description }))} />
+            <ContextList items={o.context_items} />
+          </li>
+        );
+      })}
     </ul>
   );
 }

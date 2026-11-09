@@ -18,6 +18,17 @@ describe("chunkEvents", () => {
     expect(chunkEvents(events).map((c) => c.events.map((e) => e.id))).toEqual([["a", "b", "c"], ["t"]]);
   });
 
+  it("never puts messages of different visibility in one chunk, even on the same chat day", () => {
+    const events = [
+      ev("a", "x", { accessLevel: "committee" }),
+      ev("b", "y", { accessLevel: "finance" }),
+      ev("c", "z", { accessLevel: "private", uploaderId: "u1" }),
+      ev("d", "w", { accessLevel: "private", uploaderId: "u2" }),
+      ev("e", "v", { accessLevel: "committee" }),
+    ];
+    expect(chunkEvents(events).map((c) => c.events.map((e) => e.id))).toEqual([["a", "e"], ["b"], ["c"], ["d"]]);
+  });
+
   it("starts a new chunk at the event or size limit, splitting only oversized threads", () => {
     const many = Array.from({ length: 5 }, (_, i) => ev(`e${i}`, "hello", { threadId: i < 3 ? "d1" : "d2" }));
     expect(chunkEvents(many, 3).map((c) => c.events.length)).toEqual([3, 2]);

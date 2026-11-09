@@ -1,7 +1,8 @@
 // Commitment extraction: chunk events, ask the model for candidates, then keep only those
-// that pass deterministic checks. Pure functions; database I/O lives in run-extraction.ts.
+// that pass deterministic checks. Pure functions; database I/O lives in run-pipeline.ts.
 
 import { z } from "zod";
+import type { AccessLevel } from "../access.ts";
 import { formatIst } from "../format.ts";
 import { normaliseForQuote, verifyQuote } from "./verify.ts";
 
@@ -12,7 +13,21 @@ export type PipelineEvent = {
   text: string;
   threadId: string | null;
   sourceType: "whatsapp" | "trello" | "minutes";
+  /** The message's own access level, when known (the database always knows it). */
+  accessLevel?: AccessLevel;
+  /** Who uploaded the file the message came from (matters for private files). */
+  uploaderId?: string | null;
 };
+
+/**
+ * Messages with the same key may share one model prompt. A prompt never mixes access levels,
+ * or private files of different uploaders: anything the model writes from it (a description,
+ * a note) is then stored at a level that every message it saw allows.
+ */
+export function visibilityKey(e: Pick<PipelineEvent, "accessLevel" | "uploaderId">): string {
+  const level = e.accessLevel ?? "everyone";
+  return level === "private" ? `private:${e.uploaderId ?? "unknown"}` : level;
+}
 
 export type Chunk = { events: PipelineEvent[] };
 
@@ -21,12 +36,13 @@ export const CHUNK_MAX_CHARS = 12_000;
 
 /**
  * Group events by thread (a chat day, a Trello card, a meeting) in time order, then pack
- * whole threads of the same source type into chunks. A thread bigger than a chunk is split.
+ * whole threads of the same source type and visibility into chunks. A thread bigger than a
+ * chunk is split.
  */
 export function chunkEvents(events: PipelineEvent[], maxEvents = CHUNK_MAX_EVENTS, maxChars = CHUNK_MAX_CHARS): Chunk[] {
   const threads = new Map<string, PipelineEvent[]>();
   for (const e of events) {
-    const key = `${e.sourceType}|${e.threadId ?? e.id}`;
+    const key = `${visibilityKey(e)}|${e.sourceType}|${e.threadId ?? e.id}`;
     const list = threads.get(key);
     if (list) list.push(e);
     else threads.set(key, [e]);
@@ -34,23 +50,24 @@ export function chunkEvents(events: PipelineEvent[], maxEvents = CHUNK_MAX_EVENT
   const chunks: Chunk[] = [];
   let current: PipelineEvent[] = [];
   let chars = 0;
-  let type: PipelineEvent["sourceType"] | null = null;
+  let group: string | null = null;
   const flush = () => {
     if (current.length) chunks.push({ events: current });
     current = [];
     chars = 0;
-    type = null;
+    group = null;
   };
   for (const thread of threads.values()) {
     const tChars = thread.reduce((n, e) => n + e.text.length, 0);
-    if (current.length && (type !== thread[0].sourceType || current.length + thread.length > maxEvents || chars + tChars > maxChars)) {
+    const tGroup = `${visibilityKey(thread[0])}|${thread[0].sourceType}`;
+    if (current.length && (group !== tGroup || current.length + thread.length > maxEvents || chars + tChars > maxChars)) {
       flush();
     }
     for (const e of thread) {
       if (current.length && (current.length >= maxEvents || chars + e.text.length > maxChars)) flush();
       current.push(e);
       chars += e.text.length;
-      type = e.sourceType;
+      group = tGroup;
     }
   }
   flush();
@@ -78,7 +95,8 @@ A commitment is a firm promise, or an assigned action, by a specific person or t
 Do not list:
 - hedged or non-binding statements ("maybe I'll check", "will see", "we should probably", "might", "not sure");
 - questions, requests to others that nobody accepted, general wishes, or reports that something is already done;
-- anything you would have to guess.
+- anything you would have to guess;
+- general rules that apply every time ("a permission letter is needed before every lab booking"). Those are recurring duties and are found separately. A specific person's promise to do it this time is still a commitment.
 
 For each commitment:
 - message: the reference in square brackets at the start of the message, e.g. m3.
@@ -96,12 +114,17 @@ export function buildExtractionPrompt(chunk: Chunk): { user: string; refs: Map<s
   const lines = chunk.events.map((e, i) => {
     const ref = `m${i + 1}`;
     refs.set(ref, e);
-    const when = e.ts ? formatIst(e.ts) : "undated";
-    const kind = e.sourceType === "whatsapp" ? "Chat" : e.sourceType === "trello" ? "Trello" : "Minutes";
-    const body = e.text.replace(/\n/g, "\n    ");
-    return `[${ref}] ${when} | ${kind} | ${e.author ?? "Unknown"}: ${body}`;
+    return recordLine(ref, e);
   });
   return { user: `Records (times in IST):\n\n${lines.join("\n")}`, refs };
+}
+
+/** One record as the model sees it: `[m3] 2 Mar 2026, 7:42 pm IST | Chat | Arun: text`. */
+export function recordLine(ref: string, e: PipelineEvent): string {
+  const when = e.ts ? formatIst(e.ts) : "undated";
+  const kind = e.sourceType === "whatsapp" ? "Chat" : e.sourceType === "trello" ? "Trello" : "Minutes";
+  const body = e.text.replace(/\n/g, "\n    ");
+  return `[${ref}] ${when} | ${kind} | ${e.author ?? "Unknown"}: ${body}`;
 }
 
 export type Candidate = {
@@ -116,7 +139,7 @@ export type Candidate = {
 export type DropReason = "unknown_message" | "quote_not_found" | "quote_too_short" | "non_binding" | "no_counterparty" | "no_deliverable" | "duplicate";
 
 // Deterministic backstop for the prompt's "ignore hedged statements" rule.
-const HEDGE = /\b(maybe|might|will see|not sure|probably|perhaps|someday|if possible|try to)\b/i;
+export const HEDGE = /\b(maybe|might|will see|not sure|probably|perhaps|someday|if possible|try to)\b/i;
 const NO_PARTY = /^(unknown|none|n\/?a|nobody|no one|unspecified|-|\?)$/i;
 
 /** Keep only candidates that cite a real message, quote it verbatim, and are firm and complete. */

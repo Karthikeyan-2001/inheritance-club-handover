@@ -13,7 +13,7 @@ Local development uses the Supabase CLI in Docker. The live demo uses a free hos
 ```bash
 pnpm exec supabase login                       # opens a browser for an access token
 pnpm exec supabase link --project-ref <ref>    # <ref> is in the project URL
-pnpm db:push                                   # asks for the database password
+pnpm db:push                                   # runs `supabase db push --remote`; asks for the database password
 ```
 
 ## 3. Seed the demo accounts and synthetic club

@@ -57,7 +57,7 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 | `pnpm e2e` | Playwright: re-seeds, starts the dev server, tests login and role switching. Set `E2E_BASE_URL` to test a deployment read-only |
 | `pnpm db:start` / `db:stop` / `db:status` | Local Supabase stack |
 | `pnpm db:reset` | Re-create the local database from `supabase/migrations` |
-| `pnpm db:push` | Apply migrations to the linked hosted project |
+| `pnpm db:push` | Apply migrations to the linked hosted project (`--remote`; the CLI targets local by default) |
 | `pnpm db:types` | Regenerate `src/lib/supabase/database.types.ts` |
 | `pnpm seed` / `seed:hosted` | Seed demo accounts and the synthetic club (local / hosted) |
 

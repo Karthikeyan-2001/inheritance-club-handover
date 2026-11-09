@@ -28,5 +28,13 @@ Next.js (App Router) + TypeScript, Tailwind + shadcn/ui, Supabase (Postgres, Aut
 - Update `docs/changes-from-round1.md` and `docs/ai-disclosure.md` whenever direction or AI use changes.
 - Environment variables are listed in `.env.example`; real values are never committed.
 
+## Resuming work
+Read `docs/status.md` first. It has the current phase, outstanding user tasks, environment facts (npm registry, TLS, Supabase CLI), the architecture map, known gotchas, and the plan for the next phase. Update it at the end of every phase.
+
+Working rules:
+- One branch per phase (`build/phase-N`). Stop and summarise at the end of each phase.
+- Never push or merge; the user merges through GitHub pull requests.
+- Show a cost estimate and ask before any paid model call.
+
 ## Definition of done for any feature
 Works on the deployed app, has a test, handles the empty and error states, writes to the audit log if it changes data, and respects RLS. 

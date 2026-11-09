@@ -1,0 +1,394 @@
+{
+  "id": "1145f263256c923716d2b8ea",
+  "name": "IoT Club Board (SYNTHETIC SAMPLE)",
+  "desc": "Synthetic sample board. No real people or organisations.",
+  "closed": false,
+  "idOrganization": "5a445d710ae24cd276062b0c",
+  "url": "https://trello.com/b/synthetic/iot-club-board",
+  "dateLastActivity": "2026-10-26T11:00:00.000Z",
+  "members": [
+    {
+      "id": "cab8020b8e29db6ea02a452c",
+      "fullName": "Priya",
+      "username": "priya_synthetic",
+      "initials": "P"
+    },
+    {
+      "id": "f02e76f410320b5de2b6233a",
+      "fullName": "Arun",
+      "username": "arun_synthetic",
+      "initials": "A"
+    },
+    {
+      "id": "3a9b33b1fa0c5d3f98068423",
+      "fullName": "Kavya",
+      "username": "kavya_synthetic",
+      "initials": "K"
+    },
+    {
+      "id": "cb8bba6d58ae1f473e118fcb",
+      "fullName": "Divya",
+      "username": "divya_synthetic",
+      "initials": "D"
+    }
+  ],
+  "labels": [
+    {
+      "id": "7c452b02f5e0bb01c43dbd9c",
+      "idBoard": "1145f263256c923716d2b8ea",
+      "name": "Permission",
+      "color": "red"
+    },
+    {
+      "id": "45d4333228da94fed64f794e",
+      "idBoard": "1145f263256c923716d2b8ea",
+      "name": "Finance",
+      "color": "green"
+    }
+  ],
+  "lists": [
+    {
+      "id": "9e61de0263344c5110cfc9d9",
+      "name": "To Do",
+      "closed": false,
+      "idBoard": "1145f263256c923716d2b8ea",
+      "pos": 16384,
+      "subscribed": false
+    },
+    {
+      "id": "359f8edb807e11863d544dd8",
+      "name": "Doing",
+      "closed": false,
+      "idBoard": "1145f263256c923716d2b8ea",
+      "pos": 32768,
+      "subscribed": false
+    },
+    {
+      "id": "4cc70a1f6b9ca87f9b7f2101",
+      "name": "Done",
+      "closed": false,
+      "idBoard": "1145f263256c923716d2b8ea",
+      "pos": 49152,
+      "subscribed": false
+    }
+  ],
+  "cards": [
+    {
+      "id": "a9f7e97965d6cf799a529102",
+      "idShort": 1,
+      "name": "Get HoD permission letter for lab booking",
+      "desc": "Needed before every lab booking (every semester). Apply two weeks ahead.",
+      "idList": "9e61de0263344c5110cfc9d9",
+      "idBoard": "1145f263256c923716d2b8ea",
+      "idMembers": [
+        "f02e76f410320b5de2b6233a"
+      ],
+      "idLabels": [
+        "7c452b02f5e0bb01c43dbd9c"
+      ],
+      "idChecklists": [
+        "45f2e00f2d9cd27e5e8ac534"
+      ],
+      "pos": 16384,
+      "due": "2026-10-31T12:00:00.000Z",
+      "dueComplete": false,
+      "closed": false,
+      "dateLastActivity": "2026-10-20T09:00:00.000Z",
+      "labels": [
+        {
+          "id": "7c452b02f5e0bb01c43dbd9c",
+          "idBoard": "1145f263256c923716d2b8ea",
+          "name": "Permission",
+          "color": "red"
+        }
+      ]
+    },
+    {
+      "id": "9ab62b5ef34a985438bfdf7e",
+      "idShort": 2,
+      "name": "Print workshop posters",
+      "desc": "Final poster is in the shared drive.",
+      "idList": "4cc70a1f6b9ca87f9b7f2101",
+      "idBoard": "1145f263256c923716d2b8ea",
+      "idMembers": [
+        "3a9b33b1fa0c5d3f98068423"
+      ],
+      "idLabels": [],
+      "idChecklists": [],
+      "pos": 32768,
+      "due": "2026-10-26T12:00:00.000Z",
+      "dueComplete": true,
+      "closed": false,
+      "dateLastActivity": "2026-10-20T09:00:00.000Z",
+      "labels": []
+    },
+    {
+      "id": "0a3d72134fb3d6c024db4c51",
+      "idShort": 3,
+      "name": "Send certificates to workshop speakers",
+      "desc": "Certificates for the September speakers.",
+      "idList": "4cc70a1f6b9ca87f9b7f2101",
+      "idBoard": "1145f263256c923716d2b8ea",
+      "idMembers": [
+        "f02e76f410320b5de2b6233a"
+      ],
+      "idLabels": [],
+      "idChecklists": [],
+      "pos": 49152,
+      "due": "2026-10-15T12:00:00.000Z",
+      "dueComplete": true,
+      "closed": false,
+      "dateLastActivity": "2026-10-20T09:00:00.000Z",
+      "labels": []
+    },
+    {
+      "id": "cb7524d792327e4c443d619d",
+      "idShort": 4,
+      "name": "Reimburse speaker travel",
+      "desc": "Reimburse after the speaker submits original bills.",
+      "idList": "359f8edb807e11863d544dd8",
+      "idBoard": "1145f263256c923716d2b8ea",
+      "idMembers": [
+        "cb8bba6d58ae1f473e118fcb"
+      ],
+      "idLabels": [
+        "45d4333228da94fed64f794e"
+      ],
+      "idChecklists": [],
+      "pos": 65536,
+      "due": "2026-11-05T12:00:00.000Z",
+      "dueComplete": false,
+      "closed": false,
+      "dateLastActivity": "2026-10-20T09:00:00.000Z",
+      "labels": [
+        {
+          "id": "45d4333228da94fed64f794e",
+          "idBoard": "1145f263256c923716d2b8ea",
+          "name": "Finance",
+          "color": "green"
+        }
+      ]
+    }
+  ],
+  "checklists": [
+    {
+      "id": "45f2e00f2d9cd27e5e8ac534",
+      "idBoard": "1145f263256c923716d2b8ea",
+      "idCard": "a9f7e97965d6cf799a529102",
+      "name": "Steps",
+      "pos": 16384,
+      "checkItems": [
+        {
+          "id": "d2b2292e6d3d928df88f5808",
+          "name": "Draft the letter",
+          "state": "complete",
+          "pos": 16384,
+          "idMember": "f02e76f410320b5de2b6233a"
+        },
+        {
+          "id": "f1c70e17b1d9518e41560f9c",
+          "name": "Get HoD signature",
+          "state": "incomplete",
+          "pos": 32768,
+          "idMember": null
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "c692562238d8c12c32434c50",
+      "idMemberCreator": "3a9b33b1fa0c5d3f98068423",
+      "type": "updateCard",
+      "date": "2026-10-26T11:00:00.000Z",
+      "data": {
+        "board": {
+          "id": "1145f263256c923716d2b8ea",
+          "name": "IoT Club Board (SYNTHETIC SAMPLE)"
+        },
+        "card": {
+          "id": "9ab62b5ef34a985438bfdf7e",
+          "name": "Print workshop posters",
+          "idShort": 2
+        },
+        "listBefore": {
+          "id": "359f8edb807e11863d544dd8",
+          "name": "Doing"
+        },
+        "listAfter": {
+          "id": "4cc70a1f6b9ca87f9b7f2101",
+          "name": "Done"
+        },
+        "old": {
+          "idList": "359f8edb807e11863d544dd8"
+        }
+      },
+      "memberCreator": {
+        "id": "3a9b33b1fa0c5d3f98068423",
+        "fullName": "Kavya",
+        "username": "kavya_synthetic",
+        "initials": "K"
+      }
+    },
+    {
+      "id": "f74dd50cfec0f8549406fee6",
+      "idMemberCreator": "f02e76f410320b5de2b6233a",
+      "type": "commentCard",
+      "date": "2026-10-24T09:05:00.000Z",
+      "data": {
+        "board": {
+          "id": "1145f263256c923716d2b8ea",
+          "name": "IoT Club Board (SYNTHETIC SAMPLE)"
+        },
+        "card": {
+          "id": "a9f7e97965d6cf799a529102",
+          "name": "Get HoD permission letter for lab booking",
+          "idShort": 1
+        },
+        "text": "Draft is ready, taking it to the HoD's office on Monday."
+      },
+      "memberCreator": {
+        "id": "f02e76f410320b5de2b6233a",
+        "fullName": "Arun",
+        "username": "arun_synthetic",
+        "initials": "A"
+      }
+    },
+    {
+      "id": "32cfe6c19200b67afb7c3d0e",
+      "idMemberCreator": "cab8020b8e29db6ea02a452c",
+      "type": "addMemberToCard",
+      "date": "2026-10-24T09:01:00.000Z",
+      "data": {
+        "board": {
+          "id": "1145f263256c923716d2b8ea",
+          "name": "IoT Club Board (SYNTHETIC SAMPLE)"
+        },
+        "card": {
+          "id": "a9f7e97965d6cf799a529102",
+          "name": "Get HoD permission letter for lab booking",
+          "idShort": 1
+        },
+        "idMember": "f02e76f410320b5de2b6233a"
+      },
+      "memberCreator": {
+        "id": "cab8020b8e29db6ea02a452c",
+        "fullName": "Priya",
+        "username": "priya_synthetic",
+        "initials": "P"
+      }
+    },
+    {
+      "id": "894f782a148b33af1e39a0ef",
+      "idMemberCreator": "cab8020b8e29db6ea02a452c",
+      "type": "createCard",
+      "date": "2026-10-24T09:00:00.000Z",
+      "data": {
+        "board": {
+          "id": "1145f263256c923716d2b8ea",
+          "name": "IoT Club Board (SYNTHETIC SAMPLE)"
+        },
+        "card": {
+          "id": "a9f7e97965d6cf799a529102",
+          "name": "Get HoD permission letter for lab booking",
+          "idShort": 1
+        },
+        "list": {
+          "id": "9e61de0263344c5110cfc9d9",
+          "name": "To Do"
+        }
+      },
+      "memberCreator": {
+        "id": "cab8020b8e29db6ea02a452c",
+        "fullName": "Priya",
+        "username": "priya_synthetic",
+        "initials": "P"
+      }
+    },
+    {
+      "id": "9d607a663f3e9b0a90c3c8d4",
+      "idMemberCreator": "cab8020b8e29db6ea02a452c",
+      "type": "commentCard",
+      "date": "2026-10-20T09:00:00.000Z",
+      "data": {
+        "board": {
+          "id": "1145f263256c923716d2b8ea",
+          "name": "IoT Club Board (SYNTHETIC SAMPLE)"
+        },
+        "card": {
+          "id": "0a3d72134fb3d6c024db4c51",
+          "name": "Send certificates to workshop speakers",
+          "idShort": 3
+        },
+        "text": "Speakers are saying they have not received the certificates yet."
+      },
+      "memberCreator": {
+        "id": "cab8020b8e29db6ea02a452c",
+        "fullName": "Priya",
+        "username": "priya_synthetic",
+        "initials": "P"
+      }
+    },
+    {
+      "id": "693a9fdd4c2fd0700968fba0",
+      "idMemberCreator": "f02e76f410320b5de2b6233a",
+      "type": "updateCard",
+      "date": "2026-10-16T10:30:00.000Z",
+      "data": {
+        "board": {
+          "id": "1145f263256c923716d2b8ea",
+          "name": "IoT Club Board (SYNTHETIC SAMPLE)"
+        },
+        "card": {
+          "id": "0a3d72134fb3d6c024db4c51",
+          "name": "Send certificates to workshop speakers",
+          "idShort": 3
+        },
+        "listBefore": {
+          "id": "9e61de0263344c5110cfc9d9",
+          "name": "To Do"
+        },
+        "listAfter": {
+          "id": "4cc70a1f6b9ca87f9b7f2101",
+          "name": "Done"
+        },
+        "old": {
+          "idList": "9e61de0263344c5110cfc9d9"
+        }
+      },
+      "memberCreator": {
+        "id": "f02e76f410320b5de2b6233a",
+        "fullName": "Arun",
+        "username": "arun_synthetic",
+        "initials": "A"
+      }
+    },
+    {
+      "id": "8a8bb7cd343aa2ad99b7d762",
+      "idMemberCreator": "cab8020b8e29db6ea02a452c",
+      "type": "createCard",
+      "date": "2026-09-12T08:00:00.000Z",
+      "data": {
+        "board": {
+          "id": "1145f263256c923716d2b8ea",
+          "name": "IoT Club Board (SYNTHETIC SAMPLE)"
+        },
+        "card": {
+          "id": "0a3d72134fb3d6c024db4c51",
+          "name": "Send certificates to workshop speakers",
+          "idShort": 3
+        },
+        "list": {
+          "id": "9e61de0263344c5110cfc9d9",
+          "name": "To Do"
+        }
+      },
+      "memberCreator": {
+        "id": "cab8020b8e29db6ea02a452c",
+        "fullName": "Priya",
+        "username": "priya_synthetic",
+        "initials": "P"
+      }
+    }
+  ]
+}

@@ -67,17 +67,23 @@ isOneToOne: false
                   ]
                 },"context_items": {
                   Row: {
-                    "access_level": Database["public"]['Enums']["access_level"],"id": string,"kind": Database["public"]['Enums']["context_kind"],"obligation_id": string,"text": string
+                    "access_level": Database["public"]['Enums']["access_level"],"created_at": string,"event_id": string | null,"id": string,"kind": Database["public"]['Enums']["context_kind"],"obligation_id": string,"private_uploaders": (string)[],"quote": string | null,"text": string,"verified": boolean
                   }
                   ComputedFields: never
                   Insert: {
-                    "access_level": Database["public"]['Enums']["access_level"],"id"?: string,"kind": Database["public"]['Enums']["context_kind"],"obligation_id": string,"text": string
+                    "access_level": Database["public"]['Enums']["access_level"],"created_at"?: string,"event_id"?: string | null,"id"?: string,"kind": Database["public"]['Enums']["context_kind"],"obligation_id": string,"private_uploaders"?: (string)[],"quote"?: string | null,"text": string,"verified"?: boolean
                   }
                   Update: {
-                    "access_level"?: Database["public"]['Enums']["access_level"],"id"?: string,"kind"?: Database["public"]['Enums']["context_kind"],"obligation_id"?: string,"text"?: string
+                    "access_level"?: Database["public"]['Enums']["access_level"],"created_at"?: string,"event_id"?: string | null,"id"?: string,"kind"?: Database["public"]['Enums']["context_kind"],"obligation_id"?: string,"private_uploaders"?: (string)[],"quote"?: string | null,"text"?: string,"verified"?: boolean
                   }
                   Relationships: [
                     {
+      foreignKeyName: "context_items_event_id_fkey"
+      columns: ["event_id"]
+isOneToOne: false
+      referencedRelation: "events"
+      referencedColumns: ["id"]
+    },{
       foreignKeyName: "context_items_obligation_id_fkey"
       columns: ["obligation_id"]
 isOneToOne: false
@@ -145,14 +151,14 @@ isOneToOne: false
                   ]
                 },"evidence": {
                   Row: {
-                    "event_id": string,"id": string,"obligation_id": string,"quote": string,"relation": Database["public"]['Enums']["evidence_relation"],"verified": boolean
+                    "event_id": string,"id": string,"inferred": boolean,"obligation_id": string,"quote": string,"relation": Database["public"]['Enums']["evidence_relation"],"verified": boolean
                   }
                   ComputedFields: never
                   Insert: {
-                    "event_id": string,"id"?: string,"obligation_id": string,"quote": string,"relation": Database["public"]['Enums']["evidence_relation"],"verified"?: boolean
+                    "event_id": string,"id"?: string,"inferred"?: boolean,"obligation_id": string,"quote": string,"relation": Database["public"]['Enums']["evidence_relation"],"verified"?: boolean
                   }
                   Update: {
-                    "event_id"?: string,"id"?: string,"obligation_id"?: string,"quote"?: string,"relation"?: Database["public"]['Enums']["evidence_relation"],"verified"?: boolean
+                    "event_id"?: string,"id"?: string,"inferred"?: boolean,"obligation_id"?: string,"quote"?: string,"relation"?: Database["public"]['Enums']["evidence_relation"],"verified"?: boolean
                   }
                   Relationships: [
                     {
@@ -225,14 +231,14 @@ isOneToOne: false
                   ]
                 },"obligations": {
                   Row: {
-                    "access_level": Database["public"]['Enums']["access_level"],"approval_required": string | null,"approver": string | null,"created_at": string,"description": string,"due_date": string | null,"due_text": string | null,"id": string,"kind": Database["public"]['Enums']["obligation_kind"],"next_due": string | null,"owed_by": string | null,"owed_to": string | null,"private_uploaders": (string)[],"review_state": Database["public"]['Enums']["review_state"],"status": Database["public"]['Enums']["obligation_status"],"trust_state": Database["public"]['Enums']["trust_state"],"workspace_id": string
+                    "access_level": Database["public"]['Enums']["access_level"],"approval_required": string | null,"approver": string | null,"cadence": string | null,"created_at": string,"description": string,"due_date": string | null,"due_text": string | null,"fulfilment_checked_at": string | null,"id": string,"kind": Database["public"]['Enums']["obligation_kind"],"lead_time": string | null,"next_due": string | null,"next_due_basis": string | null,"owed_by": string | null,"owed_to": string | null,"period": string | null,"private_uploaders": (string)[],"review_state": Database["public"]['Enums']["review_state"],"start_by": string | null,"status": Database["public"]['Enums']["obligation_status"],"trust_state": Database["public"]['Enums']["trust_state"],"workspace_id": string
                   }
                   ComputedFields: never
                   Insert: {
-                    "access_level"?: Database["public"]['Enums']["access_level"],"approval_required"?: string | null,"approver"?: string | null,"created_at"?: string,"description": string,"due_date"?: string | null,"due_text"?: string | null,"id"?: string,"kind": Database["public"]['Enums']["obligation_kind"],"next_due"?: string | null,"owed_by"?: string | null,"owed_to"?: string | null,"private_uploaders"?: (string)[],"review_state"?: Database["public"]['Enums']["review_state"],"status"?: Database["public"]['Enums']["obligation_status"],"trust_state"?: Database["public"]['Enums']["trust_state"],"workspace_id": string
+                    "access_level"?: Database["public"]['Enums']["access_level"],"approval_required"?: string | null,"approver"?: string | null,"cadence"?: string | null,"created_at"?: string,"description": string,"due_date"?: string | null,"due_text"?: string | null,"fulfilment_checked_at"?: string | null,"id"?: string,"kind": Database["public"]['Enums']["obligation_kind"],"lead_time"?: string | null,"next_due"?: string | null,"next_due_basis"?: string | null,"owed_by"?: string | null,"owed_to"?: string | null,"period"?: string | null,"private_uploaders"?: (string)[],"review_state"?: Database["public"]['Enums']["review_state"],"start_by"?: string | null,"status"?: Database["public"]['Enums']["obligation_status"],"trust_state"?: Database["public"]['Enums']["trust_state"],"workspace_id": string
                   }
                   Update: {
-                    "access_level"?: Database["public"]['Enums']["access_level"],"approval_required"?: string | null,"approver"?: string | null,"created_at"?: string,"description"?: string,"due_date"?: string | null,"due_text"?: string | null,"id"?: string,"kind"?: Database["public"]['Enums']["obligation_kind"],"next_due"?: string | null,"owed_by"?: string | null,"owed_to"?: string | null,"private_uploaders"?: (string)[],"review_state"?: Database["public"]['Enums']["review_state"],"status"?: Database["public"]['Enums']["obligation_status"],"trust_state"?: Database["public"]['Enums']["trust_state"],"workspace_id"?: string
+                    "access_level"?: Database["public"]['Enums']["access_level"],"approval_required"?: string | null,"approver"?: string | null,"cadence"?: string | null,"created_at"?: string,"description"?: string,"due_date"?: string | null,"due_text"?: string | null,"fulfilment_checked_at"?: string | null,"id"?: string,"kind"?: Database["public"]['Enums']["obligation_kind"],"lead_time"?: string | null,"next_due"?: string | null,"next_due_basis"?: string | null,"owed_by"?: string | null,"owed_to"?: string | null,"period"?: string | null,"private_uploaders"?: (string)[],"review_state"?: Database["public"]['Enums']["review_state"],"start_by"?: string | null,"status"?: Database["public"]['Enums']["obligation_status"],"trust_state"?: Database["public"]['Enums']["trust_state"],"workspace_id"?: string
                   }
                   Relationships: [
                     {
@@ -394,11 +400,35 @@ isOneToOne: false
               "created": boolean,"obligation_id": string
             }[]
                            },
+"add_recurring_duty":
+{ Args: { "p_approval": string,"p_approver": string,"p_cadence": string,"p_description": string,"p_lead_time": string,"p_next_due": string,"p_next_due_basis": string,"p_owed_by": string,"p_period": string,"p_quotes": Json,"p_start_by": string,"p_workspace": string }; Returns: {
+              "created": boolean,"obligation_id": string,"quotes_added": number
+            }[]
+                           },
 "approve_version":
 { Args: { "p_reason": string,"p_workspace": string }; Returns: string
                            },
 "claim_next_job":
 { Args: { "p_kind": string,"p_run": string,"p_workspace": string }; Returns: {
+              "attempts": number,
+"created_at": string,
+"finished_at": string | null,
+"id": string,
+"kind": string,
+"payload": NonNullable<Json>,
+"result": Json | null,
+"started_at": string | null,
+"status": Database["public"]['Enums']["job_status"],
+"workspace_id": string
+            }[]
+                          SetofOptions: {
+        from: "*"
+        to: "jobs"
+        isOneToOne: false
+        isSetofReturn: true
+      } },
+"claim_next_run_job":
+{ Args: { "p_run": string,"p_workspace": string }; Returns: {
               "attempts": number,
 "created_at": string,
 "finished_at": string | null,
@@ -430,6 +460,11 @@ isOneToOne: false
 "ping":
 { Args: Record<PropertyKey, never>; Returns: boolean
                            },
+"record_followup":
+{ Args: { "p_context": Json,"p_evidence": Json,"p_obligation": string,"p_workspace": string }; Returns: {
+              "context_added": number,"duplicates": number,"evidence_added": number,"rejected": number,"status": Database["public"]['Enums']["obligation_status"]
+            }[]
+                           },
 "release_item":
 { Args: { "p_reason": string,"p_target_id": string,"p_target_type": string,"p_to_role": Database["public"]['Enums']["app_role"] }; Returns: string
                            },
@@ -438,7 +473,7 @@ isOneToOne: false
                            }
           }
           Enums: {
-            "access_level": "everyone"|"committee"|"finance"|"private","ack_action": "accept"|"question"|"decline","alias_kind": "person"|"org","app_role": "outgoing_lead"|"advisor"|"incoming_lead"|"treasurer"|"member","context_kind": "decision"|"contact"|"risk"|"dependency","evidence_relation": "supports"|"fulfils"|"contradicts"|"past_instance","job_status": "queued"|"running"|"done"|"failed","obligation_kind": "commitment"|"recurring","obligation_status": "open"|"fulfilled"|"no_evidence"|"contradicted","review_state": "draft"|"accepted"|"rejected"|"edited","source_type": "whatsapp"|"trello"|"minutes","trust_state": "corroborated"|"sourced"|"inferred"|"contradicted"|"gap"
+            "access_level": "everyone"|"committee"|"finance"|"private","ack_action": "accept"|"question"|"decline","alias_kind": "person"|"org","app_role": "outgoing_lead"|"advisor"|"incoming_lead"|"treasurer"|"member","context_kind": "decision"|"contact"|"risk"|"dependency","evidence_relation": "supports"|"fulfils"|"contradicts"|"past_instance","job_status": "queued"|"running"|"done"|"failed","obligation_kind": "commitment"|"recurring","obligation_status": "open"|"fulfilled"|"likely_fulfilled"|"no_evidence"|"contradicted","review_state": "draft"|"accepted"|"rejected"|"edited","source_type": "whatsapp"|"trello"|"minutes","trust_state": "corroborated"|"sourced"|"inferred"|"contradicted"|"gap"
           }
           CompositeTypes: {
             [_ in never]: never
@@ -554,7 +589,7 @@ export type CompositeTypes<
 export const Constants = {
   "public": {
           Enums: {
-            "access_level": ["everyone", "committee", "finance", "private"],"ack_action": ["accept", "question", "decline"],"alias_kind": ["person", "org"],"app_role": ["outgoing_lead", "advisor", "incoming_lead", "treasurer", "member"],"context_kind": ["decision", "contact", "risk", "dependency"],"evidence_relation": ["supports", "fulfils", "contradicts", "past_instance"],"job_status": ["queued", "running", "done", "failed"],"obligation_kind": ["commitment", "recurring"],"obligation_status": ["open", "fulfilled", "no_evidence", "contradicted"],"review_state": ["draft", "accepted", "rejected", "edited"],"source_type": ["whatsapp", "trello", "minutes"],"trust_state": ["corroborated", "sourced", "inferred", "contradicted", "gap"]
+            "access_level": ["everyone", "committee", "finance", "private"],"ack_action": ["accept", "question", "decline"],"alias_kind": ["person", "org"],"app_role": ["outgoing_lead", "advisor", "incoming_lead", "treasurer", "member"],"context_kind": ["decision", "contact", "risk", "dependency"],"evidence_relation": ["supports", "fulfils", "contradicts", "past_instance"],"job_status": ["queued", "running", "done", "failed"],"obligation_kind": ["commitment", "recurring"],"obligation_status": ["open", "fulfilled", "likely_fulfilled", "no_evidence", "contradicted"],"review_state": ["draft", "accepted", "rejected", "edited"],"source_type": ["whatsapp", "trello", "minutes"],"trust_state": ["corroborated", "sourced", "inferred", "contradicted", "gap"]
           }
         }
 } as const

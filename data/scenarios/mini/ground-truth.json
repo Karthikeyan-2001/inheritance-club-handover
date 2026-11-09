@@ -1,0 +1,80 @@
+{
+  "synthetic": true,
+  "description": "What a correct reconstruction of the mini scenario contains. Quotes are verbatim from the named source file.",
+  "files": {
+    "whatsapp-committee.txt": { "type": "whatsapp", "accessLevel": "committee" },
+    "trello-board.json": { "type": "trello", "accessLevel": "committee" },
+    "minutes.md": { "type": "minutes", "accessLevel": "finance" }
+  },
+  "commitments": [
+    {
+      "id": "C1", "owedBy": "Arun", "owedTo": "Workshop speakers", "deliverable": "Participation certificates", "due": "2026-03-15",
+      "expectedStatus": "contradicted", "expectedTrust": "contradicted",
+      "quote": { "file": "whatsapp-committee.txt", "text": "we will send the participation certificates to all workshop speakers by 15 March" },
+      "evidence": [
+        { "relation": "fulfils", "file": "trello-board.json", "text": "Moved card \"Send certificates to workshop speakers\" from \"To Do\" to \"Done\"" },
+        { "relation": "contradicts", "file": "whatsapp-committee.txt", "text": "nobody has sent them yet" }
+      ]
+    },
+    {
+      "id": "C2", "owedBy": "Divya", "owedTo": "Mr. R. Ganesan", "deliverable": "Reimburse speaker travel of ₹2,400", "due": null,
+      "expectedStatus": "no_evidence", "expectedTrust": "sourced", "expectedAccess": "finance",
+      "quote": { "file": "minutes.md", "text": "Speaker travel of ₹2,400 to Mr. R. Ganesan will be reimbursed after he submits bills." },
+      "evidence": []
+    },
+    {
+      "id": "C3", "owedBy": "Rohan", "owedTo": "Bala sir (lab in-charge)", "deliverable": "Return borrowed ESP32 boards", "due": "2026-02-27",
+      "expectedStatus": "fulfilled", "expectedTrust": "corroborated",
+      "quote": { "file": "whatsapp-committee.txt", "text": "I'll return the borrowed ESP32 boards to Bala sir by Friday." },
+      "evidence": [{ "relation": "fulfils", "file": "whatsapp-committee.txt", "text": "Returned all 8 boards, Bala sir signed the register" }]
+    },
+    {
+      "id": "C4", "owedBy": "Kavya", "owedTo": "Club", "deliverable": "Print fest posters", "due": "2026-02-03",
+      "expectedStatus": "fulfilled", "expectedTrust": "corroborated",
+      "quote": { "file": "whatsapp-committee.txt", "text": "I will have the fest posters printed by 3 Feb." },
+      "evidence": [
+        { "relation": "fulfils", "file": "whatsapp-committee.txt", "text": "Posters printed, collecting tomorrow morning." },
+        { "relation": "fulfils", "file": "trello-board.json", "text": "Moved card \"Print fest posters\" from \"To Do\" to \"Done\"" }
+      ]
+    },
+    {
+      "id": "C5", "owedBy": "Arun", "owedTo": "Brightwave Labs", "deliverable": "Sponsorship proposal", "due": "2026-01-20",
+      "expectedStatus": "no_evidence", "expectedTrust": "sourced",
+      "quote": { "file": "whatsapp-committee.txt", "text": "I'll send the sponsorship proposal to Brightwave Labs by 20 January." },
+      "evidence": []
+    }
+  ],
+  "recurring": [
+    {
+      "id": "R1", "duty": "Get the HoD's permission letter before booking the lab", "cadence": "every semester",
+      "approval": "Permission letter approved by the HoD", "approver": "HoD",
+      "quotes": [
+        { "file": "whatsapp-committee.txt", "text": "the HoD's permission letter has to be approved before booking, every semester" },
+        { "file": "minutes.md", "text": "A signed HoD permission letter is required before every lab booking." },
+        { "file": "trello-board.json", "text": "Needed before every lab booking (every semester). Apply two weeks ahead." }
+      ]
+    },
+    {
+      "id": "R2", "duty": "Book the auditorium for IoT Fest", "cadence": "every year",
+      "approval": "Dean's office approval, requested a month ahead", "approver": "Dean's office",
+      "quotes": [
+        { "file": "whatsapp-committee.txt", "text": "The auditorium needs the Dean's office approval, so apply a month ahead." },
+        { "file": "minutes.md", "text": "Auditorium booking for IoT Fest needs the Dean's office approval, requested a month ahead." }
+      ]
+    }
+  ],
+  "decoys": [
+    { "file": "whatsapp-committee.txt", "text": "Maybe I'll check the projector too, will see." },
+    { "file": "whatsapp-committee.txt", "text": "We should probably do a hackathon someday." }
+  ],
+  "contradictions": [
+    {
+      "id": "X1", "commitment": "C1",
+      "claimA": { "file": "trello-board.json", "text": "Moved card \"Send certificates to workshop speakers\" from \"To Do\" to \"Done\"" },
+      "claimB": { "file": "whatsapp-committee.txt", "text": "Speakers are still asking for their certificates, nobody has sent them yet." }
+    }
+  ],
+  "expectedDropped": {
+    "whatsapp-committee.txt": { "system": 3, "deleted": 1, "media": 1 }
+  }
+}

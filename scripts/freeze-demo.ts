@@ -223,7 +223,14 @@ const result: MemoryResult = {
 const card = scoreRun(result, scenario);
 console.log("\n" + formatScorecard(card));
 
+// The scratch workspace makes the shared demo accounts members of a second club, and the app
+// signs an account in to its first membership. Remove it once read; the answers stay cached.
+async function dropScratch() {
+  must("drop scratch workspace", await admin.rpc("delete_workspace", { p_workspace: WS, p_reason: "freeze-demo: done" }));
+}
+
 if (!write) {
+  await dropScratch();
   console.log("\n--no-write: nothing written. The local llm_cache now holds this scenario's answers.");
   process.exit(0);
 }
@@ -273,4 +280,5 @@ const club: FrozenClub = {
   sealed,
 };
 writeFileSync(OUT, JSON.stringify(club, null, 1) + "\n");
+await dropScratch();
 console.log(`\nWrote ${OUT}: ${club.obligations.length} items (${club.obligations.filter((o) => o.review_state === "accepted").length} accepted), ${club.evidence.length} quotes, ${club.context.length} notes, ${club.links.length} links, ${sealed.length} sealed.`);

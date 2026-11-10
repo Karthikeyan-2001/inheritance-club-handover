@@ -106,3 +106,13 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 - **Sealed placeholders** come from `sealed_items` (holder and a short topic, no source text). The outgoing lead or advisor can add one for a finance or private item that has not been released; the topic is shown to every member, so the form says to leave details out.
 - **Acknowledgements** (accept, ask a question, decline) are immutable rows; the latest per item wins. Only the incoming lead can answer, and only an item they can read. A question or a decline needs a note. Each answer now writes an audit row (migration 0016) with the item's access level, so the audit is filtered like the item.
 - No AI use changed in this phase; no paid model calls were made.
+
+## Demo mode (Phase 10)
+
+- **Each visitor gets their own demo club.** "Load demo club" on the sign-in page builds a private copy of the synthetic club: a workspace with four accounts of its own (outgoing lead, advisor, incoming lead, treasurer), the same messages and items, and version 1 approved. One visitor's reviews, approvals and answers never reach another, and row-level security works in a copy exactly as in a real club. The role menu switches only between the accounts of the visitor's own copy.
+- **No stored passwords for the copies.** Each copy account's password is derived on the server (an HMAC of its email under the server's secret key), so the server can switch roles without keeping credentials. A signed, http-only cookie lets a visitor who signed out return to their copy; it grants nothing after the copy expires.
+- **Copies expire.** A copy and its accounts are deleted after 7 days by a daily job, or earlier when the visitor deletes it (from Connect) or starts a fresh one. At most 300 copies can be active and 60 started per hour, so the free database cannot be flooded.
+- **The shared accounts remain**, below the "Load demo club" card, for anyone who wants them. They are labelled as shared.
+- **A daily keep-alive.** Supabase Free pauses a project after a week without activity, so a Vercel cron (once a day, the Hobby limit) queries the database and runs the clean-up. It needs `CRON_SECRET`; without it the route refuses every caller.
+- No AI use changed in this phase.
+

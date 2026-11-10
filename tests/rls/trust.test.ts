@@ -74,8 +74,10 @@ describe.skipIf(!hasEnv)("the trust rule follows the evidence", () => {
   });
 
   it("no client can set trust by hand", async () => {
+    // Any direct change by a signed-in user is refused (a reason is needed), and trust is
+    // recomputed on every write anyway.
     const { error } = await as.arun.from("obligations").update({ trust_state: "gap" }).eq("id", item);
-    expect(error).toBeNull();
+    expect(error?.message).toMatch(/reason is required/);
     expect((await state(as.arun, item))?.trust_state).toBe("corroborated");
   });
 
@@ -83,7 +85,7 @@ describe.skipIf(!hasEnv)("the trust rule follows the evidence", () => {
     await follow(as.arun, item, [{ event_id: await eventIn(as.arun, src.complaints, "Brightwave says"), quote: "the thank-you letters never arrived", relation: "contradicts" }]);
     expect(await state(as.arun, item)).toMatchObject({ trust_state: "contradicted", status: "contradicted" });
 
-    const { data } = await as.kavya.from("docket_entries").select("origin, quote_a, quote_b, summary, ruling").eq("obligation_id", item);
+    const { data } = await as.divya.from("docket_entries").select("origin, quote_a, quote_b, summary, ruling").eq("obligation_id", item);
     expect(data).toEqual([{
       origin: "rule",
       quote_a: "Brightwave confirmed they got the thank-you letters", // the latest stated "done"
@@ -167,8 +169,8 @@ describe.skipIf(!hasEnv)("links between items, and borrowing evidence only downw
     expect(r.data?.[0]).toMatchObject({ created: false, verdict: "same" });
     // Finance: its own "not booked" against the committee chat's "booked".
     expect(await state(as.divya, financeItem)).toMatchObject({ trust_state: "contradicted" });
-    // Committee: unchanged, so the incoming lead is told nothing that comes from the finance minutes.
-    expect(await state(as.kavya, committeeItem)).toMatchObject({ trust_state: "sourced", status: "fulfilled" });
+    // Committee: unchanged, so nothing handed to the incoming lead comes from the finance minutes.
+    expect(await state(as.arun, committeeItem)).toMatchObject({ trust_state: "sourced", status: "fulfilled" });
     expect((await link(as.arun, committeeItem, financeItem, "possible")).data?.[0]).toMatchObject({ verdict: "same" }); // never downgraded
   });
 

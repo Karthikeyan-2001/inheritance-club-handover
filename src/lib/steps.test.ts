@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { stepForPath } from "./steps";
+import { STEP_HREF, stepForPath } from "./steps";
 
 describe("stepForPath", () => {
   it.each([
@@ -12,5 +12,12 @@ describe("stepForPath", () => {
     ["/login", null],
   ])("%s → %s", (path, step) => {
     expect(stepForPath(path)).toBe(step);
+  });
+});
+
+describe("STEP_HREF", () => {
+  it("links the Review step to its page, and leaves Handover as upcoming", () => {
+    expect(STEP_HREF.Review).toBe("/review");
+    expect(STEP_HREF.Handover).toBeUndefined();
   });
 });

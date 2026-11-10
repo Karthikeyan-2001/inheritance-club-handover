@@ -1,6 +1,6 @@
 # Build status and handover notes
 
-Read this first when resuming work. Last updated: 2026-11-09, at the end of Phase 7.
+Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 8.
 
 ## Where things stand
 
@@ -13,15 +13,15 @@ Read this first when resuming work. Last updated: 2026-11-09, at the end of Phas
 | 4 | LLM adapter, commitment extraction, quote verifier, job runner | merged |
 | 5 | Fulfilment, cycles (recurring duties and approvals), context, staged runs | merged |
 | 6 | Matching (aliases plus `pg_trgm`), trust-state rule function, docket | merged |
-| 7 | Ledger UI and evidence pane (quote highlighted in source) | on branch `build/phase-7`, ready to merge |
-| 8 | `/review`: advisor approval, version diff, immutable versions, audit | **next** |
-| 9 | `/handover`: "people waiting on you", calendar, sealed placeholders, acks | later |
+| 7 | Ledger UI and evidence pane (quote highlighted in source) | merged |
+| 8 | `/review`: two-step sign-off, rulings, version diff, immutable versions, audit | on branch `build/phase-8`, ready to merge |
+| 9 | `/handover`: "people waiting on you", calendar, sealed placeholders, acks | **next** |
 | 10 | Demo mode ("Load demo club" per visitor, keep-alive cron) | later |
 | 11 | Full synthetic generator (`world.yaml`, `ground_truth.yaml`) | later |
 | 12 | Scoring, leak test, second scenario, end-to-end tests | later |
 | 13 | Hardening and docs | later |
 
-Tests at the end of Phase 7: 266 unit, 121 RLS integration, 26 Playwright, all passing. Lint, typecheck and build are clean.
+Tests at the end of Phase 8: 294 unit, 144 RLS integration, 32 Playwright, all passing. Lint, typecheck and build are clean.
 
 ## How the user works
 
@@ -31,12 +31,13 @@ Tests at the end of Phase 7: 266 unit, 121 RLS integration, 26 Playwright, all p
 - Ask before any paid model call. Show a cost estimate first.
 - The user chooses the Claude Code model per phase (see the table below).
 
-## Outstanding user tasks (for Phase 7)
+## Outstanding user tasks (for Phase 8)
 
-1. Merge `build/phase-7`.
-2. Hosted database: `pnpm db:push` applies 0012 (`events.seq`, and `import_source` inserting in file order). Existing rows are numbered in their stored order, which for one file is its import order. No re-seed is needed.
-3. Redeploy on Vercel. No new environment variables, no paid model calls.
-4. Optional: on the live app, open any quote's **Open source message** link, then the **Gaps** tab.
+1. Merge `build/phase-8`.
+2. Hosted database: `pnpm db:push` applies 0013 to 0015. 0013 backfills `reviewed_status` and `reviewed_trust` for items already accepted; 0014 hides the working ledger from the incoming lead and members.
+3. Re-seed the hosted demo club with `pnpm seed:hosted`. It now also marks the draft ready (as Arun) and approves version 1 (as Dr. Meena), so Kavya has something to read and judges can make version 2 and see a diff. Without it Kavya sees an empty Versions list.
+4. Redeploy on Vercel. No new environment variables, no paid model calls in this phase.
+5. Optional: on the live app, as Arun edit an item (Review, Draft) and mark ready; as Dr. Meena rule the conflict and approve; as Kavya open Version 2.
 
 ## Environment facts
 
@@ -68,6 +69,10 @@ Tests at the end of Phase 7: 266 unit, 121 RLS integration, 26 Playwright, all p
 | 0011 | Matching, trust, docket. `obligation_links` (a < b, `same` or `possible`, `rule` or `model`; readable only if both items are; audited at the more restricted item's level by `app.audit_link`). `app.effective_evidence()` (own verified evidence plus that of `same`-linked items at the same or a less restricted level; private only from the same uploaders). `app.trust_rule()` and `app.status_rule()` over it; `app.followup_status()` now uses it. `app.obligation_provenance()` sets trust on every write, and status of checked commitments on derived updates. `app.touch_obligations()`, `app.with_linked()`, `app.sync_docket()` (opens and closes rule-made entries), `app.docket_summary()`, `app.person()`. `docket_entries.obligation_id`, `quote_a`, `quote_b`, `origin`, unique (obligation, claims); docket RLS also requires the item. `link_obligations()` (security invoker; upgrades possible to same, never downgrades). `audit_row()` attributes docket rows to their item. |
 | 0012 | `events.seq` (identity, the order within its file; index on `source_id, seq`). `import_source` now inserts in file order (`jsonb_array_elements … with ordinality`; `jsonb_to_recordset` cannot take ordinality with a column list). |
 
+| 0013 | Review (Phase 8). `obligations.reviewed_status`, `reviewed_trust` (what an item was accepted with); `app.needs_rereview()`; guard triggers `obligations_zz_review_guard` (a signed-in user's update needs `app.audit_reason`; `review_state` and `reviewed_*` change only under `app.review_action`; inserts by users are always drafts) and `docket_entries_review_guard` (rulings only through `rule_conflict`). `review_obligation()` (accept, edit, reject, reopen; whitelisted fields; invoker), `rule_conflict()` (advisor), `set_link_verdict()` (`same` or `distinct`, method `reviewer`). `app.version_item()` (format 2: obligation, evidence with `inferred`, `linked_same`, `conflicts` with rulings), `app.item_core()` (format-independent comparison), `version_context_items` (own table, own RLS, immutable), `version_items.item_format`. `review_signoffs` (immutable), `app.pending_hash()`, `mark_ready()`, a new `approve_version()` (advisor, needs a current mark, refused while any item needs re-review), `pending_review()`. `app.audit_row()` and `app.audit_link()` write `app.audit_action` as the action name; `audit_row` skips a server-only change of `reviewed_*`. |
+| 0014 | `app.sees_working_ledger()` (outgoing lead, advisor, treasurer). `app.can_read_obligation()`, `obligations_select` and `docket_select` require it, so the incoming lead and members read approved `version_items` only. |
+| 0015 | `signoff_status()`: whether the lead's mark still matches, without exposing the hash. |
+
 ### Code (`src/lib/`)
 
 | Path | Contents |
@@ -90,6 +95,8 @@ Tests at the end of Phase 7: 266 unit, 121 RLS integration, 26 Playwright, all p
 | `pipeline/verify.ts` | Also `noteGrounded` (used for context notes and, through `deliverableGrounded` in `extract.ts`, commitment descriptions). |
 | `pipeline/run-pipeline.ts` | `planRun`, `runNextStep` (dispatches by job kind), `getRunProgress`. Stages 5 and 6 (`plan_matches`, `match_items`) link items; payloads hold ids and scores only. Runs as the user, through RLS. Stages are in `tasks.ts`; progress shapes are in `progress.ts`, which is pure so the browser can import it. |
 | `pipeline/run-memory.ts` | The whole pipeline in memory, for the eval and unit tests. It mirrors the SQL storage rules (now including provenance, matching and the trust and status rules over effective evidence), so keep it in step with them. |
+| `review/` | Pure, tested: `fields.ts` (editable fields per kind, `changedFields`), `diff.ts` (`diffVersions` over readable rows, format-1 aware), `readiness.ts` (why mark-ready or approval is blocked, in words), `rereview.ts` (`needsRereview`, mirror of the SQL), `history.ts` and `labels.ts` (audit rows and rulings in words). |
+| `pipeline/match.ts` | Also `pairKey` and the `skip` set of `planMatches`: a pair a reviewer ruled on is never scored or asked about again. |
 | `pipeline/provider.ts`, `fake-extract.ts`, `fake-pipeline.ts` | `LLM_PROVIDER=fake` is the rule-based offline stand-in, refused in production. `fakeHandlers()` covers every task. |
 
 ### App (`src/app/`)
@@ -100,6 +107,9 @@ Tests at the end of Phase 7: 266 unit, 121 RLS integration, 26 Playwright, all p
 | `/import` | Connect: upload, access level per file, authorisation checkbox, what was read, files, aliases, delete workspace. |
 | `/ledger` | "Build the ledger" panel (`pipeline-panel.tsx`); Commitments and Recurring tabs (`commitments.tsx`, `recurring.tsx`; shared `obligation-parts.tsx` with `AlsoRecorded`, `PossibleMatches`, `DocketLink`; `link-data.ts` loads links and docket ids; grouping in `src/lib/ledger-view.ts`); Docket tab (`docket.tsx`, one entry per pair of claims, anchors `#docket-<id>`); Gaps tab (`gaps.tsx`, `findGaps`); Timeline tab; `trust-legend.tsx`. Item cards have anchors `#item-<id>`. |
 | `/ledger/evidence/[id]` | The source message for one quote (`?kind=context` for a context note), highlighted with `src/lib/pipeline/locate.ts` and shown with two neighbours either side in file order (`seq`). All reads go through RLS; a query error is shown as an error, never as "not visible to your role". |
+| `/review` | Tabs by role. **Draft** (outgoing lead, advisor): sign-off panel, the pending diff against the last version, items grouped Changed since accepted, Draft, Accepted, Rejected, each with accept, edit, reject or back to draft and "Same item" or "Not the same" on linked records. **Conflicts** (advisor rules; the treasurer reads). **Versions** (everyone). **History** (reviewers). Components in `src/components/review/`, actions in `src/app/review/actions.ts`. |
+| `/review/versions/[number]` | One version as the viewer's role may read it, with the diff from the version before. Built from `version_items` and `version_context_items` through RLS. |
+| `/ledger` | For the incoming lead and members the working-ledger tabs show a notice pointing to Review; the Timeline is unchanged. |
 | `/api/jobs/run-next` | One job per POST (`maxDuration` 60). Returns `done` and `waiting` (an earlier stage still running elsewhere). |
 | `/api/health` | Health check. |
 
@@ -129,7 +139,11 @@ Tests at the end of Phase 7: 266 unit, 121 RLS integration, 26 Playwright, all p
 - **Derived updates are not audited.** `app.touch_obligations()` sets `app.derived_update`, so trust, status and level recomputations write no audit rows. Docket entries opened or closed by `app.sync_docket()` are audited (it runs after the flag is restored).
 - **Docket entries cascade with their messages.** Removing a file deletes the entries citing its messages, with the removal's reason in the audit. `sync_docket()` closes the rest when a conflict goes.
 - **Seeding the docket.** The trust rule opens O2's entry as soon as its evidence is inserted; the seed then upserts D1 (on obligation and claims) to give it the fixture id and summary.
-- **Matching does not skip linked pairs.** Every run re-proposes the same pairs in the same order, so match batches hit the cache; `link_obligations()` is idempotent. A link a reviewer deletes will come back on the next run until Phase 8 records "not the same".
+- **Matching skips pairs a reviewer ruled on, and no others.** Every run re-proposes the other pairs in the same order, so match batches hit the cache; `link_obligations()` is idempotent and never changes a reviewer's verdict. A link a reviewer *deletes* (rather than marking "not the same") still comes back on the next run.
+- **Direct updates of obligations are refused.** A signed-in user's UPDATE fails with "a reason is required" unless a SECURITY DEFINER or invoker function set `app.audit_reason` first (the pipeline functions and `review_obligation` do). Tests and scripts that change an item as a user must use `review_obligation`; the service role (no `auth.uid()`) is exempt, so seeds and fixtures still work.
+- **Baseline for re-review.** An accepted item inserted by the service role has no `reviewed_*` and so counts as changed. After inserting evidence (which settles trust), set `reviewed_status` and `reviewed_trust` from the row, as `scripts/seed.ts` and the delete-workspace test do.
+- **Approving needs a mark.** `approve_version()` fails without a current `mark_ready()`. RLS tests that approve call `mark_ready` as Arun first; any change to an accepted item or note in between needs a new mark.
+- **The seed approves version 1** only with `seed(env, log, { approveFirst: true })` (the CLI and the e2e global setup). `resetDemo()` in the RLS tests does not, so version numbers there start at 1 in the test.
 - **Match prompts may show two levels.** By design (a committee duty and its finance copy). The model returns only a verdict per pair; the in-memory test that prompts never mix levels excludes `match_items`, like follow-up checks.
 
 ## Phase 5 decisions (confirmed with the user)
@@ -151,9 +165,10 @@ Tests at the end of Phase 7: 266 unit, 121 RLS integration, 26 Playwright, all p
 ## Known gaps to pick up later
 
 - **Phase 7 (left):** the Gaps tab lists linked records separately (only the Commitments and Recurring tabs fold them into one card); each gap names its linked twins and why their evidence does not count.
-- **Phase 8:** rulings on docket entries (`ruling`, `ruled_by`, `reason`; the advisor). A reviewer's "not the same" must be remembered (a rejected link, or a `distinct` verdict) or the next run re-links it. Unlinking is already possible through RLS (`obligation_links_delete`) and is audited.
-- **Phase 8:** `approve_version()` snapshots evidence without `inferred`, and leaves out context items, links and trust. Add them to `version_items.item`, without breaking hashes of existing versions.
-- **Phase 8:** the pipeline can change the status (and now the trust) of items a reviewer has already accepted. Flag such items for re-review (or show the change in the version diff).
+- **Phase 8 (left):** a reviewer who *deletes* a link (instead of "Not the same") is not remembered. The Draft tab only offers the two verdicts, so this is reachable only through the API.
+- **Phase 8 (left):** the re-review flag watches status and trust only. A later run that fills a blank field of an accepted item (for example a duty's approver) changes the item's content without flagging it; it does invalidate the lead's ready mark and shows in the pending diff.
+- **Phase 8 (left):** the lead's mark covers items the lead cannot read (the advisor's private items), so the advisor's own change to such an item also needs a new mark. The count shown to the lead is of readable items.
+- **Phase 8 (left):** no RLS test runs the pipeline's `plan_matches` step over a `distinct` pair; the skip is covered by a unit test of `planMatches` and the SQL by `link_obligations`.
 - **Phase 9:** `release_item()` and `audit_row()` still use the obligation's private uploaders for context items. This is safe (more restrictive), but the outgoing lead cannot release or read the audit of a private note built from their own file.
 - **Phase 9:** a released private item may borrow from a linked private item of the same uploader that the receiving role cannot read, so its trust can reflect a record they cannot see. The releaser sees this when releasing; consider showing "trust based on records you cannot see" to the receiver.
 - **Matching:** links are not transitive (A–B and B–C do not make A borrow C's evidence). Duty pairs are scored on descriptions and approvers only. The fake's duty wording is poor, so offline runs do not link the finance copy of the HoD rule; the live probe does.
@@ -169,6 +184,19 @@ Tests at the end of Phase 7: 266 unit, 121 RLS integration, 26 Playwright, all p
 - A gap is still reported per record when a linked twin has evidence: the trust rule already borrows wherever it may, so a remaining gap is real at that record's level.
 - An item with several conflicts links to each, open ones first.
 - The Gaps empty state ("No gaps among the N items you can read") is covered by unit tests of `findGaps`, not Playwright, because the e2e workspace always has gaps.
+
+## Phase 8 decisions (confirmed with the user)
+
+- **Close the draft hole now:** the incoming lead and members read approved versions, not the working ledger.
+- **Two-step sign-off:** the outgoing lead marks ready, the advisor approves a current mark. Unruled conflicts do not block approval; they are handed over as "awaiting a ruling".
+- **Rulings record the advisor's decision and do not change status or trust.**
+- **Re-review blocks:** accepted items whose status or trust moved must be accepted again or rejected before marking ready or approving.
+- Found while building: a diff stored in `versions.diff` is for all items, so each role's diff is computed from the rows it can read. Older (format 1) items are compared on the fields they recorded (`app.item_core`, `CORE_FIELDS` in `diff.ts`; keep the two in step).
+- No paid model calls were made in this phase.
+
+## Phase 9 plan (next)
+
+`/handover`: "people waiting on you" (commitments grouped by who they are owed to), a calendar of recurring duties with start-by dates, sealed placeholders for items the incoming lead may not read (from `sealed_items`, which holds no source text), and the incoming lead's acknowledgements (`acks`: accept, question, decline, latest wins) on approved version items. Read from `version_items` and `version_context_items` only, as the incoming lead's view. Known gaps listed under Phase 9 above still apply. Model: Sonnet 5.5, then `/code-review` on Opus before merging.
 
 ## Claude Code model per phase (recommendation)
 

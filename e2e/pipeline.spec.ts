@@ -90,14 +90,18 @@ test.describe.serial("building the ledger", () => {
     await expect(progress).toContainText("reused saved answers");
   });
 
-  test("the incoming lead sees committee items but cannot run the pipeline", async ({ page }) => {
+  test("the incoming lead cannot see the working ledger or run the pipeline", async ({ page }) => {
     await signInAs(page, "Kavya");
     await page.goto("/ledger");
-    await expect(page.getByText("Only the outgoing lead or the faculty advisor can run this.")).toBeVisible();
+    await expect(page.getByTestId("working-ledger-notice")).toContainText("until a version is approved");
     await expect(page.getByRole("button", { name: "Build the ledger" })).toHaveCount(0);
-    await expect(page.getByTestId("commitments")).toContainText("lab inventory list");
-    await page.goto("/ledger?tab=recurring");
-    await expect(page.getByTestId("recurring")).toContainText("inventory audit");
+    await expect(page.getByTestId("commitments")).toHaveCount(0);
+    await page.goto("/ledger?tab=docket");
+    await expect(page.getByTestId("working-ledger-notice")).toBeVisible();
+    await expect(page.getByTestId("docket")).toHaveCount(0);
+    // The timeline of messages is unchanged.
+    await page.goto("/ledger?tab=timeline");
+    await expect(page.getByTestId("working-ledger-notice")).toHaveCount(0);
   });
 
   test("an item recorded twice is linked, and a done-versus-not-done conflict lands in the Docket", async ({ page }) => {
@@ -127,8 +131,8 @@ test.describe.serial("building the ledger", () => {
     await expect(page.getByTestId("docket").getByRole("listitem").filter({ hasText: "soldering kit" })).toHaveCount(1);
   });
 
-  test("the incoming lead sees the same conflict, because both records are committee-level", async ({ page }) => {
-    await signInAs(page, "Kavya");
+  test("the treasurer sees the same conflict, because both records are committee-level", async ({ page }) => {
+    await signInAs(page, "Divya");
     await page.goto("/ledger?tab=docket");
     await expect(page.getByTestId("docket")).toContainText("still not returned");
   });

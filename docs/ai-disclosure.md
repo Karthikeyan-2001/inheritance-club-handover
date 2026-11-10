@@ -30,6 +30,8 @@ Safeguards that do **not** rely on the model:
 - **What is stored:** only items whose quotes verify, as drafts. Context notes, and the short description of each commitment, are kept only if they name no person or number missing from their own message (a failing description is replaced by the verified quote). A "same" verdict links two items; an "unsure" verdict is shown as a possible match and never used as evidence. Items are never merged. Model responses are cached by prompt hash in `llm_cache`, which only the server can read.
 - **Testing without the API:** an offline rule-based stand-in (`LLM_PROVIDER=fake`) is used in automated tests, so tests never send data to the API. The paid evals (`pnpm eval:extract`, `pnpm eval:pipeline`) run only with an explicit `--yes`, against synthetic data.
 
+*Status (Phase 8): no AI use changed.* Review, sign-off, rulings and versions are deterministic code and database rules; no model is called and no new data is sent to one. The only link to the model is that a reviewer's "not the same" verdict on a pair of items is remembered, so later runs no longer send that pair to the matching prompt.
+
 ## 3. Synthetic demo data: an LLM
 
 All demo data is synthetic. A small hand-written scenario is used first. A later generator will use an LLM to render planted facts as realistic chat messages, minutes and Trello cards: typos, nicknames, and Tamil-English code-mixing in Latin script. Ground truth is fixed in YAML before generation, so the system can be scored against it. No real people or organisations are used.

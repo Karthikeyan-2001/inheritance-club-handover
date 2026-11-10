@@ -125,12 +125,23 @@ export function decide(s: PairScore): "rule" | "ask" | null {
   return null;
 }
 
+/** A pair as one string, whichever way round, for sets of pairs a reviewer has ruled on. */
+export function pairKey(a: string, b: string): string {
+  return a < b ? `${a}|${b}` : `${b}|${a}`;
+}
+
 /**
- * Every pair of items of the same kind, scored. Returns the pairs linked by rule, the pairs to
+ * Every pair of items of the same kind, scored. Pairs in `skip` (a reviewer said "the same" or
+ * "not the same") are never scored again, so a reviewer's verdict stands and costs no model call. Returns the pairs linked by rule, the pairs to
  * ask the model about (best first, at most `maxAsk`), and how many were left out over the limit.
  * Deterministic: the same items give the same pairs in the same order, so saved answers are reused.
  */
-export function planMatches(items: readonly MatchItem[], aliases: readonly Alias[], maxAsk = MAX_ASK): { rule: MatchPair[]; ask: MatchPair[]; overLimit: number } {
+export function planMatches(
+  items: readonly MatchItem[],
+  aliases: readonly Alias[],
+  maxAsk = MAX_ASK,
+  skip: ReadonlySet<string> = new Set(),
+): { rule: MatchPair[]; ask: MatchPair[]; overLimit: number } {
   const sorted = [...items].sort((x, y) => x.id.localeCompare(y.id));
   const rule: MatchPair[] = [];
   const ask: MatchPair[] = [];
@@ -139,6 +150,7 @@ export function planMatches(items: readonly MatchItem[], aliases: readonly Alias
       const a = sorted[i];
       const b = sorted[j];
       if (a.kind !== b.kind) continue;
+      if (skip.has(pairKey(a.id, b.id))) continue;
       const s = scorePair(a, b, aliases);
       const d = decide(s);
       if (d === "rule") rule.push({ a: a.id, b: b.id, score: s.score });

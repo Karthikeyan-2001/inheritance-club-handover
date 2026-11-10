@@ -29,7 +29,10 @@ describe.skipIf(!hasEnv)("approve_version and immutable versions", () => {
     expect(error?.message).toMatch(/reason is required/);
   });
 
+  const ready = (reason = "Ready for the advisor") => as.arun.rpc("mark_ready", { p_workspace: WS, p_reason: reason });
+
   it("creates a version whose items are filtered per role", async () => {
+    expect((await ready()).error).toBeNull();
     const { data, error } = await as.meena.rpc("approve_version", { p_workspace: WS, p_reason: "First handover" });
     expect(error).toBeNull();
     versionId = data as string;
@@ -54,9 +57,11 @@ describe.skipIf(!hasEnv)("approve_version and immutable versions", () => {
   });
 
   it("diffs the next version against the previous one by hash", async () => {
-    const edit = await as.arun.from("obligations").update({ due_text: "by 20 March", review_state: "edited" })
-      .eq("id", O("O2")).select("id");
-    expect(edit.data).toHaveLength(1);
+    const edit = await as.arun.rpc("review_obligation", {
+      p_id: O("O2"), p_action: "edit", p_reason: "Corrected the due date", p_changes: { due_text: "by 20 March" },
+    });
+    expect(edit.error).toBeNull();
+    expect((await ready("Ready again after the correction")).error).toBeNull();
     const { data: v2 } = await as.meena.rpc("approve_version", { p_workspace: WS, p_reason: "Second" });
     const { data } = await as.meena.from("versions").select("number, diff").eq("id", v2 as string).single();
     expect(data?.diff).toMatchObject({ previous_version: versionId, changed: [O("O2")], added: [], removed: [] });
@@ -144,24 +149,38 @@ describe.skipIf(!hasEnv)("release_item", () => {
     expect((await release(as.arun, O("O5"), "obligation", "")).error?.message).toMatch(/reason is required/);
   });
 
-  it("the outgoing lead releases their own private item; it becomes visible and is audited", async () => {
-    expect((await as.kavya.from("obligations").select("id").eq("id", O("O5"))).data).toEqual([]);
+  // The incoming lead reads approved versions, not the working ledger, so a release is seen there.
+  const publish = async () => {
+    expect((await as.arun.rpc("mark_ready", { p_workspace: WS, p_reason: "Ready" })).error).toBeNull();
+    const v = await as.meena.rpc("approve_version", { p_workspace: WS, p_reason: "Approved" });
+    expect(v.error).toBeNull();
+    return v.data as string;
+  };
+  const kavyaSees = async (version: string, obligation: string) =>
+    ((await as.kavya.from("version_items").select("obligation_id").eq("version_id", version).eq("obligation_id", obligation)).data ?? []).length;
+
+  it("the outgoing lead releases their own private item; it reaches the incoming lead in a version, and is audited", async () => {
+    expect((await as.arun.rpc("review_obligation", { p_id: O("O5"), p_action: "accept", p_reason: "Quote checked" })).error).toBeNull();
+    const v = await publish();
+    expect(await kavyaSees(v, O("O5"))).toBe(0);
     expect((await release(as.arun, O("O5"), "obligation", "Kavya should know about this")).error).toBeNull();
-    expect((await as.kavya.from("obligations").select("id").eq("id", O("O5"))).data).toHaveLength(1);
+    expect(await kavyaSees(v, O("O5"))).toBe(1);
+    expect((await as.kavya.from("obligations").select("id").eq("id", O("O5"))).data).toEqual([]);
     const audit = await as.meena.from("audit_log").select("action, reason, actor").eq("obligation_id", O("O5")).eq("action", "release");
     const arunId = (await as.arun.auth.getUser()).data.user!.id;
     expect(audit.data).toEqual([{ action: "release", reason: "Kavya should know about this", actor: arunId }]);
   });
 
-  it("the advisor can release a finance item to the incoming lead", async () => {
-    expect((await as.kavya.from("obligations").select("id").eq("id", O("O3"))).data).toEqual([]);
-    expect((await release(as.meena, O("O3"))).error).toBeNull();
-    expect((await as.kavya.from("obligations").select("id").eq("id", O("O3"))).data).toHaveLength(1);
-    // Context attached to it stays hidden unless released separately.
+  it("the advisor can release a finance item to the incoming lead; its finance note needs its own release", async () => {
+    const v = await publish();
+    const notes = async () => ((await as.kavya.from("version_context_items").select("context_item_id").eq("version_id", v)).data ?? []).map((r) => r.context_item_id);
     const c2 = byKey(CONTEXT_ITEMS, "C2").id;
-    expect((await as.kavya.from("context_items").select("id").eq("id", c2)).data).toEqual([]);
+    expect(await kavyaSees(v, O("O3"))).toBe(0);
+    expect((await release(as.meena, O("O3"))).error).toBeNull();
+    expect(await kavyaSees(v, O("O3"))).toBe(1);
+    expect(await notes()).not.toContain(c2);
     expect((await release(as.meena, c2, "context_item")).error).toBeNull();
-    expect((await as.kavya.from("context_items").select("id").eq("id", c2)).data).toHaveLength(1);
+    expect(await notes()).toContain(c2);
   });
 
   it("releases cannot be written directly", async () => {
@@ -185,14 +204,14 @@ describe.skipIf(!hasEnv)("audit log", () => {
 
   it("every change to an obligation writes actor, action, before and after", async () => {
     const arunId = (await as.arun.auth.getUser()).data.user!.id;
-    const upd = await as.arun.from("obligations").update({ review_state: "rejected" }).eq("id", O("O1")).select("id");
-    expect(upd.data).toHaveLength(1);
+    const rej = await as.arun.rpc("review_obligation", { p_id: O("O1"), p_action: "reject", p_reason: "Not a real duty" });
+    expect(rej.error).toBeNull();
     const { data } = await as.meena.from("audit_log")
-      .select("actor, action, target_type, before, after")
-      .eq("obligation_id", O("O1")).eq("action", "update");
+      .select("actor, action, target_type, reason, before, after")
+      .eq("obligation_id", O("O1")).eq("action", "reject");
     expect(data).toHaveLength(1);
     const row = data![0];
-    expect(row).toMatchObject({ actor: arunId, action: "update", target_type: "obligations" });
+    expect(row).toMatchObject({ actor: arunId, action: "reject", target_type: "obligations", reason: "Not a real duty" });
     expect((row.before as { review_state: string }).review_state).toBe("accepted");
     expect((row.after as { review_state: string }).review_state).toBe("rejected");
   });

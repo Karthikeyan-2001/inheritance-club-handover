@@ -3,11 +3,12 @@ import { Badge } from "@/components/ui/badge";
 import { formatIst } from "@/lib/format";
 import { capitalise } from "@/lib/ledger-view";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { RULING_NOTE, rulingLabel } from "@/lib/review/labels";
 import { TYPE_LABELS } from "./obligation-parts";
 
-type ClaimEvent = { ts: string | null; author: string | null; sources: { filename: string; type: keyof typeof TYPE_LABELS } | null } | null;
+export type ClaimEvent = { ts: string | null; author: string | null; sources: { filename: string; type: keyof typeof TYPE_LABELS } | null } | null;
 
-type Row = {
+export type DocketRow = {
   id: string;
   claim_a_event: string;
   claim_b_event: string;
@@ -24,12 +25,12 @@ type Row = {
   claim_b: ClaimEvent;
 };
 
-const SELECT =
+export const DOCKET_SELECT =
   "id, obligation_id, claim_a_event, claim_b_event, summary, quote_a, quote_b, ruling, reason, ruled_at, origin, created_at, obligations(description, kind), " +
   "claim_a:events!docket_entries_claim_a_event_fkey(ts, author, sources(filename, type)), " +
   "claim_b:events!docket_entries_claim_b_event_fkey(ts, author, sources(filename, type))";
 
-function Claim({ label, quote, event }: { label: string; quote: string | null; event: ClaimEvent }) {
+export function Claim({ label, quote, event }: { label: string; quote: string | null; event: ClaimEvent }) {
   return (
     <div>
       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</p>
@@ -51,9 +52,9 @@ function Claim({ label, quote, event }: { label: string; quote: string | null; e
  */
 export async function Docket({ workspaceId }: { workspaceId: string }) {
   const supabase = await createSupabaseServerClient();
-  const { data, error } = await supabase.from("docket_entries").select(SELECT).eq("workspace_id", workspaceId).order("created_at", { ascending: true });
+  const { data, error } = await supabase.from("docket_entries").select(DOCKET_SELECT).eq("workspace_id", workspaceId).order("created_at", { ascending: true });
   if (error) return <p role="alert">Could not load the docket. Try again in a minute.</p>;
-  const rows = (data ?? []) as unknown as Row[];
+  const rows = (data ?? []) as unknown as DocketRow[];
   if (!rows.length) {
     return (
       <p className="text-sm text-muted-foreground">
@@ -62,7 +63,7 @@ export async function Docket({ workspaceId }: { workspaceId: string }) {
     );
   }
 
-  const groups = new Map<string, { row: Row; items: string[]; ids: string[]; links: { id: string; tab: string; description: string }[] }>();
+  const groups = new Map<string, { row: DocketRow; items: string[]; ids: string[]; links: { id: string; tab: string; description: string }[] }>();
   for (const r of rows) {
     const key = `${r.claim_a_event}|${r.claim_b_event}`;
     const g = groups.get(key) ?? { row: r, items: [], ids: [], links: [] };
@@ -91,8 +92,21 @@ export async function Docket({ workspaceId }: { workspaceId: string }) {
             <Claim label="Says it was done" quote={row.quote_a} event={row.claim_a} />
             <Claim label="Says it was not done" quote={row.quote_b} event={row.claim_b} />
           </div>
-          <p className="mt-2 text-xs text-muted-foreground">
-            {row.ruling ? `Ruling: ${row.ruling}${row.reason ? ` (${row.reason})` : ""}` : "Not ruled yet. The faculty advisor rules on conflicts during review."}
+          <p className="mt-2 text-xs text-muted-foreground" data-testid="docket-ruling">
+            {row.ruling ? (
+              <>
+                Advisor’s ruling: <strong>{rulingLabel(row.ruling)}</strong>
+                {row.reason ? ` (${row.reason})` : ""}. {RULING_NOTE}
+              </>
+            ) : (
+              <>
+                Not ruled yet. The faculty advisor rules on conflicts in{" "}
+                <Link href={`/review?tab=conflicts#docket-${row.id}`} className="underline">
+                  Review
+                </Link>
+                .
+              </>
+            )}
           </p>
           {links.length > 0 && (
             <div className="mt-1 flex flex-col gap-0.5 text-xs">

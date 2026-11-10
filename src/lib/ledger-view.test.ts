@@ -25,6 +25,10 @@ describe("groupLinked", () => {
     expect(g[0]).toEqual({ primary: "a", also: [], possible: ["c"], elsewhere: [] });
     expect(g.map((x) => x.primary)).toEqual(["a", "b", "c", "d"]);
   });
+  it("ignores a reviewer's \"not the same\": no fold, no possible-match note", () => {
+    const g = groupLinked(order, [{ a: "a", b: "c", verdict: "distinct" }]);
+    expect(g.map((x) => [x.primary, x.also, x.possible, x.elsewhere])).toEqual([["a", [], [], []], ["b", [], [], []], ["c", [], [], []], ["d", [], [], []]]);
+  });
   it("ignores links to items the viewer cannot read", () => {
     expect(groupLinked(["a", "b"], [{ a: "a", b: "hidden", verdict: "same" }])).toEqual([
       { primary: "a", also: [], possible: [], elsewhere: [] },

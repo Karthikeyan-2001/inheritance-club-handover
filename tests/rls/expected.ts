@@ -29,28 +29,28 @@ export const EXPECTED: Record<Table, Record<Viewer, string[]>> = {
     meena: range("O", 1, 6),
     arun: range("O", 1, 5),
     divya: ["O1", "O2", "O3"],
-    kavya: ["O1", "O2", "O4"], // O4 is private but released to incoming_lead
-    member: ["O1"],
+    kavya: [], // the incoming lead and members read approved versions, not the working ledger
+    member: [],
   },
   evidence: {
     meena: range("EV", 1, 9),
     arun: range("EV", 1, 8),
     divya: range("EV", 1, 6),
-    kavya: ["EV1", "EV2", "EV3", "EV4", "EV5", "EV7"], // EV7: quote shared via release
-    member: ["EV1", "EV2"],
+    kavya: [],
+    member: [],
   },
   context_items: {
     meena: ["C1", "C2"],
     arun: ["C1", "C2"],
     divya: ["C1", "C2"],
-    kavya: ["C1"],
+    kavya: [],
     member: [],
   },
   docket_entries: {
     meena: ["D1"],
     arun: ["D1"],
     divya: ["D1"],
-    kavya: ["D1"],
+    kavya: [],
     member: [], // one side of the conflict is committee-only
   },
   sealed_items: {

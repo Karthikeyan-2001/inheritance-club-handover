@@ -72,10 +72,20 @@ async function LedgerContent({ searchParams }: { searchParams: PageProps<"/ledge
   const sp = await searchParams;
   const tab: TabKey = sp.tab === "timeline" || sp.tab === "recurring" || sp.tab === "docket" || sp.tab === "gaps" ? sp.tab : "commitments";
   const { role, workspaceId } = viewer.membership;
+  const sealed = (role === "incoming_lead" || role === "member") && tab !== "timeline";
   return (
     <div className="flex flex-col gap-6">
       <Tabs current={tab} />
-      {tab === "timeline" ? (
+      {sealed ? (
+        <div className="flex flex-col items-start gap-3 rounded-md border p-4 text-sm" data-testid="working-ledger-notice">
+          <p>
+            The working ledger is visible to the outgoing committee and the advisor until a version is approved. You see what has been checked and approved.
+          </p>
+          <Button asChild>
+            <Link href="/review?tab=versions">See approved versions</Link>
+          </Button>
+        </div>
+      ) : tab === "timeline" ? (
         <Timeline workspaceId={workspaceId} params={parseTimelineParams(sp)} />
       ) : tab === "docket" ? (
         <>

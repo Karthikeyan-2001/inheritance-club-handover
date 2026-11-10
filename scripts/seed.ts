@@ -90,7 +90,16 @@ async function upsertUsers(admin: Admin, password: string): Promise<Record<DemoU
   return ids;
 }
 
-export async function seed(env: SeedEnv, log: (msg: string) => void = console.log): Promise<Record<DemoUserKey, string>> {
+export type SeedOptions = {
+  /** Mark the accepted draft ready (as the outgoing lead) and approve version 1 (as the advisor). */
+  approveFirst?: boolean;
+};
+
+export async function seed(
+  env: SeedEnv,
+  log: (msg: string) => void = console.log,
+  options: SeedOptions = {},
+): Promise<Record<DemoUserKey, string>> {
   const admin: Admin = createClient<Database>(env.url, env.secretKey, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
@@ -145,6 +154,15 @@ export async function seed(env: SeedEnv, log: (msg: string) => void = console.lo
     quote_a: d.quoteA, quote_b: d.quoteB, summary: d.summary, origin: "rule",
   })), { onConflict: "obligation_id,claim_a_event,claim_b_event" }));
 
+  // Record what each accepted item was accepted with, so a later change to its status or trust
+  // is flagged for re-review. Evidence has now settled trust.
+  const accepted = check("accepted items", await admin.from("obligations").select("id, status, trust_state")
+    .eq("workspace_id", DEMO_WORKSPACE.id).in("review_state", ["accepted", "edited"]));
+  for (const o of accepted ?? []) {
+    check("reviewed baseline", await admin.from("obligations")
+      .update({ reviewed_status: o.status, reviewed_trust: o.trust_state }).eq("id", o.id));
+  }
+
   check("sealed_items", await admin.from("sealed_items").insert(SEALED_ITEMS.map((s) => ({
     id: s.id, workspace_id: DEMO_WORKSPACE.id, obligation_id: byKey(OBLIGATIONS, s.obligation).id,
     holder_role: s.holder_role, topic_label: s.topic_label, approved_by: users[s.approvedBy],
@@ -170,6 +188,24 @@ export async function seed(env: SeedEnv, log: (msg: string) => void = console.lo
     await client.auth.signOut();
   }
 
+  if (options.approveFirst) {
+    const as = async (key: DemoUserKey) => {
+      const user = DEMO_USERS.find((u) => u.key === key);
+      if (!user) throw new Error(`unknown user ${key}`);
+      const client = createClient<Database>(env.url, env.publishableKey, { auth: { persistSession: false, autoRefreshToken: false } });
+      const signIn = await client.auth.signInWithPassword({ email: user.email, password: env.demoPassword });
+      if (signIn.error) throw new Error(`sign in ${user.email}: ${signIn.error.message}`);
+      return client;
+    };
+    check("mark_ready", await (await as("arun")).rpc("mark_ready", {
+      p_workspace: DEMO_WORKSPACE.id, p_reason: "Reviewed the accepted items against their quotes.",
+    }));
+    check("approve_version", await (await as("meena")).rpc("approve_version", {
+      p_workspace: DEMO_WORKSPACE.id, p_reason: "Version 1: the committee's handover, checked with the outgoing lead.",
+    }));
+    log("version 1 approved");
+  }
+
   log(`workspace "${DEMO_WORKSPACE.name}": ${SOURCES.length} sources, ${EVENTS.length} events, ${OBLIGATIONS.length} obligations`);
   return users;
 }
@@ -181,7 +217,7 @@ async function main() {
     throw new Error(`Refusing to seed non-local ${new URL(env.url).host} without --remote.`);
   }
   console.log(`Seeding ${new URL(env.url).host} (synthetic demo data)`);
-  await seed(env);
+  await seed(env, console.log, { approveFirst: true });
   console.log("Done.");
 }
 

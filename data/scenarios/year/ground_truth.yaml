@@ -134,6 +134,8 @@ commitments:
     expectedAccess: finance
     note: Promised in the finance-level minutes; reported in the committee chat on 8 Apr.
     quote: { file: minutes.md, text: "Speaker travel of ₹2,400 to Mr. Ganesan will be reimbursed after he submits bills." }
+    alternates:
+      - { file: minutes.md, text: "Divya to reimburse Mr. Ganesan once the bills arrive." }
     evidence:
       - { relation: fulfils, file: whatsapp-committee.txt, text: "Reimbursed Mr. Ganesan the ₹2,400 for his travel today." }
   - id: C12
@@ -218,7 +220,7 @@ commitments:
     note: In the advisor's private chat only. No other role may see it, or anything from it.
     quote: { file: WhatsApp Chat with Arun.txt, text: "I'll write to the HoD about Karthik's attendance condonation by 30 September." }
     evidence:
-      - { relation: fulfils, file: WhatsApp Chat with Arun.txt, text: "Wrote to the HoD about Karthik's attendance condonation, he approved it." }
+      - { relation: fulfils, file: WhatsApp Chat with Arun.txt, text: "Letter about Karthik's attendance condonation sent to the HoD, he approved it." }
 
 recurring:
   - id: R1

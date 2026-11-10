@@ -20,6 +20,7 @@
       "id": "C2", "owedBy": "Divya", "owedTo": "Mr. R. Ganesan", "deliverable": "Reimburse speaker travel of ₹2,400", "due": null,
       "expectedStatus": "no_evidence", "expectedTrust": "sourced", "expectedAccess": "finance",
       "quote": { "file": "minutes.md", "text": "Speaker travel of ₹2,400 to Mr. R. Ganesan will be reimbursed after he submits bills." },
+      "alternates": [{ "file": "minutes.md", "text": "Divya to reimburse Mr. Ganesan once the bills arrive." }],
       "evidence": []
     },
     {

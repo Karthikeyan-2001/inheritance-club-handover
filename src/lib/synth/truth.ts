@@ -28,6 +28,8 @@ export const TruthSchema = z.object({
       expectedAccess: Access.optional(),
       note: z.string().optional(),
       quote: Quote,
+      /** Other wordings of the same promise (say, an action line in the same minutes); finding any of them finds the item. */
+      alternates: z.array(Quote).default([]),
       /** `inferred`: the record only implies it was done (likely fulfilled, never shown as done). */
       evidence: z.array(Quote.extend({ relation: z.enum(["fulfils", "contradicts"]), inferred: z.boolean().optional() })),
     }),
@@ -60,7 +62,7 @@ export type FileTexts = Record<string, string[]>;
 /** Every quote in the truth, with where it sits in the document. */
 export function allQuotes(t: Truth): { where: string; quote: z.infer<typeof Quote> }[] {
   return [
-    ...t.commitments.flatMap((c) => [{ where: `${c.id} promise`, quote: c.quote }, ...c.evidence.map((e, i) => ({ where: `${c.id} evidence ${i + 1}`, quote: e }))]),
+    ...t.commitments.flatMap((c) => [{ where: `${c.id} promise`, quote: c.quote }, ...c.alternates.map((q, i) => ({ where: `${c.id} alternate ${i + 1}`, quote: q })), ...c.evidence.map((e, i) => ({ where: `${c.id} evidence ${i + 1}`, quote: e }))]),
     ...t.recurring.flatMap((r) => r.quotes.map((q, i) => ({ where: `${r.id} quote ${i + 1}`, quote: q }))),
     ...t.decoys.map((q, i) => ({ where: `decoy ${i + 1}`, quote: q })),
     ...t.contradictions.flatMap((x) => [{ where: `${x.id} claim A`, quote: x.claimA }, { where: `${x.id} claim B`, quote: x.claimB }]),

@@ -181,7 +181,7 @@ chats:
     beats:
       - { at: "2026-09-21 18:05", by: Arun, say: "Ma'am, Karthik told me about his medical leave in confidence. Please keep it between us." }
       - { at: "2026-09-21 18:20", by: Dr. Meena, say: "I'll write to the HoD about Karthik's attendance condonation by 30 September." }
-      - { at: "2026-09-29 11:15", by: Dr. Meena, say: "Wrote to the HoD about Karthik's attendance condonation, he approved it." }
+      - { at: "2026-09-29 11:15", by: Dr. Meena, say: "Letter about Karthik's attendance condonation sent to the HoD, he approved it." }
 
 trello:
   file: trello-board.json

@@ -13,6 +13,7 @@
 
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { DEMO_USERS, isDemoUserKey, type DemoUserKey } from "./demo-users.ts";
+import { insertEmptyClub, insertFrozenClub, type FrozenClub } from "./frozen-club.ts";
 import { finishClub, freshIds, insertClub, memoSignIn, type Db } from "./load-club.ts";
 
 export const SANDBOX_TTL_HOURS = 24 * 7;
@@ -21,6 +22,29 @@ export const MAX_NEW_SANDBOXES_PER_HOUR = 60;
 /** A bookkeeping row with no workspace is left alone this long, so a copy being built is not purged. */
 export const ORPHAN_GRACE_MINUTES = 10;
 export const SANDBOX_NAME = "Demo Club (SYNTHETIC, your copy)";
+
+/**
+ * What a copy starts with:
+ *  - "year": a year of the synthetic IoT club's records and the ledger a real model built from
+ *    them (frozen, so no model call), with version 1 approved and a few items still drafts;
+ *  - "empty": the four people and nothing else, to import the sample files and build it yourself;
+ *  - "toy": the small Phase 1 fixture (9 messages), as in the shared club. Used by the tests.
+ */
+export const CLUB_KINDS = ["year", "empty", "toy"] as const;
+export type ClubKind = (typeof CLUB_KINDS)[number];
+export const isClubKind = (v: unknown): v is ClubKind => typeof v === "string" && (CLUB_KINDS as readonly string[]).includes(v);
+
+export const CLUB_NAMES: Record<ClubKind, string> = {
+  year: "IoT Club, one year (SYNTHETIC, your copy)",
+  empty: "Your club (SYNTHETIC, starts empty)",
+  toy: SANDBOX_NAME,
+};
+
+/** The frozen year club, read only when a copy needs it (it is large). */
+export async function yearClub(): Promise<FrozenClub> {
+  const mod = await import("./year-club.json", { with: { type: "json" } });
+  return mod.default as unknown as FrozenClub;
+}
 export const SANDBOX_COOKIE = "inheritance_demo_copy";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
@@ -107,7 +131,7 @@ export type SandboxDeps = {
   signIn: (key: DemoUserKey, email: string, password: string) => Promise<Db>;
 };
 
-export type Sandbox = { workspaceId: string; expiresAt: Date; users: Record<DemoUserKey, string> };
+export type Sandbox = { workspaceId: string; expiresAt: Date; users: Record<DemoUserKey, string>; club: ClubKind };
 
 async function countActive(admin: Db, now: Date): Promise<{ active: number; lastHour: number }> {
   const active = await admin.from("demo_sandboxes").select("id", { count: "exact", head: true })
@@ -125,7 +149,8 @@ async function countActive(admin: Db, now: Date): Promise<{ active: number; last
  * releases and the sign-off of version 1 as the copy's own users. On failure everything
  * created so far is removed.
  */
-export async function createSandbox(deps: SandboxDeps): Promise<Sandbox> {
+export async function createSandbox(deps: SandboxDeps & { club?: ClubKind }): Promise<Sandbox> {
+  const club = deps.club ?? "toy";
   const now = (deps.now ?? (() => new Date()))();
   const { admin, secret } = deps;
   if (!secret) throw new Error("no secret");
@@ -159,19 +184,29 @@ export async function createSandbox(deps: SandboxDeps): Promise<Sandbox> {
       must("bookkeeping users", await admin.from("demo_sandboxes").update({ user_ids: userIds }).eq("id", workspaceId));
     }
 
-    const ids = freshIds();
-    const target = {
-      workspaceId, name: SANDBOX_NAME, isDemo: false, sandboxExpiresAt: expiresAt.toISOString(), users, ids,
-    };
-    await insertClub(admin, target);
-    must("bookkeeping workspace", await admin.from("demo_sandboxes").update({ workspace_id: workspaceId }).eq("id", workspaceId));
-
+    const target = { workspaceId, name: CLUB_NAMES[club], sandboxExpiresAt: expiresAt.toISOString(), users };
     const as = memoSignIn((key) => {
       const email = sandboxEmail(workspaceId, key);
       return deps.signIn(key, email, sandboxPassword(secret, email));
     });
-    await finishClub(as, target, { approveFirst: true });
-    return { workspaceId, expiresAt, users };
+    if (club === "toy") {
+      const toy = { ...target, isDemo: false, ids: freshIds() };
+      await insertClub(admin, toy);
+      must("bookkeeping workspace", await admin.from("demo_sandboxes").update({ workspace_id: workspaceId }).eq("id", workspaceId));
+      await finishClub(as, toy, { approveFirst: true });
+    } else if (club === "year") {
+      await insertFrozenClub(admin, await yearClub(), target);
+      must("bookkeeping workspace", await admin.from("demo_sandboxes").update({ workspace_id: workspaceId }).eq("id", workspaceId));
+      // Version 1, signed off by the club's own people, so the rules and the audit apply.
+      must("mark_ready", await (await as("arun")).rpc("mark_ready", { p_workspace: workspaceId, p_reason: "Checked the accepted items against their quotes." }));
+      must("approve_version", await (await as("meena")).rpc("approve_version", { p_workspace: workspaceId, p_reason: "Version 1: the committee's handover, checked with the outgoing lead." }));
+    } else {
+      await insertEmptyClub(admin, target);
+      must("bookkeeping workspace", await admin.from("demo_sandboxes").update({ workspace_id: workspaceId }).eq("id", workspaceId));
+    }
+    // The visitor ends up signed in as the copy's outgoing lead whatever it holds.
+    await as("arun");
+    return { workspaceId, expiresAt, users, club };
   } catch (err) {
     await purgeOne(admin, { id: workspaceId, user_ids: userIds }).catch(() => {});
     throw err;

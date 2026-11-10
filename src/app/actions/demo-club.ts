@@ -6,6 +6,7 @@ import {
   SANDBOX_COOKIE,
   SandboxLimitError,
   createSandbox,
+  isClubKind,
   purgeOne,
   readSandboxCookie,
   sandboxEmail,
@@ -18,11 +19,14 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 /**
  * "Load demo club": build the visitor their own copy of the synthetic club and sign them in
- * as its outgoing lead. The visitor's session is the cookie client, which also makes the
+ * as its outgoing lead. The form's `club` chooses what the copy starts with: the built year
+ * club ("year", the default) or nothing at all ("empty", to import the sample files). The visitor's session is the cookie client, which also makes the
  * outgoing lead's release and ready mark; the advisor's approval of version 1 uses a
  * throwaway session. Two sign-ins per copy, because auth sign-ins are rate limited.
  */
-export async function loadDemoClub(): Promise<void> {
+export async function loadDemoClub(form: FormData): Promise<void> {
+  const requested = form.get("club");
+  const club = isClubKind(requested) && requested !== "toy" ? requested : "year";
   const cfg = sandboxConfig();
   if (!cfg) redirect("/login?error=copy-not-configured");
 
@@ -36,6 +40,7 @@ export async function loadDemoClub(): Promise<void> {
   let cookie: { value: string; expiresAt: Date } | null = null;
   try {
     const copy = await createSandbox({
+      club,
       admin,
       secret: cfg.secret,
       signIn: async (key, email, password): Promise<Db> => {
@@ -62,7 +67,7 @@ export async function loadDemoClub(): Promise<void> {
     const { data: old } = await admin.from("demo_sandboxes").select("id, user_ids").eq("id", previous.workspaceId).maybeSingle();
     if (old) await purgeOne(admin, old).catch(() => {}); // otherwise it expires on schedule
   }
-  redirect("/?welcome=copy");
+  redirect(club === "empty" ? "/import?welcome=empty" : "/?welcome=copy");
 }
 
 /** Sign back in to the copy named by the visitor's signed cookie, as its outgoing lead. */

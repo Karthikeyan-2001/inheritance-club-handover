@@ -33,6 +33,16 @@ describe("sentences", () => {
   });
 });
 
+describe("sentences", () => {
+  it("does not end a sentence at a title or an initial", () => {
+    expect(sentences("Returned the tripods to Mr. Dsouza. Prof. Iyer signed. Paid Mr. R. Ganesan today!")).toEqual([
+      "Returned the tripods to Mr. Dsouza.", "Prof. Iyer signed.", "Paid Mr. R. Ganesan today!",
+    ]);
+    expect(sentences("Plan A. Then B.")).toEqual(["Plan A. Then B."]); // a lone capital reads as an initial
+    expect(sentences("Ask Dr.")).toEqual(["Ask Dr."]);
+  });
+});
+
 describe("trigramSimilarity", () => {
   it("is close to pg_trgm for paraphrased duty names", () => {
     expect(trigramSimilarity("Get HoD permission letter before lab booking", "Get the HoD's permission letter before booking the lab")).toBeGreaterThan(0.55);

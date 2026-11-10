@@ -78,6 +78,9 @@ const jaccard = (a: Set<string>, b: Set<string>) => {
 const partyOf = (i: MatchItem) => (i.kind === "commitment" ? i.owedTo : i.approver);
 
 const numbersIn = (text: string) => new Set(text.match(/\d+/g) ?? []);
+const MONTH = /\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\b/gi;
+/** The day numbers and month names in a due date as written ("by 14 November" gives 14 and nov). */
+const dateParts = (text: string) => new Set([...(text.match(/\d+/g) ?? []), ...[...text.matchAll(MONTH)].map((m) => m[1].toLowerCase())]);
 
 const firstTime = (i: MatchItem) => Math.min(...i.sources.map((s) => timeOf(s)), Number.POSITIVE_INFINITY);
 
@@ -87,6 +90,8 @@ export type PairScore = {
   /** The worse of the two; decides whether to link by rule. */
   floor: number;
   numbersDiffer: boolean;
+  /** Both state a due date, and the dates differ: likely two occasions of a repeated task. */
+  dueDiffers: boolean;
   sharedParty: boolean;
   partyConflict: boolean;
   sharedSource: boolean;
@@ -99,6 +104,9 @@ export function scorePair(a: MatchItem, b: MatchItem, aliases: readonly Alias[])
   const na = numbersIn(a.description);
   const nb = numbersIn(b.description);
   const numbersDiffer = na.size > 0 && nb.size > 0 && ([...na].some((n) => !nb.has(n)) || [...nb].some((n) => !na.has(n)));
+  const da = dateParts(a.dueText ?? "");
+  const db = dateParts(b.dueText ?? "");
+  const dueDiffers = da.size > 0 && db.size > 0 && ([...da].some((n) => !db.has(n)) || [...db].some((n) => !da.has(n)));
   const pa = partyTokens(partyOf(a), aliases);
   const pb = partyTokens(partyOf(b), aliases);
   const sharedParty = [...pa].some((t) => pb.has(t));
@@ -111,13 +119,15 @@ export function scorePair(a: MatchItem, b: MatchItem, aliases: readonly Alias[])
     if (Number.isFinite(ta) && Number.isFinite(tb)) withinWindow = Math.abs(ta - tb) <= WINDOW_DAYS * 86_400_000;
   }
   const round = (x: number) => Math.round(x * 1000) / 1000;
-  return { score: round(Math.max(trigram, words)), floor: round(Math.min(trigram, words)), numbersDiffer, sharedParty, partyConflict, sharedSource, withinWindow };
+  return { score: round(Math.max(trigram, words)), floor: round(Math.min(trigram, words)), numbersDiffer, dueDiffers, sharedParty, partyConflict, sharedSource, withinWindow };
 }
 
 /** What to do with a pair: link it by rule, ask the model, or leave it. */
 export function decide(s: PairScore): "rule" | "ask" | null {
   if (!s.withinWindow) return null;
-  if (s.floor >= RULE_SAME && !s.partyConflict && !s.numbersDiffer) return "rule";
+  // A repeated task ("the permission letter, by 14 November" and again "by 31 January") reads
+  // the same; different due dates send the pair to the model, which sees both dates.
+  if (s.floor >= RULE_SAME && !s.partyConflict && !s.numbersDiffer && !s.dueDiffers) return "rule";
   if (s.partyConflict) return s.score >= ASK_PARTY_CONFLICT ? "ask" : null;
   if (s.score >= ASK) return "ask";
   if (s.sharedParty && s.score >= ASK_SHARED_PARTY) return "ask";

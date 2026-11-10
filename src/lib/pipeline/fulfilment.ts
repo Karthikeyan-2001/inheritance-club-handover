@@ -4,7 +4,7 @@
 // time. Status is then derived from the kept evidence alone (status.ts / SQL).
 
 import { z } from "zod";
-import { HEDGE, recordLine, type PipelineEvent } from "./extract.ts";
+import { hedged, recordLine, type PipelineEvent } from "./extract.ts";
 import { byTime, timeOf } from "./related.ts";
 import { contentTokens } from "./text.ts";
 import { noteGrounded, normaliseForQuote, verifyQuote } from "./verify.ts";
@@ -162,7 +162,7 @@ export function postProcessFollowup(
       drop("before_promise");
       continue;
     }
-    if (f.kind !== "not_done" && HEDGE.test(f.quote)) {
+    if (f.kind !== "not_done" && hedged(f.quote, event.text)) {
       drop("non_binding");
       continue;
     }

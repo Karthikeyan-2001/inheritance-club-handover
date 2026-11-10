@@ -10,6 +10,7 @@ files:
   whatsapp-volunteers.txt: { type: whatsapp, accessLevel: everyone }
   trello-board.json: { type: trello, accessLevel: committee }
   minutes.md: { type: minutes, accessLevel: finance }
+  WhatsApp Chat with Arun.txt: { type: whatsapp, accessLevel: private, uploader: meena }
 
 commitments:
   - id: C1
@@ -133,6 +134,8 @@ commitments:
     expectedAccess: finance
     note: Promised in the finance-level minutes; reported in the committee chat on 8 Apr.
     quote: { file: minutes.md, text: "Speaker travel of ₹2,400 to Mr. Ganesan will be reimbursed after he submits bills." }
+    alternates:
+      - { file: minutes.md, text: "Divya to reimburse Mr. Ganesan once the bills arrive." }
     evidence:
       - { relation: fulfils, file: whatsapp-committee.txt, text: "Reimbursed Mr. Ganesan the ₹2,400 for his travel today." }
   - id: C12
@@ -201,11 +204,28 @@ commitments:
     owedTo: Volunteers
     deliverable: Volunteer certificates
     due: 2026-02-28
-    expectedStatus: no_evidence
+    expectedStatus: open
     expectedTrust: null
-    note: Volunteers are still asking in March and April; the Trello card is in To Do.
+    note: >-
+      Volunteers are still asking in April and the Trello card is in To Do. Records say it is not
+      done and none say it is, so by the status rule it is Open. (Corrected in Phase 12: the first
+      truth said no_evidence; the paid eval found the "still waiting" reports.)
     quote: { file: whatsapp-volunteers.txt, text: "I will send the volunteer certificates by 28 February." }
-    evidence: []
+    evidence:
+      - { relation: contradicts, file: whatsapp-volunteers.txt, text: "Still waiting for the volunteer certificates, college asked for them for the NSS hours." }
+      - { relation: contradicts, file: trello-board.json, text: "Volunteers keep asking about these." }
+  - id: C19
+    owedBy: Dr. Meena
+    owedTo: Karthik
+    deliverable: Letter to the HoD about Karthik's attendance condonation
+    due: 2026-09-30
+    expectedStatus: fulfilled
+    expectedTrust: sourced
+    expectedAccess: private
+    note: In the advisor's private chat only. No other role may see it, or anything from it.
+    quote: { file: WhatsApp Chat with Arun.txt, text: "I'll write to the HoD about Karthik's attendance condonation by 30 September." }
+    evidence:
+      - { relation: fulfils, file: WhatsApp Chat with Arun.txt, text: "Letter about Karthik's attendance condonation sent to the HoD, he approved it." }
 
 recurring:
   - id: R1
@@ -275,9 +295,12 @@ contradictions:
     claimA: { file: trello-board.json, text: "Moved card \"Send certificates to workshop speakers\" from \"To Do\" to \"Done\"" }
     claimB: { file: whatsapp-committee.txt, text: "Speakers are still asking for their certificates, nobody has sent them yet." }
 
-# Amounts that belong to the finance level. The leak test (Phase 12) checks that no committee or
-# member view shows them. They may appear only in files at or above `level`.
+# Text that belongs to a restricted level: finance amounts, and the private chat's subject. The
+# leak tests check that no role below `level` can read it anywhere (rows, prompts that write
+# stored text, pages). It may appear only in files at or above `level`.
 restricted:
+  - { level: private, text: "medical leave" }
+  - { level: private, text: "condonation" }
   - { level: finance, text: "₹45,000" }
   - { level: finance, text: "₹41,300" }
   - { level: finance, text: "₹1,500" }

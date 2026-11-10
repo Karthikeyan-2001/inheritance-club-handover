@@ -2,684 +2,665 @@
 [05/01/2026, 9:58:12 am] Priya: ‎Priya created group “Fest Volunteers 2026”
 [05/01/2026, 9:58:13 am] Priya: ‎Priya added Kavya, Sanjay, Lakshmi, Imran, Ananya, Karthik
 [05/01/2026, 10:05:30 am] Priya: Welcome volunteers! Please fill the availability sheet by 10 January.
-[05/01/2026, 11:46:20 am] Ananya: Kav where are you, we are at the parking
-[05/01/2026, 12:44:48 pm] Kavya: Please check the banner design once
-[05/01/2026, 2:47:44 pm] Kavya: Is the main gate open yet?
-[05/01/2026, 4:33:07 pm] Sanjay: Tea break at 5?
-[05/01/2026, 6:11:14 pm] Lakshmi: This message was deleted
+[05/01/2026, 12:44:18 pm] Kavya: Please check the workshop slides once
+[05/01/2026, 2:47:30 pm] Kavya: Is the parking open yet?
+[05/01/2026, 5:11:43 pm] Sanjay: Which gate do we use for the guests?
+[05/01/2026, 5:26:59 pm] Karthik: Bus romba late da
+[05/01/2026, 6:41:24 pm] Lakshmi: Please check the attendance sheet once
 [05/01/2026, 7:00:55 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
 [05/01/2026, 7:13:42 pm] Sanjay: Imran where are you, we are at the canteen
-[05/01/2026, 7:14:01 pm] Lakshmi: Please check the budget sheet once
-[05/01/2026, 8:20:32 pm] Imran: Tea break at noon?
-[05/01/2026, 8:48:52 pm] Kavya: Tea break at 6 pm?
-[05/01/2026, 9:16:15 pm] Ananya: all where are you, we are at the main gate
-[05/01/2026, 11:20:09 pm] Priya: Priya where are you, we are at the seminar hall
-[06/01/2026, 9:15:34 am] Karthik: This message was deleted
-[06/01/2026, 1:02:21 pm] Karthik: Please check the sensor kit once
-[06/01/2026, 4:41:15 pm] Priya: Lanyards are in the box near the parking
+[05/01/2026, 9:15:25 pm] Karthik: Lanyards are in the box near the IoT lab
+[05/01/2026, 10:24:27 pm] Karthik: Is the main gate open yet?
+[05/01/2026, 10:25:02 pm] Sanjay: Reached the canteen
+[06/01/2026, 9:18:41 am] Imran: Which gate do we use for the guests?
+[06/01/2026, 11:59:08 am] Kavya: Tea break at 5?
+[06/01/2026, 1:02:43 pm] Karthik: Please check the attendance sheet once
+[06/01/2026, 2:43:08 pm] Priya: Shift chart is in the sheet, please check your slot
+[06/01/2026, 4:56:21 pm] Sanjay: Shift chart is in the sheet, please check your slot
 [06/01/2026, 4:56:15 pm] Sanjay: Kav where are you, we are at the IoT lab
-[06/01/2026, 5:01:57 pm] Imran: Shift chart is in the sheet, please check your slot
-[06/01/2026, 5:56:29 pm] Imran: Laks where are you, we are at the department office
-[06/01/2026, 6:05:54 pm] Sanjay: Shift chart is in the sheet, please check your slot
-[06/01/2026, 7:53:30 pm] Imran: Please check the sensor kit once
-[06/01/2026, 9:11:31 pm] Karthik: Laks where are you, we are at the library
+[06/01/2026, 9:17:31 pm] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
 [06/01/2026, 10:06:36 pm] Sanjay: <Media omitted>
-[06/01/2026, 10:43:25 pm] Kavya: Tea break at 4?
+[06/01/2026, 10:39:11 pm] Ananya: Kav where are you, we are at the main gate
+[06/01/2026, 10:43:52 pm] Priya: Reached the department office
 [06/01/2026, 11:10:36 pm] Karthik: Lanyards are in the box near the department office
-[07/01/2026, 9:03:12 am] Imran: Is the IoT lab open yet?
-[07/01/2026, 9:20:03 am] Sanjay: Whcih gate do we use for the guests?
-[07/01/2026, 9:42:55 am] Imran: Sanjay where are you, we are at the seminar hall
-[07/01/2026, 10:07:40 am] Ananya: Please check the soldering station once
-[07/01/2026, 1:54:29 pm] Karthik: Tea break at 4?
-[07/01/2026, 2:42:15 pm] Sanjay: Which gate do we use for the guests?
-[07/01/2026, 3:27:52 pm] Sanjay: Which gate do we use for the guests?
-[07/01/2026, 3:37:39 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[07/01/2026, 6:16:22 pm] Ananya: Shift chart is in the sheet, please check your slot
-[07/01/2026, 7:17:32 pm] Sanjay: <Media omitted>
-[07/01/2026, 8:07:43 pm] Karthik: Reached the IoT lab
-[07/01/2026, 10:20:47 pm] Priya: Reahced the canteen
-[08/01/2026, 8:20:02 am] Ananya: Please check the budget sheet once
+[06/01/2026, 11:15:15 pm] Kavya: Shift chart is in the sheet, please check your slot
+[07/01/2026, 8:43:06 am] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
+[07/01/2026, 11:28:30 am] Lakshmi: Lanyards are in the box near the parking
+[07/01/2026, 1:56:39 pm] Kavya: Reached the parking
+[07/01/2026, 2:53:48 pm] Imran: Which gate do we use for the guests?
+[07/01/2026, 3:21:53 pm] Karthik: Tea break at noon?
+[07/01/2026, 4:14:41 pm] Kavya: This message was deleted
+[07/01/2026, 6:37:25 pm] Lakshmi: Please check the sponsor deck once
+[07/01/2026, 8:06:33 pm] Sanjay: Enna da idhu
+[07/01/2026, 8:21:32 pm] Imran: Kav where are you, we are at the canteen
+[07/01/2026, 9:06:59 pm] Priya: Is the library open yet?
+[07/01/2026, 9:08:28 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
+[07/01/2026, 9:19:10 pm] Priya: Which gate do we use for the guests?
+[07/01/2026, 10:38:09 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
 [08/01/2026, 11:24:33 am] Ananya: Which gate do we use for the guests?
-[08/01/2026, 2:17:06 pm] Imran: Reached the IoT lab
-[08/01/2026, 5:06:00 pm] Ananya: Please check the breadboards once
-[08/01/2026, 7:45:51 pm] Sanjay: Bus romba late da
-[08/01/2026, 8:35:23 pm] Karthik: <Media omitted>
-[08/01/2026, 8:41:47 pm] Imran: Aama da, same doubt enakkum
-[08/01/2026, 9:29:06 pm] Lakshmi: Please check the breadboards once
-[08/01/2026, 9:49:56 pm] Lakshmi: Please check the workshop slides once
-[08/01/2026, 10:20:26 pm] Ananya: Tea break at noon?
-[08/01/2026, 11:03:05 pm] Kavya: Reahced the main gate
-[08/01/2026, 11:34:32 pm] Imran: Tea break at 6 pm?
-[09/01/2026, 9:56:11 am] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
-[09/01/2026, 10:35:01 am] Karthik: Please check the poster once
+[08/01/2026, 11:42:50 am] Ananya: Shift chart is in the sheet, please check your slot
+[08/01/2026, 1:47:05 pm] Karthik: Please check the sposnor deck once
+[08/01/2026, 2:30:48 pm] Kavya: Tea break at 7 pm?
+[08/01/2026, 4:25:33 pm] Priya: Shift chart is in the sheet, please check your slot
+[08/01/2026, 6:12:00 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[08/01/2026, 7:14:23 pm] Imran: Semma da
+[08/01/2026, 7:45:29 pm] Sanjay: Bus romba late da
+[08/01/2026, 9:42:29 pm] Kavya: Ananya where are you, we are at the auditorium
+[08/01/2026, 10:44:06 pm] Kavya: Bus romba late da
+[08/01/2026, 10:46:29 pm] Lakshmi: Reached the seminar hall
+[08/01/2026, 11:34:21 pm] Imran: Tea break at 4?
+[09/01/2026, 8:15:49 am] Sanjay: Tea break at noon?
 [09/01/2026, 11:00:00 am] Priya: ‎Priya added Meghna
-[09/01/2026, 11:44:16 am] Sanjay: Please check the soldering station once
-[09/01/2026, 1:34:21 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
-[09/01/2026, 2:05:09 pm] Kavya: Which gate do we use for the guests?
-[09/01/2026, 4:37:07 pm] Priya: Please check the workshop slides once
-[09/01/2026, 5:38:09 pm] Lakshmi: Reached the auditorium
-[09/01/2026, 8:06:07 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
-[09/01/2026, 8:19:57 pm] Imran: Which gate do we use for the guests?
-[09/01/2026, 8:36:50 pm] Karthik: Lanyards are in the box near the department office
-[09/01/2026, 10:12:35 pm] Ananya: Sanjay where are you, we are at the parking
-[09/01/2026, 11:09:21 pm] Karthik: Please check the sponsor deck once
-[09/01/2026, 11:12:38 pm] Sanjay: Aama da, same doubt enakkum
-[10/01/2026, 8:11:50 am] Imran: Please check the budget sheet once
-[10/01/2026, 11:38:18 am] Sanjay: Which gate do we use for the guests?
-[10/01/2026, 11:38:14 am] Kavya: Reached the IoT lab
-[10/01/2026, 1:08:19 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
-[10/01/2026, 2:47:18 pm] Lakshmi: Please check the workshop slides once
-[10/01/2026, 6:15:08 pm] Priya: Tea break at 4?
-[10/01/2026, 6:21:00 pm] Sanjay: Please check the router once
-[10/01/2026, 6:51:57 pm] Ananya: Pri where are you, we are at the seminar hall
-[10/01/2026, 6:56:08 pm] Imran: Please check the router once
+[09/01/2026, 2:14:01 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[09/01/2026, 2:22:50 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[09/01/2026, 6:23:18 pm] Kavya: Tea break at 5?
+[09/01/2026, 7:28:58 pm] Ananya: Shift chart is in the sheet, please check your slot
+[09/01/2026, 9:03:47 pm] Priya: Reached the main gate
+[09/01/2026, 9:09:34 pm] Imran: Kav where are you, we are at the IoT lab
+[09/01/2026, 9:35:15 pm] Ananya: Kav where are you, we are at the IoT lab
+[09/01/2026, 9:44:13 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[09/01/2026, 10:20:05 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[09/01/2026, 10:29:51 pm] Lakshmi: Tea break at 4?
+[09/01/2026, 11:12:03 pm] Sanjay: Is the department office open yet?
+[10/01/2026, 9:18:23 am] Sanjay: Is the libarry open yet?
+[10/01/2026, 10:59:23 am] Imran: Tea berak at 7 pm?
+[10/01/2026, 11:50:41 am] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[10/01/2026, 4:19:55 pm] Imran: Tea break at noon?
 [10/01/2026, 7:15:16 pm] Ananya: Is the main gate open yet?
-[10/01/2026, 9:20:46 pm] Imran: Bus romba late da
-[10/01/2026, 9:26:06 pm] Kavya: Lanyards are in the box near the IoT lab
-[11/01/2026, 10:30:26 am] Ananya: Reached the main gate
-[11/01/2026, 10:55:40 am] Priya: Aama da, same doubt enakkum
-[11/01/2026, 1:17:54 pm] Karthik: Lanyards are in the box near the canteen
-[11/01/2026, 1:28:38 pm] Karthik: Which gate do we use for the guests?
-[11/01/2026, 1:57:17 pm] Lakshmi: Seri da
-[11/01/2026, 2:08:10 pm] Kavya: Shift chart is in the sheet, please check your slot
-[11/01/2026, 2:35:51 pm] Priya: Reached the library
-[11/01/2026, 4:19:43 pm] Sanjay: Is the department office open yet?
-[11/01/2026, 4:49:04 pm] Ananya: Please check the fest schedule once
-[11/01/2026, 6:07:50 pm] Ananya: Tea break at noon?
-[11/01/2026, 6:22:50 pm] Ananya: Shift chart is in the sheet, please check your slot
-[11/01/2026, 9:37:59 pm] Ananya: Lanyrads are in the box near the main gate
-[11/01/2026, 9:40:52 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
-[11/01/2026, 10:33:56 pm] Sanjay: Is the auditorium open yet?
-[11/01/2026, 11:15:35 pm] Lakshmi: Lakshmi where are you, we are at the IoT lab
-[12/01/2026, 9:52:30 am] Imran: Seri da
-[12/01/2026, 11:21:45 am] Imran: Is the IoT lab open yet?
-[12/01/2026, 1:25:22 pm] Priya: Is the parking open yet?
-[12/01/2026, 3:47:58 pm] Lakshmi: Reached the seminar hall
-[12/01/2026, 3:58:42 pm] Priya: Reached the IoT lab
-[12/01/2026, 5:18:09 pm] Priya: Bus romba late da
-[12/01/2026, 6:15:06 pm] Priya: Shift chart is in the sheet, please check your slot
-[12/01/2026, 6:52:22 pm] Imran: Please check the lab schedule once
-[12/01/2026, 7:32:04 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
-[12/01/2026, 10:05:26 pm] Sanjay: Tea break at 4?
-[12/01/2026, 10:53:12 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
-[12/01/2026, 10:58:30 pm] Lakshmi: Tea break at 7 pm?
-[12/01/2026, 11:28:50 pm] Priya: Please check the banner design once
-[13/01/2026, 12:25:49 pm] Karthik: Please check the budget sheet once
-[13/01/2026, 2:35:16 pm] Karthik: Shift chart is in the sheet, please check your slot
-[13/01/2026, 3:50:19 pm] Imran: Machan, lab key yaar kitta irukku?
-[13/01/2026, 4:58:43 pm] Kavya: Tea break at 5?
-[13/01/2026, 5:12:08 pm] Priya: Shift chart is in the sheet, please check your slot
-[13/01/2026, 6:55:27 pm] Lakshmi: This message was deleted
+[10/01/2026, 8:55:09 pm] Imran: Lanyards are in the box near the parking
+[10/01/2026, 9:06:00 pm] Priya: Enna da idhu
+[10/01/2026, 10:46:14 pm] Lakshmi: Tea break at noon?
+[10/01/2026, 10:51:14 pm] Ananya: Enna da idhu
+[10/01/2026, 10:55:16 pm] Sanjay: Is the department office open yet?
+[10/01/2026, 11:03:34 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
+[10/01/2026, 11:09:49 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
+[11/01/2026, 10:40:43 am] Lakshmi: Please check the breadboards once
+[11/01/2026, 1:37:10 pm] Lakshmi: Tea break at 5?
+[11/01/2026, 1:50:04 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[11/01/2026, 2:18:24 pm] Priya: Tea break at 5?
+[11/01/2026, 3:12:13 pm] Karthik: Which gate do we use for the guests?
+[11/01/2026, 4:57:08 pm] Karthik: Which gate do we use for the guests?
+[11/01/2026, 8:39:40 pm] Ananya: Shift chart is in the sheet, please check your slot
+[11/01/2026, 8:57:14 pm] Priya: Shift chart is in the sheet, please check your slot
+[11/01/2026, 9:37:43 pm] Ananya: Lanyards are in the box near the canteen
+[11/01/2026, 10:30:49 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[11/01/2026, 10:49:57 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
+[11/01/2026, 11:20:41 pm] Lakshmi: Is the IoT lab open yet?
+[12/01/2026, 8:31:43 am] Kavya: Reached the seminar hall
+[12/01/2026, 10:06:23 am] Priya: Which gate do we use for the guests?
+[12/01/2026, 11:22:34 am] Karthik: Is the IoT lab open yet?
+[12/01/2026, 12:05:56 pm] Kavya: Which gate do we use for the guests?
+[12/01/2026, 1:27:37 pm] Lakshmi: Lanyards are in the box near the auditorium
+[12/01/2026, 3:53:01 pm] Imran: Kavya where are you, we are at the parking
+[12/01/2026, 4:22:57 pm] Lakshmi: Lanyards are in the box near the IoT lab
+[12/01/2026, 6:15:28 pm] Priya: Reached the auditorium
+[12/01/2026, 6:23:53 pm] Kavya: Reached the seminar hall
+[12/01/2026, 9:27:49 pm] Priya: Reached the seminar hall
+[12/01/2026, 10:54:03 pm] Imran: Which gate do we use for the guests?
+[12/01/2026, 11:07:05 pm] Imran: Which gate do we use for the guests?
+[13/01/2026, 3:46:10 pm] Priya: Tea break at 4?
+[13/01/2026, 4:22:27 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[13/01/2026, 4:58:08 pm] Kavya: Tea break at noon?
+[13/01/2026, 5:00:05 pm] Imran: Which gate do we use for the guests?
+[13/01/2026, 6:45:59 pm] Sanjay: Is the seminar hall open yet?
 [13/01/2026, 7:36:10 pm] Karthik: Shift chart is in the sheet, please check your slot
-[13/01/2026, 7:36:32 pm] Karthik: Reached the canteen
-[13/01/2026, 7:46:09 pm] Sanjay: Which gate do we use for the guests?
 [13/01/2026, 7:54:41 pm] Sanjay: Reached the main gate
 [13/01/2026, 8:10:32 pm] Lakshmi: Sanjay where are you, we are at the library
-[13/01/2026, 10:12:33 pm] Ananya: Romba nalla irukku
-[14/01/2026, 12:13:53 pm] Karthik: all where are you, we are at the seminar hall
-[14/01/2026, 1:07:42 pm] Priya: Tea break at 5?
-[14/01/2026, 3:21:35 pm] Kavya: Shift chart is in the sheet, please check your slot
-[14/01/2026, 3:21:48 pm] Kavya: Is the department office open yet?
-[14/01/2026, 5:33:59 pm] Kavya: Which gate do we use for the guests?
-[14/01/2026, 7:33:14 pm] Lakshmi: Please check the sensor kit once
-[14/01/2026, 7:47:11 pm] Ananya: Seri da
-[14/01/2026, 7:52:58 pm] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
-[14/01/2026, 10:36:06 pm] Karthik: Is the department office open yet?
-[14/01/2026, 10:52:08 pm] Lakshmi: Is the seminar hall open yet?
-[14/01/2026, 11:13:15 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
-[14/01/2026, 11:13:45 pm] Karthik: Bus romba late da
-[15/01/2026, 1:14:05 pm] Karthik: Lanyards are in the box near the parking
-[15/01/2026, 1:50:55 pm] Ananya: Is the IoT lab open yet?
-[15/01/2026, 1:52:44 pm] Lakshmi: Lanyards are in the box near the main gate
-[15/01/2026, 2:09:51 pm] Sanjay: Seri da
-[15/01/2026, 2:50:04 pm] Sanjay: <Media omitted>
-[15/01/2026, 5:58:20 pm] Priya: Which gate do we use for the guests?
-[15/01/2026, 6:08:30 pm] Lakshmi: Shift cahrt is in the sheet, please check your slot
-[15/01/2026, 6:23:09 pm] Priya: Is the IoT lab open yet?
-[15/01/2026, 7:07:04 pm] Sanjay: Shift chart is in the sheet, please check your slot
-[15/01/2026, 10:27:24 pm] Priya: Aama da, same doubt enakkum
-[15/01/2026, 10:52:53 pm] Priya: Lanyards are in the box near the library
-[15/01/2026, 11:32:13 pm] Priya: Shift chart is in the sheet, please check your slot
-[16/01/2026, 9:50:51 am] Sanjay: Lanyards are in the box near the department office
-[16/01/2026, 10:19:25 am] Priya: Please check the attendance sheet once
-[16/01/2026, 12:53:08 pm] Ananya: Shift chart is in the sheet, please check your slot
-[16/01/2026, 1:02:06 pm] Lakshmi: Lanyards are in the box near the department office
-[16/01/2026, 1:56:04 pm] Imran: Please check the budget sheet once
-[16/01/2026, 2:43:28 pm] Karthik: all where are you, we are at the library
-[16/01/2026, 3:11:43 pm] Sanjay: <Media omitted>
-[16/01/2026, 6:32:11 pm] Lakshmi: Tea break at 4?
-[16/01/2026, 6:39:22 pm] Lakshmi: Please check the lab schedule once
-[16/01/2026, 7:21:00 pm] Lakshmi: Is the canteen open yet?
-[16/01/2026, 8:25:36 pm] Kavya: Is the IoT lab open yet?
-[16/01/2026, 10:10:44 pm] Ananya: Reached the library
-[17/01/2026, 9:57:21 am] Sanjay: Bus romba late da
-[17/01/2026, 12:58:18 pm] Ananya: Which gate do we use for the guests?
+[13/01/2026, 9:15:56 pm] Sanjay: Reached the IoT lab
+[13/01/2026, 11:08:24 pm] Lakshmi: Innaiku class illa da
+[13/01/2026, 11:19:02 pm] Sanjay: Tea break at noon?
+[13/01/2026, 11:40:08 pm] Karthik: Romba nalla irukku
+[14/01/2026, 8:11:05 am] Lakshmi: all where are you, we are at the library
+[14/01/2026, 9:03:42 am] Ananya: Which gate do we use for the guests?
+[14/01/2026, 9:36:43 am] Sanjay: Is the canteen open yet?
+[14/01/2026, 1:16:28 pm] Lakshmi: Machan, lab key yaar kitta irukku?
+[14/01/2026, 1:50:17 pm] Priya: Tea break at noon?
+[14/01/2026, 1:59:59 pm] Lakshmi: Reached the department office
+[14/01/2026, 5:38:38 pm] Kavya: Shift chart is in the sheet, please check your slot
+[14/01/2026, 6:05:03 pm] Imran: Shift chart is in the sheet, please check your slot
+[14/01/2026, 8:55:39 pm] Ananya: Tea break at 4?
+[14/01/2026, 9:29:10 pm] Priya: Which gate do we use for the guests?
+[14/01/2026, 9:59:19 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[14/01/2026, 9:59:49 pm] Karthik: Karthik where are you, we are at the department office
+[14/01/2026, 10:15:12 pm] Sanjay: Is the library open yet?
+[15/01/2026, 10:17:53 am] Karthik: Reached the canteen
+[15/01/2026, 10:34:23 am] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
+[15/01/2026, 1:52:58 pm] Lakshmi: Lanyards are in the box near the canteen
+[15/01/2026, 2:46:42 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[15/01/2026, 2:59:48 pm] Priya: Which gate do we use for the guests?
+[15/01/2026, 4:15:05 pm] Priya: Is the department office open yet?
+[15/01/2026, 6:27:53 pm] Imran: all where are you, we are at the canteen
+[15/01/2026, 6:41:30 pm] Imran: Tea break at 4?
+[15/01/2026, 6:58:55 pm] Priya: Romba nalla irukku
+[15/01/2026, 7:22:51 pm] Kavya: Is the canteen open yet?
+[15/01/2026, 8:16:00 pm] Imran: Is the main gate open yet?
+[15/01/2026, 8:59:18 pm] Karthik: Lanyards are in the box near the department office
+[15/01/2026, 9:34:36 pm] Lakshmi: Seri da
+[15/01/2026, 10:03:22 pm] Ananya: Aama da, same duobt enakkum
+[15/01/2026, 10:26:12 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
+[16/01/2026, 10:22:31 am] Lakshmi: <Media omitted>
+[16/01/2026, 10:24:26 am] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[16/01/2026, 11:34:27 am] Priya: Tea break at 7 pm?
+[16/01/2026, 12:26:11 pm] Kavya: Which gate do we use for the guests?
+[16/01/2026, 4:22:11 pm] Lakshmi: Aama da, same doubt enakkum
+[16/01/2026, 5:53:46 pm] Priya: Is the libarry open yet?
+[16/01/2026, 6:44:10 pm] Lakshmi: Which gate do we use for the guests?
+[16/01/2026, 9:18:51 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[16/01/2026, 9:42:22 pm] Imran: <Media omitted>
+[16/01/2026, 9:43:12 pm] Lakshmi: Which gate do we use for the guests?
+[16/01/2026, 9:52:29 pm] Lakshmi: Imran where are you, we are at the canteen
+[16/01/2026, 11:40:56 pm] Karthik: Is the library open yet?
+[17/01/2026, 9:13:11 am] Kavya: Tea break at noon?
 [17/01/2026, 2:39:23 pm] Ananya: Plaese check the sensor kit once
-[17/01/2026, 3:00:34 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[17/01/2026, 3:33:31 pm] Imran: Semma da
 [17/01/2026, 4:10:38 pm] Imran: Which gate do we use for the guests?
-[17/01/2026, 4:13:45 pm] Sanjay: Reached the seminar hall
 [17/01/2026, 5:52:06 pm] Kavya: Romba nalla irukku
-[17/01/2026, 8:00:26 pm] Priya: Reached the seminar hall
-[17/01/2026, 8:38:26 pm] Imran: Kavya where are you, we are at the library
-[17/01/2026, 9:11:09 pm] Priya: Please check the sensor kit once
-[17/01/2026, 10:09:20 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[17/01/2026, 11:07:10 pm] Karthik: Which gate do we use for the guests?
-[18/01/2026, 8:23:15 am] Lakshmi: Is the auditorium open yet?
-[18/01/2026, 10:44:37 am] Ananya: Is the canteen open yet?
-[18/01/2026, 11:48:31 am] Lakshmi: Reached the seminar hall
-[18/01/2026, 2:58:53 pm] Sanjay: Shift chart is in the sheet, please check your slot
-[18/01/2026, 4:34:49 pm] Kavya: Reached the IoT lab
-[18/01/2026, 4:49:02 pm] Karthik: Machan, lab key yaar kitta irukku?
-[18/01/2026, 5:57:05 pm] Ananya: Shift chart is in the sheet, please check your slot
-[18/01/2026, 7:55:06 pm] Kavya: Laynards are in the box near the IoT lab
-[18/01/2026, 8:18:19 pm] Lakshmi: Reached the parking
-[18/01/2026, 9:02:53 pm] Kavya: Reached the department office
-[18/01/2026, 9:38:46 pm] Sanjay: Shift chart is in the sheet, please check your slot
-[18/01/2026, 9:56:14 pm] Kavya: all where are you, we are at the canteen
-[19/01/2026, 9:03:10 am] Priya: Reached the parking
-[19/01/2026, 9:36:55 am] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
-[19/01/2026, 1:10:55 pm] Lakshmi: Reached the seminar hall
-[19/01/2026, 1:16:51 pm] Lakshmi: Shift chart is in the sheet, please check your slot
-[19/01/2026, 2:13:59 pm] Kavya: Lanyards are in the box near the main gate
-[19/01/2026, 2:55:27 pm] Karthik: Please check the poster once
-[19/01/2026, 6:36:48 pm] Kavya: Innaiku class illa da
-[19/01/2026, 7:24:50 pm] Karthik: Lanyards are in the box near the IoT lab
-[19/01/2026, 8:55:44 pm] Ananya: Bus romba late da
-[19/01/2026, 9:21:07 pm] Karthik: Lanyards are in the box near the department office
-[19/01/2026, 9:41:19 pm] Ananya: Tea break at 6 pm?
-[19/01/2026, 9:47:51 pm] Imran: Shift chart is in the sheet, please check your slot
-[19/01/2026, 11:20:43 pm] Kavya: Is the auditorium open yet?
-[20/01/2026, 9:28:54 am] Priya: Please check the sponsor deck once
-[20/01/2026, 10:38:18 am] Karthik: Lanyards are in the box near the seminar hall
-[20/01/2026, 1:22:48 pm] Lakshmi: Is the main gate open yet?
+[17/01/2026, 6:37:07 pm] Kavya: Tea break at 4?
+[17/01/2026, 7:06:48 pm] Ananya: Lanyards are in the box near the seminar hall
+[17/01/2026, 8:04:20 pm] Priya: Which gate do we use for the guests?
+[17/01/2026, 9:12:06 pm] Imran: Please check the sensor kit once
+[17/01/2026, 10:20:47 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
+[17/01/2026, 10:34:18 pm] Kavya: Innaiku clsas illa da
+[17/01/2026, 11:07:47 pm] Karthik: Which gate do we use for the guests?
+[18/01/2026, 10:11:57 am] Sanjay: Lanyards are in the box near the auditorium
+[18/01/2026, 3:26:54 pm] Sanjay: Reached the seminar hall
+[18/01/2026, 3:34:51 pm] Sanjay: Kar where are you, we are at the department office
+[18/01/2026, 3:41:58 pm] Ananya: Lanyards are in the box near the canteen
+[18/01/2026, 3:45:28 pm] Imran: Lanyards are in the box near the library
+[18/01/2026, 6:20:58 pm] Priya: Is the seminar hall open yet?
+[18/01/2026, 7:12:22 pm] Kavya: Reached the department office
+[18/01/2026, 7:46:38 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[18/01/2026, 8:01:22 pm] Sanjay: Aama da, same doubt enakkum
+[18/01/2026, 9:22:30 pm] Priya: Reached the main gate
+[18/01/2026, 9:27:23 pm] Ananya: Kavya where are you, we are at the main gate
+[18/01/2026, 9:40:40 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[18/01/2026, 10:24:47 pm] Lakshmi: Which gate do we use for the guests?
+[19/01/2026, 9:31:18 am] Priya: Lanyards are in the box near the IoT lab
+[19/01/2026, 9:50:56 am] Sanjay: Tea break at noon?
+[19/01/2026, 4:41:49 pm] Ananya: Imran where are you, we are at the library
+[19/01/2026, 5:48:52 pm] Kavya: Reached the seminar hall
+[19/01/2026, 6:21:27 pm] Ananya: Which gate do we use for the guests?
+[19/01/2026, 6:52:17 pm] Sanjay: Please check the breadboards once
+[19/01/2026, 7:11:33 pm] Kavya: Please check the attendance sheet once
+[19/01/2026, 8:06:40 pm] Priya: Lanyards are in the box near the parking
+[19/01/2026, 10:18:05 pm] Karthik: Tea break at 6 pm?
+[19/01/2026, 10:31:19 pm] Kavya: Lanyards are in the box near the main gate
+[19/01/2026, 10:50:48 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[19/01/2026, 11:34:40 pm] Ananya: Which gate do we use for the guests?
+[20/01/2026, 10:44:38 am] Priya: Sanjay where are you, we are at the IoT lab
+[20/01/2026, 2:39:32 pm] Karthik: Reached the seminar hall
+[20/01/2026, 3:31:24 pm] Sanjay: Tea break at 6 pm?
+[20/01/2026, 3:42:28 pm] Karthik: Reached the library
+[20/01/2026, 3:43:13 pm] Ananya: Lanyards are in the box near the seminar hall
+[20/01/2026, 5:20:37 pm] Lakshmi: Please check the sponsor deck once
+[20/01/2026, 5:43:08 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
 [20/01/2026, 6:00:30 pm] Sanjay: I'll bring the extension boards for the fest hall.
 [20/01/2026, 6:03:30 pm] Lakshmi: I'll handle the registration desk on the day.
 [20/01/2026, 6:07:30 pm] Ananya: I'll get the snacks for the volunteers.
-[20/01/2026, 7:32:50 pm] Ananya: Reached the library
-[20/01/2026, 8:24:40 pm] Priya: Is the library open yet?
-[20/01/2026, 8:28:21 pm] Priya: all where are you, we are at the auditorium
-[20/01/2026, 8:45:31 pm] Ananya: Tea break at 4?
-[20/01/2026, 9:20:44 pm] Imran: Which gate do we use for the guests?
-[20/01/2026, 9:38:12 pm] Imran: <Media omitted>
-[20/01/2026, 9:56:22 pm] Lakshmi: Which gate do we use for the guests?
-[20/01/2026, 11:09:02 pm] Sanjay: Shift chart is in the sheet, please check your slot
-[20/01/2026, 11:24:29 pm] Imran: Tea break at noon?
-[21/01/2026, 9:53:19 am] Priya: Please check the sensor kit once
-[21/01/2026, 10:24:56 am] Karthik: Karthik where are you, we are at the department office
-[21/01/2026, 1:12:35 pm] Priya: Pelase check the banner design once
-[21/01/2026, 1:42:47 pm] Priya: Romba nalla irukku
-[21/01/2026, 4:46:02 pm] Kavya: Please check the budget sheet once
-[21/01/2026, 6:41:36 pm] Ananya: Shift chart is in the sheet, please check your slot
-[21/01/2026, 7:24:19 pm] Imran: Pri where are you, we are at the auditorium
-[21/01/2026, 8:40:13 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[21/01/2026, 8:55:20 pm] Sanjay: Which gate do we use for the guests?
-[21/01/2026, 9:46:34 pm] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
-[21/01/2026, 10:31:49 pm] Imran: Aama da, same doubt enakkum
-[21/01/2026, 11:07:30 pm] Kavya: Please check the poster once
-[22/01/2026, 8:50:25 am] Karthik: Which gate do we use for the guests?
-[22/01/2026, 12:37:36 pm] Priya: Shift chart is in the sheet, please check your slot
-[22/01/2026, 1:09:44 pm] Kavya: Lanyards are in the box near the canteen
-[22/01/2026, 2:12:23 pm] Priya: Reached the IoT lab
-[22/01/2026, 3:50:37 pm] Lakshmi: Shift chart is in the sheet, please check your slot
-[22/01/2026, 5:04:26 pm] Sanjay: Enna da idhu
-[22/01/2026, 5:24:14 pm] Ananya: Is the auditorium open yet?
-[22/01/2026, 5:43:42 pm] Karthik: Reached the department office
-[22/01/2026, 5:50:18 pm] Lakshmi: Please check the sensor kit once
-[22/01/2026, 6:15:37 pm] Imran: Reached the main gate
-[22/01/2026, 6:25:40 pm] Imran: Which gate do we use for the guests?
-[22/01/2026, 6:49:42 pm] Imran: Which gate do we use for the guests?
-[22/01/2026, 8:49:17 pm] Sanjay: Shift chart is in the sheet, please check your slot
-[22/01/2026, 9:18:51 pm] Imran: Lanyards are in the box near the main gate
-[23/01/2026, 8:00:58 am] Imran: Is the canteen open yet?
-[23/01/2026, 11:51:23 am] Kavya: all where are you, we are at the auditorium
-[23/01/2026, 12:40:45 pm] Ananya: Please check the breadboards once
-[23/01/2026, 1:20:40 pm] Lakshmi: Kav where are you, we are at the parking
-[23/01/2026, 1:54:51 pm] Imran: Reached the parking
-[23/01/2026, 2:28:32 pm] Kavya: Which gate do we use for the guests?
-[23/01/2026, 2:32:37 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
-[23/01/2026, 2:46:03 pm] Sanjay: Which gate do we use for the guests?
-[23/01/2026, 7:55:44 pm] Lakshmi: Please check the budget sheet once
-[23/01/2026, 9:26:57 pm] Lakshmi: all where are you, we are at the department office
-[23/01/2026, 10:45:59 pm] Sanjay: Shift chart is in the sheet, please check your slot
-[23/01/2026, 11:28:28 pm] Ananya: Karthik where are you, we are at the seminar hall
-[24/01/2026, 9:27:32 am] Lakshmi: Shift chart is in the sheet, please check your slot
-[24/01/2026, 9:36:41 am] Imran: Walkie-talkies need charging, anyone know where the chargers are?
-[24/01/2026, 10:29:51 am] Ananya: Is the IoT lab open yet?
-[24/01/2026, 3:03:54 pm] Ananya: Shift chart is in the sheet, please check your slot
-[24/01/2026, 3:06:35 pm] Karthik: Tea break at 6 pm?
-[24/01/2026, 4:45:37 pm] Sanjay: Reached the library
-[24/01/2026, 6:03:07 pm] Karthik: Lanyards are in the box near the parking
-[24/01/2026, 7:34:01 pm] Priya: Imran where are you, we are at the library
-[24/01/2026, 8:43:48 pm] Lakshmi: Tea break at 4?
-[24/01/2026, 9:28:24 pm] Kavya: all where are you, we are at the auditorium
-[24/01/2026, 9:41:47 pm] Sanjay: Tea break at 6 pm?
-[24/01/2026, 10:42:06 pm] Kavya: Shift chart is in the sheet, please check your slot
-[25/01/2026, 8:12:30 am] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
-[25/01/2026, 9:41:37 am] Sanjay: Lanyards are in the box near the IoT lab
-[25/01/2026, 12:02:15 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
-[25/01/2026, 1:51:58 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[25/01/2026, 2:46:10 pm] Imran: Innaiku class illa da
-[25/01/2026, 5:57:54 pm] Priya: Shift chart is in the sheet, please check your slot
-[25/01/2026, 6:33:34 pm] Karthik: Innaiku class illa da
-[25/01/2026, 7:21:50 pm] Karthik: Reached the library
-[25/01/2026, 7:37:38 pm] Karthik: Which gate do we use for the guests?
-[25/01/2026, 8:00:21 pm] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
-[25/01/2026, 9:10:42 pm] Karthik: Seri da
-[25/01/2026, 10:28:41 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
-[26/01/2026, 8:50:41 am] Priya: Reached the parking
-[26/01/2026, 12:37:00 pm] Sanjay: Is the library open yet?
-[26/01/2026, 1:17:17 pm] Ananya: Is the department office open yet?
-[26/01/2026, 3:44:30 pm] Priya: <Media omitted>
-[26/01/2026, 3:46:44 pm] Sanjay: Reached the main gate
-[26/01/2026, 4:33:00 pm] Imran: <Media omitted>
-[26/01/2026, 7:21:19 pm] Priya: Please check the sponsor deck once
-[26/01/2026, 9:39:55 pm] Imran: <Media omitted>
-[26/01/2026, 10:21:21 pm] Lakshmi: Machan, lab key yaar kitta irukku?
-[26/01/2026, 10:31:03 pm] Priya: Karthik where are you, we are at the canteen
-[26/01/2026, 10:36:51 pm] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
-[26/01/2026, 11:23:56 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
-[27/01/2026, 10:53:50 am] Karthik: Is the seminar hall open yet?
-[27/01/2026, 11:03:05 am] Ananya: Please check the breadboards once
-[27/01/2026, 1:15:20 pm] Sanjay: Reached the canteen
-[27/01/2026, 3:41:25 pm] Karthik: Tea break at 6 pm?
-[27/01/2026, 4:29:07 pm] Sanjay: Shift chart is in the sheet, please check your slot
-[27/01/2026, 6:33:44 pm] Karthik: Semma da
-[27/01/2026, 8:07:09 pm] Sanjay: <Media omitted>
-[27/01/2026, 8:19:24 pm] Priya: Shift chart is in the sheet, please check your slot
-[27/01/2026, 8:22:56 pm] Priya: <Media omitted>
-[27/01/2026, 9:47:32 pm] Ananya: Please check the poster once
-[27/01/2026, 11:04:35 pm] Ananya: all wehre are you, we are at the main gate
-[27/01/2026, 11:33:21 pm] Ananya: Seri da
-[28/01/2026, 2:28:50 pm] Lakshmi: <Media omitted>
-[28/01/2026, 2:43:30 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
-[28/01/2026, 2:55:56 pm] Sanjay: Pri where are you, we are at the seminar hall
-[28/01/2026, 3:21:17 pm] Ananya: Which gate do we use for the guests?
-[28/01/2026, 7:09:56 pm] Sanjay: all where are you, we are at the department office
-[28/01/2026, 8:07:50 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[28/01/2026, 9:10:54 pm] Kavya: Lanyards are in the box near the department office
-[28/01/2026, 10:26:50 pm] Imran: Is the parking open yet?
-[28/01/2026, 10:28:19 pm] Karthik: Is the department office open yet?
-[28/01/2026, 10:32:20 pm] Ananya: Reached the canteen
-[28/01/2026, 11:15:22 pm] Imran: Tea break at 6 pm?
-[28/01/2026, 11:25:56 pm] Karthik: Is the main gate open yet?
-[29/01/2026, 12:53:33 pm] Kavya: Which gate do we use for the guests?
-[29/01/2026, 1:49:29 pm] Lakshmi: <Media omitted>
-[29/01/2026, 2:31:03 pm] Imran: Lanyards are in the box near the main gate
-[29/01/2026, 2:51:40 pm] Karthik: Lanyards are in the box near the parking
-[29/01/2026, 6:23:45 pm] Imran: Reached the seminar hall
-[29/01/2026, 6:46:07 pm] Karthik: Reached the main gate
-[29/01/2026, 7:09:49 pm] Lakshmi: Shift chart is in the sheet, please check your slot
-[29/01/2026, 8:34:18 pm] Sanjay: Reached the canteen
-[29/01/2026, 9:13:10 pm] Sanjay: Whcih gate do we use for the guests?
-[29/01/2026, 10:27:07 pm] Karthik: Is the parking open yet?
-[29/01/2026, 11:13:13 pm] Ananya: Enna da idhu
-[29/01/2026, 11:38:32 pm] Lakshmi: Which gate do we use for the guests?
-[30/01/2026, 9:18:49 am] Sanjay: Please check the budget sheet once
-[30/01/2026, 9:31:20 am] Priya: Tea break at noon?
-[30/01/2026, 12:19:40 pm] Sanjay: Shift chart is in the sheet, please check your slot
-[30/01/2026, 2:55:09 pm] Imran: Is the auditorium open yet?
-[30/01/2026, 4:48:12 pm] Sanjay: Lanyards are in the box near the parking
-[30/01/2026, 7:15:57 pm] Karthik: Is the library open yet?
-[30/01/2026, 7:39:44 pm] Ananya: all where are you, we are at the canteen
-[30/01/2026, 8:38:35 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
-[30/01/2026, 8:57:20 pm] Ananya: Sanjay where are you, we are at the department office
-[30/01/2026, 9:21:30 pm] Karthik: Lanyards are in the box near the department office
-[30/01/2026, 9:55:48 pm] Karthik: Please check the banner design once
-[30/01/2026, 11:20:58 pm] Lakshmi: Is the canteen open yet?
-[31/01/2026, 1:31:45 pm] Ananya: Please check the breadboards once
-[31/01/2026, 1:52:27 pm] Lakshmi: Shift chart is in the sheet, please check your slot
-[31/01/2026, 6:09:28 pm] Priya: all where are you, we are at the IoT lab
-[31/01/2026, 6:33:32 pm] Ananya: Semma da
-[31/01/2026, 6:51:24 pm] Kavya: Seri da
-[31/01/2026, 7:11:32 pm] Lakshmi: Shift chart is in the sheet, please check your slot
-[31/01/2026, 8:42:35 pm] Ananya: Please check the sponsor deck once
-[31/01/2026, 9:09:51 pm] Ananya: Please check the router once
-[31/01/2026, 9:56:18 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
-[31/01/2026, 10:20:17 pm] Priya: all where are you, we are at the auditorium
-[31/01/2026, 10:39:44 pm] Karthik: Reached the main gate
-[31/01/2026, 11:12:42 pm] Karthik: Shift chart is in the sheet, please check your slot
-[31/01/2026, 11:19:16 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[01/02/2026, 8:45:49 am] Sanjay: Is the parking open yet?
-[01/02/2026, 10:38:39 am] Sanjay: Lanyards are in the box near the canteen
-[01/02/2026, 12:45:53 pm] Kavya: Innaiku class illa da
-[01/02/2026, 12:54:55 pm] Karthik: Which gate do we use for the guests?
-[01/02/2026, 1:57:19 pm] Imran: Tea break at 4?
-[01/02/2026, 4:53:01 pm] Karthik: Anu where are you, we are at the parking
-[01/02/2026, 9:08:51 pm] Kavya: Reached the library
-[01/02/2026, 10:08:55 pm] Lakshmi: Shift chart is in the sheet, please check your slot
-[01/02/2026, 11:03:22 pm] Lakshmi: Reached the department office
-[01/02/2026, 11:06:09 pm] Imran: Reached the library
-[02/02/2026, 8:31:35 am] Lakshmi: Is the department office open yet?
-[02/02/2026, 4:22:56 pm] Ananya: Is the IoT lab open yet?
-[02/02/2026, 4:39:00 pm] Imran: Bus romba late da
-[02/02/2026, 5:55:27 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
-[02/02/2026, 7:06:57 pm] Imran: Shift chart is in the sheet, please check your slot
-[02/02/2026, 9:07:00 pm] Kavya: Reached the library
-[02/02/2026, 10:41:47 pm] Kavya: Semma da
-[02/02/2026, 10:47:50 pm] Priya: Pri where are you, we are at the IoT lab
-[02/02/2026, 10:55:01 pm] Imran: Reached the IoT lab
-[02/02/2026, 11:00:50 pm] Kavya: Reached the main gate
-[03/02/2026, 12:10:55 pm] Karthik: Is the auditorium open yet?
-[03/02/2026, 4:34:34 pm] Karthik: Please check the attendance sheet once
-[03/02/2026, 5:02:33 pm] Lakshmi: Reached the auditorium
-[03/02/2026, 6:14:35 pm] Kavya: Is the auditorium open yet?
-[03/02/2026, 6:48:33 pm] Ananya: Tea break at 7 pm?
-[03/02/2026, 7:15:50 pm] Priya: Tea break at 4?
-[03/02/2026, 9:32:32 pm] Imran: Reached the canteen
-[03/02/2026, 10:29:12 pm] Karthik: Tea break at 7 pm?
-[03/02/2026, 10:31:41 pm] Lakshmi: Is the auditorium open yet?
-[03/02/2026, 10:52:42 pm] Karthik: Which gate do we use for the guests?
-[03/02/2026, 11:22:05 pm] Karthik: Which gate do we use for the guests?
-[04/02/2026, 1:19:23 pm] Lakshmi: Tea break at noon?
-[04/02/2026, 3:26:33 pm] Lakshmi: Priya where are you, we are at the library
-[04/02/2026, 4:21:50 pm] Lakshmi: Reached the main gate
-[04/02/2026, 4:29:56 pm] Kavya: Which gate do we use for the guests?
-[04/02/2026, 5:38:53 pm] Kavya: Which gate do we use for the guests?
-[04/02/2026, 6:05:56 pm] Ananya: Reacehd the library
-[04/02/2026, 7:23:20 pm] Ananya: Kavya where are you, we are at the parking
-[04/02/2026, 7:38:41 pm] Lakshmi: Is the department office open yet?
-[04/02/2026, 8:28:26 pm] Kavya: Is the department office open yet?
-[04/02/2026, 9:55:19 pm] Ananya: Lanyards are in the box near the seminar hall
-[05/02/2026, 9:17:15 am] Imran: Which gate do we use for the guests?
-[05/02/2026, 1:49:04 pm] Kavya: Shift chart is in the sheet, please check your slot
-[05/02/2026, 1:56:39 pm] Karthik: Reached the department office
-[05/02/2026, 2:29:46 pm] Priya: Tea break at 7 pm?
-[05/02/2026, 4:30:31 pm] Imran: Innaiku class illa da
-[05/02/2026, 4:31:14 pm] Kavya: Is the seminar hall open yet?
-[05/02/2026, 5:01:58 pm] Imran: Reached the main gate
-[05/02/2026, 6:30:21 pm] Karthik: Reached the department office
-[05/02/2026, 7:40:47 pm] Sanjay: Please check the router once
-[05/02/2026, 8:54:32 pm] Karthik: Tea break at 5?
-[05/02/2026, 8:57:15 pm] Priya: Tea break at 5?
-[06/02/2026, 8:03:10 am] Karthik: Shift chart is in the sheet, please check your slot
-[06/02/2026, 9:29:44 am] Karthik: Please check the budget sheet once
-[06/02/2026, 1:25:20 pm] Sanjay: Tea break at 7 pm?
-[06/02/2026, 1:37:30 pm] Lakshmi: Is the main gate open yet?
-[06/02/2026, 3:55:28 pm] Sanjay: Which gate do we use for the guests?
-[06/02/2026, 5:12:18 pm] Lakshmi: Is the department office open yet?
-[06/02/2026, 7:27:33 pm] Sanjay: Enna da idhu
-[06/02/2026, 8:33:15 pm] Imran: Please check the breadboards once
-[06/02/2026, 9:02:29 pm] Karthik: Tea break at 7 pm?
-[06/02/2026, 10:10:56 pm] Priya: Which gate do we use for the guests?
-[06/02/2026, 10:16:06 pm] Priya: Innaiku class illa da
-[06/02/2026, 10:39:01 pm] Priya: Is the parking open yet?
-[06/02/2026, 11:16:45 pm] Imran: Which gate do we use for the guests?
-[07/02/2026, 11:24:09 am] Kavya: Tea break at 7 pm?
-[07/02/2026, 1:09:21 pm] Priya: Reached the IoT lab
-[07/02/2026, 1:19:56 pm] Karthik: Lanyards are in the box near the main gate
-[07/02/2026, 1:52:19 pm] Priya: Lanyards are in the box near the department office
-[07/02/2026, 1:53:30 pm] Priya: Lanyards are in the box near the department office
-[07/02/2026, 3:15:25 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[07/02/2026, 3:26:53 pm] Lakshmi: all where are you, we are at the auditorium
-[07/02/2026, 5:50:55 pm] Lakshmi: Please check the budget sheet once
-[07/02/2026, 7:12:13 pm] Sanjay: Please check the sensor kit once
-[07/02/2026, 7:49:50 pm] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
-[07/02/2026, 10:02:45 pm] Lakshmi: Shift chart is in the sheet, please check your slot
-[08/02/2026, 2:57:07 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
-[08/02/2026, 3:19:07 pm] Karthik: Reached the seminar hall
-[08/02/2026, 4:08:53 pm] Priya: Lakshmi where are you, we are at the IoT lab
-[08/02/2026, 5:07:22 pm] Karthik: Shift chart is in the sheet, please check your slot
+[20/01/2026, 6:41:36 pm] Ananya: Shift chart is in the sheet, please check your slot
+[20/01/2026, 7:11:45 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
+[20/01/2026, 8:18:43 pm] Sanjay: Please check the budget sheet once
+[20/01/2026, 11:24:38 pm] Sanjay: Please check the poster once
+[20/01/2026, 11:37:03 pm] Kavya: Is the catneen open yet?
+[21/01/2026, 8:26:05 am] Karthik: This message was deleted
+[21/01/2026, 1:10:54 pm] Priya: Please check the soldering station once
+[21/01/2026, 1:20:11 pm] Imran: Innaiku class illa da
+[21/01/2026, 5:19:45 pm] Karthik: Please check the banner design once
+[21/01/2026, 6:41:36 pm] Imran: Kar where are you, we are at the seminar hall
+[21/01/2026, 6:55:19 pm] Karthik: Tea break at noon?
+[21/01/2026, 7:21:48 pm] Lakshmi: Please check the attendance sehet once
+[21/01/2026, 7:31:55 pm] Priya: <Media omitted>
+[21/01/2026, 8:49:15 pm] Sanjay: Shift chart is in the sheet, please check your slot
+[21/01/2026, 9:11:56 pm] Karthik: Lanyards are in the box near the library
+[21/01/2026, 9:20:46 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
+[21/01/2026, 11:14:33 pm] Imran: Whcih gate do we use for the guests?
+[22/01/2026, 11:22:26 am] Kavya: Bus romba late da
+[22/01/2026, 11:51:41 am] Kavya: all where are you, we are at the department office
+[22/01/2026, 1:07:40 pm] Priya: Is the auditorium open yet?
+[22/01/2026, 3:27:16 pm] Karthik: Tea break at 4?
+[22/01/2026, 4:31:03 pm] Priya: Is the seminar hall open yet?
+[22/01/2026, 4:45:43 pm] Lakshmi: Tea break at 4?
+[22/01/2026, 5:18:34 pm] Karthik: Is the canteen open yet?
+[22/01/2026, 5:56:54 pm] Lakshmi: Pri where are you, we are at the library
+[22/01/2026, 7:22:35 pm] Kavya: Which gate do we use for the guests?
+[22/01/2026, 8:01:28 pm] Imran: Aama da, same doubt enkakum
+[22/01/2026, 10:02:44 pm] Imran: Lanyards are in the box near the IoT lab
+[22/01/2026, 11:30:32 pm] Sanjay: Shift chart is in the sheet, please check your slot
+[22/01/2026, 11:39:47 pm] Priya: Bus romba late da
+[23/01/2026, 11:29:19 am] Kavya: Reached the auditorium
+[23/01/2026, 2:23:25 pm] Lakshmi: Enna da idhu
+[23/01/2026, 2:34:40 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[23/01/2026, 2:45:17 pm] Lakshmi: Reached the seminar hall
+[23/01/2026, 3:28:52 pm] Priya: Lanyards are in the box near the seminar hall
+[23/01/2026, 8:01:11 pm] Imran: Is the auditorium open yet?
+[23/01/2026, 8:32:40 pm] Ananya: Tea break at 6 pm?
+[23/01/2026, 8:53:42 pm] Ananya: Is the IoT lab open yet?
+[23/01/2026, 9:52:52 pm] Lakshmi: Is the auditorium open yet?
+[23/01/2026, 10:58:08 pm] Ananya: Please check the fest schedule once
+[23/01/2026, 11:10:36 pm] Sanjay: Which gate do we use for the guests?
+[23/01/2026, 11:30:26 pm] Imran: all where are you, we are at the main gate
+[24/01/2026, 9:08:33 am] Imran: Tea break at 7 pm?
+[24/01/2026, 11:09:48 am] Lakshmi: Please check the workshop slides once
+[24/01/2026, 1:47:50 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[24/01/2026, 4:55:24 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
+[24/01/2026, 6:19:48 pm] Ananya: Tea break at 6 pm?
+[24/01/2026, 6:41:53 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
+[24/01/2026, 7:00:35 pm] Priya: Tea break at 6 pm?
+[24/01/2026, 7:41:26 pm] Lakshmi: Which gate do we use for the guests?
+[24/01/2026, 8:42:37 pm] Kavya: Is the main gate open yet?
+[24/01/2026, 10:01:22 pm] Sanjay: Please check the budget sheet once
+[24/01/2026, 10:43:46 pm] Kavya: Reached the library
+[24/01/2026, 11:38:10 pm] Imran: Is the main gate open yet?
+[25/01/2026, 8:50:14 am] Priya: Reached the IoT lab
+[25/01/2026, 10:32:19 am] Karthik: Shift chart is in the sheet, please check your slot
+[25/01/2026, 3:03:38 pm] Kavya: Lanyards are in the box near the seminar hall
+[25/01/2026, 3:44:30 pm] Priya: <Media omitted>
+[25/01/2026, 4:22:25 pm] Karthik: Tea berak at 4?
+[25/01/2026, 6:25:38 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
+[25/01/2026, 8:11:40 pm] Priya: Is the seminar hall open yet?
+[25/01/2026, 9:12:10 pm] Priya: Shift chart is in the sheet, please check your slot
+[25/01/2026, 9:39:55 pm] Imran: <Media omitted>
+[25/01/2026, 10:34:43 pm] Karthik: Tea break at 5?
+[25/01/2026, 11:13:24 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
+[25/01/2026, 11:23:56 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[26/01/2026, 11:45:01 am] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[26/01/2026, 12:16:01 pm] Sanjay: Lanyards are in the box near the main gate
+[26/01/2026, 12:42:03 pm] Lakshmi: Sajnay where are you, we are at the auditorium
+[26/01/2026, 2:11:01 pm] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
+[26/01/2026, 3:31:27 pm] Karthik: Shift chart is in the sheet, please check your slot
+[26/01/2026, 6:14:04 pm] Lakshmi: Which gate do we use for the guests?
+[26/01/2026, 6:31:48 pm] Imran: Shift chart is in the sheet, please check your slot
+[26/01/2026, 8:26:03 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[26/01/2026, 8:43:47 pm] Karthik: all whree are you, we are at the parking
+[26/01/2026, 9:03:41 pm] Karthik: all where are you, we are at the department office
+[26/01/2026, 9:15:59 pm] Lakshmi: Which gate do we use for the guests?
+[26/01/2026, 9:46:31 pm] Lakshmi: Kavya where are you, we are at the library
+[27/01/2026, 1:27:54 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
+[27/01/2026, 1:31:20 pm] Priya: Is the canteen open yet?
+[27/01/2026, 2:28:50 pm] Lakshmi: <Media omitted>
+[27/01/2026, 4:37:56 pm] Kavya: Lanyards are in the box near the department office
+[27/01/2026, 6:55:06 pm] Sanjay: all where are you, we are at the seminar hall
+[27/01/2026, 8:37:47 pm] Imran: Lanyards are in the box near the canteen
+[27/01/2026, 9:04:56 pm] Sanjay: Lanyards are in the box near the seminar hall
+[27/01/2026, 9:10:04 pm] Kavya: Lanyards are in the box near the department office
+[27/01/2026, 10:15:27 pm] Ananya: Semma da
+[27/01/2026, 10:26:50 pm] Imran: Is the parking open yet?
+[27/01/2026, 10:28:19 pm] Karthik: Is the department office open yet?
+[27/01/2026, 11:25:56 pm] Kavya: Please check the soldering station once
+[28/01/2026, 12:53:57 pm] Kavya: Which gate do we use for the guests?
+[28/01/2026, 1:45:55 pm] Ananya: Please check the router once
+[28/01/2026, 3:36:42 pm] Priya: Innaiku class illa da
+[28/01/2026, 4:56:12 pm] Kavya: Which gate do we use for the guests?
+[28/01/2026, 6:17:55 pm] Sanjay: Which gate do we use for the guests?
+[28/01/2026, 6:23:45 pm] Imran: Reached the seminar hall
+[28/01/2026, 7:42:00 pm] Kavya: Which gate do we use for the guests?
+[28/01/2026, 7:48:53 pm] Karthik: Priya where are you, we are at the library
+[28/01/2026, 8:57:40 pm] Lakshmi: Which gate do we use for the guests?
+[28/01/2026, 9:50:40 pm] Imran: Shift chart is in the sheet, please check your slot
+[28/01/2026, 10:15:09 pm] Karthik: Reached the auditorium
+[28/01/2026, 10:43:42 pm] Kavya: Please check the sensor kit once
+[28/01/2026, 11:29:24 pm] Imran: Which gate do we use for the guests?
+[28/01/2026, 11:38:32 pm] Lakshmi: Which gate do we use for the guests?
+[29/01/2026, 8:24:45 am] Kavya: Is the main gate open yet?
+[29/01/2026, 9:26:50 am] Priya: Which gate do we use for the guests?
+[29/01/2026, 12:54:17 pm] Imran: Please check the sensor kit once
+[29/01/2026, 1:16:44 pm] Kavya: Seri da
+[29/01/2026, 2:07:48 pm] Imran: Shift cahrt is in the sheet, please check your slot
+[29/01/2026, 5:24:52 pm] Lakshmi: Is the department office open yet?
+[29/01/2026, 5:32:19 pm] Sanjay: Seri da
+[29/01/2026, 5:46:50 pm] Imran: Reached the parking
+[29/01/2026, 6:09:09 pm] Sanjay: Is the IoT lab open yet?
+[29/01/2026, 10:50:08 pm] Lakshmi: Please check the soldering station once
+[29/01/2026, 11:28:19 pm] Lakshmi: Seri da
+[29/01/2026, 11:31:01 pm] Karthik: Lanyards are in the box near the canteen
+[29/01/2026, 11:33:27 pm] Priya: Tea break at 4?
+[30/01/2026, 8:19:02 am] Karthik: Is the IoT lab open yet?
+[30/01/2026, 10:19:56 am] Imran: Tea break at 6 pm?
+[30/01/2026, 12:09:56 pm] Ananya: Reached the department office
+[30/01/2026, 1:31:26 pm] Priya: Shift chart is in the sheet, please check your slot
+[30/01/2026, 3:39:54 pm] Ananya: Please check the budget sheet once
+[30/01/2026, 5:29:47 pm] Lakshmi: Lanyards are in the box near the parking
+[30/01/2026, 7:24:31 pm] Priya: Lanyards are in the box near the auditorium
+[30/01/2026, 8:04:48 pm] Ananya: all where are you, we are at the canteen
+[30/01/2026, 9:11:56 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[30/01/2026, 10:16:30 pm] Imran: Which gate do we use for the guests?
+[30/01/2026, 11:16:08 pm] Priya: Aama da, same doubt enakkum
+[30/01/2026, 11:38:16 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[31/01/2026, 8:37:51 am] Kavya: Please check the router once
+[31/01/2026, 1:58:05 pm] Lakshmi: Reached the auditorium
+[31/01/2026, 2:59:36 pm] Karthik: Please check the breadboards once
+[31/01/2026, 3:22:21 pm] Karthik: Which gate do we use for the guests?
+[31/01/2026, 3:29:12 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[31/01/2026, 3:30:17 pm] Imran: Which gate do we use for the guests?
+[31/01/2026, 4:51:24 pm] Karthik: <Media omitted>
+[31/01/2026, 6:05:32 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
+[31/01/2026, 6:16:55 pm] Ananya: Aama da, same doubt enakkum
+[31/01/2026, 7:25:23 pm] Karthik: Is the IoT lab open yet?
+[31/01/2026, 7:34:57 pm] Karthik: all where are you, we are at the main gate
+[31/01/2026, 8:59:36 pm] Karthik: Kar where are you, we are at the parking
+[31/01/2026, 10:17:58 pm] Priya: Please check the workshop slides once
+[01/02/2026, 10:24:47 am] Imran: Shift chart is in the sheet, please check your slot
+[01/02/2026, 3:29:50 pm] Imran: Shift chart is in the sheet, please check your slot
+[01/02/2026, 5:21:49 pm] Priya: Which gate do we use for the guests?
+[01/02/2026, 7:08:30 pm] Imran: all where are you, we are at the seminar hall
+[01/02/2026, 7:35:40 pm] Kavya: Lanyards are in the box near the seminar hall
+[01/02/2026, 10:35:58 pm] Ananya: Tea break at 6 pm?
+[01/02/2026, 10:37:10 pm] Ananya: Reached the main gate
+[01/02/2026, 11:00:23 pm] Kavya: Reached the auditorium
+[01/02/2026, 11:22:50 pm] Lakshmi: Is the parking open yet?
+[01/02/2026, 11:25:10 pm] Karthik: Kar where are you, we are at the parking
+[02/02/2026, 11:37:49 am] Ananya: Please check the fest schedule once
+[02/02/2026, 12:42:05 pm] Lakshmi: Is the parking open yet?
+[02/02/2026, 2:33:20 pm] Ananya: all where are you, we are at the auditorium
+[02/02/2026, 2:55:26 pm] Imran: all where are you, we are at the canteen
+[02/02/2026, 3:01:41 pm] Karthik: Reached the library
+[02/02/2026, 5:32:32 pm] Imran: Romba nalla irukku
+[02/02/2026, 7:07:06 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
+[02/02/2026, 7:30:06 pm] Priya: Please check the attendance sheet once
+[02/02/2026, 9:48:23 pm] Lakshmi: Please check the sensor kit once
+[02/02/2026, 9:56:42 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[02/02/2026, 10:28:17 pm] Sanjay: Innaiku class illa da
+[02/02/2026, 11:19:31 pm] Ananya: Semma da
+[03/02/2026, 8:52:41 am] Kavya: Which gate do we use for the guests?
+[03/02/2026, 9:17:15 am] Imran: Which gate do we use for the guests?
+[03/02/2026, 9:22:53 am] Sanjay: Reached the library
+[03/02/2026, 2:05:15 pm] Imran: Please check the router once
+[03/02/2026, 2:29:59 pm] Priya: Tea break at 7 pm?
+[03/02/2026, 4:31:14 pm] Kavya: Is the seminar hall open yet?
+[03/02/2026, 4:41:55 pm] Sanjay: Innaiku class illa da
+[03/02/2026, 7:26:47 pm] Imran: Tea break at noon?
+[03/02/2026, 8:55:47 pm] Ananya: Seri da
+[03/02/2026, 8:57:15 pm] Priya: Tea break at 5?
+[03/02/2026, 11:09:10 pm] Ananya: Lanyards are in the box near the auditorium
+[04/02/2026, 11:55:40 am] Ananya: This message was deleted
+[04/02/2026, 1:56:51 pm] Kavya: Reached the IoT lab
+[04/02/2026, 2:06:50 pm] Priya: Innaiku class illa da
+[04/02/2026, 3:04:38 pm] Lakshmi: Which gate do we use for the guests?
+[04/02/2026, 5:43:57 pm] Kavya: <Media omitted>
+[04/02/2026, 7:09:04 pm] Sanjay: Karthik where are you, we are at the library
+[04/02/2026, 9:48:30 pm] Karthik: Please check the sponsor deck once
+[04/02/2026, 10:09:56 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
+[04/02/2026, 11:22:21 pm] Ananya: <Media omitted>
+[04/02/2026, 11:28:56 pm] Karthik: Lanyards are in the box near the IoT lab
+[05/02/2026, 10:42:32 am] Lakshmi: Please check the attendance sheet once
+[05/02/2026, 1:48:14 pm] Sanjay: Reached the auditorium
+[05/02/2026, 2:04:31 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
+[05/02/2026, 2:04:23 pm] Lakshmi: Ananya where are you, we are at the seminar hall
+[05/02/2026, 3:55:28 pm] Sanjay: Which gate do we use for the guests?
+[05/02/2026, 6:23:30 pm] Imran: Bus romba late da
+[05/02/2026, 8:47:58 pm] Lakshmi: Please check the soldering station once
+[05/02/2026, 9:09:22 pm] Ananya: Please check the poster once
+[05/02/2026, 9:58:54 pm] Imran: Which gate do we use for the guests?
+[05/02/2026, 10:30:03 pm] Lakshmi: all where are you, we are at the IoT lab
+[06/02/2026, 9:08:18 am] Kavya: <Media omitted>
+[06/02/2026, 9:12:40 am] Lakshmi: <Media omitted>
+[06/02/2026, 11:24:09 am] Kavya: Tea break at 7 pm?
+[06/02/2026, 1:47:40 pm] Kavya: Lanyards are in the box near the seminar hall
+[06/02/2026, 1:52:19 pm] Priya: Lanyards are in the box near the department office
+[06/02/2026, 3:15:34 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
+[06/02/2026, 3:53:50 pm] Sanjay: Is the canteen open yet?
+[06/02/2026, 3:57:18 pm] Karthik: Reached the main gate
+[06/02/2026, 6:38:30 pm] Lakshmi: Please check the fest schedule once
+[06/02/2026, 7:12:13 pm] Sanjay: Please check the sensor kit once
+[07/02/2026, 8:02:29 am] Karthik: Lanyards are in the box near the seminar hall
+[07/02/2026, 10:50:53 am] Lakshmi: Shift chart is in the sheet, please check your slot
+[07/02/2026, 2:08:04 pm] Ananya: Lanyards are in the box near the parking
+[07/02/2026, 2:45:14 pm] Sanjay: Tea break at 5?
+[07/02/2026, 3:11:21 pm] Sanjay: Tea break at 5?
+[07/02/2026, 4:21:15 pm] Kavya: Lanyards are in the box near the IoT lab
+[07/02/2026, 5:11:25 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[07/02/2026, 6:13:02 pm] Sanjay: Please check the sponsor deck once
+[07/02/2026, 7:58:42 pm] Lakshmi: Is the parking open yet?
+[07/02/2026, 9:27:40 pm] Sanjay: Tea break at 6 pm?
+[07/02/2026, 9:49:00 pm] Kavya: Tea break at 7 pm?
+[07/02/2026, 10:37:50 pm] Ananya: Please check the attendance sheet once
+[07/02/2026, 10:55:10 pm] Kavya: Please check the budget sheet once
+[07/02/2026, 11:08:50 pm] Ananya: Shift chart is in the sheet, please check your slot
+[08/02/2026, 11:06:37 am] Imran: Is the seminar hall open yet?
+[08/02/2026, 12:04:25 pm] Imran: Please check the poster once
 [08/02/2026, 5:30:30 pm] Imran: I'll set up the demo kits before the fest.
-[08/02/2026, 6:20:41 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
-[08/02/2026, 6:22:11 pm] Lakshmi: Enna da idhu
-[08/02/2026, 8:31:40 pm] Kavya: Shift chart is in the sheet, please check your slot
-[08/02/2026, 8:39:16 pm] Sanjay: Shift chart is in the sheet, please check your slot
-[08/02/2026, 9:43:26 pm] Ananya: Aama da, same doubt enakkum
-[08/02/2026, 10:14:32 pm] Sanjay: Please check the sponsor deck once
-[08/02/2026, 10:22:38 pm] Priya: Lanyards are in the box near the library
-[08/02/2026, 11:08:50 pm] Priya: Tea break at 5?
-[08/02/2026, 11:15:20 pm] Kavya: Anu where are you, we are at the canteen
-[09/02/2026, 11:21:49 am] Imran: Which gate do we use for the guests?
+[08/02/2026, 6:35:53 pm] Ananya: Is the main gate open yet?
+[08/02/2026, 8:11:50 pm] Ananya: Is the IoT lab open yet?
+[08/02/2026, 9:06:34 pm] Ananya: Reached the IoT lab
+[08/02/2026, 9:12:55 pm] Imran: Which gate do we use for the guests?
+[08/02/2026, 9:55:11 pm] Imran: Which gate do we use for the guests?
+[08/02/2026, 10:00:26 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
+[08/02/2026, 10:11:41 pm] Sanjay: all where are you, we are at the auditorium
+[08/02/2026, 10:44:35 pm] Imran: Please check the breadboards once
+[08/02/2026, 11:17:25 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
+[09/02/2026, 8:46:10 am] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
+[09/02/2026, 10:33:19 am] Imran: Tea break at 7 pm?
 [09/02/2026, 12:00:30 pm] Karthik: Might bring a spare speaker, not sure yet.
-[09/02/2026, 1:39:41 pm] Priya: all where are you, we are at the library
-[09/02/2026, 1:40:48 pm] Imran: Tea break at noon?
-[09/02/2026, 1:48:11 pm] Imran: Please check the sponsor deck once
-[09/02/2026, 3:45:51 pm] Priya: Shift chart is in the sheet, please check your slot
-[09/02/2026, 5:29:45 pm] Ananya: Anu where are you, we are at the seminar hall
-[09/02/2026, 6:23:11 pm] Karthik: Please check the workshop slides once
-[09/02/2026, 6:40:10 pm] Karthik: Machan, lab key yaar kitta irukku?
-[09/02/2026, 7:27:33 pm] Ananya: Shift chart is in the sheet, please check your slot
-[09/02/2026, 7:39:49 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
-[09/02/2026, 9:12:52 pm] Imran: Which gate do we use for the guests?
-[09/02/2026, 11:02:53 pm] Lakshmi: Reached the canteen
-[10/02/2026, 8:39:59 am] Sanjay: Shift chart is in the sheet, please check your slot
-[10/02/2026, 11:26:04 am] Priya: Aama da, same doubt enakkum
-[10/02/2026, 2:13:24 pm] Ananya: Enna da idhu
-[10/02/2026, 5:13:55 pm] Karthik: Lanyards are in the box near the canteen
-[10/02/2026, 7:28:32 pm] Karthik: Shift chart is in the sheet, please check your slot
-[10/02/2026, 10:15:40 pm] Imran: Reached the auditorium
-[10/02/2026, 10:25:37 pm] Ananya: Which gate do we use for the guests?
-[10/02/2026, 10:25:23 pm] Kavya: all where are you, we are at the parking
-[10/02/2026, 11:28:40 pm] Karthik: Tea break at 7 pm?
-[10/02/2026, 11:35:18 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[11/02/2026, 8:52:11 am] Priya: Romba nalla irukku
-[11/02/2026, 2:03:48 pm] Imran: Tea break at 6 pm?
-[11/02/2026, 2:31:57 pm] Priya: Reached the parking
-[11/02/2026, 3:58:06 pm] Priya: Reached the parking
-[11/02/2026, 4:45:40 pm] Imran: Please check the soldering station once
-[11/02/2026, 6:27:23 pm] Sanjay: <Media omitted>
-[11/02/2026, 8:35:55 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
-[11/02/2026, 9:51:01 pm] Kavya: Which gate do we use for the guests?
-[11/02/2026, 10:18:20 pm] Sanjay: Tea break at 7 pm?
-[11/02/2026, 10:22:04 pm] Priya: Lanyards are in the box near the IoT lab
-[12/02/2026, 2:05:41 pm] Imran: Which gate do we use for the guests?
-[12/02/2026, 2:40:08 pm] Imran: Tea break at 5?
-[12/02/2026, 5:09:50 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
-[12/02/2026, 5:18:33 pm] Sanjay: Priya where are you, we are at the seminar hall
-[12/02/2026, 7:17:29 pm] Sanjay: Tea break at 5?
-[12/02/2026, 7:24:37 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[12/02/2026, 7:57:58 pm] Priya: Romba nalla irukku
-[12/02/2026, 8:40:36 pm] Karthik: Bus romba late da
-[12/02/2026, 9:04:44 pm] Lakshmi: Tea break at 6 pm?
-[12/02/2026, 11:31:27 pm] Lakshmi: all where are you, we are at the main gate
-[13/02/2026, 9:38:40 am] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
-[13/02/2026, 10:28:30 am] Ananya: Innaiku class illa da
-[13/02/2026, 12:18:36 pm] Sanjay: Is the seminar hall open yet?
-[13/02/2026, 2:05:21 pm] Imran: Lanyards are in the box near the parking
-[13/02/2026, 2:08:53 pm] Kavya: Bus romba late da
-[13/02/2026, 2:10:08 pm] Kavya: Karthik where are you, we are at the department office
-[13/02/2026, 5:59:08 pm] Ananya: Which gate do we use for the guests?
-[13/02/2026, 7:36:00 pm] Karthik: Imran where are you, we are at the department office
-[13/02/2026, 7:42:13 pm] Kavya: Is the auditorium open yet?
-[13/02/2026, 8:27:24 pm] Kavya: Shift chart is in the sheet, please check your slot
+[09/02/2026, 3:37:03 pm] Karthik: Reached the IoT lab
+[09/02/2026, 4:51:08 pm] Karthik: Which gate do we use for the guests?
+[09/02/2026, 5:06:00 pm] Ananya: Lanyards are in the box near the department office
+[09/02/2026, 5:11:20 pm] Priya: Lakshmi where are you, we are at the parking
+[09/02/2026, 5:38:42 pm] Lakshmi: Innaiku class illa da
+[09/02/2026, 8:05:25 pm] Karthik: Shift chart is in the sheet, please check your slot
+[09/02/2026, 10:51:47 pm] Kavya: Lanyards are in the box near the auditorium
+[09/02/2026, 11:07:22 pm] Sanjay: Please check the budget sheet once
+[10/02/2026, 8:19:49 am] Karthik: Tea break at noon?
+[10/02/2026, 4:39:34 pm] Sanjay: Priya where are you, we are at the auditorium
+[10/02/2026, 6:13:58 pm] Kavya: <Media omitted>
+[10/02/2026, 7:02:32 pm] Priya: Imran where are you, we are at the main gate
+[10/02/2026, 7:58:18 pm] Imran: Tea break at 4?
+[10/02/2026, 9:37:53 pm] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
+[10/02/2026, 11:10:55 pm] Imran: Please check the breadboards once
+[10/02/2026, 11:13:30 pm] Karthik: Shift chart is in the sheet, please check your slot
+[10/02/2026, 11:21:21 pm] Sanjay: Which gate do we use for the guests?
+[10/02/2026, 11:36:38 pm] Priya: Please check the banner design once
+[11/02/2026, 9:29:05 am] Sanjay: Shift chart is in the sheet, please check your slot
+[11/02/2026, 12:52:46 pm] Sanjay: <Media omitted>
+[11/02/2026, 1:13:21 pm] Priya: Lakshmi where are you, we are at the main gate
+[11/02/2026, 2:07:27 pm] Ananya: Machan, lab key yaar kitta irukku?
+[11/02/2026, 2:53:25 pm] Imran: Tea break at 5?
+[11/02/2026, 5:12:37 pm] Imran: Is the seminar hall open yet?
+[11/02/2026, 5:47:34 pm] Lakshmi: Which gate do we use for the guests?
+[11/02/2026, 7:04:51 pm] Sanjay: Which gate do we use for the guests?
+[11/02/2026, 8:53:22 pm] Karthik: Shift chart is in the sheet, please check your slot
+[11/02/2026, 8:55:44 pm] Lakshmi: Pri where are you, we are at the library
+[11/02/2026, 9:56:17 pm] Priya: Reached the main gate
+[11/02/2026, 10:45:34 pm] Sanjay: Tea break at noon?
+[12/02/2026, 9:10:29 am] Sanjay: Which gate do we use for the guests?
+[12/02/2026, 3:05:03 pm] Kavya: <Media omitted>
+[12/02/2026, 3:17:33 pm] Ananya: Please check the lab schedule once
+[12/02/2026, 4:07:32 pm] Sanjay: Is the library open yet?
+[12/02/2026, 5:26:19 pm] Karthik: Tea break at noon?
+[12/02/2026, 6:09:47 pm] Lakshmi: Machan, lab key yaar kitta irukku?
+[12/02/2026, 9:23:24 pm] Karthik: Please check the budget sheet once
+[12/02/2026, 10:03:58 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[12/02/2026, 11:00:36 pm] Imran: Lanyards are in the box near the department office
+[12/02/2026, 11:10:51 pm] Karthik: all where are you, we are at the department office
+[13/02/2026, 12:17:32 pm] Ananya: Is the parking open yet?
+[13/02/2026, 12:36:01 pm] Ananya: Please check the sponsor deck once
+[13/02/2026, 1:11:01 pm] Priya: Reached the main gate
+[13/02/2026, 3:52:04 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
+[13/02/2026, 4:06:49 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[13/02/2026, 4:06:46 pm] Imran: Is the library open yet?
+[13/02/2026, 8:24:15 pm] Priya: Please check the poster once
+[13/02/2026, 8:39:45 pm] Sanjay: Lanyards are in the box near the library
 [13/02/2026, 8:40:30 pm] Priya: I will send the volunteer certificates by 28 February.
-[13/02/2026, 10:06:14 pm] Ananya: Is the library open yet?
-[13/02/2026, 11:18:58 pm] Karthik: Reached the parking
+[13/02/2026, 9:14:45 pm] Sanjay: Semma da
+[13/02/2026, 9:31:23 pm] Imran: This message was deleted
 [14/02/2026, 8:30:30 am] Sanjay: Extension boards are all set up in the hall.
 [14/02/2026, 8:50:30 am] Lakshmi: Registration desk is ready, forms are printed.
 [14/02/2026, 9:10:30 am] Ananya: Snacks are here, 40 packets.
-[14/02/2026, 9:52:48 am] Sanjay: Please check the fest schedule once
-[14/02/2026, 11:37:19 am] Priya: Which gate do we use for the guests?
-[14/02/2026, 12:55:06 pm] Priya: Tea break at 7 pm?
-[14/02/2026, 5:35:17 pm] Priya: Lanyards are in the box near the praking
-[14/02/2026, 7:14:28 pm] Lakshmi: Enna da idhu
-[14/02/2026, 7:22:38 pm] Karthik: Please check the attendance sheet once
-[14/02/2026, 7:58:23 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
-[14/02/2026, 9:38:34 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
-[14/02/2026, 10:18:43 pm] Sanjay: Tea braek at 6 pm?
-[14/02/2026, 11:25:52 pm] Sanjay: Please check the workshop slides once
-[14/02/2026, 11:26:44 pm] Ananya: Please check the lab schedule once
-[15/02/2026, 8:08:03 am] Lakshmi: Is the auditorium open yet?
-[15/02/2026, 8:32:37 am] Karthik: Innaiku class illa da
-[15/02/2026, 1:19:17 pm] Lakshmi: Which gate do we use for the guests?
-[15/02/2026, 6:30:59 pm] Ananya: Which gate do we use for the guests?
-[15/02/2026, 6:54:29 pm] Priya: Which gate do we use for the guests?
-[15/02/2026, 6:56:43 pm] Lakshmi: all where are you, we are at the canteen
-[15/02/2026, 7:26:22 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[15/02/2026, 9:46:59 pm] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
-[15/02/2026, 9:56:06 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
-[15/02/2026, 10:05:36 pm] Kavya: Aama da, same doubt enakkum
-[15/02/2026, 11:31:37 pm] Sanjay: all where are you, we are at the parking
-[15/02/2026, 11:35:08 pm] Priya: Anu where are you, we are at the main gate
-[16/02/2026, 1:12:57 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
-[16/02/2026, 4:50:53 pm] Lakshmi: Which gate do we use for the guests?
-[16/02/2026, 5:54:28 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
-[16/02/2026, 6:47:38 pm] Imran: Which gate do we use for the guests?
-[16/02/2026, 7:10:20 pm] Imran: <Media omitted>
-[16/02/2026, 7:37:11 pm] Sanjay: Reached the department office
-[16/02/2026, 8:17:49 pm] Imran: Is the library open yet?
-[16/02/2026, 9:18:33 pm] Priya: Priya where are you, we are at the parking
-[16/02/2026, 9:38:29 pm] Lakshmi: Enna da idhu
-[16/02/2026, 11:05:15 pm] Ananya: Is the department office open yet?
-[17/02/2026, 10:18:18 am] Karthik: Please check the breadboards once
-[17/02/2026, 12:20:54 pm] Lakshmi: Imran where are you, we are at the IoT lab
-[17/02/2026, 1:44:52 pm] Karthik: Sanjay where are you, we are at the IoT lab
-[17/02/2026, 2:09:33 pm] Priya: Lanyards are in the box near the main gate
-[17/02/2026, 2:16:09 pm] Karthik: Lanyards are in the box near the library
-[17/02/2026, 5:05:18 pm] Karthik: Shift chart is in the sheet, please check your slot
-[17/02/2026, 5:35:19 pm] Ananya: Lanyards are in the box near the canteen
-[17/02/2026, 7:01:50 pm] Ananya: Tea break at 6 pm?
-[17/02/2026, 8:32:36 pm] Lakshmi: Tea break at noon?
-[17/02/2026, 9:06:33 pm] Lakshmi: Shift chart is in the sheet, please check your slot
-[17/02/2026, 11:34:58 pm] Imran: Kavya where are you, we are at the auditorium
-[18/02/2026, 8:36:27 am] Sanjay: Is the IoT lab open yet?
-[18/02/2026, 9:08:13 am] Priya: Tea break at 5?
-[18/02/2026, 11:12:09 am] Kavya: Tea break at 6 pm?
-[18/02/2026, 3:36:34 pm] Karthik: Is the parking open yet?
-[18/02/2026, 7:33:30 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
-[18/02/2026, 7:53:45 pm] Ananya: Please check the soldering station once
-[18/02/2026, 8:36:22 pm] Lakshmi: Which gate do we use for the guests?
-[18/02/2026, 9:30:11 pm] Karthik: Is the department office open yet?
-[18/02/2026, 10:06:31 pm] Ananya: Walkie-talkies need charging, anyone know wehre the chargers are?
-[18/02/2026, 10:47:14 pm] Karthik: all where are you, we are at the auditorium
-[18/02/2026, 11:03:28 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
-[19/02/2026, 12:09:55 pm] Sanjay: Lanyards are in the box near the department office
-[19/02/2026, 2:00:33 pm] Sanjay: Seri da
-[19/02/2026, 5:59:02 pm] Priya: Tea break at 5?
-[19/02/2026, 6:20:52 pm] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
-[19/02/2026, 7:20:34 pm] Priya: Shift chart is in the sheet, please check your slot
-[19/02/2026, 8:12:50 pm] Lakshmi: Walkie-talkies need charging, anyone know where the chargers are?
-[19/02/2026, 8:31:26 pm] Imran: Please check the router once
-[19/02/2026, 9:46:11 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
-[19/02/2026, 9:52:25 pm] Lakshmi: Priya where are you, we are at the library
-[19/02/2026, 10:13:25 pm] Kavya: Shift chart is in the sheet, please check your slot
-[20/02/2026, 1:14:30 pm] Kavya: Shift cahrt is in the sheet, please check your slot
-[20/02/2026, 1:41:18 pm] Karthik: Which gate do we use for the guests?
-[20/02/2026, 2:19:25 pm] Imran: Lanyards are in the box near the canteen
-[20/02/2026, 2:22:50 pm] Imran: Seri da
-[20/02/2026, 6:39:20 pm] Imran: Which gate do we use for the guests?
-[20/02/2026, 6:58:20 pm] Karthik: Tea break at 7 pm?
-[20/02/2026, 7:44:11 pm] Sanjay: Reacehd the parking
-[20/02/2026, 8:14:18 pm] Lakshmi: Reached the parking
-[20/02/2026, 8:25:05 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
-[20/02/2026, 11:28:36 pm] Imran: Which gate do we use for the guests?
-[21/02/2026, 8:08:12 am] Ananya: Which gate do we use for the guests?
-[21/02/2026, 9:51:00 am] Sanjay: Which gate do we use for the guests?
-[21/02/2026, 10:08:17 am] Ananya: Which gate do we use for the guests?
-[21/02/2026, 11:48:44 am] Priya: Tea break at 4?
-[21/02/2026, 4:15:25 pm] Karthik: Is the auditorium open yet?
-[21/02/2026, 6:06:39 pm] Sanjay: Lanyards are in the box near the library
-[21/02/2026, 7:54:15 pm] Ananya: Which gate do we use for the guests?
-[21/02/2026, 9:20:40 pm] Kavya: Is the seminar hall open yet?
-[21/02/2026, 9:52:44 pm] Kavya: Please check the workshop slides once
-[21/02/2026, 10:38:21 pm] Ananya: Karthik where are you, we are at the canteen
-[22/02/2026, 9:02:46 am] Lakshmi: Which gate do we use for the guests?
-[22/02/2026, 10:03:20 am] Priya: Is the canteen open yet?
-[22/02/2026, 10:48:35 am] Kavya: Please check the workshop slides once
-[22/02/2026, 10:52:30 am] Ananya: Innaiku class illa da
-[22/02/2026, 11:19:15 am] Ananya: Tea break at 6 pm?
-[22/02/2026, 5:24:11 pm] Karthik: Please check the soldering station once
-[22/02/2026, 6:38:53 pm] Priya: Tea break at 4?
-[22/02/2026, 8:47:57 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
-[22/02/2026, 10:00:08 pm] Priya: Is the main gate open yet?
-[22/02/2026, 10:52:24 pm] Priya: Tea break at 7 pm?
-[23/02/2026, 9:34:13 am] Ananya: Tea break at 6 pm?
-[23/02/2026, 3:15:13 pm] Priya: Reached the seminar hall
-[23/02/2026, 5:29:47 pm] Imran: Laynards are in the box near the main gate
-[23/02/2026, 9:10:36 pm] Imran: Please check the lab schedule once
-[23/02/2026, 9:24:00 pm] Sanjay: Reached the parking
-[23/02/2026, 9:53:29 pm] Kavya: Is the IoT lab open yet?
-[23/02/2026, 10:14:52 pm] Imran: Bus rmoba late da
-[23/02/2026, 10:25:27 pm] Lakshmi: Lanyards are in the box near the parking
-[23/02/2026, 10:44:20 pm] Lakshmi: Shift chart is in the sheet, please check your slot
-[23/02/2026, 11:18:10 pm] Lakshmi: Please check the sensor kit once
-[24/02/2026, 8:20:09 am] Ananya: Which gate do we use for the guests?
-[24/02/2026, 9:46:17 am] Lakshmi: Please check the budget sheet once
-[24/02/2026, 3:25:33 pm] Sanjay: Which gate do we use for the guests?
-[24/02/2026, 6:06:07 pm] Sanjay: Lanyards are in the box near the library
-[24/02/2026, 6:08:40 pm] Kavya: Is the canteen open yet?
-[24/02/2026, 6:27:06 pm] Priya: Shift chart is in the sheet, please check your slot
-[24/02/2026, 7:13:32 pm] Lakshmi: Is the main gate open yet?
-[24/02/2026, 8:08:01 pm] Kavya: Is the library open yet?
-[24/02/2026, 9:15:07 pm] Ananya: Which gate do we use for the guests?
-[24/02/2026, 9:22:52 pm] Priya: Tea break at 7 pm?
-[24/02/2026, 10:31:06 pm] Karthik: <Media omitted>
-[24/02/2026, 10:43:41 pm] Imran: Kar where are you, we are at the library
-[25/02/2026, 1:51:47 pm] Lakshmi: Shift chart is in the sheet, please check your slot
-[25/02/2026, 4:10:58 pm] Priya: Is the main gate open yet?
-[25/02/2026, 4:34:19 pm] Lakshmi: Reached the canteen
-[25/02/2026, 4:57:41 pm] Sanjay: Shift chart is in the sheet, please check your slot
-[25/02/2026, 5:57:43 pm] Kavya: Shift chart is in the sheet, please check your slot
-[25/02/2026, 6:00:48 pm] Ananya: Which gate do we use for the guests?
-[25/02/2026, 6:02:52 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[25/02/2026, 6:12:57 pm] Ananya: Recahed the IoT lab
-[25/02/2026, 6:38:13 pm] Ananya: Lanyards are in the box near the IoT lab
-[25/02/2026, 8:12:35 pm] Imran: Tea break at 6 pm?
-[25/02/2026, 8:35:03 pm] Kavya: Shift chart is in the sheet, please check your slot
-[25/02/2026, 11:13:04 pm] Priya: all where are you, we are at the seminar hall
-[26/02/2026, 10:50:14 am] Imran: <Media omitted>
-[26/02/2026, 3:41:44 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
-[26/02/2026, 4:04:10 pm] Ananya: Reached the main gate
-[26/02/2026, 4:19:12 pm] Priya: Which gate do we use for the guests?
-[26/02/2026, 4:42:32 pm] Ananya: Reached the seminar hall
-[26/02/2026, 6:18:36 pm] Imran: Enna da idhu
-[26/02/2026, 7:04:07 pm] Ananya: all where are you, we are at the department office
-[26/02/2026, 7:53:48 pm] Kavya: Please check the attendance sheet once
-[26/02/2026, 9:48:31 pm] Lakshmi: Lanyards are in the box near the seminar hall
-[26/02/2026, 10:39:53 pm] Kavya: Tea break at noon?
-[26/02/2026, 11:19:35 pm] Kavya: Shift chart is in the sheet, please check your slot
-[26/02/2026, 11:21:47 pm] Kavya: Semma da
-[27/02/2026, 8:09:36 am] Priya: Which gate do we use for the guests?
-[27/02/2026, 10:28:47 am] Sanjay: Shift chart is in the sheet, please check your slot
-[27/02/2026, 12:30:42 pm] Imran: Shift chart is in the sheet, please check your slot
-[27/02/2026, 12:40:01 pm] Sanjay: Lanyards are in the box near the library
-[27/02/2026, 1:16:28 pm] Sanjay: Tea break at noon?
-[27/02/2026, 2:58:52 pm] Lakshmi: Is the parking open yet?
-[27/02/2026, 4:31:05 pm] Sanjay: Anu where are you, we are at the canteen
-[27/02/2026, 8:36:25 pm] Sanjay: Reached the canteen
+[14/02/2026, 10:41:04 am] Imran: Reached the canteen
+[14/02/2026, 12:09:56 pm] Ananya: Tea break at noon?
+[14/02/2026, 1:04:57 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
+[14/02/2026, 5:06:55 pm] Lakshmi: Is the canteen open yet?
+[14/02/2026, 6:59:15 pm] Priya: Kavya where are you, we are at the canteen
+[14/02/2026, 8:27:51 pm] Imran: <Media omitted>
+[14/02/2026, 9:41:26 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[14/02/2026, 9:51:43 pm] Lakshmi: Which gate do we use for the guests?
+[14/02/2026, 9:56:19 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
+[14/02/2026, 10:48:48 pm] Karthik: Reached the parking
+[15/02/2026, 11:22:31 am] Karthik: Tea break at noon?
+[15/02/2026, 2:03:26 pm] Sanjay: <Media omitted>
+[15/02/2026, 7:10:46 pm] Kavya: Laks where are you, we are at the canteen
+[15/02/2026, 8:27:07 pm] Kavya: Tea break at 4?
+[15/02/2026, 8:28:05 pm] Lakshmi: Lanyards are in the box near the IoT lab
+[15/02/2026, 8:55:28 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[15/02/2026, 9:31:03 pm] Kavya: Semma da
+[15/02/2026, 9:43:09 pm] Lakshmi: Please check the fest schedule once
+[15/02/2026, 10:02:43 pm] Sanjay: Seri da
+[15/02/2026, 11:35:46 pm] Lakshmi: Lanyards are in the box near the department office
+[16/02/2026, 9:20:21 am] Lakshmi: Lnayards are in the box near the canteen
+[16/02/2026, 5:04:13 pm] Sanjay: Please check the fest schedule once
+[16/02/2026, 5:05:13 pm] Priya: Kar where are you, we are at the library
+[16/02/2026, 5:07:43 pm] Ananya: Shift chart is in the sheet, please check your slot
+[16/02/2026, 5:42:27 pm] Lakshmi: Lanyards are in the box near the IoT lab
+[16/02/2026, 6:13:41 pm] Kavya: Please check the sensor kit once
+[16/02/2026, 6:49:40 pm] Priya: Shift chart is in the sheet, please check your slot
+[16/02/2026, 7:39:28 pm] Kavya: Tea break at 5?
+[16/02/2026, 9:19:36 pm] Ananya: Tea braek at noon?
+[16/02/2026, 9:30:30 pm] Ananya: Tea break at noon?
+[16/02/2026, 9:49:31 pm] Ananya: Lanyards are in the box near the auditorium
+[17/02/2026, 8:28:07 am] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
+[17/02/2026, 9:27:10 am] Ananya: Which gate do we use for the guests?
+[17/02/2026, 10:05:33 am] Sanjay: Which gate do we use for the guests?
+[17/02/2026, 2:47:03 pm] Karthik: Semma da
+[17/02/2026, 2:51:43 pm] Ananya: Tea break at 7 pm?
+[17/02/2026, 5:06:00 pm] Sanjay: Laks where are you, we are at the seminar hall
+[17/02/2026, 5:45:09 pm] Sanjay: Please check the fest schedule once
+[17/02/2026, 8:16:41 pm] Ananya: Is the canteen open yet?
+[17/02/2026, 9:30:58 pm] Kavya: Lanyards are in the box near the canteen
+[17/02/2026, 11:17:12 pm] Kavya: all where are you, we are at the parking
+[18/02/2026, 8:55:59 am] Sanjay: all where are you, we are at the seminar hall
+[18/02/2026, 9:04:18 am] Lakshmi: Which gate do we use for the guests?
+[18/02/2026, 9:39:57 am] Sanjay: Tea break at 6 pm?
+[18/02/2026, 10:56:02 am] Lakshmi: Machan, lab key yaar kitta irukku?
+[18/02/2026, 4:01:14 pm] Kavya: Which gate do we use for the guests?
+[18/02/2026, 6:45:26 pm] Imran: Which gate do we use for the guests?
+[18/02/2026, 7:17:42 pm] Imran: Pri where are you, we are at the auditorium
+[18/02/2026, 7:23:37 pm] Priya: Shift chart is in the sheet, please check your slot
+[18/02/2026, 7:42:09 pm] Ananya: Is the parking open yet?
+[18/02/2026, 7:48:29 pm] Lakshmi: Kar where are you, we are at the auditorium
+[19/02/2026, 1:14:13 pm] Imran: Please check the sponsor deck once
+[19/02/2026, 2:06:04 pm] Ananya: Lanyards are in the box near the parking
+[19/02/2026, 5:58:46 pm] Priya: Is the seminar hall open yet?
+[19/02/2026, 6:39:35 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
+[19/02/2026, 7:36:01 pm] Karthik: <Media omitted>
+[19/02/2026, 7:54:40 pm] Ananya: Which gate do we use for the guests?
+[19/02/2026, 8:18:18 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[19/02/2026, 9:25:44 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[19/02/2026, 9:37:57 pm] Priya: Machan, lab key yaar kitta irukku?
+[19/02/2026, 11:17:12 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
+[20/02/2026, 10:10:46 am] Imran: Which gate do we use for the guests?
+[20/02/2026, 1:00:25 pm] Karthik: Tea break at noon?
+[20/02/2026, 2:00:57 pm] Ananya: Which gate do we use for the guests?
+[20/02/2026, 2:22:29 pm] Priya: Tea break at 4?
+[20/02/2026, 3:11:35 pm] Sanjay: Aama da, same doubt enakkum
+[20/02/2026, 4:33:02 pm] Lakshmi: Pri where are you, we are at the library
+[20/02/2026, 8:20:20 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[20/02/2026, 9:54:48 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[20/02/2026, 10:25:27 pm] Lakshmi: Lanyards are in the box near the parking
+[20/02/2026, 10:43:02 pm] Imran: Reached the seminar hall
+[20/02/2026, 11:10:03 pm] Imran: Lanyards are in the box near the auditorium
+[21/02/2026, 12:17:14 pm] Imran: Shift chart is in the sheet, please check your slot
+[21/02/2026, 12:19:38 pm] Ananya: Lanyards are in the box near the parking
+[21/02/2026, 12:28:33 pm] Priya: Is the canteen open yet?
+[21/02/2026, 6:20:37 pm] Ananya: <Media omitted>
+[21/02/2026, 6:42:33 pm] Imran: Shift chart is in the sheet, please check your slot
+[21/02/2026, 7:19:24 pm] Karthik: <Media omitted>
+[21/02/2026, 7:39:30 pm] Sanjay: Walkie-talkies need charging, anyone know where the chargers are?
+[21/02/2026, 8:14:08 pm] Lakshmi: all where are you, we are at the department office
+[21/02/2026, 8:15:03 pm] Imran: Shift chart is in the sheet, please check your slot
+[21/02/2026, 8:59:12 pm] Kavya: <Media omitted>
+[22/02/2026, 10:40:52 am] Priya: Pelase check the breadboards once
+[22/02/2026, 4:57:41 pm] Ananya: Please check the breadboards once
+[22/02/2026, 5:32:09 pm] Sanjay: <Media omitted>
+[22/02/2026, 5:57:26 pm] Imran: Tea break at 7 pm?
+[22/02/2026, 7:10:42 pm] Ananya: Aama da, same doubt enakkum
+[22/02/2026, 9:01:21 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[22/02/2026, 9:10:36 pm] Imran: Please check the lab schedule once
+[22/02/2026, 10:13:35 pm] Karthik: Is the main gate open yet?
+[22/02/2026, 10:25:27 pm] Lakshmi: Lanyards are in the box near the parking
+[22/02/2026, 11:18:56 pm] Lakshmi: Please check the budget sheet once
+[22/02/2026, 11:19:02 pm] Priya: Semma da
+[23/02/2026, 11:10:40 am] Lakshmi: Romba nalla irukku
+[23/02/2026, 12:54:36 pm] Karthik: Shift chart is in the sheet, please check your slot
+[23/02/2026, 1:15:17 pm] Sanjay: Lanyards are in the box near the IoT lab
+[23/02/2026, 2:59:08 pm] Priya: Lanyards are in the box near the auditorium
+[23/02/2026, 6:37:24 pm] Ananya: Which gate do we use for the guests?
+[23/02/2026, 8:01:59 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[23/02/2026, 8:20:45 pm] Sanjay: Which gate do we use for the guests?
+[23/02/2026, 8:44:53 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[23/02/2026, 8:47:08 pm] Imran: all where are you, we are at the canteen
+[23/02/2026, 9:07:25 pm] Kavya: Shift chart is in the sheet, please check your slot
+[23/02/2026, 10:31:06 pm] Karthik: <Media omitted>
+[24/02/2026, 11:51:24 am] Lakshmi: <Media omitted>
+[24/02/2026, 1:51:18 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[24/02/2026, 4:02:14 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[24/02/2026, 5:08:43 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
+[24/02/2026, 6:00:48 pm] Ananya: Which gate do we use for the guests?
+[24/02/2026, 6:49:28 pm] Priya: Lanyards are in the box near the IoT lab
+[24/02/2026, 6:57:57 pm] Ananya: Wihch gate do we use for the guests?
+[24/02/2026, 8:03:14 pm] Sanjay: Which gate do we use for the guests?
+[24/02/2026, 8:04:31 pm] Sanjay: Machan, lab key yaar kitta irukku?
+[24/02/2026, 11:04:52 pm] Karthik: Kavya where are you, we are at the IoT lab
+[24/02/2026, 11:13:18 pm] Priya: all where are you, we are at the auditorium
+[25/02/2026, 3:41:44 pm] Karthik: Walkie-talkies need charging, anyone know where the chargers are?
+[25/02/2026, 4:09:26 pm] Karthik: Tea break at 5?
+[25/02/2026, 6:32:42 pm] Ananya: Shift chart is in the sheet, please check your slot
+[25/02/2026, 6:38:26 pm] Sanjay: Is the IoT lab open yet?
+[25/02/2026, 7:23:18 pm] Imran: Shift chart is in the sheet, please check your slot
+[25/02/2026, 8:23:31 pm] Ananya: Bus romba late da
+[25/02/2026, 9:29:48 pm] Priya: Shift chart is in the sheet, please check your slot
+[25/02/2026, 9:53:43 pm] Lakshmi: Kav where are you, we are at the canteen
+[25/02/2026, 10:43:42 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[25/02/2026, 11:21:39 pm] Kavya: Romba nalla irukku
+[26/02/2026, 12:40:01 pm] Sanjay: Lnayards are in the box near the main gate
+[26/02/2026, 2:17:20 pm] Lakshmi: Please check the banner design once
+[26/02/2026, 2:44:23 pm] Priya: Reached the canteen
+[26/02/2026, 4:02:25 pm] Sanjay: Reached the auditorium
+[26/02/2026, 4:50:04 pm] Lakshmi: Tea break at 7 pm?
+[26/02/2026, 4:56:15 pm] Kavya: Ananya where are you, we are at the main gate
+[26/02/2026, 5:49:57 pm] Karthik: Anu where are you, we are at the parking
+[26/02/2026, 7:15:16 pm] Kavya: all where are you, we are at the departemnt office
+[26/02/2026, 8:12:47 pm] Kavya: Please check the poster once
+[26/02/2026, 8:13:27 pm] Sanjay: Shift chart is in the sheet, please check your slot
+[26/02/2026, 10:43:00 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[27/02/2026, 11:11:00 am] Priya: Walkie-talkies need charging, anyone know where the chargers are?
+[27/02/2026, 11:32:10 am] Imran: Which gate do we use for the guests?
+[27/02/2026, 3:35:49 pm] Karthik: Lanyards are in the box near the main gate
+[27/02/2026, 4:44:29 pm] Sanjay: Which gate do we use for the guests?
+[27/02/2026, 4:57:40 pm] Kavya: Shift chart is in the sheet, please check your slot
+[27/02/2026, 5:46:32 pm] Ananya: Lanyards are in the box near the department office
+[27/02/2026, 6:46:04 pm] Priya: Tea break at 4?
+[27/02/2026, 6:48:37 pm] Sanjay: Reached the library
+[27/02/2026, 6:51:24 pm] Imran: Shift chart is in the sheet, please check your slot
+[27/02/2026, 7:27:44 pm] Imran: Priya where are you, we are at the seminar hall
+[27/02/2026, 8:56:57 pm] Kavya: Which gate do we use for the guests?
+[27/02/2026, 10:40:42 pm] Kavya: Lanyards are in the box near the parking
 [27/02/2026, 10:49:32 pm] Priya: Walkie-talkies need charging, anyone know where the chargers are?
-[27/02/2026, 11:17:01 pm] Karthik: Lanyards are in the box near the parking
-[28/02/2026, 8:22:30 am] Kavya: Please check the poster once
-[28/02/2026, 9:05:39 am] Ananya: Which gate do we use for the guests?
-[28/02/2026, 10:00:20 am] Sanjay: Please check the lab schedule once
-[28/02/2026, 2:30:13 pm] Ananya: Tea break at 7 pm?
-[28/02/2026, 5:15:17 pm] Imran: Please check the sponsor deck once
-[28/02/2026, 7:24:05 pm] Karthik: Tea break at noon?
-[28/02/2026, 8:55:01 pm] Sanjay: Please check the sponsor deck once
-[28/02/2026, 9:23:14 pm] Lakshmi: Tea break at 4?
-[28/02/2026, 9:29:00 pm] Kavya: Is the canteen open yet?
-[28/02/2026, 9:45:31 pm] Lakshmi: Tea break at 4?
-[28/02/2026, 11:18:29 pm] Karthik: Lanyards are in the box near the main gate
-[06/03/2026, 8:12:12 am] Imran: Reached the department office
-[06/03/2026, 9:21:07 pm] Priya: Is the IoT lab open yet?
-[08/03/2026, 4:14:23 pm] Kavya: Walkie-talkies need charging, anyone know where the chargers are?
-[08/03/2026, 6:24:08 pm] Lakshmi: Reached the department office
+[28/02/2026, 12:07:54 pm] Sanjay: Is the IoT lab open yet?
+[28/02/2026, 3:23:08 pm] Priya: Please check the soldering station once
+[28/02/2026, 3:25:45 pm] Lakshmi: Lanyards are in the box near the auditorium
+[28/02/2026, 7:26:51 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
+[28/02/2026, 9:03:01 pm] Karthik: Tea break at 4?
+[28/02/2026, 10:02:54 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[28/02/2026, 10:04:11 pm] Imran: Lanyards are in the box near the main gate
+[28/02/2026, 10:58:45 pm] Imran: Please check the attendance sheet once
+[28/02/2026, 11:15:48 pm] Imran: Which gate do we use for the guests?
+[28/02/2026, 11:22:19 pm] Imran: Reached the main gate
 [10/03/2026, 7:00:30 pm] Ananya: Any update on the volunteer certificates?
-[16/03/2026, 12:07:54 pm] Sanjay: Is the IoT lab open yet?
-[16/03/2026, 3:25:45 pm] Lakshmi: Lanyards are in the box near the auditorium
-[26/03/2026, 5:40:25 pm] Kavya: Which gate do we use for the guests?
-[26/03/2026, 11:15:06 pm] Kavya: Kav where are you, we are at the department office
-[13/04/2026, 12:54:07 pm] Karthik: Lanyards are in the box near the canteen
+[11/03/2026, 11:03:24 pm] Imran: Reached the department office
+[11/03/2026, 11:13:16 pm] Ananya: Reached the main gate
+[21/03/2026, 6:04:38 pm] Karthik: Which gate do we use for the guests?
+[28/03/2026, 9:59:43 pm] Sanjay: all where are you, we are at the auditorium
 [15/04/2026, 6:20:30 pm] Lakshmi: Still waiting for the volunteer certificates, college asked for them for the NSS hours.
-[04/05/2026, 9:59:43 pm] Sanjay: all where are you, we are at the IoT lab
-[16/05/2026, 9:27:30 pm] Ananya: Shift chart is in the sheet, please check your slot
-[21/05/2026, 10:45:20 am] Ananya: Please check the soldering station once
-[28/05/2026, 1:46:00 pm] Priya: Which gate do we use for the guests?
-[28/05/2026, 7:34:40 pm] Lakshmi: all where are you, we are at the auditorium
-[30/05/2026, 4:04:19 pm] Kavya: <Media omitted>
-[30/05/2026, 4:21:35 pm] Imran: Walkie-talkies need charging, anyone know where the chargers are?
-[01/06/2026, 7:15:15 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
-[10/06/2026, 8:44:47 am] Priya: Semma da
-[11/06/2026, 4:53:10 pm] Ananya: Shift chart is in the sheet, please check your slot
-[15/06/2026, 10:47:24 am] Kavya: Innaiku class illa da
-[15/06/2026, 2:32:55 pm] Ananya: Priya where are you, we are at the department office
-[25/06/2026, 4:14:00 pm] Kavya: Reached the auditorium
-[08/07/2026, 10:52:08 am] Karthik: Lanyards are in the box near the canteen
-[09/07/2026, 7:34:44 pm] Priya: Reached the library
-[13/07/2026, 11:34:40 pm] Lakshmi: Shift chart is in the sheet, please check your slot
-[16/07/2026, 3:30:38 pm] Priya: Shift chart is in the sheet, please check your slot
-[08/08/2026, 6:08:49 pm] Ananya: Shift chart is in the sheet, please check your slot
-[08/09/2026, 7:09:32 pm] Lakshmi: Lanyards are in the box near the canteen
-[18/09/2026, 1:23:18 pm] Sanjay: Aama da, same duobt enakkum
-[27/10/2026, 6:47:48 pm] Lakshmi: Anu where are you, we are at the seminar hall
-[30/10/2026, 11:10:26 pm] Sanjay: Lanyards are in the box near the seminar hall
+[23/04/2026, 10:45:18 am] Ananya: Please check the budget sheet once
+[12/05/2026, 7:03:57 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
+[22/05/2026, 7:15:15 pm] Ananya: Walkie-talkies need charging, anyone know where the chargers are?
+[31/05/2026, 8:44:47 am] Priya: Semma da
+[01/06/2026, 4:53:10 pm] Ananya: Shift chart is in the sheet, please check your slot
+[05/06/2026, 10:47:19 am] Kavya: Romba nalla irukku
+[05/06/2026, 2:32:55 pm] Ananya: Priya where are you, we are at the department office
+[08/06/2026, 6:32:44 pm] Karthik: Tea break at 4?
+[25/06/2026, 1:19:01 pm] Imran: Tea break at 7 pm?
+[05/07/2026, 11:34:40 pm] Lakshmi: Shift chart is in the sheet, please check your slot
+[08/07/2026, 3:30:38 pm] Priya: Shift chart is in the sheet, please check your slot
+[31/07/2026, 6:08:49 pm] Ananya: Shift chart is in the sheet, please check your slot
+[31/08/2026, 7:09:36 pm] Lakshmi: Lanyards are in the box near the main gate
+[30/10/2026, 6:47:48 pm] Lakshmi: Anu where are you, we are at the seminar hall

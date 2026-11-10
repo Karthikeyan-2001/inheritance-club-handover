@@ -70,12 +70,15 @@ describe("postProcessFollowup", () => {
 
   it("does not count a hedge or a question as a report of completion", () => {
     const hedge = ev("h", "2026-03-17T10:00:00+05:30", "Maybe the certificates were sent already?");
-    const r2 = buildFollowupPrompt(target, [promise, hedge]);
+    const question = ev("q", "2026-03-17T11:00:00+05:30", "Were the certificates sent already?");
+    const r2 = buildFollowupPrompt(target, [promise, hedge, question]);
     const r = postProcessFollowup(
       {
         followups: [
           { message: "m2", quote: "Maybe the certificates were sent already", kind: "done" },
-          { message: "m2", quote: "the certificates were sent already?", kind: "implies_done" },
+          // The quote leaves out the hedge, but its sentence has it.
+          { message: "m2", quote: "the certificates were sent already", kind: "done" },
+          { message: "m3", quote: "Were the certificates sent already?", kind: "implies_done" },
         ],
         context: [],
       },
@@ -83,7 +86,7 @@ describe("postProcessFollowup", () => {
       target,
     );
     expect(r.evidence).toHaveLength(0);
-    expect(r.dropped).toEqual({ non_binding: 1, question: 1 });
+    expect(r.dropped).toEqual({ non_binding: 2, question: 1 });
   });
 
   it("with no readable promise, no follow-up can be placed in time", () => {

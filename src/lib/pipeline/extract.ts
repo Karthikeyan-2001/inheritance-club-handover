@@ -4,6 +4,7 @@
 import { z } from "zod";
 import type { AccessLevel } from "../access.ts";
 import { formatIst } from "../format.ts";
+import { sentences } from "./text.ts";
 import { noteGrounded, normaliseForQuote, verifyQuote } from "./verify.ts";
 
 export type PipelineEvent = {
@@ -39,7 +40,9 @@ export const CHUNK_MAX_CHARS = 12_000;
 /**
  * Group events by thread (a chat day, a Trello card, a meeting) in time order, then pack
  * whole threads of the same source type and visibility into chunks. A thread bigger than a
- * chunk is split.
+ * chunk is split. Threads are packed group by group, so files read in time order (as the
+ * database returns them, with two chats interleaving day by day) make as few chunks as files
+ * read one after another; a chunk never mixes visibility or source type.
  */
 export function chunkEvents(events: PipelineEvent[], maxEvents = CHUNK_MAX_EVENTS, maxChars = CHUNK_MAX_CHARS): Chunk[] {
   const threads = new Map<string, PipelineEvent[]>();
@@ -49,30 +52,34 @@ export function chunkEvents(events: PipelineEvent[], maxEvents = CHUNK_MAX_EVENT
     if (list) list.push(e);
     else threads.set(key, [e]);
   }
+  // Threads by group (visibility and source type), each group in order of first appearance.
+  const groups = new Map<string, PipelineEvent[][]>();
+  for (const thread of threads.values()) {
+    const g = `${visibilityKey(thread[0])}|${thread[0].sourceType}`;
+    const list = groups.get(g);
+    if (list) list.push(thread);
+    else groups.set(g, [thread]);
+  }
   const chunks: Chunk[] = [];
   let current: PipelineEvent[] = [];
   let chars = 0;
-  let group: string | null = null;
   const flush = () => {
     if (current.length) chunks.push({ events: current });
     current = [];
     chars = 0;
-    group = null;
   };
-  for (const thread of threads.values()) {
-    const tChars = thread.reduce((n, e) => n + e.text.length, 0);
-    const tGroup = `${visibilityKey(thread[0])}|${thread[0].sourceType}`;
-    if (current.length && (group !== tGroup || current.length + thread.length > maxEvents || chars + tChars > maxChars)) {
-      flush();
+  for (const group of groups.values()) {
+    for (const thread of group) {
+      const tChars = thread.reduce((n, e) => n + e.text.length, 0);
+      if (current.length && (current.length + thread.length > maxEvents || chars + tChars > maxChars)) flush();
+      for (const e of thread) {
+        if (current.length && (current.length >= maxEvents || chars + e.text.length > maxChars)) flush();
+        current.push(e);
+        chars += e.text.length;
+      }
     }
-    for (const e of thread) {
-      if (current.length && (current.length >= maxEvents || chars + e.text.length > maxChars)) flush();
-      current.push(e);
-      chars += e.text.length;
-      group = tGroup;
-    }
+    flush();
   }
-  flush();
   return chunks;
 }
 
@@ -156,8 +163,27 @@ export function deliverableGrounded(deliverable: string, eventText: string, auth
   return noteGrounded(text, eventText, author ?? "");
 }
 
-// Deterministic backstop for the prompt's "ignore hedged statements" rule.
-export const HEDGE = /\b(maybe|might|will see|not sure|probably|perhaps|someday|if possible|try to)\b/i;
+// Deterministic backstop for the prompt's "ignore hedged statements" rule. Includes Tamil-English
+// hedges written in Latin script ("paakalam", "let's see"; "theriyala", "don't know").
+export const HEDGE = /\b(maybe|might|will see|not sure|probably|perhaps|someday|if possible|try to|paa?r?k+alaa?m|paarpo?m|theriyala)\b/i;
+
+/**
+ * Is the quote hedged, by its own words or by the rest of its sentence? A quote can leave the
+ * hedge out ("I'll shoot the convocation too" from "Maybe I'll shoot the convocation too"), so
+ * the sentences of the message that the quote sits in are checked as well. A firm promise that
+ * shares a sentence with a hedge is dropped too, and counted: safer than keeping a hedge as a promise.
+ */
+export function hedged(quote: string, messageText: string): boolean {
+  if (HEDGE.test(quote)) return true;
+  const q = normaliseForQuote(quote);
+  if (!q) return false;
+  const head = q.slice(0, 24);
+  const tail = q.slice(-24);
+  return sentences(messageText).some((s) => {
+    const n = normaliseForQuote(s);
+    return (n.includes(q) || q.includes(n) || n.includes(head) || n.includes(tail)) && HEDGE.test(s);
+  });
+}
 const NO_PARTY = /^(unknown|none|n\/?a|nobody|no one|unspecified|-|\?)$/i;
 
 /** Keep only candidates that cite a real message, quote it verbatim, and are firm and complete. */
@@ -178,7 +204,7 @@ export function postProcess(output: ExtractionOutput, refs: Map<string, Pipeline
       drop(check.reason);
       continue;
     }
-    if (HEDGE.test(c.quote)) {
+    if (hedged(c.quote, event.text)) {
       drop("non_binding");
       continue;
     }

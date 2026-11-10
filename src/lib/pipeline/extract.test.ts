@@ -29,6 +29,20 @@ describe("chunkEvents", () => {
     expect(chunkEvents(events).map((c) => c.events.map((e) => e.id))).toEqual([["a", "e"], ["b"], ["c"], ["d"]]);
   });
 
+  it("packs interleaved files as tightly as files read one after another (the database reads in time order)", () => {
+    // Two chats at different levels, one message a day each, interleaved by time.
+    const days = Array.from({ length: 30 }, (_, i) => `2026-03-${String(i + 1).padStart(2, "0")}`);
+    const interleaved = days.flatMap((d) => [
+      ev(`c${d}`, "committee chat", { threadId: `c:${d}`, accessLevel: "committee", ts: `${d}T10:00:00+05:30` }),
+      ev(`v${d}`, "volunteers chat", { threadId: `v:${d}`, accessLevel: "everyone", ts: `${d}T11:00:00+05:30` }),
+    ]);
+    const byFile = [...interleaved.filter((e) => e.id.startsWith("c")), ...interleaved.filter((e) => e.id.startsWith("v"))];
+    const a = chunkEvents(interleaved, 20);
+    expect(a.map((c) => c.events.length)).toEqual([20, 10, 20, 10]);
+    expect(a.map((c) => c.events.map((e) => e.id))).toEqual(chunkEvents(byFile, 20).map((c) => c.events.map((e) => e.id)));
+    for (const c of a) expect(new Set(c.events.map((e) => e.accessLevel)).size).toBe(1);
+  });
+
   it("starts a new chunk at the event or size limit, splitting only oversized threads", () => {
     const many = Array.from({ length: 5 }, (_, i) => ev(`e${i}`, "hello", { threadId: i < 3 ? "d1" : "d2" }));
     expect(chunkEvents(many, 3).map((c) => c.events.length)).toEqual([3, 2]);
@@ -56,6 +70,28 @@ describe("postProcess", () => {
     const { kept, dropped } = postProcess({ commitments: [c({})] }, refs);
     expect(dropped).toEqual({});
     expect(kept[0]).toMatchObject({ event: { id: "e1" }, owedTo: "Workshop speakers", dueText: "by 15 March" });
+  });
+
+  it("drops a quote that leaves out the hedge in its own sentence, including Tamil-English hedges", () => {
+    const ev = (id: string, text: string) => ({ id, author: "Joel", ts: "2026-07-12T18:00:00+05:30", text, threadId: null, sourceType: "whatsapp" as const });
+    const local = new Map([
+      ["m1", ev("a", "Maybe I'll shoot the convocation too, paarkalaam.")],
+      ["m2", ev("b", "I'll shoot the convocation on Friday, paakalam.")],
+      ["m3", ev("c", "I'll print the frame list by Monday. The venue might change though.")],
+    ]);
+    const { kept, dropped } = postProcess(
+      {
+        commitments: [
+          c({ message: "m1", quote: "I'll shoot the convocation too", owed_to: "the club", deliverable: "shoot the convocation" }),
+          c({ message: "m2", quote: "I'll shoot the convocation on Friday", owed_to: "the club", deliverable: "shoot the convocation" }),
+          c({ message: "m3", quote: "I'll print the frame list by Monday.", owed_to: "the club", deliverable: "print the frame list" }),
+        ],
+      },
+      local,
+    );
+    expect(dropped).toEqual({ non_binding: 2 });
+    // A hedge in a different sentence of the same message does not touch a firm promise.
+    expect(kept.map((k) => k.event.id)).toEqual(["c"]);
   });
 
   it("drops and counts every kind of bad candidate", () => {

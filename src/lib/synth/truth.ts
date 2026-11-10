@@ -1,4 +1,4 @@
-// The ground truth of a generated scenario (data/scenarios/year/ground_truth.yaml) and the check
+// The ground truth of a generated scenario (data/scenarios/<name>/ground_truth.yaml) and the check
 // that every quote in it is really in its file. SYNTHETIC data only.
 
 import { parse } from "yaml";
@@ -9,11 +9,13 @@ import { normaliseForQuote } from "../pipeline/verify.ts";
 const Access = z.enum(ACCESS_LEVELS);
 const Quote = z.object({ file: z.string(), text: z.string().min(1) });
 const Trust = z.enum(["corroborated", "sourced", "inferred", "contradicted", "gap"]);
-const Status = z.enum(["fulfilled", "no_evidence", "contradicted", "likely_fulfilled", "overdue"]);
+const Status = z.enum(["fulfilled", "no_evidence", "contradicted", "likely_fulfilled", "open"]);
+/** The demo account that uploads a file; private files are readable by it and the advisor only. */
+const Uploader = z.enum(["arun", "meena", "kavya", "divya"]);
 
 export const TruthSchema = z.object({
   synthetic: z.literal(true),
-  files: z.record(z.string(), z.object({ type: z.enum(["whatsapp", "trello", "minutes"]), accessLevel: Access })),
+  files: z.record(z.string(), z.object({ type: z.enum(["whatsapp", "trello", "minutes"]), accessLevel: Access, uploader: Uploader.default("arun") })),
   commitments: z.array(
     z.object({
       id: z.string(),
@@ -26,7 +28,10 @@ export const TruthSchema = z.object({
       expectedAccess: Access.optional(),
       note: z.string().optional(),
       quote: Quote,
-      evidence: z.array(Quote.extend({ relation: z.enum(["fulfils", "contradicts"]) })),
+      /** Other wordings of the same promise (say, an action line in the same minutes); finding any of them finds the item. */
+      alternates: z.array(Quote).default([]),
+      /** `inferred`: the record only implies it was done (likely fulfilled, never shown as done). */
+      evidence: z.array(Quote.extend({ relation: z.enum(["fulfils", "contradicts"]), inferred: z.boolean().optional() })),
     }),
   ),
   recurring: z.array(
@@ -37,6 +42,8 @@ export const TruthSchema = z.object({
       approval: z.string(),
       approver: z.string().nullable(),
       expectedTrust: Trust,
+      /** The level of the copy to score; default committee (a finance copy from the minutes may exist too). */
+      expectedAccess: Access.optional(),
       appears: z.array(z.string()),
       quotes: z.array(Quote).min(1),
     }),
@@ -55,7 +62,7 @@ export type FileTexts = Record<string, string[]>;
 /** Every quote in the truth, with where it sits in the document. */
 export function allQuotes(t: Truth): { where: string; quote: z.infer<typeof Quote> }[] {
   return [
-    ...t.commitments.flatMap((c) => [{ where: `${c.id} promise`, quote: c.quote }, ...c.evidence.map((e, i) => ({ where: `${c.id} evidence ${i + 1}`, quote: e }))]),
+    ...t.commitments.flatMap((c) => [{ where: `${c.id} promise`, quote: c.quote }, ...c.alternates.map((q, i) => ({ where: `${c.id} alternate ${i + 1}`, quote: q })), ...c.evidence.map((e, i) => ({ where: `${c.id} evidence ${i + 1}`, quote: e }))]),
     ...t.recurring.flatMap((r) => r.quotes.map((q, i) => ({ where: `${r.id} quote ${i + 1}`, quote: q }))),
     ...t.decoys.map((q, i) => ({ where: `decoy ${i + 1}`, quote: q })),
     ...t.contradictions.flatMap((x) => [{ where: `${x.id} claim A`, quote: x.claimA }, { where: `${x.id} claim B`, quote: x.claimB }]),

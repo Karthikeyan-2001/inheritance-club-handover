@@ -16,8 +16,8 @@ describe("stepForPath", () => {
 });
 
 describe("STEP_HREF", () => {
-  it("links the Review step to its page, and leaves Handover as upcoming", () => {
+  it("links the Review and Handover steps to their pages", () => {
     expect(STEP_HREF.Review).toBe("/review");
-    expect(STEP_HREF.Handover).toBeUndefined();
+    expect(STEP_HREF.Handover).toBe("/handover");
   });
 });

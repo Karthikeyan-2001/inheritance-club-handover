@@ -99,3 +99,10 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 - **The working ledger is not for the incoming lead.** Until a version is approved, only the outgoing lead, the advisor and the treasurer read obligations (and so evidence, notes, links and conflicts). The incoming lead and members read approved versions only, filtered by the same access rules, so a release still reaches the incoming lead through a version. Messages and files (the timeline) are unchanged.
 - **Version diffs are built from rows the role can read.** The diff shown to each role is computed from that role's readable items, not from a stored diff, so it cannot show a restricted item or field.
 - No AI use changed in this phase.
+
+## Handover (Phase 9)
+
+- **`/handover` reads the latest approved version only**, as the viewer's role may read it (`version_items` through row-level security). It is the incoming lead's page: "People waiting on you" (open commitments grouped by who they are owed to, soonest first, with a last group for items that name no one), a calendar of recurring duties by next due date with "Overdue" and "Start now" markers, and sealed placeholders. Items with no evidence say "No evidence kept". Reviewers see the same page with the incoming lead's answers.
+- **Sealed placeholders** come from `sealed_items` (holder and a short topic, no source text). The outgoing lead or advisor can add one for a finance or private item that has not been released; the topic is shown to every member, so the form says to leave details out.
+- **Acknowledgements** (accept, ask a question, decline) are immutable rows; the latest per item wins. Only the incoming lead can answer, and only an item they can read. A question or a decline needs a note. Each answer now writes an audit row (migration 0016) with the item's access level, so the audit is filtered like the item.
+- No AI use changed in this phase; no paid model calls were made.

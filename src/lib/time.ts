@@ -54,3 +54,8 @@ export function localWallClockToIstIso(date: Date): string {
 export function istDateOf(iso: string): string {
   return iso.slice(0, 10);
 }
+
+/** Today's calendar date in IST (YYYY-MM-DD). */
+export function istToday(now: Date = new Date()): string {
+  return new Date(now.getTime() + 330 * 60_000).toISOString().slice(0, 10);
+}

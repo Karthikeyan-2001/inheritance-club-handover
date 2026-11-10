@@ -6,6 +6,7 @@ export const STEP_HREF: Partial<Record<Step, string>> = {
   Connect: "/import",
   Reconstruct: "/ledger",
   Review: "/review",
+  Handover: "/handover",
 };
 
 export function stepForPath(pathname: string): Step | null {

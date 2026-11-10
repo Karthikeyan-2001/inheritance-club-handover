@@ -1,6 +1,6 @@
 # Build status and handover notes
 
-Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 8.
+Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 9.
 
 ## Where things stand
 
@@ -14,14 +14,14 @@ Read this first when resuming work. Last updated: 2026-11-10, at the end of Phas
 | 5 | Fulfilment, cycles (recurring duties and approvals), context, staged runs | merged |
 | 6 | Matching (aliases plus `pg_trgm`), trust-state rule function, docket | merged |
 | 7 | Ledger UI and evidence pane (quote highlighted in source) | merged |
-| 8 | `/review`: two-step sign-off, rulings, version diff, immutable versions, audit | on branch `build/phase-8`, ready to merge |
-| 9 | `/handover`: "people waiting on you", calendar, sealed placeholders, acks | **next** |
+| 8 | `/review`: two-step sign-off, rulings, version diff, immutable versions, audit | merged |
+| 9 | `/handover`: "people waiting on you", calendar, sealed placeholders, acks | on branch `build/phase-9`, ready to merge |
 | 10 | Demo mode ("Load demo club" per visitor, keep-alive cron) | later |
 | 11 | Full synthetic generator (`world.yaml`, `ground_truth.yaml`) | later |
 | 12 | Scoring, leak test, second scenario, end-to-end tests | later |
 | 13 | Hardening and docs | later |
 
-Tests at the end of Phase 8: 294 unit, 144 RLS integration, 32 Playwright, all passing. Lint, typecheck and build are clean.
+Tests at the end of Phase 9: 456 unit (all unit-project files), 152 RLS integration, 36 Playwright, all passing. Lint, typecheck and build are clean.
 
 ## How the user works
 
@@ -31,13 +31,12 @@ Tests at the end of Phase 8: 294 unit, 144 RLS integration, 32 Playwright, all p
 - Ask before any paid model call. Show a cost estimate first.
 - The user chooses the Claude Code model per phase (see the table below).
 
-## Outstanding user tasks (for Phase 8)
+## Outstanding user tasks (for Phase 9)
 
-1. Merge `build/phase-8`.
-2. Hosted database: `pnpm db:push` applies 0013 to 0015. 0013 backfills `reviewed_status` and `reviewed_trust` for items already accepted; 0014 hides the working ledger from the incoming lead and members.
-3. Re-seed the hosted demo club with `pnpm seed:hosted`. It now also marks the draft ready (as Arun) and approves version 1 (as Dr. Meena), so Kavya has something to read and judges can make version 2 and see a diff. Without it Kavya sees an empty Versions list.
-4. Redeploy on Vercel. No new environment variables, no paid model calls in this phase.
-5. Optional: on the live app, as Arun edit an item (Review, Draft) and mark ready; as Dr. Meena rule the conflict and approve; as Kavya open Version 2.
+1. Run `/code-review` on Opus, then merge `build/phase-9`.
+2. Hosted database: `pnpm db:push` applies 0016 (acks audit and note rule).
+3. Redeploy on Vercel. No new environment variables, no paid model calls. Re-seeding is not required.
+4. Optional: as Kavya open Handover and answer an item; as Dr. Meena open Handover and see the answer.
 
 ## Environment facts
 
@@ -73,6 +72,8 @@ Tests at the end of Phase 8: 294 unit, 144 RLS integration, 32 Playwright, all p
 | 0014 | `app.sees_working_ledger()` (outgoing lead, advisor, treasurer). `app.can_read_obligation()`, `obligations_select` and `docket_select` require it, so the incoming lead and members read approved `version_items` only. |
 | 0015 | `signoff_status()`: whether the lead's mark still matches, without exposing the hash. |
 
+| 0016 | `acks`: a before-insert trigger needs a note for `question` and `decline`; an after-insert trigger (`app.audit_ack`) writes an audit row (`ack_<action>`) with the item's level and uploaders. |
+
 ### Code (`src/lib/`)
 
 | Path | Contents |
@@ -97,6 +98,7 @@ Tests at the end of Phase 8: 294 unit, 144 RLS integration, 32 Playwright, all p
 | `pipeline/run-memory.ts` | The whole pipeline in memory, for the eval and unit tests. It mirrors the SQL storage rules (now including provenance, matching and the trust and status rules over effective evidence), so keep it in step with them. |
 | `review/` | Pure, tested: `fields.ts` (editable fields per kind, `changedFields`), `diff.ts` (`diffVersions` over readable rows, format-1 aware), `readiness.ts` (why mark-ready or approval is blocked, in words), `rereview.ts` (`needsRereview`, mirror of the SQL), `history.ts` and `labels.ts` (audit rows and rulings in words). |
 | `pipeline/match.ts` | Also `pairKey` and the `skip` set of `planMatches`: a pair a reviewer ruled on is never scored or asked about again. |
+| `handover/handover.ts` | Pure: `toHandoverItem`, `peopleWaiting`, `dutyCalendar` and `dutyTiming` (today is an IST day), `latestAckByItem`, `ackSummary`. `istToday()` is in `time.ts`. |
 | `pipeline/provider.ts`, `fake-extract.ts`, `fake-pipeline.ts` | `LLM_PROVIDER=fake` is the rule-based offline stand-in, refused in production. `fakeHandlers()` covers every task. |
 
 ### App (`src/app/`)
@@ -110,6 +112,7 @@ Tests at the end of Phase 8: 294 unit, 144 RLS integration, 32 Playwright, all p
 | `/review` | Tabs by role. **Draft** (outgoing lead, advisor): sign-off panel, the pending diff against the last version, items grouped Changed since accepted, Draft, Accepted, Rejected, each with accept, edit, reject or back to draft and "Same item" or "Not the same" on linked records. **Conflicts** (advisor rules; the treasurer reads). **Versions** (everyone). **History** (reviewers). Components in `src/components/review/`, actions in `src/app/review/actions.ts`. |
 | `/review/versions/[number]` | One version as the viewer's role may read it, with the diff from the version before. Built from `version_items` and `version_context_items` through RLS. |
 | `/ledger` | For the incoming lead and members the working-ledger tabs show a notice pointing to Review; the Timeline is unchanged. |
+| `/handover` | The latest approved version as the role reads it: People waiting, Calendar, Sealed items. Incoming lead answers items (`AckForm`, action `acknowledge`); reviewers see answers and can add a placeholder (`sealPlaceholder`). Components in `src/components/handover/`. |
 | `/api/jobs/run-next` | One job per POST (`maxDuration` 60). Returns `done` and `waiting` (an earlier stage still running elsewhere). |
 | `/api/health` | Health check. |
 
@@ -194,9 +197,17 @@ Tests at the end of Phase 8: 294 unit, 144 RLS integration, 32 Playwright, all p
 - Found while building: a diff stored in `versions.diff` is for all items, so each role's diff is computed from the rows it can read. Older (format 1) items are compared on the fields they recorded (`app.item_core`, `CORE_FIELDS` in `diff.ts`; keep the two in step).
 - No paid model calls were made in this phase.
 
-## Phase 9 plan (next)
+## Phase 9 decisions
 
-`/handover`: "people waiting on you" (commitments grouped by who they are owed to), a calendar of recurring duties with start-by dates, sealed placeholders for items the incoming lead may not read (from `sealed_items`, which holds no source text), and the incoming lead's acknowledgements (`acks`: accept, question, decline, latest wins) on approved version items. Read from `version_items` and `version_context_items` only, as the incoming lead's view. Known gaps listed under Phase 9 above still apply. Model: Sonnet 5.5, then `/code-review` on Opus before merging.
+- Read from `version_items` only, for every role, so the page can never show more than the approved version holds for that role.
+- A placeholder is a manual act by a reviewer (`sealed_items` insert, audited by the existing trigger). Nothing creates placeholders automatically, because a model- or code-written topic could leak detail.
+- Acks were not audited in Phase 1; migration 0016 closes that. The note is the incoming lead's own words.
+- Fulfilled commitments are left out of "people waiting"; an item with no `owed_to` is grouped under "Not stated who it is owed to" rather than dropped.
+- Known gaps: an acknowledgement is per item, not per version change, so a new version asks again; there is no UI for the outgoing team to answer a question (they can read it). Reviewers see one incoming lead's answers (the demo has one). The earlier Phase 9 notes under Known gaps (release_item for private notes, borrowed trust) still apply.
+
+## Phase 10 plan (next)
+
+Demo mode: "Load demo club" per visitor, keep-alive cron. Model: Opus 5.5.
 
 ## Claude Code model per phase (recommendation)
 

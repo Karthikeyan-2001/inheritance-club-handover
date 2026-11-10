@@ -20,7 +20,7 @@ import {
   postProcessFollowup,
   type FollowupTarget,
 } from "./fulfilment.ts";
-import { MATCH_SYSTEM, MatchSchema, batchPairs, buildMatchPrompt, planMatches, postProcessMatches, type MatchItem, type MatchPair } from "./match.ts";
+import { MATCH_SYSTEM, MatchSchema, batchPairs, buildMatchPrompt, pairKey, planMatches, postProcessMatches, type MatchItem, type MatchPair } from "./match.ts";
 import { buildIdf, relatedEvents } from "./related.ts";
 import { emptyProgress, type RunProgress, type StepResult } from "./progress.ts";
 import { DUTIES_TASK, DUTY_CONTEXT_TASK, EXTRACT_TASK, FOLLOWUP_TASK, MATCH_TASK, PLAN_FOLLOWUPS_TASK, PLAN_MATCHES_TASK, STAGES, type JobKind } from "./tasks.ts";
@@ -345,7 +345,9 @@ async function linkPair(db: Db, workspaceId: string, p: MatchPair, verdict: "sam
 async function planMatchesStep({ db, workspaceId, runId, userId, step }: StepContext) {
   const items = await loadMatchItems(db, workspaceId);
   const { data: aliases } = await db.from("aliases").select("canonical, variants").eq("workspace_id", workspaceId);
-  const plan = planMatches(items, aliases ?? []);
+  // A pair a reviewer has ruled on ("same" or "not the same") is left alone.
+  const { data: reviewed } = await db.from("obligation_links").select("a, b").eq("workspace_id", workspaceId).eq("method", "reviewer");
+  const plan = planMatches(items, aliases ?? [], undefined, new Set((reviewed ?? []).map((l) => pairKey(l.a, l.b))));
   step.candidates = plan.rule.length + plan.ask.length;
   for (const p of plan.rule) await linkPair(db, workspaceId, p, "same", "rule", step);
   const batches = batchPairs(plan.ask);

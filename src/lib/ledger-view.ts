@@ -3,7 +3,8 @@
 
 import type { TrustState } from "./pipeline/trust.ts";
 
-export type LinkVerdict = { a: string; b: string; verdict: "same" | "possible" };
+/** `distinct` is a reviewer's "not the same": never folded, never listed as a possible match. */
+export type LinkVerdict = { a: string; b: string; verdict: "same" | "possible" | "distinct" };
 
 /** "lab inventory list" -> "Lab inventory list". */
 export const capitalise = (s: string): string => s.charAt(0).toUpperCase() + s.slice(1);
@@ -34,7 +35,7 @@ export function groupLinked(order: readonly string[], links: readonly LinkVerdic
   const possible = new Map<string, Set<string>>();
   const put = (m: Map<string, Set<string>>, from: string, to: string) => m.set(from, (m.get(from) ?? new Set()).add(to));
   for (const l of links) {
-    if (!known.has(l.a) || !known.has(l.b) || l.a === l.b) continue;
+    if (!known.has(l.a) || !known.has(l.b) || l.a === l.b || l.verdict === "distinct") continue;
     const m = l.verdict === "same" ? same : possible;
     put(m, l.a, l.b);
     put(m, l.b, l.a);

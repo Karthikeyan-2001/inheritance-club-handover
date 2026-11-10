@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { FakeProvider } from "../llm/provider-fake.ts";
 import { fakeMatch } from "./fake-pipeline.ts";
-import { MAX_ASK, batchPairs, buildMatchPrompt, decide, partyTokens, planMatches, postProcessMatches, scorePair, type MatchItem } from "./match.ts";
+import { MAX_ASK, batchPairs, buildMatchPrompt, decide, pairKey, partyTokens, planMatches, postProcessMatches, scorePair, type MatchItem } from "./match.ts";
 
 const item = (id: string, over: Partial<MatchItem> = {}): MatchItem => ({
   id, kind: "commitment", description: "Send certificates to workshop speakers", owedBy: "Arun", owedTo: "Workshop speakers",
@@ -93,6 +93,16 @@ describe("planMatches", () => {
     expect(one.rule).toEqual([{ a: "y", b: "z", score: expect.any(Number) }]);
     expect(one.ask.map((p) => [p.a, p.b])).toEqual(expect.arrayContaining([["chat", "y"], ["chat", "z"]]));
     for (let i = 1; i < one.ask.length; i++) expect(one.ask[i - 1].score).toBeGreaterThanOrEqual(one.ask[i].score);
+  });
+
+  it("never scores a pair a reviewer has ruled on, whichever way round it is written", () => {
+    const items = [item("z"), chatPromise, item("y", { description: "Send the certificates to workshop speakers" })];
+    const all = planMatches(items, []);
+    expect(all.rule).toHaveLength(1);
+    const skipped = planMatches(items, [], MAX_ASK, new Set([pairKey("z", "y"), pairKey("y", "chat")]));
+    expect(skipped.rule).toEqual([]);
+    expect(skipped.ask.map((p) => pairKey(p.a, p.b))).not.toContain(pairKey("chat", "y"));
+    expect(pairKey("b", "a")).toBe(pairKey("a", "b"));
   });
 
   it("caps the pairs sent to the model and counts the rest", () => {

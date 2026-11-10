@@ -24,11 +24,9 @@ test("the login page lists the four demo accounts with credentials", async ({ pa
 test("roles see different rows: incoming lead vs advisor", async ({ page }) => {
   await signInAs(page, "Kavya");
   await expect(page.getByRole("button", { name: /Signed in as Kavya, Incoming lead/ })).toBeVisible();
-  await expect(count(page, "obligations")).toHaveText("3");
+  // The incoming lead reads approved versions, not the working ledger.
+  await expect(count(page, "obligations")).toHaveText("0");
   await expect(count(page, "audit_log")).toHaveText("0");
-  const list = page.getByTestId("visible-obligations");
-  await expect(list).toContainText("Return 6 DHT22 sensors"); // released private item
-  await expect(list).not.toContainText("₹2,400"); // finance
 
   // Switch role with the header menu (mouse).
   await page.getByRole("button", { name: /Switch demo role/ }).click();

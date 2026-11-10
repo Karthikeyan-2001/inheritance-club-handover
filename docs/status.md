@@ -1,6 +1,6 @@
 # Build status and handover notes
 
-Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 10.
+Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 11.
 
 ## Where things stand
 
@@ -16,12 +16,12 @@ Read this first when resuming work. Last updated: 2026-11-10, at the end of Phas
 | 7 | Ledger UI and evidence pane (quote highlighted in source) | merged |
 | 8 | `/review`: two-step sign-off, rulings, version diff, immutable versions, audit | merged |
 | 9 | `/handover`: "people waiting on you", calendar, sealed placeholders, acks | merged |
-| 10 | Demo mode ("Load demo club" per visitor, keep-alive cron) | on branch `build/phase-10`, ready to merge |
-| 11 | Full synthetic generator (`world.yaml`, `ground_truth.yaml`) | later |
+| 10 | Demo mode ("Load demo club" per visitor, keep-alive cron) | merged |
+| 11 | Synthetic generator (`world.yaml`, `ground_truth.yaml`, offline renderer) | on branch `build/phase-11`, ready to merge |
 | 12 | Scoring, leak test, second scenario, end-to-end tests | later |
 | 13 | Hardening and docs | later |
 
-Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all passing. Lint, typecheck and build are clean. (The Phase 9 line said "456 unit"; that was unit plus RLS: 304 + 152.)
+Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Playwright unchanged from Phase 10 (not re-run: no database or app code changed). Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all passing. Lint, typecheck and build are clean. (The Phase 9 line said "456 unit"; that was unit plus RLS: 304 + 152.)
 
 ## How the user works
 
@@ -31,14 +31,12 @@ Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all 
 - Ask before any paid model call. Show a cost estimate first.
 - The user chooses the Claude Code model per phase (see the table below).
 
-## Outstanding user tasks (for Phase 10)
+## Outstanding user tasks (for Phase 11)
 
-1. Run `/code-review` on Opus if you want a second read, then merge `build/phase-10`.
-2. Hosted database: `pnpm db:push` applies 0017 (`workspaces.sandbox_expires_at`, `demo_sandboxes`). Re-seeding is optional (it only adds `demo_key` to the shared accounts' metadata; the app falls back to matching their email).
-3. Vercel: add `CRON_SECRET` (Production; at least 16 letters and digits, for example `openssl rand -hex 24`), marked Sensitive. `SUPABASE_SECRET_KEY` is already there and is now also used for demo copies. Then redeploy.
-4. After the deploy: on the live sign-in page click **Load demo club**, switch to Kavya, open Handover. In Vercel, run the `/api/cron/daily` cron job once and check its log shows 200.
-5. Optional, before judging: raise Supabase **Authentication → Rate Limits → Sign-ups and sign-ins** (default 30 per 5 minutes per IP). Every sign-in comes from Vercel's servers, so visitors share a few IPs.
-6. No paid model calls were made in this phase.
+1. Run `/code-review` on Opus if you want a second read, then merge `build/phase-11`.
+2. Approved while building: the `yaml` package was added (`pnpm add yaml`, version 2.9.1).
+3. Nothing to deploy or configure: no migration, no environment variable, no app code changed.
+4. No paid model calls were made in this phase.
 
 ## Environment facts
 
@@ -105,6 +103,7 @@ Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all 
 | `demo/load-club.ts` | `insertClub` (workspace, memberships and every fixture row, as the service role, through the usual triggers), `finishClub` (releases, and optionally mark ready and approve version 1, as the club's own users), `fixtureIds` / `freshIds` (a copy gets new ids for every row), `memoSignIn`. Used by `scripts/seed.ts` and by demo copies. |
 | `demo/sandbox.ts` | Pure plus injected clients: `sandboxEmail` (`<key>+<workspace id>@example.com`), `sandboxPassword` (HMAC of the email under the secret key), `signSandboxCookie` / `readSandboxCookie`, `capacityProblem`, `createSandbox`, `purgeOne`, `purgeSandboxes`, `demoKeyFromMetadata`. Limits: 7 days, 300 active, 60 per hour, 10-minute grace for a row without a workspace. |
 | `demo/sandbox-server.ts` | `server-only`: `sandboxConfig` (reads `SUPABASE_SECRET_KEY`), `serviceClient`, `ephemeralSignIn`, `sandboxCookieOptions`, `forgetDeletedCopy` (not a server action on purpose: it takes a workspace id). |
+| `synth/world.ts`, `rng.ts`, `generate.ts`, `truth.ts` | The scenario generator. `loadWorld` (Zod, checks people and lists), `generateScenario(world)` (two WhatsApp chats, a Trello board, minutes; pure and seeded), `loadTruth`, `checkTruth` (every quote is in its file; restricted amounts stay at their level). Script: `pnpm gen:scenario` (`-- --check` compares). Data: `data/scenarios/year/`. |
 | `cron.ts` | `cronAuthorised` (constant-time bearer check; refuses when `CRON_SECRET` is unset or short). |
 | `pipeline/provider.ts`, `fake-extract.ts`, `fake-pipeline.ts` | `LLM_PROVIDER=fake` is the rule-based offline stand-in, refused in production. `fakeHandlers()` covers every task. |
 
@@ -237,9 +236,28 @@ Chosen by me while building; change any you disagree with.
 - A copy is built from the small Phase 1 fixture (9 messages, 6 items). Phase 11's generator should feed `insertClub` a richer club.
 - `getViewer()` still takes the first membership; copy accounts have exactly one, but a real user in two workspaces would be ambiguous.
 
-## Phase 11 plan (next)
+## Phase 11 decisions
 
-Full synthetic generator (`world.yaml`, `ground_truth.yaml`). Model: Sonnet 5.5. Consider loading a generated club into demo copies (through `insertClub`) once it exists.
+Confirmed with the user: add `yaml`; deterministic renderer first.
+
+- **Authored, not drawn.** `world.yaml` holds the planted messages, card histories and meetings word for word. Only filler chat is templated (seeded, so the same bytes every time). Filler templates are tested to contain no promise words, so every commitment-like line in the data is planted and listed.
+- **Truth is separate and written by hand.** `ground_truth.yaml` has the same shape as the mini `ground-truth.json` plus `restricted` amounts and `appears` months for duties. `checkTruth` proves every quote is in its file. `expectedTrust` is null where several sources restate a promise, because the answer depends on how the extractor folds them; Phase 12 should not score those.
+- **The committed outputs are checked in** and a test fails if they drift from the world (`pnpm gen:scenario`).
+- Year scenario: 18 commitments (4 no evidence, 2 contradicted), 4 duties with approvals, 6 decoys, 2 contradictions, 4 files at 4 levels. About 1,300 committee messages, 690 volunteer messages, 19 cards, 6 meetings. Smaller than `data/samples/` by design, and with the planted facts in the same story; those samples stay as parser format fixtures.
+- **Not built:** the optional LLM renderer. It would need a new adapter task and a paid run with an estimate. Add it only if the template filler looks too repetitive.
+- **Not done:** loading the year club into demo copies through `insertClub`. It needs a loader from parsed files to fixture rows plus a pipeline run (paid with a real model), so it fits with Phase 12.
+- No paid model calls were made in this phase, and the pipeline was not run on the new files.
+
+## Known gaps (Phase 11)
+
+- The filler repeats phrases more than real chat does. Tamil-English lines come from a list of eight.
+- The scenario has no `.docx` minutes and no private-level file. Phase 12's leak test needs one private file; add it to `world.yaml` then.
+- `eval:pipeline` still reads the mini scenario only (`scripts/mini-scenario.ts`). Phase 12 should add a loader for the year files.
+- Trello `dueComplete` is always false in the generated board (moves carry the evidence, as in the mini board).
+
+## Phase 12 plan (next)
+
+Scoring, leak test, second scenario, end-to-end tests. Model: Opus 5.5, high. Start by pointing `eval:pipeline` at `data/scenarios/year/` (free with `LLM_PROVIDER=fake`; a real run needs an estimate first).
 
 ## Claude Code model per phase (recommendation)
 

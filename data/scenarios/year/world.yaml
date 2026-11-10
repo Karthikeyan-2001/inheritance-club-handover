@@ -1,0 +1,351 @@
+# The year scenario: one synthetic IoT club, 1 Nov 2025 to 31 Oct 2026. SYNTHETIC: every name,
+# club and number is invented. The generator (scripts/generate-scenario.ts) turns this file into
+# the four export files next to it, the same way every time (`seed`). The planted messages
+# (`beats`), card histories and meetings are written here word for word; only the filler chat
+# between them is made from templates. ground_truth.yaml says what a correct reading finds.
+synthetic: true
+seed: 11
+club: IoT Club
+period: { from: 2025-11-01, to: 2026-10-31 }
+
+people:
+  - { name: Arun,    role: outgoing lead, nicknames: [Arun, Aru] }
+  - { name: Kavya,   role: incoming lead, nicknames: [Kavya, Kav] }
+  - { name: Priya,   role: events,        nicknames: [Priya, Pri] }
+  - { name: Divya,   role: treasurer,     nicknames: [Divya, Divs] }
+  - { name: Rohan,   role: tech,          nicknames: [Rohan, Ro] }
+  - { name: Karthik, role: member,        nicknames: [Karthik, Kar] }
+  - { name: Meghna,  role: design,        nicknames: [Meghna, Meg] }
+  - { name: Sanjay,  role: volunteer,     nicknames: [Sanjay] }
+  - { name: Lakshmi, role: volunteer,     nicknames: [Lakshmi, Laks] }
+  - { name: Imran,   role: volunteer,     nicknames: [Imran] }
+  - { name: Ananya,  role: volunteer,     nicknames: [Ananya, Anu] }
+
+filler:
+  typoRate: 0.04
+  mediaRate: 0.03
+  deletedRate: 0.012
+  things: [router, poster, budget sheet, lab schedule, sensor kit, workshop slides, fest schedule, sponsor deck, breadboards, soldering station, banner design, attendance sheet]
+  places: [canteen, IoT lab, library, auditorium, seminar hall, main gate, department office, parking]
+  times: ["4", "5", "6 pm", "7 pm", "noon"]
+  tamil:
+    - Seri da
+    - Enna da idhu
+    - Romba nalla irukku
+    - Machan, lab key yaar kitta irukku?
+    - Innaiku class illa da
+    - Bus romba late da
+    - Semma da
+    - Aama da, same doubt enakkum
+  templates:
+    committee:
+      - Anyone has the {thing}?
+      - "{who} did you see the {thing} message?"
+      - The {thing} is in the shared drive, check it
+      - Class got cancelled today, free till {time}
+      - "{tamil}"
+      - Is the {place} open now?
+      - Lunch at the canteen? {place} is crowded though
+      - "{who} you free tomorrow evening?"
+      - Exam timetable is out, check the notice board
+      - The {thing} looks good to me
+      - Which {thing} are we using, the old one or the new one?
+      - lol {who} that was funny
+      - Power cut in the {place} again
+      - Reached the {place}, where is everyone?
+      - The {thing} needs a look when someone gets time
+      - Why is the {place} locked today
+      - Did anyone see the new {thing}?
+      - "{tamil}"
+    volunteers:
+      - Walkie-talkies need charging, anyone know where the chargers are?
+      - Shift chart is in the sheet, please check your slot
+      - Which gate do we use for the guests?
+      - Tea break at {time}?
+      - "{who} where are you, we are at the {place}"
+      - Reached the {place}
+      - "{tamil}"
+      - Lanyards are in the box near the {place}
+      - Is the {place} open yet?
+      - Please check the {thing} once
+
+chats:
+  - file: whatsapp-committee.txt
+    format: android
+    group: IoT Club Committee
+    accessLevel: committee
+    creator: Priya
+    template: committee
+    startsAt: "2025-11-01 09:00"
+    members: [Priya, Arun, Kavya, Divya, Rohan, Karthik, Meghna]
+    perDay: { default: 3, "2026-01": 6, "2026-02": 6, "2026-04": 2, "2026-05": 0.5, "2026-06": 0.3, "2026-10": 4 }
+    system:
+      - { at: "2026-01-20 21:00", text: "Priya changed the group description" }
+      - { at: "2026-02-02 10:30", text: "Meghna changed this group's icon" }
+      - { at: "2026-05-14 18:00", text: "Karthik left" }
+      - { at: "2026-06-20 12:00", text: "Karthik joined using this group's invite link" }
+    beats:
+      # Lab permission letter, every semester (HoD): Nov, Jan, Jul, Oct.
+      - { at: "2025-11-08 19:10", by: Priya, say: "Reminder: the HoD's permission letter has to be approved before we book the lab, every semester. Last year they rejected us without it." }
+      - { at: "2025-11-08 19:15", by: Arun, say: "I'll get the lab permission letter signed by the HoD by 14 November." }
+      - { at: "2025-11-13 17:40", by: Arun, say: "HoD signed the permission letter today, lab is booked for the 29th." }
+      - { at: "2026-01-05 10:20", by: Priya, say: "New semester, so the HoD's permission letter again before we book the lab. It is every semester." }
+      - { at: "2026-01-05 10:24", by: Arun, say: "I'll get the lab permission letter signed by 31 January." }
+      - { at: "2026-01-23 16:05", by: Arun, say: "Permission letter signed by the HoD, booking the lab now." }
+      - { at: "2026-07-18 11:00", by: Arun, say: "Odd semester starts soon. Same rule, every semester the lab needs the HoD's permission letter first." }
+      - { at: "2026-07-25 12:30", by: Kavya, say: "I'll get the lab permission letter signed by 7 August for the new semester." }
+      - { at: "2026-08-14 15:45", by: Kavya, say: "HoD signed the lab permission letter today, a week late sorry." }
+      - { at: "2026-10-12 10:05", by: Arun, say: "Even semester lab bookings need the HoD's permission letter first, as always." }
+      - { at: "2026-10-12 10:08", by: Arun, say: "I'll get the lab permission letter signed by 31 October." }
+      # Auditorium for the annual IoT Fest (Dean's office, a month ahead).
+      - { at: "2025-12-05 20:00", by: Priya, say: "IoT Fest is our annual event. The auditorium needs the Dean's office approval, so apply a month ahead." }
+      - { at: "2025-12-05 20:04", by: Priya, say: "Last year the fest was on 14 Feb, let's keep the same date." }
+      - { at: "2026-01-02 18:30", by: Priya, say: "I will book the auditorium by 10 January." }
+      - { at: "2026-01-09 14:20", by: Priya, say: "Auditorium booked for 14 Feb, the Dean's office approved it." }
+      - { at: "2026-01-12 19:00", by: Kavya, say: "IoT Fest is on 14 Feb 2026, the poster text needs the date and venue." }
+      - { at: "2026-10-14 20:10", by: Priya, say: "Next IoT Fest needs the auditorium again. Dean's office approval, a month ahead, so apply by mid January." }
+      # Club registration renewal, every August (Dean's signature, Student Affairs).
+      - { at: "2026-07-18 11:12", by: Arun, say: "Club registration renewal is due every August and needs the Dean's signature from Student Affairs. Last August Priya had to chase it for two weeks." }
+      - { at: "2026-07-20 19:40", by: Arun, say: "I'll submit the club registration renewal by 10 August." }
+      - { at: "2026-08-09 17:25", by: Arun, say: "Registration renewal submitted to Student Affairs today." }
+      - { at: "2026-08-30 13:10", by: Arun, say: "Dean signed the registration renewal, we are registered till next August." }
+      # Sponsorship, posters, WiFi, boards, certificates, reimbursement.
+      - { at: "2026-01-10 19:42", by: Arun, say: "I'll send the sponsorship proposal to Brightwave Labs by 20 January." }
+      - { at: "2026-01-21 10:05", by: Arun, say: "Sponsorship proposal sent to Brightwave Labs this morning." }
+      - { at: "2026-02-10 18:15", by: Priya, say: "Brightwave Labs confirmed the sponsorship!" }
+      - { at: "2026-01-10 19:50", by: Kavya, say: "I will have the fest posters printed by 3 Feb." }
+      - { at: "2026-02-03 17:20", by: Kavya, say: "Posters printed, collecting tomorrow morning." }
+      - { at: "2026-02-04 16:40", by: Kavya, say: "Posters are up in all the departments." }
+      - { at: "2026-01-28 20:15", by: Rohan, say: "I'll set up the WiFi router in the fest hall before 6 Feb." }
+      - { at: "2026-02-07 11:30", by: Divya, say: "WiFi in the fest hall still does not work, the router is not connecting." }
+      - { at: "2026-02-12 18:00", by: Rohan, say: "I'll return the borrowed ESP32 boards to Bala sir by Friday 27 Feb." }
+      - { at: "2026-02-27 16:30", by: Rohan, say: "Returned all 8 boards, Bala sir signed the register." }
+      - { at: "2026-02-27 16:31", by: Rohan, say: "<Media omitted>" }
+      - { at: "2026-02-25 12:00", by: Arun, say: "I'll send the participation certificates to all workshop speakers by 15 March." }
+      - { at: "2026-03-18 12:45", by: Kavya, say: "Speakers are still asking for their certificates, nobody has sent them yet." }
+      - { at: "2026-04-08 15:10", by: Divya, say: "Reimbursed Mr. Ganesan the ₹2,400 for his travel today." }
+      # The handover document.
+      - { at: "2026-10-20 21:00", by: Arun, say: "I'll write the handover document by 15 November." }
+      # Decoys: not commitments.
+      - { at: "2026-01-12 18:10", by: Rohan, say: "Maybe I'll check the projector too, will see." }
+      - { at: "2026-01-12 18:15", by: Divya, say: "We should probably do a hackathon someday." }
+      - { at: "2026-03-05 20:00", by: Karthik, say: "Might look at sponsors for next year, not sure." }
+      - { at: "2026-03-22 13:00", by: Rohan, say: "Will see if the lab has extra sensors." }
+      - { at: "2026-09-02 19:30", by: Meghna, say: "Maybe I'll bring my own projector too, will see." }
+
+  - file: whatsapp-volunteers.txt
+    format: iphone
+    group: Fest Volunteers 2026
+    accessLevel: everyone
+    creator: Priya
+    template: volunteers
+    startsAt: "2026-01-05 09:58"
+    members: [Priya, Kavya, Sanjay, Lakshmi, Imran, Ananya, Karthik]
+    perDay: { default: 0.1, "2026-01": 12, "2026-02": 10 }
+    activeFrom: 2026-01-05
+    system:
+      - { at: "2026-01-09 11:00", by: Priya, text: "Priya added Meghna" }
+    beats:
+      - { at: "2026-01-05 10:05", by: Priya, say: "Welcome volunteers! Please fill the availability sheet by 10 January." }
+      - { at: "2026-01-20 18:00", by: Sanjay, say: "I'll bring the extension boards for the fest hall." }
+      - { at: "2026-01-20 18:03", by: Lakshmi, say: "I'll handle the registration desk on the day." }
+      - { at: "2026-01-20 18:07", by: Ananya, say: "I'll get the snacks for the volunteers." }
+      - { at: "2026-02-08 17:30", by: Imran, say: "I'll set up the demo kits before the fest." }
+      - { at: "2026-02-13 20:40", by: Priya, say: "I will send the volunteer certificates by 28 February." }
+      - { at: "2026-02-14 08:30", by: Sanjay, say: "Extension boards are all set up in the hall." }
+      - { at: "2026-02-14 08:50", by: Lakshmi, say: "Registration desk is ready, forms are printed." }
+      - { at: "2026-02-14 09:10", by: Ananya, say: "Snacks are here, 40 packets." }
+      - { at: "2026-03-10 19:00", by: Ananya, say: "Any update on the volunteer certificates?" }
+      - { at: "2026-04-15 18:20", by: Lakshmi, say: "Still waiting for the volunteer certificates, college asked for them for the NSS hours." }
+      - { at: "2026-02-09 12:00", by: Karthik, say: "Might bring a spare speaker, not sure yet." }
+
+trello:
+  file: trello-board.json
+  name: IoT Club Board (SYNTHETIC SAMPLE, one year)
+  accessLevel: committee
+  lists: [Backlog, To Do, Doing, Done]
+  labels: [Permission, Finance, Event, Tech]
+  cards:
+    - id: lab-nov
+      name: Lab permission letter (Nov workshop)
+      desc: "Needed before every lab booking (every semester). Apply two weeks ahead."
+      labels: [Permission]
+      list: To Do
+      by: Arun
+      createdAt: "2025-11-08 20:00"
+      due: "2025-11-14"
+      moves: [{ at: "2025-11-13 17:45", by: Arun, to: Done }]
+    - id: lab-jan
+      name: Lab permission letter (Jan semester)
+      desc: "HoD signature, same as every semester."
+      labels: [Permission]
+      list: To Do
+      by: Arun
+      createdAt: "2026-01-05 11:00"
+      due: "2026-01-31"
+      moves: [{ at: "2026-01-23 16:10", by: Arun, to: Done }]
+    - id: lab-aug
+      name: Lab permission letter (Aug semester)
+      desc: "HoD signature before lab booking."
+      labels: [Permission]
+      list: To Do
+      by: Kavya
+      createdAt: "2026-07-25 13:00"
+      due: "2026-08-07"
+      moves: [{ at: "2026-08-14 15:50", by: Kavya, to: Done }]
+      comments: [{ at: "2026-08-10 10:00", by: Kavya, text: "HoD is travelling, meeting him on Friday." }]
+    - id: lab-oct
+      name: Lab permission letter (Oct)
+      desc: "HoD signature before lab booking for the even semester."
+      labels: [Permission]
+      list: To Do
+      by: Arun
+      createdAt: "2026-10-12 10:30"
+      due: "2026-10-31"
+      moves: []
+    - id: auditorium
+      name: Book the auditorium for IoT Fest
+      desc: "Dean's office approval needed, apply a month ahead."
+      labels: [Event, Permission]
+      list: To Do
+      by: Priya
+      createdAt: "2026-01-02 18:40"
+      due: "2026-01-10"
+      moves: [{ at: "2026-01-09 14:25", by: Priya, to: Done }]
+    - id: sponsor
+      name: Send sponsorship proposal to Brightwave Labs
+      desc: "Proposal deck v3."
+      labels: [Finance, Event]
+      list: To Do
+      by: Arun
+      createdAt: "2026-01-10 20:00"
+      due: "2026-01-20"
+      moves: [{ at: "2026-01-21 10:10", by: Arun, to: Done }]
+    - id: posters
+      name: Print fest posters
+      desc: "A3, 40 copies."
+      labels: [Event]
+      list: To Do
+      by: Kavya
+      createdAt: "2026-01-10 20:05"
+      due: "2026-02-03"
+      moves: [{ at: "2026-02-03 17:25", by: Kavya, to: Done }]
+    - id: wifi
+      name: WiFi router in the fest hall
+      desc: "Router and two access points."
+      labels: [Tech, Event]
+      list: To Do
+      by: Rohan
+      createdAt: "2026-01-28 20:20"
+      due: "2026-02-06"
+      moves: [{ at: "2026-02-05 19:00", by: Rohan, to: Done }]
+    - id: certificates
+      name: Send certificates to workshop speakers
+      desc: "Certificates for the March speakers."
+      labels: [Event]
+      list: To Do
+      by: Arun
+      createdAt: "2026-02-25 12:10"
+      due: "2026-03-15"
+      moves: [{ at: "2026-03-16 09:30", by: Arun, to: Done }]
+    - id: registration
+      name: Club registration renewal
+      desc: "Form plus fee receipt to Student Affairs. Dean's signature."
+      labels: [Permission]
+      list: To Do
+      by: Arun
+      createdAt: "2026-07-20 19:50"
+      due: "2026-08-10"
+      moves: [{ at: "2026-08-09 17:30", by: Arun, to: Done }]
+    - id: handover
+      name: Handover document
+      desc: "Everything the next committee needs."
+      labels: []
+      list: To Do
+      by: Arun
+      createdAt: "2026-10-20 21:05"
+      due: "2026-11-15"
+      moves: []
+    - id: volunteer-certs
+      name: Volunteer certificates
+      desc: "For all fest volunteers."
+      labels: [Event]
+      list: To Do
+      by: Priya
+      createdAt: "2026-02-13 20:45"
+      due: "2026-02-28"
+      moves: []
+      comments: [{ at: "2026-04-16 09:00", by: Kavya, text: "Volunteers keep asking about these." }]
+    - { id: workshop-slides, name: Workshop slides, desc: "IoT basics deck.", labels: [Tech], list: Backlog, by: Rohan, createdAt: "2025-11-10 21:00", due: null, moves: [{ at: "2025-11-20 22:00", by: Rohan, to: Doing }, { at: "2025-11-27 20:00", by: Rohan, to: Done }] }
+    - { id: sensor-inventory, name: Sensor inventory, desc: "Count what the lab has.", labels: [Tech], list: Backlog, by: Karthik, createdAt: "2025-12-12 18:00", due: null, moves: [{ at: "2026-03-01 18:00", by: Karthik, to: Doing }] }
+    - { id: banner, name: Banner design, desc: "Main stage banner.", labels: [Event], list: To Do, by: Meghna, createdAt: "2026-01-14 17:00", due: "2026-02-01", moves: [{ at: "2026-01-25 17:00", by: Meghna, to: Done }] }
+    - { id: budget-sheet, name: Fest budget sheet, desc: "Keep updated with receipts.", labels: [Finance], list: Doing, by: Divya, createdAt: "2026-01-06 12:00", due: null, moves: [] }
+    - { id: hackathon, name: Hackathon idea, desc: "Parked.", labels: [Event], list: Backlog, by: Divya, createdAt: "2026-01-12 18:20", due: null, moves: [] }
+    - { id: new-members, name: Recruit new members, desc: "Posters in first-year blocks.", labels: [Event], list: To Do, by: Kavya, createdAt: "2026-08-20 10:00", due: "2026-09-10", moves: [{ at: "2026-09-08 10:00", by: Kavya, to: Done }] }
+
+minutes:
+  file: minutes.md
+  title: "IoT Club: Committee Minutes"
+  accessLevel: finance
+  meetings:
+    - date: "2025-11-08"
+      present: [Arun, Priya, Kavya, Divya, Rohan, Karthik]
+      absent: []
+      sections:
+        - heading: Discussion
+          text: "The committee reviewed the plan for the November workshop on IoT basics. The workshop needs the IoT lab, and the lab is booked through the HoD's office."
+        - heading: Decisions
+          bullets:
+            - Workshop on 29 November in the IoT lab.
+            - A signed HoD permission letter is required before every lab booking, every semester.
+            - Budget of ₹8,000 approved.
+    - date: "2026-01-10"
+      present: [Priya, Arun, Kavya, Divya, Rohan]
+      absent: []
+      sections:
+        - heading: Decisions
+          bullets:
+            - Auditorium booking for IoT Fest needs the Dean's office approval, requested a month ahead.
+            - IoT Fest will be on 14 Feb 2026, as last year.
+        - heading: Finance
+          bullets:
+            - The fest budget is ₹45,000 including sponsorship.
+    - date: "2026-03-07"
+      present: [Priya, Arun, Kavya, Divya]
+      absent: [Rohan]
+      sections:
+        - heading: Finance
+          bullets:
+            - Speaker travel of ₹2,400 to Mr. Ganesan will be reimbursed after he submits bills.
+            - Fest expenses came to ₹41,300 against the ₹45,000 budget.
+        - heading: Actions
+          bullets:
+            - Divya to reimburse Mr. Ganesan once the bills arrive.
+    - date: "2026-04-18"
+      present: [Priya, Arun, Kavya, Divya, Rohan]
+      absent: []
+      sections:
+        - heading: Discussion
+          text: "Exams start next month; the club goes quiet until July. Equipment stays locked in the IoT lab."
+    - date: "2026-07-18"
+      present: [Arun, Kavya, Divya, Rohan, Meghna]
+      absent: [Priya]
+      sections:
+        - heading: Decisions
+          bullets:
+            - Club registration is renewed every August. It needs the Dean's signature through Student Affairs.
+            - A signed HoD permission letter is required before every lab booking, every semester.
+        - heading: Finance
+          bullets:
+            - The registration renewal fee is ₹1,500, paid from the club account.
+    - date: "2026-10-10"
+      present: [Arun, Kavya, Priya, Divya]
+      absent: [Rohan, Meghna]
+      sections:
+        - heading: Decisions
+          bullets:
+            - Auditorium booking for IoT Fest needs the Dean's office approval, requested a month ahead.
+            - Arun to write the handover document before the new committee takes over.
+        - heading: Finance
+          bullets:
+            - Closing balance of ₹12,400 to be handed to the next treasurer.

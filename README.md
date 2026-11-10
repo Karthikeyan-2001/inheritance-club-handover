@@ -67,6 +67,7 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 | `pnpm db:start` / `db:stop` / `db:status` | Local Supabase stack |
 | `pnpm db:reset` | Re-create the local database from `supabase/migrations` |
 | `pnpm db:push` | Apply migrations to the linked hosted project (`--remote`; the CLI targets local by default) |
+| `pnpm gen:scenario` | Regenerate `data/scenarios/year/` from `world.yaml` (`-- --check` only compares) |
 | `pnpm db:types` | Regenerate `src/lib/supabase/database.types.ts` |
 | `pnpm seed` / `seed:hosted` | Seed demo accounts and the synthetic club (local / hosted) |
 | `pnpm eval:extract` | Extraction quality on the mini scenario (dry run; `-- --yes` calls the model) |
@@ -86,7 +87,7 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 
 **Everything is IST.** WhatsApp exports carry no time zone, so their times are read as IST, and Trello's UTC times are converted to IST. Timestamps are ISO 8601 strings ending `+05:30` (`src/lib/time.ts`). Numeric dates in minutes are read day-first.
 
-`data/samples/` holds format samples and year-long files; `data/scenarios/mini/` is a small scenario with a `ground-truth.json` that the tests check the parsers against.
+`data/samples/` holds format samples and year-long files; `data/scenarios/mini/` is a small scenario with a `ground-truth.json` that the tests check the parsers against. `data/scenarios/year/` is a full synthetic year generated from `world.yaml` (`pnpm gen:scenario`), with a hand-written `ground_truth.yaml`.
 
 ## Connect (import) and timeline
 

@@ -72,7 +72,7 @@ function Replies({ ack, ctx }: { ack: AckRow | undefined; ctx: Ctx }) {
 }
 
 function AckState({ ack, who }: { ack: AckRow | undefined; who: string }) {
-  if (!ack) return <p className="mt-2 text-xs text-muted-foreground">{who} has not answered yet.</p>;
+  if (!ack) return <p className="mt-2 text-xs text-muted-foreground">{who === "You" ? "You have" : `${who} has`} not answered yet.</p>;
   return (
     <p className="mt-2 text-xs text-muted-foreground" data-testid="ack-state">
       {ACK_LABELS[ack.action]} on {formatIst(ack.created_at)}

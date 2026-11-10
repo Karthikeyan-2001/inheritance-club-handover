@@ -12,3 +12,10 @@ test("health route reports ok with a reachable database", async ({ request }) =>
   expect(res.status()).toBe(200);
   expect(await res.json()).toMatchObject({ status: "ok", service: "inheritance", db: "ok" });
 });
+
+test("the daily cron route refuses callers without Vercel's secret", async ({ request }) => {
+  const none = await request.get("/api/cron/daily");
+  expect(none.status()).toBe(401);
+  const wrong = await request.get("/api/cron/daily", { headers: { authorization: "Bearer guess" } });
+  expect(wrong.status()).toBe(401);
+});

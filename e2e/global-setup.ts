@@ -11,7 +11,7 @@ export default async function globalSetup() {
   if (existsSync(".env.local")) loadEnvFile(".env.local");
   const env = readSeedEnv();
   if (!isLocalUrl(env.url)) throw new Error("e2e seeding only runs against local Supabase");
-  await seed(env, () => {});
+  await seed(env, () => {}, { approveFirst: true });
   const admin = createClient(env.url, env.secretKey, { auth: { persistSession: false, autoRefreshToken: false } });
   const { error } = await admin.from("llm_cache").delete().like("model", "fake:%");
   if (error) throw new Error(`could not clear the fake model's cache: ${error.message}`);

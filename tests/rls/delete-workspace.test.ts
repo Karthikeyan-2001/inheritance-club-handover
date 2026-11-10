@@ -56,6 +56,9 @@ describe.skipIf(!hasEnv)("delete_workspace", () => {
     must("release", await as.arun.rpc("release_item", {
       p_target_type: "obligation", p_target_id: ref.obligation, p_to_role: "incoming_lead", p_reason: "t",
     }));
+    const cur = must("current", await a.from("obligations").select("status, trust_state").eq("id", ref.obligation).single());
+    ok("baseline", await a.from("obligations").update({ reviewed_status: cur.status, reviewed_trust: cur.trust_state }).eq("id", ref.obligation));
+    ref.signoff = must("ready", await as.arun.rpc("mark_ready", { p_workspace: ws, p_reason: "t" })) as string;
     ref.version = must("approve", await as.meena.rpc("approve_version", { p_workspace: ws, p_reason: "t" })) as string;
     ok("ack", await as.kavya.from("acks").insert({
       version_id: ref.version, obligation_id: ref.obligation, user_id: ids.kavya, action: "accept",
@@ -69,7 +72,7 @@ describe.skipIf(!hasEnv)("delete_workspace", () => {
   async function counts() {
     const a = admin();
     const byWs = ["memberships", "sources", "events", "obligations", "docket_entries", "sealed_items",
-      "aliases", "jobs", "obligation_links", "versions", "version_items", "releases", "audit_log"] as const;
+      "aliases", "jobs", "obligation_links", "versions", "version_items", "version_context_items", "review_signoffs", "releases", "audit_log"] as const;
     const out: Record<string, number> = {};
     out.workspaces = (await a.from("workspaces").select("*", { count: "exact", head: true }).eq("id", ws)).count ?? 0;
     for (const t of byWs) {

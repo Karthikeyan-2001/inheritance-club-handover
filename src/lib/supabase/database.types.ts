@@ -269,14 +269,14 @@ isOneToOne: false
                   ]
                 },"obligations": {
                   Row: {
-                    "access_level": Database["public"]['Enums']["access_level"],"approval_required": string | null,"approver": string | null,"cadence": string | null,"created_at": string,"description": string,"due_date": string | null,"due_text": string | null,"fulfilment_checked_at": string | null,"id": string,"kind": Database["public"]['Enums']["obligation_kind"],"lead_time": string | null,"next_due": string | null,"next_due_basis": string | null,"owed_by": string | null,"owed_to": string | null,"period": string | null,"private_uploaders": (string)[],"review_state": Database["public"]['Enums']["review_state"],"start_by": string | null,"status": Database["public"]['Enums']["obligation_status"],"trust_state": Database["public"]['Enums']["trust_state"],"workspace_id": string
+                    "access_level": Database["public"]['Enums']["access_level"],"approval_required": string | null,"approver": string | null,"cadence": string | null,"created_at": string,"description": string,"due_date": string | null,"due_text": string | null,"fulfilment_checked_at": string | null,"id": string,"kind": Database["public"]['Enums']["obligation_kind"],"lead_time": string | null,"next_due": string | null,"next_due_basis": string | null,"owed_by": string | null,"owed_to": string | null,"period": string | null,"private_uploaders": (string)[],"review_state": Database["public"]['Enums']["review_state"],"reviewed_status": Database["public"]['Enums']["obligation_status"] | null,"reviewed_trust": Database["public"]['Enums']["trust_state"] | null,"start_by": string | null,"status": Database["public"]['Enums']["obligation_status"],"trust_state": Database["public"]['Enums']["trust_state"],"workspace_id": string
                   }
                   ComputedFields: never
                   Insert: {
-                    "access_level"?: Database["public"]['Enums']["access_level"],"approval_required"?: string | null,"approver"?: string | null,"cadence"?: string | null,"created_at"?: string,"description": string,"due_date"?: string | null,"due_text"?: string | null,"fulfilment_checked_at"?: string | null,"id"?: string,"kind": Database["public"]['Enums']["obligation_kind"],"lead_time"?: string | null,"next_due"?: string | null,"next_due_basis"?: string | null,"owed_by"?: string | null,"owed_to"?: string | null,"period"?: string | null,"private_uploaders"?: (string)[],"review_state"?: Database["public"]['Enums']["review_state"],"start_by"?: string | null,"status"?: Database["public"]['Enums']["obligation_status"],"trust_state"?: Database["public"]['Enums']["trust_state"],"workspace_id": string
+                    "access_level"?: Database["public"]['Enums']["access_level"],"approval_required"?: string | null,"approver"?: string | null,"cadence"?: string | null,"created_at"?: string,"description": string,"due_date"?: string | null,"due_text"?: string | null,"fulfilment_checked_at"?: string | null,"id"?: string,"kind": Database["public"]['Enums']["obligation_kind"],"lead_time"?: string | null,"next_due"?: string | null,"next_due_basis"?: string | null,"owed_by"?: string | null,"owed_to"?: string | null,"period"?: string | null,"private_uploaders"?: (string)[],"review_state"?: Database["public"]['Enums']["review_state"],"reviewed_status"?: Database["public"]['Enums']["obligation_status"] | null,"reviewed_trust"?: Database["public"]['Enums']["trust_state"] | null,"start_by"?: string | null,"status"?: Database["public"]['Enums']["obligation_status"],"trust_state"?: Database["public"]['Enums']["trust_state"],"workspace_id": string
                   }
                   Update: {
-                    "access_level"?: Database["public"]['Enums']["access_level"],"approval_required"?: string | null,"approver"?: string | null,"cadence"?: string | null,"created_at"?: string,"description"?: string,"due_date"?: string | null,"due_text"?: string | null,"fulfilment_checked_at"?: string | null,"id"?: string,"kind"?: Database["public"]['Enums']["obligation_kind"],"lead_time"?: string | null,"next_due"?: string | null,"next_due_basis"?: string | null,"owed_by"?: string | null,"owed_to"?: string | null,"period"?: string | null,"private_uploaders"?: (string)[],"review_state"?: Database["public"]['Enums']["review_state"],"start_by"?: string | null,"status"?: Database["public"]['Enums']["obligation_status"],"trust_state"?: Database["public"]['Enums']["trust_state"],"workspace_id"?: string
+                    "access_level"?: Database["public"]['Enums']["access_level"],"approval_required"?: string | null,"approver"?: string | null,"cadence"?: string | null,"created_at"?: string,"description"?: string,"due_date"?: string | null,"due_text"?: string | null,"fulfilment_checked_at"?: string | null,"id"?: string,"kind"?: Database["public"]['Enums']["obligation_kind"],"lead_time"?: string | null,"next_due"?: string | null,"next_due_basis"?: string | null,"owed_by"?: string | null,"owed_to"?: string | null,"period"?: string | null,"private_uploaders"?: (string)[],"review_state"?: Database["public"]['Enums']["review_state"],"reviewed_status"?: Database["public"]['Enums']["obligation_status"] | null,"reviewed_trust"?: Database["public"]['Enums']["trust_state"] | null,"start_by"?: string | null,"status"?: Database["public"]['Enums']["obligation_status"],"trust_state"?: Database["public"]['Enums']["trust_state"],"workspace_id"?: string
                   }
                   Relationships: [
                     {
@@ -301,6 +301,26 @@ isOneToOne: false
                   Relationships: [
                     {
       foreignKeyName: "releases_workspace_id_fkey"
+      columns: ["workspace_id"]
+isOneToOne: false
+      referencedRelation: "workspaces"
+      referencedColumns: ["id"]
+    }
+                  ]
+                },"review_signoffs": {
+                  Row: {
+                    "created_at": string,"id": string,"item_count": number,"pending_hash": string,"reason": string,"seq": number,"signed_by": string | null,"workspace_id": string
+                  }
+                  ComputedFields: never
+                  Insert: {
+                    "created_at"?: string,"id"?: string,"item_count": number,"pending_hash": string,"reason": string,"seq"?: never,"signed_by"?: string | null,"workspace_id": string
+                  }
+                  Update: {
+                    "created_at"?: string,"id"?: string,"item_count"?: number,"pending_hash"?: string,"reason"?: string,"seq"?: never,"signed_by"?: string | null,"workspace_id"?: string
+                  }
+                  Relationships: [
+                    {
+      foreignKeyName: "review_signoffs_workspace_id_fkey"
       columns: ["workspace_id"]
 isOneToOne: false
       referencedRelation: "workspaces"
@@ -353,16 +373,42 @@ isOneToOne: false
       referencedColumns: ["id"]
     }
                   ]
-                },"version_items": {
+                },"version_context_items": {
                   Row: {
-                    "access_level": Database["public"]['Enums']["access_level"],"item": NonNullable<Json>,"item_hash": string,"obligation_id": string,"private_uploaders": (string)[],"version_id": string,"workspace_id": string
+                    "access_level": Database["public"]['Enums']["access_level"],"context_item_id": string,"id": string,"kind": Database["public"]['Enums']["context_kind"],"obligation_id": string,"private_uploaders": (string)[],"quote": string | null,"text": string,"version_id": string,"workspace_id": string
                   }
                   ComputedFields: never
                   Insert: {
-                    "access_level": Database["public"]['Enums']["access_level"],"item": NonNullable<Json>,"item_hash": string,"obligation_id": string,"private_uploaders"?: (string)[],"version_id": string,"workspace_id": string
+                    "access_level": Database["public"]['Enums']["access_level"],"context_item_id": string,"id"?: string,"kind": Database["public"]['Enums']["context_kind"],"obligation_id": string,"private_uploaders"?: (string)[],"quote"?: string | null,"text": string,"version_id": string,"workspace_id": string
                   }
                   Update: {
-                    "access_level"?: Database["public"]['Enums']["access_level"],"item"?: NonNullable<Json>,"item_hash"?: string,"obligation_id"?: string,"private_uploaders"?: (string)[],"version_id"?: string,"workspace_id"?: string
+                    "access_level"?: Database["public"]['Enums']["access_level"],"context_item_id"?: string,"id"?: string,"kind"?: Database["public"]['Enums']["context_kind"],"obligation_id"?: string,"private_uploaders"?: (string)[],"quote"?: string | null,"text"?: string,"version_id"?: string,"workspace_id"?: string
+                  }
+                  Relationships: [
+                    {
+      foreignKeyName: "version_context_items_version_id_fkey"
+      columns: ["version_id"]
+isOneToOne: false
+      referencedRelation: "versions"
+      referencedColumns: ["id"]
+    },{
+      foreignKeyName: "version_context_items_workspace_id_fkey"
+      columns: ["workspace_id"]
+isOneToOne: false
+      referencedRelation: "workspaces"
+      referencedColumns: ["id"]
+    }
+                  ]
+                },"version_items": {
+                  Row: {
+                    "access_level": Database["public"]['Enums']["access_level"],"item": NonNullable<Json>,"item_format": number,"item_hash": string,"obligation_id": string,"private_uploaders": (string)[],"version_id": string,"workspace_id": string
+                  }
+                  ComputedFields: never
+                  Insert: {
+                    "access_level": Database["public"]['Enums']["access_level"],"item": NonNullable<Json>,"item_format"?: number,"item_hash": string,"obligation_id": string,"private_uploaders"?: (string)[],"version_id": string,"workspace_id": string
+                  }
+                  Update: {
+                    "access_level"?: Database["public"]['Enums']["access_level"],"item"?: NonNullable<Json>,"item_format"?: number,"item_hash"?: string,"obligation_id"?: string,"private_uploaders"?: (string)[],"version_id"?: string,"workspace_id"?: string
                   }
                   Relationships: [
                     {
@@ -500,6 +546,14 @@ isOneToOne: false
               "created": boolean,"link_id": string,"verdict": string
             }[]
                            },
+"mark_ready":
+{ Args: { "p_reason": string,"p_workspace": string }; Returns: string
+                           },
+"pending_review":
+{ Args: { "p_workspace": string }; Returns: {
+              "item": Json,"item_hash": string,"needs_rereview": boolean,"obligation_id": string,"review_state": Database["public"]['Enums']["review_state"]
+            }[]
+                           },
 "ping":
 { Args: Record<PropertyKey, never>; Returns: boolean
                            },
@@ -513,6 +567,15 @@ isOneToOne: false
                            },
 "remove_source":
 { Args: { "p_reason": string,"p_source": string }; Returns: undefined
+                           },
+"review_obligation":
+{ Args: { "p_action": string,"p_changes"?: Json,"p_id": string,"p_reason": string }; Returns: Database["public"]['Enums']["review_state"]
+                           },
+"rule_conflict":
+{ Args: { "p_entry": string,"p_reason": string,"p_ruling": string }; Returns: undefined
+                           },
+"set_link_verdict":
+{ Args: { "p_a": string,"p_b": string,"p_reason": string,"p_verdict": string,"p_workspace": string }; Returns: string
                            }
           }
           Enums: {

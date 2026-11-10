@@ -74,8 +74,10 @@ describe.skipIf(!hasEnv)("the trust rule follows the evidence", () => {
   });
 
   it("no client can set trust by hand", async () => {
+    // Any direct change by a signed-in user is refused (a reason is needed), and trust is
+    // recomputed on every write anyway.
     const { error } = await as.arun.from("obligations").update({ trust_state: "gap" }).eq("id", item);
-    expect(error).toBeNull();
+    expect(error?.message).toMatch(/reason is required/);
     expect((await state(as.arun, item))?.trust_state).toBe("corroborated");
   });
 

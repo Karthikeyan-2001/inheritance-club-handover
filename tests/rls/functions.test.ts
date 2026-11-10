@@ -29,7 +29,10 @@ describe.skipIf(!hasEnv)("approve_version and immutable versions", () => {
     expect(error?.message).toMatch(/reason is required/);
   });
 
+  const ready = (reason = "Ready for the advisor") => as.arun.rpc("mark_ready", { p_workspace: WS, p_reason: reason });
+
   it("creates a version whose items are filtered per role", async () => {
+    expect((await ready()).error).toBeNull();
     const { data, error } = await as.meena.rpc("approve_version", { p_workspace: WS, p_reason: "First handover" });
     expect(error).toBeNull();
     versionId = data as string;
@@ -54,9 +57,11 @@ describe.skipIf(!hasEnv)("approve_version and immutable versions", () => {
   });
 
   it("diffs the next version against the previous one by hash", async () => {
-    const edit = await as.arun.from("obligations").update({ due_text: "by 20 March", review_state: "edited" })
-      .eq("id", O("O2")).select("id");
-    expect(edit.data).toHaveLength(1);
+    const edit = await as.arun.rpc("review_obligation", {
+      p_id: O("O2"), p_action: "edit", p_reason: "Corrected the due date", p_changes: { due_text: "by 20 March" },
+    });
+    expect(edit.error).toBeNull();
+    expect((await ready("Ready again after the correction")).error).toBeNull();
     const { data: v2 } = await as.meena.rpc("approve_version", { p_workspace: WS, p_reason: "Second" });
     const { data } = await as.meena.from("versions").select("number, diff").eq("id", v2 as string).single();
     expect(data?.diff).toMatchObject({ previous_version: versionId, changed: [O("O2")], added: [], removed: [] });
@@ -185,14 +190,14 @@ describe.skipIf(!hasEnv)("audit log", () => {
 
   it("every change to an obligation writes actor, action, before and after", async () => {
     const arunId = (await as.arun.auth.getUser()).data.user!.id;
-    const upd = await as.arun.from("obligations").update({ review_state: "rejected" }).eq("id", O("O1")).select("id");
-    expect(upd.data).toHaveLength(1);
+    const rej = await as.arun.rpc("review_obligation", { p_id: O("O1"), p_action: "reject", p_reason: "Not a real duty" });
+    expect(rej.error).toBeNull();
     const { data } = await as.meena.from("audit_log")
-      .select("actor, action, target_type, before, after")
-      .eq("obligation_id", O("O1")).eq("action", "update");
+      .select("actor, action, target_type, reason, before, after")
+      .eq("obligation_id", O("O1")).eq("action", "reject");
     expect(data).toHaveLength(1);
     const row = data![0];
-    expect(row).toMatchObject({ actor: arunId, action: "update", target_type: "obligations" });
+    expect(row).toMatchObject({ actor: arunId, action: "reject", target_type: "obligations", reason: "Not a real duty" });
     expect((row.before as { review_state: string }).review_state).toBe("accepted");
     expect((row.after as { review_state: string }).review_state).toBe("rejected");
   });

@@ -4,9 +4,11 @@
 import type { ProviderRequest } from "../llm/types.ts";
 import { RECURRENCE } from "./cycles.ts";
 import type { ExtractionOutput } from "./extract.ts";
+import { sentences } from "./text.ts";
 
 const LINE = /^\[(m\d+)\] [^|]*\| [^|]*\| ([^:]+): (.*)$/;
 const PROMISE = /\b(I will|I'll|we will|we'll|I will have)\b[^.!?\n]*/i;
+const PROMISE_TO_END = /\b(I will|I'll|we will|we'll|I will have)\b.*$/i;
 const ACTION = /^-?\s*([A-Z][a-z]+) to (.+?)\.?\s*$/m;
 
 export function fakeExtract(request: ProviderRequest): ExtractionOutput {
@@ -18,9 +20,11 @@ export function fakeExtract(request: ProviderRequest): ExtractionOutput {
     else if (blocks.length && raw.startsWith("    ")) blocks[blocks.length - 1].text += `\n${raw.slice(4)}`;
   }
   for (const b of blocks) {
-    const p = b.text.match(PROMISE);
+    // The promise runs from "I will" to the end of its sentence (titles such as "Mr." do not end it).
+    const sentence = sentences(b.text).find((s) => PROMISE.test(s));
+    const p = sentence?.match(PROMISE_TO_END);
     if (p) {
-      const quote = p[0].trim();
+      const quote = p[0].trim().replace(/[.!?]+$/, "");
       const to = quote.match(/\bto (?:all )?([A-Z][\w.]*(?: [A-Z][\w.]*)*|workshop speakers|the [a-z]+)/)?.[1] ?? "the club";
       commitments.push({ message: b.ref, quote, owed_by: b.author, owed_to: to, deliverable: quote.replace(PROMISE.exec(quote)?.[1] ?? "", "").trim(), due_text: quote.match(/\bby [^,.]+/)?.[0] ?? null });
     }

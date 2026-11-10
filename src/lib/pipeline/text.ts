@@ -38,14 +38,25 @@ export function contentTokens(text: string): Set<string> {
 }
 
 /** Sentences of a text, each an exact substring of it (so a quote built from one verifies). */
+/** Titles and initials whose full stop does not end a sentence ("Mr. Dsouza", "Prof. Iyer", "Mr. R. Ganesan"). */
+const NOT_AN_END = /(?:^|[\s(])(?:Mr|Mrs|Ms|Dr|Prof|Sr|Jr|St|Smt|Shri|[A-Z])\.$/;
+
 export function sentences(text: string): string[] {
   const out: string[] = [];
   for (const line of text.split("\n")) {
     const re = /[^.!?]+[.!?]*/g;
+    let carry = "";
     for (const m of line.matchAll(re)) {
-      const s = m[0].trim();
+      const piece = carry + m[0];
+      if (NOT_AN_END.test(piece.trimEnd())) {
+        carry = piece;
+        continue;
+      }
+      carry = "";
+      const s = piece.trim();
       if (s) out.push(s);
     }
+    if (carry.trim()) out.push(carry.trim());
   }
   return out;
 }

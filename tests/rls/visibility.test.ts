@@ -27,11 +27,12 @@ describe.skipIf(!hasEnv)("RLS: each role sees a different slice of the same tabl
     }
   }
 
-  it("the four demo roles (and member) all see different obligations", async () => {
+  it("the advisor, outgoing lead and treasurer see different slices of the working ledger; the others see none", async () => {
     const sets = await Promise.all(
-      VIEWERS.map(async (v) => keys((await as[v].from("obligations").select("id")).data).join(",")),
+      (["meena", "arun", "divya"] as const).map(async (v) => keys((await as[v].from("obligations").select("id")).data).join(",")),
     );
-    expect(new Set(sets).size).toBe(VIEWERS.length);
+    expect(new Set(sets).size).toBe(3);
+    for (const v of ["kavya", "member"] as const) expect((await as[v].from("obligations").select("id")).data).toEqual([]);
   });
 
   it("anonymous visitors read nothing from any table", async () => {
@@ -99,9 +100,12 @@ describe.skipIf(!hasEnv)("RLS: no leaks", () => {
     }
   });
 
-  it("a release shares the obligation and its quote, not the private message itself", async () => {
-    const ev = await as.kavya.from("evidence").select("quote").eq("obligation_id", O("O4"));
-    expect(ev.data).toEqual([{ quote: "I will return the 6 DHT22 sensors before semester end" }]);
+  it("a release shares the obligation and its quote through the approved version, not the private message itself", async () => {
+    expect((await as.arun.rpc("mark_ready", { p_workspace: DEMO_WORKSPACE.id, p_reason: "Ready" })).error).toBeNull();
+    const v = (await as.meena.rpc("approve_version", { p_workspace: DEMO_WORKSPACE.id, p_reason: "Approved" })).data as string;
+    const item = await as.kavya.from("version_items").select("item").eq("version_id", v).eq("obligation_id", O("O4")).single();
+    expect((item.data?.item as { evidence: { quote: string }[] }).evidence.map((e) => e.quote)).toEqual(["I will return the 6 DHT22 sensors before semester end"]);
+    expect((await as.kavya.from("evidence").select("quote").eq("obligation_id", O("O4"))).data).toEqual([]);
     const events = await as.kavya.from("events").select("id").ilike("text", "%DHT22%");
     expect(events.data).toEqual([]);
   });

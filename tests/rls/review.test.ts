@@ -43,9 +43,9 @@ describe.skipIf(!hasEnv)("review actions, sign-off, rulings and versions", () =>
     });
 
     it("only the outgoing lead or the advisor can review; a reason and a known action are required", async () => {
-      for (const v of ["divya", "kavya", "member"] as const) {
-        expect((await review(as[v], O("O1"), "reject")).error?.message, v).toMatch(/only the outgoing lead or the advisor/);
-      }
+      expect((await review(as.divya, O("O1"), "reject")).error?.message).toMatch(/only the outgoing lead or the advisor/);
+      // The incoming lead and members cannot even see the working ledger.
+      for (const v of ["kavya", "member"] as const) expect((await review(as[v], O("O1"), "reject")).error?.message, v).toMatch(/not found/);
       expect((await review(as.arun, O("O1"), "reject", "  ")).error?.message).toMatch(/reason is required/);
       expect((await review(as.arun, O("O1"), "delete")).error?.message).toMatch(/unknown review action/);
       expect((await review(as.arun, O("O6"), "accept")).error?.message).toMatch(/not found/); // the advisor's private item

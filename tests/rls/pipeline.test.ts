@@ -113,7 +113,7 @@ describe.skipIf(!hasEnv)("the staged pipeline under RLS (fake model)", () => {
       const { data: docket } = await as[v].from("docket_entries").select("obligation_id");
       for (const d of docket ?? []) expect(d.obligation_id === null || ids.has(d.obligation_id), v).toBe(true);
     }
-    const { data } = await as.kavya.from("docket_entries").select("quote_b").not("obligation_id", "is", null);
+    const { data } = await as.arun.from("docket_entries").select("quote_b").not("obligation_id", "is", null);
     expect(data?.some((d) => d.quote_b?.includes("not received") || d.quote_b?.includes("nobody has sent"))).toBe(true);
     expect((await as.member.from("docket_entries").select("id")).data).toEqual([]);
   });
@@ -142,21 +142,21 @@ describe.skipIf(!hasEnv)("the staged pipeline under RLS (fake model)", () => {
     for (const o of rows ?? []) expect(o.evidence.every((e) => e.verified)).toBe(true);
   });
 
-  it("stores recurring duties with their approvers at the level of their quotes, visible to the incoming lead", async () => {
-    const { data } = await as.kavya
+  it("stores recurring duties with their approvers at the level of their quotes", async () => {
+    const { data } = await as.arun
       .from("obligations")
       .select("description, approver, period, cadence, lead_time, access_level, evidence(quote, relation)")
       .eq("kind", "recurring")
       .eq("review_state", "draft");
-    // The lab rule is in the demo fixture (everyone) and the mini files (committee), never at finance.
-    const lab = data?.filter((o) => o.approver === "HoD") ?? [];
+    // The lab rule is in the demo fixture (everyone) and the mini files (committee); the finance copy is left out here.
+    const lab = (data?.filter((o) => o.approver === "HoD") ?? []).filter((o) => o.access_level !== "finance");
     expect(lab.length).toBeGreaterThanOrEqual(1);
     for (const o of lab) expect(["everyone", "committee"]).toContain(o.access_level);
     expect(lab.some((o) => o.period === "semester")).toBe(true);
     const fest = data?.find((o) => o.approver === "Dean's office");
     expect(fest).toMatchObject({ access_level: "committee", period: "year", lead_time: "a month ahead" });
     // The minutes (finance) never feed a committee-level duty.
-    for (const o of data ?? []) for (const e of o.evidence) expect(e.quote).not.toMatch(/^A signed HoD permission letter/);
+    for (const o of data ?? []) if (o.access_level !== "finance") for (const e of o.evidence) expect(e.quote).not.toMatch(/^A signed HoD permission letter/);
   });
 
   it("gives each context note the level of its own message", async () => {

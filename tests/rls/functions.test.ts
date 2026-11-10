@@ -149,24 +149,38 @@ describe.skipIf(!hasEnv)("release_item", () => {
     expect((await release(as.arun, O("O5"), "obligation", "")).error?.message).toMatch(/reason is required/);
   });
 
-  it("the outgoing lead releases their own private item; it becomes visible and is audited", async () => {
-    expect((await as.kavya.from("obligations").select("id").eq("id", O("O5"))).data).toEqual([]);
+  // The incoming lead reads approved versions, not the working ledger, so a release is seen there.
+  const publish = async () => {
+    expect((await as.arun.rpc("mark_ready", { p_workspace: WS, p_reason: "Ready" })).error).toBeNull();
+    const v = await as.meena.rpc("approve_version", { p_workspace: WS, p_reason: "Approved" });
+    expect(v.error).toBeNull();
+    return v.data as string;
+  };
+  const kavyaSees = async (version: string, obligation: string) =>
+    ((await as.kavya.from("version_items").select("obligation_id").eq("version_id", version).eq("obligation_id", obligation)).data ?? []).length;
+
+  it("the outgoing lead releases their own private item; it reaches the incoming lead in a version, and is audited", async () => {
+    expect((await as.arun.rpc("review_obligation", { p_id: O("O5"), p_action: "accept", p_reason: "Quote checked" })).error).toBeNull();
+    const v = await publish();
+    expect(await kavyaSees(v, O("O5"))).toBe(0);
     expect((await release(as.arun, O("O5"), "obligation", "Kavya should know about this")).error).toBeNull();
-    expect((await as.kavya.from("obligations").select("id").eq("id", O("O5"))).data).toHaveLength(1);
+    expect(await kavyaSees(v, O("O5"))).toBe(1);
+    expect((await as.kavya.from("obligations").select("id").eq("id", O("O5"))).data).toEqual([]);
     const audit = await as.meena.from("audit_log").select("action, reason, actor").eq("obligation_id", O("O5")).eq("action", "release");
     const arunId = (await as.arun.auth.getUser()).data.user!.id;
     expect(audit.data).toEqual([{ action: "release", reason: "Kavya should know about this", actor: arunId }]);
   });
 
-  it("the advisor can release a finance item to the incoming lead", async () => {
-    expect((await as.kavya.from("obligations").select("id").eq("id", O("O3"))).data).toEqual([]);
-    expect((await release(as.meena, O("O3"))).error).toBeNull();
-    expect((await as.kavya.from("obligations").select("id").eq("id", O("O3"))).data).toHaveLength(1);
-    // Context attached to it stays hidden unless released separately.
+  it("the advisor can release a finance item to the incoming lead; its finance note needs its own release", async () => {
+    const v = await publish();
+    const notes = async () => ((await as.kavya.from("version_context_items").select("context_item_id").eq("version_id", v)).data ?? []).map((r) => r.context_item_id);
     const c2 = byKey(CONTEXT_ITEMS, "C2").id;
-    expect((await as.kavya.from("context_items").select("id").eq("id", c2)).data).toEqual([]);
+    expect(await kavyaSees(v, O("O3"))).toBe(0);
+    expect((await release(as.meena, O("O3"))).error).toBeNull();
+    expect(await kavyaSees(v, O("O3"))).toBe(1);
+    expect(await notes()).not.toContain(c2);
     expect((await release(as.meena, c2, "context_item")).error).toBeNull();
-    expect((await as.kavya.from("context_items").select("id").eq("id", c2)).data).toHaveLength(1);
+    expect(await notes()).toContain(c2);
   });
 
   it("releases cannot be written directly", async () => {

@@ -30,6 +30,8 @@ Built for the CodersInPune Hackathon, Round 2.
 | 8 | Review: two-step sign-off, rulings, immutable versions, audit | done |
 | 9 | Handover: people waiting, duty calendar, sealed placeholders, acknowledgements | done |
 | 10 | Demo mode: "Load demo club" per visitor, daily keep-alive and clean-up | done |
+| 11 | Synthetic year generator with hand-written ground truth | done |
+| 12 | Scoring, leak tests, a second synthetic club, end-to-end tests | done |
 
 ## Stack
 
@@ -67,11 +69,11 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 | `pnpm db:start` / `db:stop` / `db:status` | Local Supabase stack |
 | `pnpm db:reset` | Re-create the local database from `supabase/migrations` |
 | `pnpm db:push` | Apply migrations to the linked hosted project (`--remote`; the CLI targets local by default) |
-| `pnpm gen:scenario` | Regenerate `data/scenarios/year/` from `world.yaml` (`-- --check` only compares) |
+| `pnpm gen:scenario` | Regenerate every generated scenario (`data/scenarios/*/world.yaml`) or one (`-- year`); `-- --check` only compares |
 | `pnpm db:types` | Regenerate `src/lib/supabase/database.types.ts` |
 | `pnpm seed` / `seed:hosted` | Seed demo accounts and the synthetic club (local / hosted) |
 | `pnpm eval:extract` | Extraction quality on the mini scenario (dry run; `-- --yes` calls the model) |
-| `pnpm eval:pipeline` | The whole pipeline (commitments, statuses, recurring duties, context) on the mini scenario (dry run; `-- --yes` calls the model; `--model <id>` compares another) |
+| `pnpm eval:pipeline` | Scores the whole pipeline against a scenario's ground truth: `--scenario mini\|year\|photo` (default mini). Dry run with a cost estimate by default; `-- --fake` scores the offline stand-in for free; `-- --yes` calls the model; `--model <id>` compares another |
 
 ## Parsers
 
@@ -87,7 +89,10 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 
 **Everything is IST.** WhatsApp exports carry no time zone, so their times are read as IST, and Trello's UTC times are converted to IST. Timestamps are ISO 8601 strings ending `+05:30` (`src/lib/time.ts`). Numeric dates in minutes are read day-first.
 
-`data/samples/` holds format samples and year-long files; `data/scenarios/mini/` is a small scenario with a `ground-truth.json` that the tests check the parsers against. `data/scenarios/year/` is a full synthetic year generated from `world.yaml` (`pnpm gen:scenario`), with a hand-written `ground_truth.yaml`.
+`data/samples/` holds format samples and year-long files; `data/scenarios/mini/` is a small scenario with a `ground-truth.json` that the tests check the parsers against. Two generated scenarios come from a `world.yaml` each (`pnpm gen:scenario`, seeded and deterministic, no model), with a hand-written `ground_truth.yaml`:
+
+- `data/scenarios/year/`: an IoT club over a year (about 2,000 messages): committee chat, volunteers chat, Trello board, finance-level minutes, and the advisor's private one-to-one chat.
+- `data/scenarios/photo/`: a photography club over a term, with a different cast and different file shapes: an iPhone committee chat, a finance chat, the outgoing lead's private chat with the advisor, and Word (`.docx`) minutes with dates in words. No Trello.
 
 ## Connect (import) and timeline
 
@@ -113,7 +118,15 @@ Safeguards:
 - **Levels follow the evidence.** An item inherits the most restrictive message it cites, including follow-up evidence, so a status learned from finance minutes is visible only to finance readers. Each context note has the level of its own message.
 - **Audited.** Every stored item, quote, note and status change writes an audit row with the reason. Re-running finds nothing new, reuses saved answers and writes no new audit rows.
 
-**`pnpm eval:pipeline`** scores the whole pipeline on the mini scenario. It estimates cost without `--yes`, and calls the model only with `-- --yes`. Last run (Claude Haiku 5.5, 9 Nov 2026): 5 of 5 commitments, 0 decoys, 5 of 5 statuses right, 5 of 5 expected follow-up quotes, the contradiction detected, 2 of 2 recurring duties with the right approver, 12 calls, about $0.005.
+**`pnpm eval:pipeline`** scores the whole pipeline against a scenario's ground truth (`src/lib/eval/score.ts`): commitments found and kept wrongly (decoys, unplanned), status, trust and access level, follow-up quotes, contradictions, duties and approvers, wrong links, and **leaks** (restricted text in anything stored at a more open level). It estimates cost without `--yes`, and calls the model only with `-- --yes`. Results on Claude Haiku 5.5:
+
+| Scenario | Commitments | Status | Follow-up quotes | Contradictions | Duties (approver) | Decoys kept | Leaks | Cost |
+|---|---|---|---|---|---|---|---|---|
+| mini (9 Nov 2026) | 5/5 | 5/5 | 5/5 | 1/1 | 2/2 (2/2) | 0 | — | about $0.005 |
+| photo (10 Nov 2026) | 9/9 | 8/9 | 9/9 | 1/1 | 4/4 (4/4) | 0 | 0 | about $0.013 |
+| year (10 Nov 2026) | 19/19 | 17/19* | 24/24* | 2/2 | 3/4 (3/3) | 0 | 0 | about $0.053 |
+
+\* Scored against the truth as first written. One of the two "wrong" statuses was a mistake in the truth: the model marked C18 Open from two "still waiting" reports, which is what the status rule says; the truth now agrees (18/19, and the two reports make 26/26 follow-up quotes). What the model got wrong is listed in `docs/status.md` (Phase 12). The year run found a matching bug that is now fixed: two semesters' identical promises were linked by rule.
 
 ## Review and versions
 
@@ -157,6 +170,12 @@ Demo accounts (synthetic): `arun.demo@example.com` (outgoing lead), `meena.demo@
 ## Troubleshooting
 
 - **`unable to get local issuer certificate` when calling the Anthropic API locally.** Your network re-signs HTTPS traffic with its own certificate, which your operating system trusts but Node's built-in list does not. `pnpm dev`, `pnpm eval:extract` and `pnpm eval:pipeline` already pass Node's `--use-system-ca`, so Node uses the operating system's trusted certificates. Certificate checking stays on. Vercel is not affected.
+
+## Tests
+
+- **Unit** (`pnpm test:unit`): parsers, pipeline rules, review and handover logic, the generator, and the offline pipeline over every scenario, scored (no decoys, no wrong links, no leaks, no prompt that writes stored text mixing access levels).
+- **RLS** (`pnpm test:rls`, local Supabase): each role's rows, the database functions, and a **leak test**: both generated scenarios imported by their real uploaders, the ledger built by the outgoing lead and the advisor, a version signed off, then every row of every table, view and read function searched, per role, for finance amounts and private subjects that role may not read.
+- **End to end** (`pnpm e2e`, Playwright, offline model): login, roles, import, building the ledger, review, handover, demo copies, and the **whole flow** on the second club in a visitor's copy (four files at four levels → build → review → approve → hand over), followed by every page and every source-message URL opened as every role and searched for restricted text.
 
 ## Health check
 

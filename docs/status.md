@@ -1,6 +1,6 @@
 # Build status and handover notes
 
-Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 11.
+Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 12.
 
 ## Where things stand
 
@@ -17,11 +17,11 @@ Read this first when resuming work. Last updated: 2026-11-10, at the end of Phas
 | 8 | `/review`: two-step sign-off, rulings, version diff, immutable versions, audit | merged |
 | 9 | `/handover`: "people waiting on you", calendar, sealed placeholders, acks | merged |
 | 10 | Demo mode ("Load demo club" per visitor, keep-alive cron) | merged |
-| 11 | Synthetic generator (`world.yaml`, `ground_truth.yaml`, offline renderer) | on branch `build/phase-11`, ready to merge |
-| 12 | Scoring, leak test, second scenario, end-to-end tests | later |
+| 11 | Synthetic generator (`world.yaml`, `ground_truth.yaml`, offline renderer) | merged |
+| 12 | Scoring, leak tests, second scenario, end-to-end tests | on branch `build/phase-12`, ready to merge |
 | 13 | Hardening and docs | later |
 
-Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Playwright unchanged from Phase 10 (not re-run: no database or app code changed). Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all passing. Lint, typecheck and build are clean. (The Phase 9 line said "456 unit"; that was unit plus RLS: 304 + 152.)
+Tests at the end of Phase 12: 379 unit, 175 RLS integration, 45 Playwright, all passing. Lint, typecheck clean. Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Playwright unchanged from Phase 10 (not re-run: no database or app code changed). Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all passing. Lint, typecheck and build are clean. (The Phase 9 line said "456 unit"; that was unit plus RLS: 304 + 152.)
 
 ## How the user works
 
@@ -31,12 +31,12 @@ Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Play
 - Ask before any paid model call. Show a cost estimate first.
 - The user chooses the Claude Code model per phase (see the table below).
 
-## Outstanding user tasks (for Phase 11)
+## Outstanding user tasks (for Phase 12)
 
-1. Run `/code-review` on Opus if you want a second read, then merge `build/phase-11`.
-2. Approved while building: the `yaml` package was added (`pnpm add yaml`, version 2.9.1).
-3. Nothing to deploy or configure: no migration, no environment variable, no app code changed.
-4. No paid model calls were made in this phase.
+1. Review and merge `build/phase-12`.
+2. **Apply migration 0018 to the hosted database:** `pnpm db:push`. Without it, the outgoing lead's own private chats still yield no items on the live app. No new environment variable.
+3. Two paid model calls were approved and made (Claude Haiku 5.5, synthetic data): the photo club (about $0.013) and the year club (about $0.053).
+4. A design question from the paid run (see "What the model got wrong"): should evidence that only *implies* completion raise an item's access level? Today it does (the Phase 5 provenance rule), so one weak inference from a finance chat hid a committee item from the incoming lead.
 
 ## Environment facts
 
@@ -73,6 +73,7 @@ Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Play
 | 0015 | `signoff_status()`: whether the lead's mark still matches, without exposing the hash. |
 
 | 0016 | `acks`: a before-insert trigger needs a note for `question` and `decline`; an after-insert trigger (`app.audit_ack`) writes an audit row (`ack_<action>`) with the item's level and uploaders. |
+| 0018 | Private items by their uploader (Phase 12). `app.obligation_provenance()` keeps the given `private_uploaders` on an insert with no evidence yet (only for a private item); `add_extracted_commitment()` and `add_recurring_duty()` pass the cited file's uploader. Before this, a new private item was unreadable to the outgoing lead for the moment before its first quote, so his own private chats yielded nothing. |
 | 0017 | Demo copies. `workspaces.sandbox_expires_at` (set by the server only; members have no update policy). `demo_sandboxes` (id = the copy's workspace id, `workspace_id` set null when the workspace is deleted, `user_ids`, `created_at`, `expires_at`; RLS on, no policies, service role only). |
 
 ### Code (`src/lib/`)
@@ -103,7 +104,9 @@ Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Play
 | `demo/load-club.ts` | `insertClub` (workspace, memberships and every fixture row, as the service role, through the usual triggers), `finishClub` (releases, and optionally mark ready and approve version 1, as the club's own users), `fixtureIds` / `freshIds` (a copy gets new ids for every row), `memoSignIn`. Used by `scripts/seed.ts` and by demo copies. |
 | `demo/sandbox.ts` | Pure plus injected clients: `sandboxEmail` (`<key>+<workspace id>@example.com`), `sandboxPassword` (HMAC of the email under the secret key), `signSandboxCookie` / `readSandboxCookie`, `capacityProblem`, `createSandbox`, `purgeOne`, `purgeSandboxes`, `demoKeyFromMetadata`. Limits: 7 days, 300 active, 60 per hour, 10-minute grace for a row without a workspace. |
 | `demo/sandbox-server.ts` | `server-only`: `sandboxConfig` (reads `SUPABASE_SECRET_KEY`), `serviceClient`, `ephemeralSignIn`, `sandboxCookieOptions`, `forgetDeletedCopy` (not a server action on purpose: it takes a workspace id). |
-| `synth/world.ts`, `rng.ts`, `generate.ts`, `truth.ts` | The scenario generator. `loadWorld` (Zod, checks people and lists), `generateScenario(world)` (two WhatsApp chats, a Trello board, minutes; pure and seeded), `loadTruth`, `checkTruth` (every quote is in its file; restricted amounts stay at their level). Script: `pnpm gen:scenario` (`-- --check` compares). Data: `data/scenarios/year/`. |
+| `eval/scenario.ts`, `eval/score.ts` | Phase 12. `loadScenario(name)` (mini JSON or generated YAML truth; events at their file's level, private ones with their uploader), `eventFor`. `scoreRun(result, scenario)` → a `Scorecard` (found, precision, status, trust, level, evidence, contradictions, duties and approvers, links, leaks); `findLeaks`; `formatScorecard`, `summary`. Matching is by message **and** overlapping quote (one minutes entry holds several items); truth may list `alternates` for a promise stated twice. |
+| `synth/docx.ts` | `renderDocx` (Heading styles, as the minutes parser reads them) over `zipStore` (stored zip, fixed timestamp, CRC from `node:zlib`). No dependency. |
+| `synth/world.ts`, `rng.ts`, `generate.ts`, `truth.ts` | The scenario generator. Phase 12: chats can be `kind: direct` (one-to-one); each file has an `uploader` (a demo account key); Trello is optional; minutes are `.md` or `.docx` with `dates: iso` or `words`; `generateScenario` returns text or bytes (`fileBytes`). `loadWorld` (Zod, checks people and lists), `generateScenario(world)` (two WhatsApp chats, a Trello board, minutes; pure and seeded), `loadTruth`, `checkTruth` (every quote is in its file; restricted amounts stay at their level). Script: `pnpm gen:scenario` (`-- --check` compares). Data: `data/scenarios/year/`. |
 | `cron.ts` | `cronAuthorised` (constant-time bearer check; refuses when `CRON_SECRET` is unset or short). |
 | `pipeline/provider.ts`, `fake-extract.ts`, `fake-pipeline.ts` | `LLM_PROVIDER=fake` is the rule-based offline stand-in, refused in production. `fakeHandlers()` covers every task. |
 
@@ -127,13 +130,23 @@ Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Play
 
 - **Unit:** `src/**/*.test.ts`.
 - **RLS:** `tests/rls/*.test.ts`, against local Supabase. Each file re-seeds and cleans up.
-- **E2E:** `e2e/`. Its own dev server on port 3100 with `LLM_PROVIDER=fake`, so it never calls the real API. Global setup re-seeds and clears `llm_cache` rows whose model is `fake:%`.
+- **E2E:** `e2e/`. Its own dev server on port 3100 with `LLM_PROVIDER=fake`, so it never calls the real API. Global setup re-seeds and clears `llm_cache` rows whose model is `fake:%`. `full-flow.spec.ts` (Phase 12) runs the whole flow on the photo club in a visitor's copy, then a per-role leak sweep of every page and of every source-message URL.
+- **Leak tests (Phase 12):** `src/lib/eval/eval.test.ts` (in memory, every scenario), `tests/rls/leak.test.ts` (both generated scenarios, every readable row per role), `tests/rls/private-items.test.ts` (migration 0018), and the e2e sweep. Each also proves the restricted text is readable by someone allowed.
 - **Eval:** `pnpm eval:extract` and `pnpm eval:pipeline` (`-- --yes` calls the model; `--model <id>` overrides the fast model). Shared loader: `scripts/mini-scenario.ts`.
   - Last `eval:pipeline` result (Haiku, 9 Nov 2026): 5 of 5 commitments, 0 decoys, 5 of 5 statuses, 5 of 5 expected follow-up quotes, X1 detected, R1 and R2 found with the right approvers. 12 calls, about $0.005.
   - Phase 6 run (Haiku, 9 Nov 2026): the same 5/5, 0 decoys, 5/5 statuses, 5/5 follow-up quotes, X1 detected, R1 and R2 found; trust right for 5/5 commitments and 2/2 duties; context notes now on topic. 12 calls, about $0.0045. Haiku made no duplicate items on the mini data, so no pair reached the matching prompt.
   - Matching probe (`-- --yes --match-probe-only`, 9 Nov 2026): 8/8 planted pairs right (3 same, 5 different), 0 false "same". 1 call, about $0.0003.
+  - Phase 12 (Haiku, 10 Nov 2026), `--scenario photo`: 9/9 commitments, 8/9 statuses, 8/9 trust, 2/2 levels, 9/9 follow-up quotes, 1/1 contradiction, 4/4 duties with 4/4 approvers, 0 decoys, 0 leaks, precision 90%. 27 calls, about $0.013.
+  - Phase 12 (Haiku, 10 Nov 2026), `--scenario year`: 19/19 commitments, 17/19 statuses (18/19 against the corrected C18), 15/16 trust, 2/2 levels, 24/24 follow-up quotes, 2/2 contradictions, 3/4 duties with 3/3 approvers, 0 decoys, 0 leaks, precision 79%, 1 wrong link (now fixed). 86 calls, about $0.053.
 
 ## Gotchas learned
+
+- **The database reads messages in time order; the in-memory runner reads file by file.** `chunkEvents` now packs threads per group (visibility and source type), so both give the same chunks. Before Phase 12 the database path made a chunk per chat-day when two chats interleaved.
+- **`pending_review()` lists accepted items only.** Drafts come from `obligations` with `review_state = 'draft'`. After any new run, the demo fixture's accepted items are re-checked, their status moves, and they need "Accept again" before marking ready.
+- **Playwright gives each test a fresh browser context.** A serial flow that needs one session (a visitor's copy) shares a page created in `beforeAll`.
+- **The timeline echoes its search term** (search box, paging links). A leak check of a search page reads the results list (`data-testid="timeline"`) only.
+- **A truth quote can share its message with another item** (minutes). Score by message and quote, never message alone.
+- **Shell: chain checks with `&&`.** A `;` after `tsc` once let a commit through with a type error.
 
 - **Next 16:** the session middleware is `src/proxy.ts`. `cacheComponents` is on: anything reading cookies must sit inside `<Suspense>`, and the Supabase server client calls `connection()` first.
 - **Imports in `src/lib`** use explicit `.ts` extensions (`allowImportingTsExtensions`), so scripts run under Node's native TypeScript support. Modules used by tests or scripts must not import `server-only`; inject server-only dependencies instead.
@@ -186,7 +199,7 @@ Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Play
 - **Phase 9:** `release_item()` and `audit_row()` still use the obligation's private uploaders for context items. This is safe (more restrictive), but the outgoing lead cannot release or read the audit of a private note built from their own file.
 - **Phase 9:** a released private item may borrow from a linked private item of the same uploader that the receiving role cannot read, so its trust can reflect a record they cannot see. The releaser sees this when releasing; consider showing "trust based on records you cannot see" to the receiver.
 - **Matching:** links are not transitive (A–B and B–C do not make A borrow C's evidence). Duty pairs are scored on descriptions and approvers only. The fake's duty wording is poor, so offline runs do not link the finance copy of the HoD rule; the live probe does.
-- **Phase 11/12:** run `eval:pipeline` on the year-long samples in `data/samples/` (planted items in `data/samples/README.md`) once the generator and scoring exist. Watch duty recall (the prefilter is keyword-based), and matching precision at scale (the 48-pair cap per run; `match_over_limit` counts the rest).
+- **Phase 11/12:** ~~run `eval:pipeline` on a year of data~~ done in Phase 12 on the generated year club (not `data/samples/`, which stay parser fixtures). Duty recall was 3/4; matching at scale found a rule bug (fixed). No run hit the 48-pair cap.
 
 ## Phase 7 decisions
 
@@ -251,13 +264,48 @@ Confirmed with the user: add `yaml`; deterministic renderer first.
 ## Known gaps (Phase 11)
 
 - The filler repeats phrases more than real chat does. Tamil-English lines come from a list of eight.
-- The scenario has no `.docx` minutes and no private-level file. Phase 12's leak test needs one private file; add it to `world.yaml` then.
-- `eval:pipeline` still reads the mini scenario only (`scripts/mini-scenario.ts`). Phase 12 should add a loader for the year files.
+- ~~The scenario has no `.docx` minutes and no private-level file.~~ Closed in Phase 12: the year club has the advisor's private chat; the photo club has Word minutes and the outgoing lead's private chat.
+- ~~`eval:pipeline` still reads the mini scenario only.~~ Closed in Phase 12: `--scenario`.
 - Trello `dueComplete` is always false in the generated board (moves carry the evidence, as in the mini board).
 
-## Phase 12 plan (next)
+## Phase 12 decisions
 
-Scoring, leak test, second scenario, end-to-end tests. Model: Opus 5.5, high. Start by pointing `eval:pipeline` at `data/scenarios/year/` (free with `LLM_PROVIDER=fake`; a real run needs an estimate first).
+Confirmed with the user: run both paid evals; leave the year club in demo copies for Phase 13.
+
+- **Scoring in code, truth by hand.** The scorer is pure and reused by the eval script and the tests. A promise written twice in one place (the minutes' finance line and its action line) is listed as an `alternate`, not matched loosely.
+- **The second club differs on purpose:** different cast, iPhone committee chat, a finance chat, a private chat uploaded by the outgoing lead (the year club's private chat is the advisor's), Word minutes with dates in words, no Trello, monthly and per-event duties.
+- **Leak tests at three layers**, each proving it is not vacuous. Who may read a restricted text is computed from the files that contain it (`canRead` over level and uploader), not hand-listed, in the RLS test.
+- **The offline fake's floors are recorded, not claimed.** `FLOORS` in `eval.test.ts` say what the rule-based stand-in finds, so a regression in shared code shows up; the paid eval is the quality claim.
+- **The cost estimate walks the real prompts** with the offline fake first, and is calibrated on the paid runs (input 1.3 × text + 1,500 a call for the schema; 800 output a call). It still errs high.
+- **Fixed because the new tests found them:** the outgoing lead's private items (migration 0018), one chunk per chat-day, the hedge without its "Maybe", "Mr." ending sentences, and the rule linking two semesters' identical promises.
+- **C18 in the year truth was wrong** (no_evidence); records say not done, so the status rule gives Open. Corrected with the two quotes.
+
+## What the model got wrong (Phase 12 paid runs)
+
+- **Photo P6** (hand over the camera and keys): the follow-up check took "the passbook stays in the cupboard", from the finance chat, as implying it was done. Status became Likely done, and, by the provenance rule, the committee item became finance-level, so the incoming lead would not see it. See outstanding task 4.
+- **Photo:** "Sent the lab licence request to the IT cell." was extracted as a promise (it is a report), and shows as No evidence kept.
+- **Year precision 79%:** 8 unplanned commitments, mostly Trello card descriptions ("Count what the lab has.", "Keep updated with receipts.", "Posters in first-year blocks.") and reports ("Posters printed, collecting tomorrow morning.").
+- **Year C15:** "Registration desk is ready, forms are printed." judged only implied (Likely done).
+- **Year R4** (hold the annual IoT Fest, no approval) not found apart from R2 (the auditorium), which shares its message.
+- 23 context notes were dropped by code for naming people or numbers not in their message: the check is doing its job.
+
+## Known gaps (Phase 12)
+
+- The year eval was not re-run after the matching fix (another about $0.05). A unit test covers the exact pair.
+- Leak checks search for the planted restricted strings. A paraphrase of a restricted fact (an amount in words) would not be caught; the in-memory check covers model-written text for the literal strings only.
+- The browser leak sweep uses the photo club (plus the copy's 9-message fixture); the RLS leak test covers both generated clubs.
+- The offline fake does not know "Chief Warden" or "faculty advisor" as approvers, and still extracts Trello card names as promises.
+- The P6 finding above is a design question, not fixed.
+
+## Phase 13 plan (next)
+
+Hardening and docs. Model: Sonnet 5.5, medium or high (run `/code-review` on Opus before merging).
+
+1. Load the year club into visitors' demo copies: a loader from scenario files to fixture rows, and a frozen real-model run (paid; estimate first, about $0.06 at the calibrated rate).
+2. The P6 question: whether evidence that only implies completion may raise an item's level.
+3. Precision on Trello cards: whether a card description without a person or a date is a promise.
+4. The earlier known gaps (release of private notes, borrowed trust shown to the receiver, the Gaps tab and linked twins).
+5. Docs for judges: one page that walks the flow on the live link.
 
 ## Claude Code model per phase (recommendation)
 

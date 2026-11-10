@@ -147,3 +147,7 @@ next-env.d.ts
 /playwright/.cache/
 supabase/.temp/
 supabase/.branches/
+
+# Round 2 submission material, kept locally only
+docs/Inheritance_Round2_Project.pdf
+docs/round2-submission.md

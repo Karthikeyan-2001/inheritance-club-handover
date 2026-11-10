@@ -205,7 +205,6 @@ Demo accounts (synthetic): `arun.demo@example.com` (outgoing lead), `meena.demo@
 
 ## Docs
 
-- [docs/round2-submission.md](docs/round2-submission.md): the Round 2 form answers and the updated project document
 - [docs/changes-from-round1.md](docs/changes-from-round1.md)
 - [docs/ai-disclosure.md](docs/ai-disclosure.md)
 

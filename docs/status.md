@@ -38,7 +38,7 @@ Tests at the end of Phase 13: 395 unit, 185 RLS integration, 48 Playwright, all 
 2. **Apply migrations 0018, 0019 and 0020 to the hosted database:** `pnpm db:push`. The live app was still on the Phase 10 deployment on 10 Nov 2026 (`/api/health` reported commit `3146723`), so 0018 was never applied either. Without 0020, the handover page fails for every role (it reads `ack_replies`).
 3. **Redeploy `main` on Vercel** (deploys are not automatic for this project; see `docs/deploy.md`). Then check `/api/health` reports the new commit.
 4. **Pre-load the saved model answers:** `pnpm cache:warm` (reads `.env.hosted.local`). Building from the sample files, or rebuilding the year club, then costs nothing and is fast.
-5. In a private window, on the live link: Sign in → "Explore a built handover" (it must finish within the 60-second limit on the hosted database; locally it takes a few seconds), then "Start from your own files" → import the four photography files → Build the ledger → Review → Approve → Handover → reply to a question. Then submit the form with `docs/round2-submission.md` and upload `docs/Inheritance_Round2_Project.pdf` to Drive ("Anyone with the link: Viewer").
+5. In a private window, on the live link: Sign in → "Explore a built handover" (it must finish within the 60-second limit on the hosted database; locally it takes a few seconds), then "Start from your own files" → import the four photography files → Build the ledger → Review → Approve → Handover → reply to a question. Then submit the form and upload the project PDF to Drive ("Anyone with the link: Viewer"). The form answers and the PDF are kept locally, not in git (`docs/round2-submission.md` and `docs/Inheritance_Round2_Project.pdf`, both ignored); `node scripts/render-report.ts` regenerates the PDF from `docs/round2-report/report.html`.
 6. Paid model calls this phase, all approved in advance, synthetic data only (Claude Haiku 5.5): the year build about $0.053, the photography build about $0.013, the mini build about $0.004. Total about $0.070 of the $0.25 approved. The separate in-memory eval re-runs were skipped: the three database-path builds are scored by the same scorer.
 7. The Round 1 user interviews were not done. The docs say so. Do not add interview answers unless real people gave them.
 
@@ -338,7 +338,7 @@ Confirmed with the user: P6 (implied quotes from a more restricted record are dr
 
 ## Round 3 plan (Phases 14 to 16): the three committed improvements
 
-Committed in the Round 2 form (`docs/round2-submission.md`); Round 3 is judged on delivering exactly these.
+Committed in the Round 2 form; Round 3 is judged on delivering exactly these.
 
 1. **Inferred recurring duties.** Detect a task repeated at about the same point in two or more past cycles with no stated rule; label it Inferred; list the past occurrences; compute a start-by date from how long past occurrences took. Needs: an occurrence finder (code over matched items and dates), a new duty source kind, the trust rule's "inferred" path, calendar display, ground truth for unstated duties in both scenarios, a paid eval.
 2. **Gap questions.** Turn each gap (no follow-up, missing approver or date, unruled conflict) into a short question for the outgoing lead on one page; record each answer as a labelled source ("stated by the outgoing lead") with its own access level, through the same trust and audit rules; update the next version.

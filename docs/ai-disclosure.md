@@ -38,6 +38,6 @@ Safeguards that do **not** rely on the model:
 
 All demo data is synthetic. A small hand-written scenario is used first. A later generator will use an LLM to render planted facts as realistic chat messages, minutes and Trello cards: typos, nicknames, and Tamil-English code-mixing in Latin script. Ground truth is fixed in YAML before generation, so the system can be scored against it. No real people or organisations are used.
 
-*Status: the sample exports in `data/samples/` and the scenario in `data/scenarios/mini/` were written by Claude Code (with a seeded Python script for the large files); no language model is called to produce them at runtime. The LLM-driven generator is planned for a later phase.*
+*Status: the sample exports in `data/samples/` and the scenario in `data/scenarios/mini/` were written by Claude Code (with a seeded Python script for the large files); no language model is called to produce them at runtime. The year scenario in `data/scenarios/year/` (Phase 11) was also written by Claude Code: `world.yaml` and `ground_truth.yaml` by hand, and the generator that renders the files is a seeded, deterministic script. Still no model is called at runtime or during generation. The LLM-rendered variant is not built.*
 
 The Phase 2 parsers (`src/lib/parsers/`) use no AI at all: they are deterministic code, tested against the ground truth in `data/scenarios/mini/ground-truth.json`.

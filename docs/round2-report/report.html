@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Inheritance · Round 2 project document · Team PCIe 6.0</title>
+<style>
+  @page { size: A4; margin: 18mm 18mm 20mm 18mm; }
+  :root { --ink: #1f1d1a; --muted: #6b665e; --rule: #d8d2c6; --accent: #a23b1f; --paper: #fbf9f4; --soft: #f1ece2; }
+  * { box-sizing: border-box; }
+  body { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; color: var(--ink); font-size: 10.4pt; line-height: 1.5; margin: 0; }
+  .sans { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .label { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  header.top { display: flex; justify-content: space-between; border-bottom: 1.5px solid var(--ink); padding-bottom: 6px; margin-bottom: 26px; }
+  h1 { font-size: 46pt; font-weight: 400; margin: 24px 0 6px; letter-spacing: -.01em; }
+  .tag { font-style: italic; color: var(--accent); font-size: 15pt; margin: 0 0 22px; }
+  h2 { font-size: 17pt; font-weight: 400; margin: 0 0 8px; }
+  h3 { font-size: 11.5pt; margin: 14px 0 4px; }
+  h2 { break-after: avoid; }
+  section { display: grid; grid-template-columns: 26mm 1fr; gap: 0 6mm; margin: 0 0 14px; break-inside: auto; }
+  section > .num { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: var(--accent); font-weight: 700; font-size: 8pt; padding-top: 6px; }
+  section > .num span { display: block; color: var(--muted); font-weight: 400; margin-top: 2px; }
+  p { margin: 0 0 8px; }
+  ul { margin: 4px 0 8px; padding-left: 16px; }
+  li { margin: 2px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 6px 0 10px; }
+  th { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-align: left; border-bottom: 1.5px solid var(--ink); padding: 5px 6px 4px 0; }
+  table { break-inside: avoid; }
+  td { border-bottom: 1px solid var(--rule); padding: 5px 6px 5px 0; vertical-align: top; }
+  td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .box { background: var(--soft); border-left: 3px solid var(--accent); padding: 10px 14px; margin: 8px 0 12px; }
+  .links td:first-child { width: 34%; font-weight: 600; }
+  .pill { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: .06em; padding: 2px 6px; border-radius: 3px; white-space: nowrap; }
+  .corr { background: #e3efe3; color: #2f6b34; } .src { background: #e2eaf4; color: #2d5384; } .inf { background: #f6ecd0; color: #8a6511; }
+  .con { background: #f5dfd7; color: #9a3a1c; } .gap { border: 1px dashed #8a847a; color: #5b564e; }
+  .flow { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; margin: 8px 0 4px; }
+  .flow div { border: 1px solid var(--ink); padding: 6px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7.5pt; line-height: 1.35; min-height: 62px; }
+  .flow div b { display: block; font-size: 8.5pt; margin-bottom: 2px; }
+  .flow .hot { background: #f4e3da; border-color: var(--accent); } .flow .perm { background: #efe3ee; border-color: #6d3a69; } .flow .src { background: var(--soft); color: var(--ink); }
+  figure { margin: 8px 0 12px; break-inside: avoid; }
+  figure img { width: 100%; border: 1px solid var(--rule); display: block; }
+  figcaption { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 7.5pt; color: var(--muted); margin-top: 4px; }
+  .two { display: block; }
+  .two figure img, .shot img { max-height: 98mm; object-fit: cover; object-position: top; }
+  .break { break-before: page; }
+  footer.team { display: grid; grid-template-columns: 1fr 1fr 1.6fr; gap: 6mm; border-top: 1.5px solid var(--ink); padding-top: 8px; margin-top: 24px; }
+  footer.team div { font-size: 9.5pt; }
+  .improve { border-top: 1px solid var(--rule); padding: 5px 0 2px; break-inside: avoid; }
+  .improve p { margin-bottom: 4px; }
+  .improve b.k { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: var(--accent); font-size: 8pt; letter-spacing: .08em; }
+  .small { font-size: 8.6pt; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header class="top"><span class="label">CodersInPune Hackathon · Knowledge Handover Challenge</span><span class="label">Round 2 · The build</span></header>
+
+<h1>Inheritance</h1>
+<p class="tag">They left. Their promises didn’t.</p>
+<p style="max-width: 150mm">Inheritance is a working handover system for university student clubs. It reads a club’s WhatsApp exports, meeting minutes and Trello board, and builds a ledger of what the outgoing committee still owes: promises made to people, and duties that recur every semester with the approvals they need. Every entry links to a verified quote from its source, anything the records cannot support is shown as a gap, and nothing reaches the incoming lead until the outgoing lead and the faculty advisor have reviewed and approved it. Each role sees only what its permissions allow, enforced by the database.</p>
+
+<table class="links sans" style="max-width: 160mm">
+  <tr><td>Live product</td><td>https://inheritance-club-handover.vercel.app</td></tr>
+  <tr><td>Ten-minute walkthrough</td><td>https://inheritance-club-handover.vercel.app/guide</td></tr>
+  <tr><td>Source code (public)</td><td>https://github.com/Karthikeyan-J-bounteous/inheritance-club-handover</td></tr>
+</table>
+
+<div class="box">
+  <p class="label" style="margin-bottom:4px">How a judge can try it without help</p>
+  <p style="margin:0">On Sign in, <b>Explore a built handover</b> gives you a private copy of a year of a synthetic IoT club (1,961 messages in five files at four access levels) with its ledger already built by Claude, version 1 approved and six items left for you to review. <b>Start from your own files</b> gives you an empty club: download the four sample files from Connect, import them, press Build the ledger, then review, approve and hand over. Both run as four accounts of your own (outgoing lead, faculty advisor, incoming lead, treasurer) that you switch between from the menu.</p>
+</div>
+
+<footer class="team">
+  <div><span class="label">Team</span><br>PCIe 6.0<br>Team size: 1</div>
+  <div><span class="label">Participant</span><br>Karthikeyan J<br>Sole developer</div>
+  <div><span class="label">Background</span><br>B.Tech, Computer and Communication Engineering, Amrita Vishwa Vidyapeetham, 2023</div>
+</footer>
+
+<div class="break"></div>
+
+<section>
+  <div class="num">01<span>Shipped</span></div>
+  <div>
+    <h2>The workflow, as built</h2>
+    <p>The five steps of the brief are five pages of the product. Each step below is working on the live link.</p>
+    <table>
+      <tr><th style="width:18%">Step</th><th style="width:16%">Who</th><th>What happens</th></tr>
+      <tr><td><b>Connect</b></td><td>Outgoing lead, advisor</td><td>Upload WhatsApp .txt (Android, iPhone), Trello JSON and minutes (.md, .docx), several at once. Set an access level per file (everyone, committee, finance, private); one-to-one chats default to private. Confirm authorisation; the AI provider is named. A “what was read” report counts every dropped line by reason. Files are parsed, not stored.</td></tr>
+      <tr><td><b>Reconstruct</b></td><td>System</td><td>One button runs small background steps: commitments (who owes whom, what, by when), recurring duties (cadence, approval, approver, lead time, next due, start-by), follow-up checks, context notes (decisions, contacts, risks, dependencies) and matching of the same obligation across sources. A timeline shows every message the role may read.</td></tr>
+      <tr><td><b>Verify</b></td><td>System</td><td>Every quote is checked by code against its message, then again by the database. A fixed rule sets trust and status. The Docket lists records that disagree; the Gaps tab lists what is missing. Every quote opens its source message, highlighted.</td></tr>
+      <tr><td><b>Review</b></td><td>Outgoing lead, advisor</td><td>Accept, edit, reject or reopen each item with a reason; mark linked records “same” or “not the same”. The lead marks the draft ready; the advisor rules on conflicts and approves an immutable version. History shows every action.</td></tr>
+      <tr><td><b>Handover</b></td><td>Incoming lead</td><td>The approved version as her role reads it: people waiting on her, a calendar of duties with “Start now” and “Overdue”, sealed placeholders for what she may not read. She accepts, questions or declines each item; the outgoing lead and advisor reply to questions.</td></tr>
+    </table>
+    <p><b>Trust states</b>, on every item, set by a rule, never by the model: <span class="pill corr">CORROBORATED</span> two independent records agree · <span class="pill src">SOURCED</span> one verified quote · <span class="pill inf">INFERRED</span> only implied, never shown as fact · <span class="pill con">CONTRADICTED</span> records disagree · <span class="pill gap">GAP</span> no evidence kept.</p>
+  </div>
+</section>
+
+<section>
+  <div class="num">02<span>Screens</span></div>
+  <div>
+    <figure><img src="ledger.png" alt="The ledger: a commitment with its promise and two records saying it was done, trust corroborated"><figcaption>Reconstruct. A commitment from the committee chat, with the two later records (chat and Trello) that say it was done, so its trust is corroborated. Each quote was checked against its message. Synthetic data.</figcaption></figure>
+  </div>
+</section>
+
+<div class="break"></div>
+<section>
+  <div class="num"></div>
+  <div class="two">
+    <figure><img src="evidence.png" alt="A source message with the verified quote highlighted among its neighbours"><figcaption>Verify. “Open source message”: the quote highlighted in its message, with the messages around it.</figcaption></figure>
+    <figure><img src="docket.png" alt="The docket: a Trello card moved to Done while the chat says the WiFi still does not work"><figcaption>Verify. The Docket: Trello says done, the chat two days later says not. Awaiting the advisor’s ruling.</figcaption></figure>
+  </div>
+</section>
+
+<div class="break"></div>
+<section>
+  <div class="num"></div>
+  <div class="two">
+    <figure><img src="handover.png" alt="The incoming lead's handover: people waiting, with a contradicted item and answer buttons"><figcaption>Handover, as the incoming lead. Version 1, the people waiting on her, and Accept / Ask a question / Decline on each item.</figcaption></figure>
+    <figure><img src="calendar.png" alt="Calendar of recurring duties with next due and start-by dates"><figcaption>Handover. Recurring duties with their approver, next due date and start-by date, computed by code.</figcaption></figure>
+  </div>
+</section>
+
+<div class="break"></div>
+
+<section>
+  <div class="num">03<span>Architecture</span></div>
+  <div>
+    <h2>Architecture and data flow</h2>
+    <div class="flow">
+      <div class="src"><b>Uploads</b>WhatsApp, Trello JSON, minutes; level per file</div>
+      <div><b>Parsers</b>one event shape, IST times, dropped lines counted</div>
+      <div><b>Jobs</b>small steps in a <i>jobs</i> table, driven by the browser</div>
+      <div><b>Model</b>one adapter, Zod-validated output, cached by prompt hash</div>
+      <div class="hot"><b>Validator</b>quote check, grounding, status and trust rules, provenance</div>
+      <div class="perm"><b>Review and views</b>sign-off, immutable versions, RLS-filtered pages</div>
+    </div>
+    <p class="small">Everything lives in one Postgres database (Supabase). Shaded boxes carry the trust and permission logic; both run inside the database as well as in code.</p>
+    <ul>
+      <li><b>One codebase.</b> Next.js 16 App Router in TypeScript (strict): pages, server actions and API routes. Hosted on Vercel Hobby; database, auth and RLS on Supabase Free.</li>
+      <li><b>Import.</b> A server action parses the upload and calls <code>import_source()</code>, which runs as the signed-in user, so row-level security checks every row written. Only the events, a counts-only summary and the file’s SHA-256 are kept.</li>
+      <li><b>Build.</b> <code>planRun</code> writes one job per chunk of messages, duty batch, follow-up check and match batch. The browser calls <code>POST /api/jobs/run-next</code> until all are done, so no serverless call runs long. Each job reads only what its user may read, through RLS; job rows hold ids and counts, never text.</li>
+      <li><b>Model calls</b> go through <code>generateStructured()</code>: a Zod schema turned into structured output, validated again, one retry, a cache keyed by the prompt’s hash, a daily call budget, and typed errors. Prompts never mix access levels.</li>
+      <li><b>Storage functions</b> (<code>add_extracted_commitment</code>, <code>add_recurring_duty</code>, <code>record_followup</code>, <code>link_obligations</code>) repeat every check in SQL. Triggers set each item’s access level from its cited messages, compute trust and status, open docket entries and write the audit log.</li>
+      <li><b>Review</b> goes through <code>review_obligation()</code>, <code>mark_ready()</code>, <code>approve_version()</code> and <code>rule_conflict()</code>; a direct update by a user is refused without a reason. Versions, acknowledgements, replies and audit rows are immutable for every role.</li>
+      <li><b>Pages</b> filter first, then render: every query runs as the viewer, so a page can only show rows the database returned to that role. The incoming lead reads approved version rows only, never the working ledger.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="num">04<span>Trust</span></div>
+  <div>
+    <h2>Trust, permissions and privacy</h2>
+    <ul>
+      <li><b>The model proposes; code decides.</b> A claim is stored only if its quote is a normalised substring of the cited message. Hedged promises (“maybe”, “will see”, Tamil-English “paakalam”) are dropped. A description or note may not name a person or number missing from its own message. Dates come from code. Every rejection is counted.</li>
+      <li><b>Missing evidence is a result.</b> A checked promise with nothing verifiable is “No evidence kept”; an implied completion is “Likely done (inferred)”; records that disagree are “Contradicted” until the advisor rules, and even then the ruling is shown as hers.</li>
+      <li><b>Permissions are in Postgres.</b> Row-level security on every table. An item inherits the most restrictive level of its messages; evidence is borrowed from a linked record only when everyone who reads the item may also read the other. Sealed placeholders come from a separate table with no source text.</li>
+      <li><b>Leaks are tested at three layers.</b> In memory (no stored text at a more open level than a restricted fact it carries); in the database (every row of every table, view and function, per role, after a full run and sign-off); in the browser (every page and every source-message URL, as every role). Each test also proves someone allowed does see the text. Result: zero leaks.</li>
+      <li><b>Audit and immutability.</b> Every review action, answer and reply writes an audit row with actor, action, reason, before and after, readable only by those who may read the item.</li>
+      <li><b>Data handling.</b> Uploaded files are not stored; deleting a workspace removes all of its data; the service-role key never leaves the server; all demo data is synthetic and labelled.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="break"></div>
+
+<section>
+  <div class="num">05<span>Decisions</span></div>
+  <div>
+    <h2>Important technical decisions</h2>
+    <table>
+      <tr><th style="width:30%">Decision</th><th>Why</th></tr>
+      <tr><td>Status and trust computed by fixed rules in a database trigger</td><td>No client, reviewer or model can set them; they follow every change of evidence, including a file being removed.</td></tr>
+      <tr><td>“Corroborated” needs independence</td><td>Two records from different files or different people. One person promising and then saying it was done stays “sourced”.</td></tr>
+      <tr><td>Linked, never merged</td><td>A chat promise and its Trello card stay two records, each with its own level and quotes, so merging can never publish a restricted record.</td></tr>
+      <tr><td>A weak inference may not raise an item’s level</td><td>Found in testing: a vague hint in a finance chat hid a committee item from the incoming lead. Only plain “done” or “not done” from a more restricted record now counts.</td></tr>
+      <tr><td>Browser-driven job runner</td><td>Vercel Hobby limits function time and Supabase Free has no workers; small steps keep every call short and show progress.</td></tr>
+      <tr><td>Two-step sign-off</td><td>The lead marks ready, the advisor approves only while that mark still matches; an accepted item changed by a later run must be accepted again.</td></tr>
+      <tr><td>Per-visitor demo clubs</td><td>Each judge gets a workspace with four accounts of their own (passwords derived on the server, never stored), deleted after seven days, so nobody sees another visitor’s changes and RLS is exercised for real.</td></tr>
+      <tr><td>A frozen real-model ledger for the built club</td><td>A 160-call build cannot run inside one 60-second request, and judges should not wait or pay. The year club’s ledger is the stored output of one real run through the app’s own pipeline.</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="num">06<span>Stack</span></div>
+  <div>
+    <h2>APIs, models, libraries, services and data</h2>
+    <table>
+      <tr><th style="width:30%">Used</th><th>For</th></tr>
+      <tr><td>Anthropic Claude API, Claude Haiku 5.5</td><td>Proposing commitments, duties, follow-up quotes, context notes and same-item verdicts. Structured output (<code>output_config.format</code>) from Zod schemas, through one adapter.</td></tr>
+      <tr><td>Next.js 16, React, TypeScript</td><td>UI, server actions and API routes.</td></tr>
+      <tr><td>Supabase: Postgres, Auth, RLS, <code>pg_trgm</code></td><td>All data, sign-in, permissions, trigram similarity for matching.</td></tr>
+      <tr><td>Vercel (Hobby)</td><td>Hosting and one daily cron (keep-alive and clean-up of expired demo clubs).</td></tr>
+      <tr><td>Tailwind CSS, shadcn/ui (Radix)</td><td>Interface components (standard templates, disclosed).</td></tr>
+      <tr><td><code>whatsapp-chat-parser</code>, <code>mammoth</code>, <code>zod</code>, <code>yaml</code></td><td>WhatsApp exports, Word minutes, validation, scenario files.</td></tr>
+      <tr><td>Vitest, Playwright</td><td>Unit, database and end-to-end tests.</td></tr>
+      <tr><td>Datasets</td><td>Synthetic only: a mini scenario, a year-long IoT club and a photography club, each with hand-written ground truth; rendered by a seeded script. No real people or organisations.</td></tr>
+    </table>
+  </div>
+</section>
+
+<div class="break"></div>
+
+<section>
+  <div class="num">07<span>Evidence</span></div>
+  <div>
+    <h2>Testing and measured results</h2>
+    <p>Ground truth for each synthetic club (planted promises, duties, approvals, contradictions, decoys and restricted text) was written by hand before any model saw the files. A deterministic scorer grades each run. These runs went through the app’s own database pipeline on Claude Haiku 5.5, on 10 November 2026:</p>
+    <table class="sans">
+      <tr><th>Club</th><th>Messages</th><th>Promises found</th><th>Status right</th><th>Follow-up quotes</th><th>Conflicts</th><th>Duties (approver)</th><th>Precision</th><th>Decoys</th><th>Leaks</th><th>Cost</th></tr>
+      <tr><td>Year (IoT)</td><td class="n">1,961</td><td class="n">19/19</td><td class="n">18/19</td><td class="n">26/26</td><td class="n">2/2</td><td class="n">3/4 (3/3)</td><td class="n">83%</td><td class="n">0</td><td class="n">0</td><td class="n">$0.053</td></tr>
+      <tr><td>Photography</td><td class="n">436</td><td class="n">9/9</td><td class="n">9/9</td><td class="n">9/9</td><td class="n">1/1</td><td class="n">4/4 (4/4)</td><td class="n">90%</td><td class="n">0</td><td class="n">0</td><td class="n">$0.013</td></tr>
+      <tr><td>Mini</td><td class="n">21</td><td class="n">5/5</td><td class="n">5/5</td><td class="n">5/5</td><td class="n">1/1</td><td class="n">2/2 (2/2)</td><td class="n">100%</td><td class="n">0</td><td class="n">0</td><td class="n">$0.004</td></tr>
+    </table>
+    <p><b>Automated tests:</b> 395 unit tests, 185 database (row-level security) integration tests and 48 end-to-end browser tests, all passing. They include the whole flow a judge follows (four files at four levels → build → review → approve → hand over → question and reply) and the three-layer leak tests.</p>
+    <p><b>What the tests found and fixed</b>, among others: the outgoing lead’s own private chat produced no items; a weak inference hid an item from the incoming lead; a hedge was missed when the quote left out “Maybe”; two semesters’ identical promises were wrongly linked; Trello to-do descriptions were read as promises.</p>
+    <p><b>Structured feedback from users:</b> none yet. The Round 1 interviews were not carried out (see 08).</p>
+  </div>
+</section>
+
+<section>
+  <div class="num">08<span>Changes</span></div>
+  <div>
+    <h2>Changes from the Round 1 plan</h2>
+    <table>
+      <tr><th style="width:27%">Round 1 plan</th><th style="width:27%">Shipped</th><th>Why</th></tr>
+      <tr><td>pgvector with local MiniLM embeddings for matching</td><td>Alias table, <code>pg_trgm</code> trigram similarity, people and date windows, and a model verdict on unsure pairs</td><td>No vector storage on the free tier; every match decision can be explained.</td></tr>
+      <tr><td>Merge items found twice</td><td>Link them; never merge</td><td>Each record keeps its own access level and quotes, so nothing restricted is published by a merge.</td></tr>
+      <tr><td>Synthetic club generated by an LLM</td><td>Planted facts and truth written by hand; filler rendered by a seeded script</td><td>Free, repeatable, and scored against fixed truth.</td></tr>
+      <tr><td>One demo club</td><td>Per-visitor clubs: a built year club, or an empty one to build from sample files</td><td>A judge can inspect a full result in minutes, or run the whole flow, without affecting anyone else.</td></tr>
+      <tr><td>Model judges whether a promise was kept</td><td>The model points at quotes; a fixed rule sets status; a fifth status, “Likely done (inferred)”</td><td>An inference is never shown as done.</td></tr>
+      <tr><td>Forced tool use for structured output</td><td>Structured output from Zod schemas</td><td>Current Claude models refuse forced tool calls; the guarantee is the same.</td></tr>
+      <tr><td>Questions go back to the outgoing lead</td><td>Built: replies under each question or decline, audited</td><td>As planned; added in the final phase.</td></tr>
+    </table>
+    <h3>Promised in Round 1 and not done</h3>
+    <ul>
+      <li><b>User interviews.</b> The 8 to 12 office-bearer interviews were not carried out. No survey data is quoted, and the working hypothesis is still untested by users.</li>
+      <li><b>Usability test</b> comparing raw exports with Inheritance: not run.</li>
+      <li><b>Second club by an independent volunteer.</b> The photography club was designed by the developer with AI help, deliberately unlike the first, with its truth written before any model saw it. It is a weaker test than an outside author’s club.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="break"></div>
+
+<section>
+  <div class="num">09<span>Limits</span></div>
+  <div>
+    <h2>What does not work yet</h2>
+    <ul>
+      <li>In the built year club the model proposed six items that are not real promises (left as drafts for review), linked one Trello card to the wrong semester’s promise, marked one done item only “Likely done”, and missed one recurring duty.</li>
+      <li>Acknowledgements are per item: a new version asks the incoming lead about every item again. A reply belongs to one answer; if she answers the item again, older replies leave the page (they stay in the audit history).</li>
+      <li>A daily budget of 500 uncached model calls protects the free demo; when it is used up, building stops with a message. The sample files and the built club use saved answers.</li>
+      <li>Uploads are limited to about 3.9 MB per import (Vercel’s request size). Unknown export formats are refused with an error rather than guessed.</li>
+      <li>The automated leak checks search for restricted text literally; a paraphrase would not be caught by them.</li>
+      <li>The Gaps tab lists a linked record’s gap separately from its twin. No accessibility audit has been done yet.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="num">10<span>Round 3</span></div>
+  <div>
+    <h2>Three improvements committed for Round 3</h2>
+    <div class="improve">
+      <b class="k">IMPROVEMENT 1</b>
+      <h3 style="margin-top:2px">Find recurring duties nobody wrote down</h3>
+      <p>Today a duty is found only when the records state the rule. Round 3 infers duties from repetition alone: the same task done at about the same point in two or more past cycles (“lab permission requested in week 1, in both past years”). It computes a start-by date from how long past occurrences took. Each such duty is labelled Inferred and lists the occurrences it rests on. <i>For the user:</i> routine work the outgoing team never thought to mention appears in the incoming lead’s calendar with a start date, instead of being discovered late.</p>
+    </div>
+    <div class="improve">
+      <b class="k">IMPROVEMENT 2</b>
+      <h3 style="margin-top:2px">Gap questions for the outgoing lead</h3>
+      <p>Every gap the records cannot close (a promise with no follow-up, a duty with no approver or date, an unruled conflict) becomes one short question on a single page. Each answer is recorded with the lead’s name as a labelled source (“stated by the outgoing lead”), passes the same trust and audit rules, and updates the next version. <i>For the user:</i> the handover is completed while the outgoing lead can still be asked, and every remaining unknown is either answered or knowingly left open.</p>
+    </div>
+    <div class="improve">
+      <b class="k">IMPROVEMENT 3</b>
+      <h3 style="margin-top:2px">Counterparty handoff notes</h3>
+      <p>For each person or office the club owes something to (a sponsor, a lab in-charge, a department office), Inheritance drafts a short change-of-contact note: what is still owed, by when, and the new contact. It is built only from that counterparty’s approved items, so it cannot include restricted text. The outgoing lead edits and approves it, and the counterparty opens it from a signed link and acknowledges it; the acknowledgement shows on the handover. <i>For the user:</i> people outside the club learn of the handover too, so the old committee’s promises are not lost on the other side.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="num">11<span>Disclosure</span></div>
+  <div>
+    <h2>Disclosures</h2>
+    <ul>
+      <li><b>AI in the product:</b> the Claude API (Haiku 5.5) proposes items from the records; deterministic code and the database decide what is stored, its trust, status, dates and access level. The built demo club’s ledger is stored output from one real model run on synthetic data; which items start as accepted was decided by code from the ground truth.</li>
+      <li><b>AI in development:</b> Claude Code (Anthropic) was used as a pair programmer for code, tests, migrations, the synthetic scenarios and documentation. Design decisions and every commit were reviewed by the developer.</li>
+      <li><b>Templates and data:</b> standard Next.js and shadcn/ui starters; every person, club and message in the demo and the repository is invented. Details: <code>docs/ai-disclosure.md</code>, <code>docs/changes-from-round1.md</code>.</li>
+    </ul>
+  </div>
+</section>
+
+</body>
+</html>

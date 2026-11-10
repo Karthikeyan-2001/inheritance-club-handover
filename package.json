@@ -19,6 +19,7 @@
     "db:status": "supabase status",
     "db:reset": "supabase db reset",
     "db:push": "supabase db push --remote",
+    "gen:scenario": "node scripts/generate-scenario.ts",
     "seed": "node --env-file=.env.local scripts/seed.ts",
     "db:types": "supabase gen types --schema public > src/lib/supabase/database.types.ts",
     "seed:hosted": "node --env-file=.env.hosted.local scripts/seed.ts --remote",
@@ -38,6 +39,7 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "whatsapp-chat-parser": "^4.0.2",
+    "yaml": "^2.9.1",
     "zod": "^4.6.7"
   },
   "devDependencies": {

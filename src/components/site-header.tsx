@@ -45,6 +45,9 @@ export function SiteHeader() {
             Inheritance
           </Link>
           <Badge variant="outline">Synthetic demo</Badge>
+          <Link href="/guide" className="text-sm underline-offset-4 hover:underline">
+            Walkthrough
+          </Link>
         </div>
         <Suspense fallback={<span className="text-sm text-muted-foreground">Checking sign-in…</span>}>
           <UserMenu />

@@ -1,6 +1,7 @@
 // The leak test (Phase 12). Both generated scenarios (SYNTHETIC) go through the whole flow in
 // the demo workspace: each file imported by its own uploader at its own level, the ledger built
-// by the advisor (who reads everything, the worst case) with the offline fake, every item
+// by the outgoing lead and then by the advisor (who reads everything, the worst case) with the
+// offline fake, every item
 // accepted, a version signed off, an answer from the incoming lead. Then every row each role can
 // read, from every table, view and read function, is searched for restricted text: finance
 // amounts and the subjects of private chats. A role may see a restricted text only if it may
@@ -75,6 +76,7 @@ describe.skipIf(!hasEnv)("leak test: two synthetic scenarios through the whole f
   let scenarios: Scenario[];
   let readable: Record<Viewer, Record<string, string>>;
   let accepted = 0;
+  const rejectedByRun: Partial<Record<Viewer, number>> = {};
 
   beforeAll(async () => {
     ids = await resetDemo();
@@ -82,11 +84,16 @@ describe.skipIf(!hasEnv)("leak test: two synthetic scenarios through the whole f
     scenarios = await Promise.all(SCENARIOS.map((n) => loadScenario(n)));
     for (const s of scenarios) await importScenario(as, s);
 
-    const { runId } = await planRun(as.meena, WS, ids.meena);
-    const deps = { provider: new FakeProvider(fakeHandlers()), cache: new MemoryLlmCache(), env: ENV, today: "2026-11-10" };
-    for (let i = 0; i < 1000 && (await runNextStep(as.meena, WS, runId, ids.meena, deps)); i++);
-    const p = await getRunProgress(as.meena, WS, runId);
-    if (p.pending || p.failed) throw new Error(`run did not finish cleanly: ${JSON.stringify({ pending: p.pending, failed: p.failed })}`);
+    // The outgoing lead builds the ledger from what he may read, then the advisor from everything.
+    for (const v of ["arun", "meena"] as const) {
+      const { runId } = await planRun(as[v], WS, ids[v]);
+      const deps = { provider: new FakeProvider(fakeHandlers()), cache: new MemoryLlmCache(), env: ENV, today: "2026-11-10" };
+      for (let i = 0; i < 1000 && (await runNextStep(as[v], WS, runId, ids[v], deps)); i++);
+      const p = await getRunProgress(as[v], WS, runId);
+      if (p.pending || p.failed) throw new Error(`${v}'s run did not finish cleanly: ${JSON.stringify({ pending: p.pending, failed: p.failed })}`);
+      const { data: jobs } = await as[v].from("jobs").select("result").eq("payload->>run_id", runId);
+      rejectedByRun[v] = (jobs ?? []).reduce((n, j) => n + ((j.result as { rejected?: number } | null)?.rejected ?? 0), 0);
+    }
 
     // Accept every draft, and again every accepted fixture item the run changed (the advisor
     // reads them all), then mark ready and approve.
@@ -124,7 +131,8 @@ describe.skipIf(!hasEnv)("leak test: two synthetic scenarios through the whole f
     return out;
   };
 
-  it("built and approved a ledger from both scenarios", () => {
+  it("built and approved a ledger from both scenarios; the database refused nothing either run found", () => {
+    expect(rejectedByRun).toEqual({ arun: 0, meena: 0 });
     expect(accepted).toBeGreaterThan(20);
     expect(JSON.parse(readable.kavya.version_items).length).toBeGreaterThan(0);
   });

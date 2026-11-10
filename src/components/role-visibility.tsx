@@ -47,9 +47,12 @@ export async function RoleVisibility() {
   if (!viewer) {
     return (
       <Notice title="Sign in to explore">
-        <p>Pick one of four demo accounts. Each role sees a different part of the same club&apos;s records.</p>
+        <p>
+          Load your own copy of the synthetic demo club, with four role accounts. Each role sees a
+          different part of the same club&apos;s records.
+        </p>
         <Button asChild>
-          <Link href="/login">Choose a demo account</Link>
+          <Link href="/login">Load demo club</Link>
         </Button>
       </Notice>
     );
@@ -58,7 +61,7 @@ export async function RoleVisibility() {
   if (!viewer.membership) {
     return (
       <Notice title="No workspace yet">
-        <p>Your account is not a member of any club workspace.</p>
+        <p>Your account is not a member of any club workspace. If you deleted your demo club, load a new one from the sign-in page.</p>
       </Notice>
     );
   }

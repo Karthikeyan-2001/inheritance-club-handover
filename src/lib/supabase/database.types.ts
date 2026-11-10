@@ -91,6 +91,26 @@ isOneToOne: false
       referencedColumns: ["id"]
     }
                   ]
+                },"demo_sandboxes": {
+                  Row: {
+                    "created_at": string,"expires_at": string,"id": string,"user_ids": (string)[],"workspace_id": string | null
+                  }
+                  ComputedFields: never
+                  Insert: {
+                    "created_at"?: string,"expires_at": string,"id": string,"user_ids"?: (string)[],"workspace_id"?: string | null
+                  }
+                  Update: {
+                    "created_at"?: string,"expires_at"?: string,"id"?: string,"user_ids"?: (string)[],"workspace_id"?: string | null
+                  }
+                  Relationships: [
+                    {
+      foreignKeyName: "demo_sandboxes_workspace_id_fkey"
+      columns: ["workspace_id"]
+isOneToOne: false
+      referencedRelation: "workspaces"
+      referencedColumns: ["id"]
+    }
+                  ]
                 },"docket_entries": {
                   Row: {
                     "claim_a_event": string,"claim_b_event": string,"created_at": string,"id": string,"obligation_id": string | null,"origin": string,"quote_a": string | null,"quote_b": string | null,"reason": string | null,"ruled_at": string | null,"ruled_by": string | null,"ruling": string | null,"summary": string,"workspace_id": string
@@ -447,14 +467,14 @@ isOneToOne: false
                   ]
                 },"workspaces": {
                   Row: {
-                    "created_at": string,"created_by": string | null,"id": string,"is_demo": boolean,"name": string
+                    "created_at": string,"created_by": string | null,"id": string,"is_demo": boolean,"name": string,"sandbox_expires_at": string | null
                   }
                   ComputedFields: never
                   Insert: {
-                    "created_at"?: string,"created_by"?: string | null,"id"?: string,"is_demo"?: boolean,"name": string
+                    "created_at"?: string,"created_by"?: string | null,"id"?: string,"is_demo"?: boolean,"name": string,"sandbox_expires_at"?: string | null
                   }
                   Update: {
-                    "created_at"?: string,"created_by"?: string | null,"id"?: string,"is_demo"?: boolean,"name"?: string
+                    "created_at"?: string,"created_by"?: string | null,"id"?: string,"is_demo"?: boolean,"name"?: string,"sandbox_expires_at"?: string | null
                   }
                   Relationships: [
                     

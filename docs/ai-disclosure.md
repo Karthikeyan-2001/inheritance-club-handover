@@ -32,6 +32,8 @@ Safeguards that do **not** rely on the model:
 
 *Status (Phase 8): no AI use changed.* Review, sign-off, rulings and versions are deterministic code and database rules; no model is called and no new data is sent to one. The only link to the model is that a reviewer's "not the same" verdict on a pair of items is remembered, so later runs no longer send that pair to the matching prompt.
 
+*Status (Phase 10): no AI use changed.* A visitor's own demo club is copied from the same synthetic fixture by code, with no model call. If a visitor runs "Build the ledger" in their copy, the prompts are the same text as for the shared club (prompts carry message text and short references, never ids or workspace names), so the saved answers in `llm_cache` are reused and the daily call budget still applies to anything new, such as files a visitor uploads.
+
 ## 3. Synthetic demo data: an LLM
 
 All demo data is synthetic. A small hand-written scenario is used first. A later generator will use an LLM to render planted facts as realistic chat messages, minutes and Trello cards: typos, nicknames, and Tamil-English code-mixing in Latin script. Ground truth is fixed in YAML before generation, so the system can be scored against it. No real people or organisations are used.

@@ -1,6 +1,6 @@
 # Build status and handover notes
 
-Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 9.
+Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 10.
 
 ## Where things stand
 
@@ -15,13 +15,13 @@ Read this first when resuming work. Last updated: 2026-11-10, at the end of Phas
 | 6 | Matching (aliases plus `pg_trgm`), trust-state rule function, docket | merged |
 | 7 | Ledger UI and evidence pane (quote highlighted in source) | merged |
 | 8 | `/review`: two-step sign-off, rulings, version diff, immutable versions, audit | merged |
-| 9 | `/handover`: "people waiting on you", calendar, sealed placeholders, acks | on branch `build/phase-9`, ready to merge |
-| 10 | Demo mode ("Load demo club" per visitor, keep-alive cron) | later |
+| 9 | `/handover`: "people waiting on you", calendar, sealed placeholders, acks | merged |
+| 10 | Demo mode ("Load demo club" per visitor, keep-alive cron) | on branch `build/phase-10`, ready to merge |
 | 11 | Full synthetic generator (`world.yaml`, `ground_truth.yaml`) | later |
 | 12 | Scoring, leak test, second scenario, end-to-end tests | later |
 | 13 | Hardening and docs | later |
 
-Tests at the end of Phase 9: 456 unit (all unit-project files), 152 RLS integration, 36 Playwright, all passing. Lint, typecheck and build are clean.
+Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all passing. Lint, typecheck and build are clean. (The Phase 9 line said "456 unit"; that was unit plus RLS: 304 + 152.)
 
 ## How the user works
 
@@ -31,12 +31,14 @@ Tests at the end of Phase 9: 456 unit (all unit-project files), 152 RLS integrat
 - Ask before any paid model call. Show a cost estimate first.
 - The user chooses the Claude Code model per phase (see the table below).
 
-## Outstanding user tasks (for Phase 9)
+## Outstanding user tasks (for Phase 10)
 
-1. Run `/code-review` on Opus, then merge `build/phase-9`.
-2. Hosted database: `pnpm db:push` applies 0016 (acks audit and note rule).
-3. Redeploy on Vercel. No new environment variables, no paid model calls. Re-seeding is not required.
-4. Optional: as Kavya open Handover and answer an item; as Dr. Meena open Handover and see the answer.
+1. Run `/code-review` on Opus if you want a second read, then merge `build/phase-10`.
+2. Hosted database: `pnpm db:push` applies 0017 (`workspaces.sandbox_expires_at`, `demo_sandboxes`). Re-seeding is optional (it only adds `demo_key` to the shared accounts' metadata; the app falls back to matching their email).
+3. Vercel: add `CRON_SECRET` (Production; at least 16 letters and digits, for example `openssl rand -hex 24`), marked Sensitive. `SUPABASE_SECRET_KEY` is already there and is now also used for demo copies. Then redeploy.
+4. After the deploy: on the live sign-in page click **Load demo club**, switch to Kavya, open Handover. In Vercel, run the `/api/cron/daily` cron job once and check its log shows 200.
+5. Optional, before judging: raise Supabase **Authentication → Rate Limits → Sign-ups and sign-ins** (default 30 per 5 minutes per IP). Every sign-in comes from Vercel's servers, so visitors share a few IPs.
+6. No paid model calls were made in this phase.
 
 ## Environment facts
 
@@ -73,6 +75,7 @@ Tests at the end of Phase 9: 456 unit (all unit-project files), 152 RLS integrat
 | 0015 | `signoff_status()`: whether the lead's mark still matches, without exposing the hash. |
 
 | 0016 | `acks`: a before-insert trigger needs a note for `question` and `decline`; an after-insert trigger (`app.audit_ack`) writes an audit row (`ack_<action>`) with the item's level and uploaders. |
+| 0017 | Demo copies. `workspaces.sandbox_expires_at` (set by the server only; members have no update policy). `demo_sandboxes` (id = the copy's workspace id, `workspace_id` set null when the workspace is deleted, `user_ids`, `created_at`, `expires_at`; RLS on, no policies, service role only). |
 
 ### Code (`src/lib/`)
 
@@ -99,13 +102,17 @@ Tests at the end of Phase 9: 456 unit (all unit-project files), 152 RLS integrat
 | `review/` | Pure, tested: `fields.ts` (editable fields per kind, `changedFields`), `diff.ts` (`diffVersions` over readable rows, format-1 aware), `readiness.ts` (why mark-ready or approval is blocked, in words), `rereview.ts` (`needsRereview`, mirror of the SQL), `history.ts` and `labels.ts` (audit rows and rulings in words). |
 | `pipeline/match.ts` | Also `pairKey` and the `skip` set of `planMatches`: a pair a reviewer ruled on is never scored or asked about again. |
 | `handover/handover.ts` | Pure: `toHandoverItem`, `peopleWaiting`, `dutyCalendar` and `dutyTiming` (today is an IST day), `latestAckByItem`, `ackSummary`. `istToday()` is in `time.ts`. |
+| `demo/load-club.ts` | `insertClub` (workspace, memberships and every fixture row, as the service role, through the usual triggers), `finishClub` (releases, and optionally mark ready and approve version 1, as the club's own users), `fixtureIds` / `freshIds` (a copy gets new ids for every row), `memoSignIn`. Used by `scripts/seed.ts` and by demo copies. |
+| `demo/sandbox.ts` | Pure plus injected clients: `sandboxEmail` (`<key>+<workspace id>@example.com`), `sandboxPassword` (HMAC of the email under the secret key), `signSandboxCookie` / `readSandboxCookie`, `capacityProblem`, `createSandbox`, `purgeOne`, `purgeSandboxes`, `demoKeyFromMetadata`. Limits: 7 days, 300 active, 60 per hour, 10-minute grace for a row without a workspace. |
+| `demo/sandbox-server.ts` | `server-only`: `sandboxConfig` (reads `SUPABASE_SECRET_KEY`), `serviceClient`, `ephemeralSignIn`, `sandboxCookieOptions`, `forgetDeletedCopy` (not a server action on purpose: it takes a workspace id). |
+| `cron.ts` | `cronAuthorised` (constant-time bearer check; refuses when `CRON_SECRET` is unset or short). |
 | `pipeline/provider.ts`, `fake-extract.ts`, `fake-pipeline.ts` | `LLM_PROVIDER=fake` is the rule-based offline stand-in, refused in production. `fakeHandlers()` covers every task. |
 
 ### App (`src/app/`)
 
 | Path | Contents |
 |---|---|
-| `/login` | Demo logins. |
+| `/login` | "Your own demo club" card (Load demo club; Return to your demo club, from the signed cookie; Start a fresh copy) and the shared demo accounts below. `maxDuration` 60 for the load action. Actions in `src/app/actions/demo-club.ts` (`loadDemoClub`, `returnToDemoClub`) and `auth.ts` (`signInAsDemo` with `club=shared` or `club=mine`). |
 | `/import` | Connect: upload, access level per file, authorisation checkbox, what was read, files, aliases, delete workspace. |
 | `/ledger` | "Build the ledger" panel (`pipeline-panel.tsx`); Commitments and Recurring tabs (`commitments.tsx`, `recurring.tsx`; shared `obligation-parts.tsx` with `AlsoRecorded`, `PossibleMatches`, `DocketLink`; `link-data.ts` loads links and docket ids; grouping in `src/lib/ledger-view.ts`); Docket tab (`docket.tsx`, one entry per pair of claims, anchors `#docket-<id>`); Gaps tab (`gaps.tsx`, `findGaps`); Timeline tab; `trust-legend.tsx`. Item cards have anchors `#item-<id>`. |
 | `/ledger/evidence/[id]` | The source message for one quote (`?kind=context` for a context note), highlighted with `src/lib/pipeline/locate.ts` and shown with two neighbours either side in file order (`seq`). All reads go through RLS; a query error is shown as an error, never as "not visible to your role". |
@@ -115,6 +122,7 @@ Tests at the end of Phase 9: 456 unit (all unit-project files), 152 RLS integrat
 | `/handover` | The latest approved version as the role reads it: People waiting, Calendar, Sealed items. Incoming lead answers items (`AckForm`, action `acknowledge`); reviewers see answers and can add a placeholder (`sealPlaceholder`). Components in `src/components/handover/`. |
 | `/api/jobs/run-next` | One job per POST (`maxDuration` 60). Returns `done` and `waiting` (an earlier stage still running elsewhere). |
 | `/api/health` | Health check. |
+| `/api/cron/daily` | Daily Vercel cron (`vercel.json`, 21:30 UTC). Needs `Authorization: Bearer $CRON_SECRET`. Queries the database (keep-alive) and purges up to 25 expired or deleted copies. Excluded from `proxy.ts`. |
 
 ### Tests
 
@@ -147,6 +155,10 @@ Tests at the end of Phase 9: 456 unit (all unit-project files), 152 RLS integrat
 - **Baseline for re-review.** An accepted item inserted by the service role has no `reviewed_*` and so counts as changed. After inserting evidence (which settles trust), set `reviewed_status` and `reviewed_trust` from the row, as `scripts/seed.ts` and the delete-workspace test do.
 - **Approving needs a mark.** `approve_version()` fails without a current `mark_ready()`. RLS tests that approve call `mark_ready` as Arun first; any change to an accepted item or note in between needs a new mark.
 - **The seed approves version 1** only with `seed(env, log, { approveFirst: true })` (the CLI and the e2e global setup). `resetDemo()` in the RLS tests does not, so version numbers there start at 1 in the test.
+- **A copy's accounts are derived, not stored.** Their passwords come from `SUPABASE_SECRET_KEY`. Rotating that key makes existing copies unreachable (they are purged on expiry as usual) and invalidates the return cookie.
+- **Never export a helper that takes a workspace id from a `"use server"` file.** Every export there is callable from the browser. `forgetDeletedCopy` lives in `sandbox-server.ts` for that reason.
+- **Copy sign-ins are server-side**, so on Vercel they all come from Vercel's IPs and share Supabase's per-IP sign-in limit. A new copy costs two sign-ins (Arun in the visitor's cookie session, Dr. Meena in a throwaway one); each role switch costs one.
+- **e2e and RLS tests create copies locally.** The e2e global setup purges every copy before a run; `tests/rls/sandbox.test.ts` purges its own.
 - **Match prompts may show two levels.** By design (a committee duty and its finance copy). The model returns only a verdict per pair; the in-memory test that prompts never mix levels excludes `match_items`, like follow-up checks.
 
 ## Phase 5 decisions (confirmed with the user)
@@ -205,9 +217,29 @@ Tests at the end of Phase 9: 456 unit (all unit-project files), 152 RLS integrat
 - Fulfilled commitments are left out of "people waiting"; an item with no `owed_to` is grouped under "Not stated who it is owed to" rather than dropped.
 - Known gaps: an acknowledgement is per item, not per version change, so a new version asks again; there is no UI for the outgoing team to answer a question (they can read it). Reviewers see one incoming lead's answers (the demo has one). The earlier Phase 9 notes under Known gaps (release_item for private notes, borrowed trust) still apply.
 
-## Phase 10 plan (next)
+## Phase 10 decisions
 
-Demo mode: "Load demo club" per visitor, keep-alive cron. Model: Opus 5.5.
+Chosen by me while building; change any you disagree with.
+
+- **One copy = one workspace with four new auth users**, because roles are memberships of users and role switching is a real sign-in. The alternative (adding the shared users to many workspaces) would have mixed visitors' data.
+- **Passwords derived by HMAC** under `SUPABASE_SECRET_KEY` rather than stored, or magic links (which count against a lower verification limit). No new secret to configure.
+- **Version 1 is approved in every copy**, as in the shared club, so the incoming lead's Handover works at once and the review flow can go on to version 2.
+- **7 days**, so a judge can come back; **300 active / 60 per hour**, so the free tier cannot be flooded by repeated clicks.
+- **The shared accounts stay** on the sign-in page, labelled as shared. Existing e2e tests use them.
+- **One cron for both jobs** (keep-alive and clean-up), since Hobby allows daily crons only. It refuses every caller without `CRON_SECRET`, rather than half-running.
+- A fresh copy deletes the visitor's previous one (the signed cookie proves it was theirs). Deleting a copy on Connect also deletes its accounts and signs the visitor out.
+- No paid model calls were made in this phase.
+
+## Known gaps (Phase 10)
+
+- Each account is recorded right after it is created, so a function that dies in between leaves at most one account unrecorded. It carries `user_metadata.sandbox`; nothing removes it automatically.
+- A purged copy's session token stays valid until it expires (about an hour), but the account has no membership, so it reads nothing.
+- A copy is built from the small Phase 1 fixture (9 messages, 6 items). Phase 11's generator should feed `insertClub` a richer club.
+- `getViewer()` still takes the first membership; copy accounts have exactly one, but a real user in two workspaces would be ambiguous.
+
+## Phase 11 plan (next)
+
+Full synthetic generator (`world.yaml`, `ground_truth.yaml`). Model: Sonnet 5.5. Consider loading a generated club into demo copies (through `insertClub`) once it exists.
 
 ## Claude Code model per phase (recommendation)
 

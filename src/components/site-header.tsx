@@ -5,7 +5,7 @@ import { StepIndicator } from "@/components/step-indicator";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ROLE_LABELS } from "@/lib/access";
-import { DEMO_USERS } from "@/lib/demo/demo-users";
+import { formatIstDate } from "@/lib/format";
 import { getViewer } from "@/lib/session";
 
 async function UserMenu() {
@@ -22,9 +22,18 @@ async function UserMenu() {
       </Button>
     );
   }
-  const currentKey = DEMO_USERS.find((u) => u.email === viewer.email)?.key ?? null;
   const roleLabel = viewer.membership ? ROLE_LABELS[viewer.membership.role] : "No role";
-  return <RoleSwitcher name={viewer.name} roleLabel={roleLabel} currentKey={currentKey} />;
+  const copyUntil = viewer.membership?.sandboxExpiresAt ?? null;
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      {copyUntil && (
+        <Badge variant="secondary" title="A private copy of the demo club, just for you">
+          Your demo club · kept until {formatIstDate(copyUntil)}
+        </Badge>
+      )}
+      <RoleSwitcher name={viewer.name} roleLabel={roleLabel} currentKey={viewer.demoKey} inCopy={copyUntil !== null} />
+    </div>
+  );
 }
 
 export function SiteHeader() {

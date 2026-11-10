@@ -23,10 +23,13 @@ export function RoleSwitcher({
   name,
   roleLabel,
   currentKey,
+  inCopy,
 }: {
   name: string;
   roleLabel: string;
   currentKey: DemoUserKey | null;
+  /** Signed in to the visitor's own copy of the demo club: switch among its accounts. */
+  inCopy: boolean;
 }) {
   const pathname = usePathname();
   const switchForm = useRef<HTMLFormElement>(null);
@@ -44,6 +47,7 @@ export function RoleSwitcher({
       <form ref={switchForm} action={signInAsDemo} hidden>
         <input ref={userInput} type="hidden" name="user" defaultValue="" />
         <input type="hidden" name="next" value={pathname} />
+        <input type="hidden" name="club" value={inCopy ? "mine" : "shared"} />
       </form>
       <form ref={signOutForm} action={signOut} hidden />
       <DropdownMenu>
@@ -55,7 +59,7 @@ export function RoleSwitcher({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-64">
-          <DropdownMenuLabel>Switch demo role</DropdownMenuLabel>
+          <DropdownMenuLabel>{inCopy ? "Switch role in your demo club" : "Switch shared demo role"}</DropdownMenuLabel>
           {DEMO_USERS.map((u) => (
             <DropdownMenuItem key={u.key} disabled={u.key === currentKey} onSelect={() => switchTo(u.key)}>
               <span className="font-medium">{u.name}</span>

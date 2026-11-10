@@ -8,13 +8,14 @@ async function signInAs(page: Page, name: string) {
 
 const count = (page: Page, table: string) => page.getByTestId(`count-${table}`);
 
-test("signed-out visitors are invited to pick a demo account", async ({ page }) => {
+test("signed-out visitors are invited to load a demo club", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("link", { name: "Choose a demo account" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Load demo club" })).toBeVisible();
 });
 
-test("the login page lists the four demo accounts with credentials", async ({ page }) => {
+test("the login page offers your own demo club and the four shared accounts with credentials", async ({ page }) => {
   await page.goto("/login");
+  await expect(page.getByRole("button", { name: "Load demo club" })).toBeVisible();
   for (const name of ["Arun", "Dr. Meena", "Kavya", "Divya"]) {
     await expect(page.getByRole("button", { name: `Sign in as ${name}` })).toBeVisible();
   }
@@ -63,5 +64,5 @@ test("signing out returns to the login page", async ({ page }) => {
   await page.getByRole("menuitem", { name: "Sign out" }).click();
   await expect(page).toHaveURL("/login");
   await page.goto("/");
-  await expect(page.getByRole("link", { name: "Choose a demo account" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Load demo club" })).toBeVisible();
 });

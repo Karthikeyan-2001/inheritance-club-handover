@@ -1,7 +1,7 @@
 import { deleteWorkspace } from "@/app/import/actions";
 import { ActionForm } from "@/components/action-form";
 
-export function DangerZone({ workspaceName, isDemo }: { workspaceName: string; isDemo: boolean }) {
+export function DangerZone({ workspaceName, isDemo, isCopy }: { workspaceName: string; isDemo: boolean; isCopy: boolean }) {
   if (isDemo) {
     return (
       <p className="text-sm text-muted-foreground">
@@ -17,6 +17,7 @@ export function DangerZone({ workspaceName, isDemo }: { workspaceName: string; i
         <p>
           This removes every file, message, obligation, approved version and audit entry in <strong>{workspaceName}</strong>. It cannot be undone.
         </p>
+        {isCopy && <p>This is your own demo club, so its four accounts are deleted too and you are signed out.</p>}
         <label className="flex flex-col gap-1">
           Type the workspace name to confirm
           <input name="confirmName" required autoComplete="off" className="rounded-md border bg-background px-2 py-1" />

@@ -107,7 +107,7 @@ async function ImportContent() {
             <CardTitle>Delete workspace</CardTitle>
           </CardHeader>
           <CardContent>
-            <DangerZone workspaceName={workspaceName} isDemo={ws?.is_demo ?? true} />
+            <DangerZone workspaceName={workspaceName} isDemo={ws?.is_demo ?? true} isCopy={viewer.membership.sandboxExpiresAt !== null} />
           </CardContent>
         </Card>
       )}

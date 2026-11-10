@@ -28,6 +28,8 @@ Built for the CodersInPune Hackathon, Round 2.
 | 6 | Matching, trust rule, docket | done |
 | 7 | Ledger UI and evidence pane | done |
 | 8 | Review: two-step sign-off, rulings, immutable versions, audit | done |
+| 9 | Handover: people waiting, duty calendar, sealed placeholders, acknowledgements | done |
+| 10 | Demo mode: "Load demo club" per visitor, daily keep-alive and clean-up | done |
 
 ## Stack
 
@@ -142,7 +144,14 @@ How the guarantees are enforced:
 - **Immutable records.** Approved versions, version items, acknowledgements and audit rows can't be changed, even with the service role. Only `delete_workspace()` can remove them.
 - **Tests.** `tests/rls/` proves each role sees exactly its expected rows.
 
-Demo accounts (synthetic): `arun.demo@example.com` (outgoing lead), `meena.demo@example.com` (advisor), `kavya.demo@example.com` (incoming lead), `divya.demo@example.com` (treasurer).
+Demo accounts (synthetic): `arun.demo@example.com` (outgoing lead), `meena.demo@example.com` (advisor), `kavya.demo@example.com` (incoming lead), `divya.demo@example.com` (treasurer). These are shared by every visitor.
+
+## Demo mode
+
+- **Load demo club** (on `/login`) builds the visitor a private copy of the synthetic club: a workspace with four accounts of its own, the same messages and items, and version 1 approved (`src/lib/demo/sandbox.ts`, `load-club.ts`; the seed script uses the same loader for the shared club). Nothing a visitor does reaches anyone else, and RLS applies as in any club. The role menu switches only among the accounts of the visitor's own copy.
+- Copy accounts have no stored password: the server derives each from the account's email with an HMAC under `SUPABASE_SECRET_KEY`. A signed, http-only cookie offers "Return to your demo club" after signing out.
+- A copy is deleted after 7 days, when its visitor deletes it on Connect, or when they start a fresh one. Bookkeeping is in `demo_sandboxes` (service role only; migration `0017`). At most 300 copies are active and 60 start per hour.
+- **Daily cron** (`vercel.json` → `GET /api/cron/daily`, guarded by `CRON_SECRET`): queries the database so the free Supabase project is not paused, and deletes expired copies.
 
 ## Troubleshooting
 

@@ -95,7 +95,7 @@ export async function RoleVisibility() {
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6 md:grid-cols-2">
-        <table className="w-full text-sm">
+        <table className="w-full self-start text-sm">
           <caption className="mb-2 text-left font-medium">Rows visible to this role</caption>
           <tbody>
             {counts.map((c) => (

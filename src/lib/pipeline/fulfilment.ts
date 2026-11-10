@@ -4,8 +4,10 @@
 // time. Status is then derived from the kept evidence alone (status.ts / SQL).
 
 import { z } from "zod";
+import { mostRestrictive } from "../access.ts";
 import { hedged, recordLine, type PipelineEvent } from "./extract.ts";
 import { byTime, timeOf } from "./related.ts";
+import { canBorrow, type Visibility } from "./trust.ts";
 import { contentTokens } from "./text.ts";
 import { noteGrounded, normaliseForQuote, verifyQuote } from "./verify.ts";
 
@@ -106,7 +108,8 @@ export type KeptContext = { event: PipelineEvent; quote: string; kind: "decision
 
 export type FollowupDropReason =
   | "unknown_message" | "quote_not_found" | "quote_too_short" | "cites_promise" | "before_promise" | "undated"
-  | "non_binding" | "question" | "no_note" | "ungrounded_note" | "unrelated_context" | "over_limit" | "duplicate";
+  | "non_binding" | "question" | "no_note" | "ungrounded_note" | "unrelated_context" | "over_limit" | "duplicate"
+  | "inferred_from_restricted";
 
 export const MAX_CONTEXT = 5;
 const MAX_NOTE = 300;
@@ -119,6 +122,24 @@ export function contextRelated(note: string, quote: string, targetText: string):
 }
 
 
+/** Who can read a set of messages: their most restrictive level, and the uploaders of the private ones. */
+export function visibilityOfEvents(events: readonly PipelineEvent[]): Visibility {
+  const levels = events.map((e) => e.accessLevel ?? "everyone");
+  const level = levels.length ? mostRestrictive(levels) : "everyone";
+  const privateUploaders = [...new Set(events.filter((e) => e.accessLevel === "private").map((e) => e.uploaderId ?? "unknown"))];
+  return { level, privateUploaders };
+}
+
+/**
+ * A quote that only implies an item was done may not come from a record that some readers of
+ * the item cannot read. Such a quote would raise the item's level (provenance), so a weak
+ * inference could hide the item from the incoming lead. Quotes that say done or not done
+ * plainly still raise it. Mirrored in record_followup() (migration 0019).
+ */
+export function inferredMayAttach(item: Visibility, quoteEvent: PipelineEvent): boolean {
+  return canBorrow(item, visibilityOfEvents([quoteEvent]));
+}
+
 /** Keep only follow-ups and context that cite a real message verbatim and fit in time. */
 export function postProcessFollowup(
   output: { followups?: FollowupOutput["followups"]; context: FollowupOutput["context"] },
@@ -130,6 +151,7 @@ export function postProcessFollowup(
   const sources = new Set(target.sourceEventIds);
   const sourceTimes = [...refs.values()].filter((e) => sources.has(e.id) && e.ts).map(timeOf);
   const since = sourceTimes.length ? Math.min(...sourceTimes) : null;
+  const itemVisibility = visibilityOfEvents([...refs.values()].filter((e) => sources.has(e.id)));
 
   const resolve = (message: string, q: string): PipelineEvent | null => {
     const event = refs.get(message.trim().replace(/^\[|\]$/g, ""));
@@ -168,6 +190,10 @@ export function postProcessFollowup(
     }
     if (f.kind !== "not_done" && f.quote.trim().endsWith("?")) {
       drop("question");
+      continue;
+    }
+    if (f.kind === "implies_done" && !inferredMayAttach(itemVisibility, event)) {
+      drop("inferred_from_restricted");
       continue;
     }
     const relation = f.kind === "not_done" ? "contradicts" : "fulfils";

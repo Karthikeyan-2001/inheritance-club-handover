@@ -115,6 +115,43 @@ describe("postProcessFollowup", () => {
     expect(many.context).toHaveLength(5);
     expect(many.dropped.over_limit).toBe(2);
   });
+
+  describe("implied completion from a more restricted record (P6)", () => {
+    const committeePromise = ev("cp", "2026-03-01T10:00:00+05:30", "I will hand over the camera and the cupboard keys to Kavya.", { accessLevel: "committee" });
+    const financeHint = ev("fh", "2026-03-20T10:00:00+05:30", "The passbook stays in the cupboard with the keys.", { accessLevel: "finance", sourceType: "minutes" });
+    const financeDone = ev("fd", "2026-03-21T10:00:00+05:30", "Arun handed over the camera and the keys today.", { accessLevel: "finance", sourceType: "minutes" });
+    const committeeHint = ev("ch", "2026-03-22T10:00:00+05:30", "Kavya opened the cupboard with her keys.", { accessLevel: "committee" });
+    const privateHint = (uploader: string) => ev(`pv-${uploader}`, "2026-03-23T10:00:00+05:30", "The keys are with Kavya now.", { accessLevel: "private", uploaderId: uploader });
+    const t: FollowupTarget = { ...target, description: "Hand over the camera and keys", owedTo: "Kavya", sourceEventIds: ["cp"], sourceQuotes: ["I will hand over the camera and the cupboard keys to Kavya"] };
+    const run = (events: PipelineEvent[], followups: FollowupOutput["followups"], over: Partial<FollowupTarget> = {}) => {
+      const p = buildFollowupPrompt({ ...t, ...over }, events);
+      const at = (id: string) => [...p.refs.entries()].find(([, e]) => e.id === id)![0];
+      return postProcessFollowup({ followups: followups.map((f) => ({ ...f, message: at(f.message) })), context: [] }, p.refs, { ...t, ...over });
+    };
+
+    it("drops an implied quote from a record some of the item's readers cannot read", () => {
+      const r = run([committeePromise, financeHint], [{ message: "fh", quote: "The passbook stays in the cupboard", kind: "implies_done" }]);
+      expect(r.evidence).toEqual([]);
+      expect(r.dropped).toEqual({ inferred_from_restricted: 1 });
+    });
+
+    it("still keeps a plain 'done' from a more restricted record, and implied quotes at the same or a lower level", () => {
+      const r = run([committeePromise, financeDone, committeeHint], [
+        { message: "fd", quote: "Arun handed over the camera and the keys today", kind: "done" },
+        { message: "ch", quote: "Kavya opened the cupboard with her keys", kind: "implies_done" },
+      ]);
+      expect(r.dropped).toEqual({});
+      expect(r.evidence.map((e) => [e.event.id, e.relation, e.inferred])).toEqual([["fd", "fulfils", false], ["ch", "fulfils", true]]);
+    });
+
+    it("treats another person's private file as more restricted, and one's own as not", () => {
+      const own = ev("op", "2026-03-01T10:00:00+05:30", "I will hand over the camera and the cupboard keys to Kavya.", { accessLevel: "private", uploaderId: "arun" });
+      const ok = run([own, privateHint("arun")], [{ message: "pv-arun", quote: "The keys are with Kavya now", kind: "implies_done" }], { sourceEventIds: ["op"] });
+      expect(ok.evidence).toHaveLength(1);
+      const other = run([own, privateHint("meena")], [{ message: "pv-meena", quote: "The keys are with Kavya now", kind: "implies_done" }], { sourceEventIds: ["op"] });
+      expect(other.dropped).toEqual({ inferred_from_restricted: 1 });
+    });
+  });
 });
 
 describe("noteGrounded", () => {

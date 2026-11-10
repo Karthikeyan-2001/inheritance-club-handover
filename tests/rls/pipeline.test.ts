@@ -271,6 +271,16 @@ describe.skipIf(!hasEnv)("record_followup, add_recurring_duty and staged claimin
     expect(direct.data?.[0]).toMatchObject({ evidence_added: 1, duplicates: 1, status: "fulfilled" });
   });
 
+  it("refuses a quote that only implies completion from a more restricted record (P6, migration 0019)", async () => {
+    const r = await follow(as.arun, [{ event_id: financeEvent, quote: "speaker list needs Dean approval", relation: "fulfils", inferred: true }]);
+    expect(r.error).toBeNull();
+    expect(r.data?.[0]).toMatchObject({ evidence_added: 0, rejected: 1 });
+    // The advisor's private message is more restricted too, even for the advisor who can read it.
+    const m = await follow(as.meena, [{ event_id: meenaDmEvent, quote: SECRET, relation: "fulfils", inferred: true }]);
+    expect(m.data?.[0]).toMatchObject({ evidence_added: 0, rejected: 1 });
+    expect((await as.divya.from("obligations").select("access_level").eq("id", commitment).single()).data?.access_level).toBe("committee");
+  });
+
   it("evidence from a more restricted record raises the item to that level (provenance rule)", async () => {
     const r = await follow(as.arun, [{ event_id: financeEvent, quote: "speaker list needs Dean approval", relation: "contradicts" }]);
     expect(r.data?.[0]).toMatchObject({ evidence_added: 1, status: "contradicted" });

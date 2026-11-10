@@ -1,10 +1,12 @@
-// Turns a world into the export files a club would upload: two WhatsApp chats, a Trello board
-// JSON and minutes. Pure and deterministic: the same world gives the same bytes. No model is
-// called. Planted beats are written exactly as in the world; only filler is templated.
+// Turns a world into the export files a club would upload: WhatsApp chats (group or one-to-one),
+// an optional Trello board JSON, and minutes (.md or .docx). Pure and deterministic: the same
+// world gives the same bytes. No model is called. Planted beats are written exactly as in the
+// world; only filler is templated.
 
 import { createHash } from "node:crypto";
+import { renderDocx, type DocxParagraph } from "./docx.ts";
 import { makeRng, seedFor, type Rng } from "./rng.ts";
-import type { Card, Chat, World } from "./world.ts";
+import type { Card, Chat, Trello, World } from "./world.ts";
 
 type Clock = { y: number; mo: number; d: number; h: number; mi: number };
 const pad = (n: number, w = 2) => String(n).padStart(w, "0");
@@ -116,17 +118,18 @@ export function renderChat(world: World, chat: Chat): string {
     else out.push(`${stamp(c, sec)} - ${author === null ? text : `${author}: ${text}`}`);
   };
   say(start, 12, null, "Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them.", chat.group);
-  say(start, 12, null, `${chat.creator} created group “${chat.group}”`, chat.creator);
-  const others = chat.members.filter((m) => m !== chat.creator);
-  say(start, 13, null, ios ? `${chat.creator} added ${others.join(", ")}` : `${chat.creator} added you`, chat.creator);
+  if (chat.kind === "group") {
+    say(start, 12, null, `${chat.creator} created group “${chat.group}”`, chat.creator);
+    const others = chat.members.filter((m) => m !== chat.creator);
+    say(start, 13, null, ios ? `${chat.creator} added ${others.join(", ")}` : `${chat.creator} added you`, chat.creator);
+  }
   for (const l of chatLines(world, chat)) say(l.clock, l.sec, l.author, l.text, l.lead ?? chat.creator);
   return out.join("\n") + "\n";
 }
 
 // ---------------------------------------------------------------- Trello
 
-export function renderTrello(world: World): string {
-  const t = world.trello;
+export function renderTrello(world: World, t: Trello): string {
   const boardId = hex24(`board:${t.name}`);
   const person = (name: string) => {
     const id = hex24(`member:${name}`);
@@ -201,11 +204,20 @@ export function renderTrello(world: World): string {
 
 // ---------------------------------------------------------------- Minutes
 
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+function meetingTitle(world: World, date: string): string {
+  if (world.minutes.dates === "iso") return `${date}: Committee meeting`;
+  return `${+date.slice(8, 10)} ${MONTHS[+date.slice(5, 7) - 1]} ${date.slice(0, 4)}: Committee meeting`;
+}
+
+const meetings = (world: World) => [...world.minutes.meetings].sort((a, b) => a.date.localeCompare(b.date));
+
 export function renderMinutes(world: World): string {
   const m = world.minutes;
   const out = [`# ${m.title} (SYNTHETIC)`, ""];
-  for (const meet of [...m.meetings].sort((a, b) => a.date.localeCompare(b.date))) {
-    out.push(`## ${meet.date}: Committee meeting`, "", `**Present:** ${meet.present.join(", ")}`, `**Absent:** ${meet.absent.length ? meet.absent.join(", ") : "none"}`, "");
+  for (const meet of meetings(world)) {
+    out.push(`## ${meetingTitle(world, meet.date)}`, "", `**Present:** ${meet.present.join(", ")}`, `**Absent:** ${meet.absent.length ? meet.absent.join(", ") : "none"}`, "");
     for (const s of meet.sections) {
       out.push(`### ${s.heading}`, "");
       if (s.text) out.push(s.text, "");
@@ -215,22 +227,46 @@ export function renderMinutes(world: World): string {
   return out.join("\n").replace(/\n+$/, "\n");
 }
 
+/** The same minutes as a Word document: Heading 1 title, Heading 2 per meeting, Heading 3 per section. */
+export function renderMinutesDocx(world: World): Uint8Array {
+  const m = world.minutes;
+  const ps: DocxParagraph[] = [{ style: "Heading1", text: `${m.title} (SYNTHETIC)` }];
+  for (const meet of meetings(world)) {
+    ps.push({ style: "Heading2", text: meetingTitle(world, meet.date) });
+    ps.push({ boldLead: "Present:", text: ` ${meet.present.join(", ")}` });
+    ps.push({ boldLead: "Absent:", text: ` ${meet.absent.length ? meet.absent.join(", ") : "none"}` });
+    for (const s of meet.sections) {
+      ps.push({ style: "Heading3", text: s.heading });
+      if (s.text) ps.push({ text: s.text });
+      for (const b of s.bullets ?? []) ps.push({ text: b });
+    }
+  }
+  return renderDocx(ps);
+}
+
 // ---------------------------------------------------------------- All
 
+/** A generated file: text, or bytes for a Word document. */
+export type FileContent = string | Uint8Array;
+
 /** Every file of the scenario, by file name. Same world, same bytes. */
-export function generateScenario(world: World): Record<string, string> {
-  const files: Record<string, string> = {};
+export function generateScenario(world: World): Record<string, FileContent> {
+  const files: Record<string, FileContent> = {};
   for (const chat of world.chats) files[chat.file] = renderChat(world, chat);
-  files[world.trello.file] = renderTrello(world);
-  files[world.minutes.file] = renderMinutes(world);
+  if (world.trello) files[world.trello.file] = renderTrello(world, world.trello);
+  files[world.minutes.file] = world.minutes.file.endsWith(".docx") ? renderMinutesDocx(world) : renderMinutes(world);
   return files;
 }
 
-/** Access level per generated file, for import and for the truth check. */
+/** A file's content as bytes (what an upload sends). */
+export const fileBytes = (c: FileContent): Uint8Array => (typeof c === "string" ? new TextEncoder().encode(c) : c);
+
+/** Type, access level and uploader per generated file, for import and for the truth check. */
 export function fileLevels(world: World) {
-  return {
-    ...Object.fromEntries(world.chats.map((c) => [c.file, { type: "whatsapp" as const, accessLevel: c.accessLevel }])),
-    [world.trello.file]: { type: "trello" as const, accessLevel: world.trello.accessLevel },
-    [world.minutes.file]: { type: "minutes" as const, accessLevel: world.minutes.accessLevel },
-  };
+  type Meta = { type: "whatsapp" | "trello" | "minutes"; accessLevel: World["minutes"]["accessLevel"]; uploader: World["minutes"]["uploader"] };
+  const out: Record<string, Meta> = {};
+  for (const c of world.chats) out[c.file] = { type: "whatsapp", accessLevel: c.accessLevel, uploader: c.uploader };
+  if (world.trello) out[world.trello.file] = { type: "trello", accessLevel: world.trello.accessLevel, uploader: world.trello.uploader };
+  out[world.minutes.file] = { type: "minutes", accessLevel: world.minutes.accessLevel, uploader: world.minutes.uploader };
+  return out;
 }

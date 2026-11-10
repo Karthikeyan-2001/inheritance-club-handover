@@ -25,6 +25,9 @@ Built for the CodersInPune Hackathon, Round 2.
 | 3 | Connect (import) page and ledger timeline | done |
 | 4 | LLM adapter, commitment extraction, quote verifier | done |
 | 5 | Fulfilment, recurring duties with approvals, context notes | done |
+| 6 | Matching, trust rule, docket | done |
+| 7 | Ledger UI and evidence pane | done |
+| 8 | Review: two-step sign-off, rulings, immutable versions, audit | done |
 
 ## Stack
 
@@ -109,17 +112,27 @@ Safeguards:
 
 **`pnpm eval:pipeline`** scores the whole pipeline on the mini scenario. It estimates cost without `--yes`, and calls the model only with `-- --yes`. Last run (Claude Haiku 5.5, 9 Nov 2026): 5 of 5 commitments, 0 decoys, 5 of 5 statuses right, 5 of 5 expected follow-up quotes, the contradiction detected, 2 of 2 recurring duties with the right approver, 12 calls, about $0.005.
 
+## Review and versions
+
+`/review` is the fourth step. Nothing reaches the incoming lead until it has been checked and approved.
+
+- **Draft** (outgoing lead and advisor): every item with its quotes, grouped as *Changed since accepted*, *Draft*, *Accepted* and *Rejected*. Each can be accepted, edited (a fixed list of fields; status and trust are never editable), rejected or moved back to draft, always with a reason. Linked records can be marked "Same item" or "Not the same"; a verdict stands, and later runs leave that pair alone.
+- **Sign-off in two steps.** The outgoing lead marks the accepted draft ready; the faculty advisor approves it as a new version, and only while that mark still matches. Any change to an accepted item or note afterwards means a new mark. An accepted item whose status or trust moved because a later run found new records is flagged, and blocks both steps until it is accepted again or rejected.
+- **Conflicts.** The advisor rules on each (done, not done, cannot tell) with a reason. A ruling is the advisor's decision, shown as such; the item stays contradicted because the records still disagree.
+- **Versions** are immutable, even for the service role. Each holds the items with their evidence (including which quotes are only inferred), the same-item links, the conflicts with their rulings, and context notes, each at its own access level. Every role sees the diff from the previous version built only from the rows it can read.
+- **History** lists every review action from the audit log with its actor, reason and what changed.
+
 ## Roles and permissions
 
-Permissions are enforced by Postgres row-level security (`supabase/migrations/0003`–`0004`). The UI never decides what a role can see.
+Permissions are enforced by Postgres row-level security (`supabase/migrations/0003`–`0004`, and `0014` for the working ledger). The UI never decides what a role can see.
 
 | Role | Can read |
 |---|---|
 | Faculty advisor | Everything |
 | Outgoing lead | Everyone, committee, finance, plus private items built only from files they uploaded |
 | Treasurer | Everyone, committee, finance |
-| Incoming lead | Everyone, committee |
-| Member | Everyone |
+| Incoming lead | Approved versions only (items at everyone or committee level, plus items released to the role), never the working ledger |
+| Member | Approved versions only (items at everyone level) |
 
 Any role can also read items explicitly released to it, through `release_item()`, which is audited.
 

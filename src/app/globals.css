@@ -124,3 +124,19 @@
     @apply bg-background text-foreground;
   }
 }
+/* Guided tour: the element the current stop talks about (set by src/components/tour/tour-dock.tsx). */
+[data-tour-highlight] {
+  outline: 3px solid oklch(0.75 0.17 70);
+  outline-offset: 4px;
+  border-radius: var(--radius-md, 0.375rem);
+  scroll-margin: 6rem 0 16rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-tour-highlight] {
+    animation: tour-pulse 1.6s ease-out 3;
+  }
+}
+@keyframes tour-pulse {
+  0% { box-shadow: 0 0 0 0 oklch(0.75 0.17 70 / 55%); }
+  100% { box-shadow: 0 0 0 14px oklch(0.75 0.17 70 / 0%); }
+}

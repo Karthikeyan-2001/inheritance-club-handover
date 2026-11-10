@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
+import { TourPanel } from "@/components/tour/tour-panel";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,6 +30,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <SiteHeader />
         {children}
+        <Suspense fallback={null}>
+          <TourPanel />
+        </Suspense>
       </body>
     </html>
   );

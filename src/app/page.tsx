@@ -6,7 +6,8 @@ async function Welcome({ searchParams }: { searchParams: PageProps<"/">["searchP
   if (welcome !== "copy") return null;
   return (
     <p role="status" className="rounded-md border px-4 py-3 text-sm">
-      Your own demo club is ready. You are signed in as Arun, the outgoing lead. Switch to
+      Your own demo club is ready. You are signed in as Arun, the outgoing lead. The guided tour at
+      the bottom of the screen takes you through each step; exit it whenever you like and switch to
       Dr. Meena, Kavya or Divya from the menu at the top right to see what each role can read.
     </p>
   );

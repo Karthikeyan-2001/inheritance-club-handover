@@ -204,11 +204,16 @@ commitments:
     owedTo: Volunteers
     deliverable: Volunteer certificates
     due: 2026-02-28
-    expectedStatus: no_evidence
+    expectedStatus: open
     expectedTrust: null
-    note: Volunteers are still asking in March and April; the Trello card is in To Do.
+    note: >-
+      Volunteers are still asking in April and the Trello card is in To Do. Records say it is not
+      done and none say it is, so by the status rule it is Open. (Corrected in Phase 12: the first
+      truth said no_evidence; the paid eval found the "still waiting" reports.)
     quote: { file: whatsapp-volunteers.txt, text: "I will send the volunteer certificates by 28 February." }
-    evidence: []
+    evidence:
+      - { relation: contradicts, file: whatsapp-volunteers.txt, text: "Still waiting for the volunteer certificates, college asked for them for the NSS hours." }
+      - { relation: contradicts, file: trello-board.json, text: "Volunteers keep asking about these." }
   - id: C19
     owedBy: Dr. Meena
     owedTo: Karthik

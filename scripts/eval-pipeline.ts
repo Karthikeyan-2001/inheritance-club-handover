@@ -32,7 +32,12 @@ const PRICES: Record<string, { input: number; output: number }> = {
   "claude-sonnet-5-5": { input: 2, output: 10 },
   "claude-opus-5-5": { input: 4, output: 20 },
 };
-const OUTPUT_PER_CALL = 1500; // generous: the answer plus low-effort thinking
+// Calibrated on the Phase 12 paid runs (Haiku 5.5, 10 Nov 2026): input was about 1.3 times the
+// prompt text at 3.5 characters a token, plus about 1,500 tokens a call for the structured-output
+// schema; output was 400 to 560 tokens a call. Both are rounded up, so the estimate errs high.
+const INPUT_FACTOR = 1.3;
+const INPUT_PER_CALL = 1500;
+const OUTPUT_PER_CALL = 800;
 
 const arg = (name: string) => {
   const i = process.argv.indexOf(name);
@@ -56,7 +61,7 @@ const byTask = new Map<string, { calls: number; input: number }>();
 for (const c of dry.calls) {
   const t = byTask.get(c.task) ?? { calls: 0, input: 0 };
   t.calls++;
-  t.input += tokens(c.system + c.user);
+  t.input += Math.ceil(tokens(c.system + c.user) * INPUT_FACTOR) + INPUT_PER_CALL;
   byTask.set(c.task, t);
 }
 const estIn = [...byTask.values()].reduce((n, t) => n + t.input, 0);
@@ -67,7 +72,7 @@ if (!fake) console.log(`Estimate on ${model}: about ${estIn} input + ${estOut} o
 
 const probe = scenarioName === "mini" ? matchProbe(await miniEvents(), miniTruth()) : null;
 if (probe && !fake) {
-  const probeTokens = tokens(MATCH_SYSTEM + buildMatchPrompt(probe.pairs, probe.items).user);
+  const probeTokens = Math.ceil(tokens(MATCH_SYSTEM + buildMatchPrompt(probe.pairs, probe.items).user) * INPUT_FACTOR) + INPUT_PER_CALL;
   console.log(`The matching probe alone (--match-probe-only): 1 call, about ${probeTokens} input tokens, ${usd(probeTokens, OUTPUT_PER_CALL)}.`);
 }
 

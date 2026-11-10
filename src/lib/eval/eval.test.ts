@@ -114,7 +114,7 @@ describe("scoreRun", () => {
 const FLOORS: Record<string, { found: number; status: number; duties: number; contradictions: number }> = {
   mini: { found: 5, status: 5, duties: 2, contradictions: 1 },
   photo: { found: 9, status: 9, duties: 4, contradictions: 1 },
-  year: { found: 19, status: 16, duties: 3, contradictions: 1 },
+  year: { found: 19, status: 15, duties: 3, contradictions: 1 },
 };
 
 for (const name of Object.keys(FLOORS)) {

@@ -5,6 +5,7 @@ export type Step = (typeof STEPS)[number];
 export const STEP_HREF: Partial<Record<Step, string>> = {
   Connect: "/import",
   Reconstruct: "/ledger",
+  Review: "/review",
 };
 
 export function stepForPath(pathname: string): Step | null {

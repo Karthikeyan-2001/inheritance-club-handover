@@ -576,6 +576,11 @@ isOneToOne: false
                            },
 "set_link_verdict":
 { Args: { "p_a": string,"p_b": string,"p_reason": string,"p_verdict": string,"p_workspace": string }; Returns: string
+                           },
+"signoff_status":
+{ Args: { "p_workspace": string }; Returns: {
+              "is_current": boolean,"item_count": number,"marked_at": string,"marked_by": string,"reason": string
+            }[]
                            }
           }
           Enums: {

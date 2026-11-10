@@ -8,22 +8,10 @@
 // deleted (via delete_workspace) and rebuilt with fixed ids.
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { sha256Hex } from "../src/lib/hash.ts";
 import type { Database } from "../src/lib/supabase/database.types.ts";
 import { DEMO_USERS, type DemoUserKey } from "../src/lib/demo/demo-users.ts";
-import {
-  ALIASES,
-  CONTEXT_ITEMS,
-  DEMO_WORKSPACE,
-  DOCKET_ENTRIES,
-  EVENTS,
-  EVIDENCE,
-  OBLIGATIONS,
-  RELEASES,
-  SEALED_ITEMS,
-  SOURCES,
-  byKey,
-} from "../src/lib/demo/fixture.ts";
+import { DEMO_WORKSPACE, EVENTS, OBLIGATIONS, SOURCES } from "../src/lib/demo/fixture.ts";
+import { finishClub, fixtureIds, insertClub, memoSignIn } from "../src/lib/demo/load-club.ts";
 
 type Admin = SupabaseClient<Database>;
 
@@ -75,7 +63,7 @@ async function upsertUsers(admin: Admin, password: string): Promise<Record<DemoU
     const attrs = {
       password,
       email_confirm: true,
-      user_metadata: { name: u.name, demo: true, synthetic: true },
+      user_metadata: { name: u.name, demo: true, demo_key: u.key, synthetic: true },
     };
     if (existing) {
       const res = await admin.auth.admin.updateUserById(existing.id, attrs);
@@ -113,98 +101,26 @@ export async function seed(
     check("delete workspace", await admin.rpc("delete_workspace", { p_workspace: DEMO_WORKSPACE.id, p_reason: "seed reset" }));
   }
 
-  check("workspace", await admin.from("workspaces").insert({ id: DEMO_WORKSPACE.id, name: DEMO_WORKSPACE.name, created_by: users.arun, is_demo: true }));
-  check("memberships", await admin.from("memberships").insert(
-    DEMO_USERS.map((u) => ({ workspace_id: DEMO_WORKSPACE.id, user_id: users[u.key], role: u.role })),
-  ));
+  const target = {
+    workspaceId: DEMO_WORKSPACE.id, name: DEMO_WORKSPACE.name, isDemo: true, sandboxExpiresAt: null,
+    users, ids: fixtureIds,
+  };
+  await insertClub(admin, target);
 
-  check("sources", await admin.from("sources").insert(SOURCES.map((s) => ({
-    id: s.id, workspace_id: DEMO_WORKSPACE.id, type: s.type, filename: s.filename,
-    access_level: s.access_level, uploaded_by: users[s.uploadedBy], sha256: sha256Hex(`synthetic-${s.key}`),
-    event_count: EVENTS.filter((e) => e.source === s.key).length,
-    read_summary: { synthetic: true, note: "Seeded demo data" },
-  }))));
-
-  check("events", await admin.from("events").insert(EVENTS.map((e) => ({
-    id: e.id, workspace_id: DEMO_WORKSPACE.id, source_id: byKey(SOURCES, e.source).id,
-    author: e.author, ts: e.ts, text: e.text, access_level: e.access_level, thread_id: e.source,
-  }))));
-
-  check("obligations", await admin.from("obligations").insert(OBLIGATIONS.map((o) => ({
-    id: o.id, workspace_id: DEMO_WORKSPACE.id, kind: o.kind, description: o.description,
-    owed_by: o.owed_by, owed_to: o.owed_to, due_text: o.due_text, due_date: o.due_date,
-    approval_required: o.approval_required, approver: o.approver, status: o.status,
-    trust_state: o.trust_state, review_state: o.review_state, access_level: o.access_level,
-  }))));
-
-  // Evidence raises each obligation to the most restrictive cited event (DB trigger).
-  check("evidence", await admin.from("evidence").insert(EVIDENCE.map((ev) => ({
-    id: ev.id, obligation_id: byKey(OBLIGATIONS, ev.obligation).id, event_id: byKey(EVENTS, ev.event).id,
-    quote: ev.quote, relation: ev.relation, verified: true,
-  }))));
-
-  check("context_items", await admin.from("context_items").insert(CONTEXT_ITEMS.map((c) => ({
-    id: c.id, obligation_id: byKey(OBLIGATIONS, c.obligation).id, kind: c.kind, text: c.text, access_level: c.access_level,
-  }))));
-
-  // The trust rule has already opened these entries; give them their fixture ids and summaries.
-  check("docket_entries", await admin.from("docket_entries").upsert(DOCKET_ENTRIES.map((d) => ({
-    id: d.id, workspace_id: DEMO_WORKSPACE.id, obligation_id: byKey(OBLIGATIONS, d.obligation).id,
-    claim_a_event: byKey(EVENTS, d.claimA).id, claim_b_event: byKey(EVENTS, d.claimB).id,
-    quote_a: d.quoteA, quote_b: d.quoteB, summary: d.summary, origin: "rule",
-  })), { onConflict: "obligation_id,claim_a_event,claim_b_event" }));
-
-  // Record what each accepted item was accepted with, so a later change to its status or trust
-  // is flagged for re-review. Evidence has now settled trust.
-  const accepted = check("accepted items", await admin.from("obligations").select("id, status, trust_state")
-    .eq("workspace_id", DEMO_WORKSPACE.id).in("review_state", ["accepted", "edited"]));
-  for (const o of accepted ?? []) {
-    check("reviewed baseline", await admin.from("obligations")
-      .update({ reviewed_status: o.status, reviewed_trust: o.trust_state }).eq("id", o.id));
-  }
-
-  check("sealed_items", await admin.from("sealed_items").insert(SEALED_ITEMS.map((s) => ({
-    id: s.id, workspace_id: DEMO_WORKSPACE.id, obligation_id: byKey(OBLIGATIONS, s.obligation).id,
-    holder_role: s.holder_role, topic_label: s.topic_label, approved_by: users[s.approvedBy],
-  }))));
-
-  check("aliases", await admin.from("aliases").insert(ALIASES.map((a) => ({
-    id: a.id, workspace_id: DEMO_WORKSPACE.id, canonical: a.canonical, variants: [...a.variants], kind: a.kind,
-  }))));
-
-  // Releases go through release_item() as the releasing user, so the rules and audit apply.
-  for (const r of RELEASES) {
-    const releaser = DEMO_USERS.find((u) => u.key === r.by);
-    if (!releaser) throw new Error(`unknown releaser ${r.by}`);
-    const client = createClient<Database>(env.url, env.publishableKey, {
-      auth: { persistSession: false, autoRefreshToken: false },
-    });
-    const signIn = await client.auth.signInWithPassword({ email: releaser.email, password: env.demoPassword });
-    if (signIn.error) throw new Error(`sign in ${releaser.email}: ${signIn.error.message}`);
-    check("release_item", await client.rpc("release_item", {
-      p_target_type: "obligation", p_target_id: byKey(OBLIGATIONS, r.obligation).id,
-      p_to_role: r.toRole, p_reason: r.reason,
-    }));
-    await client.auth.signOut();
-  }
-
-  if (options.approveFirst) {
-    const as = async (key: DemoUserKey) => {
-      const user = DEMO_USERS.find((u) => u.key === key);
-      if (!user) throw new Error(`unknown user ${key}`);
-      const client = createClient<Database>(env.url, env.publishableKey, { auth: { persistSession: false, autoRefreshToken: false } });
-      const signIn = await client.auth.signInWithPassword({ email: user.email, password: env.demoPassword });
-      if (signIn.error) throw new Error(`sign in ${user.email}: ${signIn.error.message}`);
-      return client;
-    };
-    check("mark_ready", await (await as("arun")).rpc("mark_ready", {
-      p_workspace: DEMO_WORKSPACE.id, p_reason: "Reviewed the accepted items against their quotes.",
-    }));
-    check("approve_version", await (await as("meena")).rpc("approve_version", {
-      p_workspace: DEMO_WORKSPACE.id, p_reason: "Version 1: the committee's handover, checked with the outgoing lead.",
-    }));
-    log("version 1 approved");
-  }
+  // Releases and the sign-off run as the club's own users, so the rules and audit apply.
+  const signIns: SupabaseClient<Database>[] = [];
+  const as = memoSignIn(async (key: DemoUserKey) => {
+    const user = DEMO_USERS.find((u) => u.key === key);
+    if (!user) throw new Error(`unknown user ${key}`);
+    const client = createClient<Database>(env.url, env.publishableKey, { auth: { persistSession: false, autoRefreshToken: false } });
+    const signIn = await client.auth.signInWithPassword({ email: user.email, password: env.demoPassword });
+    if (signIn.error) throw new Error(`sign in ${user.email}: ${signIn.error.message}`);
+    signIns.push(client);
+    return client;
+  });
+  await finishClub(as, target, { approveFirst: options.approveFirst });
+  await Promise.all(signIns.map((c) => c.auth.signOut()));
+  if (options.approveFirst) log("version 1 approved");
 
   log(`workspace "${DEMO_WORKSPACE.name}": ${SOURCES.length} sources, ${EVENTS.length} events, ${OBLIGATIONS.length} obligations`);
   return users;

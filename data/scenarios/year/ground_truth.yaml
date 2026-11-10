@@ -1,0 +1,285 @@
+# What a correct reading of the year scenario contains (SYNTHETIC). Written by hand before the
+# files were generated; the generator tests check that every quote is really in its file.
+# `expectedStatus` is firm. `expectedTrust` follows the Phase 6 rule (corroborated needs two
+# agreeing records from different files or different people); it is null where several sources
+# restate a promise and the rule's answer depends on how the extractor folds them, so Phase 12
+# scoring should not count those. Quotes are verbatim from the named file.
+synthetic: true
+files:
+  whatsapp-committee.txt: { type: whatsapp, accessLevel: committee }
+  whatsapp-volunteers.txt: { type: whatsapp, accessLevel: everyone }
+  trello-board.json: { type: trello, accessLevel: committee }
+  minutes.md: { type: minutes, accessLevel: finance }
+
+commitments:
+  - id: C1
+    owedBy: Arun
+    owedTo: HoD
+    deliverable: Lab permission letter signed by the HoD (November workshop)
+    due: 2025-11-14
+    expectedStatus: fulfilled
+    expectedTrust: corroborated
+    quote: { file: whatsapp-committee.txt, text: "I'll get the lab permission letter signed by the HoD by 14 November." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "HoD signed the permission letter today, lab is booked for the 29th." }
+      - { relation: fulfils, file: trello-board.json, text: "Moved card \"Lab permission letter (Nov workshop)\" from \"To Do\" to \"Done\"" }
+  - id: C2
+    owedBy: Arun
+    owedTo: HoD
+    deliverable: Lab permission letter signed (January semester)
+    due: 2026-01-31
+    expectedStatus: fulfilled
+    expectedTrust: corroborated
+    quote: { file: whatsapp-committee.txt, text: "I'll get the lab permission letter signed by 31 January." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "Permission letter signed by the HoD, booking the lab now." }
+      - { relation: fulfils, file: trello-board.json, text: "Moved card \"Lab permission letter (Jan semester)\" from \"To Do\" to \"Done\"" }
+  - id: C3
+    owedBy: Kavya
+    owedTo: HoD
+    deliverable: Lab permission letter signed (August semester)
+    due: 2026-08-07
+    expectedStatus: fulfilled
+    expectedTrust: corroborated
+    note: Fulfilled a week late (14 Aug).
+    quote: { file: whatsapp-committee.txt, text: "I'll get the lab permission letter signed by 7 August for the new semester." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "HoD signed the lab permission letter today, a week late sorry." }
+      - { relation: fulfils, file: trello-board.json, text: "Moved card \"Lab permission letter (Aug semester)\" from \"To Do\" to \"Done\"" }
+  - id: C4
+    owedBy: Arun
+    owedTo: HoD
+    deliverable: Lab permission letter signed (October)
+    due: 2026-10-31
+    expectedStatus: no_evidence
+    expectedTrust: null
+    note: The Trello card is still in To Do. This is the item a handover most needs to surface.
+    quote: { file: whatsapp-committee.txt, text: "I'll get the lab permission letter signed by 31 October." }
+    evidence: []
+  - id: C5
+    owedBy: Priya
+    owedTo: Club
+    deliverable: Book the auditorium for IoT Fest
+    due: 2026-01-10
+    expectedStatus: fulfilled
+    expectedTrust: corroborated
+    quote: { file: whatsapp-committee.txt, text: "I will book the auditorium by 10 January." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "Auditorium booked for 14 Feb, the Dean's office approved it." }
+      - { relation: fulfils, file: trello-board.json, text: "Moved card \"Book the auditorium for IoT Fest\" from \"To Do\" to \"Done\"" }
+  - id: C6
+    owedBy: Arun
+    owedTo: Brightwave Labs
+    deliverable: Sponsorship proposal
+    due: 2026-01-20
+    expectedStatus: fulfilled
+    expectedTrust: corroborated
+    note: Sent a day late (21 Jan); the sponsorship was confirmed on 10 Feb.
+    quote: { file: whatsapp-committee.txt, text: "I'll send the sponsorship proposal to Brightwave Labs by 20 January." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "Sponsorship proposal sent to Brightwave Labs this morning." }
+      - { relation: fulfils, file: trello-board.json, text: "Moved card \"Send sponsorship proposal to Brightwave Labs\" from \"To Do\" to \"Done\"" }
+  - id: C7
+    owedBy: Kavya
+    owedTo: Club
+    deliverable: Print fest posters
+    due: 2026-02-03
+    expectedStatus: fulfilled
+    expectedTrust: corroborated
+    quote: { file: whatsapp-committee.txt, text: "I will have the fest posters printed by 3 Feb." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "Posters printed, collecting tomorrow morning." }
+      - { relation: fulfils, file: trello-board.json, text: "Moved card \"Print fest posters\" from \"To Do\" to \"Done\"" }
+  - id: C8
+    owedBy: Rohan
+    owedTo: Club
+    deliverable: WiFi router in the fest hall
+    due: 2026-02-06
+    expectedStatus: contradicted
+    expectedTrust: contradicted
+    quote: { file: whatsapp-committee.txt, text: "I'll set up the WiFi router in the fest hall before 6 Feb." }
+    evidence:
+      - { relation: fulfils, file: trello-board.json, text: "Moved card \"WiFi router in the fest hall\" from \"To Do\" to \"Done\"" }
+      - { relation: contradicts, file: whatsapp-committee.txt, text: "WiFi in the fest hall still does not work, the router is not connecting." }
+  - id: C9
+    owedBy: Rohan
+    owedTo: Bala sir
+    deliverable: Return the borrowed ESP32 boards
+    due: 2026-02-27
+    expectedStatus: fulfilled
+    expectedTrust: sourced
+    note: Rohan's promise and Rohan's report, in one chat, so one person's word.
+    quote: { file: whatsapp-committee.txt, text: "I'll return the borrowed ESP32 boards to Bala sir by Friday 27 Feb." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "Returned all 8 boards, Bala sir signed the register." }
+  - id: C10
+    owedBy: Arun
+    owedTo: Workshop speakers
+    deliverable: Participation certificates
+    due: 2026-03-15
+    expectedStatus: contradicted
+    expectedTrust: contradicted
+    quote: { file: whatsapp-committee.txt, text: "I'll send the participation certificates to all workshop speakers by 15 March." }
+    evidence:
+      - { relation: fulfils, file: trello-board.json, text: "Moved card \"Send certificates to workshop speakers\" from \"To Do\" to \"Done\"" }
+      - { relation: contradicts, file: whatsapp-committee.txt, text: "Speakers are still asking for their certificates, nobody has sent them yet." }
+  - id: C11
+    owedBy: Divya
+    owedTo: Mr. Ganesan
+    deliverable: Reimburse speaker travel of ₹2,400
+    due: null
+    expectedStatus: fulfilled
+    expectedTrust: corroborated
+    expectedAccess: finance
+    note: Promised in the finance-level minutes; reported in the committee chat on 8 Apr.
+    quote: { file: minutes.md, text: "Speaker travel of ₹2,400 to Mr. Ganesan will be reimbursed after he submits bills." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "Reimbursed Mr. Ganesan the ₹2,400 for his travel today." }
+  - id: C12
+    owedBy: Arun
+    owedTo: Student Affairs
+    deliverable: Club registration renewal
+    due: 2026-08-10
+    expectedStatus: fulfilled
+    expectedTrust: corroborated
+    note: Submitted 9 Aug; the Dean signed on 30 Aug.
+    quote: { file: whatsapp-committee.txt, text: "I'll submit the club registration renewal by 10 August." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "Registration renewal submitted to Student Affairs today." }
+      - { relation: fulfils, file: trello-board.json, text: "Moved card \"Club registration renewal\" from \"To Do\" to \"Done\"" }
+  - id: C13
+    owedBy: Arun
+    owedTo: Next committee
+    deliverable: Handover document
+    due: 2026-11-15
+    expectedStatus: no_evidence
+    expectedTrust: null
+    note: Open at the end of the data; the Trello card is in To Do.
+    quote: { file: whatsapp-committee.txt, text: "I'll write the handover document by 15 November." }
+    evidence: []
+  - id: C14
+    owedBy: Sanjay
+    owedTo: Club
+    deliverable: Extension boards for the fest hall
+    due: null
+    expectedStatus: fulfilled
+    expectedTrust: sourced
+    quote: { file: whatsapp-volunteers.txt, text: "I'll bring the extension boards for the fest hall." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-volunteers.txt, text: "Extension boards are all set up in the hall." }
+  - id: C15
+    owedBy: Lakshmi
+    owedTo: Club
+    deliverable: Registration desk on the day
+    due: null
+    expectedStatus: fulfilled
+    expectedTrust: sourced
+    quote: { file: whatsapp-volunteers.txt, text: "I'll handle the registration desk on the day." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-volunteers.txt, text: "Registration desk is ready, forms are printed." }
+  - id: C16
+    owedBy: Ananya
+    owedTo: Volunteers
+    deliverable: Snacks for the volunteers
+    due: null
+    expectedStatus: fulfilled
+    expectedTrust: sourced
+    quote: { file: whatsapp-volunteers.txt, text: "I'll get the snacks for the volunteers." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-volunteers.txt, text: "Snacks are here, 40 packets." }
+  - id: C17
+    owedBy: Imran
+    owedTo: Club
+    deliverable: Demo kits set up before the fest
+    due: null
+    expectedStatus: no_evidence
+    expectedTrust: sourced
+    quote: { file: whatsapp-volunteers.txt, text: "I'll set up the demo kits before the fest." }
+    evidence: []
+  - id: C18
+    owedBy: Priya
+    owedTo: Volunteers
+    deliverable: Volunteer certificates
+    due: 2026-02-28
+    expectedStatus: no_evidence
+    expectedTrust: null
+    note: Volunteers are still asking in March and April; the Trello card is in To Do.
+    quote: { file: whatsapp-volunteers.txt, text: "I will send the volunteer certificates by 28 February." }
+    evidence: []
+
+recurring:
+  - id: R1
+    duty: Get the HoD's permission letter before booking the lab
+    cadence: every semester
+    approval: Permission letter approved by the HoD
+    approver: HoD
+    expectedTrust: corroborated
+    appears: [2025-11, 2026-01, 2026-07, 2026-10]
+    quotes:
+      - { file: whatsapp-committee.txt, text: "the HoD's permission letter has to be approved before we book the lab, every semester" }
+      - { file: whatsapp-committee.txt, text: "the HoD's permission letter again before we book the lab. It is every semester." }
+      - { file: whatsapp-committee.txt, text: "every semester the lab needs the HoD's permission letter first" }
+      - { file: whatsapp-committee.txt, text: "Even semester lab bookings need the HoD's permission letter first, as always." }
+      - { file: trello-board.json, text: "Needed before every lab booking (every semester). Apply two weeks ahead." }
+      - { file: minutes.md, text: "A signed HoD permission letter is required before every lab booking, every semester." }
+  - id: R2
+    duty: Book the auditorium for IoT Fest
+    cadence: every year
+    approval: Dean's office approval, requested a month ahead
+    approver: Dean's office
+    expectedTrust: corroborated
+    appears: [2025-12, 2026-10]
+    quotes:
+      - { file: whatsapp-committee.txt, text: "The auditorium needs the Dean's office approval, so apply a month ahead." }
+      - { file: whatsapp-committee.txt, text: "Dean's office approval, a month ahead, so apply by mid January." }
+      - { file: trello-board.json, text: "Dean's office approval needed, apply a month ahead." }
+      - { file: minutes.md, text: "Auditorium booking for IoT Fest needs the Dean's office approval, requested a month ahead." }
+  - id: R3
+    duty: Renew the club registration
+    cadence: every August
+    approval: Dean's signature through Student Affairs
+    approver: Dean (Student Affairs)
+    expectedTrust: corroborated
+    appears: [2026-07, 2026-08]
+    quotes:
+      - { file: whatsapp-committee.txt, text: "Club registration renewal is due every August and needs the Dean's signature from Student Affairs." }
+      - { file: trello-board.json, text: "Form plus fee receipt to Student Affairs. Dean's signature." }
+      - { file: minutes.md, text: "Club registration is renewed every August. It needs the Dean's signature through Student Affairs." }
+  - id: R4
+    duty: Hold the annual IoT Fest
+    cadence: every year
+    approval: none
+    approver: null
+    expectedTrust: corroborated
+    appears: [2025-12, 2026-01]
+    quotes:
+      - { file: whatsapp-committee.txt, text: "IoT Fest is our annual event." }
+      - { file: whatsapp-committee.txt, text: "Last year the fest was on 14 Feb, let's keep the same date." }
+      - { file: whatsapp-committee.txt, text: "IoT Fest is on 14 Feb 2026" }
+
+decoys:
+  - { file: whatsapp-committee.txt, text: "Maybe I'll check the projector too, will see." }
+  - { file: whatsapp-committee.txt, text: "We should probably do a hackathon someday." }
+  - { file: whatsapp-committee.txt, text: "Might look at sponsors for next year, not sure." }
+  - { file: whatsapp-committee.txt, text: "Will see if the lab has extra sensors." }
+  - { file: whatsapp-committee.txt, text: "Maybe I'll bring my own projector too, will see." }
+  - { file: whatsapp-volunteers.txt, text: "Might bring a spare speaker, not sure yet." }
+
+contradictions:
+  - id: X1
+    commitment: C8
+    claimA: { file: trello-board.json, text: "Moved card \"WiFi router in the fest hall\" from \"To Do\" to \"Done\"" }
+    claimB: { file: whatsapp-committee.txt, text: "WiFi in the fest hall still does not work, the router is not connecting." }
+  - id: X2
+    commitment: C10
+    claimA: { file: trello-board.json, text: "Moved card \"Send certificates to workshop speakers\" from \"To Do\" to \"Done\"" }
+    claimB: { file: whatsapp-committee.txt, text: "Speakers are still asking for their certificates, nobody has sent them yet." }
+
+# Amounts that belong to the finance level. The leak test (Phase 12) checks that no committee or
+# member view shows them. They may appear only in files at or above `level`.
+restricted:
+  - { level: finance, text: "₹45,000" }
+  - { level: finance, text: "₹41,300" }
+  - { level: finance, text: "₹1,500" }
+  - { level: finance, text: "₹12,400" }
+  - { level: finance, text: "₹8,000" }

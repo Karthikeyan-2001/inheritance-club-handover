@@ -8,6 +8,7 @@ import type { FormState } from "@/lib/form-state";
 import { sha256Hex } from "@/lib/hash";
 import { MAX_TOTAL_BYTES } from "@/lib/import/defaults";
 import { ParseError, parseUpload, sourceTypeFor, type ReadSummary } from "@/lib/parsers";
+import { forgetDeletedCopy } from "@/lib/demo/sandbox-server";
 import { getViewer, type Viewer } from "@/lib/session";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -164,5 +165,10 @@ export async function deleteWorkspace(_prev: FormState, formData: FormData): Pro
   const supabase = await createSupabaseServerClient();
   const { error } = await supabase.rpc("delete_workspace", { p_workspace: me.membership.workspaceId, p_reason: reason });
   if (error) return { error: dbMessage(error, "Could not delete the workspace.") };
+  if (me.membership.sandboxExpiresAt) {
+    // A visitor's own demo copy: its accounts go too, and the visitor is signed out.
+    await forgetDeletedCopy(me.membership.workspaceId);
+    redirect("/login?notice=copy-deleted");
+  }
   redirect("/");
 }

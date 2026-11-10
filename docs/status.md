@@ -1,6 +1,6 @@
 # Build status and handover notes
 
-Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 12.
+Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 13.
 
 ## Where things stand
 
@@ -18,10 +18,11 @@ Read this first when resuming work. Last updated: 2026-11-10, at the end of Phas
 | 9 | `/handover`: "people waiting on you", calendar, sealed placeholders, acks | merged |
 | 10 | Demo mode ("Load demo club" per visitor, keep-alive cron) | merged |
 | 11 | Synthetic generator (`world.yaml`, `ground_truth.yaml`, offline renderer) | merged |
-| 12 | Scoring, leak tests, second scenario, end-to-end tests | on branch `build/phase-12`, ready to merge |
-| 13 | Hardening and docs | later |
+| 12 | Scoring, leak tests, second scenario, end-to-end tests | merged |
+| 13 | P6 rule, Trello precision, built year club and empty club in demo copies, replies, walkthrough, Round 2 docs | on branch `build/phase-13`, ready to merge |
+| 14+ | Round 3: the three committed improvements (see the plan at the end) | later |
 
-Tests at the end of Phase 12: 379 unit, 175 RLS integration, 45 Playwright, all passing. Lint, typecheck clean. Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Playwright unchanged from Phase 10 (not re-run: no database or app code changed). Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all passing. Lint, typecheck and build are clean. (The Phase 9 line said "456 unit"; that was unit plus RLS: 304 + 152.)
+Tests at the end of Phase 13: 395 unit, 185 RLS integration, 48 Playwright, all passing; lint, typecheck and production build clean. Tests at the end of Phase 12: 379 unit, 175 RLS integration, 45 Playwright, all passing. Lint, typecheck clean. Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Playwright unchanged from Phase 10 (not re-run: no database or app code changed). Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all passing. Lint, typecheck and build are clean. (The Phase 9 line said "456 unit"; that was unit plus RLS: 304 + 152.)
 
 ## How the user works
 
@@ -31,12 +32,15 @@ Tests at the end of Phase 12: 379 unit, 175 RLS integration, 45 Playwright, all 
 - Ask before any paid model call. Show a cost estimate first.
 - The user chooses the Claude Code model per phase (see the table below).
 
-## Outstanding user tasks (for Phase 12)
+## Outstanding user tasks (for Phase 13, before submitting Round 2)
 
-1. Review and merge `build/phase-12`.
-2. **Apply migration 0018 to the hosted database:** `pnpm db:push`. Without it, the outgoing lead's own private chats still yield no items on the live app. No new environment variable.
-3. Two paid model calls were approved and made (Claude Haiku 5.5, synthetic data): the photo club (about $0.013) and the year club (about $0.053).
-4. A design question from the paid run (see "What the model got wrong"): should evidence that only *implies* completion raise an item's access level? Today it does (the Phase 5 provenance rule), so one weak inference from a finance chat hid a committee item from the incoming lead.
+1. Review and merge `build/phase-13`.
+2. **Apply migrations 0018, 0019 and 0020 to the hosted database:** `pnpm db:push`. The live app was still on the Phase 10 deployment on 10 Nov 2026 (`/api/health` reported commit `3146723`), so 0018 was never applied either. Without 0020, the handover page fails for every role (it reads `ack_replies`).
+3. **Redeploy `main` on Vercel** (deploys are not automatic for this project; see `docs/deploy.md`). Then check `/api/health` reports the new commit.
+4. **Pre-load the saved model answers:** `pnpm cache:warm` (reads `.env.hosted.local`). Building from the sample files, or rebuilding the year club, then costs nothing and is fast.
+5. In a private window, on the live link: Sign in → "Explore a built handover" (it must finish within the 60-second limit on the hosted database; locally it takes a few seconds), then "Start from your own files" → import the four photography files → Build the ledger → Review → Approve → Handover → reply to a question. Then submit the form with `docs/round2-submission.md` and upload `docs/Inheritance_Round2_Project.pdf` to Drive ("Anyone with the link: Viewer").
+6. Paid model calls this phase, all approved in advance, synthetic data only (Claude Haiku 5.5): the year build about $0.053, the photography build about $0.013, the mini build about $0.004. Total about $0.070 of the $0.25 approved. The separate in-memory eval re-runs were skipped: the three database-path builds are scored by the same scorer.
+7. The Round 1 user interviews were not done. The docs say so. Do not add interview answers unless real people gave them.
 
 ## Environment facts
 
@@ -74,6 +78,8 @@ Tests at the end of Phase 12: 379 unit, 175 RLS integration, 45 Playwright, all 
 
 | 0016 | `acks`: a before-insert trigger needs a note for `question` and `decline`; an after-insert trigger (`app.audit_ack`) writes an audit row (`ack_<action>`) with the item's level and uploaders. |
 | 0018 | Private items by their uploader (Phase 12). `app.obligation_provenance()` keeps the given `private_uploaders` on an insert with no evidence yet (only for a private item); `add_extracted_commitment()` and `add_recurring_duty()` pass the cited file's uploader. Before this, a new private item was unreadable to the outgoing lead for the moment before its first quote, so his own private chats yielded nothing. |
+| 0019 | P6 (Phase 13). `app.own_visibility(obligation)`: level and private uploaders of an item's own 'supports' messages. `record_followup()` refuses a `fulfils` quote marked `inferred` from a message more restricted than that (another uploader's private file counts as more restricted). |
+| 0020 | Replies (Phase 13). `ack_replies` (ack_id, user_id, text 1–1000, created_at): select when the ack is readable (under the caller's RLS on acks); insert only by the outgoing lead or advisor, as themselves, to a question or decline; immutable; audited as `ack_reply` at the item's level (`app.audit_ack_reply`). |
 | 0017 | Demo copies. `workspaces.sandbox_expires_at` (set by the server only; members have no update policy). `demo_sandboxes` (id = the copy's workspace id, `workspace_id` set null when the workspace is deleted, `user_ids`, `created_at`, `expires_at`; RLS on, no policies, service role only). |
 
 ### Code (`src/lib/`)
@@ -102,7 +108,8 @@ Tests at the end of Phase 12: 379 unit, 175 RLS integration, 45 Playwright, all 
 | `pipeline/match.ts` | Also `pairKey` and the `skip` set of `planMatches`: a pair a reviewer ruled on is never scored or asked about again. |
 | `handover/handover.ts` | Pure: `toHandoverItem`, `peopleWaiting`, `dutyCalendar` and `dutyTiming` (today is an IST day), `latestAckByItem`, `ackSummary`. `istToday()` is in `time.ts`. |
 | `demo/load-club.ts` | `insertClub` (workspace, memberships and every fixture row, as the service role, through the usual triggers), `finishClub` (releases, and optionally mark ready and approve version 1, as the club's own users), `fixtureIds` / `freshIds` (a copy gets new ids for every row), `memoSignIn`. Used by `scripts/seed.ts` and by demo copies. |
-| `demo/sandbox.ts` | Pure plus injected clients: `sandboxEmail` (`<key>+<workspace id>@example.com`), `sandboxPassword` (HMAC of the email under the secret key), `signSandboxCookie` / `readSandboxCookie`, `capacityProblem`, `createSandbox`, `purgeOne`, `purgeSandboxes`, `demoKeyFromMetadata`. Limits: 7 days, 300 active, 60 per hour, 10-minute grace for a row without a workspace. |
+| `demo/frozen-club.ts` | Phase 13. `FrozenClub` (keyed rows: sources with their events in file order, obligations, evidence, context, links, docket summaries, aliases, sealed), `insertFrozenClub` (fresh ids; events in batches of 500 in file order so `seq` follows the file; links sorted a < b; reviewed baseline for accepted items), `insertEmptyClub`, `parseRef`, `eventText`. Data: `demo/year-club.json`, written by `scripts/freeze-demo.ts`. |
+| `demo/sandbox.ts` | `ClubKind` (`year`, `empty`, `toy`; the action allows the first two, tests use `toy`), `CLUB_NAMES`, `yearClub()` (lazy JSON import). Pure plus injected clients: `sandboxEmail` (`<key>+<workspace id>@example.com`), `sandboxPassword` (HMAC of the email under the secret key), `signSandboxCookie` / `readSandboxCookie`, `capacityProblem`, `createSandbox`, `purgeOne`, `purgeSandboxes`, `demoKeyFromMetadata`. Limits: 7 days, 300 active, 60 per hour, 10-minute grace for a row without a workspace. |
 | `demo/sandbox-server.ts` | `server-only`: `sandboxConfig` (reads `SUPABASE_SECRET_KEY`), `serviceClient`, `ephemeralSignIn`, `sandboxCookieOptions`, `forgetDeletedCopy` (not a server action on purpose: it takes a workspace id). |
 | `eval/scenario.ts`, `eval/score.ts` | Phase 12. `loadScenario(name)` (mini JSON or generated YAML truth; events at their file's level, private ones with their uploader), `eventFor`. `scoreRun(result, scenario)` → a `Scorecard` (found, precision, status, trust, level, evidence, contradictions, duties and approvers, links, leaks); `findLeaks`; `formatScorecard`, `summary`. Matching is by message **and** overlapping quote (one minutes entry holds several items); truth may list `alternates` for a promise stated twice. |
 | `synth/docx.ts` | `renderDocx` (Heading styles, as the minutes parser reads them) over `zipStore` (stored zip, fixed timestamp, CRC from `node:zlib`). No dependency. |
@@ -114,14 +121,15 @@ Tests at the end of Phase 12: 379 unit, 175 RLS integration, 45 Playwright, all 
 
 | Path | Contents |
 |---|---|
-| `/login` | "Your own demo club" card (Load demo club; Return to your demo club, from the signed cookie; Start a fresh copy) and the shared demo accounts below. `maxDuration` 60 for the load action. Actions in `src/app/actions/demo-club.ts` (`loadDemoClub`, `returnToDemoClub`) and `auth.ts` (`signInAsDemo` with `club=shared` or `club=mine`). |
+| `/login` | "Your own demo club" card with two forms posting `club=year` ("Explore a built handover") or `club=empty` ("Start from your own files"; lands on `/import?welcome=empty`) (and Return to your demo club, from the signed cookie; Start a fresh copy) and the shared demo accounts below. `maxDuration` 60 for the load action. Actions in `src/app/actions/demo-club.ts` (`loadDemoClub`, `returnToDemoClub`) and `auth.ts` (`signInAsDemo` with `club=shared` or `club=mine`). |
 | `/import` | Connect: upload, access level per file, authorisation checkbox, what was read, files, aliases, delete workspace. |
 | `/ledger` | "Build the ledger" panel (`pipeline-panel.tsx`); Commitments and Recurring tabs (`commitments.tsx`, `recurring.tsx`; shared `obligation-parts.tsx` with `AlsoRecorded`, `PossibleMatches`, `DocketLink`; `link-data.ts` loads links and docket ids; grouping in `src/lib/ledger-view.ts`); Docket tab (`docket.tsx`, one entry per pair of claims, anchors `#docket-<id>`); Gaps tab (`gaps.tsx`, `findGaps`); Timeline tab; `trust-legend.tsx`. Item cards have anchors `#item-<id>`. |
 | `/ledger/evidence/[id]` | The source message for one quote (`?kind=context` for a context note), highlighted with `src/lib/pipeline/locate.ts` and shown with two neighbours either side in file order (`seq`). All reads go through RLS; a query error is shown as an error, never as "not visible to your role". |
 | `/review` | Tabs by role. **Draft** (outgoing lead, advisor): sign-off panel, the pending diff against the last version, items grouped Changed since accepted, Draft, Accepted, Rejected, each with accept, edit, reject or back to draft and "Same item" or "Not the same" on linked records. **Conflicts** (advisor rules; the treasurer reads). **Versions** (everyone). **History** (reviewers). Components in `src/components/review/`, actions in `src/app/review/actions.ts`. |
 | `/review/versions/[number]` | One version as the viewer's role may read it, with the diff from the version before. Built from `version_items` and `version_context_items` through RLS. |
 | `/ledger` | For the incoming lead and members the working-ledger tabs show a notice pointing to Review; the Timeline is unchanged. |
-| `/handover` | The latest approved version as the role reads it: People waiting, Calendar, Sealed items. Incoming lead answers items (`AckForm`, action `acknowledge`); reviewers see answers and can add a placeholder (`sealPlaceholder`). Components in `src/components/handover/`. |
+| `/handover` | The latest approved version as the role reads it: People waiting, Calendar, Sealed items. Incoming lead answers items (`AckForm`, action `acknowledge`); reviewers see answers, reply to questions and declines (`ReplyForm`, action `replyToAck`) and can add a placeholder (`sealPlaceholder`). Components in `src/components/handover/`. |
+| `/guide` | Phase 13. Static walkthrough for first-time visitors (both demo paths). Linked from the header ("Walkthrough") and the sign-in page. |
 | `/api/jobs/run-next` | One job per POST (`maxDuration` 60). Returns `done` and `waiting` (an earlier stage still running elsewhere). |
 | `/api/health` | Health check. |
 | `/api/cron/daily` | Daily Vercel cron (`vercel.json`, 21:30 UTC). Needs `Authorization: Bearer $CRON_SECRET`. Queries the database (keep-alive) and purges up to 25 expired or deleted copies. Excluded from `proxy.ts`. |
@@ -132,6 +140,7 @@ Tests at the end of Phase 12: 379 unit, 175 RLS integration, 45 Playwright, all 
 - **RLS:** `tests/rls/*.test.ts`, against local Supabase. Each file re-seeds and cleans up.
 - **E2E:** `e2e/`. Its own dev server on port 3100 with `LLM_PROVIDER=fake`, so it never calls the real API. Global setup re-seeds and clears `llm_cache` rows whose model is `fake:%`. `full-flow.spec.ts` (Phase 12) runs the whole flow on the photo club in a visitor's copy, then a per-role leak sweep of every page and of every source-message URL.
 - **Leak tests (Phase 12):** `src/lib/eval/eval.test.ts` (in memory, every scenario), `tests/rls/leak.test.ts` (both generated scenarios, every readable row per role), `tests/rls/private-items.test.ts` (migration 0018), and the e2e sweep. Each also proves the restricted text is readable by someone allowed.
+- **Frozen club (Phase 13):** `src/lib/demo/frozen-club.test.ts` (every quote verifies, messages equal the scenario files, provenance, restricted text), `tests/rls/sandbox-clubs.test.ts` (year and empty copies through the real triggers; file order; statuses and levels equal the build; version 1; per-role reads; build time under 20 s locally).
 - **Eval:** `pnpm eval:extract` and `pnpm eval:pipeline` (`-- --yes` calls the model; `--model <id>` overrides the fast model). Shared loader: `scripts/mini-scenario.ts`.
   - Last `eval:pipeline` result (Haiku, 9 Nov 2026): 5 of 5 commitments, 0 decoys, 5 of 5 statuses, 5 of 5 expected follow-up quotes, X1 detected, R1 and R2 found with the right approvers. 12 calls, about $0.005.
   - Phase 6 run (Haiku, 9 Nov 2026): the same 5/5, 0 decoys, 5/5 statuses, 5/5 follow-up quotes, X1 detected, R1 and R2 found; trust right for 5/5 commitments and 2/2 duties; context notes now on topic. 12 calls, about $0.0045. Haiku made no duplicate items on the mini data, so no pair reached the matching prompt.
@@ -297,15 +306,45 @@ Confirmed with the user: run both paid evals; leave the year club in demo copies
 - The offline fake does not know "Chief Warden" or "faculty advisor" as approvers, and still extracts Trello card names as promises.
 - The P6 finding above is a design question, not fixed.
 
-## Phase 13 plan (next)
+## Phase 13 decisions
 
-Hardening and docs. Model: Sonnet 5.5, medium or high (run `/code-review` on Opus before merging).
+Confirmed with the user: P6 (implied quotes from a more restricted record are dropped); paid runs up to $0.25; two demo-copy choices; interviews are not to be invented.
 
-1. Load the year club into visitors' demo copies: a loader from scenario files to fixture rows, and a frozen real-model run (paid; estimate first, about $0.06 at the calibrated rate).
-2. The P6 question: whether evidence that only implies completion may raise an item's level.
-3. Precision on Trello cards: whether a card description without a person or a date is a promise.
-4. The earlier known gaps (release of private notes, borrowed trust shown to the receiver, the Gaps tab and linked twins).
-5. Docs for judges: one page that walks the flow on the live link.
+- **P6.** `inferredMayAttach(item, quoteEvent)` = `canBorrow` from the item's own 'supports' messages to the quote's message. Mirrored in `record_followup()` through `app.own_visibility()`. Plain done / not done still raise the level (the Phase 5 rule stands).
+- **Trello precision.** A candidate from a card or checklist (`isTrelloCard`: text starts `Card: ` or `Checklist "`) is kept only with a `Due:` line or an `owed_to` whose content words (minus words that name the club itself) appear in the card. Comments are unaffected. Not mirrored in SQL: it is a precision rule, not a safety rule. No prompt changed.
+- **Frozen, not live, demo ledger.** A copy cannot run a 160-call build inside one 60-second action, and judges should not pay or wait. The ledger is the output of one real run through the app's own database path, stored as data, with the build's model and date in `built`. Review states come from the scorer (planted items, restatements and duty copies accepted; extras drafts), not from judgement.
+- **Docket summaries** are copied from the build; the entries themselves are opened by the trust rule on insert, as in a live run.
+- **The toy fixture stays** for the shared accounts and the RLS tests that assert its rows.
+- **Replies attach to one ack** (the latest shown). Only questions and declines take replies.
+- **Verify** links to the Docket; `stepForPath(pathname, tab)` marks the Docket, Gaps and evidence pages as Verify.
+- **Interviews.** Not done; the docs say so. Fabricated answers were refused.
+
+## What the model got wrong (Phase 13 builds, database path)
+
+- **Year: 6 unplanned items** (the drafts in the built club): "collect the printed posters" (a report), "registration renewal status report" (a report), and four Trello cards with due dates (banner design, registration form, recruitment posters, an October permission-letter card).
+- **Year: one wrong link.** The card "Lab permission letter (Nov workshop)" was linked to the January promise (C2) as well as to C1. The scorer counts a wrong link only between two planted items, so this is not in its count.
+- **Year C15** ("Registration desk is ready, forms are printed.") is still only Likely done.
+- **Year R4** (hold the annual IoT Fest, no approval) is still missed; it shares its message with R2.
+- **Photo:** "Sent the lab licence request to the IT cell." is still extracted as a promise (a report). The P6 item (camera and keys) is now right: status and trust 9/9.
+
+## Known gaps (Phase 13)
+
+- A reply belongs to one acknowledgement; when the incoming lead answers an item again, older replies are not shown on the handover page (they remain in the audit log).
+- The built club's dates were computed for 10 Nov 2026 (`built.today`). "Overdue" and "Start now" are computed live, so they drift as time passes; next-due dates do not roll forward until the ledger is rebuilt.
+- Building a year copy on the hosted database has not been timed (locally a few seconds). If it nears 60 seconds, batch the evidence and context inserts further or move the sign-off out of the request.
+- `pnpm cache:warm` is a manual step; a new deployment against a fresh database needs it again.
+- No accessibility audit yet.
+- The earlier known gaps still apply (Phase 7–12 lists above): release of private notes, borrowed trust shown to the receiver, the Gaps tab and linked twins, deleted links not remembered, re-review watching status and trust only.
+
+## Round 3 plan (Phases 14 to 16): the three committed improvements
+
+Committed in the Round 2 form (`docs/round2-submission.md`); Round 3 is judged on delivering exactly these.
+
+1. **Inferred recurring duties.** Detect a task repeated at about the same point in two or more past cycles with no stated rule; label it Inferred; list the past occurrences; compute a start-by date from how long past occurrences took. Needs: an occurrence finder (code over matched items and dates), a new duty source kind, the trust rule's "inferred" path, calendar display, ground truth for unstated duties in both scenarios, a paid eval.
+2. **Gap questions.** Turn each gap (no follow-up, missing approver or date, unruled conflict) into a short question for the outgoing lead on one page; record each answer as a labelled source ("stated by the outgoing lead") with its own access level, through the same trust and audit rules; update the next version.
+3. **Counterparty handoff notes.** Per counterparty, a note of what is still owed and the new contact, built only from that counterparty's approved items (template plus fields, no model text carrying restricted facts), edited and approved by the outgoing lead, opened by the counterparty through a signed link, and acknowledged; the acknowledgement shows on the handover.
+
+Also for Round 3 (the brief asks for them): a demo video, accessibility checks, testing notes on failure cases, and a final report.
 
 ## Claude Code model per phase (recommendation)
 

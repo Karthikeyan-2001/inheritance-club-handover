@@ -15,6 +15,8 @@ Workflow: **Connect → Reconstruct → Verify → Review → Handover**.
 
 Built for the CodersInPune Hackathon, Round 2.
 
+**Try it:** open the live app at <https://inheritance-club-handover.vercel.app>, then follow the [ten-minute walkthrough](https://inheritance-club-handover.vercel.app/guide). On Sign in, "Explore a built handover" gives you your own copy of a year of a synthetic IoT club with its ledger already built; "Start from your own files" gives you an empty club to import the sample files into and build yourself.
+
 ## Status
 
 | Phase | Scope | State |
@@ -32,6 +34,7 @@ Built for the CodersInPune Hackathon, Round 2.
 | 10 | Demo mode: "Load demo club" per visitor, daily keep-alive and clean-up | done |
 | 11 | Synthetic year generator with hand-written ground truth | done |
 | 12 | Scoring, leak tests, a second synthetic club, end-to-end tests | done |
+| 13 | Two stricter checks, the built year club in demo copies, replies to questions, walkthrough | done |
 
 ## Stack
 
@@ -73,6 +76,8 @@ Packages always come from the public npm registry. The project `.npmrc` contains
 | `pnpm db:types` | Regenerate `src/lib/supabase/database.types.ts` |
 | `pnpm seed` / `seed:hosted` | Seed demo accounts and the synthetic club (local / hosted) |
 | `pnpm eval:extract` | Extraction quality on the mini scenario (dry run; `-- --yes` calls the model) |
+| `pnpm demo:freeze` | Builds a scenario's ledger through the app's own pipeline on local Supabase with the real model, scores it, and (for `--scenario year`) writes the frozen club for demo copies. Estimate only without `-- --yes` |
+| `pnpm cache:export` / `cache:warm` | Copy the saved model answers for the synthetic scenarios from the local cache to `data/demo/llm-cache.json`, and from there to the hosted cache |
 | `pnpm eval:pipeline` | Scores the whole pipeline against a scenario's ground truth: `--scenario mini\|year\|photo` (default mini). Dry run with a cost estimate by default; `-- --fake` scores the offline stand-in for free; `-- --yes` calls the model; `--model <id>` compares another |
 
 ## Parsers
@@ -126,6 +131,16 @@ Safeguards:
 | photo (10 Nov 2026) | 9/9 | 8/9 | 9/9 | 1/1 | 4/4 (4/4) | 0 | 0 | about $0.013 |
 | year (10 Nov 2026) | 19/19 | 17/19* | 24/24* | 2/2 | 3/4 (3/3) | 0 | 0 | about $0.053 |
 
+Phase 13, through the database path the app itself uses (`pnpm demo:freeze`: files imported by their uploaders, the ledger built as the outgoing lead and then the advisor, Claude Haiku 5.5, 10 Nov 2026), after the two stricter checks:
+
+| Scenario | Commitments | Status | Trust | Follow-up quotes | Contradictions | Duties (approver) | Precision | Decoys kept | Leaks | Cost |
+|---|---|---|---|---|---|---|---|---|---|---|
+| mini | 5/5 | 5/5 | 5/5 | 5/5 | 1/1 | 2/2 (2/2) | 100% | 0 | 0 | about $0.004 |
+| photo | 9/9 | 9/9 | 9/9 | 9/9 | 1/1 | 4/4 (4/4) | 90% | 0 | 0 | about $0.013 |
+| year | 19/19 | 18/19 | 15/16 | 26/26 | 2/2 | 3/4 (3/3) | 83% | 0 | 0 | about $0.053 |
+
+The year build is the ledger visitors see in "Explore a built handover". What it gets wrong is listed in `docs/status.md` (Phase 13).
+
 \* Scored against the truth as first written. One of the two "wrong" statuses was a mistake in the truth: the model marked C18 Open from two "still waiting" reports, which is what the status rule says; the truth now agrees (18/19, and the two reports make 26/26 follow-up quotes). What the model got wrong is listed in `docs/status.md` (Phase 12). The year run found a matching bug that is now fixed: two semesters' identical promises were linked by rule.
 
 ## Review and versions
@@ -137,6 +152,8 @@ Safeguards:
 - **Conflicts.** The advisor rules on each (done, not done, cannot tell) with a reason. A ruling is the advisor's decision, shown as such; the item stays contradicted because the records still disagree.
 - **Versions** are immutable, even for the service role. Each holds the items with their evidence (including which quotes are only inferred), the same-item links, the conflicts with their rulings, and context notes, each at its own access level. Every role sees the diff from the previous version built only from the rows it can read.
 - **History** lists every review action from the audit log with its actor, reason and what changed.
+
+On **`/handover`** the incoming lead accepts, questions or declines each item of the latest approved version. The outgoing lead and the advisor see the answers and can **reply** to a question or a decline; the incoming lead reads the reply under her question. Replies are append-only and audited (`ack_replies`, migration 0020).
 
 ## Roles and permissions
 
@@ -162,7 +179,10 @@ Demo accounts (synthetic): `arun.demo@example.com` (outgoing lead), `meena.demo@
 
 ## Demo mode
 
-- **Load demo club** (on `/login`) builds the visitor a private copy of the synthetic club: a workspace with four accounts of its own, the same messages and items, and version 1 approved (`src/lib/demo/sandbox.ts`, `load-club.ts`; the seed script uses the same loader for the shared club). Nothing a visitor does reaches anyone else, and RLS applies as in any club. The role menu switches only among the accounts of the visitor's own copy.
+- **Your own demo club** (on `/login`): a private workspace with four accounts of its own. Nothing a visitor does reaches anyone else, and RLS applies as in any club. The role menu switches only among the accounts of the visitor's own copy. Two choices:
+  - **Explore a built handover**: the synthetic year club (1,961 messages; volunteers chat, committee chat, Trello board, finance minutes, and the advisor's private chat) with the ledger a real model built from it, frozen in `src/lib/demo/year-club.json` and loaded without a model call (`src/lib/demo/frozen-club.ts`). Version 1 is approved by the copy's own outgoing lead and advisor; the model's six extra items are left as drafts to review.
+  - **Start from your own files**: the four people and nothing else. Connect offers the photography club's four sample files (`public/samples/photo/`) with the level to set for each.
+- The shared accounts below use the small Phase 1 fixture (`src/lib/demo/fixture.ts`, loaded by `load-club.ts`), which the RLS tests assert row by row.
 - Copy accounts have no stored password: the server derives each from the account's email with an HMAC under `SUPABASE_SECRET_KEY`. A signed, http-only cookie offers "Return to your demo club" after signing out.
 - A copy is deleted after 7 days, when its visitor deletes it on Connect, or when they start a fresh one. Bookkeeping is in `demo_sandboxes` (service role only; migration `0017`). At most 300 copies are active and 60 start per hour.
 - **Daily cron** (`vercel.json` → `GET /api/cron/daily`, guarded by `CRON_SECRET`): queries the database so the free Supabase project is not paused, and deletes expired copies.
@@ -185,6 +205,7 @@ Demo accounts (synthetic): `arun.demo@example.com` (outgoing lead), `meena.demo@
 
 ## Docs
 
+- [docs/round2-submission.md](docs/round2-submission.md): the Round 2 form answers and the updated project document
 - [docs/changes-from-round1.md](docs/changes-from-round1.md)
 - [docs/ai-disclosure.md](docs/ai-disclosure.md)
 

@@ -1,0 +1,172 @@
+# What a correct reading of the photography club scenario contains (SYNTHETIC). Written by hand
+# from world.yaml; the generator tests check that every quote is really in its file.
+# Same shape as the year scenario. `expectedTrust` follows the Phase 6 rule (corroborated needs
+# two agreeing records from different files or different people). Quotes are verbatim.
+synthetic: true
+files:
+  whatsapp-committee.txt: { type: whatsapp, accessLevel: committee }
+  whatsapp-accounts.txt: { type: whatsapp, accessLevel: finance }
+  WhatsApp Chat with Prof. Iyer.txt: { type: whatsapp, accessLevel: private, uploader: arun }
+  minutes.docx: { type: minutes, accessLevel: committee }
+
+commitments:
+  - id: P1
+    owedBy: Joel
+    owedTo: Club
+    deliverable: Collect the exhibition prints from Pixel Hub
+    due: 2026-08-20
+    expectedStatus: fulfilled
+    expectedTrust: corroborated
+    quote: { file: whatsapp-committee.txt, text: "I'll collect the exhibition prints from Pixel Hub by 20 August." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "Collected all 30 exhibition prints from Pixel Hub, delivered to the hall today." }
+      - { relation: fulfils, file: minutes.docx, text: "Exhibition prints from Pixel Hub were delivered on time." }
+  - id: P2
+    owedBy: Tara
+    owedTo: Club
+    deliverable: Design the exhibition poster
+    due: 2026-08-25
+    expectedStatus: likely_fulfilled
+    expectedTrust: inferred
+    note: Only implied, by someone else seeing the posters up. Never shown as done.
+    quote: { file: whatsapp-committee.txt, text: "I will design the exhibition poster by 25 August." }
+    evidence:
+      - { relation: fulfils, inferred: true, file: whatsapp-committee.txt, text: "The exhibition posters are up near the library." }
+  - id: P3
+    owedBy: Nisha
+    owedTo: Chief Warden
+    deliverable: Chief Warden's clearance for the exhibition hall
+    due: 2026-09-01
+    expectedStatus: fulfilled
+    expectedTrust: sourced
+    note: Nisha's promise and Nisha's report in one chat, so one person's word.
+    quote: { file: whatsapp-committee.txt, text: "I'll get the Chief Warden's clearance for the exhibition hall by 1 September." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "Chief Warden's clearance for the exhibition hall is done, the letter is with me." }
+  - id: P4
+    owedBy: Farhan
+    owedTo: Mr. Dsouza
+    deliverable: Return the borrowed tripods
+    due: 2026-09-15
+    expectedStatus: contradicted
+    expectedTrust: contradicted
+    note: The chat says returned; the minutes say two are still out.
+    quote: { file: whatsapp-committee.txt, text: "I'll return the borrowed tripods to Mr. Dsouza by 15 September." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "Returned the tripods to Mr. Dsouza." }
+      - { relation: contradicts, file: minutes.docx, text: "Mr. Dsouza reported that two tripods are still not returned." }
+  - id: P5
+    owedBy: Revathi
+    owedTo: Pixel Hub
+    deliverable: Pay the Pixel Hub invoice of ₹6,750
+    due: 2026-08-31
+    expectedStatus: fulfilled
+    expectedTrust: sourced
+    expectedAccess: finance
+    quote: { file: whatsapp-accounts.txt, text: "I'll pay the Pixel Hub invoice of ₹6,750 by 31 August." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-accounts.txt, text: "Paid the Pixel Hub invoice today, receipt is in the drive." }
+  - id: P6
+    owedBy: Nisha
+    owedTo: Farhan
+    deliverable: Hand over the club camera and the cupboard keys
+    due: 2026-11-10
+    expectedStatus: no_evidence
+    expectedTrust: sourced
+    note: Due after the data ends. The handover's own handover.
+    quote: { file: whatsapp-committee.txt, text: "I'll hand over the club camera and the cupboard keys to Farhan by 10 November." }
+    evidence: []
+  - id: P7
+    owedBy: Vikram
+    owedTo: Club
+    deliverable: Back up the photo archive to the department drive
+    due: 2026-09-30
+    expectedStatus: no_evidence
+    expectedTrust: sourced
+    note: Never mentioned again.
+    quote: { file: whatsapp-committee.txt, text: "I'll back up the photo archive to the department drive by 30 September." }
+    evidence: []
+  - id: P8
+    owedBy: Farhan
+    owedTo: IT cell
+    deliverable: Send the lab licence request to the IT cell
+    due: 2026-10-05
+    expectedStatus: fulfilled
+    expectedTrust: corroborated
+    note: An action in the minutes, reported done in the chat.
+    quote: { file: minutes.docx, text: "Farhan to send the lab licence request to the IT cell by 5 October." }
+    evidence:
+      - { relation: fulfils, file: whatsapp-committee.txt, text: "Sent the lab licence request to the IT cell." }
+  - id: P9
+    owedBy: Prof. Iyer
+    owedTo: Joel
+    deliverable: Speak to the scholarship committee about Joel's appeal
+    due: 2026-10-20
+    expectedStatus: fulfilled
+    expectedTrust: sourced
+    expectedAccess: private
+    note: In the outgoing lead's private chat with the advisor. Only those two may see it.
+    quote: { file: WhatsApp Chat with Prof. Iyer.txt, text: "I'll speak to the scholarship committee about Joel's appeal by 20 October." }
+    evidence:
+      - { relation: fulfils, file: WhatsApp Chat with Prof. Iyer.txt, text: "Done, the scholarship committee approved Joel's appeal." }
+
+recurring:
+  - id: Q1
+    duty: Send the equipment log to the department office, signed by the HoD
+    cadence: every month
+    approval: HoD's signature
+    approver: HoD
+    expectedTrust: corroborated
+    appears: [2026-06, 2026-07]
+    quotes:
+      - { file: whatsapp-committee.txt, text: "the equipment log goes to the department office every month, signed by the HoD." }
+      - { file: minutes.docx, text: "The equipment log goes to the department office every month, signed by the HoD." }
+  - id: Q2
+    duty: Get the Chief Warden's clearance for the exhibition hall
+    cadence: before every exhibition
+    approval: Chief Warden's clearance, two weeks ahead
+    approver: Chief Warden
+    expectedTrust: corroborated
+    appears: [2026-07, 2026-08]
+    quotes:
+      - { file: whatsapp-committee.txt, text: "The exhibition hall needs the Chief Warden's clearance before every exhibition, so apply two weeks ahead." }
+      - { file: minutes.docx, text: "The exhibition hall needs the Chief Warden's clearance before every exhibition. Apply two weeks ahead." }
+  - id: Q3
+    duty: Hold the photo exhibition
+    cadence: every September
+    approval: Principal's approval if outside visitors come
+    approver: Principal
+    expectedTrust: corroborated
+    appears: [2026-06, 2026-07]
+    quotes:
+      - { file: whatsapp-committee.txt, text: "The photo exhibition is in September every year. If outside visitors come we need the Principal's approval." }
+      - { file: minutes.docx, text: "The photo exhibition is held every September. It needs the Principal's approval if outside visitors come." }
+  - id: Q4
+    duty: File the accounts statement with Student Affairs
+    cadence: every semester
+    approval: Signed by the faculty advisor first
+    approver: faculty advisor
+    expectedTrust: sourced
+    expectedAccess: finance
+    appears: [2026-07]
+    quotes:
+      - { file: whatsapp-accounts.txt, text: "the accounts statement goes to Student Affairs every semester, and the faculty advisor has to sign it first." }
+
+decoys:
+  - { file: whatsapp-committee.txt, text: "Maybe I'll shoot the convocation too, paarkalaam." }
+  - { file: whatsapp-committee.txt, text: "Might ask the alumni for old negatives, not sure." }
+  - { file: whatsapp-committee.txt, text: "We should probably start a photo walk series someday." }
+  - { file: whatsapp-accounts.txt, text: "Maybe we can ask for a bigger budget next year, will see." }
+
+contradictions:
+  - id: X1
+    commitment: P4
+    claimA: { file: whatsapp-committee.txt, text: "Returned the tripods to Mr. Dsouza." }
+    claimB: { file: minutes.docx, text: "Mr. Dsouza reported that two tripods are still not returned." }
+
+# Text that belongs to a restricted level. No role below `level` may read it anywhere.
+restricted:
+  - { level: finance, text: "₹18,500" }
+  - { level: finance, text: "₹6,750" }
+  - { level: finance, text: "₹2,200" }
+  - { level: private, text: "scholarship" }

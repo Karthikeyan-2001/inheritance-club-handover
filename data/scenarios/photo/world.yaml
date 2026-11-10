@@ -1,0 +1,173 @@
+# The second scenario: a synthetic photography club over one monsoon term, 1 Jun to 5 Nov 2026.
+# SYNTHETIC: every name, club, shop and number is invented. It differs from the year scenario on
+# purpose, to check the pipeline was not tuned to one club: a different cast, an iPhone
+# committee chat, a finance chat, a private one-to-one chat uploaded by the outgoing lead,
+# minutes as a Word file with dates in words, and no Trello board. Monthly and per-event duties
+# instead of semester ones. ground_truth.yaml says what a correct reading finds.
+#
+# The demo accounts stand in for the roles when these files are imported: Arun uploads (outgoing
+# lead, here played by Nisha), Dr. Meena is the advisor (Prof. Iyer), Divya the treasurer
+# (Revathi), Kavya the incoming lead (Farhan).
+synthetic: true
+seed: 23
+club: Aperture Photography Club
+period: { from: 2026-06-01, to: 2026-11-05 }
+
+people:
+  - { name: Nisha,     role: outgoing lead,   nicknames: [Nisha, Nish] }
+  - { name: Farhan,    role: incoming lead,   nicknames: [Farhan, Faru] }
+  - { name: Revathi,   role: treasurer,       nicknames: [Revathi, Revs] }
+  - { name: Joel,      role: exhibitions,     nicknames: [Joel] }
+  - { name: Tara,      role: design,          nicknames: [Tara] }
+  - { name: Vikram,    role: archive,         nicknames: [Vikram, Vicky] }
+  - { name: Prof. Iyer, role: faculty advisor, nicknames: [sir] }
+
+filler:
+  typoRate: 0.05
+  mediaRate: 0.06
+  deletedRate: 0.01
+  things: [tripod, light stand, reflector, memory cards, exhibition layout, print proofs, contact sheet, camera bag, lens cloth, frame list, photo walk route, editing laptop]
+  places: [studio room, library, canteen, exhibition hall, main gate, department office, terrace, parking]
+  times: ["4", "5:30", "6 pm", "7 pm", "noon"]
+  tamil:
+    - Light semma ah irukku
+    - Enna da, shoot cancel ah?
+    - Nalla shot da
+    - Seri, naalaiku paarkalaam
+    - Aiyo, battery dead
+    - Golden hour ku vaanga
+  templates:
+    committee:
+      - Anyone seen the {thing}?
+      - "{who} the {thing} is in the studio room"
+      - Light is good on the {place} today
+      - Class got over early, free till {time}
+      - "{tamil}"
+      - Is the {place} open now?
+      - The {thing} needs charging
+      - "{who} check the group drive for the {thing}"
+      - lol {who} that photo
+      - Rain again, outdoor shoot is off
+      - Who has the key to the {place}?
+      - The {thing} looks fine to me
+      - "{tamil}"
+    accounts:
+      - Receipt uploaded to the drive
+      - "{who} please check the sheet"
+      - Bank is closed today
+      - Ok noted
+    direct:
+      - Good evening
+      - Noted, thank you
+      - Is the {place} free on Friday?
+      - Ok
+
+chats:
+  - file: whatsapp-committee.txt
+    format: iphone
+    group: Aperture Committee
+    accessLevel: committee
+    creator: Nisha
+    template: committee
+    startsAt: "2026-06-01 10:00"
+    members: [Nisha, Farhan, Revathi, Joel, Tara, Vikram]
+    perDay: { default: 1.5, "2026-08": 3, "2026-09": 3 }
+    system:
+      - { at: "2026-08-01 09:00", by: Nisha, text: "Nisha changed the group name to “Aperture Committee 2026”" }
+    beats:
+      # Duties stated in chat.
+      - { at: "2026-06-10 19:00", by: Nisha, say: "Reminder: the equipment log goes to the department office every month, signed by the HoD." }
+      - { at: "2026-07-01 17:30", by: Vikram, say: "June equipment log submitted to the department office, HoD signed it." }
+      - { at: "2026-07-03 18:30", by: Joel, say: "The photo exhibition is in September every year. If outside visitors come we need the Principal's approval." }
+      - { at: "2026-07-25 20:15", by: Nisha, say: "The exhibition hall needs the Chief Warden's clearance before every exhibition, so apply two weeks ahead." }
+      # Commitments.
+      - { at: "2026-07-25 20:20", by: Nisha, say: "I'll get the Chief Warden's clearance for the exhibition hall by 1 September." }
+      - { at: "2026-08-22 17:10", by: Nisha, say: "Chief Warden's clearance for the exhibition hall is done, the letter is with me." }
+      - { at: "2026-08-02 18:00", by: Joel, say: "I'll collect the exhibition prints from Pixel Hub by 20 August." }
+      - { at: "2026-08-19 16:45", by: Joel, say: "Collected all 30 exhibition prints from Pixel Hub, delivered to the hall today." }
+      - { at: "2026-08-05 21:00", by: Tara, say: "I will design the exhibition poster by 25 August." }
+      - { at: "2026-08-27 13:20", by: Vikram, say: "The exhibition posters are up near the library." }
+      - { at: "2026-08-29 19:40", by: Farhan, say: "I'll return the borrowed tripods to Mr. Dsouza by 15 September." }
+      - { at: "2026-09-14 18:05", by: Farhan, say: "Returned the tripods to Mr. Dsouza." }
+      - { at: "2026-09-02 21:10", by: Vikram, say: "I'll back up the photo archive to the department drive by 30 September." }
+      - { at: "2026-10-08 12:30", by: Farhan, say: "Sent the lab licence request to the IT cell." }
+      - { at: "2026-10-28 20:00", by: Nisha, say: "I'll hand over the club camera and the cupboard keys to Farhan by 10 November." }
+      # Decoys: hedged, not promises.
+      - { at: "2026-07-12 18:00", by: Joel, say: "Maybe I'll shoot the convocation too, paarkalaam." }
+      - { at: "2026-08-10 20:30", by: Tara, say: "Might ask the alumni for old negatives, not sure." }
+      - { at: "2026-09-20 19:15", by: Vikram, say: "We should probably start a photo walk series someday." }
+
+  - file: whatsapp-accounts.txt
+    format: android
+    group: Aperture Accounts
+    accessLevel: finance
+    creator: Revathi
+    template: accounts
+    startsAt: "2026-06-02 11:00"
+    members: [Revathi, Nisha, Farhan]
+    perDay: { default: 0.3 }
+    beats:
+      - { at: "2026-06-15 18:00", by: Revathi, say: "Exhibition budget is ₹18,500 this year, same as last year." }
+      - { at: "2026-07-30 19:00", by: Revathi, say: "For whoever takes over: the accounts statement goes to Student Affairs every semester, and the faculty advisor has to sign it first." }
+      - { at: "2026-08-20 17:45", by: Revathi, say: "I'll pay the Pixel Hub invoice of ₹6,750 by 31 August." }
+      - { at: "2026-08-28 12:10", by: Revathi, say: "Paid the Pixel Hub invoice today, receipt is in the drive." }
+      - { at: "2026-10-31 18:30", by: Revathi, say: "Closing balance is ₹2,200, the passbook stays in the cupboard." }
+      - { at: "2026-09-05 20:00", by: Nisha, say: "Maybe we can ask for a bigger budget next year, will see." }
+
+  # The outgoing lead's one-to-one chat with the advisor, uploaded by the outgoing lead at the
+  # private level: the outgoing lead and the advisor read it; nobody else may.
+  - file: WhatsApp Chat with Prof. Iyer.txt
+    format: android
+    kind: direct
+    group: Prof. Iyer
+    accessLevel: private
+    uploader: arun
+    creator: Nisha
+    template: direct
+    startsAt: "2026-06-05 09:00"
+    members: [Nisha, Prof. Iyer]
+    perDay: { default: 0.05 }
+    beats:
+      - { at: "2026-10-05 19:30", by: Nisha, say: "Sir, Joel asked me to keep his scholarship appeal private. He may miss the exhibition setup." }
+      - { at: "2026-10-05 19:45", by: Prof. Iyer, say: "I'll speak to the scholarship committee about Joel's appeal by 20 October." }
+      - { at: "2026-10-16 10:20", by: Prof. Iyer, say: "Done, the scholarship committee approved Joel's appeal." }
+
+minutes:
+  file: minutes.docx
+  title: "Aperture Photography Club: Committee Minutes"
+  accessLevel: committee
+  dates: words
+  meetings:
+    - date: "2026-06-12"
+      present: [Nisha, Farhan, Revathi, Joel, Tara, Vikram]
+      absent: []
+      sections:
+        - heading: Decisions
+          bullets:
+            - The photo exhibition is held every September. It needs the Principal's approval if outside visitors come.
+            - The equipment log goes to the department office every month, signed by the HoD.
+    - date: "2026-08-07"
+      present: [Nisha, Farhan, Joel, Tara]
+      absent: [Revathi, Vikram]
+      sections:
+        - heading: Decisions
+          bullets:
+            - The exhibition hall needs the Chief Warden's clearance before every exhibition. Apply two weeks ahead.
+        - heading: Actions
+          bullets:
+            - Farhan to send the lab licence request to the IT cell by 5 October.
+    - date: "2026-09-26"
+      present: [Nisha, Farhan, Revathi, Joel]
+      absent: [Tara]
+      sections:
+        - heading: Discussion
+          text: "The exhibition ran for three days and drew a good crowd."
+          bullets:
+            - Exhibition prints from Pixel Hub were delivered on time.
+            - Mr. Dsouza reported that two tripods are still not returned.
+    - date: "2026-10-30"
+      present: [Nisha, Farhan, Revathi, Vikram]
+      absent: [Joel]
+      sections:
+        - heading: Discussion
+          text: "The new committee takes over in November. Exams start on 16 November."

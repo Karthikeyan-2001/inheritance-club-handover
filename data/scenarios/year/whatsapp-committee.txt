@@ -5,1304 +5,1305 @@
 01/11/2025, 5:24 pm - Karthik: Why is the main gate locked today
 01/11/2025, 8:09 pm - Kavya: Which sponsor deck are we using, the old one or the new one?
 01/11/2025, 9:47 pm - Priya: lol Divs that was funny
-02/11/2025, 7:05 pm - Rohan: lol Meghna that was funny
-02/11/2025, 8:22 pm - Karthik: The sensor kit needs a look when someone gets time
-02/11/2025, 9:38 pm - Kavya: Why is the department office locked today
-02/11/2025, 11:04 pm - Priya: Reached the library, where is everyone?
-03/11/2025, 4:29 pm - Divya: Why is the canteen locked today
-03/11/2025, 10:19 pm - Meghna: all you free tomorrow evening?
-03/11/2025, 10:36 pm - Divya: Lunch at the canteen? parking is crowded though
-04/11/2025, 8:11 pm - Priya: all did you see the budget sheet message?
-04/11/2025, 9:48 pm - Arun: Poewr cut in the IoT lab again
-04/11/2025, 9:48 pm - Meghna: Exam timetable is out, check the notice board
-05/11/2025, 8:23 am - Kavya: Is the aduitorium open now?
-05/11/2025, 4:31 pm - Karthik: The attendance sheet looks good to me
-05/11/2025, 7:26 pm - Rohan: lol Rohan that was funny
-05/11/2025, 8:17 pm - Meghna: Is the IoT lab open now?
-06/11/2025, 5:12 pm - Divya: Anyone has the router?
-06/11/2025, 9:23 pm - Priya: Innaiku class illa da
-06/11/2025, 10:23 pm - Rohan: Which budget sheet are we using, the old one or the new one?
-07/11/2025, 1:32 pm - Divya: The lab schedule needs a look when someone gets time
-07/11/2025, 4:55 pm - Karthik: Lunch at the canteen? library is crowded though
-07/11/2025, 8:25 pm - Priya: Arun did you see the attendance sheet message?
-07/11/2025, 8:34 pm - Rohan: Reached the parking, where is everyone?
-07/11/2025, 9:17 pm - Divya: The workshop slides needs a look when someone gets time
-08/11/2025, 1:36 pm - Priya: lol all that was funny
-08/11/2025, 5:50 pm - Kavya: Lunch at the canteen? parking is crowded though
-08/11/2025, 6:41 pm - Rohan: Is the seminar hall open now?
+02/11/2025, 8:31 am - Karthik: Did anyone see the new sensor kit?
+02/11/2025, 7:31 pm - Arun: Lunch at the canteen? department office is crowded though
+02/11/2025, 9:38 pm - Kavya: Why is the library locked today
+03/11/2025, 1:50 pm - Priya: Whcih sensor kit are we using, the old one or the new one?
+03/11/2025, 6:40 pm - Karthik: The fest schedule needs a look when someone gets time
+03/11/2025, 8:50 pm - Divya: Class got cancelled today, free till noon
+04/11/2025, 2:26 pm - Arun: This message was deleted
+04/11/2025, 6:20 pm - Kavya: Anyone has the attendance sheet?
+04/11/2025, 6:30 pm - Kavya: Kavya you free tomorrow evening?
+04/11/2025, 8:23 pm - Arun: Exam timetable is out, check the notice board
+05/11/2025, 8:14 pm - Karthik: Is the main gate open now?
+05/11/2025, 9:57 pm - Priya: Exam timetable is out, check the notice board
+05/11/2025, 10:41 pm - Priya: Class got cancelled today, free till 4
+06/11/2025, 9:35 am - Priya: The sponsor deck needs a look when someone gets time
+06/11/2025, 8:56 pm - Divya: Pri did you see the soldering station message?
+06/11/2025, 10:18 pm - Arun: The fest schedule is in the shared drive, check it
+07/11/2025, 1:45 pm - Meghna: The lab schedule looks good to me
+07/11/2025, 2:19 pm - Divya: Arun you free tomorrow evening?
+07/11/2025, 4:23 pm - Rohan: Aama da, same doubt enakkum
 08/11/2025, 7:10 pm - Priya: Reminder: the HoD's permission letter has to be approved before we book the lab, every semester. Last year they rejected us without it.
 08/11/2025, 7:15 pm - Arun: I'll get the lab permission letter signed by the HoD by 14 November.
-08/11/2025, 9:34 pm - Rohan: The workshop slides looks good to me
-08/11/2025, 10:44 pm - Divya: Did anyone see the new banner design?
-09/11/2025, 4:34 pm - Divya: Is the auditorium open now?
-09/11/2025, 10:50 pm - Karthik: Reached the parking, where is everyone?
-09/11/2025, 11:23 pm - Rohan: Romba nalla irukku
-10/11/2025, 11:03 am - Meghna: The fest schedule needs a look when someone gets time
-10/11/2025, 5:26 pm - Rohan: Anyone has the breadboards?
-10/11/2025, 10:21 pm - Arun: lol Rohan that was funny
-11/11/2025, 2:25 pm - Divya: Why is the auditorium locked today
-11/11/2025, 8:47 pm - Kavya: Lunch at the canteen? IoT lab is crowded though
-11/11/2025, 10:20 pm - Rohan: Exam timetable is out, check the notice board
-12/11/2025, 9:01 am - Rohan: Did anyone see the new poster?
-12/11/2025, 1:01 pm - Priya: Why is the canteen locked today
-12/11/2025, 5:47 pm - Arun: all you free tomorrow evening?
-13/11/2025, 5:28 pm - Karthik: Did anyone see the new workshop slides?
+08/11/2025, 11:21 pm - Divya: Power cut in the auditorium again
+08/11/2025, 11:21 pm - Divya: Did anyone see the new breadboards?
+08/11/2025, 11:39 pm - Rohan: all did you see the breadboards message?
+09/11/2025, 2:27 pm - Kavya: Exam timetable is out, check the notice board
+09/11/2025, 2:52 pm - Karthik: Why is the library locked today
+09/11/2025, 8:11 pm - Rohan: The poster is in the shared drive, check it
+10/11/2025, 4:57 pm - Priya: Is the auditorium open now?
+10/11/2025, 5:50 pm - Kavya: Lunch at the canteen? parking is crowded though
+10/11/2025, 6:41 pm - Rohan: Is the seminar hall open now?
+10/11/2025, 7:04 pm - Kavya: lol Ro that was funny
+11/11/2025, 10:32 am - Karthik: Why is the auditorium locked today
+11/11/2025, 5:33 pm - Rohan: Reached the parking, where is everyone?
+11/11/2025, 8:21 pm - Meghna: <Media omitted>
+12/11/2025, 4:25 pm - Priya: Power cut in the library again
+12/11/2025, 5:15 pm - Divya: Meg did you see the breadboards message?
+12/11/2025, 11:23 pm - Karthik: Why is the department office locked today
+13/11/2025, 2:52 pm - Arun: Is the parking open now?
 13/11/2025, 5:40 pm - Arun: HoD signed the permission letter today, lab is booked for the 29th.
-13/11/2025, 8:35 pm - Arun: Reached the main gate, where is everyone?
-13/11/2025, 11:23 pm - Kavya: Is the auditorium open now?
-14/11/2025, 11:08 am - Kavya: Exam timetable is out, check the notice board
-14/11/2025, 12:15 pm - Rohan: The soldering station is in the shared drive, check it
-14/11/2025, 2:33 pm - Rohan: Reached the parking, where is everyone?
-14/11/2025, 3:58 pm - Arun: The workshop slides looks good to me
-15/11/2025, 12:23 pm - Meghna: Exam timetable is out, check the notice board
-15/11/2025, 5:03 pm - Meghna: Semma da
-15/11/2025, 5:55 pm - Divya: Which budget sheet are we using, the old one or the new one?
-16/11/2025, 2:08 pm - Meghna: Anyone has the router?
-16/11/2025, 7:05 pm - Divya: The attendance sheet is in the shared drive, check it
-16/11/2025, 8:48 pm - Arun: Is the canteen open now?
-17/11/2025, 2:45 pm - Karthik: Is the auditorium open now?
-17/11/2025, 3:30 pm - Karthik: Is the canteen open now?
-17/11/2025, 6:33 pm - Rohan: Power cut in the main gate again
-18/11/2025, 2:00 pm - Divya: Is the department office open now?
-18/11/2025, 7:05 pm - Karthik: Priya you free tomorrow evening?
-18/11/2025, 7:41 pm - Rohan: The budget sheet is in the shared drive, check it
-18/11/2025, 8:49 pm - Priya: Wihch poster are we using, the old one or the new one?
-19/11/2025, 2:28 pm - Meghna: Is the auditorium open now?
-19/11/2025, 5:55 pm - Rohan: Class got cancelled today, free till 7 pm
-19/11/2025, 8:30 pm - Priya: Why is the library locked today
-20/11/2025, 6:13 pm - Kavya: The poster looks good to me
-20/11/2025, 6:24 pm - Arun: Did anyone see the new lab schedule?
-20/11/2025, 8:16 pm - Divya: Class got cancelled today, free till 4
-21/11/2025, 8:08 am - Arun: Reached the parking, where is everyone?
-21/11/2025, 9:20 am - Rohan: Which budget sheet are we using, the old one or the new one?
-21/11/2025, 11:08 pm - Priya: Why is the auditorium locked today
-22/11/2025, 8:47 am - Priya: Exam timetable is out, check the notice board
-22/11/2025, 9:32 pm - Rohan: Why is the library locked today
-22/11/2025, 9:56 pm - Priya: Lunch at the canteen? parking is crowded though
-22/11/2025, 10:17 pm - Priya: Meghna did you see the fest schedule message?
-23/11/2025, 1:46 pm - Meghna: Ro did you see the attendance sheet message?
-23/11/2025, 11:03 pm - Karthik: Anyone has the poster?
-23/11/2025, 11:10 pm - Meghna: Did anyone see the new attendance sheet?
-24/11/2025, 5:34 pm - Priya: Is the main gate open now?
-24/11/2025, 8:32 pm - Karthik: The breadboards needs a look when someone gets time
-24/11/2025, 9:45 pm - Arun: Reached the seminar hall, where is everyone?
-24/11/2025, 11:30 pm - Kavya: Reached the library, where is everyone?
-25/11/2025, 9:09 am - Kavya: Power cut in the main gate again
-25/11/2025, 8:04 pm - Kavya: Exam timetable is out, check the notice board
-25/11/2025, 9:21 pm - Divya: Lunch at the canteen? auditorium is crowded though
-26/11/2025, 1:56 pm - Priya: Machan, lab key yaar ktita irukku?
-26/11/2025, 4:45 pm - Karthik: Lunch at the canteen? IoT lab is crowded though
-26/11/2025, 10:21 pm - Meghna: <Media omitted>
-27/11/2025, 5:05 pm - Priya: Is the main gate open now?
-27/11/2025, 8:18 pm - Rohan: The fest schedule needs a look when someone gets time
-27/11/2025, 11:09 pm - Arun: Reached the parking, where is everyone?
-28/11/2025, 9:16 am - Karthik: lol Rohan that was funny
-28/11/2025, 1:57 pm - Priya: Divs you free tomorrow evening?
-28/11/2025, 5:24 pm - Kavya: Bus romba late da
-28/11/2025, 10:56 pm - Priya: Reached the IoT lab, where is everyone?
-29/11/2025, 9:21 am - Arun: Which soldering station are we using, the old one or the new one?
-29/11/2025, 2:46 pm - Divya: Why is the library locked today
-29/11/2025, 9:23 pm - Rohan: Power cut in the department office again
-30/11/2025, 1:12 pm - Arun: Enna da idhu
-30/11/2025, 8:28 pm - Rohan: Power cut in the library again
-30/11/2025, 9:30 pm - Divya: Power cut in the parking again
-01/12/2025, 9:02 am - Divya: Is the parking open now?
-01/12/2025, 7:53 pm - Arun: Machan, lab key yaar kitta irukku?
-01/12/2025, 8:05 pm - Kavya: lol Rohan that was funny
-01/12/2025, 9:23 pm - Meghna: Seri da
-02/12/2025, 12:28 pm - Rohan: lol all that was funny
-02/12/2025, 1:53 pm - Divya: <Media omitted>
-02/12/2025, 6:02 pm - Divya: Aama da, same doubt enakkum
-03/12/2025, 5:37 pm - Arun: Lunch at the canteen? seminar hall is crowded though
-03/12/2025, 8:02 pm - Kavya: Reached the canteen, where is everyone?
-03/12/2025, 8:19 pm - Priya: Why is the parking locked today
-03/12/2025, 9:53 pm - Divya: This message was deleted
-03/12/2025, 11:30 pm - Divya: Exam timetable is out, check the notice board
-04/12/2025, 11:05 am - Kavya: Class got cancelled today, free till 4
-04/12/2025, 4:12 pm - Karthik: all you free tomorrow evening?
-04/12/2025, 11:21 pm - Arun: Exam timetable is out, check the notice board
+13/11/2025, 9:15 pm - Priya: Exam timetable is out, check the notice board
+13/11/2025, 11:20 pm - Arun: Did anyone see the new poster?
+14/11/2025, 9:01 am - Rohan: Did anyone see the new attendance sheet?
+14/11/2025, 7:46 pm - Priya: Is the canteen open now?
+14/11/2025, 10:39 pm - Priya: Class got cancelled today, free till noon
+15/11/2025, 4:10 pm - Priya: Lunch at the canteen? canteen is crowded though
+15/11/2025, 7:37 pm - Meghna: Lunch at the canteen? IoT lab is crowded though
+15/11/2025, 11:30 pm - Divya: Lunch at the canteen? main gate is crowded though
+16/11/2025, 3:19 pm - Divya: lol Rohan that was funny
+16/11/2025, 3:30 pm - Kavya: Did anyone see the new budget sheet?
+16/11/2025, 4:11 pm - Priya: Lunch at the canteen? library is crowded though
+17/11/2025, 8:32 am - Priya: Semma da
+17/11/2025, 3:59 pm - Arun: Which lab schedule are we using, the old one or the new one?
+17/11/2025, 7:56 pm - Priya: Power cut in the auditorium again
+18/11/2025, 8:34 am - Karthik: Priya did you see the sensor kit message?
+18/11/2025, 2:28 pm - Kavya: <Media omitted>
+18/11/2025, 3:34 pm - Divya: Enna da idhu
+18/11/2025, 8:18 pm - Priya: Enna da idhu
+19/11/2025, 1:06 pm - Rohan: Which workshop slides are we using, the old one or the new one?
+19/11/2025, 5:19 pm - Rohan: Exam timetable is out, check the notice board
+19/11/2025, 9:17 pm - Karthik: Which workshop slides are we using, the old one or the new one?
+20/11/2025, 3:22 pm - Kavya: Class got cancelled today, free till 6 pm
+20/11/2025, 6:28 pm - Divya: Reached the library, where is everyone?
+20/11/2025, 7:41 pm - Rohan: The budget sheet is in the shared drive, check it
+20/11/2025, 8:46 pm - Rohan: lol Priya that was funny
+21/11/2025, 2:28 pm - Meghna: Is the auditorium open now?
+21/11/2025, 5:55 pm - Rohan: Class got cancelled today, free till 5
+21/11/2025, 6:39 pm - Arun: Class got cancelled today, free till 6 pm
+22/11/2025, 1:45 pm - Divya: This message was deleted
+22/11/2025, 3:52 pm - Divya: Innaiku class illa da
+22/11/2025, 4:03 pm - Priya: The budget sheet needs a look when someone gets time
+23/11/2025, 3:58 pm - Divya: Diyva did you see the lab schedule message?
+23/11/2025, 6:23 pm - Rohan: Is the IoT lab open now?
+23/11/2025, 10:41 pm - Arun: The sensor kit looks good to me
+24/11/2025, 11:05 am - Divya: This message was deleted
+24/11/2025, 12:09 pm - Divya: Is the main gate open now?
+24/11/2025, 5:01 pm - Divya: Reached the department office, where is everyone?
+24/11/2025, 5:12 pm - Arun: Exam timetable is out, check the notice board
+24/11/2025, 7:43 pm - Divya: Power cut in the parking again
+25/11/2025, 4:17 pm - Divya: lol all that was funny
+25/11/2025, 5:30 pm - Divya: Romba nalla irukku
+25/11/2025, 6:22 pm - Meghna: Is the auditorium open now?
+26/11/2025, 3:26 pm - Priya: The fest schedule is in the shared drive, check it
+26/11/2025, 6:35 pm - Rohan: Which soldering station are we using, the old one or the new one?
+26/11/2025, 11:37 pm - Kavya: Power cut in the main gate again
+27/11/2025, 3:10 pm - Divya: Machan, lab key yaar kitta irukku?
+27/11/2025, 6:06 pm - Rohan: Which breadboards are we using, the old one or the new one?
+27/11/2025, 9:27 pm - Karthik: Anyone has the lab schedule?
+27/11/2025, 9:45 pm - Arun: The sensor kit looks good to me
+27/11/2025, 11:15 pm - Arun: Exam timetable is out, check the notice board
+28/11/2025, 7:07 pm - Meghna: Semma da
+28/11/2025, 7:46 pm - Karthik: Anyone has the wrokshop slides?
+28/11/2025, 10:21 pm - Meghna: <Media omitted>
+29/11/2025, 4:16 pm - Divya: Anyone has the fest schedule?
+29/11/2025, 11:07 pm - Meghna: The poster is in the shared drive, check it
+29/11/2025, 11:40 pm - Meghna: Lunch at the canteen? library is crowded though
+30/11/2025, 7:47 pm - Priya: Reached the parking, where is everyone?
+30/11/2025, 9:08 pm - Priya: Exam timetable is out, check the notice board
+30/11/2025, 9:35 pm - Karthik: Power cut in the IoT lab again
+30/11/2025, 10:41 pm - Arun: Bus romba late da
+30/11/2025, 11:21 pm - Kavya: The fest schedule looks good to me
+01/12/2025, 9:08 am - Priya: Kavya you free tomorrow evening?
+01/12/2025, 2:01 pm - Divya: Is the auditorium open now?
+01/12/2025, 9:05 pm - Kavya: all did you see the poster message?
+01/12/2025, 10:55 pm - Meghna: Did anyone see the new budget sheet?
+02/12/2025, 2:10 pm - Rohan: Exam timetable is out, check the notice board
+02/12/2025, 3:27 pm - Priya: The sensor kit looks good to me
+02/12/2025, 6:43 pm - Divya: Exam timetable is out, check the notice board
+02/12/2025, 9:01 pm - Divya: Which breadboards are we using, the old one or the new one?
+02/12/2025, 9:45 pm - Divya: Power cut in the auditorium again
+03/12/2025, 2:55 pm - Karthik: Lunch at the canteen? seminar hall is crowded though
+03/12/2025, 7:51 pm - Kavya: Is the library open now?
+03/12/2025, 10:01 pm - Karthik: <Media omitted>
+03/12/2025, 11:01 pm - Meghna: Innaiku class illa da
+04/12/2025, 2:01 pm - Meghna: all did you see the fest schedule message?
+04/12/2025, 6:32 pm - Divya: lol all that was funny
+04/12/2025, 6:34 pm - Rohan: The attendance sheet is in the shared drive, check it
+04/12/2025, 9:48 pm - Kavya: Did anyone see the new sponsor deck?
+04/12/2025, 10:14 pm - Divya: all did you see the sensor kit message?
 05/12/2025, 1:48 pm - Meghna: Exam timetable is out, check the notice board
-05/12/2025, 2:01 pm - Priya: Is the auditorium open now?
+05/12/2025, 2:01 pm - Priya: Is the department office open now?
 05/12/2025, 7:20 pm - Rohan: Exam timetable is out, check the notice board
 05/12/2025, 8:00 pm - Priya: IoT Fest is our annual event. The auditorium needs the Dean's office approval, so apply a month ahead.
 05/12/2025, 8:04 pm - Priya: Last year the fest was on 14 Feb, let's keep the same date.
 05/12/2025, 9:27 pm - Arun: Power cut in the department office again
 05/12/2025, 11:07 pm - Priya: Anyone has the breadboards?
-06/12/2025, 4:39 pm - Meghna: Inniaku class illa da
-06/12/2025, 9:21 pm - Kavya: all you free tomorrow evening?
-06/12/2025, 11:23 pm - Meghna: Innaiku class illa da
-07/12/2025, 9:09 am - Priya: Reached the parking, where is everyone?
-07/12/2025, 7:00 pm - Priya: Lunch at the canteen? canteen is crowded though
-07/12/2025, 8:59 pm - Karthik: Reached the parking, where is everyone?
-08/12/2025, 2:22 pm - Arun: Seri da
-08/12/2025, 7:22 pm - Meghna: Lunch at the canteen? department office is crowded though
-08/12/2025, 10:21 pm - Rohan: Reached the IoT lab, where is everyone?
-09/12/2025, 12:04 pm - Arun: lol Rohan that was funny
-09/12/2025, 8:00 pm - Arun: Which breadboards are we using, the old one or the new one?
-09/12/2025, 10:59 pm - Meghna: Semma da
-10/12/2025, 3:27 pm - Divya: Did anyone see the new budget sheet?
-10/12/2025, 6:44 pm - Karthik: The poster needs a look when someone gets time
-10/12/2025, 8:28 pm - Kavya: Why is the department office lcoked today
-10/12/2025, 10:04 pm - Rohan: Why is the library locked today
-10/12/2025, 10:05 pm - Kavya: Which psoter are we using, the old one or the new one?
-11/12/2025, 11:08 am - Priya: Reached the auditorium, where is everyone?
-11/12/2025, 5:32 pm - Divya: Which attendance sheet are we using, the old one or the new one?
-11/12/2025, 8:13 pm - Divya: Power cut in the department office again
-12/12/2025, 12:13 pm - Divya: Which poster are we using, the old one or the new one?
-12/12/2025, 5:11 pm - Rohan: Class got cancelled today, free till 7 pm
-12/12/2025, 9:47 pm - Kavya: Bus romba late da
-13/12/2025, 8:21 am - Arun: Lunch at the canteen? department office is crowded though
-13/12/2025, 10:04 am - Meghna: The workshop slides looks good to me
-13/12/2025, 7:17 pm - Karthik: Is the library open now?
-14/12/2025, 6:52 pm - Divya: Class got cancelled today, free till 4
-14/12/2025, 9:05 pm - Meghna: Did anyone see the new banner design?
-14/12/2025, 10:28 pm - Kavya: lol all that was funny
-14/12/2025, 11:31 pm - Kavya: Class got cancelled today, free till noon
-15/12/2025, 8:05 am - Kavya: Machan, lab key yaar kitta irukku?
-15/12/2025, 9:16 am - Kavya: Why is the auditorium locked today
-15/12/2025, 7:01 pm - Arun: Reached the main gate, where is everyone?
-16/12/2025, 9:53 am - Arun: lol Aru that was funny
-16/12/2025, 4:56 pm - Arun: all did you see the ruoter message?
-16/12/2025, 8:06 pm - Arun: Why is the auditorium locked today
-16/12/2025, 10:01 pm - Arun: all you free tomorrow evening?
-16/12/2025, 11:12 pm - Priya: Class got cancelled today, free till 5
-17/12/2025, 2:08 pm - Karthik: This message was deleted
-17/12/2025, 6:34 pm - Priya: Why is the seminar hall locked today
-17/12/2025, 8:31 pm - Priya: Romba nalla irukku
-17/12/2025, 11:18 pm - Divya: Semma da
-17/12/2025, 11:18 pm - Karthik: The router looks good to me
-18/12/2025, 5:18 pm - Priya: lol all that was funny
-18/12/2025, 6:52 pm - Priya: lol Kavya that was funny
-18/12/2025, 7:28 pm - Priya: Anyone has the fest schedule?
-18/12/2025, 10:57 pm - Karthik: The router looks good to me
-19/12/2025, 9:55 am - Kavya: all did you see the sensor kit message?
-19/12/2025, 10:41 am - Divya: all did you see the lab schedule message?
-19/12/2025, 10:01 pm - Divya: The banner design needs a look when someone gets time
-20/12/2025, 9:45 am - Divya: Which banner design are we using, the old one or the new one?
-20/12/2025, 2:35 pm - Rohan: This message was deleted
-20/12/2025, 9:10 pm - Kavya: The budget sheet needs a look when someone gets time
-21/12/2025, 4:04 pm - Meghna: all did you see the lab schedule message?
-21/12/2025, 7:29 pm - Priya: Reached the seminar hall, where is everyone?
-21/12/2025, 8:32 pm - Kavya: Exam timetable is out, check the notice board
-22/12/2025, 9:52 am - Arun: lol Kar that was funny
-22/12/2025, 2:20 pm - Kavya: Aama da, same doubt enakkum
-22/12/2025, 5:16 pm - Rohan: <Media omitted>
-22/12/2025, 6:25 pm - Arun: Did anyone see the new lab schedule?
-23/12/2025, 1:04 pm - Rohan: Lunch at the canteen? department office is crowded though
-23/12/2025, 5:43 pm - Karthik: Exam timetable is out, check the notice board
-23/12/2025, 9:49 pm - Meghna: Seri da
-24/12/2025, 9:08 pm - Arun: The poster needs a look when someone gets time
-24/12/2025, 10:00 pm - Priya: Power cut in the seminar hall again
-24/12/2025, 10:12 pm - Priya: Exam timetable is out, check the ntoice board
-24/12/2025, 11:29 pm - Rohan: Class got cancelled today, free till 7 pm
-25/12/2025, 8:04 am - Arun: Exam timetable is out, check the notice board
-25/12/2025, 5:14 pm - Divya: all you free tomorrow evening?
-25/12/2025, 11:06 pm - Meghna: Exam timetable is out, check the notice board
-26/12/2025, 11:43 am - Meghna: The workshop slides needs a look when someone gets time
-26/12/2025, 5:25 pm - Priya: Class got cancelled today, free till 4
-26/12/2025, 7:23 pm - Divya: Did anyone see the new sensor kit?
-27/12/2025, 6:58 pm - Priya: Which banner design are we using, the old one or the new one?
-27/12/2025, 10:01 pm - Arun: Machan, lab key yaar kitta irukku?
-27/12/2025, 11:36 pm - Karthik: all you free tomorrow evening?
-28/12/2025, 9:24 am - Karthik: The soldering station looks good to me
-28/12/2025, 8:02 pm - Divya: Why is the main gate locked today
-28/12/2025, 8:08 pm - Priya: Is the canteen open now?
-29/12/2025, 3:27 pm - Karthik: This message was deleted
-29/12/2025, 4:58 pm - Arun: Kavya you free tomorrow evening?
-29/12/2025, 7:23 pm - Rohan: Power cut in the parking again
-29/12/2025, 8:32 pm - Priya: The workshop slides looks good to me
-30/12/2025, 11:44 am - Divya: Which fest schedule are we using, the old one or the new one?
-30/12/2025, 1:56 pm - Kavya: Aama da, same doubt enakkum
-30/12/2025, 2:17 pm - Karthik: Power cut in the IoT lab again
-30/12/2025, 6:32 pm - Karthik: Romba nalla irukku
-30/12/2025, 9:11 pm - Rohan: Is the IoT lab open now?
-31/12/2025, 4:10 pm - Priya: lol all that was funny
-31/12/2025, 7:16 pm - Arun: The poster is in the shared drive, check it
-31/12/2025, 11:01 pm - Arun: Anoyne has the sponsor deck?
-01/01/2026, 2:18 pm - Rohan: lol all that was funny
-01/01/2026, 6:09 pm - Meghna: The sponsor deck looks good to me
-01/01/2026, 6:21 pm - Meghna: lol all that was funny
-01/01/2026, 7:15 pm - Divya: Did anyone see the new budget sheet?
-01/01/2026, 7:44 pm - Divya: Why is the auditorium locked today
-01/01/2026, 8:33 pm - Kavya: Power cut in the main gate again
-01/01/2026, 10:28 pm - Karthik: Seri da
-02/01/2026, 10:09 am - Priya: Power cut in the library again
-02/01/2026, 4:36 pm - Meghna: Why is the auditorium locked today
+06/12/2025, 4:25 pm - Rohan: Why is the IoT lab locked today
+06/12/2025, 7:30 pm - Divya: lol Arun that was funny
+06/12/2025, 8:56 pm - Arun: Power cut in the seminar hall again
+07/12/2025, 11:42 am - Meghna: Is the department office open now?
+07/12/2025, 7:15 pm - Meghna: The breadboards is in the shared drive, chcek it
+07/12/2025, 7:41 pm - Rohan: all did you see the attendance sheet message?
+07/12/2025, 10:03 pm - Rohan: Bus romba late da
+08/12/2025, 12:05 pm - Kavya: Aama da, same doubt enakkum
+08/12/2025, 3:09 pm - Arun: Is the main gate open now?
+08/12/2025, 4:50 pm - Kavya: The budget sheet needs a look when someone gets time
+08/12/2025, 11:36 pm - Meghna: Reached the main gate, where is everyone?
+09/12/2025, 5:09 pm - Divya: Power cut in the canteen again
+09/12/2025, 7:48 pm - Karthik: Power cut in the library again
+09/12/2025, 11:27 pm - Rohan: Reached the main gate, where is everyone?
+10/12/2025, 1:22 pm - Arun: Did anyone see the new fest schedule?
+10/12/2025, 6:37 pm - Arun: lol Ro that was funny
+10/12/2025, 10:27 pm - Priya: The sponsor deck is in the shared drive, check it
+11/12/2025, 7:55 pm - Kavya: Is the main gate open now?
+11/12/2025, 8:29 pm - Arun: lol Divya that was funny
+11/12/2025, 8:29 pm - Karthik: The lab schedule looks good to me
+11/12/2025, 10:04 pm - Rohan: Why is the department office locked today
+12/12/2025, 8:15 pm - Meghna: Anyone has the sensor kit?
+12/12/2025, 8:51 pm - Karthik: lol all that was funny
+12/12/2025, 9:49 pm - Priya: The workshop slides needs a look when someone gets time
+12/12/2025, 10:03 pm - Karthik: Reached the department office, where is everyone?
+13/12/2025, 3:01 pm - Arun: Kav you free tomorrow evening?
+13/12/2025, 7:09 pm - Arun: Why is the library locked today
+13/12/2025, 7:42 pm - Meghna: Did aynone see the new budget sheet?
+14/12/2025, 9:00 am - Meghna: Enna da idhu
+14/12/2025, 6:16 pm - Priya: Why is the department office locked today
+14/12/2025, 7:17 pm - Meghna: The budget sheet needs a look when someone gets time
+14/12/2025, 7:59 pm - Kavya: <Media omitted>
+15/12/2025, 3:22 pm - Meghna: The rotuer needs a look when someone gets time
+15/12/2025, 9:58 pm - Meghna: Why is the auditorium locked today
+15/12/2025, 10:33 pm - Karthik: Why is the main gate locked today
+16/12/2025, 1:39 pm - Arun: Exam timetable is out, cehck the notice board
+16/12/2025, 6:40 pm - Karthik: The banner design needs a look when someone gets time
+16/12/2025, 10:19 pm - Meghna: Lunch at the canteen? seminar hall is crowded though
+17/12/2025, 5:01 pm - Karthik: Kavya did you see the poster message?
+17/12/2025, 5:14 pm - Meghna: Did anyone see the new lab schedule?
+17/12/2025, 7:42 pm - Kavya: Is the parking open now?
+18/12/2025, 9:29 am - Meghna: Arun did you see the sensor kit message?
+18/12/2025, 8:51 pm - Karthik: Is the library open now?
+18/12/2025, 10:17 pm - Kavya: Anyone has the workshop slides?
+18/12/2025, 11:35 pm - Divya: Semma da
+19/12/2025, 2:21 pm - Divya: The attendance sheet looks good to me
+19/12/2025, 6:16 pm - Rohan: The banner design looks good to me
+19/12/2025, 8:18 pm - Meghna: Enna da idhu
+19/12/2025, 10:13 pm - Rohan: lol Divs that was funny
+20/12/2025, 2:15 pm - Karthik: The budget sheet needs a look when someone gets time
+20/12/2025, 7:54 pm - Meghna: Power cut in the seminar hall again
+20/12/2025, 10:05 pm - Meghna: The router looks good to me
+20/12/2025, 11:02 pm - Kavya: The workshop slides is in the shared drive, check it
+21/12/2025, 2:27 pm - Meghna: Romba nalla irukku
+21/12/2025, 6:33 pm - Priya: all you free tomorrow evening?
+21/12/2025, 7:21 pm - Priya: Which router are we using, the old one or the new one?
+22/12/2025, 12:19 pm - Meghna: Machan, lab key yaar kitta irukku?
+22/12/2025, 6:14 pm - Priya: The fest schedule looks good to me
+22/12/2025, 8:32 pm - Kavya: Exam timetable is out, check the notice board
+23/12/2025, 6:23 pm - Priya: Which workshop slides are we using, the old one or the new one?
+23/12/2025, 10:19 pm - Arun: Bus romba late da
+23/12/2025, 11:32 pm - Karthik: Class got cancelled today, free till noon
+24/12/2025, 1:37 pm - Rohan: lol all that was funny
+24/12/2025, 2:36 pm - Kavya: Lunch at the canteen? main gate is crowded though
+24/12/2025, 10:11 pm - Rohan: Why is the main gate locked today
+25/12/2025, 10:16 am - Divya: Ro did you see the banner design message?
+25/12/2025, 4:53 pm - Priya: Reached the department office, where is everyone?
+25/12/2025, 11:29 pm - Kavya: Why is the main gate locked today
+26/12/2025, 6:47 pm - Karthik: Innaiku class illa da
+26/12/2025, 8:17 pm - Divya: Bus romba late da
+26/12/2025, 9:44 pm - Rohan: The workshop slides needs a look when someone gets time
+27/12/2025, 2:49 pm - Divya: lol Karthik that was funny
+27/12/2025, 7:06 pm - Arun: The sponsor deck needs a look when someone gets time
+27/12/2025, 7:22 pm - Karthik: The budget sheet looks good to me
+27/12/2025, 8:51 pm - Priya: The budget sheet needs a look when someone gets time
+27/12/2025, 11:30 pm - Karthik: Divya you free tomorrow evening?
+28/12/2025, 4:19 pm - Arun: Class got cancelled today, free till 7 pm
+28/12/2025, 8:28 pm - Karthik: Is the IoT lab open now?
+28/12/2025, 9:21 pm - Karthik: all did you see the lab schedule message?
+28/12/2025, 11:21 pm - Arun: all you free tomorrow evening?
+29/12/2025, 8:40 am - Kavya: Why is the seminar hall locked today
+29/12/2025, 11:38 am - Karthik: Did anyone see the new workshop slides?
+29/12/2025, 3:14 pm - Divya: Reached the canteen, where is everyone?
+29/12/2025, 8:22 pm - Divya: Machan, lab key yaar kitta irukku?
+30/12/2025, 2:06 pm - Karthik: all you free tmoorrow evening?
+30/12/2025, 7:50 pm - Rohan: Which breadboards are we using, the old one or the new one?
+30/12/2025, 8:20 pm - Arun: Lunch at the canteen? IoT lab is crowded though
+31/12/2025, 1:30 pm - Karthik: Why is the IoT lab locked today
+31/12/2025, 6:44 pm - Priya: Romba nalla irukku
+31/12/2025, 6:51 pm - Arun: all did you see the sensor kit message?
+31/12/2025, 10:02 pm - Karthik: The fest schedule looks good to me
+31/12/2025, 11:35 pm - Rohan: Aama da, same doubt enakkum
+01/01/2026, 11:01 am - Arun: Exam timetable is out, check the notice board
+01/01/2026, 11:16 am - Priya: Lunch at the canteen? IoT lab is crowded though
+01/01/2026, 12:05 pm - Meghna: The router is in the shared drive, check it
+01/01/2026, 1:28 pm - Divya: Why is the seminar hall locked today
+01/01/2026, 2:31 pm - Karthik: Lunch at the canteen? main gate is crowded though
+01/01/2026, 10:07 pm - Meghna: Anyone has the attendance sheet?
+02/01/2026, 8:47 am - Arun: Why is the auditorium locked today
+02/01/2026, 9:18 am - Divya: The router needs a look when someone gets time
+02/01/2026, 12:34 pm - Priya: Class got cancelled today, free till noon
+02/01/2026, 5:06 pm - Priya: Which budget sheet are we using, the old one or the new one?
 02/01/2026, 6:30 pm - Priya: I will book the auditorium by 10 January.
-02/01/2026, 8:45 pm - Karthik: Innaiku class illa da
-02/01/2026, 9:37 pm - Divya: Reached the IoT lab, where is everyone?
-02/01/2026, 10:35 pm - Karthik: Which breadboards are we using, the old one or the new one?
-02/01/2026, 11:38 pm - Kavya: lol Kar that was funny
-03/01/2026, 9:20 am - Meghna: Class got cancelled today, free till 4
-03/01/2026, 7:02 pm - Divya: Reached the main gate, where is everyone?
-03/01/2026, 8:06 pm - Kavya: lol Kav that was funny
-03/01/2026, 8:34 pm - Priya: Power cut in the IoT lab again
-03/01/2026, 10:06 pm - Karthik: Reached the parking, where is everyone?
-03/01/2026, 10:43 pm - Divya: Power cut in the main gate again
-04/01/2026, 8:29 am - Rohan: The breadboards is in the shared drive, check it
-04/01/2026, 9:39 am - Priya: <Media omitted>
-04/01/2026, 2:52 pm - Priya: The router looks good to me
-04/01/2026, 8:26 pm - Arun: Class got cancelled today, free till 7 pm
-04/01/2026, 8:46 pm - Meghna: Reached the auditorium, where is everyone?
-04/01/2026, 9:08 pm - Karthik: Anyone has the workshop slides?
-04/01/2026, 10:37 pm - Divya: Is the department office open now?
+02/01/2026, 8:56 pm - Kavya: Did anyone see the new sponsor deck?
+02/01/2026, 9:08 pm - Kavya: Reached the main gate, where is everyone?
+03/01/2026, 4:36 pm - Meghna: Why is the auditorium locked today
+03/01/2026, 6:02 pm - Priya: Lunch at the canteen? seminar hall is crowded though
+03/01/2026, 6:57 pm - Priya: The attendance sheet needs a look when someone gets time
+03/01/2026, 8:13 pm - Rohan: Class got cancelled today, free till 7 pm
+03/01/2026, 10:35 pm - Karthik: Which workshop slides are we using, the old one or the new one?
+03/01/2026, 10:49 pm - Divya: Reached the main gate, where is everyone?
+04/01/2026, 8:02 am - Karthik: Class got cancelled today, free till 5
+04/01/2026, 1:34 pm - Priya: Lunch at the canteen? IoT lab is crowded though
+04/01/2026, 2:44 pm - Priya: The poster looks good to me
+04/01/2026, 6:17 pm - Priya: Class got cancelled today, free till 7 pm
+04/01/2026, 9:06 pm - Divya: Power cut in the IoT lab again
+04/01/2026, 10:55 pm - Arun: The lab schedule needs a look when someone gets time
+04/01/2026, 11:17 pm - Divya: Why is the seminar hall locked today
 05/01/2026, 10:20 am - Priya: New semester, so the HoD's permission letter again before we book the lab. It is every semester.
 05/01/2026, 10:24 am - Arun: I'll get the lab permission letter signed by 31 January.
-05/01/2026, 10:44 am - Kavya: Which sensor kit are we using, the old one or the new one?
-05/01/2026, 2:14 pm - Divya: Which fest schedule are we using, the old one or the new one?
-05/01/2026, 3:46 pm - Meghna: The fest schedule looks good to me
-05/01/2026, 6:49 pm - Karthik: Rohan you free tomorrow evening?
-05/01/2026, 7:36 pm - Arun: all you free tomorrow evening?
-05/01/2026, 9:02 pm - Rohan: Is the canteen open now?
-06/01/2026, 2:46 pm - Divya: Class got cancelled today, free till 7 pm
-06/01/2026, 5:03 pm - Arun: Exam timetable is out, check the notice board
-06/01/2026, 6:49 pm - Rohan: The workshop slides is in the shared drive, check it
-06/01/2026, 6:53 pm - Rohan: The budget sheet looks good to me
-06/01/2026, 8:12 pm - Arun: all you free tomorrow evening?
-06/01/2026, 9:14 pm - Kavya: Lunch at the canteen? library is crowded though
-06/01/2026, 9:53 pm - Rohan: all did you see the fest schedule message?
-07/01/2026, 8:46 am - Karthik: Exam timetable is out, check the ntoice board
-07/01/2026, 10:57 am - Priya: The poster is in the shared drive, check it
-07/01/2026, 8:05 pm - Arun: Reached the auditorium, where is everyone?
-07/01/2026, 10:10 pm - Arun: Lunch at the canteen? library is crowded though
-07/01/2026, 10:38 pm - Rohan: The budget sheet needs a look when someone gets time
-07/01/2026, 11:10 pm - Rohan: Semma da
-08/01/2026, 9:52 am - Meghna: Did anyone see the new sponsor deck?
+05/01/2026, 1:29 pm - Priya: Rohan did you see the lab schedule message?
+05/01/2026, 2:23 pm - Priya: The banner design looks good to me
+05/01/2026, 2:52 pm - Divya: Exam timetable is out, check the notice board
+05/01/2026, 3:30 pm - Meghna: Lunch at the canteen? parking is crowded though
+05/01/2026, 6:36 pm - Meghna: The router is in the shared drive, check it
+05/01/2026, 7:19 pm - Kavya: Rohan did you see the budget sehet message?
+05/01/2026, 9:23 pm - Kavya: Priya did you see the poster message?
+05/01/2026, 9:49 pm - Meghna: Power cut in the parking again
+06/01/2026, 2:09 pm - Arun: Kavya did you see the banner design message?
+06/01/2026, 4:03 pm - Karthik: Exam timetable is out, check the notice board
+06/01/2026, 5:32 pm - Meghna: Power cut in the auditorium again
+06/01/2026, 6:40 pm - Meghna: The fest schedule looks good to me
+06/01/2026, 7:16 pm - Kavya: Why is the canteen locked today
+06/01/2026, 8:20 pm - Arun: Exam timetable is out, check the notice board
+06/01/2026, 9:40 pm - Divya: The router needs a look when someone gets time
+06/01/2026, 11:21 pm - Karthik: all did you see the sensor kit message?
+07/01/2026, 8:55 am - Meghna: Class got cancelled today, free till noon
+07/01/2026, 3:31 pm - Kavya: Why is the seminar hall locked today
+07/01/2026, 7:30 pm - Arun: Enna da idhu
+07/01/2026, 7:55 pm - Karthik: Class got cancelled today, free till 4
+07/01/2026, 8:47 pm - Rohan: <Media omitted>
+07/01/2026, 9:41 pm - Priya: The workshop slides is in the shared drive, check it
+08/01/2026, 8:58 am - Karthik: The sponsor deck is in the shared drive, check it
 08/01/2026, 1:18 pm - Karthik: Priya did you see the breadboards message?
 08/01/2026, 3:47 pm - Karthik: Reached the auditorium, where is everyone?
 08/01/2026, 4:08 pm - Meghna: Innaiku class illa da
-08/01/2026, 4:26 pm - Kavya: Why is the auditorium locked today
+08/01/2026, 4:26 pm - Kavya: Why is the department office locked today
 08/01/2026, 5:00 pm - Rohan: Lunch at the canteen? main gate is crowded though
-09/01/2026, 10:03 am - Kavya: Lunch at the canteen? parking is crowded though
+08/01/2026, 5:22 pm - Priya: Arun you free tomorrow evening?
+09/01/2026, 10:29 am - Arun: The sensor kit needs a look when someone gets time
+09/01/2026, 1:14 pm - Kavya: Is the seminar hall open now?
+09/01/2026, 2:14 pm - Karthik: Is the library open now?
 09/01/2026, 2:20 pm - Priya: Auditorium booked for 14 Feb, the Dean's office approved it.
-09/01/2026, 4:40 pm - Karthik: lol all that was funny
-09/01/2026, 4:46 pm - Kavya: Power cut in the IoT lab again
-09/01/2026, 5:14 pm - Priya: lol Priya that was funny
-09/01/2026, 7:20 pm - Divya: The soldering station looks good to me
-09/01/2026, 9:18 pm - Kavya: all you free tomorrow evening?
-09/01/2026, 10:21 pm - Priya: lol Aru that was funny
-10/01/2026, 9:05 am - Meghna: Did anyone see the new breadboards?
-10/01/2026, 1:05 pm - Priya: The attendance sheet looks good to me
-10/01/2026, 2:01 pm - Divya: Bus romba late da
+09/01/2026, 6:06 pm - Karthik: Anyone has the fest schedule?
+09/01/2026, 8:02 pm - Divya: Exam timetable is out, check the notice board
+09/01/2026, 9:32 pm - Arun: The sponsor deck is in the shared drive, check it
+09/01/2026, 10:14 pm - Divya: lol Divya that was funny
+10/01/2026, 11:23 am - Arun: Enna da idhu
+10/01/2026, 1:15 pm - Meghna: Exam timetable is out, check the notice board
+10/01/2026, 3:33 pm - Karthik: Did anyone see the new soldering station?
+10/01/2026, 5:44 pm - Kavya: Did anyone see the new banner design?
+10/01/2026, 6:05 pm - Rohan: Anyone has the banner design?
 10/01/2026, 7:42 pm - Arun: I'll send the sponsorship proposal to Brightwave Labs by 20 January.
 10/01/2026, 7:50 pm - Kavya: I will have the fest posters printed by 3 Feb.
-10/01/2026, 9:02 pm - Karthik: Exam timetable is out, check the notice board
-10/01/2026, 10:07 pm - Divya: Lunch at the canteen? main gate is crowded though
-10/01/2026, 10:28 pm - Priya: Bus romba late da
+10/01/2026, 9:57 pm - Arun: Is the canteen open now?
+10/01/2026, 11:31 pm - Kavya: Anyone has the sensor kit?
 11/01/2026, 10:19 am - Kavya: Class got cancelled today, free till 7 pm
-11/01/2026, 12:59 pm - Meghna: all did you see the breadboards message?
-11/01/2026, 6:49 pm - Arun: Reached the auditorium, where is everyone?
+11/01/2026, 1:44 pm - Karthik: Rohan did you see the budget sheet message?
+11/01/2026, 2:18 pm - Karthik: Aama da, same doubt enakkum
 11/01/2026, 7:07 pm - Rohan: Which workshop slides are we using, the old one or the new one?
-11/01/2026, 10:50 pm - Arun: The attendance sheet needs a look when someone gets time
-11/01/2026, 10:57 pm - Meghna: The breadboards is in the shared drive, check it
+11/01/2026, 10:06 pm - Rohan: Ro you free tomorrow evening?
+11/01/2026, 10:33 pm - Kavya: Innaiku class illa da
+12/01/2026, 2:27 pm - Rohan: Kav you free tomorrow evening?
 12/01/2026, 5:15 pm - Priya: Exam timetable is out, check the notice board
 12/01/2026, 6:10 pm - Rohan: Maybe I'll check the projector too, will see.
 12/01/2026, 6:15 pm - Divya: We should probably do a hackathon someday.
 12/01/2026, 6:16 pm - Rohan: The workshop slides is in the shared drive, check it
 12/01/2026, 6:59 pm - Karthik: Innaiku class illa da
 12/01/2026, 7:00 pm - Kavya: IoT Fest is on 14 Feb 2026, the poster text needs the date and venue.
-12/01/2026, 7:07 pm - Kavya: Class got cancelled today, free till 7 pm
 12/01/2026, 8:55 pm - Meghna: The attendance sheet looks good to me
 12/01/2026, 10:19 pm - Divya: Anyone has the soldering station?
-13/01/2026, 8:37 am - Kavya: lol Arun that was funny
-13/01/2026, 11:41 am - Rohan: Power cut in the IoT lab again
+13/01/2026, 11:41 am - Rohan: Power cut in the department office again
+13/01/2026, 11:45 am - Divya: Class got cancelled today, free till 4
 13/01/2026, 1:44 pm - Priya: Why is the seminar hall locked today
-13/01/2026, 5:56 pm - Kavya: Which soldering station are we using, the old one or the new one?
-13/01/2026, 7:17 pm - Rohan: The fest schedule looks good to me
-13/01/2026, 8:49 pm - Kavya: Is the seminar hall open now?
-14/01/2026, 6:24 pm - Rohan: <Media omitted>
-14/01/2026, 9:25 pm - Meghna: Seri da
-14/01/2026, 9:30 pm - Meghna: lol Divs that was funny
-14/01/2026, 10:26 pm - Arun: Did anyone see the new attendance sheet?
-14/01/2026, 10:27 pm - Meghna: Exam timetable is out, check the notice board
-14/01/2026, 10:56 pm - Rohan: Kavya did you see the sponsor deck message?
-15/01/2026, 10:43 am - Priya: Class got cancelled today, free till 7 pm
-15/01/2026, 1:31 pm - Priya: This message was deleted
+13/01/2026, 2:58 pm - Kavya: Anyone has the attendance sheet?
+13/01/2026, 7:47 pm - Karthik: lol Aru that was funny
+13/01/2026, 8:37 pm - Rohan: Rohan did you see the lab schedule message?
+14/01/2026, 11:21 am - Rohan: Whcih poster are we using, the old one or the new one?
+14/01/2026, 1:26 pm - Meghna: Did anyone see the new attendance sheet?
+14/01/2026, 2:06 pm - Divya: Romba nalla irukku
+14/01/2026, 4:30 pm - Kavya: The breadboards looks good to me
+14/01/2026, 5:38 pm - Kavya: Did anyone see the new poster?
+14/01/2026, 7:19 pm - Karthik: Did anyone see the new lab schedule?
+14/01/2026, 8:44 pm - Meghna: Did anyone see the new bnaner design?
+15/01/2026, 10:43 am - Priya: Clsas got cancelled today, free till noon
 15/01/2026, 3:06 pm - Arun: Did anyone see the new poster?
-15/01/2026, 4:28 pm - Karthik: Anyone has the attendance sheet?
-15/01/2026, 6:20 pm - Kavya: all you free tomorrow evening?
-15/01/2026, 7:29 pm - Kavya: Is the main gate open now?
-15/01/2026, 7:36 pm - Priya: Did anyone see the new workshop slides?
+15/01/2026, 8:06 pm - Kavya: Rohan you free tomorrow evening?
 15/01/2026, 8:42 pm - Divya: Lunch at the canteen? auditorium is crowded though
-15/01/2026, 10:15 pm - Karthik: <Media omitted>
-16/01/2026, 5:24 pm - Priya: Which banner design are we using, the old one or the new one?
-16/01/2026, 8:03 pm - Divya: The soldering station needs a look when someone gets time
-16/01/2026, 8:28 pm - Arun: Seri da
-16/01/2026, 9:22 pm - Karthik: The poster looks good to me
-16/01/2026, 9:54 pm - Priya: lol all that was funny
-16/01/2026, 10:38 pm - Karthik: Anyone has the attendance sheet?
-16/01/2026, 11:22 pm - Meghna: The lab schedule looks good to me
-17/01/2026, 9:19 am - Meghna: all did you see the banner design message?
-17/01/2026, 10:02 am - Rohan: Anyone has the workshop slides?
-17/01/2026, 10:48 am - Priya: Seri da
-17/01/2026, 5:06 pm - Rohan: Anyone has the attendance sheet?
-17/01/2026, 6:20 pm - Divya: Power cut in the canteen again
-17/01/2026, 7:35 pm - Meghna: Is the department office open now?
-18/01/2026, 2:22 pm - Priya: Reached the seminar hall, where is everyone?
-18/01/2026, 5:31 pm - Meghna: Did anyone see the new budget sheet?
-18/01/2026, 6:45 pm - Arun: <Media omitted>
-18/01/2026, 6:53 pm - Priya: lol Priya that was funny
-18/01/2026, 9:22 pm - Meghna: Power cut in the seminar hall again
-18/01/2026, 10:15 pm - Rohan: all you free tomorrow evening?
-19/01/2026, 4:51 pm - Karthik: Enna da idhu
-19/01/2026, 6:41 pm - Kavya: Exam timetable is out, check the notice board
-19/01/2026, 8:29 pm - Arun: Lunch at the canteen? main gate is crowded though
-19/01/2026, 8:52 pm - Karthik: all you free tomorrow evening?
-19/01/2026, 10:07 pm - Rohan: The banner dseign looks good to me
-19/01/2026, 10:45 pm - Rohan: Power cut in the IoT lab again
-19/01/2026, 11:13 pm - Kavya: Power cut in the library again
-20/01/2026, 8:00 am - Divya: Class got cancelled today, free till 6 pm
-20/01/2026, 4:21 pm - Meghna: Did anyone see the new banner design?
-20/01/2026, 6:08 pm - Divya: Power cut in the department office again
-20/01/2026, 7:49 pm - Rohan: <Media omitted>
+15/01/2026, 11:09 pm - Rohan: Aama da, same doubt enakkum
+15/01/2026, 11:37 pm - Priya: The sensor kit looks good to me
+16/01/2026, 9:29 am - Meghna: <Media omitted>
+16/01/2026, 6:39 pm - Meghna: Did anyone see the new sensor kit?
+16/01/2026, 8:41 pm - Meghna: Is the library open now?
+16/01/2026, 9:19 pm - Kavya: Why is the main gate locked today
+16/01/2026, 10:17 pm - Priya: <Media omitted>
+16/01/2026, 10:40 pm - Kavya: Exam timetable is out, check the notice board
+17/01/2026, 10:08 am - Priya: The fest schedule is in the shared drive, check it
+17/01/2026, 10:25 am - Meghna: Anyone has the poster?
+17/01/2026, 10:51 am - Meghna: The breadboards lokos good to me
+17/01/2026, 1:46 pm - Arun: <Media omitted>
+17/01/2026, 2:07 pm - Rohan: Reached the departemnt office, where is everyone?
+17/01/2026, 6:53 pm - Kavya: Anyone has the fest schedule?
+18/01/2026, 4:06 pm - Divya: Aru did you see the banner design message?
+18/01/2026, 5:27 pm - Rohan: The soldering station is in the shared drive, check it
+18/01/2026, 5:42 pm - Meghna: Is the main gate open now?
+18/01/2026, 5:58 pm - Priya: <Media omitted>
+18/01/2026, 6:46 pm - Meghna: The router looks good to me
+18/01/2026, 11:06 pm - Karthik: The fest schedule is in the shared drive, check it
+19/01/2026, 9:17 am - Kavya: Lunch at the canteen? parking is crowded though
+19/01/2026, 10:39 am - Karthik: lol Kav that was funny
+19/01/2026, 11:37 am - Arun: Why is the auditorium locked today
+19/01/2026, 1:17 pm - Divya: Did anyone see the new workshop slides?
+19/01/2026, 1:38 pm - Arun: Anyone has the lab schedule?
+19/01/2026, 10:04 pm - Meghna: Lunch at the canteen? canteen is crowded though
 20/01/2026, 9:00 pm - Priya changed the group description
-20/01/2026, 9:45 pm - Meghna: Reached the IoT lab, where is everyone?
-20/01/2026, 9:54 pm - Karthik: all did you see the breadboards message?
-20/01/2026, 10:59 pm - Arun: The budget sheet looks good to me
+20/01/2026, 9:52 pm - Priya: This message was deleted
+20/01/2026, 10:02 pm - Meghna: The attendance sheet is in the shared drive, check it
+20/01/2026, 10:55 pm - Kavya: The lab schedule is in the shared drive, check it
+20/01/2026, 11:03 pm - Arun: Anyone has the banner design?
+20/01/2026, 11:06 pm - Arun: The banner design needs a look when someone gets time
+20/01/2026, 11:28 pm - Priya: Reached the main gate, where is everyone?
 21/01/2026, 10:05 am - Arun: Sponsorship proposal sent to Brightwave Labs this morning.
-21/01/2026, 10:26 am - Priya: Did anyone see the new sponsor deck?
-21/01/2026, 3:57 pm - Divya: The budget sehet looks good to me
-21/01/2026, 4:18 pm - Arun: Power cut in the main gate again
-21/01/2026, 6:25 pm - Divya: Did anyone see the new budget sheet?
-21/01/2026, 7:35 pm - Kavya: Exam timetable is out, check the notice board
-21/01/2026, 9:59 pm - Divya: The soldering station needs a look when someone gets time
-21/01/2026, 10:20 pm - Meghna: Power cut in the canteen again
-21/01/2026, 11:35 pm - Kavya: Did anyone see the new router?
-22/01/2026, 9:40 am - Arun: This message was deleted
-22/01/2026, 1:17 pm - Arun: The router is in the shared drive, check it
-22/01/2026, 2:56 pm - Priya: Aama da, same doubt enakkum
-22/01/2026, 3:59 pm - Meghna: Power cut in the auditorium again
-22/01/2026, 10:36 pm - Rohan: The lab schedule needs a look when someone gets time
-22/01/2026, 11:20 pm - Rohan: Lunch at the canteen? IoT lab is crowded though
+21/01/2026, 11:53 am - Divya: Anyone has the banner design?
+21/01/2026, 7:07 pm - Divya: Lunch at the canteen? parking is crowded though
+21/01/2026, 8:36 pm - Divya: Why is the department office locekd today
+21/01/2026, 10:08 pm - Meghna: Class got cancelled today, free till 6 pm
+21/01/2026, 10:13 pm - Rohan: Power cut in the catneen again
+21/01/2026, 10:23 pm - Rohan: Is the parking open now?
+21/01/2026, 10:42 pm - Kavya: Enna da idhu
+21/01/2026, 11:36 pm - Priya: Is the semianr hall open now?
+22/01/2026, 9:31 am - Priya: Priya did you see the sponsor deck message?
+22/01/2026, 1:05 pm - Rohan: Exam timetable is out, check the notice board
+22/01/2026, 4:27 pm - Kavya: Romba nalla irukku
+22/01/2026, 6:35 pm - Divya: <Media omitted>
+22/01/2026, 7:30 pm - Arun: <Media omitted>
+22/01/2026, 9:06 pm - Divya: lol Rohan that was funny
+22/01/2026, 9:09 pm - Priya: Why is the IoT lab locked today
+23/01/2026, 9:42 am - Divya: Did anyone see the new lab schedule?
+23/01/2026, 1:03 pm - Meghna: all you free tomorrow evening?
 23/01/2026, 4:05 pm - Arun: Permission letter signed by the HoD, booking the lab now.
-23/01/2026, 4:45 pm - Kavya: Reached the seminar hall, where is everyone?
-23/01/2026, 6:45 pm - Meghna: Bus romba late da
-23/01/2026, 7:37 pm - Kavya: Is the parking open now?
-23/01/2026, 7:52 pm - Rohan: Class got cancelled today, free till 5
-23/01/2026, 10:36 pm - Rohan: This message was deleted
-23/01/2026, 11:23 pm - Kavya: Exam timetable is out, check the notice board
-24/01/2026, 10:37 am - Arun: Why is the canteen locked today
-24/01/2026, 1:16 pm - Arun: all did you see the router message?
-24/01/2026, 2:04 pm - Arun: Reached the canteen, where is everyone?
-24/01/2026, 4:35 pm - Divya: The workshop slides needs a look when someone gets time
-24/01/2026, 9:16 pm - Arun: Machan, lab key yaar kitta irukku?
-24/01/2026, 10:41 pm - Meghna: Lunch at the canteen? main gate is crowded though
-24/01/2026, 11:08 pm - Divya: The fest schedule looks good to me
-25/01/2026, 8:28 am - Kavya: Enna da idhu
-25/01/2026, 12:47 pm - Rohan: Did anyone see the new workshop slides?
-25/01/2026, 2:15 pm - Kavya: Class got caneclled today, free till 4
-25/01/2026, 2:28 pm - Kavya: Meghna did you see the budget sheet message?
-25/01/2026, 7:00 pm - Karthik: Why is the department office locked today
-25/01/2026, 7:56 pm - Kavya: Aru you free tomorrow evening?
-25/01/2026, 10:06 pm - Meghna: Reached the parking, where is everyone?
-25/01/2026, 10:33 pm - Karthik: all did you see the attendance sheet message?
-25/01/2026, 10:48 pm - Divya: Exam timetable is out, check the notice board
-26/01/2026, 12:52 pm - Rohan: Bus romba late da
-26/01/2026, 1:46 pm - Kavya: Meg did you see the breadboards message?
-26/01/2026, 2:48 pm - Kavya: Did anyone see the new sponsor deck?
-26/01/2026, 3:02 pm - Rohan: Is the IoT lab open now?
-26/01/2026, 3:15 pm - Rohan: Exam timetable is out, check the notice board
-26/01/2026, 4:01 pm - Karthik: Which sponsor deck are we using, the old one or the new one?
-26/01/2026, 5:20 pm - Arun: The workshop slides needs a look when someone gets time
-26/01/2026, 9:37 pm - Kavya: Did anyone see the new budget sheet?
-26/01/2026, 10:11 pm - Kavya: The sponsor deck looks good to me
-27/01/2026, 11:44 am - Arun: Power cut in the IoT lab again
-27/01/2026, 2:43 pm - Divya: Class got cancelled today, free till 5
-27/01/2026, 5:01 pm - Meghna: Which poster are we using, the old one or the new one?
-27/01/2026, 5:51 pm - Arun: Power cut in the library again
-27/01/2026, 8:06 pm - Kavya: lol all that was funny
-27/01/2026, 9:14 pm - Kavya: The router is in the shared drive, check it
-28/01/2026, 9:08 am - Rohan: Is the auditorium open now?
-28/01/2026, 11:14 am - Kavya: Is the IoT lab open now?
-28/01/2026, 6:48 pm - Priya: lol Pri that was funny
-28/01/2026, 8:02 pm - Meghna: Why is the seminar hall locked today
+23/01/2026, 5:06 pm - Rohan: lol Rohan that was funny
+23/01/2026, 6:03 pm - Kavya: Exam timetable is out, check the notice board
+23/01/2026, 10:36 pm - Rohan: The router needs a look when someone gets time
+23/01/2026, 11:31 pm - Rohan: The lab schedule looks good to me
+24/01/2026, 2:01 pm - Kavya: Exam timetable is out, check the notice board
+24/01/2026, 3:05 pm - Priya: Power cut in the main gate again
+24/01/2026, 3:27 pm - Rohan: Enna da idhu
+24/01/2026, 6:27 pm - Priya: all you free tomorrow evening?
+24/01/2026, 9:04 pm - Priya: Karthik you free tomorrow evening?
+24/01/2026, 11:07 pm - Divya: Machan, lab key yaar kitta irukku?
+24/01/2026, 11:28 pm - Priya: lol Priya that was funny
+24/01/2026, 11:33 pm - Rohan: The sensor kit is in the shared drive, check it
+25/01/2026, 11:05 am - Meghna: lol all that was funny
+25/01/2026, 6:16 pm - Divya: Did anyone see the new sponsor deck?
+25/01/2026, 7:12 pm - Meghna: Why is the auditorium locked today
+25/01/2026, 8:39 pm - Divya: lol all that was funny
+25/01/2026, 11:00 pm - Meghna: Did anyone see the new lab schedule?
+25/01/2026, 11:36 pm - Karthik: Lunch at the canteen? canteen is crowded though
+26/01/2026, 11:16 am - Priya: The router needs a look when someone gets time
+26/01/2026, 2:06 pm - Karthik: The workshop slides needs a look when someone gets time
+26/01/2026, 4:30 pm - Karthik: lol Aru that was funny
+26/01/2026, 7:02 pm - Meghna: Is the IoT lab open now?
+26/01/2026, 9:06 pm - Meghna: Semma da
+26/01/2026, 10:34 pm - Kavya: Is the auditorium open now?
+26/01/2026, 11:13 pm - Arun: Exam timetable is out, check the notice board
+26/01/2026, 11:13 pm - Arun: Anynoe has the breadboards?
+27/01/2026, 11:13 am - Priya: Exam timetable is out, check the notice board
+27/01/2026, 3:08 pm - Rohan: Machan, lab key yaar kitta irukku?
+27/01/2026, 3:20 pm - Divya: Did anyone see the new breadboards?
+27/01/2026, 6:11 pm - Kavya: Lunch at the canteen? auditorium is crowded though
+27/01/2026, 7:10 pm - Priya: Exam timetbale is out, check the notice board
+27/01/2026, 8:40 pm - Priya: Which breadboards are we using, the old one or the new one?
+27/01/2026, 10:37 pm - Karthik: Exam timetable is out, check the notice board
+28/01/2026, 10:56 am - Arun: Anyone has the workshop slides?
+28/01/2026, 2:17 pm - Meghna: Which workshop slides are we using, the old one or the new one?
+28/01/2026, 2:35 pm - Priya: all did you see the breadboards message?
+28/01/2026, 2:44 pm - Meghna: Bus romba late da
+28/01/2026, 7:11 pm - Kavya: Which sensor kit are we using, the old one or the new one?
+28/01/2026, 7:32 pm - Karthik: Seri da
 28/01/2026, 8:15 pm - Rohan: I'll set up the WiFi router in the fest hall before 6 Feb.
-28/01/2026, 8:27 pm - Kavya: Lunch at the canteen? main gate is crowded though
-28/01/2026, 8:51 pm - Arun: Anyone has the banner design?
-28/01/2026, 10:10 pm - Divya: Is the department office open now?
-29/01/2026, 9:00 am - Priya: Why is the IoT lab locked today
-29/01/2026, 4:12 pm - Kavya: lol Meg that was funny
-29/01/2026, 6:53 pm - Meghna: Power cut in the auditorium again
-29/01/2026, 7:10 pm - Meghna: all you free tomorrow evening?
-29/01/2026, 10:21 pm - Kavya: lol all that was funny
-29/01/2026, 10:54 pm - Kavya: Anyone has the lab schedule?
-30/01/2026, 8:30 am - Rohan: lol all that was fnuny
-30/01/2026, 1:10 pm - Meghna: Romba nalla irukku
-30/01/2026, 1:12 pm - Arun: Exam timetable is out, check the notice board
-30/01/2026, 3:07 pm - Kavya: Class got cancelled today, free till noon
-30/01/2026, 8:06 pm - Arun: The lab schedule needs a look when someone gets time
-30/01/2026, 10:42 pm - Meghna: Bus romba late da
-31/01/2026, 3:35 pm - Meghna: Arun you free tomorrow evening?
-31/01/2026, 6:21 pm - Karthik: Seri da
-31/01/2026, 7:01 pm - Karthik: The breadboards is in the shared drive, check it
-31/01/2026, 9:34 pm - Rohan: Is the auditorium open now?
-31/01/2026, 10:53 pm - Arun: Is the parking open now?
-31/01/2026, 11:38 pm - Karthik: Is the seminar hall open now?
-01/02/2026, 1:13 pm - Arun: Machan, lab key yaar kitta irukku?
-01/02/2026, 3:07 pm - Meghna: Which workshop slides are we using, the old one or the new one?
-01/02/2026, 3:48 pm - Divya: Which attendance sheet are we using, the old one or the new one?
-01/02/2026, 5:32 pm - Meghna: The lab schedule is in the shared drive, check it
-01/02/2026, 9:31 pm - Karthik: Seri da
-01/02/2026, 9:38 pm - Priya: Exam timetable is out, check the notice board
-01/02/2026, 10:57 pm - Kavya: Anyone has the attendance sheet?
+28/01/2026, 11:23 pm - Meghna: Why is the main gate locked today
+28/01/2026, 11:40 pm - Kavya: Class got cancelled today, free till noon
+29/01/2026, 9:08 am - Rohan: Is the seminar hall open now?
+29/01/2026, 9:55 am - Meghna: Reached the IoT lab, where is everyone?
+29/01/2026, 1:14 pm - Divya: Arun you free tomorrow evening?
+29/01/2026, 5:33 pm - Arun: Why is the seminar hall locked today
+29/01/2026, 8:02 pm - Divya: Exam timetable is out, check the notice board
+29/01/2026, 8:18 pm - Kavya: Lunch at the canteen? parking is crowded though
+29/01/2026, 8:28 pm - Priya: Romba nalla irukku
+30/01/2026, 9:00 am - Priya: Why is the canteen locked today
+30/01/2026, 10:37 am - Arun: Class got cancelled today, free till 4
+30/01/2026, 4:12 pm - Kavya: lol Meg that was funny
+30/01/2026, 5:37 pm - Priya: Why is the main gate locked today
+30/01/2026, 8:25 pm - Priya: The budget sheet is in the shared drive, check it
+30/01/2026, 11:16 pm - Priya: <Media omitted>
+31/01/2026, 2:17 pm - Kavya: Lunch at the canteen? IoT lab is crowded though
+31/01/2026, 2:34 pm - Priya: Is the department office open now?
+31/01/2026, 3:18 pm - Divya: Class got cancelled today, free till 6 pm
+31/01/2026, 9:06 pm - Divya: Anyone has the router?
+31/01/2026, 9:13 pm - Meghna: Which budget sheet are we using, the old one or the new one?
+31/01/2026, 10:24 pm - Meghna: Lunch at the canteen? parking is crowded though
+01/02/2026, 11:46 am - Arun: all did you see the poster message?
+01/02/2026, 3:35 pm - Meghna: Arun you free tomorrow evening?
+01/02/2026, 4:56 pm - Kavya: Lunch at the canteen? IoT lab is crowded though
+01/02/2026, 5:56 pm - Meghna: Lunch at the canteen? parking is crowded though
+01/02/2026, 7:01 pm - Karthik: The breadboards is in the shared drive, check it
+01/02/2026, 9:18 pm - Meghna: Anyone has the attendance sheet?
+01/02/2026, 10:49 pm - Kavya: Seri da
+01/02/2026, 11:38 pm - Karthik: Is the seminar hall open now?
 02/02/2026, 10:30 am - Meghna changed this group's icon
-02/02/2026, 7:33 pm - Kavya: Kav did you see the workshop slides message?
-02/02/2026, 8:47 pm - Karthik: Lunch at the canteen? department office is crowded though
-02/02/2026, 9:14 pm - Rohan: Why is the auditorium locked today
-02/02/2026, 9:16 pm - Rohan: Anyone has the fest schedule?
-02/02/2026, 11:12 pm - Meghna: Reached the department office, where is everyone?
-02/02/2026, 11:14 pm - Divya: Anyone has the budget sheet?
-03/02/2026, 9:05 am - Meghna: lol Rohan that was funny
-03/02/2026, 10:18 am - Karthik: The banner design looks good to me
-03/02/2026, 1:38 pm - Karthik: Is the seminar hall open now?
-03/02/2026, 2:59 pm - Kavya: Seri da
-03/02/2026, 4:30 pm - Karthik: Class got cancelled today, free till 4
+02/02/2026, 5:32 pm - Kavya: Power cut in the library again
+02/02/2026, 5:48 pm - Priya: Reached the IoT lab, where is everyone?
+02/02/2026, 7:55 pm - Meghna: Class got cancelled today, free till 7 pm
+02/02/2026, 9:36 pm - Karthik: Power cut in the parking again
+02/02/2026, 9:59 pm - Kavya: Which workshop slides are we using, the old one or the new one?
+02/02/2026, 11:35 pm - Meghna: Why is the canteen locked today
+03/02/2026, 2:08 pm - Karthik: Did anyone see the new banner design?
+03/02/2026, 2:16 pm - Rohan: Did anyone see the new breadboards?
+03/02/2026, 3:38 pm - Priya: Which soldering station are we using, the old one or the new one?
 03/02/2026, 5:20 pm - Kavya: Posters printed, collecting tomorrow morning.
-03/02/2026, 7:11 pm - Divya: Whcih sensor kit are we using, the old one or the new one?
-03/02/2026, 9:30 pm - Rohan: Reached the main gate, where is everyone?
-03/02/2026, 10:43 pm - Priya: Romba nalla irukku
-04/02/2026, 8:04 am - Karthik: Anyone has the breadboards?
+03/02/2026, 6:16 pm - Priya: The router needs a look when someone gets time
+03/02/2026, 8:37 pm - Kavya: Aama da, same doubt enakkum
+03/02/2026, 8:53 pm - Kavya: The workshop slides looks good to me
+03/02/2026, 11:19 pm - Meghna: lol Aru that was funny
+04/02/2026, 9:39 am - Rohan: lol all that was funny
+04/02/2026, 10:22 am - Arun: Class got cancelled today, free till 6 pm
+04/02/2026, 1:12 pm - Kavya: Exam timetable is out, check the notice board
 04/02/2026, 4:40 pm - Kavya: Posters are up in all the departments.
-04/02/2026, 6:40 pm - Divya: Bus romba late da
-04/02/2026, 7:48 pm - Kavya: Why is the library locked today
-04/02/2026, 10:04 pm - Kavya: The fest schedule needs a look when someone gets time
-04/02/2026, 10:20 pm - Kavya: Romba nalla irukku
-04/02/2026, 10:42 pm - Meghna: Is the main gate open now?
-05/02/2026, 10:01 am - Arun: Which attendance sheet are we using, the old one or the new one?
-05/02/2026, 12:19 pm - Kavya: Is the department office open now?
-05/02/2026, 4:21 pm - Kavya: Did anyone see the new breadboards?
-05/02/2026, 7:35 pm - Meghna: Bus romba late da
-05/02/2026, 9:54 pm - Divya: Is the canteen open now?
-05/02/2026, 10:18 pm - Priya: Is the auditorium open now?
-06/02/2026, 2:03 pm - Rohan: Anyone has the router?
-06/02/2026, 2:38 pm - Priya: Pri did you see the workshop slides message?
-06/02/2026, 6:01 pm - Kavya: Anyone has the sponsor deck?
-06/02/2026, 9:41 pm - Meghna: The sensor kit needs a look when someone gets time
-06/02/2026, 10:03 pm - Priya: Anyone has the sponsor deck?
-06/02/2026, 11:25 pm - Arun: Reached the seminar hall, where is everyone?
-07/02/2026, 8:00 am - Arun: Power cut in the auditorium again
+04/02/2026, 7:00 pm - Karthik: Which soldering station are we using, the old one or the new one?
+04/02/2026, 9:14 pm - Karthik: lol all that was funny
+04/02/2026, 10:01 pm - Meghna: lol Meg that was funny
+04/02/2026, 11:39 pm - Arun: Exam timetable is out, check the notice board
+05/02/2026, 11:53 am - Priya: Power cut in the IoT lab again
+05/02/2026, 2:55 pm - Meghna: The router needs a look when someone gets time
+05/02/2026, 4:32 pm - Arun: The router looks good to me
+05/02/2026, 4:53 pm - Meghna: The attendance sheet needs a look when someone gets time
+05/02/2026, 6:06 pm - Rohan: Class got cancelled today, free till 4
+05/02/2026, 11:23 pm - Kavya: Semma da
+06/02/2026, 9:09 am - Karthik: Seri da
+06/02/2026, 2:01 pm - Divya: lol all that was funny
+06/02/2026, 9:34 pm - Meghna: Bus romba late da
+06/02/2026, 10:45 pm - Arun: Power cut in the main gate again
+06/02/2026, 10:58 pm - Rohan: Which poster are we using, the old one or the new one?
+06/02/2026, 11:02 pm - Meghna: The sensor kit is in the shared drive, check it
+06/02/2026, 11:32 pm - Karthik: Did anyone see the new workshop slides?
+07/02/2026, 10:59 am - Meghna: Which sponsor deck are we using, the old one or the new one?
 07/02/2026, 11:30 am - Divya: WiFi in the fest hall still does not work, the router is not connecting.
-07/02/2026, 4:06 pm - Arun: lol all that was funny
-07/02/2026, 7:54 pm - Priya: Which soldering station are we using, the old one or the new one?
-07/02/2026, 9:30 pm - Meghna: Power cut in the department office again
-07/02/2026, 11:00 pm - Rohan: all you free tomorrow evening?
-07/02/2026, 11:08 pm - Meghna: Divs you free tomorrow evening?
-08/02/2026, 1:50 pm - Divya: Machan, lab key yaar kitta irukku?
-08/02/2026, 2:07 pm - Kavya: Did anyone see the new breadboards?
-08/02/2026, 2:52 pm - Meghna: Anyone has the breadboards?
-08/02/2026, 5:35 pm - Divya: Enna da idhu
-08/02/2026, 6:14 pm - Meghna: Exam timetable is out, check the notice board
-08/02/2026, 11:29 pm - Priya: Anyone has the poster?
-09/02/2026, 8:37 am - Arun: Which lab schedule are we using, the old one or the new one?
-09/02/2026, 10:35 am - Rohan: Anyone has the breadboards?
-09/02/2026, 1:02 pm - Karthik: Machan, lab key yaar kitta irukku?
-09/02/2026, 1:06 pm - Rohan: Is the seminar hall open now?
-09/02/2026, 1:31 pm - Arun: Exam timetable is out, check the notice board
-09/02/2026, 5:07 pm - Arun: The fest schedule looks good to me
-09/02/2026, 9:44 pm - Kavya: This message was deleted
-09/02/2026, 11:33 pm - Arun: Did anyone see the new budget sheet?
-10/02/2026, 8:01 am - Karthik: Why is the library locked today
+07/02/2026, 2:59 pm - Meghna: The lab schedule needs a look when someone gets time
+07/02/2026, 5:39 pm - Priya: The sensor kit looks good to me
+07/02/2026, 6:14 pm - Rohan: Reached the IoT lab, where is everyone?
+07/02/2026, 6:24 pm - Rohan: Seri da
+07/02/2026, 8:43 pm - Karthik: Aru you free tomorrow evening?
+07/02/2026, 9:32 pm - Kavya: Aama da, same doubt enakkum
+08/02/2026, 1:37 pm - Arun: Aru you free tomorrow evening?
+08/02/2026, 2:23 pm - Divya: The budget sheet looks good to me
+08/02/2026, 5:02 pm - Karthik: Did anyone see the new sponsor deck?
+08/02/2026, 6:40 pm - Divya: <Media omitted>
+08/02/2026, 8:25 pm - Kavya: Exam timetable is out, cehck the notice board
+08/02/2026, 11:31 pm - Divya: Class got cancelled today, free till 4
+09/02/2026, 9:17 am - Priya: The sponsor deck needs a look when someone gets time
+09/02/2026, 1:19 pm - Divya: lol all that was funny
+09/02/2026, 3:59 pm - Priya: Meg you free tomorrow evening?
+09/02/2026, 5:30 pm - Arun: Which router are we using, the old one or the new one?
+09/02/2026, 6:39 pm - Karthik: <Media omitted>
+09/02/2026, 10:22 pm - Rohan: Class got cancelled today, free till 5
+10/02/2026, 11:34 am - Karthik: all you free tomorrow evening?
+10/02/2026, 2:08 pm - Meghna: Why is the parking locked today
+10/02/2026, 4:35 pm - Meghna: Machan, lab key yaar kitta irukku?
+10/02/2026, 5:54 pm - Rohan: all you free tomororw evening?
+10/02/2026, 6:00 pm - Karthik: Is the library open now?
 10/02/2026, 6:15 pm - Priya: Brightwave Labs confirmed the sponsorship!
-10/02/2026, 6:35 pm - Arun: Did anyone see the new banner design?
-10/02/2026, 6:51 pm - Rohan: Rohan you free tomorrow evening?
-10/02/2026, 7:50 pm - Kavya: The soldering station looks good to me
-10/02/2026, 8:30 pm - Divya: Bus romba late da
-10/02/2026, 8:44 pm - Priya: Did anyone see the new sensor kit?
-10/02/2026, 9:17 pm - Divya: Did anyone see the new router?
-11/02/2026, 1:04 pm - Kavya: Machan, lab key yaar kitta irukku?
-11/02/2026, 2:25 pm - Priya: The router needs a look when someone gets time
-11/02/2026, 4:16 pm - Priya: Seri da
-11/02/2026, 6:42 pm - Arun: Class got cancelled today, free till noon
-11/02/2026, 6:48 pm - Meghna: all you free tomorrow evening?
-11/02/2026, 11:01 pm - Priya: Semma da
-12/02/2026, 11:00 am - Priya: Which soldering station are we using, the old one or the new one?
-12/02/2026, 1:52 pm - Priya: Ro you free tomorrow evening?
+10/02/2026, 8:28 pm - Priya: Lunch at the canteen? main gate is crowded though
+11/02/2026, 5:18 pm - Kavya: <Media omitted>
+11/02/2026, 5:20 pm - Karthik: Power cut in the main gate again
+11/02/2026, 7:06 pm - Arun: The budget sheet is in the shared drive, check it
+11/02/2026, 7:45 pm - Divya: Reached the seminar hall, where is everyone?
+11/02/2026, 8:26 pm - Arun: The soldering station needs a look when someone gets time
+11/02/2026, 10:38 pm - Karthik: Reached the parking, where is everyone?
+12/02/2026, 4:27 pm - Karthik: Anyone has the router?
 12/02/2026, 6:00 pm - Rohan: I'll return the borrowed ESP32 boards to Bala sir by Friday 27 Feb.
-12/02/2026, 7:32 pm - Divya: Lunch at the canteen? canteen is crowded though
-12/02/2026, 8:01 pm - Arun: The attendance sheet needs a look when someone gets time
-12/02/2026, 8:38 pm - Divya: <Media omitted>
-12/02/2026, 8:47 pm - Rohan: The attendance sheet is in the shared drive, check it
-12/02/2026, 9:27 pm - Arun: all you free tomorrow evening?
-13/02/2026, 8:11 am - Meghna: Innaiku class illa da
-13/02/2026, 1:23 pm - Kavya: Did anyone see the new soldering station?
-13/02/2026, 6:22 pm - Meghna: The router is in the shared drive, check it
-13/02/2026, 7:19 pm - Meghna: The breadboards looks good to me
-13/02/2026, 7:48 pm - Priya: Which router are we using, the old one or the new one?
-13/02/2026, 10:05 pm - Divya: Innaiku class illa da
-14/02/2026, 2:46 pm - Rohan: Is the library open now?
-14/02/2026, 3:00 pm - Kavya: The sensor kit looks good to me
-14/02/2026, 3:49 pm - Priya: The breadboards needs a look when someone gets time
-14/02/2026, 4:58 pm - Rohan: Exam timetable is out, check the notice board
-14/02/2026, 6:11 pm - Priya: Is the main gate open now?
-14/02/2026, 7:08 pm - Meghna: Anyone has the workshop slides?
-14/02/2026, 8:48 pm - Meghna: Power cut in the main gate again
-14/02/2026, 10:37 pm - Meghna: lol Pri that was funny
-14/02/2026, 10:48 pm - Arun: The budget sheet needs a look when someone gets time
-15/02/2026, 12:36 pm - Rohan: The fest schedule is in the shared drive, check it
-15/02/2026, 9:00 pm - Arun: Machan, lab key yaar kitta irukku?
-15/02/2026, 9:05 pm - Divya: Exam timetable is out, check the notice board
-15/02/2026, 9:07 pm - Kavya: The lab schedule looks good to me
-15/02/2026, 11:17 pm - Meghna: Lunch at the canteen? canteen is crowded though
-15/02/2026, 11:19 pm - Kavya: The banner design is in the shared drive, check it
-16/02/2026, 3:25 pm - Meghna: Why is the canteen locked today
-16/02/2026, 3:38 pm - Karthik: Anyone has the attendance sheet?
-16/02/2026, 4:10 pm - Meghna: Exam timetable is out, check the notice board
-16/02/2026, 7:58 pm - Priya: Arun you free tomorrow evening?
-16/02/2026, 8:15 pm - Divya: Power cut in the canteen again
-16/02/2026, 8:48 pm - Divya: Did anyone see the new router?
-17/02/2026, 10:24 am - Priya: Which workshop slides are we using, the old one or the new one?
-17/02/2026, 11:13 am - Kavya: lol all that was funny
-17/02/2026, 11:53 am - Meghna: all you free tomorrow evening?
-17/02/2026, 7:47 pm - Rohan: Arun did you see the attendance sheet message?
-17/02/2026, 9:07 pm - Karthik: Why is the auditorium locked today
-17/02/2026, 11:33 pm - Meghna: Innaiku class illa da
-18/02/2026, 10:54 am - Priya: Is the auditorium open now?
-18/02/2026, 3:42 pm - Rohan: Which attendance sheet are we using, the old one or the new one?
-18/02/2026, 4:22 pm - Karthik: Which attendance sheet are we using, the old one or the new one?
-18/02/2026, 8:50 pm - Priya: Which router are we using, the old one or the new one?
-18/02/2026, 10:16 pm - Priya: <Media omitted>
-18/02/2026, 10:17 pm - Karthik: The soldering station looks good to me
-18/02/2026, 11:06 pm - Divya: Which banner design are we using, the old one or the new one?
-19/02/2026, 9:38 am - Divya: all did you see the attendance sheet message?
-19/02/2026, 1:35 pm - Karthik: Exam timetable is out, check the notice board
-19/02/2026, 2:44 pm - Rohan: The breadboards looks good to me
-19/02/2026, 6:29 pm - Karthik: lol Kavya that was funny
-19/02/2026, 8:56 pm - Meghna: The workshop slides is in the shared drive, check it
-19/02/2026, 10:16 pm - Arun: The budget sheet needs a look when someone gets time
-20/02/2026, 3:58 pm - Priya: This message was deleted
-20/02/2026, 4:26 pm - Divya: Class got cancelled today, free till 7 pm
-20/02/2026, 5:41 pm - Kavya: Exam timetable is out, check the notice board
-20/02/2026, 6:33 pm - Arun: Reached the main gate, where is everyone?
-20/02/2026, 6:54 pm - Rohan: Semma da
-20/02/2026, 7:44 pm - Arun: Which poster are we using, the old one or the new one?
-21/02/2026, 10:50 am - Kavya: Power cut in the main gate again
-21/02/2026, 5:15 pm - Divya: Lunch at the canteen? library is crowded though
-21/02/2026, 7:43 pm - Divya: Bus romba late da
-21/02/2026, 8:22 pm - Arun: Lunch at the canteen? depatrment office is crowded though
-21/02/2026, 9:23 pm - Priya: Lunch at the canteen? main gate is crowded though
-21/02/2026, 10:35 pm - Priya: Kavya you free tomorrow evening?
-22/02/2026, 8:47 am - Karthik: Anyone has the poster?
-22/02/2026, 2:08 pm - Karthik: Exam timetable is out, check the notice board
-22/02/2026, 5:18 pm - Karthik: Why is the parking locked today
-22/02/2026, 6:21 pm - Arun: The router needs a look when someone gets time
-22/02/2026, 7:03 pm - Arun: Exam timetable is out, check the notice board
-22/02/2026, 9:35 pm - Meghna: Anyone has the attendance sheet?
-23/02/2026, 8:43 am - Divya: Is the department office open now?
-23/02/2026, 11:39 am - Karthik: Anyone has the banner design?
-23/02/2026, 5:18 pm - Karthik: Reached the IoT lab, where is everyone?
-23/02/2026, 8:39 pm - Meghna: Lunch at the canteen? library is crowded though
-23/02/2026, 8:49 pm - Karthik: <Media omitted>
-23/02/2026, 9:02 pm - Meghna: Lunch at the canteen? auditorium is crowded though
-23/02/2026, 10:01 pm - Kavya: Lunch at the canteen? library is crowded though
-23/02/2026, 11:11 pm - Divya: Lunch at the canteen? main gate is crowded though
-24/02/2026, 1:04 pm - Kavya: Why is the auditorium locked today
-24/02/2026, 4:17 pm - Rohan: Reached the library, where is everyone?
-24/02/2026, 6:35 pm - Arun: Enna da idhu
-24/02/2026, 6:58 pm - Divya: Did anyone see the new router?
-24/02/2026, 9:01 pm - Arun: Is the IoT lab open now?
-24/02/2026, 10:36 pm - Rohan: The workshop slides is in the shared drive, check it
-25/02/2026, 11:46 am - Priya: Is the department office open now?
+12/02/2026, 9:54 pm - Priya: Aru you free tomorrow evening?
+12/02/2026, 11:07 pm - Divya: Seri da
+12/02/2026, 11:16 pm - Karthik: Bus romba late da
+12/02/2026, 11:17 pm - Arun: Which breadboards are we using, the old one or the new one?
+12/02/2026, 11:26 pm - Arun: Did anyone see the new router?
+12/02/2026, 11:37 pm - Meghna: Lunch at the canteen? department office is crowded though
+13/02/2026, 8:49 am - Meghna: Exam timetable is out, check the notice board
+13/02/2026, 1:06 pm - Rohan: Romba nalla irukku
+13/02/2026, 7:41 pm - Priya: Divya did you see the banner design message?
+13/02/2026, 9:01 pm - Kavya: Is the IoT lab open now?
+13/02/2026, 11:04 pm - Rohan: Why is the library locked today
+13/02/2026, 11:35 pm - Priya: all did you see the banner design message?
+14/02/2026, 2:22 pm - Priya: Exam timetable is out, check the notice board
+14/02/2026, 7:08 pm - Priya: Lunch at the canteen? main gate is crowded though
+14/02/2026, 7:37 pm - Divya: The router needs a look when someone gets time
+14/02/2026, 10:18 pm - Arun: Exam timetable is out, check the notice board
+14/02/2026, 10:51 pm - Karthik: Did anyone see the new fest schedule?
+14/02/2026, 11:29 pm - Kavya: Why is the library locked today
+15/02/2026, 12:23 pm - Meghna: Lunch at the canteen? main gate is crowded though
+15/02/2026, 2:10 pm - Divya: Lunch at the canteen? seminar hall is crowded though
+15/02/2026, 2:59 pm - Arun: Anyone has the sensor kit?
+15/02/2026, 6:04 pm - Arun: Anyone has the sponsor deck?
+15/02/2026, 6:25 pm - Meghna: Innaiku class illa da
+15/02/2026, 7:59 pm - Rohan: <Media omitted>
+16/02/2026, 2:43 pm - Kavya: Romba nalla irukku
+16/02/2026, 3:28 pm - Arun: lol all that was funny
+16/02/2026, 4:27 pm - Divya: Power cut in the canteen again
+16/02/2026, 4:30 pm - Priya: Did anyone see the new lab schedule?
+16/02/2026, 5:18 pm - Meghna: Anyone has the breadboards?
+16/02/2026, 6:09 pm - Meghna: Innaiku class illa da
+17/02/2026, 8:41 am - Karthik: <Media omitted>
+17/02/2026, 8:51 am - Karthik: Which poster are we using, the old one or the new one?
+17/02/2026, 1:55 pm - Arun: Innaiku class illa da
+17/02/2026, 2:07 pm - Priya: Class got cancelled today, free till 7 pm
+17/02/2026, 3:32 pm - Rohan: Is the parking open now?
+17/02/2026, 7:50 pm - Kavya: Power cut in the canteen again
+17/02/2026, 8:19 pm - Karthik: lol all that was funny
+18/02/2026, 1:11 pm - Karthik: lol all that was funny
+18/02/2026, 2:52 pm - Divya: The attendance sheet looks good to me
+18/02/2026, 6:14 pm - Meghna: Reached the IoT lab, where is everyone?
+18/02/2026, 6:35 pm - Arun: all you free tomorrow evening?
+18/02/2026, 7:21 pm - Priya: lol Meg that was funny
+18/02/2026, 8:15 pm - Karthik: Anyone has the router?
+18/02/2026, 9:47 pm - Priya: Power cut in the auditorium again
+19/02/2026, 6:26 pm - Priya: Power cut in the library again
+19/02/2026, 7:20 pm - Meghna: Anyone has the banner design?
+19/02/2026, 8:40 pm - Arun: Machan, lab key yaar kitta irukku?
+19/02/2026, 8:50 pm - Priya: Which budget sheet are we using, the old one or the new one?
+19/02/2026, 10:17 pm - Karthik: The soldering station looks good to me
+19/02/2026, 10:19 pm - Meghna: The lab schedule needs a look when someone gets time
+20/02/2026, 8:14 am - Kavya: Power cut in the seminar hall again
+20/02/2026, 12:17 pm - Arun: Innaiku class illa da
+20/02/2026, 3:09 pm - Kavya: Kav did you see the lab schedule message?
+20/02/2026, 4:02 pm - Karthik: <Media omitted>
+20/02/2026, 6:19 pm - Kavya: Why is the seminar hall locked today
+20/02/2026, 6:20 pm - Rohan: Did anyone see the new poster?
+20/02/2026, 9:06 pm - Arun: lol Aru that was funny
+20/02/2026, 10:22 pm - Arun: Power cut in the seminar hall again
+20/02/2026, 11:34 pm - Kavya: Enna da idhu
+21/02/2026, 10:52 am - Karthik: Lunch at the canteen? parking is crowded though
+21/02/2026, 11:03 am - Priya: Ro you free tomorrow evening?
+21/02/2026, 2:23 pm - Priya: Rohan did you see the breadboards message?
+21/02/2026, 3:20 pm - Rohan: The sensor kit is in the shared drive, check it
+21/02/2026, 4:19 pm - Rohan: Anyone has the lab schedule?
+21/02/2026, 11:22 pm - Rohan: The router needs a look when someone gets time
+22/02/2026, 7:43 pm - Karthik: The sensor kit needs a look when someone gets time
+22/02/2026, 8:22 pm - Arun: Lunch at the canteen? canteen is crowded though
+22/02/2026, 8:38 pm - Divya: all did you see the banner design message?
+22/02/2026, 10:35 pm - Priya: Kavya you free tomorrow evening?
+22/02/2026, 10:51 pm - Arun: Why is the department office locked today
+22/02/2026, 11:16 pm - Priya: Power cut in the department office again
+23/02/2026, 1:22 pm - Kavya: Lunch at the canteen? main gate is crowded though
+23/02/2026, 1:46 pm - Meghna: Semma da
+23/02/2026, 4:05 pm - Karthik: Reached the seminar hall, where is everyone?
+23/02/2026, 6:49 pm - Karthik: Did anyone see the new fest schedule?
+23/02/2026, 7:26 pm - Meghna: The fest schedule looks good to me
+23/02/2026, 10:36 pm - Rohan: Class got cancelled today, free till noon
+24/02/2026, 9:14 am - Priya: Did anyone see the new attendance sheet?
+24/02/2026, 3:45 pm - Arun: Which attendance sheet are we using, the old one or the new one?
+24/02/2026, 5:19 pm - Priya: Kav did you see the breadboards message?
+24/02/2026, 5:34 pm - Rohan: Why is the parking locked today
+24/02/2026, 8:45 pm - Kavya: Rohan did you see the budget sheet message?
+24/02/2026, 9:04 pm - Arun: Did anyone see the new poster?
+25/02/2026, 8:54 am - Arun: Class got cancelled today, free till 7 pm
 25/02/2026, 12:00 pm - Arun: I'll send the participation certificates to all workshop speakers by 15 March.
-25/02/2026, 2:19 pm - Rohan: Kar did you see the budget sheet message?
-25/02/2026, 4:22 pm - Priya: The poster needs a look when someone gets time
-25/02/2026, 4:48 pm - Kavya: Class got cancelled today, free till 6 pm
-25/02/2026, 4:48 pm - Divya: The attendance sheet looks good to me
-25/02/2026, 11:30 pm - Divya: Class got cancelled today, free till 5
-26/02/2026, 3:44 pm - Arun: Did anyone see the new banner design?
-26/02/2026, 7:19 pm - Divya: The lab schedule looks good to me
-26/02/2026, 10:29 pm - Priya: The fest schedule looks good to me
-26/02/2026, 10:44 pm - Priya: <Media omitted>
-26/02/2026, 11:09 pm - Kavya: Exam timetable is out, check the notice board
-26/02/2026, 11:29 pm - Divya: Pri you free tomorrow evening?
-27/02/2026, 9:14 am - Priya: Did anyone see the new banner design?
-27/02/2026, 1:20 pm - Meghna: Why is the department office locked today
-27/02/2026, 2:56 pm - Karthik: Seri da
+25/02/2026, 1:53 pm - Rohan: Exam timetable is out, check the notice board
+25/02/2026, 2:44 pm - Kavya: Lunch at the canteen? library is crowded though
+25/02/2026, 9:12 pm - Arun: The soldering station needs a look when someone gets time
+25/02/2026, 9:33 pm - Rohan: Innaiku class illa da
+25/02/2026, 10:32 pm - Karthik: Why is the department office locked today
+26/02/2026, 9:35 am - Karthik: Kavya you free tomorrow evening?
+26/02/2026, 11:30 am - Karthik: Is the IoT lab open now?
+26/02/2026, 6:38 pm - Priya: Is the parking open now?
+26/02/2026, 8:30 pm - Karthik: Did anyone see the new lab schedule?
+26/02/2026, 9:00 pm - Rohan: Class got cancelled today, free till 4
+26/02/2026, 10:04 pm - Divya: The banner design needs a look when someone gets time
+27/02/2026, 9:31 am - Kavya: Reached the main gate, where is everyone?
+27/02/2026, 12:36 pm - Divya: The lab schedule needs a look when someone gets time
+27/02/2026, 3:08 pm - Arun: Did anyone see the new sensor kit?
 27/02/2026, 4:30 pm - Rohan: Returned all 8 boards, Bala sir signed the register.
 27/02/2026, 4:31 pm - Rohan: <Media omitted>
 27/02/2026, 6:17 pm - Divya: Reached the auditorium, where is everyone?
-27/02/2026, 6:18 pm - Divya: all did you see the router message?
-27/02/2026, 11:05 pm - Arun: Power cut in the IoT lab again
-27/02/2026, 11:28 pm - Arun: Class got cancelled today, free till 5
-28/02/2026, 2:24 pm - Meghna: Anyone has the sensor kit?
-28/02/2026, 3:02 pm - Arun: Why is the seminar hall locked today
-28/02/2026, 4:30 pm - Kavya: Lunch at the canteen? seminar hall is crowded though
-28/02/2026, 4:45 pm - Kavya: Kar did you see the lab schedule message?
-28/02/2026, 6:22 pm - Rohan: Priya did you see the breadboards message?
-28/02/2026, 6:49 pm - Rohan: Class got cancelled today, free till 5
-28/02/2026, 8:36 pm - Meghna: Pri you free tomorrow evening?
-28/02/2026, 9:56 pm - Meghna: Exam timetable is out, check the notice board
-01/03/2026, 8:53 pm - Priya: Did anyone see the new banner design?
-01/03/2026, 9:27 pm - Divya: Power cut in the main gate again
-01/03/2026, 9:49 pm - Divya: Reached the canteen, where is everyone?
-02/03/2026, 11:37 am - Arun: Lunch at the canteen? IoT lab is crowded though
-02/03/2026, 2:27 pm - Meghna: Bus romba late da
-02/03/2026, 11:35 pm - Priya: Bus romba late da
-03/03/2026, 10:29 am - Rohan: Did anyone see the new poster?
-03/03/2026, 1:13 pm - Karthik: Did anyone see the new workshop slides?
-03/03/2026, 2:26 pm - Kavya: Reached the main gate, where is everyone?
-03/03/2026, 4:55 pm - Karthik: lol all that was funny
-03/03/2026, 6:20 pm - Kavya: Exam timetable is out, check the notice board
-04/03/2026, 9:17 am - Kavya: Why is the parking locked today
-04/03/2026, 4:15 pm - Meghna: The poster needs a look when someone gets time
-04/03/2026, 11:34 pm - Meghna: Which fest schedule are we using, the old one or the new one?
-05/03/2026, 11:01 am - Rohan: Machan, lab key yaar kitta irukku?
-05/03/2026, 4:27 pm - Meghna: Machan, lab key yaar kitta irukku?
+27/02/2026, 6:18 pm - Divya: all did you see the banner design message?
+27/02/2026, 8:46 pm - Divya: Bus romba late da
+27/02/2026, 9:52 pm - Priya: Exam timetable is out, check the notice board
+27/02/2026, 11:00 pm - Kavya: Lunch at the canteen? parking is crowded though
+28/02/2026, 1:33 pm - Divya: Why is the library locked today
+28/02/2026, 5:07 pm - Priya: Anyone has the soldering station?
+28/02/2026, 7:59 pm - Arun: Which sponsor deck are we using, the old one or the new one?
+28/02/2026, 8:02 pm - Kavya: Anyone has the poster?
+28/02/2026, 9:07 pm - Meghna: Is the main gate open now?
+28/02/2026, 10:10 pm - Kavya: Power cut in the department office again
+01/03/2026, 2:25 pm - Divya: Arun you free tomorrow evening?
+01/03/2026, 3:55 pm - Kavya: The breadboards is in the shared drive, check it
+01/03/2026, 4:34 pm - Karthik: Anyone has the poster?
+02/03/2026, 8:23 am - Rohan: Power cut in the main gate again
+02/03/2026, 8:53 pm - Priya: Did anyone see the new banner design?
+02/03/2026, 9:27 pm - Divya: Power cut in the main gate again
+02/03/2026, 9:39 pm - Divya: Why is the seminar hall locked today
+02/03/2026, 9:49 pm - Divya: Reached the canteen, where is everyone?
+03/03/2026, 11:37 am - Arun: Lunch at the canteen? auditorium is crowded though
+03/03/2026, 5:54 pm - Divya: The fest schedule looks good to me
+03/03/2026, 6:27 pm - Kavya: all you free tomorrow evening?
+04/03/2026, 12:04 pm - Arun: Lunch at the canteen? library is crowded though
+04/03/2026, 6:56 pm - Karthik: Class got cancelled today, free till 6 pm
+04/03/2026, 11:27 pm - Priya: Power cut in the library again
 05/03/2026, 8:00 pm - Karthik: Might look at sponsors for next year, not sure.
-05/03/2026, 9:24 pm - Arun: Exam timetable is out, check the notice board
-06/03/2026, 10:07 am - Karthik: Class got cancelled today, free till noon
-06/03/2026, 7:42 pm - Arun: Lunch at the canteen? auditorium is crowded though
-06/03/2026, 11:38 pm - Divya: Which workshop slides are we using, the old one or the new one?
-07/03/2026, 3:57 pm - Rohan: Aru you free tomorrow evening?
-07/03/2026, 4:50 pm - Divya: Did anyone see the new poster?
-07/03/2026, 7:37 pm - Arun: lol all that was funny
-08/03/2026, 12:18 pm - Priya: Ro did you see the workhsop slides message?
-08/03/2026, 4:36 pm - Rohan: The sensor kit is in the shared drive, check it
-08/03/2026, 4:44 pm - Karthik: Power cut in the parking again
-08/03/2026, 6:13 pm - Priya: Is the auditroium open now?
-09/03/2026, 2:53 pm - Karthik: Lunch at the canteen? auditorium is crowded though
-09/03/2026, 4:34 pm - Karthik: Exam timetable is out, check the notice board
-09/03/2026, 11:01 pm - Karthik: Did anyone see the new breadboards?
-10/03/2026, 8:35 am - Kavya: Kavya did you see the lab schedule message?
-10/03/2026, 6:12 pm - Arun: Class got cancelled today, free till 4
-10/03/2026, 7:55 pm - Meghna: Exam timetable is out, check the notice board
-10/03/2026, 11:04 pm - Meghna: Romba nalla irukku
-11/03/2026, 5:37 pm - Arun: Did anyone see the new sensor kit?
-11/03/2026, 5:46 pm - Kavya: Power cut in the seminar hall again
-11/03/2026, 8:51 pm - Divya: Anyone has the banner design?
-12/03/2026, 12:33 pm - Priya: Why is the parking locked today
-12/03/2026, 1:03 pm - Divya: This message was deleted
-12/03/2026, 8:41 pm - Karthik: Reached the main gate, where is everyone?
-12/03/2026, 10:41 pm - Rohan: lol Meg that was funny
-12/03/2026, 10:59 pm - Rohan: Aama da, same doubt enakkum
-13/03/2026, 9:37 am - Priya: The attendance sheet needs a look when someone gets time
-13/03/2026, 2:37 pm - Divya: The breadboards looks good to me
-13/03/2026, 8:54 pm - Divya: Class got cancelled today, free till 7 pm
-14/03/2026, 11:04 am - Kavya: The workshop slides needs a look when someone gets time
-14/03/2026, 8:55 pm - Karthik: Anyone has the sponsor deck?
-14/03/2026, 8:57 pm - Arun: Power cut in the parking again
-14/03/2026, 10:29 pm - Meghna: The poster looks good to me
-15/03/2026, 2:16 pm - Kavya: Exam timetable is out, check the notice board
-15/03/2026, 2:25 pm - Divya: Exam timetable is out, check the notice board
-15/03/2026, 6:11 pm - Karthik: Why is the IoT lab locked today
-15/03/2026, 6:35 pm - Priya: Exam timetable is out, check the notice board
-16/03/2026, 12:44 pm - Divya: lol all that was funny
-16/03/2026, 2:10 pm - Priya: The sensor kit looks good to me
-16/03/2026, 5:16 pm - Priya: The budget sheet needs a look when someone gets time
-17/03/2026, 2:22 pm - Arun: Seri da
-17/03/2026, 2:44 pm - Meghna: Anyone has the lab schedule?
-17/03/2026, 7:45 pm - Divya: The workshop slides needs a look when someone gets time
+05/03/2026, 10:34 pm - Rohan: Class got cancelled today, free till 7 pm
+05/03/2026, 10:53 pm - Kavya: Exam timetable is out, check the notice board
+05/03/2026, 10:56 pm - Karthik: all you free tomorrow evening?
+06/03/2026, 4:15 pm - Meghna: The poster needs a look when someone gets time
+06/03/2026, 4:55 pm - Karthik: Power cut in the auditorium again
+06/03/2026, 8:30 pm - Priya: Ro you free tomorrow evening?
+06/03/2026, 9:58 pm - Priya: Which breadboards are we using, the old one or the new one?
+07/03/2026, 3:45 pm - Meghna: The budget sheet looks good to me
+07/03/2026, 4:26 pm - Rohan: Did anyone see the new soldering station?
+07/03/2026, 6:34 pm - Meghna: This message was deleted
+08/03/2026, 4:50 pm - Divya: Did anyone see the new poster?
+08/03/2026, 7:49 pm - Divya: The attendance sheet needs a look when someone gets time
+08/03/2026, 9:23 pm - Rohan: Machan, lab key yaar kitta irukku?
+08/03/2026, 10:00 pm - Kavya: lol all that was funny
+09/03/2026, 9:18 am - Rohan: Class got cancelled today, free till 5
+09/03/2026, 1:02 pm - Divya: Kav you free tomorrow evening?
+09/03/2026, 8:28 pm - Karthik: Is the main gate open now?
+09/03/2026, 10:45 pm - Karthik: Did anyone see the new soldering station?
+10/03/2026, 10:12 am - Meghna: Power cut in the seminar hall again
+10/03/2026, 8:17 pm - Kavya: Anyone has the banner design?
+10/03/2026, 10:27 pm - Rohan: Anyone has the attendance sheet?
+11/03/2026, 2:20 pm - Priya: Is the IoT lab open now?
+11/03/2026, 3:05 pm - Rohan: lol Priya that was funny
+11/03/2026, 3:37 pm - Rohan: The breadboards is in the shared drive, check it
+12/03/2026, 10:22 am - Divya: Did anyone see the new attendance sheet?
+12/03/2026, 2:49 pm - Arun: Semma da
+12/03/2026, 5:39 pm - Arun: Anyone has the sponsor deck?
+13/03/2026, 6:11 pm - Meghna: Lunch at the canteen? canteen is crowded though
+13/03/2026, 9:22 pm - Priya: Bus romba late da
+13/03/2026, 10:18 pm - Karthik: Which budget sheet are we using, the old one or the new one?
+13/03/2026, 11:21 pm - Meghna: Reached the auditorium, where is everyone?
+13/03/2026, 11:38 pm - Priya: Class got cancelled today, free till 4
+14/03/2026, 2:47 pm - Rohan: Lunch at the canteen? seminar hall is crowded though
+14/03/2026, 4:19 pm - Kavya: Which breadboards are we using, the old one or the new one?
+14/03/2026, 10:13 pm - Priya: Why is the auditorium locked today
+15/03/2026, 3:02 pm - Priya: Is the department office open now?
+15/03/2026, 5:10 pm - Priya: Innaiku class illa da
+15/03/2026, 7:43 pm - Karthik: The poster needs a look when someone gets time
+15/03/2026, 10:34 pm - Rohan: Lunch at the canteen? auditorium is crowded though
+16/03/2026, 10:28 am - Meghna: Which router are we using, the old one or the new one?
+16/03/2026, 12:11 pm - Divya: <Media omitted>
+16/03/2026, 2:56 pm - Arun: Ro you free tomorrow evening?
+16/03/2026, 8:21 pm - Kavya: Anyone has the banner design?
+16/03/2026, 10:00 pm - Karthik: The sensor kit needs a look when someone gets time
+17/03/2026, 11:30 am - Karthik: Lunch at the canteen? IoT lab is crowded though
+17/03/2026, 12:34 pm - Karthik: The soldering station needs a look when someone gets time
+17/03/2026, 8:38 pm - Kavya: The router is in the shared drive, check it
 18/03/2026, 12:45 pm - Kavya: Speakers are still asking for their certificates, nobody has sent them yet.
-18/03/2026, 7:27 pm - Meghna: Which lab schedule are we using, the old one or the new one?
-18/03/2026, 7:46 pm - Kavya: Semma da
-18/03/2026, 8:01 pm - Arun: Anyone has the workshop slides?
-19/03/2026, 7:06 pm - Kavya: Aru you free tomorrow evening?
-19/03/2026, 8:54 pm - Meghna: <Media omitted>
+18/03/2026, 2:11 pm - Meghna: Is the canteen open now?
+18/03/2026, 6:14 pm - Priya: The banner design looks good to me
+18/03/2026, 9:41 pm - Kavya: Lunch at the canteen? auditorium is crowded though
+19/03/2026, 5:14 pm - Kavya: Aru you free tomorrow evening?
 19/03/2026, 10:47 pm - Kavya: Did anyone see the new budget sheet?
-19/03/2026, 11:05 pm - Kavya: Which attendance sheet are we using, the old one or the new one?
-20/03/2026, 1:50 pm - Karthik: Class got cancelled today, free till 7 pm
-20/03/2026, 7:23 pm - Karthik: Kavya did you see the workshop slides message?
-20/03/2026, 11:19 pm - Arun: Anyone has the poster?
-20/03/2026, 11:23 pm - Divya: Anyone has the lab schedule?
-21/03/2026, 5:17 pm - Priya: Reached the main gate, where is everyone?
-21/03/2026, 7:21 pm - Karthik: The sensor kit needs a look when someone gets time
-21/03/2026, 11:05 pm - Arun: The fest schedule looks good to me
-21/03/2026, 11:22 pm - Arun: Kav you free tomorrow evening?
-22/03/2026, 8:45 am - Meghna: Lunch at the canteen? parking is crowded though
+19/03/2026, 11:05 pm - Kavya: Which breadboards are we using, the old one or the new one?
+20/03/2026, 8:55 am - Divya: Divya you free tomorrow evening?
+20/03/2026, 6:20 pm - Arun: Why is the seminar hall locked today
+20/03/2026, 9:05 pm - Rohan: Exam timetable is out, check the notice board
+20/03/2026, 9:42 pm - Karthik: The fest schdeule needs a look when someone gets time
+20/03/2026, 9:57 pm - Meghna: The budget sheet looks good to me
+21/03/2026, 3:42 pm - Divya: Kav you free tomorrow evening?
+21/03/2026, 6:26 pm - Arun: Lunch at the canteen? seminar hall is crowded though
+21/03/2026, 8:10 pm - Arun: Machan, lab key yaar kitta irukku?
+22/03/2026, 12:11 pm - Rohan: Why is the seminar hall locked today
 22/03/2026, 1:00 pm - Rohan: Will see if the lab has extra sensors.
-22/03/2026, 1:37 pm - Priya: Is the seminar hall open now?
-22/03/2026, 1:49 pm - Arun: The budget sheet looks good to me
-22/03/2026, 9:32 pm - Rohan: Exam timetable is out, check the notice board
-23/03/2026, 8:29 am - Meghna: The workshop slides is in the shared drive, check it
-23/03/2026, 5:59 pm - Karthik: Anyone has the router?
-23/03/2026, 8:49 pm - Priya: Lunch at the canteen? seminar hall is crowded though
-24/03/2026, 9:10 am - Meghna: Aama da, same doubt enakkum
-24/03/2026, 4:51 pm - Meghna: lol all that was funny
-24/03/2026, 7:10 pm - Divya: The banner design needs a look when someone gets time
-24/03/2026, 9:03 pm - Priya: Semma da
-25/03/2026, 11:03 am - Meghna: Machan, lab key yaar kitta irukku?
-25/03/2026, 4:42 pm - Divya: Meghna you free tomorrow evening?
-25/03/2026, 9:39 pm - Priya: lol Kav that was funny
-26/03/2026, 9:22 pm - Kavya: Power cut in the seminar hall again
-26/03/2026, 10:20 pm - Rohan: Why is the library locked today
-26/03/2026, 10:45 pm - Meghna: Rohan you free tomorrow evening?
-27/03/2026, 12:16 pm - Divya: Power cut in the main gate again
-27/03/2026, 12:20 pm - Divya: lol Meghna that was funny
-27/03/2026, 2:22 pm - Divya: Class got cancelled today, free till noon
-28/03/2026, 10:04 am - Arun: Enna da idhu
-28/03/2026, 6:12 pm - Divya: Pri did you see the breadboards message?
-28/03/2026, 8:05 pm - Rohan: Kavya did you see the banner design message?
-28/03/2026, 8:09 pm - Rohan: all you free tomorrow evening?
-29/03/2026, 4:54 pm - Divya: Reached the library, whree is everyone?
-29/03/2026, 5:06 pm - Karthik: Lunch at the canteen? main gate is crowded though
-29/03/2026, 9:08 pm - Arun: Exam timetable is out, check the notice board
-30/03/2026, 8:11 am - Divya: Why is the main gate locked today
-30/03/2026, 2:57 pm - Meghna: Enna da idhu
-30/03/2026, 8:25 pm - Arun: Did anyone see the new workshop slides?
-30/03/2026, 8:58 pm - Karthik: Why is the department office locked today
-31/03/2026, 12:18 pm - Divya: This message was deleted
-31/03/2026, 12:23 pm - Arun: Lunch at the canteen? seminar hall is crowded though
-31/03/2026, 10:35 pm - Priya: The breadboards needs a look when someone gets time
-01/04/2026, 7:53 pm - Divya: Reached the auditorium, where is everyone?
-01/04/2026, 9:45 pm - Priya: Lunch at the canteen? IoT lab is crowded though
-02/04/2026, 3:12 pm - Karthik: <Media omitted>
-02/04/2026, 8:48 pm - Rohan: The breadboards is in the shared drive, check it
-02/04/2026, 10:53 pm - Rohan: lol Pri that was funny
-03/04/2026, 10:43 pm - Priya: Kar did you see the router message?
-03/04/2026, 11:16 pm - Priya: Priya you free tomorrow evening?
-04/04/2026, 2:42 pm - Meghna: Kav you free tomorrow evening?
-04/04/2026, 6:04 pm - Rohan: The fest schedule needs a look when someone gets time
-05/04/2026, 3:41 pm - Arun: Did anyone see the new fest schedule?
-05/04/2026, 7:29 pm - Divya: The sensor kit is in the shared drive, check it
-05/04/2026, 10:13 pm - Karthik: Which fest schedule are we using, the old one or the new one?
-06/04/2026, 5:56 pm - Meghna: Lunch at the canteen? parking is crowded though
-06/04/2026, 7:07 pm - Arun: lol all that was funny
-06/04/2026, 8:26 pm - Karthik: Pri did you see the sensor kit message?
-07/04/2026, 7:28 pm - Kavya: Divs did you see the router message?
-07/04/2026, 11:22 pm - Kavya: Exam timetable is out, check the notice board
-08/04/2026, 10:08 am - Kavya: The budget sheet looks good to me
+22/03/2026, 5:35 pm - Meghna: Exam timetable is out, check the notice board
+22/03/2026, 7:40 pm - Divya: Anyone has the sponsor deck?
+22/03/2026, 8:19 pm - Arun: Class got cacnelled today, free till 4
+23/03/2026, 12:09 pm - Priya: The banenr design is in the shared drive, check it
+23/03/2026, 3:31 pm - Rohan: Anyone has the budget sheet?
+23/03/2026, 8:51 pm - Kavya: Which workshop slides are we using, the old one or the new one?
+24/03/2026, 6:58 pm - Arun: Class got cancelled today, free till noon
+24/03/2026, 10:38 pm - Arun: lol Kavya that was funny
+24/03/2026, 11:13 pm - Meghna: Is the department office open now?
+25/03/2026, 9:10 am - Meghna: Machan, lab key yaar kitta irukku?
+25/03/2026, 1:00 pm - Meghna: Reached the parking, where is everyone?
+25/03/2026, 1:54 pm - Arun: The poster looks good to me
+25/03/2026, 5:44 pm - Karthik: lol Ro that was funny
+25/03/2026, 6:00 pm - Kavya: Is the seminar hall open now?
+26/03/2026, 4:03 pm - Rohan: Reached the parking, where is everyone?
+26/03/2026, 6:49 pm - Divya: Reached the parking, where is everyone?
+26/03/2026, 7:20 pm - Arun: Which router are we using, the old one or the new one?
+27/03/2026, 3:21 pm - Karthik: Kar did you see the soldering station message?
+27/03/2026, 8:08 pm - Kavya: Seri da
+27/03/2026, 8:33 pm - Kavya: Anyone has the fest schedule?
+28/03/2026, 11:37 am - Karthik: Raeched the auditorium, where is everyone?
+28/03/2026, 5:06 pm - Karthik: Lunch at the canteen? main gate is crowded though
+28/03/2026, 10:20 pm - Meghna: Power cut in the seminar hall again
+29/03/2026, 8:16 am - Divya: Bus romba late da
+29/03/2026, 3:18 pm - Rohan: Exam timetable is out, check the notice board
+29/03/2026, 11:31 pm - Arun: Lunch at the canteen? canteen is crowded though
+30/03/2026, 3:53 pm - Rohan: The router looks good to me
+30/03/2026, 10:09 pm - Rohan: Exam timetable is out, check the ntoice board
+30/03/2026, 11:33 pm - Kavya: Ro you free tomorrow evening?
+31/03/2026, 8:57 am - Rohan: Romba nalla irukku
+31/03/2026, 6:38 pm - Divya: Enna da idhu
+31/03/2026, 10:05 pm - Kavya: lol Kav that was funny
+01/04/2026, 11:59 am - Karthik: Anyone has the sensor kit?
+01/04/2026, 2:43 pm - Rohan: Power cut in the IoT lab aagin
+01/04/2026, 7:07 pm - Divya: Lunch at the canteen? parking is crowded though
+02/04/2026, 8:23 am - Priya: Anyone has the sponsor deck?
+02/04/2026, 9:42 am - Divya: Anyone has the sensor kit?
+03/04/2026, 8:47 am - Kavya: Did anyone see the new attendance sheet?
+03/04/2026, 9:43 pm - Priya: all did you see the sponsor deck message?
+04/04/2026, 4:03 pm - Rohan: Priya you free tomorrow evening?
+04/04/2026, 11:25 pm - Priya: Rohan did you see the breadboards message?
+05/04/2026, 6:58 pm - Priya: Power cut in the seminar hall again
+05/04/2026, 8:06 pm - Arun: Kar you free tomorrow evening?
+06/04/2026, 1:33 pm - Priya: The fest schedule looks good to me
+06/04/2026, 9:14 pm - Divya: The router looks good to me
+07/04/2026, 4:25 pm - Arun: Aru you free tomorrow evening?
+07/04/2026, 11:37 pm - Kavya: Anyone has the attendance sheet?
 08/04/2026, 3:10 pm - Divya: Reimbursed Mr. Ganesan the ₹2,400 for his travel today.
-08/04/2026, 5:21 pm - Arun: Power cut in the library again
-09/04/2026, 7:09 pm - Divya: Which fest schedule are we using, the old one or the new one?
-09/04/2026, 9:47 pm - Meghna: Why is the parking locked today
-10/04/2026, 3:08 pm - Rohan: Lunch at the canteen? parking is crowded though
-10/04/2026, 8:47 pm - Karthik: Aama da, same doubt enakkum
-11/04/2026, 9:01 pm - Arun: Machan, lab key yaar kitta irukku?
-11/04/2026, 10:27 pm - Karthik: Which router are we using, the old one or the new one?
-12/04/2026, 3:35 pm - Divya: Did anyone see the new workshop slides?
-12/04/2026, 8:35 pm - Rohan: The sensor kit looks good to me
-13/04/2026, 11:17 am - Arun: The sponsor deck needs a look when someone gets time
-13/04/2026, 7:00 pm - Arun: Class got cancelled today, free till noon
-13/04/2026, 8:10 pm - Kavya: The fest schedule needs a look when someone gets time
-14/04/2026, 9:34 am - Priya: Exam timetable is out, check the notice board
-14/04/2026, 3:02 pm - Priya: Which sponsor deck are we using, the old one or the new one?
-15/04/2026, 8:14 am - Kavya: Anyone has the sensor kit?
-15/04/2026, 12:38 pm - Arun: Is the IoT lab open now?
-15/04/2026, 3:41 pm - Divya: The sponsor deck looks good to me
-16/04/2026, 9:55 am - Divya: Anyone has the soldering station?
-16/04/2026, 1:48 pm - Rohan: Why is the canteen locked today
-17/04/2026, 11:14 am - Divya: Exam timetable is out, check the notice board
-17/04/2026, 4:22 pm - Meghna: The sponsor deck is in the shared drive, check it
-18/04/2026, 12:31 pm - Arun: Reached the IoT lab, where is everyone?
-18/04/2026, 1:38 pm - Arun: Which attendance sheet are we using, the old one or the new one?
-18/04/2026, 10:16 pm - Rohan: Is the canteen open now?
+08/04/2026, 3:17 pm - Karthik: This message was deleted
+08/04/2026, 10:59 pm - Divya: Reached the seminar hall, where is everyone?
+09/04/2026, 12:56 pm - Kavya: The banner design is in the shared drive, check it
+09/04/2026, 10:08 pm - Meghna: Divs did you see the poster message?
+10/04/2026, 12:29 pm - Kavya: Why is the library locked today
+10/04/2026, 11:25 pm - Karthik: Power cut in the parking again
+11/04/2026, 1:04 pm - Rohan: Why is the auditorium locked today
+11/04/2026, 4:39 pm - Kavya: Power cut in the parking again
+11/04/2026, 11:32 pm - Rohan: Power cut in the IoT lab again
+12/04/2026, 7:20 pm - Kavya: Is the department office open now?
+12/04/2026, 8:33 pm - Kavya: Is the seminar hall open now?
+13/04/2026, 1:41 pm - Karthik: Exam timetable is out, check the notice board
+13/04/2026, 9:24 pm - Karthik: Reached the auditorium, where is everyone?
+13/04/2026, 9:34 pm - Divya: lol all that was funny
+14/04/2026, 1:00 pm - Arun: Is the semianr hall open now?
+14/04/2026, 8:10 pm - Kavya: The fest schedule needs a look when someone gets time
+15/04/2026, 1:35 pm - Karthik: Lunch at the canteen? seminar hall is crowded though
+15/04/2026, 7:55 pm - Kavya: Reached the library, where is everyone?
+15/04/2026, 9:06 pm - Meghna: Anyone has the router?
+16/04/2026, 9:55 pm - Kavya: Exam timetable is out, check the notice board
+16/04/2026, 10:52 pm - Rohan: Enna da idhu
+17/04/2026, 12:19 pm - Divya: Did anyone see the new banner design?
+17/04/2026, 6:54 pm - Kavya: The lab schedule needs a look when someone gets time
+17/04/2026, 8:54 pm - Kavya: Arun did you see the breadboards message?
+18/04/2026, 10:17 am - Rohan: Anyone has the lab schedule?
+18/04/2026, 1:36 pm - Meghna: Romba nalla irukku
+18/04/2026, 7:29 pm - Meghna: Is the main gate open now?
+19/04/2026, 4:39 pm - Arun: Why is the auditorium locked today
 19/04/2026, 6:43 pm - Arun: Enna da idhu
-19/04/2026, 8:16 pm - Rohan: Why is the parking locked today
-19/04/2026, 11:25 pm - Meghna: The banner design is in the shared drive, check it
-20/04/2026, 6:00 pm - Meghna: Class got cancelled today, free till 5
-20/04/2026, 7:29 pm - Meghna: The budget sheet needs a look when someone gets time
-20/04/2026, 9:21 pm - Divya: Enna da idhu
-21/04/2026, 8:24 pm - Arun: This message was deleted
-21/04/2026, 9:29 pm - Divya: Why is the IoT lab locked today
-22/04/2026, 3:11 pm - Karthik: The sensor kit is in the shared drive, check it
-22/04/2026, 8:08 pm - Priya: Romba nalla irukku
+19/04/2026, 8:47 pm - Rohan: Anyone has the poster?
+20/04/2026, 12:10 pm - Karthik: Lunch at the canteen? parking is crowded though
+20/04/2026, 12:59 pm - Priya: Innaiku class illa da
+21/04/2026, 10:48 am - Meghna: Reached the canteen, where is everyone?
+21/04/2026, 7:57 pm - Arun: lol Ro that was funny
+22/04/2026, 12:31 pm - Rohan: Lunch at the canteen? auditorium is crowedd though
+22/04/2026, 6:24 pm - Priya: Class got cancelled today, free till 6 pm
+22/04/2026, 9:14 pm - Kavya: Class got cancelled today, free till 7 pm
 23/04/2026, 4:14 pm - Kavya: Innaiku class illa da
-23/04/2026, 8:41 pm - Divya: Lunch at the canteen? auditorium is crowded though
-23/04/2026, 9:11 pm - Meghna: Power cut in the seminar hall again
-24/04/2026, 12:55 pm - Divya: Reached the auditorium, where is everyone?
-24/04/2026, 2:48 pm - Meghna: lol Aru that was fnuny
-25/04/2026, 2:12 pm - Divya: The sponsor deck needs a look when someone gets time
-25/04/2026, 8:27 pm - Karthik: Exam timetable is out, chcek the notice board
-26/04/2026, 8:20 am - Karthik: <Media omitted>
-26/04/2026, 10:56 pm - Rohan: Why is the canteen locked today
-27/04/2026, 6:35 pm - Priya: Arun you free tomorrow evening?
-27/04/2026, 7:37 pm - Karthik: Lunch at the canteen? seminar hall is crowded though
-28/04/2026, 2:29 pm - Karthik: Class got cancelled today, free till 4
-28/04/2026, 10:13 pm - Rohan: <Media omitted>
-29/04/2026, 4:09 pm - Divya: Anyone has the sensor kit?
-29/04/2026, 11:30 pm - Karthik: Anyone has the poster?
-30/04/2026, 2:02 pm - Kavya: Exam timetable is out, check the notice board
-30/04/2026, 3:28 pm - Rohan: Class got cancelled today, free till noon
-01/05/2026, 10:11 am - Rohan: lol Aru that was funny
-01/05/2026, 8:08 pm - Meghna: Class got cancelled today, free till 7 pm
-02/05/2026, 10:01 am - Kavya: The workshop slides needs a look when someone gets time
-03/05/2026, 2:09 pm - Rohan: Exam timetable is out, check the notice board
-04/05/2026, 3:31 pm - Rohan: Reached the seminar hall, where is everyone?
-04/05/2026, 9:16 pm - Divya: <Media omitted>
-05/05/2026, 12:20 pm - Rohan: Reached the parking, where is everyone?
-05/05/2026, 11:10 pm - Meghna: The breadboards looks good to me
-06/05/2026, 10:45 pm - Priya: The breadboards is in the shared drive, check it
-08/05/2026, 7:27 pm - Meghna: Kavya did you see the workshop slides message?
-08/05/2026, 9:39 pm - Divya: Is the main gate open now?
-11/05/2026, 7:37 pm - Kavya: The budget sheet is in the shared drive, check it
-11/05/2026, 9:24 pm - Priya: Power cut in the seminar hall again
-12/05/2026, 1:13 pm - Meghna: Class got cancelled today, free till 7 pm
-14/05/2026, 2:44 pm - Priya: Machan, lab key yaar kitta irukku?
-14/05/2026, 4:51 pm - Arun: The attendance sheet is in the shared drive, check it
+23/04/2026, 6:35 pm - Priya: Seri da
+23/04/2026, 9:44 pm - Meghna: Enna da idhu
+24/04/2026, 11:06 am - Arun: Priya you free tomorrow evening?
+24/04/2026, 5:50 pm - Divya: The budget sheet is in the shared drive, check it
+24/04/2026, 9:30 pm - Karthik: Class got cancelled today, free till noon
+25/04/2026, 2:22 pm - Arun: Whcih soldering station are we using, the old one or the new one?
+25/04/2026, 8:54 pm - Priya: The router looks good to me
+26/04/2026, 7:24 pm - Priya: Anyone has the poster?
+26/04/2026, 7:45 pm - Meghna: The soldering station needs a look when someone gets time
+27/04/2026, 8:24 am - Meghna: Class got cancelled today, free till 5
+27/04/2026, 9:52 pm - Arun: The lab schedule needs a look when someone gets time
+28/04/2026, 7:39 pm - Arun: Semma da
+28/04/2026, 10:21 pm - Karthik: Anyone has the soldering station?
+28/04/2026, 11:38 pm - Priya: lol Kav that was funny
+29/04/2026, 7:13 pm - Arun: The sponsor deck needs a look when someone gets time
+29/04/2026, 10:21 pm - Rohan: Class got cancelled today, free till 5
+30/04/2026, 5:47 pm - Divya: Priya you free tomorrow evening?
+30/04/2026, 6:48 pm - Rohan: Power cut in the auditorium again
+01/05/2026, 11:01 pm - Karthik: Lunch at the canteen? canteen is crowded though
+02/05/2026, 3:35 pm - Karthik: The workshop slides is in the shared drive, check it
+02/05/2026, 10:07 pm - Priya: Did anyone see the new workshop slides?
+03/05/2026, 6:02 pm - Karthik: Exam timetable is out, check the notice borad
+06/05/2026, 5:40 pm - Divya: Anyone has the sensor kit?
+06/05/2026, 8:40 pm - Rohan: Did anyone see the new poster?
+07/05/2026, 10:20 am - Kavya: Exam timetable is out, check the notice board
+07/05/2026, 4:07 pm - Meghna: lol Karthik that was funny
+09/05/2026, 4:37 pm - Divya: Class got cancelled today, free till 5
+11/05/2026, 3:42 pm - Karthik: Semma da
+13/05/2026, 6:14 pm - Meghna: Machan, lab key yaar kitta irukku?
+14/05/2026, 3:28 pm - Kavya: Anyone has the sensor kit?
 14/05/2026, 6:00 pm - Karthik left
-17/05/2026, 8:22 pm - Arun: all you free tomorrow evening?
-18/05/2026, 4:58 pm - Priya: The lab schedule needs a look when someone gets time
-18/05/2026, 8:36 pm - Divya: Exam timetable is out, check the notice board
-19/05/2026, 8:34 pm - Arun: Is the parking open now?
-20/05/2026, 9:09 pm - Arun: Did anyone see the new router?
-21/05/2026, 8:37 pm - Priya: Reached the auditorium, where is everyone?
-22/05/2026, 9:30 am - Divya: Exam timetable is out, check the notice board
-25/05/2026, 9:38 pm - Rohan: Why is the IoT lab locked today
-27/05/2026, 7:03 pm - Divya: The router is in the shared drive, check it
-28/05/2026, 11:08 pm - Rohan: Is the auditorium open now?
-29/05/2026, 4:49 pm - Meghna: Lunch at the canteen? IoT lab is crowded though
-31/05/2026, 11:16 pm - Kavya: Power cut in the department office again
-31/05/2026, 11:25 pm - Karthik: Did anyone see the new attendance sheet?
-18/06/2026, 2:41 pm - Meghna: Lunch at the canteen? library is crowded though
-18/06/2026, 11:05 pm - Karthik: lol all that was funny
+14/05/2026, 8:12 pm - Kavya: Lunch at the canteen? auditorium is crowded though
+15/05/2026, 8:36 pm - Divya: Exam timetable is out, check the notice board
+15/05/2026, 10:55 pm - Rohan: The fest schedule needs a look when someone gets time
+16/05/2026, 10:06 pm - Rohan: lol Meghna that was funny
+17/05/2026, 3:27 pm - Divya: Power cut in the parking again
+18/05/2026, 9:09 pm - Arun: Did anyone see the new router?
+19/05/2026, 8:37 pm - Priya: Reached the auditorium, where is everyone?
+20/05/2026, 9:30 am - Divya: Exam timetable is out, check the notice board
+23/05/2026, 9:38 pm - Rohan: Why is the seminar hall locked today
+24/05/2026, 8:41 pm - Arun: Power cut in the canteen again
+26/05/2026, 1:22 pm - Divya: lol Aru that was funny
+28/05/2026, 1:19 pm - Priya: The breadboards needs a look when someone gets time
+28/05/2026, 8:37 pm - Kavya: Aru you free tomorrow evening?
+29/05/2026, 4:10 pm - Arun: Exam timetable is out, check the notice board
+29/05/2026, 9:32 pm - Kavya: Why is the auditorium locked today
+01/06/2026, 10:12 pm - Divya: Did anyone see the new workshop slides?
+15/06/2026, 5:37 pm - Meghna: Why is the library locked today
+15/06/2026, 11:05 pm - Karthik: lol all that was funny
+18/06/2026, 8:35 pm - Arun: The attendance sheet needs a look when someone gets time
 20/06/2026, 12:00 pm - Karthik joined using this group's invite link
-20/06/2026, 5:05 pm - Meghna: Power cut in the library again
-20/06/2026, 10:25 pm - Meghna: Class got cancelled today, free till 6 pm
-30/06/2026, 8:11 pm - Arun: Reached the main gate, where is everyone?
-01/07/2026, 11:07 am - Meghna: The lab schedule looks good to me
-01/07/2026, 11:02 pm - Arun: The poster looks good to me
+01/07/2026, 2:45 pm - Karthik: The workshop slides needs a look when someone gets time
+01/07/2026, 3:03 pm - Karthik: Enna da idhu
+01/07/2026, 10:58 pm - Rohan: Enna da idhu
+01/07/2026, 11:02 pm - Arun: The banner design looks good to me
 01/07/2026, 11:05 pm - Divya: Semma da
-02/07/2026, 7:20 pm - Meghna: This message was deleted
-02/07/2026, 9:07 pm - Kavya: Lunch at the canteen? IoT lab is crowded though
-02/07/2026, 10:03 pm - Rohan: The router is in the shared drive, check it
-03/07/2026, 11:45 am - Kavya: Which budget sheet are we using, the old one or the new one?
-03/07/2026, 10:41 pm - Meghna: Anoyne has the router?
-03/07/2026, 11:29 pm - Priya: all you free tomorrow evening?
-04/07/2026, 8:04 pm - Divya: Power cut in the library again
-04/07/2026, 8:39 pm - Meghna: The workshop slieds looks good to me
+02/07/2026, 6:51 pm - Priya: <Media omitted>
+02/07/2026, 7:35 pm - Priya: Anyone has the attendance sheet?
+02/07/2026, 7:51 pm - Kavya: lol Aru that was funny
+03/07/2026, 4:54 pm - Kavya: The poster needs a look when someone gets time
+03/07/2026, 5:10 pm - Karthik: Ro you free tomorrow evening?
+03/07/2026, 8:33 pm - Priya: The breabdoards is in the shared drive, check it
+04/07/2026, 5:53 pm - Kavya: Power cut in the IoT lab again
+04/07/2026, 8:04 pm - Divya: Power cut in the IoT lab again
+04/07/2026, 10:29 pm - Arun: Which sensor kit are we using, the old one or the new one?
 04/07/2026, 11:07 pm - Meghna: Romba nalla irukku
 05/07/2026, 11:36 am - Arun: The sponsor deck needs a look when someone gets time
-05/07/2026, 1:08 pm - Rohan: The sponsor deck needs a look when someone gets time
-05/07/2026, 5:25 pm - Meghna: Power cut in the IoT lab again
-05/07/2026, 7:38 pm - Rohan: <Media omitted>
-06/07/2026, 9:50 am - Rohan: Lunch at the canteen? library is crowded though
-06/07/2026, 6:15 pm - Arun: The lab schedule needs a look when someone gets time
-06/07/2026, 7:22 pm - Meghna: Innaiku class illa da
-06/07/2026, 7:54 pm - Meghna: Is the canteen open now?
-07/07/2026, 3:37 pm - Priya: Rohan did you see the sponsor deck message?
-07/07/2026, 7:34 pm - Divya: all you free tomorrow evening?
-07/07/2026, 11:07 pm - Kavya: Why is the main gate locked today
-08/07/2026, 3:40 pm - Karthik: lol Aru that was funny
-08/07/2026, 6:51 pm - Arun: Reached the auditorium, where is everyone?
-08/07/2026, 10:53 pm - Rohan: The poster is in the shared drive, check it
-09/07/2026, 5:47 pm - Meghna: Reached the parking, where is everyone?
-09/07/2026, 6:51 pm - Rohan: Enna da idhu
-09/07/2026, 6:55 pm - Karthik: Divs did you see the breadboards message?
-10/07/2026, 6:00 pm - Karthik: Innaiku class illa da
-10/07/2026, 8:27 pm - Rohan: Is the seminar hall open now?
-10/07/2026, 11:24 pm - Divya: Is the department office open now?
-11/07/2026, 6:15 pm - Arun: Anyone has the budget sheet?
-11/07/2026, 7:11 pm - Karthik: Did anyone see the new router?
-11/07/2026, 7:32 pm - Divya: The attendance sheet needs a look when someone gets time
-11/07/2026, 10:07 pm - Rohan: lol Kar that was funny
-12/07/2026, 4:56 pm - Arun: Lunch at the canteen? parking is crowded though
-12/07/2026, 5:16 pm - Arun: Reached the auditorium, where is everyone?
-12/07/2026, 6:43 pm - Divya: Did anyone see the new sensor kit?
-13/07/2026, 1:08 pm - Arun: Did aynone see the new attendance sheet?
-13/07/2026, 5:34 pm - Divya: Kar did you see the workshop slides message?
-13/07/2026, 7:46 pm - Karthik: Aama da, same doubt enakkum
-14/07/2026, 4:32 pm - Rohan: lol all that was funny
-14/07/2026, 6:45 pm - Kavya: Bus romba late da
-14/07/2026, 8:26 pm - Priya: all did you see the breadboards message?
-14/07/2026, 9:18 pm - Divya: Rohan did you see the router message?
-15/07/2026, 1:38 pm - Rohan: Lunch at the canteen? seminar hall is crodwed though
-15/07/2026, 2:41 pm - Rohan: Semma da
-15/07/2026, 8:41 pm - Rohan: Anyone has the workshop slides?
-16/07/2026, 6:21 pm - Kavya: lol Pri that was funny
-16/07/2026, 11:03 pm - Kavya: Power cut in the auditorium again
-16/07/2026, 11:36 pm - Karthik: all you free tomorrow evening?
-17/07/2026, 11:09 am - Kavya: Is the seminar hall open now?
-17/07/2026, 4:09 pm - Kavya: The sensor kit is in the shared drive, check it
-17/07/2026, 9:02 pm - Rohan: Did anyone see the new soldering station?
-17/07/2026, 10:31 pm - Karthik: Power cut in the seminar hall again
+05/07/2026, 5:25 pm - Meghna: Power cut in the IoT lab aagin
+05/07/2026, 10:09 pm - Rohan: Anyone has the budget sheet?
+06/07/2026, 10:42 am - Divya: Which sponsor deck are we using, the old one or the new one?
+06/07/2026, 3:46 pm - Arun: Class got cancelled today, free till 6 pm
+06/07/2026, 6:04 pm - Kavya: all you free tomorrow evening?
+07/07/2026, 3:24 pm - Arun: Which fest schedule are we using, the old one or the new one?
+07/07/2026, 3:40 pm - Karthik: lol Aru that was funny
+07/07/2026, 6:48 pm - Karthik: all you free tomorrow evening?
+07/07/2026, 6:51 pm - Arun: Reached the auditorium, where is everyone?
+07/07/2026, 10:53 pm - Rohan: The poster is in the shared drive, check it
+08/07/2026, 5:47 pm - Meghna: Reached the parking, where is everyone?
+08/07/2026, 6:51 pm - Rohan: Enna da idhu
+08/07/2026, 6:55 pm - Karthik: Divs did you see the breadboards message?
+09/07/2026, 6:00 pm - Karthik: Innaiku class illa da
+09/07/2026, 8:27 pm - Rohan: Is the seminar hall open now?
+09/07/2026, 11:24 pm - Divya: Is the department office open now?
+10/07/2026, 1:37 pm - Priya: Why is the IoT lab locked today
+10/07/2026, 5:08 pm - Priya: The workshop slides looks good to me
+10/07/2026, 6:15 pm - Arun: Anyone has the banner design?
+10/07/2026, 9:00 pm - Rohan: Power cut in the department office again
+11/07/2026, 4:57 pm - Arun: Anyone has the attendance sheet?
+11/07/2026, 5:16 pm - Arun: Reached the auditorium, where is everyone?
+11/07/2026, 6:43 pm - Divya: Did anyone see the new workshop slides?
+12/07/2026, 8:56 am - Arun: The banner design looks good to me
+12/07/2026, 12:34 pm - Meghna: Why is the IoT lab locked today
+12/07/2026, 7:15 pm - Karthik: This message was deleted
+13/07/2026, 12:02 pm - Rohan: Class got cancelled today, free till 6 pm
+13/07/2026, 6:07 pm - Rohan: The router looks good to me
+13/07/2026, 7:31 pm - Priya: Is the main gate open now?
+13/07/2026, 7:41 pm - Meghna: lol Priya that was funny
+14/07/2026, 1:10 pm - Kavya: The router needs a look when someone gets time
+14/07/2026, 8:26 pm - Priya: Enna da idhu
+14/07/2026, 10:04 pm - Divya: The budget sheet is in the shared drive, check it
+15/07/2026, 7:56 pm - Arun: Lunch at the canteen? parking is crowded though
+15/07/2026, 9:20 pm - Divya: Exam timetable is out, check the notice board
+15/07/2026, 9:47 pm - Karthik: all did you see the sponsor deck message?
+16/07/2026, 6:50 pm - Rohan: Power cut in the department office again
+16/07/2026, 9:04 pm - Meghna: lol all that was funny
+16/07/2026, 10:39 pm - Kavya: The soldering station looks good to me
+17/07/2026, 1:18 pm - Divya: Reached the library, where is everyone?
+17/07/2026, 10:16 pm - Kavya: Anyone has the lab schedule?
+17/07/2026, 10:32 pm - Karthik: Why is the library locked today
 18/07/2026, 11:00 am - Arun: Odd semester starts soon. Same rule, every semester the lab needs the HoD's permission letter first.
 18/07/2026, 11:12 am - Arun: Club registration renewal is due every August and needs the Dean's signature from Student Affairs. Last August Priya had to chase it for two weeks.
-18/07/2026, 2:33 pm - Arun: Anyone has the sensor kit?
-18/07/2026, 4:52 pm - Karthik: Power cut in the main gate again
-18/07/2026, 6:06 pm - Rohan: Why is the canteen locked today
-18/07/2026, 7:37 pm - Karthik: all did you see the attendance sheet message?
-19/07/2026, 4:31 pm - Divya: Anyone has the breadboards?
-19/07/2026, 8:25 pm - Rohan: Rohan did you see the sensor kit message?
-19/07/2026, 8:58 pm - Arun: Arun you free tomorrow evening?
-20/07/2026, 8:11 am - Priya: lol Divya that was funny
+18/07/2026, 12:38 pm - Divya: Did anyone see the new fest schedule?
+18/07/2026, 1:21 pm - Rohan: Priya you free tomorrow evening?
+18/07/2026, 5:22 pm - Karthik: lol Ro that was funny
+18/07/2026, 7:08 pm - Priya: Which workshop slides are we using, the old one or the new one?
+18/07/2026, 10:55 pm - Priya: Machan, lab key yaar kitta irukku?
+19/07/2026, 8:22 pm - Arun: Anyone has the poster?
+19/07/2026, 11:33 pm - Meghna: The sensor kit needs a look when someone gets time
+19/07/2026, 11:39 pm - Rohan: Reached the main gate, where is everyone?
+20/07/2026, 5:29 pm - Arun: Which workshop slides are we using, the old one or the new one?
 20/07/2026, 7:40 pm - Arun: I'll submit the club registration renewal by 10 August.
-20/07/2026, 10:56 pm - Kavya: Is the department office open now?
-20/07/2026, 11:23 pm - Priya: Which attendance sheet are we using, the old one or the new one?
-21/07/2026, 12:53 pm - Rohan: Class got cancelled today, free till 6 pm
-21/07/2026, 1:59 pm - Kavya: Innaiku class illa da
-21/07/2026, 8:47 pm - Kavya: Did anyone see the new fest schedule?
-22/07/2026, 5:28 pm - Priya: Class got cancelled today, free till 5
-22/07/2026, 8:11 pm - Kavya: Did anyone see the new breadboards?
-22/07/2026, 11:30 pm - Rohan: The workshop slides looks good to me
-23/07/2026, 2:54 pm - Karthik: Is the seminar hall open now?
-23/07/2026, 4:07 pm - Meghna: Did anyone see the new lab schedule?
-23/07/2026, 9:11 pm - Meghna: The attendance sheet is in the shared drive, check it
-24/07/2026, 12:48 pm - Kavya: Power cut in the IoT lab again
-24/07/2026, 3:23 pm - Meghna: all did you see the fest schedule message?
-24/07/2026, 7:17 pm - Priya: all you free tomorrow evening?
-24/07/2026, 8:04 pm - Arun: Seri da
-24/07/2026, 8:31 pm - Priya: Did anyone see the new budget sheet?
+20/07/2026, 8:47 pm - Kavya: Did anyone see the new fest schedule?
+20/07/2026, 10:07 pm - Arun: Reached the department office, where is everyone?
+21/07/2026, 2:09 pm - Karthik: Lunch at the canteen? seminar hall is crowded though
+21/07/2026, 3:20 pm - Divya: Exam timetable is out, check the notice board
+21/07/2026, 5:35 pm - Kavya: Power cut in the auditorium again
+22/07/2026, 6:17 pm - Rohan: all did you see the sensor kit message?
+22/07/2026, 8:22 pm - Meghna: Kav you free tomorrow evening?
+22/07/2026, 10:54 pm - Kavya: Anyone has the attendance sheet?
+23/07/2026, 1:02 pm - Priya: The breadboards is in the shared drive, check it
+23/07/2026, 6:02 pm - Kavya: Did anyone see the new banner design?
+23/07/2026, 8:26 pm - Kavya: Kav you free tmoorrow evening?
+24/07/2026, 3:29 pm - Meghna: Lunch at the canteen? department office is crowded though
+24/07/2026, 4:10 pm - Arun: Seri da
+24/07/2026, 4:16 pm - Meghna: Which breadboards are we using, the old one or the new one?
+24/07/2026, 6:16 pm - Priya: lol all that was funny
 25/07/2026, 12:30 pm - Kavya: I'll get the lab permission letter signed by 7 August for the new semester.
-25/07/2026, 4:10 pm - Arun: Seri da
-25/07/2026, 6:19 pm - Priya: Ro you free tomorrow evening?
-25/07/2026, 9:45 pm - Meghna: Exam timetable is out, check the notice board
-25/07/2026, 10:07 pm - Meghna: Lunch at the canteen? main gate is crowedd though
-26/07/2026, 9:49 am - Meghna: The workshop slides needs a look when someone gets time
-26/07/2026, 3:15 pm - Arun: Which poster are we using, the old one or the new one?
-26/07/2026, 7:29 pm - Divya: lol Divs that was funny
-26/07/2026, 11:16 pm - Karthik: Is the library open now?
-27/07/2026, 7:24 pm - Meghna: The soldering station needs a look when someone gets time
+25/07/2026, 3:12 pm - Kavya: Which fest schedule are we using, the old one or the new one?
+25/07/2026, 4:12 pm - Priya: Which soldering station are we using, the old one or the new one?
+25/07/2026, 11:32 pm - Arun: Kav you free tomorrow evening?
+26/07/2026, 2:59 pm - Karthik: The attendance sheet needs a look when someone gets time
+26/07/2026, 8:05 pm - Karthik: The router needs a look when someone gets time
+26/07/2026, 8:28 pm - Kavya: Why is the parking locked today
+26/07/2026, 9:56 pm - Kavya: Did anyone see the new breadboards?
+27/07/2026, 11:28 am - Karthik: Class got cancelled today, free till 6 pm
+27/07/2026, 4:14 pm - Rohan: Is the parking open now?
 27/07/2026, 10:23 pm - Priya: The attendance sheet needs a look when someone gets time
-27/07/2026, 10:53 pm - Karthik: Power cut in the canteen again
-28/07/2026, 9:29 am - Arun: Did anyone see the new sensor kit?
-28/07/2026, 11:14 am - Kavya: The router needs a look when someone gets time
-28/07/2026, 1:56 pm - Arun: The sponsor deck looks good to me
-29/07/2026, 6:46 pm - Meghna: Class got cancelled today, free till noon
-29/07/2026, 7:29 pm - Priya: Which breadboards are we using, the old one or the new one?
-29/07/2026, 8:10 pm - Rohan: This message was deleted
-29/07/2026, 11:39 pm - Rohan: Power cut in the seminar hall again
-30/07/2026, 7:46 pm - Rohan: Power cut in the auditorium again
-30/07/2026, 9:01 pm - Meghna: Innaiku class illa da
-30/07/2026, 10:50 pm - Kavya: Which fest schedule are we using, the old one or the new one?
-31/07/2026, 4:46 pm - Meghna: The breadboards needs a look when someone gets time
-31/07/2026, 5:02 pm - Divya: The banner design needs a look when someone gets time
-31/07/2026, 10:40 pm - Meghna: Semma da
-01/08/2026, 6:38 pm - Kavya: Is the IoT lab open now?
-01/08/2026, 8:09 pm - Rohan: Class got cancelled today, free till 4
-01/08/2026, 10:47 pm - Meghna: Why is the main gate locked today
-02/08/2026, 2:08 pm - Meghna: Which router are we using, the old one or the new one?
-02/08/2026, 2:27 pm - Arun: The fest schedule is in the shared drive, check it
-02/08/2026, 5:14 pm - Divya: Priya you free tomorrow evening?
-02/08/2026, 7:27 pm - Karthik: Innaiku class illa da
-03/08/2026, 4:20 pm - Kavya: Did anyone see the new sensor kit?
-03/08/2026, 4:52 pm - Priya: Anyone has the fest schedule?
-03/08/2026, 8:20 pm - Kavya: Is the seminar hall open now?
-03/08/2026, 10:52 pm - Karthik: The attendance sheet is in the shared drive, check it
-04/08/2026, 12:26 pm - Kavya: Which fest schedule are we using, the old one or the new one?
-04/08/2026, 2:38 pm - Rohan: all you free tomorrow evening?
-04/08/2026, 8:31 pm - Divya: Rohan you free tomorrow evening?
-05/08/2026, 8:49 pm - Divya: Which sponsor deck are we using, the old one or the new one?
-05/08/2026, 8:53 pm - Divya: lol all that was funny
-05/08/2026, 10:56 pm - Divya: Enna da idhu
-06/08/2026, 3:46 pm - Kavya: Karthik did you see the workshop slides message?
-06/08/2026, 8:26 pm - Meghna: Romba nalla irukku
-06/08/2026, 9:41 pm - Meghna: Anyone has the attendance sheet?
-07/08/2026, 9:35 am - Rohan: Did anyone see the new lab schedule?
-07/08/2026, 11:03 am - Karthik: <Media omitted>
-07/08/2026, 11:27 am - Divya: Innaiku class illa da
-07/08/2026, 12:55 pm - Arun: Enna da idhu
-08/08/2026, 11:35 am - Arun: Anyone has the router?
-08/08/2026, 5:23 pm - Karthik: The fest schedule needs a look when someone gets time
-08/08/2026, 8:27 pm - Arun: all you free tomorrow evening?
-09/08/2026, 1:02 pm - Kavya: Which banner design are we using, the old one or the new one?
-09/08/2026, 3:07 pm - Karthik: Class got cancelled today, free till 4
+28/07/2026, 8:31 pm - Karthik: Anyone has the poster?
+28/07/2026, 9:17 pm - Rohan: all did you see the router message?
+28/07/2026, 10:47 pm - Priya: The sponsor deck is in the shared drive, check it
+29/07/2026, 3:13 pm - Rohan: The budget sheet needs a look when someone gets time
+29/07/2026, 6:11 pm - Karthik: Machan, lab key yaar kitta irukku?
+29/07/2026, 8:15 pm - Divya: Lunch at the canteen? IoT lab is crowded though
+29/07/2026, 9:20 pm - Karthik: The workshop slides looks good to me
+30/07/2026, 9:58 am - Kavya: all you free tomorrow evening?
+30/07/2026, 8:35 pm - Rohan: Exam timetable is out, check the notice board
+30/07/2026, 9:27 pm - Karthik: Anyone has the soldering station?
+31/07/2026, 6:29 pm - Kavya: Power cut in the main gate again
+31/07/2026, 6:38 pm - Kavya: Is the IoT lab open now?
+31/07/2026, 8:09 pm - Rohan: Class got cancelled today, free till 4
+31/07/2026, 9:31 pm - Arun: Reached the parking, where is everyone?
+01/08/2026, 2:08 pm - Meghna: Which breadboards are we using, the old one or the new one?
+01/08/2026, 2:27 pm - Arun: The fest schedule is in the shared drive, check it
+01/08/2026, 5:14 pm - Divya: Priya you free tomorrow evening?
+02/08/2026, 7:54 pm - Meghna: Lunch at the canteen? auditorium is crowded though
+02/08/2026, 8:23 pm - Karthik: Lunch at the canteen? auditorium is crowded though
+02/08/2026, 11:04 pm - Priya: The poster looks good to me
+03/08/2026, 2:38 pm - Rohan: all you free tomorrow evening?
+03/08/2026, 3:30 pm - Arun: Class got cancelled today, free till 7 pm
+03/08/2026, 6:06 pm - Arun: The sponsor deck looks good to me
+04/08/2026, 3:32 pm - Arun: The lab schedule is in the shared drive, check it
+04/08/2026, 6:42 pm - Divya: Power cut in the department office again
+04/08/2026, 7:58 pm - Kavya: lol Divs that was funny
+05/08/2026, 9:17 am - Priya: Exam timetable is out, check the notice board
+05/08/2026, 9:59 am - Kavya: Why is the parking locked today
+05/08/2026, 3:20 pm - Arun: Lunch at the canteen? department office is crowded though
+06/08/2026, 4:08 pm - Divya: Anyone has the lab schedule?
+06/08/2026, 7:47 pm - Divya: Bus romba late da
+06/08/2026, 10:57 pm - Priya: Power cut in the department office again
+07/08/2026, 1:38 pm - Priya: Did anyone see the new router?
+07/08/2026, 7:15 pm - Karthik: Aru did you see the budget sheet message?
+07/08/2026, 8:11 pm - Priya: Reached the canteen, where is everyone?
+07/08/2026, 11:05 pm - Rohan: The poster needs a look when someone gets time
+08/08/2026, 11:59 am - Divya: Why is the department office locked today
+08/08/2026, 5:26 pm - Meghna: Anyone has the budget sheet?
+08/08/2026, 7:00 pm - Arun: Why is the canteen locked today
+08/08/2026, 10:17 pm - Meghna: The poster is in the shared drive, check it
+08/08/2026, 10:57 pm - Divya: Lunch at the canteen? auditorium is crowded though
+09/08/2026, 5:06 pm - Karthik: Anyone has the sponsor deck?
 09/08/2026, 5:25 pm - Arun: Registration renewal submitted to Student Affairs today.
-09/08/2026, 7:00 pm - Arun: Why is the canteen locked today
-10/08/2026, 4:21 pm - Arun: Aama da, same doubt enakkum
-10/08/2026, 5:50 pm - Kavya: The soldering station needs a look when someone gets time
-10/08/2026, 8:53 pm - Meghna: Exam timetable is out, check the notice board
-11/08/2026, 4:22 pm - Arun: Innaiku class illa da
-11/08/2026, 9:44 pm - Rohan: Did anyone see the new router?
-11/08/2026, 9:51 pm - Karthik: Kavya you free tomororw evening?
-12/08/2026, 8:48 am - Priya: The router is in the shared drive, check it
-12/08/2026, 1:34 pm - Karthik: Lunch at the canteen? canteen is crowded though
-12/08/2026, 7:38 pm - Priya: Is the IoT lab open now?
-13/08/2026, 2:26 pm - Kavya: lol Karthik that was funny
-13/08/2026, 2:58 pm - Karthik: Is the parking open now?
-13/08/2026, 10:23 pm - Rohan: Did anyone see the new sensor kit?
-14/08/2026, 12:00 pm - Arun: Anyone has the lab schedule?
-14/08/2026, 12:17 pm - Rohan: Enna da idhu
+09/08/2026, 8:53 pm - Meghna: Exam timetable is out, check the notice board
+09/08/2026, 11:15 pm - Priya: Class got cancelled today, free till 5
+10/08/2026, 6:12 pm - Meghna: Innaiku class illa da
+10/08/2026, 7:58 pm - Arun: <Media omitted>
+10/08/2026, 8:17 pm - Karthik: lol Divs that was funny
+11/08/2026, 7:09 pm - Arun: Which router are we using, the old one or the new one?
+11/08/2026, 8:09 pm - Meghna: Why is the auditorium locked today
+11/08/2026, 9:22 pm - Arun: <Media omitted>
+11/08/2026, 11:38 pm - Meghna: Is the auditorium open now?
+12/08/2026, 2:28 pm - Kavya: Lunch at the canteen? library is crowded though
+12/08/2026, 4:19 pm - Divya: Why is the parking locked today
+12/08/2026, 5:47 pm - Priya: Power cut in the auditorium again
+12/08/2026, 10:20 pm - Kavya: Exam timetable is out, check the notice board
+12/08/2026, 11:16 pm - Meghna: Anyone has the poster?
+13/08/2026, 2:05 pm - Kavya: all you free tomorrow evening?
+13/08/2026, 3:55 pm - Divya: The fest schedule looks good to me
+13/08/2026, 10:25 pm - Karthik: Why is the department office locked today
+14/08/2026, 12:47 pm - Kavya: Kavya you free tomorrow evening?
+14/08/2026, 2:08 pm - Divya: Anoyne has the poster?
 14/08/2026, 3:45 pm - Kavya: HoD signed the lab permission letter today, a week late sorry.
-14/08/2026, 10:12 pm - Kavya: Did anyone see the new workshop slides?
-14/08/2026, 11:26 pm - Divya: Is the IoT lab open now?
-15/08/2026, 11:47 am - Priya: The lab schedule needs a look when someone gets time
-15/08/2026, 3:55 pm - Divya: The attendance sheet looks good to me
-15/08/2026, 10:06 pm - Meghna: Did anyone see the new fest schedule?
-16/08/2026, 8:01 am - Karthik: The breadboards looks good to me
-16/08/2026, 6:57 pm - Arun: Power cut in the IoT lab again
-16/08/2026, 11:14 pm - Priya: lol Arun that was funny
-17/08/2026, 6:03 pm - Rohan: <Media omitted>
-17/08/2026, 7:03 pm - Meghna: Lunch at the canteen? IoT lab is crowded though
-17/08/2026, 8:16 pm - Meghna: Machan, lab key yaar kitta irukku?
-17/08/2026, 9:12 pm - Rohan: Rohan did you see the sponsor deck message?
-18/08/2026, 9:01 am - Rohan: The banner design looks good to me
-18/08/2026, 3:57 pm - Arun: Semma da
-18/08/2026, 10:40 pm - Rohan: Romba nalla irukku
-19/08/2026, 10:42 am - Meghna: The workshop slides is in the shared drive, check it
-19/08/2026, 11:07 am - Kavya: lol all that was funny
-19/08/2026, 12:33 pm - Rohan: lol Kav that was funny
-20/08/2026, 5:25 pm - Divya: Power cut in the seminar hall again
-20/08/2026, 8:36 pm - Karthik: Power cut in the auditorium again
-20/08/2026, 8:39 pm - Karthik: Aru you free tomorrow evening?
-20/08/2026, 11:05 pm - Rohan: The poster is in the shared drive, check it
-21/08/2026, 9:15 am - Divya: Semma da
-21/08/2026, 6:24 pm - Rohan: Class got cancelled today, free till 5
-21/08/2026, 7:28 pm - Rohan: lol all that was funny
-22/08/2026, 1:49 pm - Arun: Why is the IoT lab locked today
-22/08/2026, 6:07 pm - Kavya: Reached the IoT lab, where is everyone?
-22/08/2026, 11:05 pm - Divya: Machan, lab key yaar kitta irukku?
-23/08/2026, 9:07 am - Divya: Seri da
-23/08/2026, 2:54 pm - Arun: The attendance sheet is in the shared drive, check it
-23/08/2026, 5:17 pm - Priya: The workshop slides needs a look when someone gets time
-24/08/2026, 2:12 pm - Priya: Why is the auditorium locked today
-24/08/2026, 4:31 pm - Meghna: Exam timetable is out, check the notice board
-24/08/2026, 10:35 pm - Arun: Arun you free tomorrow evening?
-25/08/2026, 12:34 pm - Arun: The router needs a look when someone gets time
-25/08/2026, 7:47 pm - Kavya: Reached the canteen, where is everyone?
-25/08/2026, 11:06 pm - Divya: Aama da, same doubt enakkum
-26/08/2026, 10:33 am - Meghna: Did anyone see the new breadboards?
-26/08/2026, 1:23 pm - Kavya: Exam timetable is out, check the notice board
-26/08/2026, 6:44 pm - Priya: Exam timetable is out, check the notice board
-27/08/2026, 9:57 am - Karthik: lol all that was funny
-27/08/2026, 4:20 pm - Divya: This message was deleted
-27/08/2026, 11:05 pm - Arun: Why is the canteen locked today
-27/08/2026, 11:17 pm - Karthik: Enna da idhu
-28/08/2026, 8:54 am - Kavya: Class got cancelled today, free till 5
-28/08/2026, 3:05 pm - Divya: Why is the auditorium locked today
-28/08/2026, 5:30 pm - Meghna: Kav did you see the breadboards message?
-28/08/2026, 10:28 pm - Kavya: Did anyone see the new sensor kit?
-29/08/2026, 2:49 pm - Kavya: lol Karthik that was funny
-29/08/2026, 9:17 pm - Priya: Divs you free tomorrow evening?
-29/08/2026, 9:19 pm - Rohan: Ro did you see the router message?
-30/08/2026, 11:42 am - Priya: The budget sheet is in the shared drive, check it
+14/08/2026, 6:32 pm - Arun: The budget sheet is in the shared drive, check it
+15/08/2026, 2:12 pm - Rohan: Lunch at the canteen? department office is crowded though
+15/08/2026, 7:03 pm - Meghna: Lunch at the canteen? IoT lab is crowded though
+15/08/2026, 8:16 pm - Meghna: Romba nalla irukku
+16/08/2026, 1:16 pm - Kavya: Lunch at the canteen? IoT lab is crowded though
+16/08/2026, 2:06 pm - Divya: lol Pri that was funny
+16/08/2026, 3:55 pm - Arun: Class got cancelled today, free till noon
+16/08/2026, 10:38 pm - Rohan: The budget sheet is in the shared drive, check it
+17/08/2026, 9:01 am - Rohan: The banner design looks good to me
+17/08/2026, 1:32 pm - Kavya: lol Ro that was funny
+17/08/2026, 7:40 pm - Priya: The router needs a look when someone gets time
+18/08/2026, 2:21 pm - Divya: Innaiku class illa da
+18/08/2026, 6:17 pm - Rohan: Exam timetable is out, check the notice board
+18/08/2026, 6:43 pm - Karthik: Which poster are we using, the old one or the new one?
+19/08/2026, 8:37 am - Karthik: Semma da
+19/08/2026, 3:04 pm - Arun: Did anyone see the new lab schedule?
+19/08/2026, 10:38 pm - Meghna: all did you see the sponsor deck message?
+20/08/2026, 1:42 pm - Meghna: Innaiku class illa da
+20/08/2026, 1:51 pm - Divya: Divya did you see the attendance sheet message?
+20/08/2026, 2:22 pm - Rohan: Class got cancelled today, free till 5
+20/08/2026, 3:01 pm - Rohan: <Media omitted>
+21/08/2026, 3:28 pm - Karthik: Priya you free tomorrow evening?
+21/08/2026, 5:17 pm - Priya: The router needs a look when someone gets time
+21/08/2026, 7:39 pm - Meghna: Lunch at the canteen? IoT lab is crowded though
+22/08/2026, 1:22 pm - Kavya: The budget sheet is in the shared drive, check it
+22/08/2026, 1:41 pm - Arun: Exam timetable is out, check the notice board
+22/08/2026, 3:31 pm - Priya: Semma da
+22/08/2026, 7:27 pm - Arun: Romba nalla irukku
+23/08/2026, 1:54 pm - Meghna: all you free tomorrow evening?
+23/08/2026, 8:16 pm - Karthik: Class got cancelled today, free till 7 pm
+23/08/2026, 9:25 pm - Meghna: Did anyone see the new fest schedule?
+24/08/2026, 1:01 pm - Karthik: Exam timetable is out, check the notice board
+24/08/2026, 6:42 pm - Arun: Did anyone see the new fest schedule?
+24/08/2026, 7:32 pm - Karthik: Is the auditorium open now?
+25/08/2026, 10:00 am - Arun: The sponsor deck needs a look when someone gets time
+25/08/2026, 11:59 am - Priya: The breadboards looks good to me
+25/08/2026, 5:57 pm - Rohan: Smema da
+25/08/2026, 10:35 pm - Divya: The banner design looks good to me
+26/08/2026, 3:58 pm - Rohan: The lab schedule looks good to me
+26/08/2026, 6:55 pm - Kavya: Did anyone see the new workshop slides?
+26/08/2026, 7:55 pm - Priya: Lunch at the canteen? department office is crowded though
+27/08/2026, 5:51 pm - Karthik: Exam timetable is out, check the notice board
+27/08/2026, 6:31 pm - Priya: all you free tomorrow evening?
+27/08/2026, 11:16 pm - Priya: Exam timetable is out, check the notice board
+28/08/2026, 5:09 pm - Arun: Which budget sehet are we using, the old one or the new one?
+28/08/2026, 7:24 pm - Karthik: Innaiku class illa da
+28/08/2026, 9:07 pm - Kavya: Romba nalla irukku
+29/08/2026, 7:19 pm - Divya: Semma da
+29/08/2026, 8:57 pm - Divya: Exam timetable is out, check the notice board
+29/08/2026, 9:14 pm - Kavya: Reached the canteen, where is everyone?
 30/08/2026, 1:10 pm - Arun: Dean signed the registration renewal, we are registered till next August.
-30/08/2026, 7:20 pm - Meghna: Lunch at the canteen? seminar hall is crowded though
-30/08/2026, 9:34 pm - Arun: Exam timetable is out, check the notice board
-31/08/2026, 3:59 pm - Rohan: Lunch at the canteen? main gate is crowded though
-31/08/2026, 8:26 pm - Arun: lol all that was funny
-31/08/2026, 8:47 pm - Priya: Reached the parking, where is everyone?
-31/08/2026, 9:41 pm - Rohan: Exam timetable is out, check the notice board
-01/09/2026, 2:13 pm - Divya: Romba nalla irukku
-01/09/2026, 7:39 pm - Divya: This message was deleted
-01/09/2026, 9:28 pm - Karthik: Lunch at the canteen? IoT lab is crowded thoguh
-01/09/2026, 9:53 pm - Arun: all did you see the soldering station message?
-01/09/2026, 10:20 pm - Arun: lol all that was funny
-02/09/2026, 6:04 pm - Meghna: Lunch at the canteen? main gate is crowded though
+30/08/2026, 3:50 pm - Kavya: Did anyone see the new banner design?
+30/08/2026, 5:33 pm - Divya: Exam timetable is out, check the notice board
+30/08/2026, 9:56 pm - Kavya: lol Aru that was funny
+30/08/2026, 10:46 pm - Divya: The sponsor deck needs a look when someone gets time
+31/08/2026, 11:20 am - Meghna: Ro you free tomorrow evening?
+31/08/2026, 2:49 pm - Kavya: Class got cancelled today, free till 7 pm
+31/08/2026, 7:37 pm - Priya: Did anyone see the new banner design?
+01/09/2026, 12:17 pm - Karthik: The banner design needs a look when someone gets time
+01/09/2026, 12:59 pm - Arun: Class got cancelled today, free till 7 pm
+01/09/2026, 1:23 pm - Divya: The fest schedule looks good to me
+02/09/2026, 4:52 pm - Kavya: lol Kav that was funny
+02/09/2026, 6:11 pm - Rohan: Power cut in the main gate again
 02/09/2026, 7:30 pm - Meghna: Maybe I'll bring my own projector too, will see.
-02/09/2026, 7:52 pm - Meghna: Why is the seminar hall locked today
-02/09/2026, 8:59 pm - Arun: Aru did you see the router message?
-03/09/2026, 4:28 pm - Meghna: Power cut in the IoT lab again
-03/09/2026, 9:27 pm - Priya: Bus romba late da
-03/09/2026, 10:47 pm - Rohan: Which attendance sheet are we using, the old one or the new one?
-04/09/2026, 4:00 pm - Kavya: Why is the seminar hall locked today
-04/09/2026, 7:54 pm - Kavya: Power cut in the department office again
-04/09/2026, 8:48 pm - Kavya: lol Pri that was funny
-04/09/2026, 9:44 pm - Meghna: Exam timetable is out, check the notice board
-05/09/2026, 3:40 pm - Karthik: Class got cancelled today, free till 4
-05/09/2026, 8:13 pm - Kavya: lol Pri that was funny
-05/09/2026, 8:26 pm - Divya: Rohan you free tomorrow evening?
-05/09/2026, 9:31 pm - Karthik: This message was deleted
-06/09/2026, 10:37 am - Karthik: Exam timetable is out, check the notice board
-06/09/2026, 9:04 pm - Kavya: The banner design is in the shared drive, check it
-06/09/2026, 9:27 pm - Priya: Anyone has the poster?
-07/09/2026, 5:11 pm - Rohan: Divya did you see the sponsor deck message?
-07/09/2026, 9:12 pm - Divya: Class got cancelled today, free till 7 pm
-07/09/2026, 11:05 pm - Arun: The lab schedule looks good to me
-07/09/2026, 11:32 pm - Priya: all you free tomorrow evening?
-08/09/2026, 3:19 pm - Divya: Exam timetable is out, check the notice board
+02/09/2026, 11:11 pm - Arun: Reached the main gate, where is everyone?
+02/09/2026, 11:23 pm - Rohan: Which lab schedule are we using, the old one or the new one?
+03/09/2026, 2:20 pm - Karthik: Seri da
+03/09/2026, 9:44 pm - Arun: <Media omitted>
+03/09/2026, 11:39 pm - Divya: The workshop slides is in the shared drive, check it
+04/09/2026, 12:27 pm - Karthik: The soldering station looks good to me
+04/09/2026, 4:04 pm - Priya: lol all that was funny
+04/09/2026, 9:39 pm - Rohan: Innaiku class illa da
+05/09/2026, 4:44 pm - Rohan: Power cut in the department office again
+05/09/2026, 7:58 pm - Divya: Lunch at the canteen? canteen is crowded though
+05/09/2026, 8:09 pm - Divya: The budget sheet is in the shared drive, check it
+06/09/2026, 2:44 pm - Rohan: Romba nalla irukku
+06/09/2026, 7:21 pm - Arun: Class got cancelled today, free till 7 pm
+06/09/2026, 10:45 pm - Karthik: <Media omitted>
+07/09/2026, 12:42 pm - Priya: Reached the library, where is everyone?
+07/09/2026, 4:10 pm - Rohan: Which sensor kit are we using, the old one or the new one?
+07/09/2026, 10:46 pm - Rohan: The router looks good to me
+08/09/2026, 4:50 pm - Meghna: Is the catneen open now?
 08/09/2026, 5:51 pm - Kavya: Exam timetable is out, check the notice board
-08/09/2026, 8:56 pm - Meghna: The fest schedule needs a look when someone gets time
-09/09/2026, 11:55 am - Meghna: Did anyone see the new banner design?
-09/09/2026, 7:18 pm - Meghna: lol Divs that was funny
-09/09/2026, 10:53 pm - Kavya: all did you see the workshop sildes message?
-10/09/2026, 3:16 pm - Kavya: Power cut in the IoT lab again
-10/09/2026, 4:40 pm - Kavya: Class got cancelled today, free till 6 pm
-10/09/2026, 7:51 pm - Rohan: Kav you free tomorrow evening?
-11/09/2026, 6:26 pm - Karthik: Which poster are we using, the old one or the new one?
-11/09/2026, 10:05 pm - Meghna: Seri da
-11/09/2026, 11:35 pm - Arun: Is the seminar hall open now?
-12/09/2026, 1:28 pm - Rohan: all you free tomorrow evening?
-12/09/2026, 2:05 pm - Arun: Reached the library, where is everyone?
-12/09/2026, 11:18 pm - Divya: Anyone has the budget sheet?
-13/09/2026, 6:04 pm - Arun: Which budget sheet are we using, the old one or the new one?
-13/09/2026, 8:51 pm - Arun: <Media omitted>
-13/09/2026, 9:40 pm - Karthik: The breadboards is in the shared drive, check it
-14/09/2026, 4:40 pm - Kavya: lol Meg that was funny
-14/09/2026, 6:56 pm - Meghna: Which budget sheet are we using, the old one or the new one?
-14/09/2026, 7:14 pm - Arun: Anyone has the budget sheet?
-15/09/2026, 3:44 pm - Priya: Which attendance sheet are we using, the old one or the new one?
-15/09/2026, 7:42 pm - Kavya: Why is the department office locked today
-15/09/2026, 9:42 pm - Arun: Enna da idhu
-15/09/2026, 10:00 pm - Priya: Why is the library locked today
-15/09/2026, 10:51 pm - Karthik: Reached the canteen, where is everyone?
-16/09/2026, 3:16 pm - Priya: Pri you free tomorrow evening?
-16/09/2026, 5:42 pm - Divya: Power cut in the main gate again
-16/09/2026, 8:30 pm - Kavya: Is the library open now?
-17/09/2026, 8:05 am - Meghna: The attendance sheet looks good to me
-17/09/2026, 6:52 pm - Karthik: Anyone has the attendance sheet?
-17/09/2026, 9:19 pm - Divya: The sensor kit is in the shared drive, check it
-18/09/2026, 4:11 pm - Priya: Innaiku class illa da
-18/09/2026, 7:49 pm - Priya: The sponsor deck needs a look when someone gets time
-18/09/2026, 11:21 pm - Kavya: The fest schedule is in the shared drive, check it
-19/09/2026, 1:57 pm - Meghna: Anyone has the sensor kit?
-19/09/2026, 2:25 pm - Kavya: Lunch at the canteen? canteen is crowded though
-19/09/2026, 9:35 pm - Meghna: The breadboards looks good to me
-20/09/2026, 7:41 pm - Priya: Reached the auditorium, where is everyone?
-20/09/2026, 9:34 pm - Priya: Semma da
-20/09/2026, 10:15 pm - Meghna: Lunch at the canteen? library is crowded though
-21/09/2026, 8:05 am - Karthik: lol Meghna that was funny
-21/09/2026, 9:35 am - Divya: lol Aru that was funny
-21/09/2026, 8:02 pm - Priya: Which banner design are we using, the old one or the new one?
-22/09/2026, 3:07 pm - Rohan: Innaiku class illa da
-22/09/2026, 4:19 pm - Karthik: Did anyone see the new soldering station?
-22/09/2026, 6:39 pm - Rohan: Aru did you see the sponsor deck message?
-23/09/2026, 4:00 pm - Arun: Exam timetable is out, check the notice board
-23/09/2026, 6:38 pm - Rohan: Lunch at the canteen? IoT lab is crowded though
-23/09/2026, 11:16 pm - Karthik: Smema da
-24/09/2026, 1:59 pm - Priya: Why is the auditorium locked today
-24/09/2026, 5:37 pm - Meghna: <Media omitted>
-24/09/2026, 9:00 pm - Karthik: Is the parking open now?
-25/09/2026, 4:31 pm - Divya: Anyone has the lab schedule?
-25/09/2026, 11:06 pm - Meghna: Power cut in the department office again
-25/09/2026, 11:31 pm - Priya: The poster is in the shared drive, check it
-26/09/2026, 4:05 pm - Meghna: Why is the IoT lab locked today
-26/09/2026, 7:13 pm - Kavya: Did anyone see the new banner design?
-26/09/2026, 10:25 pm - Arun: Did anyone see the new soldering station?
-27/09/2026, 2:00 pm - Divya: lol Aru that was funny
-27/09/2026, 5:37 pm - Divya: The budget sheet looks good to me
-27/09/2026, 8:52 pm - Arun: <Media omitted>
-27/09/2026, 9:47 pm - Arun: lol all that was funny
-28/09/2026, 1:42 pm - Kavya: Romba nalla irukku
-28/09/2026, 4:45 pm - Karthik: Enna da idhu
-28/09/2026, 7:25 pm - Meghna: <Media omitted>
-29/09/2026, 10:34 am - Rohan: Is the department office open now?
-29/09/2026, 11:18 am - Arun: Anyone has the router?
-29/09/2026, 6:10 pm - Karthik: Reached the IoT lab, whree is everyone?
-29/09/2026, 8:06 pm - Priya: The workshop slides is in the shared drive, check it
-30/09/2026, 1:46 pm - Rohan: Anyone has the soldering station?
-30/09/2026, 9:35 pm - Arun: Class got cancelled today, free till 6 pm
-30/09/2026, 9:44 pm - Divya: Is the main gate open now?
-01/10/2026, 12:22 pm - Karthik: all did you see the poster message?
-01/10/2026, 12:53 pm - Meghna: Pri you free tomorrow evening?
-01/10/2026, 1:06 pm - Rohan: Aama da, same doubt enakkum
-01/10/2026, 3:19 pm - Rohan: Anoyne has the router?
-02/10/2026, 12:52 pm - Priya: The fest schedule needs a look when someone gets time
-02/10/2026, 8:21 pm - Priya: Aama da, same doubt enakkum
-02/10/2026, 10:06 pm - Meghna: Which fest schedule are we using, the old one or the new one?
-02/10/2026, 11:40 pm - Meghna: The budget sheet is in the shared drive, check it
-03/10/2026, 10:11 am - Meghna: Lunch at the canteen? parking is crowded though
-03/10/2026, 1:29 pm - Priya: Reached the smeinar hall, where is everyone?
-03/10/2026, 2:59 pm - Priya: Aama da, same doubt enakkum
-03/10/2026, 3:00 pm - Priya: Anyone has the attendance sheet?
-04/10/2026, 9:02 am - Rohan: Anyone has the fest schedule?
-04/10/2026, 11:45 am - Kavya: The banner design needs a look when someone gets time
-04/10/2026, 4:33 pm - Kavya: Did anyone see the new poster?
-04/10/2026, 10:14 pm - Rohan: Exam timetable is out, check the notice board
-04/10/2026, 10:26 pm - Karthik: Power cut in the department office again
-04/10/2026, 11:03 pm - Divya: Class got cancelled today, free till 7 pm
-05/10/2026, 8:59 am - Kavya: Semma da
-05/10/2026, 1:56 pm - Kavya: Class got cancelled today, free till 7 pm
-05/10/2026, 10:29 pm - Kavya: Why is the IoT lab locked today
-05/10/2026, 11:37 pm - Arun: Did anyone see the new router?
-06/10/2026, 3:35 pm - Priya: Why is the library locked today
-06/10/2026, 8:00 pm - Priya: <Media omitted>
-06/10/2026, 8:33 pm - Kavya: all you free tomorrow evening?
-06/10/2026, 10:04 pm - Rohan: Did anyone see the new budget sheet?
-07/10/2026, 9:28 am - Karthik: Aru you free tomorrow evening?
-07/10/2026, 11:27 am - Rohan: lol Arun that was funny
-07/10/2026, 7:10 pm - Karthik: Reached the IoT lab, where is everyone?
-07/10/2026, 9:12 pm - Rohan: Exam timetable is out, check the notice board
-08/10/2026, 3:24 pm - Arun: Anyone has the fest schedule?
-08/10/2026, 6:21 pm - Divya: Lunch at the canteen? canteen is crowded though
-08/10/2026, 10:30 pm - Priya: all you free tomorrow evening?
-08/10/2026, 10:46 pm - Karthik: Why is the IoT lab locked today
-09/10/2026, 10:01 am - Priya: Pri you free tomorrow evening?
-09/10/2026, 4:55 pm - Kavya: Power cut in the main gate again
-09/10/2026, 6:43 pm - Arun: all did you see the poster message?
-09/10/2026, 8:21 pm - Kavya: Power cut in the parking again
-09/10/2026, 10:46 pm - Kavya: lol Meghna that was funny
-09/10/2026, 10:51 pm - Kavya: Innaiku class illa da
-10/10/2026, 11:59 am - Kavya: Aama da, same doubt enakkum
-10/10/2026, 7:21 pm - Arun: Power cut in the department office again
-10/10/2026, 8:35 pm - Arun: Is the auditorium open now?
-10/10/2026, 10:05 pm - Rohan: Which sponsor deck are we using, the old one or the new one?
-10/10/2026, 11:38 pm - Divya: all you free tomorrow evening?
-11/10/2026, 8:18 am - Priya: The poster needs a look when someone gets time
-11/10/2026, 8:51 pm - Meghna: Class got cancelled today, free till 7 pm
-11/10/2026, 10:36 pm - Karthik: Innaiku class illa da
-11/10/2026, 11:36 pm - Priya: The soldering station looks good to me
+08/09/2026, 7:21 pm - Arun: Aama da, same doubt enakkum
+09/09/2026, 11:55 am - Meghna: Did anyone see the new poster?
+09/09/2026, 4:24 pm - Priya: Romba nalla irukku
+09/09/2026, 6:45 pm - Karthik: Class got cancelled today, free till 4
+09/09/2026, 8:40 pm - Divya: The workshop slides is in the shared drive, check it
+09/09/2026, 11:01 pm - Divya: Which sensor kit are we using, the old one or the new one?
+10/09/2026, 7:23 pm - Divya: Aama da, same doubt enakkum
+10/09/2026, 9:04 pm - Divya: <Media omitted>
+10/09/2026, 10:26 pm - Meghna: Class got cancelled today, free till 7 pm
+11/09/2026, 11:36 am - Divya: Semma da
+11/09/2026, 1:28 pm - Rohan: all you free tomorrow evening?
+11/09/2026, 1:55 pm - Divya: The banner design looks good to me
+11/09/2026, 11:18 pm - Divya: Anyone has the budget sheet?
+12/09/2026, 9:41 am - Karthik: Anyone has the router?
+12/09/2026, 8:51 pm - Arun: <Media omitted>
+12/09/2026, 11:26 pm - Meghna: lol Arun that was funny
+13/09/2026, 4:40 pm - Kavya: lol Meg that was funny
+13/09/2026, 6:56 pm - Meghna: Which budget sheet are we using, the old one or the new one?
+13/09/2026, 7:14 pm - Arun: Anyone has the budget sheet?
+14/09/2026, 3:23 pm - Priya: Which sensor kit are we using, the old one or the new one?
+14/09/2026, 3:44 pm - Priya: Which fest schedule are we using, the old one or the new one?
+14/09/2026, 7:04 pm - Karthik: all did you see the router message?
+15/09/2026, 2:34 pm - Priya: Pri you free tomorrow evening?
+15/09/2026, 2:47 pm - Divya: Is the seminar hall open now?
+15/09/2026, 5:26 pm - Rohan: Did anyone see the new soldering station?
+15/09/2026, 6:54 pm - Divya: Semma da
+16/09/2026, 12:36 pm - Rohan: Exam timetable is out, check the notice board
+16/09/2026, 8:11 pm - Karthik: The lab schedule looks good to me
+16/09/2026, 9:19 pm - Priya: Did anyone see the new budget sheet?
+17/09/2026, 1:48 pm - Priya: Why is the library locked today
+17/09/2026, 6:27 pm - Karthik: Anyone has the attendance sheet?
+17/09/2026, 8:59 pm - Priya: Reached the auditorium, where is everyone?
+18/09/2026, 6:06 pm - Meghna: all did you see the banner design message?
+18/09/2026, 9:13 pm - Arun: Innaiku class illa da
+18/09/2026, 11:18 pm - Divya: Anyone has the breadboards?
+18/09/2026, 11:18 pm - Meghna: The lab schedule looks good to me
+19/09/2026, 8:59 am - Meghna: Bus romba late da
+19/09/2026, 3:54 pm - Arun: Kavya did you see the fest schedule message?
+19/09/2026, 10:02 pm - Divya: Anyone has the budget sheet?
+20/09/2026, 4:00 pm - Arun: Exam timetable is out, check the notice board
+20/09/2026, 4:31 pm - Priya: Rohan did you see the router message?
+20/09/2026, 6:38 pm - Rohan: Lunch at the canteen? IoT lab is crowded though
+20/09/2026, 7:10 pm - Karthik: Exam timetable is out, check the notice board
+20/09/2026, 11:17 pm - Rohan: The breadboards is in the shared drive, check it
+21/09/2026, 2:13 pm - Meghna: lol Kar that was funny
+21/09/2026, 9:12 pm - Divya: <Media omitted>
+21/09/2026, 11:37 pm - Priya: The lab schedule looks good to me
+22/09/2026, 9:25 am - Meghna: all did you see the sponsor deck message?
+22/09/2026, 1:59 pm - Priya: Why is the auditorium locked today
+22/09/2026, 7:04 pm - Karthik: Reached the canteen, where is everyone?
+22/09/2026, 8:31 pm - Divya: <Media omitted>
+23/09/2026, 1:36 pm - Karthik: Reached the parking, where is everyone?
+23/09/2026, 4:08 pm - Kavya: Why is the auditorium locked today
+23/09/2026, 6:11 pm - Karthik: Power cut in the parking again
+23/09/2026, 6:44 pm - Rohan: Machan, lab key yaar kitta irukku?
+24/09/2026, 4:45 pm - Karthik: Enna da idhu
+24/09/2026, 6:55 pm - Meghna: Power cut in the seminar hall again
+24/09/2026, 7:25 pm - Meghna: <Media omitted>
+25/09/2026, 10:41 am - Rohan: Kavya did you see the banner design message?
+25/09/2026, 1:54 pm - Meghna: Why is the parking locked today
+25/09/2026, 2:18 pm - Divya: The breadboards looks good to me
+26/09/2026, 1:12 pm - Kavya: The attendance sheet is in the shared drive, check it
+26/09/2026, 4:03 pm - Divya: <Media omitted>
+26/09/2026, 7:32 pm - Kavya: Lunch at the canteen? canteen is crowded though
+26/09/2026, 8:58 pm - Priya: The breadboards needs a look when someone gets time
+27/09/2026, 8:00 am - Meghna: Which soldering station are we using, the old one or the new one?
+27/09/2026, 2:44 pm - Kavya: <Media omitted>
+27/09/2026, 4:41 pm - Divya: Anyone has the attendance sheet?
+27/09/2026, 6:31 pm - Kavya: The sponsor deck needs a look when someone gets time
+28/09/2026, 10:43 am - Arun: <Media omitted>
+28/09/2026, 6:15 pm - Rohan: Seri da
+28/09/2026, 11:32 pm - Arun: all did you see the workshop slides message?
+29/09/2026, 8:33 am - Meghna: Anyone has the budget sheet?
+29/09/2026, 9:58 am - Meghna: Seri da
+29/09/2026, 7:31 pm - Karthik: Bus romba late da
+30/09/2026, 1:09 pm - Rohan: Which soldering station are we using, the old one or the new one?
+30/09/2026, 5:05 pm - Kavya: Arun did you see the banner design message?
+30/09/2026, 7:44 pm - Divya: The router needs a look when someone gets time
+30/09/2026, 10:57 pm - Divya: The banner design looks good to me
+01/10/2026, 5:16 pm - Kavya: Anyone has the breadboards?
+01/10/2026, 6:55 pm - Divya: The fest schedule looks good to me
+01/10/2026, 8:14 pm - Arun: <Media omitted>
+01/10/2026, 10:08 pm - Rohan: Why is the library locked today
+02/10/2026, 5:14 pm - Divya: Lunch at the canteen? main gate is crowded though
+02/10/2026, 5:15 pm - Priya: Aama da, same doubt enakkum
+02/10/2026, 7:21 pm - Priya: Aru did you see the poster message?
+02/10/2026, 9:19 pm - Meghna: lol all that was funny
+03/10/2026, 1:01 pm - Meghna: The fest schedule needs a look when someone gets time
+03/10/2026, 6:37 pm - Kavya: Arun you free tomorrow evening?
+03/10/2026, 7:42 pm - Arun: Exam timetbale is out, check the notice board
+03/10/2026, 10:29 pm - Kavya: Why is the IoT lab locked today
+03/10/2026, 10:31 pm - Divya: Did anyone see the new attendance sheet?
+03/10/2026, 10:54 pm - Karthik: Power cut in the canteen again
+04/10/2026, 1:27 pm - Kavya: The breadboards is in the shared drive, check it
+04/10/2026, 1:27 pm - Arun: all did you see the poster message?
+04/10/2026, 4:39 pm - Meghna: lol Kavya that was funny
+04/10/2026, 7:59 pm - Karthik: Innaiku clsas illa da
+04/10/2026, 8:54 pm - Meghna: Arun you free tomorrow evening?
+05/10/2026, 10:23 am - Divya: Reached the canteen, where is everyone?
+05/10/2026, 5:01 pm - Divya: Lunch at the canteen? main gate is crowded though
+05/10/2026, 6:46 pm - Arun: Semma da
+05/10/2026, 9:34 pm - Meghna: Exam timetable is out, check the ntoice board
+06/10/2026, 10:05 am - Kavya: lol Kavya that was funny
+06/10/2026, 10:12 am - Divya: Why is the parking locked today
+06/10/2026, 12:52 pm - Arun: Lunch at the canteen? parking is crowded though
+06/10/2026, 10:23 pm - Karthik: The workshop slides looks good to me
+07/10/2026, 2:59 pm - Arun: Anyone has the router?
+07/10/2026, 4:09 pm - Rohan: Is the auditorium open now?
+07/10/2026, 7:52 pm - Divya: all you free tomorrow evening?
+07/10/2026, 8:35 pm - Arun: Is the IoT lab open now?
+08/10/2026, 1:29 pm - Divya: Innaiku class illa da
+08/10/2026, 2:19 pm - Divya: Arun you free tomorrow evening?
+08/10/2026, 10:06 pm - Karthik: The budget sheet is in the shared drive, check it
+08/10/2026, 11:38 pm - Divya: all you free tomorrow evening?
+09/10/2026, 2:31 pm - Rohan: Reached the auditorium, where is everyone?
+09/10/2026, 8:51 pm - Meghna: Class got cancelled today, free till 7 pm
+09/10/2026, 9:40 pm - Karthik: Priya did you see the fest schedule message?
+09/10/2026, 10:36 pm - Karthik: Innaiku class illa da
+10/10/2026, 2:01 pm - Rohan: Machan, lab key yaar kitta irukku?
+10/10/2026, 4:51 pm - Rohan: Is the main gate open now?
+10/10/2026, 7:10 pm - Rohan: Which sensor kit are we using, the old one or the new one?
+10/10/2026, 8:32 pm - Rohan: Reached the canteen, where is everyone?
+11/10/2026, 4:27 pm - Divya: Class got cancelled today, free till 7 pm
+11/10/2026, 4:32 pm - Karthik: The lab schedule is in the shared drive, check it
+11/10/2026, 10:47 pm - Karthik: Bus romba late da
+11/10/2026, 11:22 pm - Meghna: <Media omitted>
 12/10/2026, 10:05 am - Arun: Even semester lab bookings need the HoD's permission letter first, as always.
 12/10/2026, 10:08 am - Arun: I'll get the lab permission letter signed by 31 October.
-12/10/2026, 11:19 am - Kavya: Anyone has the breadboards?
-12/10/2026, 4:47 pm - Karthik: The soldering station needs a look when someone gets time
-12/10/2026, 5:48 pm - Kavya: lol Rohan that was funny
-12/10/2026, 9:30 pm - Meghna: The router needs a look when someone gets time
-13/10/2026, 4:14 pm - Kavya: Did anyone see the new poster?
-13/10/2026, 6:00 pm - Karthik: Class got cancelled today, free till noon
-13/10/2026, 7:01 pm - Divya: lol Kav that was funny
-13/10/2026, 10:45 pm - Priya: Power cut in the IoT lab again
-14/10/2026, 6:40 pm - Priya: The sensor kit needs a look when someone gets time
-14/10/2026, 7:23 pm - Arun: lol all that was funny
-14/10/2026, 7:27 pm - Priya: all you free tomorrow evening?
+12/10/2026, 5:17 pm - Priya: Lunch at the canteen? library is crowded though
+12/10/2026, 9:12 pm - Rohan: Lunch at the canteen? library is crowded though
+12/10/2026, 9:31 pm - Karthik: Why is the main gate locked today
+12/10/2026, 10:44 pm - Divya: Machan, lab key yaar kitta irukku?
+12/10/2026, 11:25 pm - Kavya: The fest schedule is in the shared drive, check it
+13/10/2026, 12:21 pm - Rohan: Seri da
+13/10/2026, 6:27 pm - Karthik: The banner design needs a look when soemone gets time
+13/10/2026, 7:09 pm - Arun: Which attendance sheet are we using, the old one or the new one?
+13/10/2026, 11:07 pm - Arun: The lab schedule is in the shared drive, check it
+14/10/2026, 1:55 pm - Rohan: Pwoer cut in the IoT lab again
+14/10/2026, 2:19 pm - Rohan: Power cut in the main gate again
+14/10/2026, 7:55 pm - Divya: Class got cancelled today, free till 5
+14/10/2026, 8:06 pm - Meghna: Aama da, same doubt enakkum
 14/10/2026, 8:10 pm - Priya: Next IoT Fest needs the auditorium again. Dean's office approval, a month ahead, so apply by mid January.
-14/10/2026, 11:11 pm - Karthik: This message was deleted
-14/10/2026, 11:17 pm - Priya: The workshop slides looks good to me
-15/10/2026, 11:36 am - Divya: Class got cancelled today, free till 5
-15/10/2026, 6:42 pm - Karthik: The breadboards is in the shared drive, check it
-15/10/2026, 11:12 pm - Rohan: The soldering station looks good to me
-15/10/2026, 11:17 pm - Arun: Exam timetable is out, check the notice board
-15/10/2026, 11:19 pm - Divya: The fest schedule is in the shared drive, check it
-16/10/2026, 1:43 pm - Arun: Machan, lab key yaar kitta irukku?
-16/10/2026, 4:17 pm - Priya: Lunch at the canteen? parking is crowded though
-16/10/2026, 10:30 pm - Divya: Is the library open now?
-16/10/2026, 11:26 pm - Divya: The banner design looks good to me
-17/10/2026, 8:20 am - Rohan: Exam timetable is out, check the notice board
-17/10/2026, 9:55 am - Kavya: The router needs a look when someone gets time
-17/10/2026, 6:04 pm - Karthik: Lunch at the canteen? seminar hall is crowded though
-17/10/2026, 7:07 pm - Arun: all did you see the workshop slides message?
-17/10/2026, 8:14 pm - Meghna: Semma da
-17/10/2026, 9:22 pm - Rohan: Exam timetable is out, check the notice board
-18/10/2026, 1:33 pm - Rohan: Innaiku class illa da
-18/10/2026, 7:00 pm - Rohan: Exam timetable is out, check the notice board
-18/10/2026, 10:01 pm - Rohan: Meg you free tomorrow evening?
-18/10/2026, 10:22 pm - Rohan: The workshop slides needs a look when someone gets time
-18/10/2026, 11:21 pm - Divya: Is the IoT lab open now?
-19/10/2026, 11:40 am - Meghna: all did you see the router message?
-19/10/2026, 12:11 pm - Rohan: all you free tomorrow evening?
-19/10/2026, 4:01 pm - Karthik: Exam timetable is out, check the notice board
-19/10/2026, 6:46 pm - Meghna: Innaiku class illa da
-19/10/2026, 8:52 pm - Karthik: Lunch at the canteen? canteen is crowded though
-20/10/2026, 3:53 pm - Divya: Which attendance sheet are we using, the old one or the new one?
-20/10/2026, 6:46 pm - Karthik: Innaiku class illa da
-20/10/2026, 7:11 pm - Karthik: Is the auditorium open now?
+15/10/2026, 9:48 am - Rohan: all did you see the attendance sheet message?
+15/10/2026, 2:35 pm - Meghna: Seri da
+15/10/2026, 3:52 pm - Priya: Anyone has the sponsor deck?
+15/10/2026, 8:42 pm - Arun: Class got cancelled today, free till noon
+16/10/2026, 10:06 am - Arun: The sensor kit needs a look when somoene gets time
+16/10/2026, 6:56 pm - Kavya: Is the seminar hall open now?
+16/10/2026, 9:48 pm - Divya: Reached the auditorium, where is everyone?
+16/10/2026, 11:10 pm - Arun: The breadboards looks good to me
+16/10/2026, 11:31 pm - Divya: Exam timetable is out, check the notice board
+16/10/2026, 11:36 pm - Karthik: The poster is in the shared drive, check it
+17/10/2026, 8:13 am - Kavya: Lunch at the canteen? department office is crowded though
+17/10/2026, 8:34 am - Karthik: Is the department office open now?
+17/10/2026, 3:38 pm - Rohan: Class got cancelled today, free till 7 pm
+17/10/2026, 7:41 pm - Meghna: Class got cancelled today, free till 5
+17/10/2026, 9:24 pm - Kavya: Did anyone see the new sponsor deck?
+18/10/2026, 3:45 pm - Meghna: Why is the canteen locked today
+18/10/2026, 6:31 pm - Karthik: Bus romba late da
+18/10/2026, 7:22 pm - Kavya: The sensor kit looks good to me
+18/10/2026, 9:44 pm - Meghna: Which sponsor deck are we using, the old one or the new one?
+19/10/2026, 3:11 pm - Priya: lol Kav that was funny
+19/10/2026, 8:30 pm - Kavya: Whcih banner design are we using, the old one or the new one?
+19/10/2026, 10:46 pm - Rohan: Did anyone see the new fest schedule?
+19/10/2026, 11:27 pm - Priya: Exam timetable is out, check the notice board
+20/10/2026, 10:28 am - Karthik: Is the canteen open now?
+20/10/2026, 12:36 pm - Divya: Lunch at the canteen? auditorium is crowded though
+20/10/2026, 1:07 pm - Divya: <Media omitted>
+20/10/2026, 6:02 pm - Karthik: Lunch at the canteen? library is crowded though
+20/10/2026, 7:23 pm - Arun: Machan, lab key yaar kitta irukku?
 20/10/2026, 9:00 pm - Arun: I'll write the handover document by 15 November.
-20/10/2026, 10:55 pm - Karthik: Reached the main gate, where is everyone?
-21/10/2026, 3:11 pm - Priya: lol Kav that was funny
-21/10/2026, 8:30 pm - Kavya: Whcih banner design are we using, the old one or the new one?
-21/10/2026, 10:46 pm - Rohan: Did anyone see the new fest schedule?
-21/10/2026, 11:28 pm - Divya: Power cut in the depratment office again
-22/10/2026, 10:28 am - Karthik: Is the parking open now?
-22/10/2026, 3:04 pm - Divya: The soldering station looks good to me
-22/10/2026, 7:59 pm - Priya: Anyone has the sponsor deck?
-22/10/2026, 9:03 pm - Arun: The breadboards looks good to me
-22/10/2026, 11:27 pm - Divya: Class got cancelled today, free till 7 pm
-23/10/2026, 11:31 am - Meghna: The banner design is in the shared drive, check it
-23/10/2026, 11:37 am - Arun: Anyone has the soldering station?
-23/10/2026, 7:29 pm - Karthik: The lab schedule looks good to me
-23/10/2026, 8:05 pm - Arun: Reached the canteen, where is everyone?
-24/10/2026, 8:57 am - Meghna: The router is in the shared drive, check it
-24/10/2026, 1:19 pm - Meghna: <Media omitted>
-24/10/2026, 2:29 pm - Kavya: Exam timetable is out, check the notice board
-24/10/2026, 6:57 pm - Karthik: Exam timetable is out, check the notice board
-24/10/2026, 7:34 pm - Kavya: <Media omitted>
-25/10/2026, 8:31 am - Meghna: Class got cancelled today, free till 7 pm
-25/10/2026, 6:17 pm - Meghna: The lab schedule needs a look when someone gets time
-25/10/2026, 7:23 pm - Priya: Which banner design are we using, the old one or the new one?
-25/10/2026, 7:43 pm - Divya: Class got cancelled today, free till 6 pm
-25/10/2026, 10:54 pm - Kavya: Divya did you see the soldering station message?
-26/10/2026, 8:30 am - Priya: Anyone has the breadboards?
-26/10/2026, 12:08 pm - Arun: The router needs a look when someone gets time
-26/10/2026, 9:47 pm - Divya: Did anyone see the new sponsor deck?
-26/10/2026, 9:51 pm - Rohan: Exam timetable is out, check the notice board
-27/10/2026, 12:48 pm - Priya: Exam timetable is out, check the notice board
-27/10/2026, 1:28 pm - Priya: Enna da idhu
-27/10/2026, 2:52 pm - Rohan: Semma da
-27/10/2026, 6:50 pm - Karthik: Aru did you see the soldering station message?
-27/10/2026, 10:30 pm - Meghna: The fest schedule needs a look when someone gets time
-28/10/2026, 1:59 pm - Meghna: lol Arun that was funny
-28/10/2026, 2:58 pm - Divya: Exam timetable is out, check the notice board
-28/10/2026, 3:07 pm - Arun: Lunch at the canteen? canteen is crowded though
-28/10/2026, 3:13 pm - Meghna: Aama da, same duobt enakkum
-28/10/2026, 7:53 pm - Divya: lol Kavya that was funny
-29/10/2026, 9:46 am - Meghna: The budget sheet looks good to me
-29/10/2026, 3:32 pm - Kavya: The budget sheet needs a look when someone gets time
-29/10/2026, 7:13 pm - Divya: <Media omitted>
-29/10/2026, 8:58 pm - Meghna: The attendance sheet needs a look when someone gets time
-29/10/2026, 10:31 pm - Karthik: Class got cancelled today, free till noon
-30/10/2026, 8:32 am - Divya: Did anyone see the new sponsor deck?
-30/10/2026, 10:47 am - Divya: Reached the library, where is everyone?
-30/10/2026, 3:54 pm - Rohan: Is the canteen open now?
-30/10/2026, 10:07 pm - Priya: Why is the IoT lab locked today
-31/10/2026, 9:59 am - Divya: Is the auditorium open now?
-31/10/2026, 1:39 pm - Rohan: Aama da, same doubt enakkum
-31/10/2026, 2:57 pm - Arun: Power cut in the library again
-31/10/2026, 8:36 pm - Meghna: Bus romba late da
+20/10/2026, 11:07 pm - Meghna: Reached the main gate, where is everyone?
+21/10/2026, 1:22 pm - Karthik: Machan, lab key yaar kitta irukku?
+21/10/2026, 1:52 pm - Priya: Why is the IoT lab locked today
+21/10/2026, 4:42 pm - Divya: Class got cancelled today, free till 6 pm
+21/10/2026, 11:14 pm - Divya: Is the canteen open now?
+22/10/2026, 12:14 pm - Priya: all did you see the workshop slides message?
+22/10/2026, 1:07 pm - Meghna: Seri da
+22/10/2026, 4:13 pm - Priya: Why is the library locked today
+22/10/2026, 11:02 pm - Divya: Arun you free tomorrow evening?
+23/10/2026, 10:35 am - Divya: Did anyone see the new budget sheet?
+23/10/2026, 12:11 pm - Meghna: Lunch at the canteen? seminar hall is crowded though
+23/10/2026, 5:27 pm - Karthik: Divs did you see the attendance sheet message?
+23/10/2026, 7:55 pm - Rohan: Enna da idhu
+24/10/2026, 10:12 am - Rohan: The attendance sheet is in the shared drive, check it
+24/10/2026, 6:53 pm - Karthik: The breadboards is in the shared drive, check it
+24/10/2026, 7:25 pm - Karthik: Class got cancelled today, free till 5
+24/10/2026, 9:30 pm - Kavya: Anyone has the attendance sheet?
+24/10/2026, 10:12 pm - Priya: Which budget sheet are we using, the old one or the new one?
+25/10/2026, 10:06 am - Divya: The lab schedule needs a look when someone gets time
+25/10/2026, 8:27 pm - Karthik: Class got cancelled today, free till noon
+25/10/2026, 11:26 pm - Priya: lol all that was funny
+25/10/2026, 11:29 pm - Meghna: Why is the department office locked today
+26/10/2026, 10:11 am - Meghna: Class got cancelled today, free till 4
+26/10/2026, 1:24 pm - Divya: Reached the library, where is everyone?
+26/10/2026, 2:47 pm - Divya: Karthik you free tomorrow evening?
+26/10/2026, 11:11 pm - Kavya: Lunch at the canteen? library is crowded though
+27/10/2026, 1:20 pm - Rohan: Class got cancelled today, free till 4
+27/10/2026, 5:30 pm - Karthik: Why is the parking locked today
+27/10/2026, 7:13 pm - Kavya: Power cut in the IoT lab again
+27/10/2026, 11:19 pm - Arun: Exam timetable is out, check the notice board
+28/10/2026, 10:18 am - Divya: lol all that was funny
+28/10/2026, 2:11 pm - Arun: Class got cancelled today, free till 5
+28/10/2026, 2:12 pm - Meghna: The sensor kit is in the shared drive, check it
+28/10/2026, 6:50 pm - Priya: The budget sheet is in the shared drive, check it
+29/10/2026, 9:59 am - Divya: Is the seminar hall open now?
+29/10/2026, 10:25 am - Arun: Reached the main gate, where is everyone?
+29/10/2026, 11:08 am - Arun: lol all that was funny
+29/10/2026, 10:31 pm - Divya: Did anyone see the new banner design?
+30/10/2026, 9:16 am - Arun: Is the IoT lab open now?
+30/10/2026, 1:39 pm - Meghna: Anyone has the workshop slides?
+30/10/2026, 1:49 pm - Kavya: Exam timetable is out, check the notice board
+30/10/2026, 8:24 pm - Karthik: Did anyone see the new attendance sheet?
+31/10/2026, 10:04 am - Rohan: Class got cancelled today, free till 4
+31/10/2026, 2:46 pm - Kavya: Did anyone see the new budget sheet?
+31/10/2026, 6:19 pm - Rohan: Reached the auditorium, where is everyone?
+31/10/2026, 9:09 pm - Rohan: The sensor kit needs a look when someone gets time

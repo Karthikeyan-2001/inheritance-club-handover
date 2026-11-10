@@ -20,6 +20,7 @@ people:
   - { name: Lakshmi, role: volunteer,     nicknames: [Lakshmi, Laks] }
   - { name: Imran,   role: volunteer,     nicknames: [Imran] }
   - { name: Ananya,  role: volunteer,     nicknames: [Ananya, Anu] }
+  - { name: Dr. Meena, role: faculty advisor, nicknames: [ma'am] }
 
 filler:
   typoRate: 0.04
@@ -57,6 +58,11 @@ filler:
       - Why is the {place} locked today
       - Did anyone see the new {thing}?
       - "{tamil}"
+    direct:
+      - Good morning
+      - Noted, thank you
+      - Is the {place} free tomorrow?
+      - Ok
     volunteers:
       - Walkie-talkies need charging, anyone know where the chargers are?
       - Shift chart is in the sheet, please check your slot
@@ -158,6 +164,24 @@ chats:
       - { at: "2026-03-10 19:00", by: Ananya, say: "Any update on the volunteer certificates?" }
       - { at: "2026-04-15 18:20", by: Lakshmi, say: "Still waiting for the volunteer certificates, college asked for them for the NSS hours." }
       - { at: "2026-02-09 12:00", by: Karthik, say: "Might bring a spare speaker, not sure yet." }
+
+  # A one-to-one chat on the advisor's phone, uploaded by her at the private level. Only she
+  # may read it: the leak test checks that nothing from it reaches any other role.
+  - file: WhatsApp Chat with Arun.txt
+    format: android
+    kind: direct
+    group: Arun
+    accessLevel: private
+    uploader: meena
+    creator: Dr. Meena
+    template: direct
+    startsAt: "2025-11-03 09:00"
+    members: [Dr. Meena, Arun]
+    perDay: { default: 0.04 }
+    beats:
+      - { at: "2026-09-21 18:05", by: Arun, say: "Ma'am, Karthik told me about his medical leave in confidence. Please keep it between us." }
+      - { at: "2026-09-21 18:20", by: Dr. Meena, say: "I'll write to the HoD about Karthik's attendance condonation by 30 September." }
+      - { at: "2026-09-29 11:15", by: Dr. Meena, say: "Wrote to the HoD about Karthik's attendance condonation, he approved it." }
 
 trello:
   file: trello-board.json

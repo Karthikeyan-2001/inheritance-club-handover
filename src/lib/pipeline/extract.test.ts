@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { parseUpload } from "../parsers/index";
-import { buildExtractionPrompt, chunkEvents, deliverableGrounded, postProcess, type PipelineEvent } from "./extract";
+import { buildExtractionPrompt, cardNamesCounterparty, chunkEvents, deliverableGrounded, postProcess, type PipelineEvent } from "./extract";
 import { fakeExtract } from "./fake-extract";
 
 const ev = (id: string, text: string, over: Partial<PipelineEvent> = {}): PipelineEvent => ({
@@ -70,6 +70,38 @@ describe("postProcess", () => {
     const { kept, dropped } = postProcess({ commitments: [c({})] }, refs);
     expect(dropped).toEqual({});
     expect(kept[0]).toMatchObject({ event: { id: "e1" }, owedTo: "Workshop speakers", dueText: "by 15 March" });
+  });
+
+  it("keeps a promise from a Trello card only if the card names who is waiting for it or has a due date", () => {
+    const card = (id: string, text: string) => ev(id, text, { sourceType: "trello", threadId: `trello:card:${id}` });
+    const local = new Map([
+      ["m1", card("inv", "Card: Sensor inventory\nCount what the lab has.")],
+      ["m2", card("rec", "Card: Fest budget sheet\nKeep updated with receipts.")],
+      ["m3", card("bw", "Card: Send sponsorship proposal to Brightwave Labs")],
+      ["m6", card("pp", "Card: Print fest posters\nDue: 2026-02-03")],
+      ["m4", ev("cm", "Will send the proposal to Brightwave tonight.", { sourceType: "trello", threadId: "trello:card:bw" })],
+      ["m5", card("cl", "Checklist \"Fest\" on card \"Print fest posters\" (state at export):\n[ ] Posters in first-year blocks")],
+    ]);
+    const { kept, dropped } = postProcess({
+      commitments: [
+        c({ message: "m1", quote: "Count what the lab has.", owed_to: "the lab", deliverable: "Count the sensors" }),
+        c({ message: "m2", quote: "Keep updated with receipts.", owed_to: "the club", deliverable: "Keep the log updated", due_text: null }),
+        c({ message: "m3", quote: "Send sponsorship proposal to Brightwave Labs", owed_to: "Brightwave Labs", deliverable: "Send sponsorship proposal", due_text: null }),
+        c({ message: "m4", quote: "Will send the proposal to Brightwave tonight.", owed_to: "Brightwave Labs", deliverable: "Send the proposal", due_text: "tonight" }),
+        c({ message: "m5", quote: "Posters in first-year blocks", owed_to: "the committee", deliverable: "Put up posters", due_text: null }),
+        c({ message: "m6", quote: "Card: Print fest posters", owed_to: "the club", deliverable: "Print fest posters", due_text: "2026-02-03" }),
+      ],
+    }, local);
+    // "the lab" is named by the card, but as the place to count in, not someone waiting:
+    // the rule only asks that the card names the counterparty, so it is kept.
+    expect(kept.map((k) => k.event.id)).toEqual(["inv", "bw", "cm", "pp"]);
+    expect(dropped).toEqual({ card_without_counterparty: 2 });
+  });
+
+  it("cardNamesCounterparty ignores words that only name the club itself", () => {
+    expect(cardNamesCounterparty("the IoT club committee", "Card: IoT club committee photo")).toBe(false);
+    expect(cardNamesCounterparty("Mr. Kannan (sponsor)", "Card: Expo photos for Mr. Kannan")).toBe(true);
+    expect(cardNamesCounterparty("", "Card: anything")).toBe(false);
   });
 
   it("drops a quote that leaves out the hedge in its own sentence, including Tamil-English hedges", () => {

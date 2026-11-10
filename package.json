@@ -25,7 +25,9 @@
     "seed:hosted": "node --env-file=.env.hosted.local scripts/seed.ts --remote",
     "eval:extract": "node --use-system-ca --env-file=.env.local scripts/eval-extract.ts",
     "eval:pipeline": "node --use-system-ca --env-file=.env.local scripts/eval-pipeline.ts",
-    "demo:freeze": "node --use-system-ca --env-file=.env.local scripts/freeze-demo.ts"
+    "demo:freeze": "node --use-system-ca --env-file=.env.local scripts/freeze-demo.ts",
+    "cache:export": "node --env-file=.env.local scripts/llm-cache.ts export",
+    "cache:warm": "node --env-file=.env.hosted.local scripts/llm-cache.ts import"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.6.0",

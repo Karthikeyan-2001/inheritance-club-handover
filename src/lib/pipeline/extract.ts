@@ -4,7 +4,7 @@
 import { z } from "zod";
 import type { AccessLevel } from "../access.ts";
 import { formatIst } from "../format.ts";
-import { sentences } from "./text.ts";
+import { contentTokens, sentences } from "./text.ts";
 import { noteGrounded, normaliseForQuote, verifyQuote } from "./verify.ts";
 
 export type PipelineEvent = {
@@ -147,6 +147,7 @@ export type Candidate = {
 
 export type DropReason =
   | "unknown_message" | "quote_not_found" | "quote_too_short" | "non_binding" | "no_counterparty" | "no_deliverable" | "duplicate"
+  | "card_without_counterparty"
   /** Not dropped: the claim is kept, but its description is replaced by the verified quote. */
   | "ungrounded_deliverable";
 
@@ -186,6 +187,24 @@ export function hedged(quote: string, messageText: string): boolean {
 }
 const NO_PARTY = /^(unknown|none|n\/?a|nobody|no one|unspecified|-|\?)$/i;
 
+/** A Trello card or checklist as a whole (not a comment or a move): a to-do list, not a conversation. */
+export const isTrelloCard = (e: Pick<PipelineEvent, "sourceType" | "text">): boolean =>
+  e.sourceType === "trello" && /^(Card: |Checklist ")/.test(e.text);
+
+// Words that name the club itself, not someone outside it who is waiting.
+const SELF = new Set(["club", "committee", "team", "member", "members", "us", "we", "everyone", "all", "iot", "core", "board"].map((w) => [...contentTokens(w)][0] ?? w));
+
+/**
+ * Does the card itself name who is waiting for it ("Send sponsorship proposal to Brightwave
+ * Labs")? Words that only name the club do not count.
+ */
+export function cardNamesCounterparty(owedTo: string, cardText: string): boolean {
+  const want = [...contentTokens(owedTo)].filter((w) => !SELF.has(w));
+  if (!want.length) return false;
+  const have = contentTokens(cardText);
+  return want.some((w) => have.has(w));
+}
+
 /** Keep only candidates that cite a real message, quote it verbatim, and are firm and complete. */
 export function postProcess(output: ExtractionOutput, refs: Map<string, PipelineEvent>): { kept: Candidate[]; dropped: Partial<Record<DropReason, number>> } {
   const kept: Candidate[] = [];
@@ -211,6 +230,12 @@ export function postProcess(output: ExtractionOutput, refs: Map<string, Pipeline
     const owedTo = c.owed_to.trim();
     if (!owedTo || NO_PARTY.test(owedTo)) {
       drop("no_counterparty");
+      continue;
+    }
+    // A card is a to-do item. It counts as a commitment only with a person waiting for it, or a
+    // due date someone took on; "Count what the lab has" or "Keep updated with receipts" has neither.
+    if (isTrelloCard(event) && !/\nDue: /.test(event.text) && !cardNamesCounterparty(owedTo, event.text)) {
+      drop("card_without_counterparty");
       continue;
     }
     const deliverable = c.deliverable.trim();

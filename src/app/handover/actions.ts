@@ -40,6 +40,30 @@ export async function acknowledge(_prev: FormState, formData: FormData): Promise
   return { ok: DONE[action] };
 }
 
+const ReplyInput = z.object({
+  ack: Id,
+  text: z.string().trim().min(1, "Write a reply first.").max(1000, "Keep the reply under 1,000 characters."),
+});
+
+/**
+ * The outgoing lead or advisor answers the incoming lead's question (or decline). RLS allows
+ * only those two roles, only as themselves, and only on an answer they can read; the reply is
+ * immutable and audited (migration 0020).
+ */
+export async function replyToAck(_prev: FormState, formData: FormData): Promise<FormState> {
+  const viewer = await getViewer();
+  if (!viewer) return { error: "Please sign in first." };
+  const input = ReplyInput.safeParse(Object.fromEntries(formData));
+  if (!input.success) return { error: input.error.issues[0]?.message ?? "Invalid request." };
+  const supabase = await createSupabaseServerClient();
+  const { error } = await supabase.from("ack_replies").insert({ ack_id: input.data.ack, user_id: viewer.userId, text: input.data.text });
+  if (error) {
+    return { error: error.code === "42501" ? "Only the outgoing lead or the faculty advisor can reply, and only to a question or decline they can read." : "Could not save your reply." };
+  }
+  refresh();
+  return { ok: "Reply sent. The incoming lead sees it under their question." };
+}
+
 const SealInput = z.object({
   obligation: Id,
   holder: z.enum(["advisor", "outgoing_lead"]),

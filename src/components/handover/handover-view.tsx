@@ -7,18 +7,22 @@ import { formatIst, formatIstDate } from "@/lib/format";
 import {
   ACK_LABELS,
   ackSummary,
+  canReplyTo,
   dutyCalendar,
   latestAckByItem,
   peopleWaiting,
+  repliesByAck,
   toHandoverItem,
   type AckRow,
   type HandoverItem,
+  type ReplyRow,
 } from "@/lib/handover/handover";
 import { capitalise } from "@/lib/ledger-view";
 import type { VersionItem } from "@/lib/review/diff";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { acknowledge, sealPlaceholder } from "@/app/handover/actions";
+import { acknowledge, replyToAck, sealPlaceholder } from "@/app/handover/actions";
 import { AckForm } from "./ack-form";
+import { ReplyForm } from "./reply-form";
 import { SealForm } from "./seal-form";
 
 const TIMING: Record<string, string> = { overdue: "Overdue", start_now: "Start now", upcoming: "Upcoming", undated: "No date recorded" };
@@ -30,10 +34,45 @@ function Trust({ item }: { item: HandoverItem }) {
   return <Badge variant={t === "contradicted" || t === "gap" ? "destructive" : "secondary"}>Trust: {TRUST_LABELS[t]}</Badge>;
 }
 
-type Ctx = { versionId: string; me: string; role: AppRole; acks: Map<string, AckRow>; evidence: Map<string, VersionItem["evidence"]> };
+type Ctx = {
+  versionId: string;
+  me: string;
+  role: AppRole;
+  acks: Map<string, AckRow>;
+  evidence: Map<string, VersionItem["evidence"]>;
+  replies: Map<string, ReplyRow[]>;
+  roleOf: Map<string, AppRole>;
+};
+
+function Replies({ ack, ctx }: { ack: AckRow | undefined; ctx: Ctx }) {
+  if (!ack?.id || !canReplyTo(ack)) return null;
+  const list = ctx.replies.get(ack.id) ?? [];
+  const reviewer = ctx.role === "outgoing_lead" || ctx.role === "advisor";
+  if (list.length === 0 && !reviewer) return <p className="mt-1 text-xs text-muted-foreground">No reply yet.</p>;
+  return (
+    <div className="mt-2 border-l-2 pl-3" data-testid="ack-replies">
+      {list.length > 0 && (
+        <ul className="flex flex-col gap-1" aria-label="Replies">
+          {list.map((r) => {
+            const who = ctx.roleOf.get(r.user_id);
+            return (
+              <li key={r.id} className="text-xs" data-testid="ack-reply">
+                <span className="text-muted-foreground">
+                  {r.user_id === ctx.me ? "You" : who ? `The ${ROLE_LABELS[who].toLowerCase()}` : "A reviewer"} replied on {formatIst(r.created_at)}:
+                </span>{" "}
+                “{r.text}”
+              </li>
+            );
+          })}
+        </ul>
+      )}
+      {reviewer && <ReplyForm action={replyToAck} ack={ack.id} />}
+    </div>
+  );
+}
 
 function AckState({ ack, who }: { ack: AckRow | undefined; who: string }) {
-  if (!ack) return <p className="mt-2 text-xs text-muted-foreground">{who} has not answered yet.</p>;
+  if (!ack) return <p className="mt-2 text-xs text-muted-foreground">{who === "You" ? "You have" : `${who} has`} not answered yet.</p>;
   return (
     <p className="mt-2 text-xs text-muted-foreground" data-testid="ack-state">
       {ACK_LABELS[ack.action]} on {formatIst(ack.created_at)}
@@ -74,10 +113,14 @@ function Card({ item, ctx, facts, timing }: { item: HandoverItem; ctx: Ctx; fact
       {ctx.role === "incoming_lead" ? (
         <>
           <AckState ack={ack} who="You" />
+          <Replies ack={ack} ctx={ctx} />
           <AckForm action={acknowledge} version={ctx.versionId} obligation={item.id} current={ack?.action ?? null} />
         </>
       ) : (
-        <AckState ack={ack} who="The incoming lead" />
+        <>
+          <AckState ack={ack} who="The incoming lead" />
+          <Replies ack={ack} ctx={ctx} />
+        </>
       )}
     </li>
   );
@@ -118,7 +161,7 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
 
   const [rowsRes, acksRes, releases] = await Promise.all([
     supabase.from("version_items").select("obligation_id, item, access_level").eq("version_id", version.id),
-    supabase.from("latest_acks").select("obligation_id, user_id, action, note, created_at").eq("version_id", version.id),
+    supabase.from("latest_acks").select("id, obligation_id, user_id, action, note, created_at").eq("version_id", version.id),
     supabase.from("releases").select("target_id, to_role").eq("workspace_id", workspaceId).eq("target_type", "obligation"),
   ]);
   if (rowsRes.error || acksRes.error || releases.error) return <p role="alert">Could not load the handover. Try again in a minute.</p>;
@@ -137,10 +180,19 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
   const mine = role === "incoming_lead";
   // The incoming lead sees only their own answers; reviewers see the incoming lead's.
   const acks = latestAckByItem((acksRes.data ?? []) as AckRow[], mine ? userId : ((acksRes.data ?? [])[0]?.user_id ?? userId));
+  // Replies to the answers shown, and who wrote them (by role, from the workspace's memberships).
+  const ackIds = [...acks.values()].map((a) => a.id).filter((x): x is string => Boolean(x));
+  const [repliesRes, membersRes] = await Promise.all([
+    ackIds.length ? supabase.from("ack_replies").select("id, ack_id, user_id, text, created_at").in("ack_id", ackIds) : Promise.resolve({ data: [] as ReplyRow[], error: null }),
+    supabase.from("memberships").select("user_id, role").eq("workspace_id", workspaceId),
+  ]);
+  if (repliesRes.error || membersRes.error) return <p role="alert">Could not load the handover. Try again in a minute.</p>;
+  const replies = repliesByAck((repliesRes.data ?? []) as ReplyRow[]);
+  const roleOf = new Map((membersRes.data ?? []).map((m) => [m.user_id, m.role as AppRole]));
   const waiting = peopleWaiting(items);
   const calendar = dutyCalendar(items, today);
   const summary = ackSummary(items.map((i) => i.id), acks);
-  const ctx: Ctx = { versionId: version.id, me: userId, role, acks, evidence };
+  const ctx: Ctx = { versionId: version.id, me: userId, role, acks, evidence, replies, roleOf };
 
   const sealedIds = new Set((sealed.data ?? []).map((s) => s.obligation_id));
   const released = new Set((releases.data ?? []).filter((r) => r.to_role === "incoming_lead").map((r) => r.target_id));

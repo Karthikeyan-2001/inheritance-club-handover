@@ -84,4 +84,46 @@ describe.skipIf(!hasEnv)("handover: acknowledgements and sealed placeholders", (
     expect(data).toHaveLength(1);
     expect(Object.keys(data![0]).sort()).toEqual(["approved_by", "holder_role", "id", "obligation_id", "topic_label", "workspace_id"]);
   });
+
+  describe("replies to the incoming lead's questions (migration 0020)", () => {
+    let question: string;
+    let accepted: string;
+    const reply = (c: Client, who: string, ackId: string, text = "The certificates go out from the department office.") =>
+      c.from("ack_replies").insert({ ack_id: ackId, user_id: who, text }).select("id");
+
+    beforeAll(async () => {
+      const q = await as.kavya.from("acks").insert({ version_id: version, obligation_id: O("O2"), user_id: ids.kavya, action: "question", note: "Were the certificates ever sent?" }).select("id").single();
+      expect(q.error).toBeNull();
+      question = q.data!.id;
+      const a = await as.kavya.from("acks").insert({ version_id: version, obligation_id: O("O1"), user_id: ids.kavya, action: "accept" }).select("id").single();
+      accepted = a.data!.id;
+    });
+
+    it("the outgoing lead and the advisor can reply to a question, as themselves", async () => {
+      expect((await reply(as.arun, ids.arun, question)).error).toBeNull();
+      expect((await reply(as.meena, ids.meena, question, "I will check with the HoD.")).error).toBeNull();
+      expect((await reply(as.arun, ids.meena, question)).error, "as someone else").not.toBeNull();
+    });
+
+    it("nobody else can reply, and nobody can reply to an acceptance or with an empty text", async () => {
+      for (const v of ["kavya", "divya", "member"] as const) expect((await reply(as[v], ids[v], question)).error, v).not.toBeNull();
+      expect((await reply(as.arun, ids.arun, accepted)).error).not.toBeNull();
+      expect((await reply(as.arun, ids.arun, question, "   ")).error).not.toBeNull();
+    });
+
+    it("the incoming lead reads the replies to her question; the treasurer and members read none", async () => {
+      const { data } = await as.kavya.from("ack_replies").select("text").eq("ack_id", question).order("created_at");
+      expect((data ?? []).map((r) => r.text)).toEqual(["The certificates go out from the department office.", "I will check with the HoD."]);
+      for (const v of ["divya", "member"] as const) expect((await as[v].from("ack_replies").select("id")).data ?? [], v).toEqual([]);
+    });
+
+    it("replies are immutable and audited with the actor and the text", async () => {
+      const { data: r } = await admin().from("ack_replies").select("id").eq("ack_id", question).limit(1).single();
+      expect((await admin().from("ack_replies").update({ text: "x" }).eq("id", r!.id)).error?.message).toMatch(/immutable/);
+      expect((await admin().from("ack_replies").delete().eq("id", r!.id)).error?.message).toMatch(/immutable/);
+      const { data } = await as.meena.from("audit_log").select("actor, reason").eq("action", "ack_reply").eq("obligation_id", O("O2")).order("created_at");
+      expect(data?.map((x) => x.actor)).toEqual([ids.arun, ids.meena]);
+      expect(data?.[1]?.reason).toBe("I will check with the HoD.");
+    });
+  });
 });

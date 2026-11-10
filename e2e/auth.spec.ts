@@ -15,7 +15,9 @@ test("signed-out visitors are invited to load a demo club", async ({ page }) => 
 
 test("the login page offers your own demo club and the four shared accounts with credentials", async ({ page }) => {
   await page.goto("/login");
-  await expect(page.getByRole("button", { name: "Load demo club" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Explore a built handover" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Start from your own files" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Read the ten-minute walkthrough" })).toBeVisible();
   for (const name of ["Arun", "Dr. Meena", "Kavya", "Divya"]) {
     await expect(page.getByRole("button", { name: `Sign in as ${name}` })).toBeVisible();
   }
@@ -65,4 +67,11 @@ test("signing out returns to the login page", async ({ page }) => {
   await expect(page).toHaveURL("/login");
   await page.goto("/");
   await expect(page.getByRole("link", { name: "Load demo club" })).toBeVisible();
+});
+
+test("the walkthrough is readable without signing in", async ({ page }) => {
+  await page.goto("/guide");
+  await expect(page.getByRole("heading", { name: "Try Inheritance in ten minutes" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Path A: explore a built handover" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Path B: build one from files yourself" })).toBeVisible();
 });

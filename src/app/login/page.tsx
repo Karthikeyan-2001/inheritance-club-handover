@@ -54,13 +54,33 @@ async function LoginMessage({ searchParams }: { searchParams: PageProps<"/login"
   );
 }
 
+/** The two kinds of copy a visitor can start. */
 function LoadForm({ fresh = false }: { fresh?: boolean }) {
   return (
-    <form action={loadDemoClub}>
-      <PendingButton variant={fresh ? "outline" : "default"} pendingLabel="Building your demo club… (a few seconds)">
-        {fresh ? "Start a fresh copy instead" : "Load demo club"}
-      </PendingButton>
-    </form>
+    <div className="grid gap-3 sm:grid-cols-2">
+      <form action={loadDemoClub} className="flex flex-col gap-2 rounded-md border p-4">
+        <input type="hidden" name="club" value="year" />
+        <p className="font-medium">Explore a built handover</p>
+        <p className="text-muted-foreground">
+          A year of an IoT club&apos;s records (about 2,000 messages in five files at four access
+          levels), the ledger built from them, version 1 approved, and a few items still to review.
+        </p>
+        <PendingButton variant={fresh ? "outline" : "default"} pendingLabel="Building your demo club… (up to half a minute)">
+          {fresh ? "Start a fresh built club" : "Explore a built handover"}
+        </PendingButton>
+      </form>
+      <form action={loadDemoClub} className="flex flex-col gap-2 rounded-md border p-4">
+        <input type="hidden" name="club" value="empty" />
+        <p className="font-medium">Start from your own files</p>
+        <p className="text-muted-foreground">
+          The same four people and nothing else. Import the synthetic sample files (or your own
+          exports), build the ledger, review it, approve it and hand it over yourself.
+        </p>
+        <PendingButton variant="outline" pendingLabel="Creating your empty club…">
+          {fresh ? "Start a fresh empty club" : "Start from your own files"}
+        </PendingButton>
+      </form>
+    </div>
   );
 }
 
@@ -82,7 +102,7 @@ async function CopyActions() {
         </form>
         <LoadForm fresh />
       </div>
-      <p className="text-xs text-muted-foreground">A fresh copy replaces your current one, which is then deleted.</p>
+      <p className="text-xs text-muted-foreground">A fresh club replaces your current one, which is then deleted.</p>
     </div>
   );
 }
@@ -115,11 +135,10 @@ export default function LoginPage(props: PageProps<"/login">) {
           </CardHeader>
           <CardContent className="flex flex-col gap-4 text-sm">
             <p className="max-w-3xl">
-              Builds a private copy of the synthetic club for you, with four accounts of its own: Arun
-              (outgoing lead), Dr. Meena (faculty advisor), Kavya (incoming lead) and Divya (treasurer).
-              It holds the source messages, a ledger with version 1 approved, and items still to review.
-              You start as Arun; switch roles from the menu at the top right. The copy and its accounts
-              are deleted after {days} days.
+              Builds a private club for you, with four accounts of its own: Arun (outgoing lead),
+              Dr. Meena (faculty advisor), Kavya (incoming lead) and Divya (treasurer). You start as
+              Arun; switch roles from the menu at the top right. The club and its accounts are deleted
+              after {days} days. New here? <a className="underline" href="/guide">Read the ten-minute walkthrough</a>.
             </p>
             <Suspense fallback={<LoadForm />}>
               <CopyActions />

@@ -36,6 +36,14 @@ Safeguards that do **not** rely on the model:
 
 *Status (Phase 12): what is sent changed slightly; what the model decides did not.* Extraction chunks are now packed per file group, so a year of chat is read in fewer, larger prompts (each still one access level). Two occasions of a repeated task with different due dates are no longer linked by a rule, so such pairs now go to the matching prompt. The hedge filter and sentence splitting are code. Two paid eval runs were approved and made on synthetic data only (Claude Haiku 5.5, 10 Nov 2026): the photography club (27 calls, about $0.013) and the year club (86 calls, about $0.053). The scorer that grades them (`src/lib/eval/score.ts`) is deterministic code.
 
+*Status (Phase 13): what the model decides did not change; two rules now check its output more strictly, and its output from one run is shown in demo copies.*
+
+- **Demo copies show stored model output.** "Explore a built handover" loads a ledger that Claude Haiku 5.5 built once from the synthetic year club, through the app's own pipeline (`scripts/freeze-demo.ts`), and that is stored in the repository as `src/lib/demo/year-club.json`. The items, quotes and context notes in it were proposed by the model and kept only because code verified them, exactly as in a live run. Which items start as accepted was decided by code, by comparing them with the hand-written ground truth (planted items accepted, the model's extras left as drafts), not by the model and not by hand.
+- **Saved answers.** The model's answers for the three synthetic scenarios (126 responses) are stored in `data/demo/llm-cache.json` and can be loaded into the hosted cache, so building from the sample files reuses them. They are keyed by a hash of the exact prompt.
+- **Two stricter checks in code.** A quote that only implies a promise was kept, from a record more restricted than the promise, is dropped (also refused by the database). A Trello card the model reads as a promise is kept only if the card names who is waiting for it or has a due date.
+- **Paid runs this phase**, all on synthetic data and approved in advance: the year club build ($0.053, 163 calls of which 76 were cached), the photography club ($0.013) and the mini scenario ($0.004), on Claude Haiku 5.5. Each was scored against its ground truth.
+- **Replies to the incoming lead's questions** are written by people; no model is involved.
+
 ## 3. Synthetic demo data: an LLM
 
 All demo data is synthetic. A small hand-written scenario is used first. A later generator will use an LLM to render planted facts as realistic chat messages, minutes and Trello cards: typos, nicknames, and Tamil-English code-mixing in Latin script. Ground truth is fixed in YAML before generation, so the system can be scored against it. No real people or organisations are used.

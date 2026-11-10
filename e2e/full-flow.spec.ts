@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { expect, test, type Page } from "@playwright/test";
 
 // The whole flow a judge would follow, on the second synthetic scenario (a photography club),
-// in a visitor's own demo copy: Connect (four files at four levels, one of them Word minutes and
+// in a visitor's own empty demo club: Connect (four files at four levels, one of them Word minutes and
 // one a private chat), Build the ledger (offline fake model), Review (accept, mark ready),
 // Approve (advisor), Handover (incoming lead answers). Then every page is read as every role
 // and searched for text that role may not see. Runs against a local stack only.
@@ -19,26 +19,24 @@ const FILES = [
 
 type Who = "Arun" | "Dr. Meena" | "Kavya" | "Divya";
 const ALL: Who[] = ["Arun", "Dr. Meena", "Kavya", "Divya"];
-/** Restricted text and who may read it: the scenario's finance and private text, and the demo club's own. */
+/** Restricted text and who may read it: the scenario's finance and private text. */
 const RESTRICTED: { text: string; allowed: Who[] }[] = [
   { text: "₹18,500", allowed: ["Arun", "Dr. Meena", "Divya"] },
   { text: "₹6,750", allowed: ["Arun", "Dr. Meena", "Divya"] },
   { text: "₹2,200", allowed: ["Arun", "Dr. Meena", "Divya"] },
-  { text: "₹2,400", allowed: ["Arun", "Dr. Meena", "Divya"] }, // the demo club's finance minutes
   { text: "scholarship", allowed: ["Arun", "Dr. Meena"] }, // Arun's private chat with the advisor
-  { text: "hall booking clash", allowed: ["Dr. Meena"] }, // the advisor's private chat in the demo club
 ];
 const PAGES = [
   "/", "/import",
   "/ledger?tab=commitments", "/ledger?tab=recurring", "/ledger?tab=docket", "/ledger?tab=gaps", "/ledger?tab=timeline",
-  "/review?tab=draft", "/review?tab=conflicts", "/review?tab=versions", "/review?tab=history", "/review/versions/2",
+  "/review?tab=draft", "/review?tab=conflicts", "/review?tab=versions", "/review?tab=history", "/review/versions/1",
   "/handover",
 ];
 
 async function loadCopy(page: Page) {
   await page.goto("/login");
-  await page.getByRole("button", { name: "Load demo club" }).click();
-  await expect(page).toHaveURL(/\/\?welcome=copy$/, { timeout: 30_000 });
+  await page.getByRole("button", { name: "Start from your own files" }).click();
+  await expect(page).toHaveURL(/\/import\?welcome=empty$/, { timeout: 30_000 });
 }
 
 async function switchTo(page: Page, who: Who) {
@@ -103,7 +101,7 @@ test.describe("the whole flow on a second synthetic club", () => {
       await accept(page, "group-draft", text, "Checked against the quotes");
       await expect(page.getByTestId("group-accepted")).toContainText(text);
     }
-    // The run also re-checked the demo club's accepted items; each that moved is accepted again.
+    // Nothing was accepted before this run in an empty club, but keep the loop for safety.
     while ((await page.getByTestId("group-changed").getByTestId("review-item").count()) > 0) {
       const before = await page.getByTestId("group-changed").getByTestId("review-item").count();
       await accept(page, "group-changed", null, "The new run's evidence checked");
@@ -115,7 +113,7 @@ test.describe("the whole flow on a second synthetic club", () => {
     await expect(signoff.getByRole("status")).toContainText("Marked ready.");
   });
 
-  test("Approve: the advisor approves version 2", async () => {
+  test("Approve: the advisor approves version 1", async () => {
     await switchTo(page, "Dr. Meena");
     await page.goto("/review?tab=draft");
     const signoff = page.getByTestId("signoff");
@@ -127,7 +125,7 @@ test.describe("the whole flow on a second synthetic club", () => {
   test("Handover: the incoming lead sees the committee items, not the finance or private ones, and answers", async () => {
     await switchTo(page, "Kavya");
     await page.goto("/handover");
-    await expect(page.getByTestId("handover-summary")).toContainText("Version 2");
+    await expect(page.getByTestId("handover-summary")).toContainText("Version 1");
     const tripods = page.getByTestId("handover-item").filter({ hasText: "borrowed tripods" }).first();
     await expect(tripods).toBeVisible();
     const camera = page.getByTestId("handover-item").filter({ hasText: "club camera" }).first();
@@ -135,6 +133,22 @@ test.describe("the whole flow on a second synthetic club", () => {
     await expect(camera.getByTestId("ack-state")).toContainText("Accepted");
     await expect(page.getByText("Pixel Hub invoice")).toHaveCount(0);
     await expect(page.getByText("scholarship")).toHaveCount(0);
+    await tripods.getByLabel(/Note/).fill("Who has the tripods now?");
+    await tripods.getByRole("button", { name: "Ask a question" }).click();
+    await expect(tripods.getByTestId("ack-state")).toContainText("Who has the tripods now?");
+  });
+
+  test("Questions go back: the outgoing lead replies, and the incoming lead reads the reply", async () => {
+    await switchTo(page, "Arun");
+    await page.goto("/handover");
+    const tripods = page.getByTestId("handover-item").filter({ hasText: "Who has the tripods now?" }).first();
+    await tripods.getByLabel("Reply to the incoming lead").fill("Two are with the lab; I return the third on Friday.");
+    await tripods.getByRole("button", { name: "Send reply" }).click();
+    await expect(tripods.getByTestId("ack-reply")).toContainText("Two are with the lab");
+    await switchTo(page, "Kavya");
+    await page.goto("/handover");
+    const mine = page.getByTestId("handover-item").filter({ hasText: "Who has the tripods now?" }).first();
+    await expect(mine.getByTestId("ack-reply")).toContainText("The outgoing lead replied");
   });
 
   test("No leaks: every page and every source message, as every role, holds only what that role may read", async () => {

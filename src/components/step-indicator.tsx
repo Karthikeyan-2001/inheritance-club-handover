@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { STEP_HREF, STEPS, stepForPath } from "@/lib/steps";
 
 /** The five-step workflow from the brief. The current step follows the page you are on. */
 export function StepIndicator() {
   const pathname = usePathname();
-  const current = stepForPath(pathname);
+  const tab = useSearchParams().get("tab");
+  const current = stepForPath(pathname, tab);
   const currentIndex = current ? STEPS.indexOf(current) : -1;
   return (
     <nav aria-label="Workflow steps">

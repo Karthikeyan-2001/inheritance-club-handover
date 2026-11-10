@@ -5,7 +5,33 @@ export type Database = {
   
   "public": {
           Tables: {
-            "acks": {
+            "ack_replies": {
+                  Row: {
+                    "ack_id": string,"created_at": string,"id": string,"text": string,"user_id": string
+                  }
+                  ComputedFields: never
+                  Insert: {
+                    "ack_id": string,"created_at"?: string,"id"?: string,"text": string,"user_id": string
+                  }
+                  Update: {
+                    "ack_id"?: string,"created_at"?: string,"id"?: string,"text"?: string,"user_id"?: string
+                  }
+                  Relationships: [
+                    {
+      foreignKeyName: "ack_replies_ack_id_fkey"
+      columns: ["ack_id"]
+isOneToOne: false
+      referencedRelation: "acks"
+      referencedColumns: ["id"]
+    },{
+      foreignKeyName: "ack_replies_ack_id_fkey"
+      columns: ["ack_id"]
+isOneToOne: false
+      referencedRelation: "latest_acks"
+      referencedColumns: ["id"]
+    }
+                  ]
+                },"acks": {
                   Row: {
                     "action": Database["public"]['Enums']["ack_action"],"created_at": string,"id": string,"note": string | null,"obligation_id": string,"seq": number,"user_id": string,"version_id": string
                   }

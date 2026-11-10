@@ -13,11 +13,64 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = { title: "Connect · Inheritance" };
 
-const SAMPLES = [
-  ["whatsapp-committee.txt", "Committee chat (WhatsApp)"],
-  ["trello-board.json", "Trello board"],
-  ["minutes.md", "Minutes (try setting this one to Finance)"],
+// Synthetic sample files. The photography club is the fuller one: four files at four levels.
+const SAMPLE_SETS = [
+  {
+    dir: "photo",
+    title: "Photography club, one term (recommended)",
+    files: [
+      ["whatsapp-committee.txt", "Committee chat (WhatsApp, iPhone export)", "Committee"],
+      ["whatsapp-accounts.txt", "Accounts chat (WhatsApp)", "Finance"],
+      ["WhatsApp Chat with Prof. Iyer.txt", "Arun's one-to-one chat with the advisor", "Private"],
+      ["minutes.docx", "Meeting minutes (Word)", "Committee"],
+    ],
+  },
+  {
+    dir: "mini",
+    title: "IoT club, a few weeks (small)",
+    files: [
+      ["whatsapp-committee.txt", "Committee chat (WhatsApp)", "Committee"],
+      ["trello-board.json", "Trello board", "Committee"],
+      ["minutes.md", "Minutes", "Finance"],
+    ],
+  },
 ] as const;
+
+function Samples() {
+  return (
+    <div className="flex flex-col gap-3 text-sm text-muted-foreground">
+      <p>No files of your own? Download a set of synthetic sample files, then import each one at the level shown:</p>
+      {SAMPLE_SETS.map((set) => (
+        <div key={set.dir}>
+          <p className="font-medium text-foreground">{set.title}</p>
+          <ul className="mt-1 list-disc pl-5">
+            {set.files.map(([file, label, level]) => (
+              <li key={file}>
+                <a className="underline" href={`/samples/${set.dir}/${encodeURIComponent(file)}`} download={file}>
+                  {label}
+                </a>{" "}
+                — set to <span className="font-medium text-foreground">{level}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+async function Welcome({ searchParams }: { searchParams: PageProps<"/import">["searchParams"] }) {
+  const { welcome } = await searchParams;
+  if (welcome !== "empty") return null;
+  return (
+    <p role="status" className="rounded-md border px-4 py-3 text-sm">
+      Your empty club is ready, and you are signed in as Arun, the outgoing lead. Step 1: download the
+      photography club&apos;s four sample files below and import each at the level shown (you can choose
+      several files at once). Step 2: open Ledger and press Build the ledger. Then review it, mark it
+      ready, and switch to Dr. Meena to approve it.
+    </p>
+  );
+}
 
 async function ImportContent() {
   let viewer;
@@ -60,18 +113,7 @@ async function ImportContent() {
           {canImport ? (
             <>
               <ImportForm />
-              <div className="text-sm text-muted-foreground">
-                <p>No files of your own? Download the synthetic sample files and import them:</p>
-                <ul className="mt-1 list-disc pl-5">
-                  {SAMPLES.map(([file, label]) => (
-                    <li key={file}>
-                      <a className="underline" href={`/samples/mini/${file}`} download>
-                        {label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Samples />
             </>
           ) : (
             <p className="text-sm">
@@ -115,7 +157,7 @@ async function ImportContent() {
   );
 }
 
-export default function ImportPage() {
+export default function ImportPage(props: PageProps<"/import">) {
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 px-6 py-10">
       <div className="flex flex-col gap-2">
@@ -124,6 +166,9 @@ export default function ImportPage() {
           Bring in the club&apos;s WhatsApp exports, Trello board and meeting minutes. Choose who may see each file before importing it.
         </p>
       </div>
+      <Suspense fallback={null}>
+        <Welcome searchParams={props.searchParams} />
+      </Suspense>
       <Suspense fallback={<p className="text-muted-foreground">Loading…</p>}>
         <ImportContent />
       </Suspense>

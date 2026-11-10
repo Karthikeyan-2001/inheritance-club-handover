@@ -151,3 +151,8 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 - **Verify is a step of its own in the header.** It opens the Docket; the Docket, Gaps and source-message pages mark it as the current step.
 - **A walkthrough page** (`/guide`) explains both demo paths for a first-time visitor.
 - **Saved answers can be pre-loaded.** `pnpm cache:warm` copies the model's answers for the synthetic scenarios to the hosted cache, so building from the sample files returns at once. Pre-loaded rows do not count against the daily call budget.
+
+## Guided demo tour (after Phase 13)
+
+- **Loading a demo club now starts a guided tour.** A built club used to land on the home page with everything already done (imported, built, version 1 approved), so a first-time visitor jumped straight into a finished ledger and never saw what each step did. A panel docked at the bottom of every page now goes through Connect, Reconstruct, Verify, Review and Handover in order: what the step does, what to look at, and something to try. It rings the element it is talking about, and when a stop is seen by someone else (Dr. Meena approving, Kavya receiving) its Next button signs in as that person, through the same role switch as the menu.
+- **Two tracks:** "Explore a built handover" (18 stops) and "Build one from your own files" (12 stops). Either can be started or restarted from the Walkthrough page, hidden, left and returned to. The tour only explains and navigates; it changes no data, and every page it opens is read under the signed-in role's RLS.

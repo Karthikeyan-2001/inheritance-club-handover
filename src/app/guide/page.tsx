@@ -40,7 +40,9 @@ export default function GuidePage() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-xl">Path A: explore a built handover</CardTitle>
+          <CardTitle className="text-xl">
+            <h2>Path A: explore a built handover</h2>
+          </CardTitle>
           <CardDescription>About ten minutes. No files needed.</CardDescription>
         </CardHeader>
         <CardContent>
@@ -114,7 +116,9 @@ export default function GuidePage() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-xl">Path B: build one from files yourself</CardTitle>
+          <CardTitle className="text-xl">
+            <h2>Path B: build one from files yourself</h2>
+          </CardTitle>
           <CardDescription>About ten minutes, of which building takes two or three.</CardDescription>
         </CardHeader>
         <CardContent>

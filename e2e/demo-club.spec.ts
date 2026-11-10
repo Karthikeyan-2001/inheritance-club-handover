@@ -1,16 +1,17 @@
 import { expect, test, type Page } from "@playwright/test";
 
-// "Load demo club": a visitor's own copy of the synthetic club, with four accounts of its own.
-// What happens in a copy stays in it; the shared accounts never see it.
+// A visitor's own demo club, with four accounts of its own: the built year club (the frozen
+// real-model ledger) or an empty one. What happens in a copy stays in it; the shared accounts
+// never see it.
 test.describe.configure({ mode: "serial" });
 
 const local = !process.env.E2E_BASE_URL;
-const COPY_NAME = "Demo Club (SYNTHETIC, your copy)";
+const COPY_NAME = "IoT Club, one year (SYNTHETIC, your copy)";
 
 async function loadCopy(page: Page) {
   await page.goto("/login");
-  await page.getByRole("button", { name: "Load demo club" }).click();
-  await expect(page).toHaveURL(/\/\?welcome=copy$/, { timeout: 30_000 });
+  await page.getByRole("button", { name: "Explore a built handover" }).click();
+  await expect(page).toHaveURL(/\/\?welcome=copy$/, { timeout: 60_000 });
   await expect(page.getByRole("status")).toContainText("Your own demo club is ready");
 }
 
@@ -29,7 +30,8 @@ test.describe("demo club per visitor", () => {
     await loadCopy(page);
     await expect(page.getByRole("button", { name: /Signed in as Arun, Outgoing lead/ })).toBeVisible();
     await expect(badge(page)).toBeVisible();
-    await expect(page.getByTestId("count-obligations")).toHaveText("5");
+    // The year club: 39 items, one of them from the advisor's private chat, which Arun cannot read.
+    await expect(page.getByTestId("count-obligations")).toHaveText("38");
 
     // The incoming lead of this copy answers an item.
     await switchTo(page, /Kavya/);
@@ -74,7 +76,17 @@ test.describe("demo club per visitor", () => {
     await expect(page).toHaveURL("/login?notice=copy-deleted");
     await expect(page.getByRole("status")).toContainText("were deleted");
     // No copy to return to any more.
-    await expect(page.getByRole("button", { name: "Load demo club" })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Explore a built handover" })).toBeVisible();
     await expect(page.getByRole("button", { name: "Return to your demo club" })).toHaveCount(0);
+  });
+
+  test("an empty club starts on Connect with the sample files to import", async ({ page }) => {
+    await page.goto("/login");
+    await page.getByRole("button", { name: "Start from your own files" }).click();
+    await expect(page).toHaveURL(/\/import\?welcome=empty$/, { timeout: 30_000 });
+    await expect(page.getByRole("status")).toContainText("Your empty club is ready");
+    await expect(page.getByRole("link", { name: "Accounts chat (WhatsApp)" })).toHaveAttribute("href", "/samples/photo/whatsapp-accounts.txt");
+    await page.goto("/");
+    await expect(page.getByTestId("count-events")).toHaveText("0");
   });
 });

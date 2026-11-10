@@ -87,7 +87,7 @@ describe("scorePair and decide", () => {
   });
 
   it("a shared source message lowers the bar for asking", () => {
-    const base = { score: 0.15, floor: 0.1, numbersDiffer: false, sharedParty: false, partyConflict: false, withinWindow: true };
+    const base = { score: 0.15, floor: 0.1, numbersDiffer: false, dueDiffers: false, sharedParty: false, partyConflict: false, withinWindow: true };
     expect(decide({ ...base, sharedSource: false })).toBeNull();
     expect(decide({ ...base, sharedSource: true })).toBe("ask");
   });

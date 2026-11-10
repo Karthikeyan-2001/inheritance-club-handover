@@ -31,7 +31,7 @@ type Table = keyof Database["public"]["Tables"];
 const TABLES: Table[] = [
   "workspaces", "memberships", "sources", "events", "obligations", "evidence", "context_items", "obligation_links", "docket_entries",
   "versions", "version_items", "version_context_items", "review_signoffs", "releases", "sealed_items", "acks", "aliases", "audit_log",
-  "jobs", "llm_cache", "demo_sandboxes",
+  "jobs", "llm_cache", "demo_sandboxes", "ack_replies",
 ];
 
 /** Everything a viewer can read, as one JSON text per source (table, view or function). */
@@ -113,7 +113,11 @@ describe.skipIf(!hasEnv)("leak test: two synthetic scenarios through the whole f
 
     // The incoming lead answers one item of the new version, so acks and their audit rows exist.
     const { data: item } = await as.kavya.from("version_items").select("obligation_id").eq("version_id", approved.data as string).limit(1).single();
-    if (item) await as.kavya.from("acks").insert({ version_id: approved.data as string, obligation_id: item.obligation_id, user_id: ids.kavya, action: "question", note: "Who holds this now?" });
+    if (item) {
+      const q = await as.kavya.from("acks").insert({ version_id: approved.data as string, obligation_id: item.obligation_id, user_id: ids.kavya, action: "question", note: "Who holds this now?" }).select("id").single();
+      // And the advisor replies, so replies and their audit rows are searched too.
+      if (q.data) await as.meena.from("ack_replies").insert({ ack_id: q.data.id, user_id: ids.meena, text: "Divya holds it until the next meeting." });
+    }
 
     readable = Object.fromEntries(await Promise.all(VIEWERS.map(async (v) => [v, await everythingReadable(as[v])] as const))) as typeof readable;
   }, 300_000);

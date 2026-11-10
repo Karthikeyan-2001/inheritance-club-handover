@@ -91,7 +91,22 @@ export function dutyCalendar(items: readonly HandoverItem[], today: string): Cal
 }
 
 export type AckAction = "accept" | "question" | "decline";
-export type AckRow = { obligation_id: string; user_id: string; action: AckAction; note: string | null; created_at: string };
+export type AckRow = { id?: string; obligation_id: string; user_id: string; action: AckAction; note: string | null; created_at: string };
+
+/** A reviewer's reply to a question or a decline (migration 0020). */
+export type ReplyRow = { id: string; ack_id: string; user_id: string; text: string; created_at: string };
+
+/** Replies grouped by the answer they reply to, oldest first. */
+export function repliesByAck(rows: readonly ReplyRow[]): Map<string, ReplyRow[]> {
+  const out = new Map<string, ReplyRow[]>();
+  for (const r of [...rows].sort((a, b) => a.created_at.localeCompare(b.created_at) || a.id.localeCompare(b.id))) {
+    out.set(r.ack_id, [...(out.get(r.ack_id) ?? []), r]);
+  }
+  return out;
+}
+
+/** Only questions and declines can be replied to. */
+export const canReplyTo = (ack: Pick<AckRow, "action"> | undefined): boolean => ack?.action === "question" || ack?.action === "decline";
 
 /** Latest acknowledgement per item for one user (the view already keeps the latest; this is the safety net). */
 export function latestAckByItem(rows: readonly AckRow[], userId: string): Map<string, AckRow> {

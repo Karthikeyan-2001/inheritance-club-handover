@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ackSummary, dutyCalendar, dutyTiming, latestAckByItem, monthLabel, peopleWaiting, toHandoverItem, type HandoverItem } from "./handover.ts";
+import { ackSummary, canReplyTo, dutyCalendar, dutyTiming, latestAckByItem, monthLabel, peopleWaiting, repliesByAck, toHandoverItem, type HandoverItem } from "./handover.ts";
 
 const base: HandoverItem = { id: "x", kind: "commitment", description: "d", owedBy: null, owedTo: null, dueText: null, dueDate: null, nextDue: null, startBy: null, cadence: null, approval: null, approver: null, status: "open", trust: "sourced" };
 const mk = (o: Partial<HandoverItem>): HandoverItem => ({ ...base, ...o });
@@ -65,5 +65,22 @@ describe("acknowledgements", () => {
   });
   it("counts items still waiting for an answer", () => {
     expect(ackSummary(["a", "b", "c"], latestAckByItem(rows, "u"))).toEqual({ accept: 1, question: 0, decline: 0, waiting: 2 });
+  });
+});
+
+describe("replies to questions", () => {
+  it("groups replies by the answer they reply to, oldest first", () => {
+    const r = (id: string, ack: string, at: string) => ({ id, ack_id: ack, user_id: "arun", text: id, created_at: at });
+    const m = repliesByAck([r("b", "q1", "2026-11-10T10:05:00+05:30"), r("a", "q1", "2026-11-10T10:00:00+05:30"), r("c", "q2", "2026-11-10T09:00:00+05:30")]);
+    expect(m.get("q1")?.map((x) => x.id)).toEqual(["a", "b"]);
+    expect(m.get("q2")?.map((x) => x.id)).toEqual(["c"]);
+    expect(m.get("q3")).toBeUndefined();
+  });
+
+  it("offers a reply only to a question or a decline", () => {
+    expect(canReplyTo({ action: "question" })).toBe(true);
+    expect(canReplyTo({ action: "decline" })).toBe(true);
+    expect(canReplyTo({ action: "accept" })).toBe(false);
+    expect(canReplyTo(undefined)).toBe(false);
   });
 });

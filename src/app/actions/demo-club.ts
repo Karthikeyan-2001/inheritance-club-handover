@@ -16,6 +16,7 @@ import {
 import { ephemeralSignIn, sandboxConfig, sandboxCookieOptions, serviceClient } from "@/lib/demo/sandbox-server";
 import type { Db } from "@/lib/demo/load-club";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { setTourCookie } from "@/lib/tour/tour-cookie";
 
 /**
  * "Load demo club": build the visitor their own copy of the synthetic club and sign them in
@@ -67,6 +68,8 @@ export async function loadDemoClub(form: FormData): Promise<void> {
     const { data: old } = await admin.from("demo_sandboxes").select("id, user_ids").eq("id", previous.workspaceId).maybeSingle();
     if (old) await purgeOne(admin, old).catch(() => {}); // otherwise it expires on schedule
   }
+  // Every new copy starts the guided tour at its first stop; the visitor can exit it at any time.
+  await setTourCookie({ track: club === "empty" ? "files" : "built", index: 0 });
   redirect(club === "empty" ? "/import?welcome=empty" : "/?welcome=copy");
 }
 

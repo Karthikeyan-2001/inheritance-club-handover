@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { startTour } from "@/app/actions/tour";
+import { PendingButton } from "@/components/demo/pending-button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -37,6 +39,34 @@ export default function GuidePage() {
           club and message here is invented.
         </p>
       </div>
+
+      <Card data-testid="tour-start">
+        <CardHeader>
+          <CardTitle className="text-xl">
+            <h2>Take the guided tour</h2>
+          </CardTitle>
+          <CardDescription>
+            A panel at the bottom of the screen goes through each step in order, rings the part of the page it is talking
+            about, and signs you in as the right person when a step is seen by someone else.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3 text-sm">
+          <p className="text-muted-foreground">
+            Loading a demo club from <Link className="underline" href="/login">Sign in</Link> starts the tour for you. Already in your
+            club? Start (or restart) a tour here.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <form action={startTour}>
+              <input type="hidden" name="track" value="built" />
+              <PendingButton pendingLabel="Starting…">Tour the built handover</PendingButton>
+            </form>
+            <form action={startTour}>
+              <input type="hidden" name="track" value="files" />
+              <PendingButton variant="outline" pendingLabel="Starting…">Tour building from files</PendingButton>
+            </form>
+          </div>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>

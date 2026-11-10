@@ -1,6 +1,6 @@
 # Build status and handover notes
 
-Read this first when resuming work. Last updated: 2026-11-10, at the end of Phase 13.
+Read this first when resuming work. Last updated: 2026-11-10, after Phase 13 (guided tour on `build/guided-tour`).
 
 ## Where things stand
 
@@ -19,10 +19,11 @@ Read this first when resuming work. Last updated: 2026-11-10, at the end of Phas
 | 10 | Demo mode ("Load demo club" per visitor, keep-alive cron) | merged |
 | 11 | Synthetic generator (`world.yaml`, `ground_truth.yaml`, offline renderer) | merged |
 | 12 | Scoring, leak tests, second scenario, end-to-end tests | merged |
-| 13 | P6 rule, Trello precision, built year club and empty club in demo copies, replies, walkthrough, Round 2 docs | on branch `build/phase-13`, ready to merge |
+| 13 | P6 rule, Trello precision, built year club and empty club in demo copies, replies, walkthrough, Round 2 docs | merged |
+| 13b | Guided demo tour (docked panel, highlight ring, role switch per stop; two tracks) | on branch `build/guided-tour`, ready to merge |
 | 14+ | Round 3: the three committed improvements (see the plan at the end) | later |
 
-Tests at the end of Phase 13: 395 unit, 185 RLS integration, 48 Playwright, all passing; lint, typecheck and production build clean. Tests at the end of Phase 12: 379 unit, 175 RLS integration, 45 Playwright, all passing. Lint, typecheck clean. Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Playwright unchanged from Phase 10 (not re-run: no database or app code changed). Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all passing. Lint, typecheck and build are clean. (The Phase 9 line said "456 unit"; that was unit plus RLS: 304 + 152.)
+Tests after the guided tour: 631 unit plus RLS (`pnpm test`), 51 Playwright, all passing; lint, typecheck and production build clean. Tests at the end of Phase 13: 395 unit, 185 RLS integration, 48 Playwright, all passing; lint, typecheck and production build clean. Tests at the end of Phase 12: 379 unit, 175 RLS integration, 45 Playwright, all passing. Lint, typecheck clean. Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Playwright unchanged from Phase 10 (not re-run: no database or app code changed). Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all passing. Lint, typecheck and build are clean. (The Phase 9 line said "456 unit"; that was unit plus RLS: 304 + 152.)
 
 ## How the user works
 
@@ -33,6 +34,8 @@ Tests at the end of Phase 13: 395 unit, 185 RLS integration, 48 Playwright, all 
 - The user chooses the Claude Code model per phase (see the table below).
 
 ## Outstanding user tasks (for Phase 13, before submitting Round 2)
+
+0. Review and merge `build/guided-tour` (no migration), then redeploy. On the live link, load a built club in a private window and click Next through all 18 stops; then try "Start from your own files".
 
 1. Review and merge `build/phase-13`.
 2. **Apply migrations 0018, 0019 and 0020 to the hosted database:** `pnpm db:push`. The live app was still on the Phase 10 deployment on 10 Nov 2026 (`/api/health` reported commit `3146723`), so 0018 was never applied either. Without 0020, the handover page fails for every role (it reads `ack_replies`).
@@ -114,6 +117,7 @@ Tests at the end of Phase 13: 395 unit, 185 RLS integration, 48 Playwright, all 
 | `eval/scenario.ts`, `eval/score.ts` | Phase 12. `loadScenario(name)` (mini JSON or generated YAML truth; events at their file's level, private ones with their uploader), `eventFor`. `scoreRun(result, scenario)` → a `Scorecard` (found, precision, status, trust, level, evidence, contradictions, duties and approvers, links, leaks); `findLeaks`; `formatScorecard`, `summary`. Matching is by message **and** overlapping quote (one minutes entry holds several items); truth may list `alternates` for a promise stated twice. |
 | `synth/docx.ts` | `renderDocx` (Heading styles, as the minutes parser reads them) over `zipStore` (stored zip, fixed timestamp, CRC from `node:zlib`). No dependency. |
 | `synth/world.ts`, `rng.ts`, `generate.ts`, `truth.ts` | The scenario generator. Phase 12: chats can be `kind: direct` (one-to-one); each file has an `uploader` (a demo account key); Trello is optional; minutes are `.md` or `.docx` with `dates: iso` or `words`; `generateScenario` returns text or bytes (`fileBytes`). `loadWorld` (Zod, checks people and lists), `generateScenario(world)` (two WhatsApp chats, a Trello board, minutes; pure and seeded), `loadTruth`, `checkTruth` (every quote is in its file; restricted amounts stay at their level). Script: `pnpm gen:scenario` (`-- --check` compares). Data: `data/scenarios/year/`. |
+| `tour/tour.ts` | The tour's stops per track (`TOURS`: page, tab, who it is seen as, text, highlight selector), `tourState` / `parseTourCookie` / `serializeTour` (refuse, never clamp), `stopHref`, `isOnStop` (a missing tab is the page's default tab). Pure; `tour.test.ts` also checks every highlight's test id is still rendered somewhere in `src`. `tour/tour-cookie.ts` (server only) sets and clears the cookie. |
 | `cron.ts` | `cronAuthorised` (constant-time bearer check; refuses when `CRON_SECRET` is unset or short). |
 | `pipeline/provider.ts`, `fake-extract.ts`, `fake-pipeline.ts` | `LLM_PROVIDER=fake` is the rule-based offline stand-in, refused in production. `fakeHandlers()` covers every task. |
 
@@ -129,7 +133,8 @@ Tests at the end of Phase 13: 395 unit, 185 RLS integration, 48 Playwright, all 
 | `/review/versions/[number]` | One version as the viewer's role may read it, with the diff from the version before. Built from `version_items` and `version_context_items` through RLS. |
 | `/ledger` | For the incoming lead and members the working-ledger tabs show a notice pointing to Review; the Timeline is unchanged. |
 | `/handover` | The latest approved version as the role reads it: People waiting, Calendar, Sealed items. Incoming lead answers items (`AckForm`, action `acknowledge`); reviewers see answers, reply to questions and declines (`ReplyForm`, action `replyToAck`) and can add a placeholder (`sealPlaceholder`). Components in `src/components/handover/`. |
-| `/guide` | Phase 13. Static walkthrough for first-time visitors (both demo paths). Linked from the header ("Walkthrough") and the sign-in page. |
+| `/guide` | Phase 13. Static walkthrough for first-time visitors (both demo paths). Linked from the header ("Walkthrough") and the sign-in page. Also starts either guided tour (`startTour`). |
+| Guided tour | `TourPanel` (server, in the root layout, inside `<Suspense>`: reads the `inheritance_tour` cookie and the viewer) renders `TourDock` (client: fixed bottom panel, Back / Next / Return / Hide / Exit, highlight ring via `data-tour-highlight` and a MutationObserver, scroll padding while open). Actions in `src/app/actions/tour.ts` (`startTour`, `goToTourStop`, `endTour`): moving to a stop signs in as its account with `switchDemoUser` (`src/lib/demo/switch-user.ts`, shared with `signInAsDemo`), sets the cookie, and opens the page; the evidence stop resolves the first verified quote the new session may read. `loadDemoClub` starts the tour (`built` for the year club, `files` for the empty one). |
 | `/api/jobs/run-next` | One job per POST (`maxDuration` 60). Returns `done` and `waiting` (an earlier stage still running elsewhere). |
 | `/api/health` | Health check. |
 | `/api/cron/daily` | Daily Vercel cron (`vercel.json`, 21:30 UTC). Needs `Authorization: Bearer $CRON_SECRET`. Queries the database (keep-alive) and purges up to 25 expired or deleted copies. Excluded from `proxy.ts`. |
@@ -335,6 +340,17 @@ Confirmed with the user: P6 (implied quotes from a more restricted record are dr
 - `pnpm cache:warm` is a manual step; a new deployment against a fresh database needs it again.
 - No accessibility audit yet.
 - The earlier known gaps still apply (Phase 7–12 lists above): release of private notes, borrowed trust shown to the receiver, the Gaps tab and linked twins, deleted links not remembered, re-review watching status and trust only.
+
+## Guided tour decisions (after Phase 13)
+
+Confirmed with the user: both a docked tour panel and a highlight ring.
+
+- **The panel is docked at the bottom, not under the header,** so it stays in view while the page scrolls to the ringed element. While open, the page gets scroll padding so nothing scrolled into view lands under it.
+- **State is a cookie (`track:index`), not a query parameter,** so in-page links (tabs, Open source message) keep the tour. Leaving a stop's page shows "Return to this stop"; switching role by hand shows who the stop is seen as.
+- **Each move that changes person is a real sign-in**, as the role menu does (one sign-in per switch; the built track switches four times).
+- **Highlights use the existing `data-testid` hooks**, first match only, and wait up to 8 s for streamed sections. Tall elements are scrolled to their top.
+- **No new dependency.** No paid model calls.
+- **Known gaps:** the tour does not check that the visitor did a "Try this" (for example, if Arun never marked ready, the approve stop says to go back). The text describes the built year club; on the shared accounts' small club some details (five files) do not match.
 
 ## Round 3 plan (Phases 14 to 16): the three committed improvements
 

@@ -58,6 +58,28 @@ describe("postProcess", () => {
     expect(kept[0]).toMatchObject({ event: { id: "e1" }, owedTo: "Workshop speakers", dueText: "by 15 March" });
   });
 
+  it("drops a quote that leaves out the hedge in its own sentence, including Tamil-English hedges", () => {
+    const ev = (id: string, text: string) => ({ id, author: "Joel", ts: "2026-07-12T18:00:00+05:30", text, threadId: null, sourceType: "whatsapp" as const });
+    const local = new Map([
+      ["m1", ev("a", "Maybe I'll shoot the convocation too, paarkalaam.")],
+      ["m2", ev("b", "I'll shoot the convocation on Friday, paakalam.")],
+      ["m3", ev("c", "I'll print the frame list by Monday. The venue might change though.")],
+    ]);
+    const { kept, dropped } = postProcess(
+      {
+        commitments: [
+          c({ message: "m1", quote: "I'll shoot the convocation too", owed_to: "the club", deliverable: "shoot the convocation" }),
+          c({ message: "m2", quote: "I'll shoot the convocation on Friday", owed_to: "the club", deliverable: "shoot the convocation" }),
+          c({ message: "m3", quote: "I'll print the frame list by Monday.", owed_to: "the club", deliverable: "print the frame list" }),
+        ],
+      },
+      local,
+    );
+    expect(dropped).toEqual({ non_binding: 2 });
+    // A hedge in a different sentence of the same message does not touch a firm promise.
+    expect(kept.map((k) => k.event.id)).toEqual(["c"]);
+  });
+
   it("drops and counts every kind of bad candidate", () => {
     const { kept, dropped } = postProcess(
       {

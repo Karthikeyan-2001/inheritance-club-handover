@@ -4,6 +4,7 @@
 import { z } from "zod";
 import type { AccessLevel } from "../access.ts";
 import { formatIst } from "../format.ts";
+import { sentences } from "./text.ts";
 import { noteGrounded, normaliseForQuote, verifyQuote } from "./verify.ts";
 
 export type PipelineEvent = {
@@ -156,8 +157,27 @@ export function deliverableGrounded(deliverable: string, eventText: string, auth
   return noteGrounded(text, eventText, author ?? "");
 }
 
-// Deterministic backstop for the prompt's "ignore hedged statements" rule.
-export const HEDGE = /\b(maybe|might|will see|not sure|probably|perhaps|someday|if possible|try to)\b/i;
+// Deterministic backstop for the prompt's "ignore hedged statements" rule. Includes Tamil-English
+// hedges written in Latin script ("paakalam", "let's see"; "theriyala", "don't know").
+export const HEDGE = /\b(maybe|might|will see|not sure|probably|perhaps|someday|if possible|try to|paa?r?k+alaa?m|paarpo?m|theriyala)\b/i;
+
+/**
+ * Is the quote hedged, by its own words or by the rest of its sentence? A quote can leave the
+ * hedge out ("I'll shoot the convocation too" from "Maybe I'll shoot the convocation too"), so
+ * the sentences of the message that the quote sits in are checked as well. A firm promise that
+ * shares a sentence with a hedge is dropped too, and counted: safer than keeping a hedge as a promise.
+ */
+export function hedged(quote: string, messageText: string): boolean {
+  if (HEDGE.test(quote)) return true;
+  const q = normaliseForQuote(quote);
+  if (!q) return false;
+  const head = q.slice(0, 24);
+  const tail = q.slice(-24);
+  return sentences(messageText).some((s) => {
+    const n = normaliseForQuote(s);
+    return (n.includes(q) || q.includes(n) || n.includes(head) || n.includes(tail)) && HEDGE.test(s);
+  });
+}
 const NO_PARTY = /^(unknown|none|n\/?a|nobody|no one|unspecified|-|\?)$/i;
 
 /** Keep only candidates that cite a real message, quote it verbatim, and are firm and complete. */
@@ -178,7 +198,7 @@ export function postProcess(output: ExtractionOutput, refs: Map<string, Pipeline
       drop(check.reason);
       continue;
     }
-    if (HEDGE.test(c.quote)) {
+    if (hedged(c.quote, event.text)) {
       drop("non_binding");
       continue;
     }

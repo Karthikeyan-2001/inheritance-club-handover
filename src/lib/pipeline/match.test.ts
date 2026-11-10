@@ -38,6 +38,17 @@ describe("scorePair and decide", () => {
     expect(decide(s)).toBe("ask");
   });
 
+  it("never links by rule two occasions of a repeated task: the due dates differ, so the model is asked", () => {
+    const nov = item("nov", { description: "Get the lab permission letter signed by the HoD", owedTo: "HoD", dueText: "by 14 November" });
+    const jan = item("jan", { description: "Get the lab permission letter signed", owedTo: "HoD", dueText: "by 31 January" });
+    const s = scorePair(nov, jan, []);
+    expect(s.dueDiffers).toBe(true);
+    expect(decide(s)).toBe("ask");
+    // The same date written two ways is not a difference; one side without a date is not either.
+    expect(scorePair(nov, { ...nov, id: "x", dueText: "14 Nov" }, []).dueDiffers).toBe(false);
+    expect(decide(scorePair(nov, { ...nov, id: "y", dueText: null }, []))).toBe("rule");
+  });
+
   it("asks the model about a paraphrase (the chat promise against its Trello card)", () => {
     const s = scorePair(chatPromise, item("card"), []);
     expect(s).toMatchObject({ sharedParty: true, partyConflict: false, withinWindow: true });

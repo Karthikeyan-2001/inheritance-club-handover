@@ -29,6 +29,20 @@ describe("chunkEvents", () => {
     expect(chunkEvents(events).map((c) => c.events.map((e) => e.id))).toEqual([["a", "e"], ["b"], ["c"], ["d"]]);
   });
 
+  it("packs interleaved files as tightly as files read one after another (the database reads in time order)", () => {
+    // Two chats at different levels, one message a day each, interleaved by time.
+    const days = Array.from({ length: 30 }, (_, i) => `2026-03-${String(i + 1).padStart(2, "0")}`);
+    const interleaved = days.flatMap((d) => [
+      ev(`c${d}`, "committee chat", { threadId: `c:${d}`, accessLevel: "committee", ts: `${d}T10:00:00+05:30` }),
+      ev(`v${d}`, "volunteers chat", { threadId: `v:${d}`, accessLevel: "everyone", ts: `${d}T11:00:00+05:30` }),
+    ]);
+    const byFile = [...interleaved.filter((e) => e.id.startsWith("c")), ...interleaved.filter((e) => e.id.startsWith("v"))];
+    const a = chunkEvents(interleaved, 20);
+    expect(a.map((c) => c.events.length)).toEqual([20, 10, 20, 10]);
+    expect(a.map((c) => c.events.map((e) => e.id))).toEqual(chunkEvents(byFile, 20).map((c) => c.events.map((e) => e.id)));
+    for (const c of a) expect(new Set(c.events.map((e) => e.accessLevel)).size).toBe(1);
+  });
+
   it("starts a new chunk at the event or size limit, splitting only oversized threads", () => {
     const many = Array.from({ length: 5 }, (_, i) => ev(`e${i}`, "hello", { threadId: i < 3 ? "d1" : "d2" }));
     expect(chunkEvents(many, 3).map((c) => c.events.length)).toEqual([3, 2]);

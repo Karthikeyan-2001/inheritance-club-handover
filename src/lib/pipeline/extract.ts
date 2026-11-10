@@ -40,7 +40,9 @@ export const CHUNK_MAX_CHARS = 12_000;
 /**
  * Group events by thread (a chat day, a Trello card, a meeting) in time order, then pack
  * whole threads of the same source type and visibility into chunks. A thread bigger than a
- * chunk is split.
+ * chunk is split. Threads are packed group by group, so files read in time order (as the
+ * database returns them, with two chats interleaving day by day) make as few chunks as files
+ * read one after another; a chunk never mixes visibility or source type.
  */
 export function chunkEvents(events: PipelineEvent[], maxEvents = CHUNK_MAX_EVENTS, maxChars = CHUNK_MAX_CHARS): Chunk[] {
   const threads = new Map<string, PipelineEvent[]>();
@@ -50,30 +52,34 @@ export function chunkEvents(events: PipelineEvent[], maxEvents = CHUNK_MAX_EVENT
     if (list) list.push(e);
     else threads.set(key, [e]);
   }
+  // Threads by group (visibility and source type), each group in order of first appearance.
+  const groups = new Map<string, PipelineEvent[][]>();
+  for (const thread of threads.values()) {
+    const g = `${visibilityKey(thread[0])}|${thread[0].sourceType}`;
+    const list = groups.get(g);
+    if (list) list.push(thread);
+    else groups.set(g, [thread]);
+  }
   const chunks: Chunk[] = [];
   let current: PipelineEvent[] = [];
   let chars = 0;
-  let group: string | null = null;
   const flush = () => {
     if (current.length) chunks.push({ events: current });
     current = [];
     chars = 0;
-    group = null;
   };
-  for (const thread of threads.values()) {
-    const tChars = thread.reduce((n, e) => n + e.text.length, 0);
-    const tGroup = `${visibilityKey(thread[0])}|${thread[0].sourceType}`;
-    if (current.length && (group !== tGroup || current.length + thread.length > maxEvents || chars + tChars > maxChars)) {
-      flush();
+  for (const group of groups.values()) {
+    for (const thread of group) {
+      const tChars = thread.reduce((n, e) => n + e.text.length, 0);
+      if (current.length && (current.length + thread.length > maxEvents || chars + tChars > maxChars)) flush();
+      for (const e of thread) {
+        if (current.length && (current.length >= maxEvents || chars + e.text.length > maxChars)) flush();
+        current.push(e);
+        chars += e.text.length;
+      }
     }
-    for (const e of thread) {
-      if (current.length && (current.length >= maxEvents || chars + e.text.length > maxChars)) flush();
-      current.push(e);
-      chars += e.text.length;
-      group = tGroup;
-    }
+    flush();
   }
-  flush();
   return chunks;
 }
 

@@ -65,13 +65,14 @@ export function RoleSwitcher({
 
   return (
     <>
-      <form ref={switchForm} action={signInAsDemo} hidden>
+      {/* display: contents, not hidden: a fixed overlay inside a display:none form would never render */}
+      <form ref={switchForm} action={signInAsDemo} className="contents">
         <input ref={userInput} type="hidden" name="user" defaultValue="" />
         <input type="hidden" name="next" value={pathname} />
         <input type="hidden" name="club" value={inCopy ? "mine" : "shared"} />
         <SwitchingOverlay />
       </form>
-      <form ref={signOutForm} action={signOut} hidden>
+      <form ref={signOutForm} action={signOut} className="contents">
         <SwitchingOverlay />
       </form>
       <DropdownMenu>

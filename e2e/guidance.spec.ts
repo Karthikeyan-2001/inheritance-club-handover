@@ -74,4 +74,17 @@ test.describe("guidance", () => {
       expect(overflow, `${path} overflows by ${overflow}px`).toBeLessThanOrEqual(1);
     }
   });
+
+  test("switching person covers the page while it works, so nothing can be pressed twice", async ({ page }) => {
+    await signInAs(page, "Arun");
+    // Slow the switch down so the cover can be seen.
+    await page.route("**/*", async (route) => {
+      if (route.request().method() === "POST") await new Promise((r) => setTimeout(r, 1500));
+      await route.continue();
+    });
+    await page.getByRole("button", { name: /Switch demo role/ }).click();
+    await page.getByRole("menuitem", { name: /Dr\. Meena/ }).click();
+    await expect(page.getByText("Switching to Dr. Meena…")).toBeVisible();
+    await expect(page.getByRole("button", { name: /Signed in as Dr. Meena/ })).toBeVisible({ timeout: 20_000 });
+  });
 });

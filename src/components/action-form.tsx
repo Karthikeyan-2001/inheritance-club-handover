@@ -36,8 +36,8 @@ export function ActionForm({
     >
       {children}
       <div>
-        {confirm && !pending ? (
-          <ConfirmButton variant={variant} title={confirm.title} description={confirm.description} confirmLabel={confirm.confirmLabel}>
+        {confirm ? (
+          <ConfirmButton variant={variant} title={confirm.title} description={confirm.description} confirmLabel={confirm.confirmLabel} pending={pending} pendingLabel={pendingLabel}>
             {submitLabel}
           </ConfirmButton>
         ) : (

@@ -3,6 +3,7 @@
 import { useRef, useState, type ReactNode } from "react";
 import { AlertDialog } from "radix-ui";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 
 /**
  * A button that asks "are you sure?" first. It is for actions that cannot be undone. Pressing it
@@ -16,6 +17,8 @@ export function ConfirmButton({
   confirmLabel,
   variant = "destructive",
   disabled,
+  pending = false,
+  pendingLabel = "Working…",
   size = "sm",
 }: {
   children: ReactNode;
@@ -24,6 +27,9 @@ export function ConfirmButton({
   confirmLabel: string;
   variant?: "default" | "destructive" | "outline" | "secondary";
   disabled?: boolean;
+  /** The form is submitting: keep this component mounted (so the dialog can finish closing and return focus) but disable it. */
+  pending?: boolean;
+  pendingLabel?: string;
   size?: "default" | "sm";
 }) {
   const [open, setOpen] = useState(false);
@@ -34,7 +40,7 @@ export function ConfirmButton({
         type="button"
         variant={variant}
         size={size}
-        disabled={disabled}
+        disabled={disabled || pending}
         onClick={(e) => {
           const f = e.currentTarget.closest("form");
           if (f && !f.reportValidity()) return;
@@ -42,7 +48,8 @@ export function ConfirmButton({
           setOpen(true);
         }}
       >
-        {children}
+        {pending && <Spinner />}
+        {pending ? pendingLabel : children}
       </Button>
       <AlertDialog.Portal>
         <AlertDialog.Overlay className="fixed inset-0 z-[70] bg-foreground/30 backdrop-blur-[2px] data-[state=open]:animate-in data-[state=open]:fade-in-0" />
@@ -60,8 +67,11 @@ export function ConfirmButton({
                 const f = form.current;
                 if (!f) return;
                 f.dataset.confirmed = "1";
-                f.requestSubmit();
-                delete f.dataset.confirmed;
+                try {
+                  f.requestSubmit();
+                } finally {
+                  delete f.dataset.confirmed;
+                }
               }}>
                 {confirmLabel}
               </Button>

@@ -156,3 +156,9 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 
 - **Loading a demo club now starts a guided tour.** A built club used to land on the home page with everything already done (imported, built, version 1 approved), so a first-time visitor jumped straight into a finished ledger and never saw what each step did. A panel docked at the bottom of every page now goes through Connect, Reconstruct, Verify, Review and Handover in order: what the step does, what to look at, and something to try. It rings the element it is talking about, and when a stop is seen by someone else (Dr. Meena approving, Kavya receiving) its Next button signs in as that person, through the same role switch as the menu.
 - **Two tracks:** "Explore a built handover" (18 stops) and "Build one from your own files" (12 stops). Either can be started or restarted from the Walkthrough page, hidden, left and returned to. The tour only explains and navigates; it changes no data, and every page it opens is read under the signed-in role's RLS.
+
+## Round 3: direction (decided 14 Nov 2026)
+
+- **The guided tour and the `/guide` walkthrough page are to be removed in Phase 14.** The Round 3 brief says a judge must complete the main journey without a walkthrough, so the pages themselves will say what each is for and what to do next.
+- **Order:** UI/UX first (Phase 14); then the three improvements committed in the Round 2 report, which are gap questions (15), counterparty handoff notes (16) and inferred recurring duties (17); then hardening and documentation (18). Every phase is merged and deployed.
+- **No demo video.** The Round 2 plan listed one for Round 3; the Round 3 brief rules it out.

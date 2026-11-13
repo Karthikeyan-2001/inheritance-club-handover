@@ -1,9 +1,11 @@
 "use client";
 
 import { useRef, useState, useTransition } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { cancelRun, startRun } from "@/app/ledger/actions";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 import { emptyProgress, type RunProgress, type StepResult } from "@/lib/pipeline/progress";
 
 const DROP_LABELS: Record<string, string> = {
@@ -137,20 +139,26 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
   const statuses = STATUS_WORDS.map(([k, label]) => [progress?.followup.statuses[k] ?? 0, label] as const).filter(([n]) => n > 0);
 
   return (
-    <section aria-labelledby="pipeline-heading" className="flex flex-col gap-3 rounded-md border p-4 text-sm">
-      <h2 id="pipeline-heading" className="font-medium">
+    <section aria-labelledby="pipeline-heading" className="flex flex-col gap-3 rounded-2xl border bg-card p-5 text-sm shadow-sm shadow-primary/5">
+      <h2 id="pipeline-heading" className="text-lg font-semibold">
         Build the ledger
       </h2>
       <p className="text-muted-foreground">
-        Reads every message your role may read, in small steps, using {provider === "anthropic" ? "Anthropic's Claude API" : "a test model"} ({model}). It finds
-        promises made to people and recurring duties with their approvals, then checks each item for later follow-up and useful context, and links items recorded twice. Code checks
-        that every quote really appears in the message it cites, and a fixed rule sets each item’s trust. Anything that fails is left out and counted, and an item with no follow-up is marked
-        “No evidence kept”. Results are drafts for review.
+        Reads every message your role may read and lists the promises and yearly duties in them. Code checks that each quote really appears in its message; anything that fails is left out
+        and counted. Results are drafts for you to review.
       </p>
+      <details className="text-muted-foreground">
+        <summary className="w-fit cursor-pointer font-medium text-foreground">How it works</summary>
+        <p className="mt-2">
+          It works in small steps using {provider === "anthropic" ? "Anthropic's Claude API" : "a test model"} ({model}): it finds promises and recurring duties with their approvals, checks each
+          item for later follow-up and useful context, and links items recorded twice. A fixed rule, not a model, sets each item’s trust, and an item with no follow-up is marked “No evidence kept”.
+        </p>
+      </details>
       {canRun ? (
         <div className="flex flex-wrap gap-2">
           <Button size="sm" onClick={start} disabled={pending || state === "running"}>
-            {state === "running" ? "Reading…" : "Build the ledger"}
+            {state === "running" && <Spinner />}
+            {state === "running" ? "Reading…" : state === "done" ? "Build again" : "Build the ledger"}
           </Button>
           {state === "running" && (
             <Button size="sm" variant="outline" onClick={stop}>
@@ -164,14 +172,41 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
 
       {progress && (
         <div className="flex flex-col gap-2" role="status" aria-live="polite" data-testid="pipeline-progress">
-          <label className="flex flex-col gap-1">
-            <span>
+          <div className="flex flex-col gap-1.5">
+            <span className="font-medium">
               Step {Math.min(finished, progress.total)} of {progress.total}
               {state === "running" && !planned ? " so far" : ""}
               {state === "done" ? ", finished" : state === "stopped" ? ", stopped" : ""}
             </span>
-            <progress max={progress.total} value={finished} className="w-full" />
-          </label>
+            <div
+              role="progressbar"
+              aria-label="Ledger build progress"
+              aria-valuemin={0}
+              aria-valuemax={progress.total}
+              aria-valuenow={Math.min(finished, progress.total)}
+              className="h-3 overflow-hidden rounded-full bg-secondary"
+            >
+              <div
+                className={`h-full rounded-full bg-primary transition-[width] duration-500 ease-out motion-reduce:transition-none ${state === "running" ? "progress-stripes" : ""}`}
+                style={{ width: `${progress.total ? Math.max(4, Math.round((Math.min(finished, progress.total) / progress.total) * 100)) : 4}%` }}
+              />
+            </div>
+            {state === "running" && (
+              <p className="flex items-center gap-2 text-muted-foreground">
+                <Spinner className="size-3.5 text-primary" />
+                {!planned ? "Reading messages for promises and yearly duties…" : !matchPlanned ? "Checking each item for follow-up…" : "Linking items recorded twice…"}
+                <span className="text-xs">Keep this tab open until it finishes.</span>
+              </p>
+            )}
+            {state === "done" && (
+              <p className="flex flex-wrap items-center gap-2 font-medium text-success">
+                Done. Next, check the items.
+                <Button asChild size="sm">
+                  <Link href="/review?tab=draft">Review the items</Link>
+                </Button>
+              </p>
+            )}
+          </div>
           <ol className="flex list-decimal flex-col gap-1 pl-5">
             {c && (
               <li>
@@ -222,8 +257,8 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
         </div>
       )}
       {lastError && (
-        <p role="alert" className="text-destructive">
-          {lastError}
+        <p role="alert" className="rounded-lg bg-danger-soft px-3 py-2 text-destructive">
+          {lastError} Your progress so far is kept; press the button to carry on.
         </p>
       )}
     </section>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EmptyState } from "@/components/feedback/empty-state";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -39,24 +40,12 @@ export async function RoleVisibility() {
   } catch {
     return (
       <Notice title="Could not reach the database">
-        <p role="alert">The data service is unavailable right now. Try again in a minute.</p>
+        <p role="alert" className="rounded-lg bg-danger-soft px-3 py-2 text-destructive">The data service is unavailable right now. Try again in a minute.</p>
       </Notice>
     );
   }
 
-  if (!viewer) {
-    return (
-      <Notice title="Sign in to explore">
-        <p>
-          Load your own copy of the synthetic demo club, with four role accounts. Each role sees a
-          different part of the same club&apos;s records.
-        </p>
-        <Button asChild>
-          <Link href="/login">Load demo club</Link>
-        </Button>
-      </Notice>
-    );
-  }
+  if (!viewer) return null; // the home page shows its own invitation to signed-out visitors
 
   if (!viewer.membership) {
     return (
@@ -83,10 +72,10 @@ export async function RoleVisibility() {
   const readable = ACCESS_LEVELS.filter((l) => levelRank(l) <= levelRank(max));
 
   return (
-    <Card>
+    <Card className="rise-in">
       <CardHeader>
-        <CardTitle>
-          What {ROLE_LABELS[role].toLowerCase()} {viewer.name} can see
+        <CardTitle className="text-lg">
+          What {ROLE_LABELS[role].toLowerCase()} {viewer.name} can read
         </CardTitle>
         <CardDescription>
           {workspaceName}. Readable levels: {readable.map((l) => ACCESS_LABELS[l]).join(", ")}
@@ -111,9 +100,9 @@ export async function RoleVisibility() {
         <div className="text-sm">
           <h2 className="mb-2 font-medium">Obligations you can read</h2>
           {oErr ? (
-            <p role="alert">Could not load obligations.</p>
+            <p role="alert" className="rounded-lg bg-danger-soft px-3 py-2 text-destructive">Could not load obligations. Try again in a moment.</p>
           ) : !obligations?.length ? (
-            <p className="text-muted-foreground">None visible to this role.</p>
+            <EmptyState title="Nothing visible to this role" body="Items appear here once the advisor approves a version, or when the outgoing lead releases one to you." />
           ) : (
             <ul className="flex flex-col gap-2" data-testid="visible-obligations">
               {obligations.map((o) => (
@@ -127,7 +116,7 @@ export async function RoleVisibility() {
         </div>
         <div className="flex flex-wrap gap-3 md:col-span-2">
           <Button asChild size="sm">
-            <Link href="/import">{role === "outgoing_lead" || role === "advisor" ? "Import files" : "See imported files"}</Link>
+            <Link href="/import">{role === "outgoing_lead" || role === "advisor" ? "Add files" : "See imported files"}</Link>
           </Button>
           <Button asChild size="sm" variant="outline">
             <Link href="/ledger?tab=timeline">Open the timeline</Link>

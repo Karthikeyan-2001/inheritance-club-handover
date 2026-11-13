@@ -13,9 +13,9 @@ Workflow: **Connect → Reconstruct → Verify → Review → Handover**.
 
 > **All demo data is synthetic.** No real people or organisations appear in this repository or the live demo.
 
-Built for the CodersInPune Hackathon, Round 2.
+Built for the CodersInPune Hackathon. Round 3 (the finale) is in progress; the plan is in [docs/status.md](docs/status.md).
 
-**Try it:** open the live app at <https://inheritance-club-handover.vercel.app>, then follow the [ten-minute walkthrough](https://inheritance-club-handover.vercel.app/guide). On Sign in, "Explore a built handover" gives you your own copy of a year of a synthetic IoT club with its ledger already built; "Start from your own files" gives you an empty club to import the sample files into and build yourself.
+**Try it:** open the live app at <https://inheritance-club-handover.vercel.app> and press Sign in. The demo accounts and their password are shown on that page. "Explore a built handover" gives you your own copy of a year of a synthetic IoT club with its ledger already built; "Start from your own files" gives you an empty club to import the sample files into and build yourself.
 
 ## Status
 
@@ -34,7 +34,8 @@ Built for the CodersInPune Hackathon, Round 2.
 | 10 | Demo mode: "Load demo club" per visitor, daily keep-alive and clean-up | done |
 | 11 | Synthetic year generator with hand-written ground truth | done |
 | 12 | Scoring, leak tests, a second synthetic club, end-to-end tests | done |
-| 13 | Two stricter checks, the built year club in demo copies, replies to questions, walkthrough | done |
+| 13 | Two stricter checks, the built year club in demo copies, replies to questions | done |
+| 14 to 18 | Round 3: UI/UX overhaul, the three committed improvements, hardening and documentation | in progress |
 
 ## Stack
 
@@ -42,12 +43,13 @@ Next.js (App Router, TypeScript strict), Tailwind CSS + shadcn/ui, Supabase (Pos
 
 ## Local setup
 
-Requirements: Node 24, pnpm (via corepack), and Docker Desktop (for local Supabase, from Phase 1).
+Requirements: Node 24, pnpm (via corepack), and Docker Desktop (for local Supabase). Setting up a second computer, including which secrets to bring across: [docs/dev-setup.md](docs/dev-setup.md).
 
 ```bash
 export COREPACK_NPM_REGISTRY=https://registry.npmjs.org   # this shell only; lets corepack fetch pnpm
 corepack enable pnpm
 pnpm install
+pnpm exec playwright install chromium   # for pnpm e2e
 pnpm db:start                # local Supabase in Docker; prints URL and keys
 cp .env.example .env.local   # paste URL, publishable key, secret key; choose DEMO_USER_PASSWORD
 pnpm seed                    # four demo accounts + the synthetic demo club
@@ -139,9 +141,9 @@ Phase 13, through the database path the app itself uses (`pnpm demo:freeze`: fil
 | photo | 9/9 | 9/9 | 9/9 | 9/9 | 1/1 | 4/4 (4/4) | 90% | 0 | 0 | about $0.013 |
 | year | 19/19 | 18/19 | 15/16 | 26/26 | 2/2 | 3/4 (3/3) | 83% | 0 | 0 | about $0.053 |
 
-The year build is the ledger visitors see in "Explore a built handover". What it gets wrong is listed in `docs/status.md` (Phase 13).
+The year build is the ledger visitors see in "Explore a built handover". What it gets wrong is listed in [docs/known-gaps.md](docs/known-gaps.md).
 
-\* Scored against the truth as first written. One of the two "wrong" statuses was a mistake in the truth: the model marked C18 Open from two "still waiting" reports, which is what the status rule says; the truth now agrees (18/19, and the two reports make 26/26 follow-up quotes). What the model got wrong is listed in `docs/status.md` (Phase 12). The year run found a matching bug that is now fixed: two semesters' identical promises were linked by rule.
+\* Scored against the truth as first written. One of the two "wrong" statuses was a mistake in the truth: the model marked C18 Open from two "still waiting" reports, which is what the status rule says; the truth now agrees (18/19, and the two reports make 26/26 follow-up quotes). What the model got wrong is listed in [docs/known-gaps.md](docs/known-gaps.md). The year run found a matching bug that is now fixed: two semesters' identical promises were linked by rule.
 
 ## Review and versions
 
@@ -205,8 +207,16 @@ Demo accounts (synthetic): `arun.demo@example.com` (outgoing lead), `meena.demo@
 
 ## Docs
 
+- [docs/status.md](docs/status.md): where the build is, and the Round 3 plan
+- [docs/dev-setup.md](docs/dev-setup.md): setting up another computer
+- [docs/deploy.md](docs/deploy.md): hosted Supabase, Vercel, and the after-every-phase checklist
+- [docs/architecture.md](docs/architecture.md): migrations, library code, routes, tests
+- [docs/decisions.md](docs/decisions.md): design decisions and why
+- [docs/gotchas.md](docs/gotchas.md): pitfalls found while building
+- [docs/known-gaps.md](docs/known-gaps.md): known gaps and model errors
 - [docs/changes-from-round1.md](docs/changes-from-round1.md)
 - [docs/ai-disclosure.md](docs/ai-disclosure.md)
+- [docs/archive/round2/report.html](docs/archive/round2/report.html): the Round 2 project document (render with `node scripts/render-report.ts docs/archive/round2/report.html docs/round2.pdf`)
 
 ## Licence
 

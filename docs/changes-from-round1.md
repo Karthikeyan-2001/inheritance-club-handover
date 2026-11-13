@@ -149,10 +149,26 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 - **Visitors choose what their demo club starts with.** "Explore a built handover" loads a year of the synthetic IoT club (1,961 messages in five files at four levels) with the ledger a real model built from it, frozen once and loaded without a model call, version 1 approved and the model's six extra items left as drafts to review. "Start from your own files" gives the same four people and nothing else, and Connect offers the photography club's four sample files with the level to set for each. Round 1 described one demo club; two paths let a judge either inspect a full result quickly or run the whole flow from files.
 - **Questions go back to the outgoing team.** Round 1's workflow said the incoming lead's questions "go back to Arun", but until now he could only read them. The outgoing lead and the advisor can now reply under a question or a decline. Replies are append-only, readable exactly when the question is, and audited (migration 0020).
 - **Verify is a step of its own in the header.** It opens the Docket; the Docket, Gaps and source-message pages mark it as the current step.
-- **A walkthrough page** (`/guide`) explains both demo paths for a first-time visitor.
+- **A walkthrough page** (`/guide`) explained both demo paths. Removed in Phase 14.
 - **Saved answers can be pre-loaded.** `pnpm cache:warm` copies the model's answers for the synthetic scenarios to the hosted cache, so building from the sample files returns at once. Pre-loaded rows do not count against the daily call budget.
 
-## Guided demo tour (after Phase 13)
+## Guided demo tour (after Phase 13; removed in Phase 14)
 
 - **Loading a demo club now starts a guided tour.** A built club used to land on the home page with everything already done (imported, built, version 1 approved), so a first-time visitor jumped straight into a finished ledger and never saw what each step did. A panel docked at the bottom of every page now goes through Connect, Reconstruct, Verify, Review and Handover in order: what the step does, what to look at, and something to try. It rings the element it is talking about, and when a stop is seen by someone else (Dr. Meena approving, Kavya receiving) its Next button signs in as that person, through the same role switch as the menu.
 - **Two tracks:** "Explore a built handover" (18 stops) and "Build one from your own files" (12 stops). Either can be started or restarted from the Walkthrough page, hidden, left and returned to. The tour only explains and navigates; it changes no data, and every page it opens is read under the signed-in role's RLS.
+
+## Round 3: direction (decided 14 Nov 2026)
+
+- **The guided tour and the `/guide` walkthrough page were removed in Phase 14.** The Round 3 brief says a judge must complete the main journey without a walkthrough, so the pages themselves say what each is for and what to do next.
+- **Order:** UI/UX first (Phase 14); then the three improvements committed in the Round 2 report, which are gap questions (15), counterparty handoff notes (16) and inferred recurring duties (17); then hardening and documentation (18). Every phase is merged and deployed.
+- **No demo video.** The Round 2 plan listed one for Round 3; the Round 3 brief rules it out.
+
+## Round 3, Phase 14: the app guides itself
+
+- **Home page shows each person their next step.** Signed in, it names the one thing to do (add files, build the ledger, check items, mark ready, approve, answer items), with one main button and a progress bar worked out from the data the person can read. When the next step belongs to someone else, the button switches to that person.
+- **Every page says in one line what it is for,** and the step bar is plain language and always visible (numbers only on a phone's home page).
+- **A new look:** pastel purple, rounded cards, larger buttons, visible focus rings, soft badges.
+- **Waiting no longer feels frozen:** skeleton placeholders on every page, a bar under the header on navigation, an animated progress bar while the ledger builds and while a demo club is made, and a "Switching to …" cover while a person switch signs in. All motion stops for visitors who ask for reduced motion.
+- **Mistakes are harder:** buttons disable and show a spinner while they work, removing a file and deleting a club ask first, and an Enter key cannot skip the question.
+- **Empty and error states** now say what is missing and what to do, instead of a bare line or a blank.
+- **Plain-language names:** Promises, Yearly duties, Conflicts, All messages, Check and sign off, Rulings, Approved versions, Audit history.

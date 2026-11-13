@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { TRUST_LABELS, STATUS_LABELS, statusLabel } from "@/components/ledger/commitments";
 import { loadLatestVersion } from "@/components/review/version-data";
 import { ROLE_LABELS, type AppRole } from "@/lib/access";
@@ -24,6 +25,8 @@ import { acknowledge, replyToAck, sealPlaceholder } from "@/app/handover/actions
 import { AckForm } from "./ack-form";
 import { ReplyForm } from "./reply-form";
 import { SealForm } from "./seal-form";
+import { ErrorState } from "@/components/feedback/error-state";
+import { EmptyState } from "@/components/feedback/empty-state";
 
 const TIMING: Record<string, string> = { overdue: "Overdue", start_now: "Start now", upcoming: "Upcoming", undated: "No date recorded" };
 const RELATION: Record<string, string> = { supports: "The promise or duty", fulfils: "Says it was done", contradicts: "Says it was not done", past_instance: "A past time it happened" };
@@ -142,20 +145,18 @@ function dutyFacts(i: HandoverItem): string {
 export async function HandoverView({ workspaceId, role, userId, today }: { workspaceId: string; role: AppRole; userId: string; today: string }) {
   const supabase = await createSupabaseServerClient();
   const { version, error: vErr } = await loadLatestVersion(supabase, workspaceId);
-  if (vErr) return <p role="alert">Could not load the handover. Try again in a minute.</p>;
+  if (vErr) return <ErrorState title="Could not load the handover">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
 
   const sealed = await supabase.from("sealed_items").select("id, holder_role, topic_label, obligation_id").eq("workspace_id", workspaceId).order("topic_label");
-  if (sealed.error) return <p role="alert">Could not load the handover. Try again in a minute.</p>;
+  if (sealed.error) return <ErrorState title="Could not load the handover">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
 
   if (!version) {
     return (
-      <p className="text-sm text-muted-foreground">
-        Nothing has been handed over yet. The faculty advisor must approve a version first; see{" "}
-        <Link href="/review?tab=versions" className="underline">
-          Review
-        </Link>
-        .
-      </p>
+      <EmptyState title="Nothing has been handed over yet" body="The outgoing lead checks the draft and marks it ready, then the faculty advisor approves a version. It appears here as soon as that happens.">
+        <Button asChild size="sm">
+          <Link href="/review?tab=versions">See approved versions</Link>
+        </Button>
+      </EmptyState>
     );
   }
 
@@ -164,7 +165,7 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
     supabase.from("latest_acks").select("id, obligation_id, user_id, action, note, created_at").eq("version_id", version.id),
     supabase.from("releases").select("target_id, to_role").eq("workspace_id", workspaceId).eq("target_type", "obligation"),
   ]);
-  if (rowsRes.error || acksRes.error || releases.error) return <p role="alert">Could not load the handover. Try again in a minute.</p>;
+  if (rowsRes.error || acksRes.error || releases.error) return <ErrorState title="Could not load the handover">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
 
   const evidence = new Map<string, VersionItem["evidence"]>();
   const items: HandoverItem[] = [];
@@ -186,7 +187,7 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
     ackIds.length ? supabase.from("ack_replies").select("id, ack_id, user_id, text, created_at").in("ack_id", ackIds) : Promise.resolve({ data: [] as ReplyRow[], error: null }),
     supabase.from("memberships").select("user_id, role").eq("workspace_id", workspaceId),
   ]);
-  if (repliesRes.error || membersRes.error) return <p role="alert">Could not load the handover. Try again in a minute.</p>;
+  if (repliesRes.error || membersRes.error) return <ErrorState title="Could not load the handover">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const replies = repliesByAck((repliesRes.data ?? []) as ReplyRow[]);
   const roleOf = new Map((membersRes.data ?? []).map((m) => [m.user_id, m.role as AppRole]));
   const waiting = peopleWaiting(items);
@@ -217,7 +218,7 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
       <section aria-labelledby="waiting-h" className="flex flex-col gap-3">
         <h2 id="waiting-h" className="text-xl font-semibold">{mine ? "People waiting on you" : "People waiting on the incoming lead"}</h2>
         {waiting.length === 0 ? (
-          <p className="text-sm text-muted-foreground">No open commitments are handed over. Nothing is owed to anyone that you can read about.</p>
+          <EmptyState title="Nobody is waiting" body="No open commitments are handed over. Nothing is owed to anyone that you can read about." />
         ) : (
           waiting.map((g) => (
             <div key={g.person} className="flex flex-col gap-2" data-testid="waiting-group">
@@ -256,7 +257,7 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
         <h2 id="sealed-h" className="text-xl font-semibold">Sealed items</h2>
         <p className="text-sm text-muted-foreground">Some things are held back for your role. You can see that they exist, who holds them and the topic, never the details. Ask the holder to release them.</p>
         {(sealed.data ?? []).length === 0 ? (
-          <p className="text-sm text-muted-foreground">Nothing is sealed.</p>
+          <p className="text-sm text-muted-foreground">Nothing is sealed: every handed-over item is readable by the incoming lead.</p>
         ) : (
           <ul className="flex flex-col gap-2" aria-label="Sealed placeholders" data-testid="sealed-items">
             {(sealed.data ?? []).map((s) => (

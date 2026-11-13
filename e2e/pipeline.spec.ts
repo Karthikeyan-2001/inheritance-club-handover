@@ -45,7 +45,7 @@ test.describe.serial("building the ledger", () => {
     await expect(page.getByText("What was read (1 of 1 imported)")).toBeVisible({ timeout: 20_000 });
 
     await page.goto("/ledger");
-    await expect(page.getByRole("link", { name: "Commitments" })).toHaveAttribute("aria-current", "page");
+    await expect(page.getByRole("link", { name: "Promises" })).toHaveAttribute("aria-current", "page");
     await page.getByRole("button", { name: "Build the ledger" }).click();
     const progress = page.getByTestId("pipeline-progress");
     await expect(progress).toContainText("finished", { timeout: 90_000 });
@@ -71,7 +71,7 @@ test.describe.serial("building the ledger", () => {
   test("the Recurring tab shows the duty with its cadence and lead time", async ({ page }) => {
     await signInAs(page, "Arun");
     await page.goto("/ledger?tab=recurring");
-    await expect(page.getByRole("link", { name: "Recurring" })).toHaveAttribute("aria-current", "page");
+    await expect(page.getByRole("link", { name: "Yearly duties" })).toHaveAttribute("aria-current", "page");
     const duty = page.getByTestId("recurring").getByRole("listitem").filter({ hasText: "inventory audit" }).first();
     await expect(duty).toContainText("Every semester");
     await expect(duty).toContainText("a week ahead");
@@ -121,8 +121,8 @@ test.describe.serial("building the ledger", () => {
     // The folded record keeps its own anchor, so links to it land on this card.
     await expect(kit.getByTestId("links").locator("section[id^=item-]")).toHaveCount(1);
 
-    await page.getByRole("link", { name: "Docket", exact: true }).click();
-    await expect(page.getByRole("link", { name: "Docket", exact: true })).toHaveAttribute("aria-current", "page");
+    await page.getByRole("link", { name: "Conflicts", exact: true }).click();
+    await expect(page.getByRole("link", { name: "Conflicts", exact: true })).toHaveAttribute("aria-current", "page");
     const entry = page.getByTestId("docket").getByRole("listitem").filter({ hasText: "soldering kit" }).first();
     await expect(entry).toContainText("WhatsApp, 8 Mar 2026: says it was done. WhatsApp, 9 Mar 2026: says it was not.");
     await expect(entry).toContainText("“Returned the soldering kit to the Robotics club.”");
@@ -161,7 +161,7 @@ test.describe.serial("building the ledger", () => {
     const entry = page.getByTestId("docket").getByRole("listitem").filter({ hasText: "soldering kit" }).first();
     await entry.getByRole("link", { name: /in the ledger$/ }).first().click();
     await expect(page).toHaveURL(/tab=commitments#item-/);
-    await expect(page.getByRole("link", { name: "Commitments" })).toHaveAttribute("aria-current", "page");
+    await expect(page.getByRole("link", { name: "Promises" })).toHaveAttribute("aria-current", "page");
   });
 
   test("the Gaps tab lists what has no evidence and what would close it", async ({ page }) => {

@@ -5,6 +5,8 @@ import { connection } from "next/server";
 import { signInAsDemo } from "@/app/actions/auth";
 import { loadDemoClub, returnToDemoClub } from "@/app/actions/demo-club";
 import { PendingButton } from "@/components/demo/pending-button";
+import { BuildProgress } from "@/components/feedback/build-progress";
+import { PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -40,7 +42,7 @@ async function LoginMessage({ searchParams }: { searchParams: PageProps<"/login"
   const message = typeof error === "string" ? ERRORS[error] : undefined;
   if (message) {
     return (
-      <p role="alert" className="rounded-md border border-destructive/50 bg-destructive/10 px-4 py-3 text-sm">
+      <p role="alert" className="rounded-2xl border border-destructive/25 bg-danger-soft px-5 py-4 text-sm text-foreground">
         {message}
       </p>
     );
@@ -48,7 +50,7 @@ async function LoginMessage({ searchParams }: { searchParams: PageProps<"/login"
   const info = typeof notice === "string" ? NOTICES[notice] : undefined;
   if (!info) return null;
   return (
-    <p role="status" className="rounded-md border px-4 py-3 text-sm">
+    <p role="status" className="rounded-2xl border border-primary/20 bg-accent px-5 py-4 text-sm text-accent-foreground">
       {info}
     </p>
   );
@@ -58,20 +60,23 @@ async function LoginMessage({ searchParams }: { searchParams: PageProps<"/login"
 function LoadForm({ fresh = false }: { fresh?: boolean }) {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
-      <form action={loadDemoClub} className="flex flex-col gap-2 rounded-md border p-4">
+      <form action={loadDemoClub} className="flex flex-col gap-3 rounded-2xl border bg-card p-5">
         <input type="hidden" name="club" value="year" />
-        <p className="font-medium">Explore a built handover</p>
+        <p className="text-base font-semibold">Explore a finished handover</p>
+        <p className="text-xs font-medium text-primary">Best for a quick look</p>
         <p className="text-muted-foreground">
           A year of an IoT club&apos;s records (about 2,000 messages in five files at four access
           levels), the ledger built from them, version 1 approved, and a few items still to review.
         </p>
-        <PendingButton variant={fresh ? "outline" : "default"} pendingLabel="Building your demo club… (up to half a minute)">
+        <PendingButton variant={fresh ? "outline" : "default"} pendingLabel="Building your demo club…">
           {fresh ? "Start a fresh built club" : "Explore a built handover"}
         </PendingButton>
+        <BuildProgress steps={["Creating four accounts…", "Loading a year of messages…", "Checking every quote…", "Approving version 1…"]} />
       </form>
-      <form action={loadDemoClub} className="flex flex-col gap-2 rounded-md border p-4">
+      <form action={loadDemoClub} className="flex flex-col gap-3 rounded-2xl border bg-card p-5">
         <input type="hidden" name="club" value="empty" />
-        <p className="font-medium">Start from your own files</p>
+        <p className="text-base font-semibold">Build one yourself</p>
+        <p className="text-xs font-medium text-primary">Best for the full flow</p>
         <p className="text-muted-foreground">
           The same four people and nothing else. Import the synthetic sample files (or your own
           exports), build the ledger, review it, approve it and hand it over yourself.
@@ -79,6 +84,7 @@ function LoadForm({ fresh = false }: { fresh?: boolean }) {
         <PendingButton variant="outline" pendingLabel="Creating your empty club…">
           {fresh ? "Start a fresh empty club" : "Start from your own files"}
         </PendingButton>
+        <BuildProgress steps={["Creating four accounts…", "Setting up an empty club…"]} expectedSeconds={8} />
       </form>
     </div>
   );
@@ -111,17 +117,13 @@ export default function LoginPage(props: PageProps<"/login">) {
   const password = process.env.DEMO_USER_PASSWORD;
   const days = Math.round(SANDBOX_TTL_HOURS / 24);
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-6 py-10">
-      <div className="flex flex-col gap-3">
-        <Badge variant="outline" className="w-fit">Synthetic demo data</Badge>
-        <h1 className="text-3xl font-semibold tracking-tight">Try Inheritance</h1>
-        <p className="max-w-2xl text-muted-foreground">
-          The demo club, its people and its messages are invented. Each demo account has a
-          different role in the club, and switching accounts changes what the database lets you
-          read: permissions are enforced by Postgres row-level security, not by hiding things on
-          screen.
-        </p>
-      </div>
+    <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-4 py-8 sm:px-6 sm:py-10">
+      <PageHeader
+        title="Try Inheritance"
+        purpose="Pick a club to explore. The club, its people and its messages are all invented, and what you do in your own copy never reaches anyone else."
+      >
+        <Badge variant="secondary" className="w-fit">Synthetic demo data</Badge>
+      </PageHeader>
 
       <Suspense fallback={null}>
         <LoginMessage searchParams={props.searchParams} />
@@ -130,15 +132,15 @@ export default function LoginPage(props: PageProps<"/login">) {
       <section aria-labelledby="own-club">
         <Card>
           <CardHeader>
-            <CardTitle id="own-club" className="text-xl">Your own demo club</CardTitle>
+            <CardTitle id="own-club" className="text-xl">Start here: your own demo club</CardTitle>
             <CardDescription>Recommended. Nothing you do here reaches other visitors.</CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col gap-4 text-sm">
             <p className="max-w-3xl">
-              Builds a private club for you, with four accounts of its own: Arun (outgoing lead),
-              Dr. Meena (faculty advisor), Kavya (incoming lead) and Divya (treasurer). You start as
-              Arun; switch roles from the menu at the top right. The club and its accounts are deleted
-              after {days} days. New here? <a className="underline" href="/guide">Read the ten-minute walkthrough</a>.
+              Builds a private club for you, with four people: Arun (outgoing lead), Dr. Meena
+              (faculty advisor), Kavya (incoming lead) and Divya (treasurer). You start as Arun, and
+              the home page then tells you what to do next. Switch person from the menu at the top
+              right. The club and its accounts are deleted after {days} days.
             </p>
             <Suspense fallback={<LoadForm />}>
               <CopyActions />
@@ -149,7 +151,7 @@ export default function LoginPage(props: PageProps<"/login">) {
 
       <section aria-labelledby="shared-accounts" className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <h2 id="shared-accounts" className="text-xl font-semibold tracking-tight">Or use the shared demo accounts</h2>
+          <h2 id="shared-accounts" className="text-xl font-semibold tracking-tight">Or sign in to the shared club</h2>
           <p className="max-w-2xl text-sm text-muted-foreground">
             These accounts and their club are shared by everyone trying the demo, so another
             visitor&apos;s reviews and answers show up here too.

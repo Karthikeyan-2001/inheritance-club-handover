@@ -5,6 +5,8 @@ import { capitalise, findGaps, type GapInput } from "@/lib/ledger-view";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { TRUST_LABELS } from "./commitments";
 import { loadLinkData } from "./link-data";
+import { EmptyState } from "@/components/feedback/empty-state";
+import { ErrorState } from "@/components/feedback/error-state";
 
 type Row = GapInput & { access_level: AccessLevel };
 
@@ -20,12 +22,12 @@ export async function Gaps({ workspaceId }: { workspaceId: string }) {
     .select("id, kind, description, status, trust_state, next_due, fulfilment_checked_at, access_level")
     .eq("workspace_id", workspaceId)
     .order("created_at", { ascending: true });
-  if (error) return <p role="alert">Could not load the gaps. Try again in a minute.</p>;
+  if (error) return <ErrorState title="Could not load the gaps">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const rows = (data ?? []) as unknown as Row[];
-  if (!rows.length) return <p className="text-sm text-muted-foreground">Nothing in the ledger yet. Import files, then use “Build the ledger”.</p>;
+  if (!rows.length) return <EmptyState title="Nothing to check for gaps yet" body="Gaps are things the records do not say. Build the ledger first." />;
 
   const { links, error: linkError } = await loadLinkData(supabase, workspaceId);
-  if (linkError) return <p role="alert">Could not load how items are linked. Try again in a minute.</p>;
+  if (linkError) return <ErrorState title="Could not load how items are linked">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const level = new Map(rows.map((r) => [r.id, r.access_level]));
   const gaps = findGaps(rows, links);
   if (!gaps.length) {

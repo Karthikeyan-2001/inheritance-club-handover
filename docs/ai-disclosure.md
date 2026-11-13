@@ -6,7 +6,7 @@ Inheritance uses AI in three separate ways. Each is listed here so judges and us
 
 The solo developer used Claude Code (Anthropic) as a pair programmer to write and refactor code, tests, migrations and docs. Every change was reviewed and committed by the developer. Design decisions (schema, trust rules, permission model) are the developer's, recorded in `CLAUDE.md` and in these docs.
 
-The guided demo tour's text (`src/lib/tour/tour.ts`) was written by Claude Code from these docs and checked against the built demo club. It is fixed text; no model is called to show the tour.
+Phase 14's retheme, page copy and next-step wording (`src/lib/journey.ts`) were written by Claude Code, using the `ui-ux-pro-max` design-guidance skill for the palette, motion and loading rules. The wording is fixed text chosen by code from the data; no model is called to show it. (The guided tour that earlier carried similar text was removed in Phase 14.)
 
 ## 2. Inside the product: Claude API
 

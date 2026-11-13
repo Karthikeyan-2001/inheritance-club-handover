@@ -12,7 +12,7 @@ async function loadCopy(page: Page) {
   await page.goto("/login");
   await page.getByRole("button", { name: "Explore a built handover" }).click();
   await expect(page).toHaveURL(/\/\?welcome=copy$/, { timeout: 60_000 });
-  await expect(page.getByRole("status")).toContainText("Your own demo club is ready");
+  await expect(page.getByRole("status").filter({ hasText: "Your own demo club is ready" })).toBeVisible();
 }
 
 async function switchTo(page: Page, name: RegExp) {
@@ -73,8 +73,11 @@ test.describe("demo club per visitor", () => {
     await page.getByLabel("Type the workspace name to confirm").fill(COPY_NAME);
     await page.getByLabel("Reason", { exact: true }).fill("Finished trying the demo");
     await page.getByRole("button", { name: "Delete workspace permanently" }).click();
+    // Deleting asks first; nothing happens until the question is answered.
+    await expect(page.getByRole("alertdialog")).toContainText("Delete this workspace?");
+    await page.getByRole("button", { name: "Yes, delete everything" }).click();
     await expect(page).toHaveURL("/login?notice=copy-deleted");
-    await expect(page.getByRole("status")).toContainText("were deleted");
+    await expect(page.getByRole("status").filter({ hasText: "were deleted" })).toBeVisible();
     // No copy to return to any more.
     await expect(page.getByRole("button", { name: "Explore a built handover" })).toBeVisible();
     await expect(page.getByRole("button", { name: "Return to your demo club" })).toHaveCount(0);
@@ -84,7 +87,7 @@ test.describe("demo club per visitor", () => {
     await page.goto("/login");
     await page.getByRole("button", { name: "Start from your own files" }).click();
     await expect(page).toHaveURL(/\/import\?welcome=empty$/, { timeout: 30_000 });
-    await expect(page.getByRole("status")).toContainText("Your empty club is ready");
+    await expect(page.getByRole("status").filter({ hasText: "Your empty club is ready" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Accounts chat (WhatsApp)" })).toHaveAttribute("href", "/samples/photo/whatsapp-accounts.txt");
     await page.goto("/");
     await expect(page.getByTestId("count-events")).toHaveText("0");

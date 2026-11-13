@@ -13,7 +13,7 @@ export function DangerZone({ workspaceName, isDemo, isCopy }: { workspaceName: s
   return (
     <details>
       <summary className="cursor-pointer text-sm">Delete this workspace…</summary>
-      <ActionForm action={deleteWorkspace} submitLabel="Delete workspace permanently" variant="destructive" className="mt-3 flex max-w-md flex-col gap-2 text-sm">
+      <ActionForm action={deleteWorkspace} submitLabel="Delete workspace permanently" variant="destructive" className="mt-3 flex max-w-md flex-col gap-2 text-sm" confirm={{ title: "Delete this workspace?", description: <>Everything in <strong>{workspaceName}</strong> is removed for good, including approved versions and the audit log.</>, confirmLabel: "Yes, delete everything" }}>
         <p>
           This removes every file, message, obligation, approved version and audit entry in <strong>{workspaceName}</strong>. It cannot be undone.
         </p>

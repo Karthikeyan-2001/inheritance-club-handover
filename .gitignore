@@ -148,6 +148,6 @@ next-env.d.ts
 supabase/.temp/
 supabase/.branches/
 
-# Round 2 submission material, kept locally only
-docs/Inheritance_Round2_Project.pdf
-docs/round2-submission.md
+# Submission material (rendered PDFs, form answers), kept locally only
+docs/*.pdf
+docs/*-submission.md

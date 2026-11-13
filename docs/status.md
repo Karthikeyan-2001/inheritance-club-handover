@@ -1,6 +1,6 @@
 # Build status and handover notes
 
-Read this first when resuming work. Last updated: 2026-11-10, after Phase 13 (guided tour on `build/guided-tour`).
+Read this first when resuming work. Last updated: 2026-11-14, Round 3 plan agreed (Phase 14 not started).
 
 ## Where things stand
 
@@ -20,8 +20,12 @@ Read this first when resuming work. Last updated: 2026-11-10, after Phase 13 (gu
 | 11 | Synthetic generator (`world.yaml`, `ground_truth.yaml`, offline renderer) | merged |
 | 12 | Scoring, leak tests, second scenario, end-to-end tests | merged |
 | 13 | P6 rule, Trello precision, built year club and empty club in demo copies, replies, walkthrough, Round 2 docs | merged |
-| 13b | Guided demo tour (docked panel, highlight ring, role switch per stop; two tracks) | on branch `build/guided-tour`, ready to merge |
-| 14+ | Round 3: the three committed improvements (see the plan at the end) | later |
+| 13b | Guided demo tour (docked panel, highlight ring, role switch per stop; two tracks) | merged (removed again in Phase 14) |
+| 14 | Round 3: remove both walkthroughs; UI/UX overhaul so the app guides itself | next |
+| 15 | Round 3, improvement 2: gap questions for the outgoing lead | later |
+| 16 | Round 3, improvement 3: counterparty handoff notes | later |
+| 17 | Round 3, improvement 1: inferred recurring duties | later |
+| 18 | Round 3: hardening, end-to-end sweeps, README, final report PDF | later |
 
 Tests after the guided tour: 631 unit plus RLS (`pnpm test`), 51 Playwright, all passing; lint, typecheck and production build clean. Tests at the end of Phase 13: 395 unit, 185 RLS integration, 48 Playwright, all passing; lint, typecheck and production build clean. Tests at the end of Phase 12: 379 unit, 175 RLS integration, 45 Playwright, all passing. Lint, typecheck clean. Tests at the end of Phase 11: 338 unit (10 new in `src/lib/synth`), RLS and Playwright unchanged from Phase 10 (not re-run: no database or app code changed). Tests at the end of Phase 10: 328 unit, 162 RLS integration, 39 Playwright, all passing. Lint, typecheck and build are clean. (The Phase 9 line said "456 unit"; that was unit plus RLS: 304 + 152.)
 
@@ -352,15 +356,24 @@ Confirmed with the user: both a docked tour panel and a highlight ring.
 - **No new dependency.** No paid model calls.
 - **Known gaps:** the tour does not check that the visitor did a "Try this" (for example, if Arun never marked ready, the approve stop says to go back). The text describes the built year club; on the shared accounts' small club some details (five files) do not match.
 
-## Round 3 plan (Phases 14 to 16): the three committed improvements
+## Round 3 plan (Phases 14 to 18)
 
-Committed in the Round 2 form; Round 3 is judged on delivering exactly these.
+Round 3 (the finale) opened 13 Nov 2026, 11:59 pm and **closes 16 Nov 2026, 11:59 pm, with no late window**. Aim to submit by about 8 pm on 16 Nov. Judges open the live link and use it alone, with no walkthrough. Marks: completeness 25, the three improvements 20, reliability 20, usability 20, documentation and roadmap 15. Everything must be built inside the event window. **No video** (the brief rules it out). Submission: live link, repository, product PDF, feature list, architecture and implementation summary, improvements after Round 2 (the three named), testing details, roadmap.
 
-1. **Inferred recurring duties.** Detect a task repeated at about the same point in two or more past cycles with no stated rule; label it Inferred; list the past occurrences; compute a start-by date from how long past occurrences took. Needs: an occurrence finder (code over matched items and dates), a new duty source kind, the trust rule's "inferred" path, calendar display, ground truth for unstated duties in both scenarios, a paid eval.
-2. **Gap questions.** Turn each gap (no follow-up, missing approver or date, unruled conflict) into a short question for the outgoing lead on one page; record each answer as a labelled source ("stated by the outgoing lead") with its own access level, through the same trust and audit rules; update the next version.
-3. **Counterparty handoff notes.** Per counterparty, a note of what is still owed and the new contact, built only from that counterparty's approved items (template plus fields, no model text carrying restricted facts), edited and approved by the outgoing lead, opened by the counterparty through a signed link, and acknowledged; the acknowledgement shows on the handover.
+Decisions confirmed with the user (14 Nov):
+- **Remove both walkthroughs:** the docked guided tour and the `/guide` page. The app itself must guide a first-time visitor.
+- **UI/UX first**, then the three improvements, then hardening and docs.
+- **Merge every phase, but deploy only twice:** after Phase 16 and at the end (Phase 18). Hosted-only problems (60-second limit, migrations) are checked at those two points.
 
-Also for Round 3 (the brief asks for them): a demo video, accessibility checks, testing notes on failure cases, and a final report.
+The three improvements were committed in the Round 2 report (section 10) and Round 3 is judged on exactly these. Each phase has a minimum that counts as delivered. If a phase overruns, cut scope down to that minimum rather than skip it. If something is genuinely impossible, the PDF must say so and why.
+
+| Phase | Target | Scope | Minimum that counts as delivered |
+|---|---|---|---|
+| 14 UI/UX | 14 Nov | Remove the tour (`src/components/tour/`, `src/lib/tour/`, `src/app/actions/tour.ts`, `e2e/tour.spec.ts`, the tour cookie in `demo-club.ts`, the highlight CSS) and `/guide` (the header link, the sign-in link, the checks in `e2e/auth.spec.ts`). Keep `src/lib/demo/switch-user.ts` (the role menu uses it). Start with screenshots of every page as each person. Then: a home page showing each person their next step, with one primary button and handover progress worked out from the data; a one-line "what this page is for" on each page; an easier-to-find person switcher; empty, error and loading states on every list; buttons that cannot be pressed twice; confirmation before destructive actions; plain-language labels; a mobile layout check; an accessibility pass. | A first-time visitor gets from sign-in to the handover with no guide. |
+| 15 Gap questions (improvement 2) | 15 Nov, morning | One page of questions for the outgoing lead: no follow-up, missing approver or date, unruled conflict. Each answer becomes a message in a "Stated by the outgoing lead" source at a chosen access level, so the existing quote check, trust rule, audit log and version diff all apply. No new model calls. | Answer a gap, see its trust change, approve, and the incoming lead sees it in the next version. |
+| 16 Counterparty notes (improvement 3) | 15 Nov, afternoon | One note per counterparty, from a template plus fields, built from approved items only (no model text). The outgoing lead edits and approves it. The counterparty opens a public `/n/[token]` page signed with a key. It is served on the server and reads the note row only. It has an acknowledge button, and the acknowledgement shows on the handover. Audit rows and leak tests included. **Deploy after this phase.** | One note goes from draft to approved, is opened and acknowledged, and the acknowledgement shows on the handover. |
+| 17 Inferred duties (improvement 1) | 16 Nov, morning | Code (not a model) finds repeated items: the same task at about the same point in two or more past cycles. The year club gets a second past cycle containing 3 to 4 unstated duties, plus their ground truth. The trust rule labels them "inferred" and lists the occurrences. The start-by date comes from past lead times and shows on the calendar. A small paid eval, with a cost estimate shown before it runs. | Duties are detected in the built club, labelled Inferred with their occurrences, and placed on the calendar. |
+| 18 Hardening and docs | 16 Nov, afternoon | Sweeps for bad input, refresh, the same action twice, and empty and error states; end-to-end tests of each journey. A README that someone else can clone and run from. The Round 3 PDF (feature list, architecture, improvements, testing, roadmap), rendered with `scripts/render-report.ts`. Update `docs/changes-from-round1.md` and `docs/ai-disclosure.md`. Final deploy and a check in a private window. | Every item on the submission list is ready. |
 
 ## Claude Code model per phase (recommendation)
 
@@ -368,5 +381,6 @@ Also for Round 3 (the brief asks for them): a demo video, accessibility checks, 
 |---|---|
 | Opus 5.5, high | 5, 6, 8, 10, 12 |
 | Sonnet 5.5, medium or high | 7, 9, 11, 13 |
+| Round 3 suggestion | 14 and 18 Sonnet; 15 to 17 Opus (RLS, signed links, trust rule) |
 
 Run `/code-review` on Opus before merging a Sonnet-built phase.

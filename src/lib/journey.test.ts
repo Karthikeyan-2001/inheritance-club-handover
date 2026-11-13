@@ -47,6 +47,14 @@ describe("outgoing lead", () => {
   });
 });
 
+describe("progress", () => {
+  it("does not call the records checked while items still wait", () => {
+    const j = journey(f({ files: 3, items: 31, accepted: 1, toReview: 30 }));
+    expect(j.stages[2].state).toBe("current");
+    expect(j.doneCount).toBe(2);
+  });
+});
+
 describe("advisor", () => {
   it("approves a current mark", () => {
     const j = journey(f({ role: "advisor", items: 9, accepted: 9, signoff: { isCurrent: true, markedAt: "2026-11-10T09:00:00Z" } }));

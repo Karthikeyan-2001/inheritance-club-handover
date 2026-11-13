@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { UsersIcon } from "lucide-react";
 import { signInAsDemo } from "@/app/actions/auth";
@@ -23,9 +22,8 @@ function Inner({ label, primary }: { label: string; primary: boolean }) {
  * switch as the menu: the club (own copy or shared) is read from where the visitor already is.
  */
 export function SwitchPersonButton({ personKey, label, primary, inCopy }: { personKey: DemoUserKey; label: string; primary: boolean; inCopy: boolean }) {
-  const ref = useRef<HTMLFormElement>(null);
   return (
-    <form ref={ref} action={signInAsDemo}>
+    <form action={signInAsDemo}>
       <input type="hidden" name="user" value={personKey} />
       <input type="hidden" name="next" value="/" />
       <input type="hidden" name="club" value={inCopy ? "mine" : "shared"} />

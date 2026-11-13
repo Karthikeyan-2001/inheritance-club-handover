@@ -62,7 +62,8 @@ function stageDone(f: JourneyFacts): boolean[] {
   return [
     f.files > 0 || v,
     f.items > 0 || v,
-    f.accepted > 0 || v,
+    // "Checked" means nothing is still waiting for a check, not that one item was accepted.
+    (f.accepted > 0 && f.toReview === 0) || v,
     v,
     answeredAll,
   ];
@@ -79,7 +80,6 @@ export function journey(f: JourneyFacts): Journey {
   const base = { stages, doneCount, also: [] as Journey["also"] };
   const ask = awaitingApproval(f);
   const v = f.version;
-  const reviewer = f.role === "outgoing_lead" || f.role === "advisor";
 
   if (f.role === "outgoing_lead") {
     if (f.files === 0 && !v) {
@@ -101,7 +101,7 @@ export function journey(f: JourneyFacts): Journey {
     if (ask) {
       return { ...base, title: "Waiting for Dr. Meena to approve", body: "You marked the draft ready. The faculty advisor approves it as a version that can never change. Switch to Dr. Meena to do that yourself in this demo.", cta: null, switchTo: { key: "meena", label: "Dr. Meena" } };
     }
-    if (f.accepted > 0 && (!v || f.signoff?.isCurrent === false || !f.signoff)) {
+    if (f.accepted > 0 && (!v || !f.signoff?.isCurrent)) {
       return { ...base, title: "Mark the draft ready for the advisor", body: "Every item is checked. Tell the advisor it is ready; they approve it as a version the incoming lead can read.", cta: { label: "Mark ready", href: "/review?tab=draft" }, switchTo: null };
     }
     if (v) {
@@ -151,6 +151,5 @@ export function journey(f: JourneyFacts): Journey {
     body: v ? `Version ${v.number} is approved. You can read the items your role may see.` : "A version appears here once the advisor approves it.",
     cta: v ? { label: "Open the handover", href: "/handover" } : { label: "See approved versions", href: "/review?tab=versions" },
     switchTo: null,
-    also: reviewer ? [] : [],
   };
 }

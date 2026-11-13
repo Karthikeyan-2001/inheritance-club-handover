@@ -38,8 +38,8 @@ async function loadFacts(viewer: Viewer, m: Membership): Promise<JourneyFacts | 
     ]);
     if (items.error || acks.error) return null;
     version = { number: latest.number, createdAt: latest.created_at, itemCount: items.count ?? 0 };
-    const mine = viewer.membership?.role === "incoming_lead";
-    answered = new Set((acks.data ?? []).filter((a) => !mine || a.user_id === viewer.userId).map((a) => a.obligation_id)).size;
+    const ownAnswersOnly = viewer.membership?.role === "incoming_lead"; // reviewers count the incoming lead's answers
+    answered = new Set((acks.data ?? []).filter((a) => !ownAnswersOnly || a.user_id === viewer.userId).map((a) => a.obligation_id)).size;
   }
 
   const rows = obligations.data ?? [];

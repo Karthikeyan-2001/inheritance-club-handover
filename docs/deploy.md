@@ -45,13 +45,13 @@ In **Project → Settings → Environment Variables**, add:
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | hosted publishable key |
 | `DEMO_USER_PASSWORD` | same as in `.env.hosted.local` |
 
-From Phase 4, also add these, marked **Sensitive**:
+Also add these, marked **Sensitive**:
 
 | Name | Value |
 |---|---|
 | `ANTHROPIC_API_KEY` | your Anthropic key (set a monthly spend limit in the Console) |
-| `SUPABASE_SECRET_KEY` | hosted secret key; used only on the server, for the LLM response cache and (from Phase 10) visitors' demo copies |
-| `CRON_SECRET` | from Phase 10: a random string of at least 16 letters and digits (for example `openssl rand -hex 24`); Vercel sends it to the daily cron route |
+| `SUPABASE_SECRET_KEY` | hosted secret key; used only on the server, for the LLM response cache and visitors' demo copies |
+| `CRON_SECRET` | a random string of at least 16 letters and digits (for example `openssl rand -hex 24`); Vercel sends it to the daily cron route |
 
 and, not sensitive: `LLM_MODEL_FAST=claude-haiku-5-5`, `LLM_MODEL_STRONG=claude-sonnet-5-5`, `LLM_MAX_CALLS_PER_DAY=500` (lower it if you want a tighter cap).
 
@@ -61,8 +61,8 @@ Then **redeploy**. The login page is prerendered at build time, so the password 
 
 - `https://<app>/api/health` returns `"db": "ok"`.
 - Sign in as Kavya and then Dr. Meena. The "Obligations" count changes from 3 to 6.
-- From Phase 10: on the sign-in page, **Load demo club**. You land as Arun in "Demo Club (SYNTHETIC, your copy)", with a "Your demo club" badge in the header. Switch to Kavya from the menu and open Handover.
-- From Phase 10: in Vercel, **Project → Settings → Cron Jobs** (or **Schedules → Cron Jobs**) lists `/api/cron/daily`. **Run** it once and check its log shows `200` with `"db":"ok"`. A `401` means `CRON_SECRET` is missing from the Production environment or the deployment predates it; redeploy.
+- On the sign-in page, press **Explore a built handover**. You land as Arun in your own copy, with a "Your demo club" badge in the header. Switch to Kavya from the menu and open Handover.
+- In Vercel, **Project → Settings → Cron Jobs** (or **Schedules → Cron Jobs**) lists `/api/cron/daily`. **Run** it once and check its log shows `200` with `"db":"ok"`. A `401` means `CRON_SECRET` is missing from the Production environment or the deployment predates it; redeploy.
 
 ## Notes
 
@@ -71,13 +71,14 @@ Then **redeploy**. The login page is prerendered at build time, so the password 
 - **Sign-in rate limit.** Every sign-in, role switch and new copy signs in from Vercel's servers, so many visitors share a few IP addresses. Supabase's default is 30 sign-ins per 5 minutes per IP. If visitors see "Sign-in failed" during judging, raise **Authentication → Rate Limits → Sign-ups and sign-ins** in the Supabase dashboard.
 - **The shared demo accounts** are still on the sign-in page, below the "Load demo club" card, and are shared by everyone. `pnpm seed:hosted` resets their club; it does not touch visitors' copies.
 
-## Updating the hosted database after a new phase
+## After every phase
 
-When a phase adds a migration (Phase 3 adds `0007_import.sql`, Phase 4 adds `0008_extraction.sql`, Phase 10 adds `0017_demo_sandboxes.sql`), apply it and re-seed:
+Round 3 merges **and deploys** every phase. After the user merges the phase's pull request:
 
-```bash
-pnpm db:push        # applies only the new migrations
-pnpm seed:hosted    # resets the demo club; Phase 3 also marks it as protected (is_demo)
-```
-
-Then redeploy on Vercel if the app code changed.
+1. `git switch main && git pull`.
+2. If the phase added a file under `supabase/migrations/`: `pnpm db:push` (applies only the new ones; asks for the database password). Do this **before** redeploying, or the new code reads tables that do not exist yet.
+3. If the phase changed the seed or the shared demo club: `pnpm seed:hosted` (resets the shared accounts' club; visitors' copies are untouched).
+4. If the phase changed a prompt or the saved model answers (`data/demo/llm-cache.json`): `pnpm cache:warm`.
+5. Redeploy `main` in the Vercel dashboard (Deployments → the latest `main` commit → Redeploy, or Create Deployment). Deploys are not automatic for this project.
+6. Check `https://inheritance-club-handover.vercel.app/api/health`: `"db": "ok"` and `commit` equal to `git rev-parse --short HEAD`.
+7. In a private window: sign in → **Explore a built handover** → open the pages the phase changed, as the roles it affects.

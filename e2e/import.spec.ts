@@ -22,7 +22,7 @@ test.describe.serial("import flow", () => {
   test("the outgoing lead imports three files and sees what was read", async ({ page }) => {
     await signInAs(page, "Arun");
     await page.goto("/import");
-    await expect(page.getByRole("navigation", { name: "Workflow steps" }).getByRole("link", { name: /Connect/ })).toHaveAttribute("aria-current", "step");
+    await expect(page.getByRole("navigation", { name: "Workflow steps" }).getByRole("link", { name: /Add files/ })).toHaveAttribute("aria-current", "step");
 
     await page.getByLabel("Files to import").setInputFiles([
       `${MINI}/whatsapp-committee.txt`,
@@ -106,6 +106,8 @@ test.describe.serial("import flow", () => {
     await row.getByText("Remove this file…").click();
     await row.getByLabel("Reason (kept in the audit log)").fill("Uploaded the wrong export");
     await row.getByRole("button", { name: "Remove file and its messages" }).click();
+    await expect(page.getByRole("alertdialog")).toContainText("Remove whatsapp-committee.txt?");
+    await page.getByRole("button", { name: "Yes, remove the file" }).click();
     await expect(page.getByTestId("source-row").filter({ hasText: "whatsapp-committee.txt" })).toHaveCount(0);
   });
 

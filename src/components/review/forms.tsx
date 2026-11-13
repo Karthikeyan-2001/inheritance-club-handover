@@ -2,23 +2,24 @@
 
 import { useActionState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 import type { FormState } from "@/lib/form-state";
 import { FIELD_LABELS } from "@/lib/review/fields";
 
 type Action = (prev: FormState, formData: FormData) => Promise<FormState>;
 
-export type FormButton = { label: string; value: string; variant?: "default" | "destructive" | "outline" | "secondary"; disabled?: boolean };
+export type FormButton = { label: string; value: string; variant?: "default" | "destructive" | "outline" | "secondary"; disabled?: boolean; confirm?: { title: string; description: string; confirmLabel: string } };
 
 function Messages({ state }: { state: FormState }) {
   return (
     <>
       {state?.error && (
-        <p role="alert" className="text-sm text-destructive">
+        <p role="alert" className="rounded-lg bg-danger-soft px-3 py-2 text-sm text-destructive">
           {state.error}
         </p>
       )}
       {state?.ok && (
-        <p role="status" className="text-sm text-muted-foreground">
+        <p role="status" className="rounded-lg bg-success-soft px-3 py-2 text-sm text-success">
           {state.ok}
         </p>
       )}
@@ -59,11 +60,12 @@ export function ReasonForm({
       {children}
       <label className="flex flex-col gap-1 text-sm">
         <span className="text-muted-foreground">{label}</span>
-        <input name="reason" required minLength={3} maxLength={500} placeholder={placeholder} className="rounded-md border bg-background px-2 py-1.5" />
+        <input name="reason" required minLength={3} maxLength={500} placeholder={placeholder} className="rounded-lg border border-input bg-card px-3 py-2" />
       </label>
       <div className="flex flex-wrap gap-2">
         {buttons.map((b) => (
           <Button key={b.value} type="submit" name={buttonName} value={b.value} variant={b.variant ?? "outline"} size="sm" disabled={pending || b.disabled}>
+            {pending && <Spinner />}
             {pending ? "Working…" : b.label}
           </Button>
         ))}

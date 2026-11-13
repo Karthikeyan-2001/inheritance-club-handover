@@ -1,8 +1,8 @@
-import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
+import { RouteProgress } from "@/components/feedback/route-progress";
 import { SiteHeader } from "@/components/site-header";
-import { TourPanel } from "@/components/tour/tour-panel";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,11 +28,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <SiteHeader />
-        {children}
         <Suspense fallback={null}>
-          <TourPanel />
+          <RouteProgress />
         </Suspense>
+        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-[80] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground">
+          Skip to the page
+        </a>
+        <SiteHeader />
+        <div id="main" className="flex flex-1 flex-col">{children}</div>
       </body>
     </html>
   );

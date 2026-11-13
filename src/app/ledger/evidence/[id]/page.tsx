@@ -1,6 +1,8 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { LoadingBlock } from "@/components/feedback/loading-block";
+import { PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TYPE_LABELS } from "@/components/ledger/obligation-parts";
@@ -9,6 +11,7 @@ import { formatIst } from "@/lib/format";
 import { locateQuote, segmentsFor, type QuoteSpan } from "@/lib/pipeline/locate";
 import { getViewer } from "@/lib/session";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { ErrorState } from "@/components/feedback/error-state";
 
 export const metadata: Metadata = { title: "Source message · Inheritance" };
 
@@ -29,7 +32,7 @@ const NEIGHBOURS = 2;
 function Message({ msg, span, quoted }: { msg: Msg; span?: QuoteSpan | null; quoted?: boolean }) {
   const parts = segmentsFor(msg.text, span ?? null);
   return (
-    <article className={quoted ? "rounded-md border-2 border-primary p-3 text-sm" : "rounded-md border p-3 text-sm text-muted-foreground"} aria-label={`${msg.author ?? "Unknown"}, ${formatIst(msg.ts)}`}>
+    <article className={quoted ? "rounded-xl border-2 border-primary bg-accent/50 p-4 text-sm" : "rounded-xl border bg-card p-4 text-sm text-muted-foreground"} aria-label={`${msg.author ?? "Unknown"}, ${formatIst(msg.ts)}`}>
       <div className="mb-1 flex flex-wrap items-center gap-2">
         <span className="font-medium text-foreground">{msg.author ?? "Unknown"}</span>
         <span>{formatIst(msg.ts)}</span>
@@ -38,7 +41,7 @@ function Message({ msg, span, quoted }: { msg: Msg; span?: QuoteSpan | null; quo
       <p className="whitespace-pre-wrap break-words" data-testid={quoted ? "source-message" : undefined}>
         {parts.map((p, i) =>
           p.mark ? (
-            <mark key={i} className="rounded-sm bg-yellow-200 px-0.5 text-foreground dark:bg-yellow-700/60">
+            <mark key={i} className="rounded-sm bg-warning-soft px-0.5 text-foreground underline decoration-warning decoration-2 underline-offset-2">
               {p.text}
             </mark>
           ) : (
@@ -55,7 +58,7 @@ async function EvidenceContent({ params, searchParams }: { params: PageProps<"/l
   try {
     viewer = await getViewer();
   } catch {
-    return <p role="alert">Could not reach the database. Try again in a minute.</p>;
+    return <ErrorState title="Could not reach the database">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   }
   if (!viewer) {
     return (
@@ -78,7 +81,7 @@ async function EvidenceContent({ params, searchParams }: { params: PageProps<"/l
   const found = isContext
     ? await supabase.from("context_items").select("id, quote, verified, event_id, obligation_id, obligations(description, kind)").eq("id", id).maybeSingle()
     : await supabase.from("evidence").select("id, quote, verified, event_id, obligation_id, obligations(description, kind)").eq("id", id).maybeSingle();
-  if (found.error) return <p role="alert">Could not load the quote. Try again in a minute.</p>;
+  if (found.error) return <ErrorState title="Could not load the quote">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   // The query shape differs by table; both carry the fields used below.
   const row = found.data as unknown as {
     quote: string | null;
@@ -99,7 +102,7 @@ async function EvidenceContent({ params, searchParams }: { params: PageProps<"/l
 
   const msgResult = row.event_id ? await supabase.from("events").select(EVENT_SELECT).eq("id", row.event_id).maybeSingle() : { data: null, error: null };
   // An error is not the same as "your role cannot read it": say which one it is.
-  if (msgResult.error) return <p role="alert">Could not load the source message. Try again in a minute.</p>;
+  if (msgResult.error) return <ErrorState title="Could not load the source message">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const event = msgResult.data as unknown as Msg | null;
 
   // Neighbours in the same file, in the file's own order (seq), so messages sent in the same
@@ -155,9 +158,9 @@ async function EvidenceContent({ params, searchParams }: { params: PageProps<"/l
 
 export default function EvidencePage(props: PageProps<"/ledger/evidence/[id]">) {
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-6 px-6 py-10">
-      <h1 className="text-3xl font-semibold tracking-tight">Source message</h1>
-      <Suspense fallback={<p className="text-muted-foreground">Loading the source…</p>}>
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-6 px-4 py-8 sm:px-6 sm:py-10">
+      <PageHeader title="Source message" purpose="The original message behind a quote, with the messages around it, so you can judge the claim for yourself." />
+      <Suspense fallback={<LoadingBlock label="Finding the source message…" variant="list" rows={3} />}>
         <EvidenceContent params={props.params} searchParams={props.searchParams} />
       </Suspense>
     </main>

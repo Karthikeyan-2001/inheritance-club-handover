@@ -73,6 +73,9 @@ test.describe("demo club per visitor", () => {
     await page.getByLabel("Type the workspace name to confirm").fill(COPY_NAME);
     await page.getByLabel("Reason", { exact: true }).fill("Finished trying the demo");
     await page.getByRole("button", { name: "Delete workspace permanently" }).click();
+    // Deleting asks first; nothing happens until the question is answered.
+    await expect(page.getByRole("alertdialog")).toContainText("Delete this workspace?");
+    await page.getByRole("button", { name: "Yes, delete everything" }).click();
     await expect(page).toHaveURL("/login?notice=copy-deleted");
     await expect(page.getByRole("status")).toContainText("were deleted");
     // No copy to return to any more.

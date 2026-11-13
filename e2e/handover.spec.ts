@@ -21,7 +21,7 @@ test.describe("handover", () => {
 
   test("signed out, it asks you to sign in", async ({ page }) => {
     await page.goto("/handover");
-    await expect(page.getByText("Sign in to see the handover.")).toBeVisible();
+    await expect(page.getByText("Sign in to see the handover")).toBeVisible();
   });
 
   test("the incoming lead sees who is waiting, the calendar and a placeholder, but not sealed details", async ({ page }) => {

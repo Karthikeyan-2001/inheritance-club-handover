@@ -5,6 +5,10 @@ import { REVIEW_LABELS, TRUST_HELP, TRUST_LABELS } from "./commitments";
 import { capitalise, groupLinked } from "@/lib/ledger-view";
 import { loadLinkData } from "./link-data";
 import { AlsoRecorded, CONTEXT_SELECT, ContextList, DocketLink, EVIDENCE_SELECT, EvidenceList, PossibleMatches, RecordedElsewhere, type CardFact, type ContextRow, type EvidenceRow } from "./obligation-parts";
+import { EmptyState } from "@/components/feedback/empty-state";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ErrorState } from "@/components/feedback/error-state";
 
 const PERIOD_LABELS = {
   semester: "Every semester",
@@ -83,13 +87,17 @@ export async function Recurring({ workspaceId }: { workspaceId: string }) {
     .eq("kind", "recurring")
     .order("created_at", { ascending: true });
 
-  if (error) return <p role="alert">Could not load recurring duties. Try again in a minute.</p>;
+  if (error) return <ErrorState title="Could not load recurring duties">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const rows = (data ?? []) as unknown as Row[];
   if (!rows.length) {
-    return <p className="text-sm text-muted-foreground">No recurring duties yet. Import files, then use “Build the ledger”.</p>;
+    return <EmptyState title="No yearly duties yet" body="Add the club's files, then press “Build the ledger”. It reads them and lists what it finds here.">
+        <Button asChild size="sm">
+          <Link href="/import">Add files</Link>
+        </Button>
+      </EmptyState>;
   }
   const { links, docketByItem, error: linkError } = await loadLinkData(supabase, workspaceId);
-  if (linkError) return <p role="alert">Could not load how items are linked. Try again in a minute.</p>;
+  if (linkError) return <ErrorState title="Could not load how items are linked">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const byId = new Map(rows.map((o) => [o.id, o]));
   const groups = groupLinked(rows.map((o) => o.id), links);
 

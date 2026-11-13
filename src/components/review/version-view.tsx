@@ -9,6 +9,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { STATUS_LABELS, TRUST_LABELS, statusLabel } from "@/components/ledger/commitments";
 import { DiffView } from "./diff-view";
 import { loadVersionRows } from "./version-data";
+import { ErrorState } from "@/components/feedback/error-state";
 
 const RELATION: Record<string, string> = { supports: "The promise or duty", fulfils: "Says it was done", contradicts: "Says it was not done", past_instance: "A past time it happened" };
 const KIND = { decision: "Decision", contact: "Contact", risk: "Risk", dependency: "Depends on" } as const;
@@ -25,13 +26,13 @@ function facts(o: Ob): string {
 export async function VersionView({ workspaceId, number }: { workspaceId: string; number: number }) {
   const supabase = await createSupabaseServerClient();
   const { data: versions, error } = await supabase.from("versions").select("id, number, created_at").eq("workspace_id", workspaceId).in("number", [number, number - 1]);
-  if (error) return <p role="alert">Could not load this version. Try again in a minute.</p>;
+  if (error) return <ErrorState title="Could not load this version">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const version = versions?.find((v) => v.number === number);
   if (!version) return <p>There is no version {number} in this workspace.</p>;
   const previous = versions?.find((v) => v.number === number - 1) ?? null;
 
   const [current, before] = await Promise.all([loadVersionRows(supabase, version.id), previous ? loadVersionRows(supabase, previous.id) : Promise.resolve(null)]);
-  if (current.error || before?.error) return <p role="alert">Could not load this version. Try again in a minute.</p>;
+  if (current.error || before?.error) return <ErrorState title="Could not load this version">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const diff = diffVersions(before?.rows ?? null, current.rows);
   const notes = new Map(current.rows.map((r) => [r.obligation_id, r.notes ?? []]));
 

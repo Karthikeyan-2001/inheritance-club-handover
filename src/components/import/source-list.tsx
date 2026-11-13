@@ -1,11 +1,13 @@
 import { removeSource } from "@/app/import/actions";
 import { ActionForm } from "@/components/action-form";
 import { ReadSummaryView } from "@/components/import/import-form";
+import { EmptyState } from "@/components/feedback/empty-state";
 import { Badge } from "@/components/ui/badge";
 import { ACCESS_LABELS, ROLE_LABELS, type AppRole } from "@/lib/access";
 import { formatIst } from "@/lib/format";
 import type { ReadSummary } from "@/lib/parsers";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { ErrorState } from "@/components/feedback/error-state";
 
 const TYPE_LABELS = { whatsapp: "WhatsApp chat", trello: "Trello board", minutes: "Minutes" } as const;
 
@@ -20,8 +22,8 @@ export async function SourceList({ workspaceId, viewerId, viewerRole }: { worksp
       .order("imported_at", { ascending: false }),
     supabase.from("memberships").select("user_id, role").eq("workspace_id", workspaceId),
   ]);
-  if (error) return <p role="alert">Could not load the imported files.</p>;
-  if (!sources?.length) return <p className="text-muted-foreground">No files you can see have been imported yet.</p>;
+  if (error) return <ErrorState title="Could not load the imported files">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
+  if (!sources?.length) return <EmptyState title="No files imported yet" body="Files you are allowed to read appear here once they are imported." />;
 
   const roleOf = new Map((members ?? []).map((m) => [m.user_id, m.role as AppRole]));
   return (
@@ -32,7 +34,7 @@ export async function SourceList({ workspaceId, viewerId, viewerRole }: { worksp
         const uploader = mine ? "you" : s.uploaded_by && roleOf.get(s.uploaded_by) ? ROLE_LABELS[roleOf.get(s.uploaded_by)!].toLowerCase() : "a former member";
         const canRemove = mine || viewerRole === "advisor";
         return (
-          <li key={s.id} className="rounded-md border p-3 text-sm" data-testid="source-row">
+          <li key={s.id} className="rounded-xl border bg-card p-4 text-sm" data-testid="source-row">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <span className="font-medium break-all">{s.filename}</span>
               <span className="flex items-center gap-2">
@@ -52,7 +54,7 @@ export async function SourceList({ workspaceId, viewerId, viewerRole }: { worksp
             {canRemove && (
               <details className="mt-2">
                 <summary className="cursor-pointer">Remove this file…</summary>
-                <ActionForm action={removeSource} submitLabel="Remove file and its messages" variant="destructive" className="mt-2 flex flex-col gap-2">
+                <ActionForm action={removeSource} submitLabel="Remove file and its messages" variant="destructive" className="mt-2 flex flex-col gap-2" confirm={{ title: `Remove ${s.filename}?`, description: "Its messages are removed from the ledger sources, and items that rest only on them lose their evidence. The removal and your reason stay in the audit log.", confirmLabel: "Yes, remove the file" }}>
                   <input type="hidden" name="sourceId" value={s.id} />
                   <label className="flex flex-col gap-1">
                     Reason (kept in the audit log)

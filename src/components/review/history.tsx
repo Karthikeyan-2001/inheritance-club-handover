@@ -3,6 +3,8 @@ import { ROLE_LABELS, type AppRole } from "@/lib/access";
 import { formatIst } from "@/lib/format";
 import { actionLabel, describeChanges, REVIEW_ACTIONS } from "@/lib/review/history";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { EmptyState } from "@/components/feedback/empty-state";
+import { ErrorState } from "@/components/feedback/error-state";
 
 const LIMIT = 100;
 
@@ -20,9 +22,9 @@ export async function History({ workspaceId }: { workspaceId: string }) {
     supabase.from("memberships").select("user_id, role").eq("workspace_id", workspaceId),
     supabase.from("obligations").select("id, description").eq("workspace_id", workspaceId),
   ]);
-  if (audit.error || members.error || items.error) return <p role="alert">Could not load the history. Try again in a minute.</p>;
+  if (audit.error || members.error || items.error) return <ErrorState title="Could not load the history">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const rows = audit.data ?? [];
-  if (rows.length === 0) return <p className="text-sm text-muted-foreground">No review actions yet. Every accept, edit, rejection, ruling, mark and approval will be listed here with its reason.</p>;
+  if (rows.length === 0) return <EmptyState title="No review actions yet" body="Every accept, edit, rejection, ruling, mark and approval will be listed here with who did it and why." />;
   const role = new Map((members.data ?? []).map((m) => [m.user_id, ROLE_LABELS[m.role as AppRole]]));
   const title = new Map((items.data ?? []).map((o) => [o.id, o.description]));
   return (

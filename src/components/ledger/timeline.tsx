@@ -5,6 +5,8 @@ import { ACCESS_LABELS } from "@/lib/access";
 import { formatIst, formatIstDate, formatIstTime, istDayKey } from "@/lib/format";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { TIMELINE_PAGE_SIZE, likePattern, timelineHref, type TimelineParams } from "@/lib/timeline-query";
+import { ErrorState } from "@/components/feedback/error-state";
+import { EmptyState } from "@/components/feedback/empty-state";
 
 const TYPE_LABELS = { whatsapp: "WhatsApp", trello: "Trello", minutes: "Minutes" } as const;
 
@@ -25,18 +27,17 @@ export async function Timeline({ workspaceId, params }: { workspaceId: string; p
     supabase.from("sources").select("id, filename").eq("workspace_id", workspaceId).order("filename"),
   ]);
 
-  if (error) return <p role="alert">Could not load the timeline. Try again in a minute.</p>;
+  if (error) return <ErrorState title="Could not load the timeline">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const total = count ?? 0;
   const filtered = Boolean(params.source || params.q);
 
   if (total === 0 && !filtered) {
     return (
-      <div className="flex flex-col items-start gap-3 text-sm">
-        <p>Nothing you can read has been imported yet.</p>
+      <EmptyState title="No messages yet" body="Nothing you are allowed to read has been imported. Add a WhatsApp chat, Trello board or minutes and every message appears here.">
         <Button asChild size="sm">
-          <Link href="/import">Import files</Link>
+          <Link href="/import">Add files</Link>
         </Button>
-      </div>
+      </EmptyState>
     );
   }
 

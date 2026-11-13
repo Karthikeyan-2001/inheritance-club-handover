@@ -6,6 +6,7 @@ import { RULING_LABELS, RULING_NOTE, rulingLabel } from "@/lib/review/labels";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { ruleConflict } from "@/app/review/actions";
 import { RulingForm } from "./forms";
+import { ErrorState } from "@/components/feedback/error-state";
 
 const OPTIONS = Object.entries(RULING_LABELS).map(([value, label]) => ({ value, label }));
 
@@ -13,7 +14,7 @@ const OPTIONS = Object.entries(RULING_LABELS).map(([value, label]) => ({ value, 
 export async function Conflicts({ workspaceId, canRule }: { workspaceId: string; canRule: boolean }) {
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase.from("docket_entries").select(DOCKET_SELECT).eq("workspace_id", workspaceId).order("created_at", { ascending: true });
-  if (error) return <p role="alert">Could not load the conflicts. Try again in a minute.</p>;
+  if (error) return <ErrorState title="Could not load the conflicts">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const rows = (data ?? []) as unknown as (DocketRow & { ruled_at: string | null })[];
   if (rows.length === 0) {
     return <p className="text-sm text-muted-foreground">No conflicts. An item lands here when one record says it was done and another says it was not.</p>;

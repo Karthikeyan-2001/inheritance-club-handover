@@ -14,6 +14,10 @@ import { DiffView } from "./diff-view";
 import { EditForm, ReasonForm } from "./forms";
 import { SignoffPanel, type Signoff } from "./signoff-panel";
 import { loadLatestVersion, loadVersionRows } from "./version-data";
+import { EmptyState } from "@/components/feedback/empty-state";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ErrorState } from "@/components/feedback/error-state";
 
 type Row = {
   id: string;
@@ -139,7 +143,7 @@ function Section({ title, hint, rows, links, byId, testId }: { title: string; hi
         {title} <span className="font-normal text-muted-foreground">({rows.length})</span>
       </h3>
       {hint && <p className="text-sm text-muted-foreground">{hint}</p>}
-      {rows.length === 0 ? <p className="text-sm text-muted-foreground">None.</p> : <ul className="flex flex-col gap-3">{rows.map((o) => <ItemCard key={o.id} o={o} links={links} byId={byId} />)}</ul>}
+      {rows.length === 0 ? <p className="text-sm text-muted-foreground">None right now.</p> : <ul className="flex flex-col gap-3">{rows.map((o) => <ItemCard key={o.id} o={o} links={links} byId={byId} />)}</ul>}
     </section>
   );
 }
@@ -156,11 +160,15 @@ export async function Draft({ role, workspaceId }: { role: Role; workspaceId: st
     supabase.rpc("pending_review", { p_workspace: workspaceId }),
   ]);
   if (obligations.error || linkData.error || signoffRes.error || docket.error || latest.error || pending.error) {
-    return <p role="alert">Could not load the draft. Try again in a minute.</p>;
+    return <ErrorState title="Could not load the draft">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   }
   const rows = (obligations.data ?? []) as unknown as Row[];
   if (rows.length === 0) {
-    return <p className="text-sm text-muted-foreground">Nothing to review yet. Import files, then use “Build the ledger”.</p>;
+    return <EmptyState title="Nothing to review yet" body="The ledger has no items. Add files and build the ledger first.">
+        <Button asChild size="sm">
+          <Link href="/ledger">Go to the ledger</Link>
+        </Button>
+      </EmptyState>;
   }
   const byId = new Map(rows.map((o) => [o.id, o]));
   const changed = rows.filter(needsRereview);
@@ -179,7 +187,7 @@ export async function Draft({ role, workspaceId }: { role: Role; workspaceId: st
   let prevRows: DiffRow[] | null = null;
   if (latest.version) {
     const prev = await loadVersionRows(supabase, latest.version.id);
-    if (prev.error) return <p role="alert">Could not load the latest version. Try again in a minute.</p>;
+    if (prev.error) return <ErrorState title="Could not load the latest version">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
     prevRows = prev.rows;
   }
   const notesBy = new Map(rows.map((o) => [o.id, o.context_items.map((c) => ({ id: c.id, kind: c.kind, text: c.text }))]));

@@ -5,6 +5,8 @@ import { capitalise } from "@/lib/ledger-view";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { RULING_NOTE, rulingLabel } from "@/lib/review/labels";
 import { TYPE_LABELS } from "./obligation-parts";
+import { ErrorState } from "@/components/feedback/error-state";
+import { EmptyState } from "@/components/feedback/empty-state";
 
 export type ClaimEvent = { ts: string | null; author: string | null; sources: { filename: string; type: keyof typeof TYPE_LABELS } | null } | null;
 
@@ -53,13 +55,11 @@ export function Claim({ label, quote, event }: { label: string; quote: string | 
 export async function Docket({ workspaceId }: { workspaceId: string }) {
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase.from("docket_entries").select(DOCKET_SELECT).eq("workspace_id", workspaceId).order("created_at", { ascending: true });
-  if (error) return <p role="alert">Could not load the docket. Try again in a minute.</p>;
+  if (error) return <ErrorState title="Could not load the docket">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const rows = (data ?? []) as unknown as DocketRow[];
   if (!rows.length) {
     return (
-      <p className="text-sm text-muted-foreground">
-        No conflicts found. An item lands here when one record says it was done and another says it was not.
-      </p>
+      <EmptyState title="No conflicts found" body="That is good news. An item lands here when one record says it was done and another says it was not." />
     );
   }
 

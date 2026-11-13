@@ -1,6 +1,6 @@
 # Build status
 
-Read this first when resuming work, on any machine. Last updated: 2026-11-14, Round 3 plan agreed (Phase 14 not started).
+Read this first when resuming work, on any machine. Last updated: 2026-11-14, Phase 14 (UI/UX) built on `build/phase-14`, awaiting review and merge.
 
 Other docs:
 - [dev-setup.md](dev-setup.md): setting up a new computer (tools, secrets, local database, hosted project).
@@ -19,13 +19,19 @@ Round 2 (Phases 0 to 13, plus the guided tour) is merged and was submitted; the 
 | Phase | Scope | State |
 |---|---|---|
 | 0 to 13 | Round 2 (see the README status table and [decisions.md](decisions.md)) | merged |
-| 14 | Round 3: remove both walkthroughs; UI/UX overhaul so the app guides itself | next |
-| 15 | Round 3, improvement 2: gap questions for the outgoing lead | later |
+| 14 | Round 3: remove both walkthroughs; UI/UX overhaul so the app guides itself | built, awaiting merge and deploy |
+| 15 | Round 3, improvement 2: gap questions for the outgoing lead | next |
 | 16 | Round 3, improvement 3: counterparty handoff notes | later |
 | 17 | Round 3, improvement 1: inferred recurring duties | later |
 | 18 | Round 3: hardening, end-to-end sweeps, README, final report PDF | later |
 
-Tests on `main` (after the guided tour): 631 unit plus RLS (`pnpm test`), 51 Playwright, all passing; lint, typecheck and production build clean.
+Tests on `build/phase-14`: 595 unit plus RLS (`pnpm test`), 53 Playwright (the 5 tour and guide tests are gone, 7 guidance tests are new), all passing; lint, typecheck and production build clean. (The Phase 13 count of 631 included the tour's 36 unit tests.)
+
+### Phase 14 (built, awaiting merge)
+
+Tour and `/guide` removed; purple pastel theme; home page with the next step per role (`src/lib/journey.ts`); one-line purpose on every page; plain-language labels; person switcher shows "Switch person" with who-is-who; skeleton, route-bar and progress-bar loading states; confirm dialogs for removing a file and deleting a club; empty and error states on every list; mobile and accessibility pass. Details: [decisions.md](decisions.md#phase-14-decisions-uiux-no-walkthrough), [changes-from-round1.md](changes-from-round1.md).
+
+Not done in Phase 14, by choice: a dark mode, and a Lighthouse or axe run (the pass was manual: focus rings, contrast by palette, labels, skip link, reduced motion). Worth checking on the live link after deploy: sign in on a phone-sized window and complete the flow as Arun, Dr. Meena and Kavya.
 
 ## How the user works
 

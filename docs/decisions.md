@@ -96,13 +96,14 @@ Confirmed with the user: P6 (implied quotes from a more restricted record are dr
 - **Verify** links to the Docket; `stepForPath(pathname, tab)` marks the Docket, Gaps and evidence pages as Verify.
 - **Interviews.** Not done; the docs say so. Fabricated answers were refused.
 
-## Guided tour decisions (after Phase 13; the tour is removed in Phase 14)
+## Phase 14 decisions (UI/UX, no walkthrough)
 
-Confirmed with the user: both a docked tour panel and a highlight ring.
-
-- **The panel is docked at the bottom, not under the header,** so it stays in view while the page scrolls to the ringed element. While open, the page gets scroll padding so nothing scrolled into view lands under it.
-- **State is a cookie (`track:index`), not a query parameter,** so in-page links (tabs, Open source message) keep the tour. Leaving a stop's page shows "Return to this stop"; switching role by hand shows who the stop is seen as.
-- **Each move that changes person is a real sign-in**, as the role menu does (one sign-in per switch; the built track switches four times).
-- **Highlights use the existing `data-testid` hooks**, first match only, and wait up to 8 s for streamed sections. Tall elements are scrolled to their top.
-- **No new dependency.** No paid model calls.
-- **Known gaps:** the tour does not check that the visitor did a "Try this" (for example, if Arun never marked ready, the approve stop says to go back). The text describes the built year club; on the shared accounts' small club some details (five files) do not match.
+- **The tour and `/guide` are gone** (Round 3 judges use the app alone). Guidance now lives in the pages: a one-line purpose under every title, a home page that names the next step, and a step bar that is always visible. `switch-user.ts` stays (the role menu uses it).
+- **Next step is worked out by code from the viewer's own reads** (`src/lib/journey.ts`). A role that cannot read the working ledger gets zero counts there and is guided by approved versions. Approval is detected by "the lead's mark is newer than the latest version", because the mark stays current after approval.
+- **When the next step is someone else's, the button switches person.** A handover needs three people, and a lone judge would otherwise not know that. The same `signInAsDemo` action as the menu is used.
+- **Purple pastel palette** (OKLCH tokens in `globals.css`; primary hue 296). Text on every surface is at least 4.5:1. No dark mode: it was unused, and a half-themed dark mode is worse than none.
+- **Plain-language labels:** Commitments is "Promises", Recurring is "Yearly duties", Docket is "Conflicts", Timeline is "All messages"; in Review, Draft is "Check and sign off", Conflicts is "Rulings", Versions is "Approved versions", History is "Audit history". URLs and test ids are unchanged. The Verify step is "Check the records".
+- **Waiting is explained, not just shown:** skeletons shaped like the content, a status line that adds a reassurance after 3.5 s and 9 s, a route bar after 150 ms, a progress bar with stripes while a demo club is built (a curve to 90%, labelled as usually under half a minute, because the real time is not known), and a full-screen "Switching to Dr. Meena…" while a person switch signs in.
+- **Confirmation only where it cannot be undone:** removing a file and deleting a workspace. Reject, decline and edits are reversible and audited, so they have no extra dialog.
+- **No new dependency.** `radix-ui` (already used) supplies the AlertDialog. No paid model calls.
+- **Known gaps:** the build-progress bar is an estimate; the person switch signs in again (a few seconds). There is no dark mode.

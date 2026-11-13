@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, type ReactNode } from "react";
+import { useActionState, useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import type { FormState } from "@/lib/form-state";
@@ -8,7 +8,7 @@ import { FIELD_LABELS } from "@/lib/review/fields";
 
 type Action = (prev: FormState, formData: FormData) => Promise<FormState>;
 
-export type FormButton = { label: string; value: string; variant?: "default" | "destructive" | "outline" | "secondary"; disabled?: boolean; confirm?: { title: string; description: string; confirmLabel: string } };
+export type FormButton = { label: string; value: string; variant?: "default" | "destructive" | "outline" | "secondary"; disabled?: boolean };
 
 function Messages({ state }: { state: FormState }) {
   return (
@@ -52,8 +52,10 @@ export function ReasonForm({
   className?: string;
 }) {
   const [state, formAction, pending] = useActionState(action, null);
+  // Only the button that was pressed shows it is working; the others just wait.
+  const [pressed, setPressed] = useState<string | null>(null);
   return (
-    <form action={formAction} className={className}>
+    <form action={formAction} className={className} aria-busy={pending}>
       {Object.entries(hidden ?? {}).map(([k, v]) => (
         <input key={k} type="hidden" name={k} value={v} />
       ))}
@@ -64,9 +66,9 @@ export function ReasonForm({
       </label>
       <div className="flex flex-wrap gap-2">
         {buttons.map((b) => (
-          <Button key={b.value} type="submit" name={buttonName} value={b.value} variant={b.variant ?? "outline"} size="sm" disabled={pending || b.disabled}>
-            {pending && <Spinner />}
-            {pending ? "Working…" : b.label}
+          <Button key={b.value} type="submit" name={buttonName} value={b.value} variant={b.variant ?? "outline"} size="sm" disabled={pending || b.disabled} onClick={() => setPressed(b.value)}>
+            {pending && pressed === b.value && <Spinner />}
+            {pending && pressed === b.value ? "Working…" : b.label}
           </Button>
         ))}
       </div>

@@ -23,6 +23,9 @@ export function RouteProgress() {
       const url = new URL(a.href, location.href);
       if (url.origin !== location.origin) return;
       if (url.pathname === location.pathname && url.search === location.search) return;
+      // A fresh click starts fresh: forget an earlier timeout or debounce for the same URL.
+      setGaveUp(null);
+      setShown(null);
       setFrom(`${location.pathname}?${location.search.replace(/^\?/, "")}`);
     }
     document.addEventListener("click", onClick);

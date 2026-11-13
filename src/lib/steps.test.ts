@@ -36,3 +36,12 @@ describe("Verify", () => {
     expect(stepForPath("/ledger", null)).toBe("Reconstruct");
   });
 });
+
+describe("STEP_LABEL", () => {
+  it("names every step in plain words, and no two alike", async () => {
+    const { STEP_LABEL, STEPS } = await import("./steps");
+    const labels = STEPS.map((s) => STEP_LABEL[s]);
+    expect(labels.every((l) => l.length > 0)).toBe(true);
+    expect(new Set(labels).size).toBe(STEPS.length);
+  });
+});

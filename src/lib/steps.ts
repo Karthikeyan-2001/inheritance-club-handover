@@ -1,6 +1,15 @@
 export const STEPS = ["Connect", "Reconstruct", "Verify", "Review", "Handover"] as const;
 export type Step = (typeof STEPS)[number];
 
+/** What each step is called on screen, in plain words. The keys above stay as they are. */
+export const STEP_LABEL: Record<Step, string> = {
+  Connect: "Add files",
+  Reconstruct: "Build the ledger",
+  Verify: "Check the records",
+  Review: "Review and approve",
+  Handover: "Hand over",
+};
+
 /** The page each step starts on. Verify is the Docket (records that disagree), the Gaps tab and the source messages. */
 export const STEP_HREF: Partial<Record<Step, string>> = {
   Connect: "/import",

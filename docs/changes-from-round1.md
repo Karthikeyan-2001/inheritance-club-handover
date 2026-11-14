@@ -172,3 +172,6 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 - **Mistakes are harder:** buttons disable and show a spinner while they work, removing a file and deleting a club ask first, and an Enter key cannot skip the question.
 - **Empty and error states** now say what is missing and what to do, instead of a bare line or a blank.
 - **Plain-language names:** Promises, Yearly duties, Conflicts, All messages, Check and sign off, Rulings, Approved versions, Audit history.
+- **One page per step.** Conflicts and Gaps moved to their own page, Check the records (`/check`); the full message list moved to All messages (`/messages`, linked from the header). Tabs inside a page no longer move the step bar, and every step page ends with a button to the next one, in order: Add files → Build the ledger → Check the records → Review and approve → Hand over.
+- **Building the ledger shows progress the moment it is pressed,** then which part is being read and roughly how long is left.
+- **Adding files is three numbered parts,** with a one-click "Use the 4 sample files" (the download links stay), the authorisation box next to the button, and a line under the button saying what it still needs.

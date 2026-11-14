@@ -186,5 +186,6 @@ Committed in the Round 2 report (section 10) as improvement 2.
 - **The form shows the exact message before it is saved.** The message is written by code from the chosen answer and the item's description, followed by the lead's own words if any.
 - **Only the outgoing lead answers.** The advisor and the treasurer see the questions and answers (they read the working ledger); the incoming lead and members see answers only in approved versions. A conflict answer is shown to the advisor next to the two disagreeing records; the advisor still rules.
 - **The incoming lead sees the lead's words on the card itself,** with a note that they are the lead's own word. An answer reaches her only in the next approved version.
+- **Conflicts are explained to the incoming lead:** a contradicted item says the records disagree, shows both sides, and gives the advisor's ruling and reason, or says that nobody had ruled when the version was approved.
 - **Promises already done now appear on the handover** under "Already done", so the incoming lead can read and answer every item in a version (before, fulfilled promises were counted but not shown).
 - **No model is involved,** and the pipeline never reads the lead's answers as new records.

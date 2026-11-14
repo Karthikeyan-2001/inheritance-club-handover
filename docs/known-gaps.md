@@ -49,6 +49,7 @@ What is knowingly unfinished, and what the model still gets wrong on the synthet
 - Questions are asked per record: two records linked as the same item may each ask, until an answer on one lends its evidence to the other.
 - The built year club has no duty without an approver or a date, so those two kinds of question appear only for clubs built from other files.
 - `tests/rls/leak.test.ts` does not walk `gap_answers`; its read rules are covered by `tests/rls/gap-questions.test.ts`.
+- A ruling made after a version is approved shows on the handover only from the next version (versions are frozen), so the incoming lead can see "Nobody had ruled on it" while the advisor already has.
 - The audit history shows status and trust changes by their stored names (`no_evidence` → `fulfilled`), as it does for other review actions.
 
 ## What the model got wrong (Phase 12 paid runs)

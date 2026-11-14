@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Claim, DOCKET_SELECT, type DocketRow } from "@/components/ledger/docket";
+import { Claim, DOCKET_SELECT, LeadAnswers, type DocketRow } from "@/components/ledger/docket";
 import { formatIst } from "@/lib/format";
 import { capitalise } from "@/lib/ledger-view";
 import { RULING_LABELS, RULING_NOTE, rulingLabel } from "@/lib/review/labels";
@@ -32,6 +32,7 @@ export async function Conflicts({ workspaceId, canRule }: { workspaceId: string;
             <Claim label="Says it was done" quote={r.quote_a} event={r.claim_a} />
             <Claim label="Says it was not done" quote={r.quote_b} event={r.claim_b} />
           </div>
+          <LeadAnswers answers={r.gap_answers} />
           {r.ruling && (
             <p className="mt-2 text-xs text-muted-foreground">
               Advisor’s ruling: <strong>{rulingLabel(r.ruling)}</strong>

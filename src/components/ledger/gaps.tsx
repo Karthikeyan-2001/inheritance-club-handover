@@ -40,7 +40,12 @@ export async function Gaps({ workspaceId }: { workspaceId: string }) {
   return (
     <div className="flex flex-col gap-3">
       <p className="text-sm text-muted-foreground" role="status">
-        {gaps.length} {gaps.length === 1 ? "gap" : "gaps"} in the items you can read. A gap is shown, never filled in or guessed.
+        {gaps.length} {gaps.length === 1 ? "gap" : "gaps"} in the items you can read. A gap is shown, never filled in or guessed. The outgoing lead can answer
+        promises with no follow-up and duties with no date on the{" "}
+        <Link href="/check?tab=questions" className="underline">
+          Questions
+        </Link>{" "}
+        tab; each answer is kept as a stated record.
       </p>
       <ul className="flex flex-col gap-3" aria-label="Gaps" data-testid="gaps">
         {gaps.map((g, i) => (

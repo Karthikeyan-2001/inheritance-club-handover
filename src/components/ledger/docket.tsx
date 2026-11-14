@@ -25,12 +25,34 @@ export type DocketRow = {
   obligations: { description: string; kind: "commitment" | "recurring" } | null;
   claim_a: ClaimEvent;
   claim_b: ClaimEvent;
+  /** The outgoing lead's answers to this conflict's gap question (migration 0022), as RLS allows. */
+  gap_answers?: { answer: string; created_at: string; events: { text: string; author: string | null; ts: string | null } | null }[];
 };
 
 export const DOCKET_SELECT =
   "id, obligation_id, claim_a_event, claim_b_event, summary, quote_a, quote_b, ruling, reason, ruled_at, origin, created_at, obligations(description, kind), " +
   "claim_a:events!docket_entries_claim_a_event_fkey(ts, author, sources(filename, type)), " +
-  "claim_b:events!docket_entries_claim_b_event_fkey(ts, author, sources(filename, type))";
+  "claim_b:events!docket_entries_claim_b_event_fkey(ts, author, sources(filename, type)), " +
+  "gap_answers(answer, created_at, events(text, author, ts))";
+
+/** What the outgoing lead said about a conflict when asked. One more record for the advisor; not a ruling. */
+export function LeadAnswers({ answers }: { answers: DocketRow["gap_answers"] }) {
+  const shown = (answers ?? []).filter((a) => a.events);
+  if (shown.length === 0) return null;
+  return (
+    <div className="mt-2 rounded-lg bg-accent/60 p-2" data-testid="lead-answer">
+      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">The outgoing lead was asked</p>
+      {shown.map((a, i) => (
+        <div key={i}>
+          <blockquote className="border-l-2 pl-3">“{a.events!.text}”</blockquote>
+          <p className="mt-1 pl-3 text-xs text-muted-foreground">
+            {a.events!.author ?? "The outgoing lead"}, {formatIst(a.events!.ts)} · Stated by the outgoing lead. Added as a record, so the conflict stays until the advisor rules.
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function Claim({ label, quote, event }: { label: string; quote: string | null; event: ClaimEvent }) {
   return (
@@ -92,6 +114,7 @@ export async function Docket({ workspaceId }: { workspaceId: string }) {
             <Claim label="Says it was done" quote={row.quote_a} event={row.claim_a} />
             <Claim label="Says it was not done" quote={row.quote_b} event={row.claim_b} />
           </div>
+          <LeadAnswers answers={row.gap_answers} />
           <p className="mt-2 text-xs text-muted-foreground" data-testid="docket-ruling">
             {row.ruling ? (
               <>

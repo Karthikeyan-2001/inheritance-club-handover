@@ -5,7 +5,7 @@ import { formatIst } from "@/lib/format";
 import { capitalise, type LinkVerdict } from "@/lib/ledger-view";
 import type { TrustState } from "@/lib/pipeline/trust";
 
-export const TYPE_LABELS = { whatsapp: "WhatsApp", trello: "Trello", minutes: "Minutes" } as const;
+export const TYPE_LABELS = { whatsapp: "WhatsApp", trello: "Trello", minutes: "Minutes", statement: "Stated by the outgoing lead" } as const;
 
 type SourceEvent = { ts: string | null; author: string | null; sources: { filename: string; type: keyof typeof TYPE_LABELS } | null } | null;
 
@@ -70,7 +70,14 @@ export function EvidenceList({ evidence, kind }: { evidence: EvidenceRow[]; kind
     <ul className="mt-2 flex flex-col gap-2" aria-label="Evidence">
       {sorted.map((ev) => (
         <li key={ev.id} data-relation={ev.relation}>
-          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{relationLabel(ev, kind)}</p>
+          <p className="flex flex-wrap items-center gap-2 text-xs font-medium uppercase tracking-wide text-muted-foreground">
+            {relationLabel(ev, kind)}
+            {ev.events?.sources?.type === "statement" && (
+              <Badge variant="secondary" className="normal-case tracking-normal" data-testid="stated-badge">
+                Stated by the outgoing lead
+              </Badge>
+            )}
+          </p>
           <blockquote className="border-l-2 pl-3">“{ev.quote}”</blockquote>
           <SourceLine event={ev.events} verified={ev.verified} href={`/ledger/evidence/${ev.id}`} />
         </li>

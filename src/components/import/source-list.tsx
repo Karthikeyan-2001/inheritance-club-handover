@@ -9,7 +9,7 @@ import type { ReadSummary } from "@/lib/parsers";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { ErrorState } from "@/components/feedback/error-state";
 
-const TYPE_LABELS = { whatsapp: "WhatsApp chat", trello: "Trello board", minutes: "Minutes" } as const;
+const TYPE_LABELS = { whatsapp: "WhatsApp chat", trello: "Trello board", minutes: "Minutes", statement: "Stated by the outgoing lead" } as const;
 
 /** Files this role can see (RLS-filtered), with what was read from each. */
 export async function SourceList({ workspaceId, viewerId, viewerRole }: { workspaceId: string; viewerId: string; viewerRole: AppRole }) {

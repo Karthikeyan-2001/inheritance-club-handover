@@ -8,7 +8,7 @@ import { TIMELINE_PAGE_SIZE, likePattern, timelineHref, type TimelineParams } fr
 import { ErrorState } from "@/components/feedback/error-state";
 import { EmptyState } from "@/components/feedback/empty-state";
 
-const TYPE_LABELS = { whatsapp: "WhatsApp", trello: "Trello", minutes: "Minutes" } as const;
+const TYPE_LABELS = { whatsapp: "WhatsApp", trello: "Trello", minutes: "Minutes", statement: "Stated by the outgoing lead" } as const;
 
 /** Every message this role may read, oldest first, in IST. RLS filters before anything renders. */
 export async function Timeline({ workspaceId, params }: { workspaceId: string; params: TimelineParams }) {

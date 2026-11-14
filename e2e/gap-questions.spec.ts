@@ -53,6 +53,13 @@ test.describe("gap questions", () => {
     await expect(notice).toContainText("accept it again in Review");
     await expect(page.getByTestId("gap-question").filter({ hasText: /demo kits/i })).toHaveAttribute("data-state", "answered");
 
+    // A second answer, "done", with the lead's own words: it will close a promise.
+    const handoverCard = page.getByTestId("gap-question").filter({ hasText: /Handover document covering/i });
+    await handoverCard.getByLabel("It was done").check();
+    await handoverCard.getByLabel("In your own words (optional)").fill("Left in the shared drive, folder Handover 2026.");
+    await handoverCard.getByRole("button", { name: "Save the answer" }).click();
+    await expect(page.getByTestId("gap-question").filter({ hasText: /Handover document covering/i })).toHaveAttribute("data-state", "answered");
+
     // On the ledger the quote is labelled as the lead's statement.
     await page.goto("/ledger");
     const item = page.getByTestId("commitments").getByRole("listitem").filter({ hasText: "Not done: set up the demo kits" }).first();
@@ -60,12 +67,17 @@ test.describe("gap questions", () => {
 
     // Review: the item changed since it was accepted, so it is accepted again, then marked ready.
     await page.goto("/review?tab=draft");
-    const changed = page.getByTestId("group-changed").getByTestId("review-item").filter({ hasText: /demo kits/i }).first();
     const again = page.getByRole("button", { name: "Accept again", exact: true });
-    const form = changed.locator("form").filter({ has: again });
-    await form.getByLabel("Reason", { exact: true }).fill("The lead's answer checked");
-    await form.getByRole("button", { name: "Accept again", exact: true }).click();
-    await expect(page.getByTestId("group-changed").getByTestId("review-item")).toHaveCount(0);
+    // Linked records borrow each other's evidence, so an answer can move more than one item.
+    const changedItems = page.getByTestId("group-changed").getByTestId("review-item");
+    await expect(changedItems.first()).toBeVisible();
+    while ((await changedItems.count()) > 0) {
+      const before = await changedItems.count();
+      const form = changedItems.first().locator("form").filter({ has: again });
+      await form.getByLabel("Reason", { exact: true }).fill("The lead's answer checked");
+      await form.getByRole("button", { name: "Accept again", exact: true }).click();
+      await expect(changedItems).toHaveCount(before - 1);
+    }
     const signoff = page.getByTestId("signoff");
     await signoff.getByLabel("Note for the advisor").fill("Answered the demo kits gap");
     await signoff.getByRole("button", { name: "Mark ready for the advisor" }).click();
@@ -87,7 +99,18 @@ test.describe("gap questions", () => {
     await expect(page.getByTestId("handover-summary")).toContainText("Version 2");
     const handed = page.getByTestId("handover-item").filter({ hasText: /demo kits/i }).first();
     await expect(handed).toContainText("Not done: set up the demo kits. The kits are still boxed in the lab cupboard.");
+    // The lead's own words are on the card itself, visible without opening "Quotes".
+    await expect(handed.getByTestId("lead-statement")).toBeVisible();
+    await expect(handed.getByTestId("lead-statement")).toContainText("The kits are still boxed in the lab cupboard.");
+    await expect(handed.getByTestId("lead-statement")).toContainText("Their own word, not a document");
     await expect(handed.getByTestId("handover-stated")).toContainText("Stated by the outgoing lead (Arun");
+    // A promise the lead says was done is not waiting on anyone, but it does not vanish: it is under "Already done", answerable.
+    const doneCard = page.getByTestId("done-items").getByTestId("handover-item").filter({ hasText: /Handover document covering/i }).first();
+    await expect(doneCard).toBeVisible();
+    await expect(doneCard).toContainText("Done, per the outgoing lead");
+    await expect(doneCard.getByTestId("lead-statement")).toContainText("Left in the shared drive, folder Handover 2026.");
+    await expect(doneCard.getByRole("button", { name: "Accept" })).toBeVisible();
+    await expect(page.getByTestId("waiting-group").filter({ hasText: /Handover document covering/i })).toHaveCount(0);
     await page.goto("/review/versions/2");
     await expect(page.getByTestId("diff-changed").filter({ hasText: /demo kits/i }).getByTestId("diff-stated")).toBeVisible();
   });

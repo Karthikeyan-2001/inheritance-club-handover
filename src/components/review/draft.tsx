@@ -18,6 +18,9 @@ import { EmptyState } from "@/components/feedback/empty-state";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ErrorState } from "@/components/feedback/error-state";
+import { SwitchPersonButton } from "@/components/home/switch-person-button";
+import { NextStepBar } from "@/components/next-step-bar";
+import { awaitingApproval } from "@/lib/journey";
 
 type Row = {
   id: string;
@@ -148,8 +151,31 @@ function Section({ title, hint, rows, links, byId, testId }: { title: string; hi
   );
 }
 
+/** After sign-off: whose move it is, with the one button that makes it. */
+function ReviewNext({ role, inCopy, waiting, latestNumber, toCheck }: { role: Role; inCopy: boolean; waiting: boolean; latestNumber: number | null; toCheck: number }) {
+  if (waiting) {
+    return role === "advisor" ? (
+      <NextStepBar>
+        <strong>The outgoing lead marked the draft ready.</strong> Approve it in the sign-off panel above to make it a version.
+      </NextStepBar>
+    ) : (
+      <NextStepBar action={<SwitchPersonButton personKey="meena" label="Dr. Meena" primary inCopy={inCopy} />}>
+        <strong>Marked ready.</strong> The faculty advisor approves it next. In this demo, switch to Dr. Meena to do it.
+      </NextStepBar>
+    );
+  }
+  if (latestNumber && toCheck === 0) {
+    return (
+      <NextStepBar label="Next: hand over" href="/handover">
+        <strong>Version {latestNumber} is approved.</strong> The incoming lead can now read it and answer each item.
+      </NextStepBar>
+    );
+  }
+  return null;
+}
+
 /** The working ledger for review: every item the reviewer may read, grouped by what it needs. */
-export async function Draft({ role, workspaceId }: { role: Role; workspaceId: string }) {
+export async function Draft({ role, workspaceId, inCopy }: { role: Role; workspaceId: string; inCopy: boolean }) {
   const supabase = await createSupabaseServerClient();
   const [obligations, linkData, signoffRes, docket, latest, pending] = await Promise.all([
     supabase.from("obligations").select(SELECT).eq("workspace_id", workspaceId).order("created_at", { ascending: true }),
@@ -198,6 +224,7 @@ export async function Draft({ role, workspaceId }: { role: Role; workspaceId: st
   return (
     <div className="flex flex-col gap-6">
       <SignoffPanel role={role} counts={counts} signoff={signoff} latestNumber={latest.version?.number ?? null} />
+      <ReviewNext role={role} inCopy={inCopy} waiting={awaitingApproval({ signoff: signoff ? { isCurrent: signoff.is_current, markedAt: signoff.marked_at } : null, version: latest.version ? { number: latest.version.number, createdAt: latest.version.created_at, itemCount: 0 } : null })} latestNumber={latest.version?.number ?? null} toCheck={counts.draft + counts.changed} />
 
       <section aria-label="Pending changes" className="flex flex-col gap-2 rounded-md border p-4" data-testid="pending-diff">
         <h2 className="text-lg font-semibold">{latest.version ? `What the next version changes from version ${latest.version.number}` : "What the first version would contain"}</h2>

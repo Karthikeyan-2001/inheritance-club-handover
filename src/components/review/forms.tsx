@@ -1,10 +1,14 @@
 "use client";
 
-import { useActionState, useState, type ReactNode } from "react";
+import { useActionState, useContext, useEffect, useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import type { FormState } from "@/lib/form-state";
 import { FIELD_LABELS } from "@/lib/review/fields";
+import { NoticeContext } from "./notice";
+
+/** How long a save may take before we say so, and offer a reload instead of spinning forever. */
+const SLOW_AFTER_MS = 12_000;
 
 type Action = (prev: FormState, formData: FormData) => Promise<FormState>;
 
@@ -41,6 +45,7 @@ export function ReasonForm({
   placeholder = "Why? This goes in the audit log.",
   children,
   className = "flex flex-col gap-2",
+  subject,
 }: {
   action: Action;
   hidden?: Record<string, string>;
@@ -50,10 +55,26 @@ export function ReasonForm({
   placeholder?: string;
   children?: ReactNode;
   className?: string;
+  /** What the form is about (an item's name), quoted in the confirmation that outlives the form. */
+  subject?: string;
 }) {
-  const [state, formAction, pending] = useActionState(action, null);
+  const notify = useContext(NoticeContext);
+  const [state, formAction, pending] = useActionState<FormState, FormData>(async (prev, formData) => {
+    const result = await action(prev, formData);
+    if (result?.ok) notify?.(subject ? `“${subject}”: ${result.ok}` : result.ok);
+    return result;
+  }, null);
   // Only the button that was pressed shows it is working; the others just wait.
   const [pressed, setPressed] = useState<string | null>(null);
+  const [slow, setSlow] = useState(false);
+  useEffect(() => {
+    if (!pending) return;
+    const t = setTimeout(() => setSlow(true), SLOW_AFTER_MS);
+    return () => {
+      clearTimeout(t);
+      setSlow(false);
+    };
+  }, [pending]);
   return (
     <form action={formAction} className={className} aria-busy={pending}>
       {Object.entries(hidden ?? {}).map(([k, v]) => (
@@ -72,6 +93,14 @@ export function ReasonForm({
           </Button>
         ))}
       </div>
+      {pending && slow && (
+        <p role="status" className="flex flex-wrap items-center gap-2 rounded-lg bg-warning-soft px-3 py-2 text-sm">
+          This is taking longer than usual. Your change may already be saved.
+          <Button type="button" size="sm" variant="outline" onClick={() => window.location.reload()}>
+            Reload to check
+          </Button>
+        </p>
+      )}
       <Messages state={state} />
     </form>
   );

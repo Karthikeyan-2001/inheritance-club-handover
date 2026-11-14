@@ -26,6 +26,8 @@ test.describe("review", () => {
     const status = page.getByTestId("signoff-status");
     await expect(status).toContainText("Marked ready for the advisor");
 
+    // The page opens on "To check" when something is still a draft; the sensors item is accepted.
+    await page.getByRole("button", { name: /^Accepted/ }).click();
     const card = page.getByTestId("review-item").filter({ hasText: "Return 6 DHT22 sensors" });
     await card.getByText("Edit this item").click();
     const edit = card.locator("details");

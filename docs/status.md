@@ -25,7 +25,7 @@ Round 2 (Phases 0 to 13, plus the guided tour) is merged and was submitted; the 
 | 17 | Round 3, improvement 1: inferred recurring duties | later |
 | 18 | Round 3: hardening, end-to-end sweeps, README, final report PDF | later |
 
-Tests on `build/phase-15`: 641 unit plus RLS (`pnpm test`; Phase 14 had 606), 65 Playwright (new: `gap-questions.spec.ts`), all passing; lint, typecheck and production build clean.
+Tests on `build/phase-15`: 646 unit plus RLS (`pnpm test`; Phase 14 had 606), 66 Playwright (new: `gap-questions.spec.ts`), all passing; lint, typecheck and production build clean.
 
 ### Phase 15 (built, awaiting merge)
 
@@ -34,7 +34,7 @@ Gap questions, Round 3 improvement 2, delivered to its minimum and beyond: in a 
 - Questions for four gaps: promise with no follow-up, unruled conflict, duty with no approver, duty with no next date. Answers: done / not done / I don't know; an approver / no approval needed / I don't know; a date / I don't know.
 - Each answer is a message from the lead in a "Stated by the outgoing lead" file at a chosen level (never below the item's), cited as verified evidence (or, for "I don't know", a verified note), through `public.answer_gap()` (migrations 0021, 0022). Quote check, trust and status rules, provenance, audit (`answer_gap` row with before and after), re-review, sign-off and version diff all apply unchanged. No model calls.
 - The form previews the exact message and warns when a more restricted level would hide the item from someone. Only the outgoing lead answers; the advisor sees the lead's answer beside each conflict.
-- Stated quotes are labelled on the ledger, the approved version, its diff and the handover; the handover now shows each item's notes.
+- Stated quotes are labelled on the ledger, the approved version, its diff and the handover. On the handover the lead's own words are on the card face, and promises already done are listed under "Already done" (they used to be counted but hidden, so the incoming lead could not answer them); the handover also shows each item's notes, and each conflict with both sides and the advisor's ruling.
 - The home page sends the outgoing lead to open questions before review; the check page's next-step bar does too.
 - Also fixed: the review page's "Accepted." confirmation was hidden under the sticky header when scrolled; it is now a bottom toast (shared with the questions page).
 - Decisions and open points: [decisions.md](decisions.md#phase-15-decisions-gap-questions-round-3-improvement-2) (please check the one on trust: a promise plus the lead's own "done" counts as corroborated, by the unchanged Phase 6 rule), [known-gaps.md](known-gaps.md#known-gaps-phase-15).

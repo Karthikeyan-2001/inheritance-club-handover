@@ -65,6 +65,61 @@ export function peopleWaiting(items: readonly HandoverItem[]): WaitingGroup[] {
     .sort((a, b) => (a.person === UNSTATED ? 1 : b.person === UNSTATED ? -1 : a.person.localeCompare(b.person)));
 }
 
+/**
+ * Commitments already done when the version was approved, by description. They are not waiting
+ * on anyone, but they are part of the version, so the incoming lead can still read and answer
+ * them (the version's item count includes them).
+ */
+export function doneCommitments(items: readonly HandoverItem[]): HandoverItem[] {
+  return items.filter((i) => i.kind === "commitment" && closed(i)).sort((a, b) => a.description.localeCompare(b.description));
+}
+
+export type HandoverConflict = {
+  id: string;
+  summary: string | null;
+  saysDone: string | null;
+  saysNotDone: string | null;
+  ruling: "done" | "not_done" | "cannot_tell" | null;
+  reason: string | null;
+  ruledAt: string | null;
+};
+
+/**
+ * The conflicts an approved item carries (version_items.item.conflicts, migration 0013): the
+ * two records that disagree and the advisor's ruling as it stood when the version was approved.
+ * The database put a conflict in the version only if both of its records are at or below the
+ * item's level, so a reader of the item may read it. Older versions have none.
+ */
+export function handoverConflicts(item: { conflicts?: unknown } | null | undefined): HandoverConflict[] {
+  const list = Array.isArray(item?.conflicts) ? item!.conflicts : [];
+  return list.flatMap((c): HandoverConflict[] => {
+    if (!c || typeof c !== "object") return [];
+    const r = c as Record<string, unknown>;
+    if (typeof r.id !== "string") return [];
+    const ruling = r.ruling === "done" || r.ruling === "not_done" || r.ruling === "cannot_tell" ? r.ruling : null;
+    return [{ id: r.id, summary: s(r.summary), saysDone: s(r.quote_a), saysNotDone: s(r.quote_b), ruling, reason: s(r.reason), ruledAt: s(r.ruled_at) }];
+  });
+}
+
+export type StatedQuote = { quote: string; relation: string; author: string | null; ts: string | null };
+
+/**
+ * The quotes on an item that are the outgoing lead's own answers to gap questions (messages in a
+ * "statement" file), oldest first. `sources` comes from events the viewer can read, so a message
+ * the role cannot read is simply not listed.
+ */
+export function statedQuotes(
+  evidence: readonly { event_id: string; quote: string; relation: string }[],
+  sources: ReadonlyMap<string, { author: string | null; ts: string | null; type: string | null }>,
+): StatedQuote[] {
+  return evidence
+    .flatMap((e) => {
+      const s = sources.get(e.event_id);
+      return s?.type === "statement" ? [{ quote: e.quote, relation: e.relation, author: s.author, ts: s.ts }] : [];
+    })
+    .sort((a, b) => (a.ts ?? "").localeCompare(b.ts ?? ""));
+}
+
 export type DutyTiming = "overdue" | "start_now" | "upcoming" | "undated";
 export type CalendarEntry = { item: HandoverItem; timing: DutyTiming; sortKey: string; month: string };
 

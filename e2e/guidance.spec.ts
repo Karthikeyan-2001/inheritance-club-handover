@@ -120,9 +120,11 @@ test.describe("guidance", () => {
   test("each step page ends with the next step, in order", async ({ page }) => {
     await signInAs(page, "Arun");
     for (const [path, next] of [
-      ["/import", "/ledger"],
-      ["/ledger", "/check"],
-      ["/check", "/review"],
+      ["/import", /^\/ledger$/],
+      ["/ledger", /^\/check$/],
+      // The lead is sent to the gap questions first while any is open (other tests may answer them).
+      ["/check", /^\/(review|check\?tab=questions)$/],
+      ["/check?tab=questions", /^\/review$/],
     ] as const) {
       await page.goto(path);
       const bar = page.getByTestId("next-step-bar");

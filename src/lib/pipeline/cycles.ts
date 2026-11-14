@@ -274,6 +274,13 @@ const humanDay = (day: string) => {
   return `${d} ${MONTHS[m - 1].slice(0, 1).toUpperCase()}${MONTHS[m - 1].slice(1, 3)} ${y}`;
 };
 
+/** The day to start, given a due day and a stated lead time ("two weeks before"); null when the lead time says no amount. */
+export function startByFor(nextDue: string, leadTime: string | null): string | null {
+  const lead = parseLeadTime(leadTime);
+  if (!lead) return null;
+  return "months" in lead ? addMonths(nextDue, -lead.months) : addDays(nextDue, -lead.days);
+}
+
 export type Schedule = { nextDue: string | null; startBy: string | null; basis: string | null };
 
 /**

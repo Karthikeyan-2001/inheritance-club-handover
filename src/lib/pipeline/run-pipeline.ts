@@ -41,8 +41,15 @@ export class PlanError extends Error {
 const EVENT_COLUMNS = "id, author, ts, text, thread_id, access_level, sources(type, uploaded_by)";
 type EventRow = {
   id: string; author: string | null; ts: string | null; text: string; thread_id: string | null;
-  access_level: PipelineEvent["accessLevel"]; sources: { type: PipelineEvent["sourceType"]; uploaded_by: string | null } | null;
+  access_level: PipelineEvent["accessLevel"]; sources: { type: PipelineEvent["sourceType"] | "statement"; uploaded_by: string | null } | null;
 };
+
+/**
+ * The outgoing lead's answers to gap questions (migration 0022) are already cited by the item
+ * they answer. The pipeline never reads them, so an answer such as "Done: book the lab." is
+ * never taken for a new promise or a follow-up of another item.
+ */
+export const pipelineReads = (r: { sources: { type: string } | null }): boolean => r.sources?.type !== "statement";
 
 const toEvent = (r: EventRow): PipelineEvent => ({
   id: r.id,
@@ -50,7 +57,8 @@ const toEvent = (r: EventRow): PipelineEvent => ({
   ts: r.ts,
   text: r.text,
   threadId: r.thread_id,
-  sourceType: r.sources?.type ?? "whatsapp",
+  // Statements are filtered out before this (pipelineReads).
+  sourceType: r.sources?.type && r.sources.type !== "statement" ? r.sources.type : "whatsapp",
   accessLevel: r.access_level,
   uploaderId: r.sources?.uploaded_by ?? null,
 });
@@ -67,7 +75,7 @@ export async function loadReadableEvents(db: Db, workspaceId: string): Promise<P
       .order("id")
       .range(from, from + PAGE - 1);
     if (error) throw new Error(`Could not read messages: ${error.message}`);
-    out.push(...(data as EventRow[]).map(toEvent));
+    out.push(...(data as EventRow[]).filter(pipelineReads).map(toEvent));
     if (!data || data.length < PAGE) return out;
   }
 }
@@ -77,7 +85,7 @@ async function loadEvents(db: Db, ids: string[]): Promise<PipelineEvent[]> {
   for (let i = 0; i < ids.length; i += 150) {
     const { data, error } = await db.from("events").select(EVENT_COLUMNS).in("id", ids.slice(i, i + 150));
     if (error) throw new Error(`Could not read messages: ${error.message}`);
-    for (const r of data as EventRow[]) byId.set(r.id, toEvent(r));
+    for (const r of (data as EventRow[]).filter(pipelineReads)) byId.set(r.id, toEvent(r));
   }
   // Keep the planned order; events removed (or no longer readable) since planning are skipped.
   return ids.map((id) => byId.get(id)).filter((e): e is PipelineEvent => Boolean(e));
@@ -301,7 +309,7 @@ async function followupStep({ db, workspaceId, payload, deps, step }: StepContex
 type MatchRow = {
   id: string; kind: "commitment" | "recurring"; description: string; owed_by: string | null; owed_to: string | null;
   due_text: string | null; cadence: string | null; approver: string | null; access_level: MatchItem["level"];
-  evidence: { event_id: string; relation: string; quote: string; events: { ts: string | null; sources: { type: MatchItem["sources"][number]["sourceType"] } | null } | null }[];
+  evidence: { event_id: string; relation: string; quote: string; events: { ts: string | null; sources: { type: MatchItem["sources"][number]["sourceType"] | "statement" } | null } | null }[];
 };
 const MATCH_COLUMNS = "id, kind, description, owed_by, owed_to, due_text, cadence, approver, access_level, evidence(event_id, relation, quote, events(ts, sources(type)))";
 
@@ -313,9 +321,11 @@ async function loadMatchItems(db: Db, workspaceId: string, ids?: string[]): Prom
   if (error) throw new Error(`Could not read obligations: ${error.message}`);
   const items: MatchItem[] = [];
   for (const o of (data ?? []) as unknown as MatchRow[]) {
+    // Matching compares what the records say; a lead's answer (a statement) is left out, so
+    // answering a question never changes a match prompt.
     const sources = o.evidence
-      .filter((e) => e.relation === "supports" && e.events)
-      .map((e) => ({ eventId: e.event_id, quote: e.quote, ts: e.events!.ts, sourceType: e.events!.sources?.type ?? "whatsapp" }))
+      .filter((e) => e.relation === "supports" && e.events && pipelineReads(e.events))
+      .map((e) => ({ eventId: e.event_id, quote: e.quote, ts: e.events!.ts, sourceType: e.events!.sources?.type === "statement" ? "whatsapp" : (e.events!.sources?.type ?? "whatsapp") }))
       .sort((a, b) => (a.ts ?? "").localeCompare(b.ts ?? "") || a.eventId.localeCompare(b.eventId));
     if (sources.length === 0) continue;
     items.push({

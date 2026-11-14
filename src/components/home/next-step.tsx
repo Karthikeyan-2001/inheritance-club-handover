@@ -6,7 +6,9 @@ import { Button } from "@/components/ui/button";
 import { ROLE_LABELS } from "@/lib/access";
 import { journey, type JourneyFacts } from "@/lib/journey";
 import { findGaps, type GapInput } from "@/lib/ledger-view";
+import { openCount } from "@/lib/questions";
 import { needsRereview } from "@/lib/review/rereview";
+import { loadQuestions } from "@/components/check/question-data";
 import type { Viewer } from "@/lib/session";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -43,6 +45,14 @@ async function loadFacts(viewer: Viewer, m: Membership): Promise<JourneyFacts | 
     answered = new Set((acks.data ?? []).filter((a) => !ownAnswersOnly || a.user_id === viewer.userId).map((a) => a.obligation_id)).size;
   }
 
+  // Only the outgoing lead answers gap questions, so only they are guided to them.
+  let openQuestions = 0;
+  if (m.role === "outgoing_lead") {
+    const asked = await loadQuestions(supabase, ws);
+    if (asked.error) return null;
+    openQuestions = openCount(asked.questions);
+  }
+
   const rows = obligations.data ?? [];
   const changed = rows.filter(needsRereview).length;
   const drafts = rows.filter((r) => r.review_state === "draft").length;
@@ -58,6 +68,7 @@ async function loadFacts(viewer: Viewer, m: Membership): Promise<JourneyFacts | 
     answered,
     unruledConflicts: (docket.data ?? []).filter((d) => !d.ruling).length,
     gaps: findGaps(rows as unknown as GapInput[]).length,
+    openQuestions,
   };
 }
 

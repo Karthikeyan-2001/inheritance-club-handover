@@ -3,7 +3,7 @@ import { rulingLabel } from "./labels.ts";
 
 // The review history: audit rows written by the review actions, in words.
 
-export const REVIEW_ACTIONS = ["accept", "edit", "reject", "reopen", "rule", "link_same", "link_distinct", "mark_ready", "approve_version", "release"] as const;
+export const REVIEW_ACTIONS = ["accept", "edit", "reject", "reopen", "rule", "link_same", "link_distinct", "mark_ready", "approve_version", "release", "answer_gap"] as const;
 
 const ACTION_LABELS: Record<string, string> = {
   accept: "Accepted",
@@ -16,7 +16,17 @@ const ACTION_LABELS: Record<string, string> = {
   mark_ready: "Marked the draft ready for the advisor",
   approve_version: "Approved a version",
   release: "Released to another role",
+  answer_gap: "Answered a gap question",
 };
+
+const GAP_FIELDS: [string, string][] = [
+  ["status", "Status"],
+  ["trust_state", "Trust"],
+  ["approver", "Approver"],
+  ["next_due", "Next due"],
+  ["start_by", "Start by"],
+  ["access_level", "Access level"],
+];
 
 export function actionLabel(action: string): string {
   return ACTION_LABELS[action] ?? action;
@@ -50,6 +60,9 @@ export function describeChanges(row: AuditLike): HistoryChange[] {
   }
   if (row.action === "mark_ready") {
     return [{ label: "Items marked ready", before: "nothing", after: show(after.item_count) }];
+  }
+  if (row.action === "answer_gap") {
+    return GAP_FIELDS.filter(([f]) => show(before[f]) !== show(after[f])).map(([f, label]) => ({ label, before: show(before[f]), after: show(after[f]) }));
   }
   if (row.action === "approve_version") {
     return [{ label: "Version", before: "nothing", after: `number ${show(after.number)}` }];

@@ -30,7 +30,7 @@ export type ItemChange = {
   id: string;
   description: string;
   fields: FieldChange[];
-  quotesAdded: { quote: string; relation: string }[];
+  quotesAdded: { quote: string; relation: string; eventId: string }[];
   quotesRemoved: { quote: string; relation: string }[];
   linksAdded: string[];
   linksRemoved: string[];
@@ -71,7 +71,7 @@ function diffItem(prev: DiffRow, next: DiffRow): ItemChange | null {
 
   const before = new Map(prev.item.evidence.map((e) => [evKey(e), e]));
   const after = new Map(next.item.evidence.map((e) => [evKey(e), e]));
-  const quotesAdded = [...after].filter(([k]) => !before.has(k)).map(([, e]) => ({ quote: e.quote, relation: e.relation }));
+  const quotesAdded = [...after].filter(([k]) => !before.has(k)).map(([, e]) => ({ quote: e.quote, relation: e.relation, eventId: e.event_id }));
   const quotesRemoved = [...before].filter(([k]) => !after.has(k)).map(([, e]) => ({ quote: e.quote, relation: e.relation }));
 
   let linksAdded: string[] = [];

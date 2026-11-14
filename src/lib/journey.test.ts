@@ -12,6 +12,7 @@ const base: JourneyFacts = {
   answered: 0,
   unruledConflicts: 0,
   gaps: 0,
+  openQuestions: 0,
 };
 const v1 = { number: 1, createdAt: "2026-11-10T10:00:00Z", itemCount: 4 };
 const f = (over: Partial<JourneyFacts>): JourneyFacts => ({ ...base, ...over });
@@ -54,6 +55,27 @@ describe("outgoing lead", () => {
     expect(j.title).toContain("Version 1");
     expect(j.switchTo?.key).toBe("kavya");
     expect(j.doneCount).toBe(4);
+  });
+});
+
+describe("gap questions (outgoing lead)", () => {
+  it("asks the lead to answer them before reviewing, with review as the other way on", () => {
+    const j = journey(f({ files: 3, items: 9, toReview: 6, accepted: 3, version: v1, openQuestions: 7 }));
+    expect(j.title).toBe("Answer 7 questions about the gaps");
+    expect(j.cta?.href).toBe("/check?tab=questions");
+    expect(j.also).toEqual([{ label: "Review 6 items instead", href: "/review?tab=draft" }]);
+    // The check stage is open again until the questions are answered.
+    expect(j.stages[2].state).toBe("current");
+  });
+  it("offers them from a fresh build's check, too", () => {
+    const j = journey(f({ files: 3, items: 9, toReview: 9, gaps: 2, openQuestions: 2 }));
+    expect(j.cta?.href).toBe("/check");
+    expect(j.also[0]).toEqual({ label: "Answer 2 questions about the gaps", href: "/check?tab=questions" });
+  });
+  it("does not ask while a mark waits for the advisor, and stops asking once answered", () => {
+    const marked = { isCurrent: true, markedAt: "2026-11-10T09:00:00Z" };
+    expect(journey(f({ files: 3, items: 9, accepted: 9, signoff: marked, openQuestions: 2 })).switchTo?.key).toBe("meena");
+    expect(journey(f({ files: 3, items: 9, toReview: 2, accepted: 7, openQuestions: 0 })).title).toBe("Review 2 items");
   });
 });
 

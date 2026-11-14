@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState, type ReactNode } from "react";
-import { CheckCircle2Icon, XIcon } from "lucide-react";
+import { NoticeToast } from "@/components/feedback/notice-toast";
 import { cn } from "cn";
 import { NoticeContext } from "./notice";
 
@@ -61,19 +61,7 @@ export function ReviewItems({
           ))}
         </div>
 
-        <div aria-live="polite" className="sticky top-2 z-10 empty:hidden">
-          {notice && (
-            <p role="status" className="flex items-start justify-between gap-3 rounded-xl border border-success/30 bg-success-soft px-4 py-2.5 text-sm text-success shadow-sm" data-testid="review-notice">
-              <span className="flex items-start gap-2">
-                <CheckCircle2Icon aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
-                {notice}
-              </span>
-              <button type="button" onClick={() => setNotice(null)} aria-label="Dismiss this message" className="rounded-md p-0.5 hover:bg-card/60">
-                <XIcon aria-hidden="true" className="size-4" />
-              </button>
-            </p>
-          )}
-        </div>
+        <NoticeToast notice={notice} onDismiss={() => setNotice(null)} testId="review-notice" />
 
         {filter === "check" && counts.check === 0 && (
           <p className="rounded-2xl border border-dashed bg-card/60 px-5 py-6 text-center text-sm text-muted-foreground" data-testid="all-checked">

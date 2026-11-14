@@ -27,6 +27,19 @@ describe("review history", () => {
     expect(describeChanges({ action: "release", before: null, after: { to_role: "incoming_lead" } })).toEqual([]);
   });
 
+  it("describes a gap answer by what it changed on the item", () => {
+    expect(actionLabel("answer_gap")).toBe("Answered a gap question");
+    const changes = describeChanges({
+      action: "answer_gap",
+      before: { status: "no_evidence", trust_state: "sourced", approver: null, access_level: "everyone" },
+      after: { status: "fulfilled", trust_state: "corroborated", approver: null, access_level: "everyone", question: "followup", answer: "done" },
+    });
+    expect(changes).toEqual([
+      { label: "Status", before: "no_evidence", after: "fulfilled" },
+      { label: "Trust", before: "sourced", after: "corroborated" },
+    ]);
+  });
+
   it("labels rulings", () => {
     expect(rulingLabel("cannot_tell")).toBe("Cannot tell");
     expect(rulingLabel(null)).toBe("No ruling yet");

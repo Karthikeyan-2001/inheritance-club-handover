@@ -6,7 +6,7 @@ const RELATION: Record<string, string> = { supports: "the promise or duty", fulf
 const none = (v: string | null) => v ?? "nothing";
 
 /** What changed between two lists of items, as the viewer's role can read them. */
-export function DiffView({ diff, against, empty }: { diff: VersionDiff; against: string; empty?: string }) {
+export function DiffView({ diff, against, empty, stated }: { diff: VersionDiff; against: string; empty?: string; /** Messages that are the outgoing lead's answers to gap questions. */ stated?: ReadonlySet<string> }) {
   if (isEmptyDiff(diff)) {
     return <p className="text-sm text-muted-foreground">{empty ?? `Nothing differs from ${against}.`}</p>;
   }
@@ -47,7 +47,8 @@ export function DiffView({ diff, against, empty }: { diff: VersionDiff; against:
                   ))}
                   {c.quotesAdded.map((q) => (
                     <li key={`a${q.quote}`}>
-                      <Badge variant="outline">New quote</Badge> “{q.quote}” ({RELATION[q.relation] ?? q.relation})
+                      <Badge variant="outline">New quote</Badge> “{q.quote}” ({RELATION[q.relation] ?? q.relation}
+                      {stated?.has(q.eventId) ? <span data-testid="diff-stated">, stated by the outgoing lead</span> : null})
                     </li>
                   ))}
                   {c.quotesRemoved.map((q) => (

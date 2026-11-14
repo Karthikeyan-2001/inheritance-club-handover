@@ -28,7 +28,7 @@ const RESTRICTED: { text: string; allowed: Who[] }[] = [
 ];
 const PAGES = [
   "/", "/import",
-  "/ledger?tab=commitments", "/ledger?tab=recurring", "/check", "/check?tab=gaps", "/messages",
+  "/ledger?tab=commitments", "/ledger?tab=recurring", "/check", "/check?tab=gaps", "/check?tab=questions", "/messages",
   "/review?tab=draft", "/review?tab=conflicts", "/review?tab=versions", "/review?tab=history", "/review/versions/1",
   "/handover",
 ];

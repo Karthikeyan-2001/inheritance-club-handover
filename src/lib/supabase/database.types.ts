@@ -227,6 +227,44 @@ isOneToOne: false
       referencedColumns: ["id"]
     }
                   ]
+                },"gap_answers": {
+                  Row: {
+                    "answer": string,"answered_by": string | null,"created_at": string,"docket_entry_id": string | null,"event_id": string,"id": string,"obligation_id": string,"question": string,"seq": number,"workspace_id": string
+                  }
+                  ComputedFields: never
+                  Insert: {
+                    "answer": string,"answered_by"?: string | null,"created_at"?: string,"docket_entry_id"?: string | null,"event_id": string,"id"?: string,"obligation_id": string,"question": string,"seq"?: never,"workspace_id": string
+                  }
+                  Update: {
+                    "answer"?: string,"answered_by"?: string | null,"created_at"?: string,"docket_entry_id"?: string | null,"event_id"?: string,"id"?: string,"obligation_id"?: string,"question"?: string,"seq"?: never,"workspace_id"?: string
+                  }
+                  Relationships: [
+                    {
+      foreignKeyName: "gap_answers_docket_entry_id_fkey"
+      columns: ["docket_entry_id"]
+isOneToOne: false
+      referencedRelation: "docket_entries"
+      referencedColumns: ["id"]
+    },{
+      foreignKeyName: "gap_answers_event_id_fkey"
+      columns: ["event_id"]
+isOneToOne: false
+      referencedRelation: "events"
+      referencedColumns: ["id"]
+    },{
+      foreignKeyName: "gap_answers_obligation_id_fkey"
+      columns: ["obligation_id"]
+isOneToOne: false
+      referencedRelation: "obligations"
+      referencedColumns: ["id"]
+    },{
+      foreignKeyName: "gap_answers_workspace_id_fkey"
+      columns: ["workspace_id"]
+isOneToOne: false
+      referencedRelation: "workspaces"
+      referencedColumns: ["id"]
+    }
+                  ]
                 },"jobs": {
                   Row: {
                     "attempts": number,"created_at": string,"finished_at": string | null,"id": string,"kind": string,"payload": NonNullable<Json>,"result": Json | null,"started_at": string | null,"status": Database["public"]['Enums']["job_status"],"workspace_id": string
@@ -535,6 +573,9 @@ isOneToOne: false
               "created": boolean,"obligation_id": string,"quotes_added": number
             }[]
                            },
+"answer_gap":
+{ Args: { "p_answer": string,"p_approver"?: string,"p_detail"?: string,"p_entry"?: string,"p_level": Database["public"]['Enums']["access_level"],"p_next_due"?: string,"p_obligation": string,"p_question": string,"p_start_by"?: string }; Returns: string
+                           },
 "approve_version":
 { Args: { "p_reason": string,"p_workspace": string }; Returns: string
                            },
@@ -630,7 +671,7 @@ isOneToOne: false
                            }
           }
           Enums: {
-            "access_level": "everyone"|"committee"|"finance"|"private","ack_action": "accept"|"question"|"decline","alias_kind": "person"|"org","app_role": "outgoing_lead"|"advisor"|"incoming_lead"|"treasurer"|"member","context_kind": "decision"|"contact"|"risk"|"dependency","evidence_relation": "supports"|"fulfils"|"contradicts"|"past_instance","job_status": "queued"|"running"|"done"|"failed","obligation_kind": "commitment"|"recurring","obligation_status": "open"|"fulfilled"|"likely_fulfilled"|"no_evidence"|"contradicted","review_state": "draft"|"accepted"|"rejected"|"edited","source_type": "whatsapp"|"trello"|"minutes","trust_state": "corroborated"|"sourced"|"inferred"|"contradicted"|"gap"
+            "access_level": "everyone"|"committee"|"finance"|"private","ack_action": "accept"|"question"|"decline","alias_kind": "person"|"org","app_role": "outgoing_lead"|"advisor"|"incoming_lead"|"treasurer"|"member","context_kind": "decision"|"contact"|"risk"|"dependency","evidence_relation": "supports"|"fulfils"|"contradicts"|"past_instance","job_status": "queued"|"running"|"done"|"failed","obligation_kind": "commitment"|"recurring","obligation_status": "open"|"fulfilled"|"likely_fulfilled"|"no_evidence"|"contradicted","review_state": "draft"|"accepted"|"rejected"|"edited","source_type": "whatsapp"|"trello"|"minutes"|"statement","trust_state": "corroborated"|"sourced"|"inferred"|"contradicted"|"gap"
           }
           CompositeTypes: {
             [_ in never]: never
@@ -746,7 +787,7 @@ export type CompositeTypes<
 export const Constants = {
   "public": {
           Enums: {
-            "access_level": ["everyone", "committee", "finance", "private"],"ack_action": ["accept", "question", "decline"],"alias_kind": ["person", "org"],"app_role": ["outgoing_lead", "advisor", "incoming_lead", "treasurer", "member"],"context_kind": ["decision", "contact", "risk", "dependency"],"evidence_relation": ["supports", "fulfils", "contradicts", "past_instance"],"job_status": ["queued", "running", "done", "failed"],"obligation_kind": ["commitment", "recurring"],"obligation_status": ["open", "fulfilled", "likely_fulfilled", "no_evidence", "contradicted"],"review_state": ["draft", "accepted", "rejected", "edited"],"source_type": ["whatsapp", "trello", "minutes"],"trust_state": ["corroborated", "sourced", "inferred", "contradicted", "gap"]
+            "access_level": ["everyone", "committee", "finance", "private"],"ack_action": ["accept", "question", "decline"],"alias_kind": ["person", "org"],"app_role": ["outgoing_lead", "advisor", "incoming_lead", "treasurer", "member"],"context_kind": ["decision", "contact", "risk", "dependency"],"evidence_relation": ["supports", "fulfils", "contradicts", "past_instance"],"job_status": ["queued", "running", "done", "failed"],"obligation_kind": ["commitment", "recurring"],"obligation_status": ["open", "fulfilled", "likely_fulfilled", "no_evidence", "contradicted"],"review_state": ["draft", "accepted", "rejected", "edited"],"source_type": ["whatsapp", "trello", "minutes", "statement"],"trust_state": ["corroborated", "sourced", "inferred", "contradicted", "gap"]
           }
         }
 } as const

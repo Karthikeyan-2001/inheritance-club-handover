@@ -175,3 +175,14 @@ Row-level security filters whole rows, not values inside JSON, so a few addition
 - **One page per step.** Conflicts and Gaps moved to their own page, Check the records (`/check`); the full message list moved to All messages (`/messages`, linked from the header). Tabs inside a page no longer move the step bar, and every step page ends with a button to the next one, in order: Add files → Build the ledger → Check the records → Review and approve → Hand over.
 - **Building the ledger shows progress the moment it is pressed,** then which part is being read and roughly how long is left.
 - **Adding files is three numbered parts,** with a one-click "Use the 4 sample files" (the download links stay), the authorisation box next to the button, and a line under the button saying what it still needs.
+
+## Round 3, Phase 15: gap questions for the outgoing lead (improvement 2)
+
+Committed in the Round 2 report (section 10) as improvement 2.
+
+- **One page of questions,** the Questions tab of Check the records (`/check?tab=questions`), for every gap the records cannot close: a promise with no follow-up ("Was this done?"), an unruled conflict ("The records disagree. Was it done?"), a duty with no approver, and a duty with no next date. Each can be answered, or answered "I don't know", which leaves it knowingly open and can be changed later. The home page sends the outgoing lead here before review.
+- **An answer is a record, not an edit.** It is saved as a message from the outgoing lead, in a file labelled "Stated by the outgoing lead" (one per access level), and that message is cited as the item's evidence: done, not done, an approver, "no approval needed" or a date. "I don't know" becomes a note on the item. So the quote check, the trust and status rules, the access level, the audit log, re-review, the sign-off and the version diff all apply as they do to any other record. The answer is never presented as anything but the lead's own word: every quote from such a file is labelled, on the ledger, the review, the approved version, its diff and the handover.
+- **The lead chooses who may read each answer,** never less restricted than the item (the message names the item). A more restricted answer raises the item, and the form says who would stop seeing it before it is saved.
+- **The form shows the exact message before it is saved.** The message is written by code from the chosen answer and the item's description, followed by the lead's own words if any.
+- **Only the outgoing lead answers.** The advisor and the treasurer see the questions and answers (they read the working ledger); the incoming lead and members see answers only in approved versions. A conflict answer is shown to the advisor next to the two disagreeing records; the advisor still rules.
+- **No model is involved,** and the pipeline never reads the lead's answers as new records.

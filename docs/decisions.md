@@ -111,3 +111,11 @@ Confirmed with the user: P6 (implied quotes from a more restricted record are dr
 - **Samples in one click, downloads kept.** The user asked for both: "Use the 4 sample files" fills the list at the right levels; the authorisation box is still ticked by hand, so the real import path runs.
 - **The home page sends a freshly built ledger to Check the records first** (when there are conflicts or gaps), then to review once reviewing has started.
 - **Known gaps:** the build-progress bar is an estimate; the person switch signs in again (a few seconds). There is no dark mode.
+
+### Review page: no frozen buttons or tabs (14 Nov, after Phase 14)
+- **Sign-off moved to the end.** The page is three numbered steps (check items, see what changes, sign off) with a status strip on top. Sign-off used to sit above the items, before there was anything to sign.
+- **Filter in the browser, not the URL.** To check / Accepted / Rejected / All hide lists that are already rendered, so switching is instant. It opens on "To check" if anything is a draft, else "All". The group test ids (`group-draft` and so on) are unchanged; a hidden group cannot be clicked, so a test that needs an accepted item picks the Accepted filter first.
+- **Confirmations outlive the card.** Accepting moves a card to another list, which threw away the form's own "Accepted." A `NoticeContext` line (sticky, dismissable) now carries it.
+- **A slow save says so.** After 12 s a form shows "taking longer than usual" and a reload button, instead of a spinner with no end.
+- **Tab feedback.** The pressed tab shows a spinner (`useLinkStatus`) and `TabSuspense` keys the loading boundary by tab. A pressed tab still waits for a save that is in flight; that is the Next router's queue, not something the app controls.
+

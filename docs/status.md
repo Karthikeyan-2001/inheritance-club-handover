@@ -25,7 +25,7 @@ Round 2 (Phases 0 to 13, plus the guided tour) is merged and was submitted; the 
 | 17 | Round 3, improvement 1: inferred recurring duties | later |
 | 18 | Round 3: hardening, end-to-end sweeps, README, final report PDF | later |
 
-Tests on `build/phase-14`: 606 unit plus RLS (`pnpm test`), 59 Playwright (the 5 tour and guide tests are gone; `guidance.spec.ts` has 12), all passing; lint, typecheck and production build clean. (The Phase 13 count of 631 included the tour's 36 unit tests.)
+Tests on `build/phase-14`: 606 unit plus RLS (`pnpm test`), 64 Playwright (the 5 tour and guide tests are gone; `guidance.spec.ts` has 12; `review-ux.spec.ts` has 5), all passing; lint, typecheck and production build clean. (The Phase 13 count of 631 included the tour's 36 unit tests.)
 
 ### Phase 14 (built, awaiting merge)
 

@@ -20,7 +20,7 @@ describe("likePattern", () => {
 
 describe("timelineHref", () => {
   it("keeps filters and drops defaults", () => {
-    expect(timelineHref({ source: null, q: "lab", page: 1 }, { page: 2 })).toBe("/ledger?tab=timeline&q=lab&page=2");
-    expect(timelineHref({ source: null, q: "", page: 4 }, { page: 1 })).toBe("/ledger?tab=timeline");
+    expect(timelineHref({ source: null, q: "lab", page: 1 }, { page: 2 })).toBe("/messages?q=lab&page=2");
+    expect(timelineHref({ source: null, q: "", page: 4 }, { page: 1 })).toBe("/messages");
   });
 });

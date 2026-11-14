@@ -1,15 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { CheckIcon } from "lucide-react";
 import { STEP_HREF, STEP_LABEL, STEPS, stepForPath } from "@/lib/steps";
 
 /** The five steps of a handover. The current step follows the page you are on, and earlier ones show as passed. */
 export function StepIndicator() {
   const pathname = usePathname();
-  const tab = useSearchParams().get("tab");
-  const current = stepForPath(pathname, tab);
+  const current = stepForPath(pathname);
   const currentIndex = current ? STEPS.indexOf(current) : -1;
   return (
     <nav aria-label="Workflow steps" className={`relative overflow-x-auto ${current ? "" : "max-lg:hidden"}`}>

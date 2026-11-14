@@ -12,7 +12,7 @@ const readyRow = (page: Page, filename: string) =>
   page.getByRole("list", { name: "Files ready to import" }).getByRole("listitem").filter({ hasText: filename });
 
 async function search(page: Page, text: string) {
-  await page.goto("/ledger?tab=timeline");
+  await page.goto("/messages");
   await page.getByLabel("Contains").fill(text);
   await page.getByRole("button", { name: "Apply" }).click();
   await expect(page).toHaveURL(/q=/);

@@ -5,6 +5,7 @@ import { SwitchPersonButton } from "@/components/home/switch-person-button";
 import { Button } from "@/components/ui/button";
 import { ROLE_LABELS } from "@/lib/access";
 import { journey, type JourneyFacts } from "@/lib/journey";
+import { findGaps, type GapInput } from "@/lib/ledger-view";
 import { needsRereview } from "@/lib/review/rereview";
 import type { Viewer } from "@/lib/session";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -21,7 +22,7 @@ async function loadFacts(viewer: Viewer, m: Membership): Promise<JourneyFacts | 
   const ws = m.workspaceId;
   const [files, obligations, docket, signoff, versions] = await Promise.all([
     supabase.from("sources").select("*", { count: "exact", head: true }).eq("workspace_id", ws),
-    supabase.from("obligations").select("review_state, status, trust_state, reviewed_status, reviewed_trust").eq("workspace_id", ws),
+    supabase.from("obligations").select("id, kind, description, next_due, fulfilment_checked_at, review_state, status, trust_state, reviewed_status, reviewed_trust").eq("workspace_id", ws),
     supabase.from("docket_entries").select("ruling").eq("workspace_id", ws),
     supabase.rpc("signoff_status", { p_workspace: ws }),
     supabase.from("versions").select("id, number, created_at").eq("workspace_id", ws).order("number", { ascending: false }).limit(1),
@@ -56,6 +57,7 @@ async function loadFacts(viewer: Viewer, m: Membership): Promise<JourneyFacts | 
     version,
     answered,
     unruledConflicts: (docket.data ?? []).filter((d) => !d.ruling).length,
+    gaps: findGaps(rows as unknown as GapInput[]).length,
   };
 }
 

@@ -12,49 +12,28 @@ import { LoadingBlock } from "@/components/feedback/loading-block";
 import { SignInPrompt } from "@/components/feedback/sign-in-prompt";
 import { PageHeader } from "@/components/page-header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ROLE_LABELS } from "@/lib/access";
+import { ACCESS_LABELS, ROLE_LABELS } from "@/lib/access";
+import { SAMPLE_SETS, sampleUrl } from "@/lib/import/samples";
 import { getViewer } from "@/lib/session";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-export const metadata: Metadata = { title: "Connect · Inheritance" };
-
-// Synthetic sample files. The photography club is the fuller one: four files at four levels.
-const SAMPLE_SETS = [
-  {
-    dir: "photo",
-    title: "Photography club, one term (recommended)",
-    files: [
-      ["whatsapp-committee.txt", "Committee chat (WhatsApp, iPhone export)", "Committee"],
-      ["whatsapp-accounts.txt", "Accounts chat (WhatsApp)", "Finance"],
-      ["WhatsApp Chat with Prof. Iyer.txt", "Arun's one-to-one chat with the advisor", "Private"],
-      ["minutes.docx", "Meeting minutes (Word)", "Committee"],
-    ],
-  },
-  {
-    dir: "mini",
-    title: "IoT club, a few weeks (small)",
-    files: [
-      ["whatsapp-committee.txt", "Committee chat (WhatsApp)", "Committee"],
-      ["trello-board.json", "Trello board", "Committee"],
-      ["minutes.md", "Minutes", "Finance"],
-    ],
-  },
-] as const;
+export const metadata: Metadata = { title: "Add files · Inheritance" };
 
 function Samples() {
   return (
-    <div className="flex flex-col gap-3 text-sm text-muted-foreground">
-      <p>No files of your own? Download a set of synthetic sample files, then import each one at the level shown:</p>
+    <div className="flex flex-col gap-3 rounded-xl border border-dashed p-4 text-sm text-muted-foreground" data-testid="sample-downloads">
+      <p className="font-medium text-foreground">Or download the sample files and choose them yourself</p>
+      <p>Prefer to download the sample files and choose them yourself? Each is synthetic; set it to the level shown:</p>
       {SAMPLE_SETS.map((set) => (
         <div key={set.dir}>
           <p className="font-medium text-foreground">{set.title}</p>
           <ul className="mt-1 list-disc pl-5">
-            {set.files.map(([file, label, level]) => (
-              <li key={file}>
-                <a className="underline" href={`/samples/${set.dir}/${encodeURIComponent(file)}`} download={file}>
-                  {label}
+            {set.files.map((f) => (
+              <li key={f.file}>
+                <a className="underline" href={sampleUrl(set.dir, f.file)} download={f.file}>
+                  {f.label}
                 </a>{" "}
-                — set to <span className="font-medium text-foreground">{level}</span>
+                — set to <span className="font-medium text-foreground">{ACCESS_LABELS[f.level]}</span>
               </li>
             ))}
           </ul>
@@ -69,9 +48,8 @@ async function Welcome({ searchParams }: { searchParams: PageProps<"/import">["s
   if (welcome !== "empty") return null;
   return (
     <p role="status" className="rise-in rounded-2xl border border-primary/20 bg-accent px-5 py-4 text-sm text-accent-foreground">
-      Your empty club is ready, and you are signed in as Arun, the outgoing lead. First, download the
-      photography club&apos;s four sample files in “No files of your own?” below and add each at the level shown.
-      Then open Ledger and press Build the ledger.
+      Your empty club is ready, and you are signed in as Arun, the outgoing lead. Press “Use the 4 sample
+      files”, tick the box and import. Then build the ledger.
     </p>
   );
 }
@@ -96,6 +74,20 @@ async function ImportContent() {
 
   return (
     <div className="flex flex-col gap-6">
+      {canImport && (fileCount ?? 0) > 0 && (
+        <div className="rise-in flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-primary/20 bg-accent px-5 py-4" data-testid="next-step-bar">
+          <p className="text-sm text-accent-foreground">
+            <strong>{fileCount} {fileCount === 1 ? "file is" : "files are"} in.</strong> Add more below, or move on and read them.
+          </p>
+          <Button asChild>
+            <Link href="/ledger">
+              Next: build the ledger
+              <ArrowRightIcon aria-hidden="true" />
+            </Link>
+          </Button>
+        </div>
+      )}
+
       <Card>
         <CardHeader>
           <CardTitle className="text-lg">Add files</CardTitle>
@@ -116,20 +108,6 @@ async function ImportContent() {
           )}
         </CardContent>
       </Card>
-
-      {canImport && (fileCount ?? 0) > 0 && (
-        <div className="rise-in flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-primary/20 bg-accent px-5 py-4" data-testid="import-next">
-          <p className="text-sm text-accent-foreground">
-            <strong>{fileCount} {fileCount === 1 ? "file is" : "files are"} in.</strong> Add more, or move on and read them.
-          </p>
-          <Button asChild>
-            <Link href="/ledger">
-              Next: build the ledger
-              <ArrowRightIcon aria-hidden="true" />
-            </Link>
-          </Button>
-        </div>
-      )}
 
       <Card>
         <CardHeader>

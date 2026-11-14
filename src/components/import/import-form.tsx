@@ -2,10 +2,14 @@
 
 import { startTransition, useActionState, useEffect, useId, useRef, useState } from "react";
 import { importFiles, type ImportState } from "@/app/import/actions";
+import Link from "next/link";
+import { ArrowRightIcon, CheckCircle2Icon, SparklesIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 import { ACCESS_LABELS, ACCESS_LEVELS, type AccessLevel } from "@/lib/access";
 import { formatBytes, formatIst, formatIstDate } from "@/lib/format";
 import { ACCEPT, MAX_TOTAL_BYTES, suggestAccessLevel } from "@/lib/import/defaults";
+import { SAMPLE_SETS, sampleUrl } from "@/lib/import/samples";
 
 type Picked = {
   file: File;
@@ -30,6 +34,22 @@ function kindOf(name: string): Picked["kind"] {
   return "Unsupported";
 }
 
+function Part({ n, title, children }: { n: number; title: string; children?: React.ReactNode }) {
+  return (
+    <div className="flex items-start gap-3">
+      <span aria-hidden="true" className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+        {n}
+      </span>
+      <div className="flex flex-col gap-0.5">
+        <h3 className="font-semibold">{title}</h3>
+        {children && <p className="text-sm text-muted-foreground">{children}</p>}
+      </div>
+    </div>
+  );
+}
+
+const PHOTO = SAMPLE_SETS.find((s) => s.dir === "photo")!;
+
 export function ImportForm() {
   const [picked, setPicked] = useState<Picked[]>([]);
   const [authorised, setAuthorised] = useState(false);
@@ -38,6 +58,33 @@ export function ImportForm() {
   const input = useRef<HTMLInputElement>(null);
   const total = picked.reduce((n, p) => n + p.file.size, 0);
   const tooBig = total > MAX_TOTAL_BYTES;
+  const [loadingSamples, setLoadingSamples] = useState(false);
+  const [sampleError, setSampleError] = useState<string | null>(null);
+
+  /** One click: fetch the photography club's four synthetic files and list them at their levels. */
+  async function addSamples() {
+    setLoadingSamples(true);
+    setSampleError(null);
+    try {
+      const files = await Promise.all(
+        PHOTO.files.map(async (f) => {
+          const res = await fetch(sampleUrl(PHOTO.dir, f.file));
+          if (!res.ok) throw new Error(f.file);
+          return { file: new File([await res.blob()], f.file), level: f.level };
+        }),
+      );
+      setPicked((prev) => [
+        ...prev,
+        ...files
+          .filter((n) => !prev.some((p) => p.file.name === n.file.name && p.file.size === n.file.size))
+          .map((n) => ({ file: n.file, kind: kindOf(n.file.name), level: n.level, reason: "Sample file: its level is already set for you.", dateOrder: "auto" as const })),
+      ]);
+    } catch {
+      setSampleError("Could not load the sample files. Check your connection, or download them below and choose them by hand.");
+    } finally {
+      setLoadingSamples(false);
+    }
+  }
 
   async function onChoose(list: FileList | null) {
     if (!list) return;
@@ -73,6 +120,8 @@ export function ImportForm() {
       fd.append(`dateOrder_${i}`, p.dateOrder);
     });
     if (authorised) fd.append("authorised", "on");
+    // The list empties once sent; the result below says what was read, or why a file was refused.
+    setPicked([]);
     startTransition(() => action(fd));
   }
 
@@ -80,7 +129,20 @@ export function ImportForm() {
   return (
     <div className="flex flex-col gap-6">
       <form onSubmit={submit} className="flex flex-col gap-5" aria-describedby={`${ids}-notice`}>
-        <div className="flex flex-col gap-2">
+        <Part n={1} title="Choose files">Use the sample files in one click, or choose the club&apos;s own exports.</Part>
+        <div className="flex flex-col gap-3 pl-9">
+          <div className="flex flex-wrap items-center gap-3">
+            <Button type="button" onClick={addSamples} disabled={loadingSamples || pending} data-testid="use-samples">
+              {loadingSamples ? <Spinner /> : <SparklesIcon aria-hidden="true" />}
+              {loadingSamples ? "Loading the sample files…" : `Use the ${PHOTO.files.length} sample files`}
+            </Button>
+            <span className="text-sm text-muted-foreground">or</span>
+          </div>
+          {sampleError && (
+            <p role="alert" className="rounded-lg bg-danger-soft px-3 py-2 text-sm text-destructive">
+              {sampleError}
+            </p>
+          )}
           <label htmlFor={`${ids}-files`} className="font-medium">
             Files to import
           </label>
@@ -104,13 +166,17 @@ export function ImportForm() {
           </p>
         </div>
 
+        <Part n={2} title="Choose who may see each file">
+          {picked.length === 0 ? "Each file you choose appears here with a suggested level." : "A level is suggested for each file; change it if needed."}
+        </Part>
+
         {picked.length > 0 && (
-          <ul className="flex flex-col gap-3" aria-label="Files ready to import">
+          <ul className="flex flex-col gap-3 pl-9" aria-label="Files ready to import">
             {picked.map((p, i) => {
               const sel = `${ids}-level-${i}`;
               const ord = `${ids}-order-${i}`;
               return (
-                <li key={`${p.file.name}-${i}`} className="rounded-md border p-3 text-sm">
+                <li key={`${p.file.name}-${i}`} className="rounded-xl border bg-card p-3 text-sm">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="font-medium break-all">{p.file.name}</span>
                     <span className="text-muted-foreground">
@@ -169,7 +235,8 @@ export function ImportForm() {
           </p>
         )}
 
-        <div id={`${ids}-notice`} className="rounded-md border bg-muted/40 p-3 text-sm">
+        <Part n={3} title="Confirm and import" />
+        <div id={`${ids}-notice`} className="ml-9 rounded-xl border bg-muted/40 p-3 text-sm">
           <p>
             <strong>How your data is used.</strong> Files are read on the server and only their messages are kept, with a
             fingerprint (SHA-256) of each file; the file itself is not stored. In a later step the messages are analysed by
@@ -177,15 +244,30 @@ export function ImportForm() {
           </p>
         </div>
 
-        <label className="flex items-start gap-2 text-sm">
-          <input type="checkbox" checked={authorised} onChange={(e) => setAuthorised(e.target.checked)} className="mt-1" />
-          <span>I am authorised to use this data.</span>
+        <label className="ml-9 flex items-start gap-2 rounded-xl border border-primary/25 bg-card p-3 text-sm">
+          <input type="checkbox" checked={authorised} onChange={(e) => setAuthorised(e.target.checked)} className="mt-0.5 size-4 accent-[var(--primary)]" />
+          <span>
+            <span className="font-medium">I am authorised to use this data.</span>{" "}
+            <span className="text-muted-foreground">Needed once per import. The sample files are synthetic, so ticking it is fine for them.</span>
+          </span>
         </label>
 
-        <div>
-          <Button type="submit" disabled={pending || !authorised || picked.length === 0 || tooBig}>
+        <div className="ml-9 flex flex-col items-start gap-1.5">
+          <Button type="submit" size="lg" disabled={pending || !authorised || picked.length === 0 || tooBig} aria-describedby={`${ids}-why`}>
+            {pending && <Spinner />}
             {pending ? "Importing…" : `Import ${picked.length || ""} file${picked.length === 1 ? "" : "s"}`.replace("  ", " ")}
           </Button>
+          <p id={`${ids}-why`} className="text-sm text-muted-foreground" data-testid="import-why">
+            {pending
+              ? "Reading each file on the server. This takes a few seconds."
+              : picked.length === 0
+                ? "Choose at least one file in step 1."
+                : tooBig
+                  ? "Too much at once: remove some files."
+                  : !authorised
+                    ? "Tick the box above to confirm you may use this data."
+                    : "Ready to import."}
+          </p>
         </div>
       </form>
 
@@ -197,6 +279,20 @@ export function ImportForm() {
 
       {state && state.results.length > 0 && (
         <section aria-labelledby={`${ids}-read`} className="flex flex-col gap-3" role="status">
+          {done > 0 && (
+            <div className="rise-in flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-success/25 bg-success-soft px-5 py-4" data-testid="import-done">
+              <p className="flex items-center gap-2 font-medium text-success">
+                <CheckCircle2Icon aria-hidden="true" className="size-5" />
+                {done} {done === 1 ? "file" : "files"} added.
+              </p>
+              <Button asChild>
+                <Link href="/ledger">
+                  Next: build the ledger
+                  <ArrowRightIcon aria-hidden="true" />
+                </Link>
+              </Button>
+            </div>
+          )}
           <h3 id={`${ids}-read`} className="font-medium">
             What was read ({done} of {state.results.length} imported)
           </h3>

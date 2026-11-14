@@ -58,3 +58,12 @@ export function emptyProgress(): RunProgress {
     dropped: {}, followup: { evidence: 0, context: 0, statuses: {} }, matching: { same: 0, possible: 0 }, cachedSteps: 0, usage: { inputTokens: 0, outputTokens: 0 },
   };
 }
+
+/** "About 3 min left", from the average time per finished step so far. Null until it means something. */
+export function timeLeft(finished: number, total: number, elapsedMs: number): string | null {
+  if (finished < 2 || finished >= total || elapsedMs <= 0) return null;
+  const left = ((total - finished) * elapsedMs) / finished / 1000;
+  if (left < 45) return "Less than a minute left";
+  const min = Math.round(left / 60);
+  return `About ${min} ${min === 1 ? "minute" : "minutes"} left`;
+}

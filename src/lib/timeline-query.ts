@@ -20,9 +20,10 @@ export function likePattern(q: string): string {
 
 export function timelineHref(base: TimelineParams, patch: Partial<TimelineParams>): string {
   const p = { ...base, ...patch };
-  const qs = new URLSearchParams({ tab: "timeline" });
+  const qs = new URLSearchParams();
   if (p.source) qs.set("source", p.source);
   if (p.q) qs.set("q", p.q);
   if (p.page > 1) qs.set("page", String(p.page));
-  return `/ledger?${qs.toString()}`;
+  const s = qs.toString();
+  return s ? `/messages?${s}` : "/messages";
 }

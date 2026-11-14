@@ -22,6 +22,8 @@ export type JourneyFacts = {
   /** Items in that version the incoming lead has answered. */
   answered: number;
   unruledConflicts: number;
+  /** Gaps in what the viewer can read (as on the check page). */
+  gaps: number;
 };
 
 export type JourneyStage = { key: string; label: string; href: string; state: "done" | "current" | "todo" };
@@ -51,7 +53,7 @@ export function awaitingApproval(f: Pick<JourneyFacts, "signoff" | "version">): 
 const STAGES = [
   { key: "files", label: "Add files", href: "/import" },
   { key: "build", label: "Build the ledger", href: "/ledger" },
-  { key: "check", label: "Check the records", href: "/ledger?tab=docket" },
+  { key: "check", label: "Check the records", href: "/check" },
   { key: "approve", label: "Review and approve", href: "/review" },
   { key: "handover", label: "Hand over", href: "/handover" },
 ] as const;
@@ -62,8 +64,9 @@ function stageDone(f: JourneyFacts): boolean[] {
   return [
     f.files > 0 || v,
     f.items > 0 || v,
-    // "Checked" means nothing is still waiting for a check, not that one item was accepted.
-    (f.accepted > 0 && f.toReview === 0) || v,
+    // Checking the records (conflicts, gaps) comes before reviewing; it is behind you once
+    // reviewing has started.
+    f.accepted > 0 || v,
     v,
     answeredAll,
   ];
@@ -88,14 +91,25 @@ export function journey(f: JourneyFacts): Journey {
     if (f.items === 0 && !v) {
       return { ...base, title: "Build the ledger", body: "Your files are in. The next step reads them and lists every promise and recurring duty, each with a checked quote.", cta: { label: "Build the ledger", href: "/ledger" }, switchTo: null };
     }
+    // Freshly built and nothing reviewed yet: look at what disagrees or is missing first.
+    if (f.accepted === 0 && !v && f.unruledConflicts + f.gaps > 0) {
+      return {
+        ...base,
+        title: "Look at what the ledger found",
+        body: `It found ${plural(f.unruledConflicts, "conflict")} between records and ${plural(f.gaps, "gap")} where they say nothing. Look at them first, so nothing is handed over as fact by mistake.`,
+        cta: { label: "Check the records", href: "/check" },
+        switchTo: null,
+        also: [{ label: `Skip to reviewing ${plural(f.toReview, "item")}`, href: "/review?tab=draft" }],
+      };
+    }
     if (f.toReview > 0) {
       return {
         ...base,
-        title: `Check ${plural(f.toReview, "item")}`,
+        title: `Review ${plural(f.toReview, "item")}`,
         body: "Read each item against its quote, then accept, edit or reject it. Only accepted items go to the advisor.",
         cta: { label: `Review ${plural(f.toReview, "item")}`, href: "/review?tab=draft" },
         switchTo: null,
-        also: [{ label: "See gaps in the records", href: "/ledger?tab=gaps" }],
+        also: [{ label: "See gaps in the records", href: "/check?tab=gaps" }],
       };
     }
     if (ask) {

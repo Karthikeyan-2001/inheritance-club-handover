@@ -10,21 +10,20 @@ export const STEP_LABEL: Record<Step, string> = {
   Handover: "Hand over",
 };
 
-/** The page each step starts on. Verify is the Docket (records that disagree), the Gaps tab and the source messages. */
+/** One page per step, so switching tabs inside a page never moves the step bar. Verify is /check (conflicts and gaps) and the source-message pages. */
 export const STEP_HREF: Partial<Record<Step, string>> = {
   Connect: "/import",
   Reconstruct: "/ledger",
-  Verify: "/ledger?tab=docket",
+  Verify: "/check",
   Review: "/review",
   Handover: "/handover",
 };
 
-const VERIFY_TABS = new Set(["docket", "gaps"]);
-
-export function stepForPath(pathname: string, tab?: string | null): Step | null {
+/** The step a page belongs to. Only the path counts: a tab never changes the step. `/messages` belongs to no step. */
+export function stepForPath(pathname: string): Step | null {
   if (pathname.startsWith("/import")) return "Connect";
-  if (pathname.startsWith("/ledger/evidence")) return "Verify";
-  if (pathname.startsWith("/ledger")) return tab && VERIFY_TABS.has(tab) ? "Verify" : "Reconstruct";
+  if (pathname.startsWith("/ledger/evidence") || pathname.startsWith("/check")) return "Verify";
+  if (pathname.startsWith("/ledger")) return "Reconstruct";
   if (pathname.startsWith("/review")) return "Review";
   if (pathname.startsWith("/handover")) return "Handover";
   return null;

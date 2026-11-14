@@ -11,6 +11,7 @@ const base: JourneyFacts = {
   version: null,
   answered: 0,
   unruledConflicts: 0,
+  gaps: 0,
 };
 const v1 = { number: 1, createdAt: "2026-11-10T10:00:00Z", itemCount: 4 };
 const f = (over: Partial<JourneyFacts>): JourneyFacts => ({ ...base, ...over });
@@ -25,10 +26,19 @@ describe("outgoing lead", () => {
   it("builds the ledger once files exist", () => {
     expect(journey(f({ files: 3 })).cta?.href).toBe("/ledger");
   });
-  it("reviews items before marking ready", () => {
-    const j = journey(f({ files: 3, items: 9, toReview: 9 }));
-    expect(j.title).toBe("Check 9 items");
+  it("after a build, checks the records before reviewing", () => {
+    const j = journey(f({ files: 3, items: 9, toReview: 9, unruledConflicts: 1, gaps: 3 }));
+    expect(j.cta?.href).toBe("/check");
+    expect(j.stages[2].state).toBe("current");
+    expect(j.also[0].href).toBe("/review?tab=draft");
+  });
+  it("reviews items once reviewing has started", () => {
+    const j = journey(f({ files: 3, items: 9, toReview: 8, accepted: 1, gaps: 3 }));
+    expect(j.title).toBe("Review 8 items");
     expect(j.cta?.href).toBe("/review?tab=draft");
+  });
+  it("goes straight to review when nothing disagrees or is missing", () => {
+    expect(journey(f({ files: 3, items: 9, toReview: 9 })).cta?.href).toBe("/review?tab=draft");
   });
   it("marks ready when nothing is left to check", () => {
     const j = journey(f({ files: 3, items: 9, accepted: 9, signoff: null }));
@@ -48,10 +58,11 @@ describe("outgoing lead", () => {
 });
 
 describe("progress", () => {
-  it("does not call the records checked while items still wait", () => {
+  it("puts review, not the check, as the current stage once reviewing has started", () => {
     const j = journey(f({ files: 3, items: 31, accepted: 1, toReview: 30 }));
-    expect(j.stages[2].state).toBe("current");
-    expect(j.doneCount).toBe(2);
+    expect(j.stages[2].state).toBe("done");
+    expect(j.stages[3].state).toBe("current");
+    expect(j.title).toBe("Review 30 items");
   });
 });
 

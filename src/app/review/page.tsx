@@ -47,7 +47,7 @@ async function ReviewContent({ searchParams }: { searchParams: PageProps<"/revie
     <div className="flex flex-col gap-6">
       <TabNav label="Review sections" basePath="/review" tabs={TABS.filter((t) => allowed.includes(t.key))} current={tab} />
       {tab === "draft" ? (
-        <Draft role={role} workspaceId={workspaceId} />
+        <Draft role={role} workspaceId={workspaceId} inCopy={viewer.membership.sandboxExpiresAt !== null} />
       ) : tab === "conflicts" ? (
         <Conflicts workspaceId={workspaceId} canRule={role === "advisor"} />
       ) : tab === "history" ? (

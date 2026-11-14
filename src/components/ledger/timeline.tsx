@@ -46,8 +46,7 @@ export async function Timeline({ workspaceId, params }: { workspaceId: string; p
   const dayOf = (ts: string | null) => (ts ? istDayKey(ts) : "undated");
   return (
     <div className="flex flex-col gap-4">
-      <form method="get" action="/ledger" className="flex flex-wrap items-end gap-3 text-sm" role="search" aria-label="Filter the timeline">
-        <input type="hidden" name="tab" value="timeline" />
+      <form method="get" action="/messages" className="flex flex-wrap items-end gap-3 text-sm" role="search" aria-label="Filter the timeline">
         <label className="flex flex-col gap-1">
           File
           <select name="source" defaultValue={params.source ?? ""} className="rounded-md border bg-background px-2 py-1">

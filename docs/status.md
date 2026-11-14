@@ -25,11 +25,11 @@ Round 2 (Phases 0 to 13, plus the guided tour) is merged and was submitted; the 
 | 17 | Round 3, improvement 1: inferred recurring duties | later |
 | 18 | Round 3: hardening, end-to-end sweeps, README, final report PDF | later |
 
-Tests on `build/phase-14`: 595 unit plus RLS (`pnpm test`), 53 Playwright (the 5 tour and guide tests are gone, 7 guidance tests are new), all passing; lint, typecheck and production build clean. (The Phase 13 count of 631 included the tour's 36 unit tests.)
+Tests on `build/phase-14`: 606 unit plus RLS (`pnpm test`), 59 Playwright (the 5 tour and guide tests are gone; `guidance.spec.ts` has 12), all passing; lint, typecheck and production build clean. (The Phase 13 count of 631 included the tour's 36 unit tests.)
 
 ### Phase 14 (built, awaiting merge)
 
-Tour and `/guide` removed; purple pastel theme; home page with the next step per role (`src/lib/journey.ts`); one-line purpose on every page; plain-language labels; person switcher shows "Switch person" with who-is-who; skeleton, route-bar and progress-bar loading states; confirm dialogs for removing a file and deleting a club; empty and error states on every list; mobile and accessibility pass. Details: [decisions.md](decisions.md#phase-14-decisions-uiux-no-walkthrough), [changes-from-round1.md](changes-from-round1.md).
+Tour and `/guide` removed; one page per step (new `/check` and `/messages`; old ledger tab URLs redirect); next-step bar on every step page; instant build feedback with time left; one-click sample files; purple pastel theme; home page with the next step per role (`src/lib/journey.ts`); one-line purpose on every page; plain-language labels; person switcher shows "Switch person" with who-is-who; skeleton, route-bar and progress-bar loading states; confirm dialogs for removing a file and deleting a club; empty and error states on every list; mobile and accessibility pass. Details: [decisions.md](decisions.md#phase-14-decisions-uiux-no-walkthrough), [changes-from-round1.md](changes-from-round1.md).
 
 Not done in Phase 14, by choice: a dark mode, and a Lighthouse or axe run (the pass was manual: focus rings, contrast by palette, labels, skip link, reduced motion). Worth checking on the live link after deploy: sign in on a phone-sized window and complete the flow as Arun, Dr. Meena and Kavya.
 

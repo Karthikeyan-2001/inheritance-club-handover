@@ -41,6 +41,16 @@ What is knowingly unfinished, and what the model still gets wrong on the synthet
 - `pnpm cache:warm` is a manual step; a new deployment against a fresh database needs it again.
 - No accessibility audit yet.
 
+## Known gaps (Phase 15)
+
+- Only the four gaps in the Round 2 report become questions. An item with no verified quote at all (trust "gap") and a promise not yet checked for follow-up are still shown on the Gaps tab only.
+- An answer cannot be edited or withdrawn on its own. Removing the statement file (on Add files) removes every answer at that level, and their questions come back. "I don't know" can be followed by one real answer.
+- A promise plus the lead's own "done" counts as corroborated (two files). The quote is labelled as the lead's statement everywhere, but the trust badge alone does not say so.
+- Questions are asked per record: two records linked as the same item may each ask, until an answer on one lends its evidence to the other.
+- The built year club has no duty without an approver or a date, so those two kinds of question appear only for clubs built from other files.
+- `tests/rls/leak.test.ts` does not walk `gap_answers`; its read rules are covered by `tests/rls/gap-questions.test.ts`.
+- The audit history shows status and trust changes by their stored names (`no_evidence` → `fulfilled`), as it does for other review actions.
+
 ## What the model got wrong (Phase 12 paid runs)
 
 - **Photo P6** (hand over the camera and keys): the follow-up check took "the passbook stays in the cupboard", from the finance chat, as implying it was done. Status became Likely done, and, by the provenance rule, the committee item became finance-level, so the incoming lead would not see it. See outstanding task 4.

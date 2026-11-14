@@ -1,4 +1,4 @@
-# Design decisions (Round 2, Phases 5 to 13)
+# Design decisions (Phases 5 to 15)
 
 Why the system works the way it does. Most were confirmed with the user at the end of each phase. Round 3 decisions are in [status.md](status.md) under the Round 3 plan, and move here when each phase ends.
 
@@ -119,3 +119,22 @@ Confirmed with the user: P6 (implied quotes from a more restricted record are dr
 - **A slow save says so.** After 12 s a form shows "taking longer than usual" and a reload button, instead of a spinner with no end.
 - **Tab feedback.** The pressed tab shows a spinner (`useLinkStatus`) and `TabSuspense` keys the loading boundary by tab. A pressed tab still waits for a save that is in flight; that is the Next router's queue, not something the app controls.
 
+
+## Phase 15 decisions (gap questions, Round 3 improvement 2)
+
+Chosen while building; change any you disagree with.
+
+- **An answer is a record, not an edit of the item.** `public.answer_gap()` writes the answer as a message from the outgoing lead in a `statement` source ("Stated by the outgoing lead"), then cites it as verified evidence (done → `fulfils`, not done → `contradicts`, an approver, "no approval needed" or a date → `supports`). So every existing rule applies unchanged: the quote check (the quote is the whole message, checked with `app.quote_in`), the trust and status rules, provenance, the audit, re-review, the sign-off hash and the version diff. No new trust state.
+- **The message is written by code**, from the answer and the item's description ("Not done: set up the demo kits."), followed by the lead's own words. `statementText()` in `src/lib/questions.ts` mirrors the SQL so the form shows the exact message before saving; the RLS test checks the two agree.
+- **One statement file per access level per lead**, found or made on the first answer at that level (`Answers to gap questions (Committee)`). An answer can never be less restricted than its item, because the message names the item; a more restricted one raises the item (the Phase 5 provenance rule), and the form says who would stop seeing it.
+- **The trust rule is not special-cased for statements.** A promise in the chat plus the lead's "done" in the statement file are two records from different files, so the item becomes corroborated, as it would with a later chat message saying done. Every such quote is labelled "Stated by the outgoing lead" wherever it is shown, so the reader can weigh it. (Worth reconsidering: one could argue a statement should never corroborate on its own.)
+- **"I don't know" is a verified note** (context kind `risk`, "Arun does not know whether it was done."), citing its own message. It changes no status or trust, travels with the version, and shows on the handover. The question is "left open" and can be answered once more later.
+- **A conflict answer does not settle the conflict.** It is one more record next to the two that disagree; the item stays contradicted and the advisor still rules. Once ruled, the question no longer applies.
+- **Only the outgoing lead answers** (`app.has_role(..., 'outgoing_lead')`). The advisor and the treasurer read questions and answers, since they read the working ledger; the incoming lead and members see answers only in approved versions.
+- **Answering never accepts an item.** An accepted item whose status or trust moved shows under "Changed since accepted" and needs "Accept again" before the lead can mark ready, as after any new evidence.
+- **`gap_answers` has no write policies.** Rows are written only by `app.record_gap_answer()` (called from `answer_gap()`), which also writes one `answer_gap` audit row with the item before and after. Removing the statement file removes its answers and the questions come back.
+- **The handover now shows each item's notes** from the approved version (`version_context_items`, as RLS allows), so an "I don't know" reaches the incoming lead. A "done" answer takes a promise off People waiting (the Phase 9 rule for fulfilled items); it is visible in the approved version and its diff.
+- **Dates:** a date answer must be today or later (IST); the start-by date comes from the duty's stated lead time (`startByFor`), and `next_due_basis` says "Stated by the outgoing lead". An approver answer on a duty with no stated approval sets `approval_required` to "Approval", so the handover can say "needs approval from …".
+- **The pipeline never reads statements** (`pipelineReads` in `run-pipeline.ts`), and matching leaves them out, so an answer is never taken for a new promise, and answering never changes a model prompt.
+- **Found while building:** the review page's "Accepted." confirmation (Phase 14) was sticky under the sticky header, so it was hidden once the page was scrolled. Both it and the questions page now use a toast fixed to the bottom of the window (`components/feedback/notice-toast.tsx`).
+- No paid model calls were made in this phase, and no dependency was added.

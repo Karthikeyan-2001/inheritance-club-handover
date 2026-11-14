@@ -46,6 +46,8 @@ Safeguards that do **not** rely on the model:
 - **Paid runs this phase**, all on synthetic data and approved in advance: the year club build ($0.053, 163 calls of which 76 were cached), the photography club ($0.013) and the mini scenario ($0.004), on Claude Haiku 5.5. Each was scored against its ground truth.
 - **Replies to the incoming lead's questions** are written by people; no model is involved.
 
+*Status (Phase 15): no AI use changed.* Gap questions are worked out by code from the items, conflicts and earlier answers the outgoing lead can read. Each answer is stored as a message written by code from the chosen answer, the item's description and the lead's own words; no model reads, writes or checks it. The pipeline skips these messages, so they are never sent to the model, and matching prompts do not include them.
+
 ## 3. Synthetic demo data: an LLM
 
 All demo data is synthetic. A small hand-written scenario is used first. A later generator will use an LLM to render planted facts as realistic chat messages, minutes and Trello cards: typos, nicknames, and Tamil-English code-mixing in Latin script. Ground truth is fixed in YAML before generation, so the system can be scored against it. No real people or organisations are used.

@@ -74,6 +74,33 @@ export function doneCommitments(items: readonly HandoverItem[]): HandoverItem[] 
   return items.filter((i) => i.kind === "commitment" && closed(i)).sort((a, b) => a.description.localeCompare(b.description));
 }
 
+export type HandoverConflict = {
+  id: string;
+  summary: string | null;
+  saysDone: string | null;
+  saysNotDone: string | null;
+  ruling: "done" | "not_done" | "cannot_tell" | null;
+  reason: string | null;
+  ruledAt: string | null;
+};
+
+/**
+ * The conflicts an approved item carries (version_items.item.conflicts, migration 0013): the
+ * two records that disagree and the advisor's ruling as it stood when the version was approved.
+ * The database put a conflict in the version only if both of its records are at or below the
+ * item's level, so a reader of the item may read it. Older versions have none.
+ */
+export function handoverConflicts(item: { conflicts?: unknown } | null | undefined): HandoverConflict[] {
+  const list = Array.isArray(item?.conflicts) ? item!.conflicts : [];
+  return list.flatMap((c): HandoverConflict[] => {
+    if (!c || typeof c !== "object") return [];
+    const r = c as Record<string, unknown>;
+    if (typeof r.id !== "string") return [];
+    const ruling = r.ruling === "done" || r.ruling === "not_done" || r.ruling === "cannot_tell" ? r.ruling : null;
+    return [{ id: r.id, summary: s(r.summary), saysDone: s(r.quote_a), saysNotDone: s(r.quote_b), ruling, reason: s(r.reason), ruledAt: s(r.ruled_at) }];
+  });
+}
+
 export type StatedQuote = { quote: string; relation: string; author: string | null; ts: string | null };
 
 /**

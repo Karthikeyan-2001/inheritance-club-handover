@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ackSummary, canReplyTo, doneCommitments, dutyCalendar, dutyTiming, latestAckByItem, monthLabel, peopleWaiting, repliesByAck, statedQuotes, toHandoverItem, type HandoverItem } from "./handover.ts";
+import { ackSummary, canReplyTo, doneCommitments, handoverConflicts, dutyCalendar, dutyTiming, latestAckByItem, monthLabel, peopleWaiting, repliesByAck, statedQuotes, toHandoverItem, type HandoverItem } from "./handover.ts";
 
 const base: HandoverItem = { id: "x", kind: "commitment", description: "d", owedBy: null, owedTo: null, dueText: null, dueDate: null, nextDue: null, startBy: null, cadence: null, approval: null, approver: null, status: "open", trust: "sourced" };
 const mk = (o: Partial<HandoverItem>): HandoverItem => ({ ...base, ...o });
@@ -114,6 +114,28 @@ describe("statedQuotes", () => {
   it("ignores a message the viewer cannot read, and has none when there are none", () => {
     expect(statedQuotes([ev("hidden", "x")], sources)).toEqual([]);
     expect(statedQuotes([], sources)).toEqual([]);
+  });
+});
+
+describe("handoverConflicts", () => {
+  it("reads the two sides and the ruling an approved item carries", () => {
+    const out = handoverConflicts({
+      conflicts: [
+        { id: "d1", summary: "Trello, 16 Mar 2026: says it was done. WhatsApp, 18 Mar 2026: says it was not.", quote_a: "Card moved to Done", quote_b: "nobody has sent them yet", ruling: "not_done", reason: "The speakers say so", ruled_at: "2026-11-14T10:00:00+05:30" },
+        { id: "d2", quote_a: "done", quote_b: "", ruling: null, reason: null },
+      ],
+    });
+    expect(out).toEqual([
+      { id: "d1", summary: "Trello, 16 Mar 2026: says it was done. WhatsApp, 18 Mar 2026: says it was not.", saysDone: "Card moved to Done", saysNotDone: "nobody has sent them yet", ruling: "not_done", reason: "The speakers say so", ruledAt: "2026-11-14T10:00:00+05:30" },
+      { id: "d2", summary: null, saysDone: "done", saysNotDone: null, ruling: null, reason: null, ruledAt: null },
+    ]);
+  });
+  it("has none for older versions, odd shapes, and an unknown ruling word", () => {
+    expect(handoverConflicts({})).toEqual([]);
+    expect(handoverConflicts(null)).toEqual([]);
+    expect(handoverConflicts({ conflicts: "x" })).toEqual([]);
+    expect(handoverConflicts({ conflicts: [null, { summary: "no id" }] })).toEqual([]);
+    expect(handoverConflicts({ conflicts: [{ id: "d", ruling: "maybe" }] })[0].ruling).toBeNull();
   });
 });
 

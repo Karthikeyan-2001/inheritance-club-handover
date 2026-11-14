@@ -10,6 +10,7 @@ import {
   ackSummary,
   canReplyTo,
   doneCommitments,
+  handoverConflicts,
   dutyCalendar,
   latestAckByItem,
   peopleWaiting,
@@ -17,10 +18,12 @@ import {
   statedQuotes,
   toHandoverItem,
   type AckRow,
+  type HandoverConflict,
   type HandoverItem,
   type ReplyRow,
 } from "@/lib/handover/handover";
 import { capitalise } from "@/lib/ledger-view";
+import { RULING_NOTE, rulingLabel } from "@/lib/review/labels";
 import type { VersionItem } from "@/lib/review/diff";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { acknowledge, replyToAck, sealPlaceholder } from "@/app/handover/actions";
@@ -50,6 +53,8 @@ type Ctx = {
   evidence: Map<string, VersionItem["evidence"]>;
   /** Messages behind the quotes that the viewer can read: who said it, when, and from which kind of file. */
   sources: Map<string, QuoteSource>;
+  /** The conflicts each item carried when the version was approved, with the advisor's ruling. */
+  conflicts: Map<string, HandoverConflict[]>;
   /** The version's notes per item, as RLS lets this role read them. */
   notes: Map<string, { kind: string; text: string }[]>;
   replies: Map<string, ReplyRow[]>;
@@ -98,6 +103,7 @@ function Card({ item, ctx, facts, timing }: { item: HandoverItem; ctx: Ctx; fact
   const ev = ctx.evidence.get(item.id) ?? [];
   // What the outgoing lead said when asked about a gap, in their own words: shown on the card, not only inside "Quotes".
   const stated = statedQuotes(ev, ctx.sources);
+  const conflicts = ctx.conflicts.get(item.id) ?? [];
   const doneByLead = item.kind === "commitment" && item.status === "fulfilled" && stated.some((s) => s.relation === "fulfils");
   return (
     <li id={`item-${item.id}`} className="rounded-md border p-3 text-sm" data-testid="handover-item">
@@ -111,6 +117,36 @@ function Card({ item, ctx, facts, timing }: { item: HandoverItem; ctx: Ctx; fact
         </span>
       </div>
       <p className="mt-1 text-muted-foreground">{facts}</p>
+      {conflicts.map((c) => (
+        <div key={c.id} className="mt-2 rounded-lg border border-destructive/30 bg-danger-soft/60 p-2" data-testid="handover-conflict">
+          <p className="font-medium">The club’s records disagree about this.</p>
+          {c.summary && <p className="text-xs text-muted-foreground">{c.summary}</p>}
+          <div className="mt-2 grid gap-2 sm:grid-cols-2">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Says it was done</p>
+              <blockquote className="border-l-2 pl-3">{c.saysDone ? `“${c.saysDone}”` : "No quote kept"}</blockquote>
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Says it was not done</p>
+              <blockquote className="border-l-2 pl-3">{c.saysNotDone ? `“${c.saysNotDone}”` : "No quote kept"}</blockquote>
+            </div>
+          </div>
+          <p className="mt-2 text-sm" data-testid="handover-ruling">
+            {c.ruling ? (
+              <>
+                The faculty advisor ruled: <strong>{rulingLabel(c.ruling)}</strong>
+                {c.reason ? ` (“${c.reason}”)` : ""}
+                {c.ruledAt ? `, ${formatIst(c.ruledAt)}` : ""}. <span className="text-muted-foreground">{RULING_NOTE}</span>
+              </>
+            ) : (
+              <>
+                <strong>Nobody had ruled on it</strong> when this version was approved, so it is handed over as unsettled. Ask about it below if you need to know
+                before you take it on.
+              </>
+            )}
+          </p>
+        </div>
+      ))}
       {stated.length > 0 && (
         <div className="mt-2 rounded-lg bg-accent/60 p-2" data-testid="lead-statement">
           <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">The outgoing lead told us, when asked about a gap in the records</p>
@@ -227,6 +263,8 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
     evidence.set(r.obligation_id, item.evidence ?? []);
     levels.set(r.obligation_id, r.access_level);
   }
+  const conflicts = new Map<string, HandoverConflict[]>();
+  for (const r of rowsRes.data ?? []) conflicts.set(r.obligation_id, handoverConflicts(r.item as { conflicts?: unknown }));
   const notes = new Map<string, { kind: string; text: string }[]>();
   for (const n of notesRes.data ?? []) notes.set(n.obligation_id, [...(notes.get(n.obligation_id) ?? []), { kind: n.kind, text: n.text }]);
   // Who said each quoted message, read through RLS: a message the role cannot read stays unnamed.
@@ -248,7 +286,7 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
   const done = doneCommitments(items);
   const calendar = dutyCalendar(items, today);
   const summary = ackSummary(items.map((i) => i.id), acks);
-  const ctx: Ctx = { versionId: version.id, me: userId, role, acks, evidence, sources, notes, replies, roleOf };
+  const ctx: Ctx = { versionId: version.id, me: userId, role, acks, evidence, sources, conflicts, notes, replies, roleOf };
 
   const sealedIds = new Set((sealed.data ?? []).map((s) => s.obligation_id));
   const released = new Set((releases.data ?? []).filter((r) => r.to_role === "incoming_lead").map((r) => r.target_id));

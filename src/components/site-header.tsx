@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
+import { MessagesSquareIcon } from "lucide-react";
 import { RoleSwitcher } from "@/components/role-switcher";
 import { StepIndicator } from "@/components/step-indicator";
 import { Badge } from "@/components/ui/badge";
@@ -27,6 +28,12 @@ async function UserMenu() {
   const copyUntil = viewer.membership?.sandboxExpiresAt ?? null;
   return (
     <div className="flex flex-wrap items-center gap-2">
+      <Button asChild variant="ghost" size="sm" className="text-secondary-foreground">
+        <Link href="/messages">
+          <MessagesSquareIcon aria-hidden="true" />
+          All messages
+        </Link>
+      </Button>
       {copyUntil && (
         <Badge variant="secondary" title="A private copy of the demo club, just for you" className="hidden md:inline-flex">
           Your demo club · kept until {formatIstDate(copyUntil)}

@@ -13,7 +13,7 @@ const TABLES = [
   { table: "events", label: "Source messages" },
   { table: "sources", label: "Source files" },
   { table: "context_items", label: "Context items" },
-  { table: "docket_entries", label: "Docket entries" },
+  { table: "docket_entries", label: "Conflicts" },
   { table: "sealed_items", label: "Sealed placeholders" },
   { table: "audit_log", label: "Audit log rows" },
 ] as const;
@@ -119,7 +119,7 @@ export async function RoleVisibility() {
             <Link href="/import">{role === "outgoing_lead" || role === "advisor" ? "Add files" : "See imported files"}</Link>
           </Button>
           <Button asChild size="sm" variant="outline">
-            <Link href="/ledger?tab=timeline">Open the timeline</Link>
+            <Link href="/messages">See all messages</Link>
           </Button>
         </div>
       </CardContent>

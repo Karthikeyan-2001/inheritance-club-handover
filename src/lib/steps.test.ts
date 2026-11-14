@@ -5,7 +5,8 @@ describe("stepForPath", () => {
   it.each([
     ["/import", "Connect"],
     ["/ledger", "Reconstruct"],
-    ["/ledger?tab=timeline", "Reconstruct"],
+    ["/check", "Verify"],
+    ["/messages", null],
     ["/review", "Review"],
     ["/handover", "Handover"],
     ["/", null],
@@ -23,17 +24,20 @@ describe("STEP_HREF", () => {
 });
 
 describe("Verify", () => {
-  it("has a page for every step; Verify opens the Docket", () => {
+  it("has a page for every step; Verify opens the check page", () => {
     expect(Object.keys(STEP_HREF)).toEqual(["Connect", "Reconstruct", "Verify", "Review", "Handover"]);
-    expect(STEP_HREF.Verify).toBe("/ledger?tab=docket");
+    expect(STEP_HREF.Verify).toBe("/check");
   });
 
-  it("marks the Docket, the Gaps tab and source messages as Verify", () => {
-    expect(stepForPath("/ledger", "docket")).toBe("Verify");
-    expect(stepForPath("/ledger", "gaps")).toBe("Verify");
+  it("marks the check page and source messages as Verify", () => {
+    expect(stepForPath("/check")).toBe("Verify");
     expect(stepForPath("/ledger/evidence/abc")).toBe("Verify");
-    expect(stepForPath("/ledger", "recurring")).toBe("Reconstruct");
-    expect(stepForPath("/ledger", null)).toBe("Reconstruct");
+  });
+
+  it("gives every step its own page, so no two steps share a path", () => {
+    const paths = Object.values(STEP_HREF).map((h) => h!.split("?")[0]);
+    expect(new Set(paths).size).toBe(paths.length);
+    for (const [step, href] of Object.entries(STEP_HREF)) expect(stepForPath(href!.split("?")[0])).toBe(step);
   });
 });
 

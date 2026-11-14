@@ -244,8 +244,8 @@ export function DocketLink({ entryIds }: { entryIds: readonly string[] | undefin
   return (
     <p className="mt-2 flex flex-wrap gap-x-3 text-xs">
       {entryIds.map((id, i) => (
-        <Link key={id} href={`/ledger?tab=docket#docket-${id}`} className="underline">
-          {entryIds.length === 1 ? "See this conflict in the Docket" : `See conflict ${i + 1} of ${entryIds.length} in the Docket`}
+        <Link key={id} href={`/check?tab=conflicts#docket-${id}`} className="underline">
+          {entryIds.length === 1 ? "See this conflict" : `See conflict ${i + 1} of ${entryIds.length}`}
         </Link>
       ))}
     </p>

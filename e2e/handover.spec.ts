@@ -38,6 +38,18 @@ test.describe("handover", () => {
     await expect(page.getByText("hall booking clash")).toHaveCount(0);
   });
 
+  test("a contradicted item says that the records disagree, with both sides, and that nobody had ruled", async ({ page }) => {
+    await signInAs(page, "Kavya");
+    await page.goto("/handover");
+    const card = page.getByTestId("handover-item").filter({ hasText: "participation certificates" }).first();
+    const conflict = card.getByTestId("handover-conflict");
+    await expect(conflict).toBeVisible();
+    await expect(conflict).toContainText("The club’s records disagree about this.");
+    await expect(conflict).toContainText("Card moved to Done: Send certificates to workshop speakers");
+    await expect(conflict).toContainText("nobody has sent them yet");
+    await expect(conflict.getByTestId("handover-ruling")).toContainText("Nobody had ruled on it when this version was approved");
+  });
+
   test("a question needs a note, the answer is recorded, and a later answer replaces it", async ({ page }) => {
     await signInAs(page, "Kavya");
     await page.goto("/handover");

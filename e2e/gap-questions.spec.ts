@@ -88,6 +88,13 @@ test.describe("gap questions", () => {
     await page.goto("/check?tab=questions");
     await expect(page.getByTestId("questions-summary")).toContainText("Only the outgoing lead answers these.");
     await expect(page.getByRole("button", { name: "Save the answer" })).toHaveCount(0);
+    // A ruling does not need a new mark (rulings are left out of it), and it travels with the version.
+    await page.goto("/review?tab=conflicts");
+    const wifi = page.getByTestId("conflict").filter({ hasText: "Set up the WiFi router in the fest hall" }).first();
+    await wifi.getByLabel("Not done").check();
+    await wifi.getByLabel("Reason for the ruling").fill("The hall staff say the router was never installed.");
+    await wifi.getByRole("button", { name: "Record the ruling" }).click();
+    await expect(page.getByTestId("conflict").filter({ hasText: "Set up the WiFi router in the fest hall" }).first()).toContainText("Ruled: Not done");
     await page.goto("/review?tab=draft");
     await signoff.getByLabel("Reason for approving").fill("Answer checked against its message");
     await signoff.getByRole("button", { name: "Approve this version" }).click();
@@ -104,6 +111,11 @@ test.describe("gap questions", () => {
     await expect(handed.getByTestId("lead-statement")).toContainText("The kits are still boxed in the lab cupboard.");
     await expect(handed.getByTestId("lead-statement")).toContainText("Their own word, not a document");
     await expect(handed.getByTestId("handover-stated")).toContainText("Stated by the outgoing lead (Arun");
+    // A conflict tells her that the records disagree and what the advisor ruled.
+    const wifiCard = page.getByTestId("handover-item").filter({ hasText: "Set up the WiFi router in the fest hall" }).first();
+    await expect(wifiCard.getByTestId("handover-conflict")).toContainText("The club’s records disagree about this.");
+    await expect(wifiCard.getByTestId("handover-ruling")).toContainText("The faculty advisor ruled: Not done");
+    await expect(wifiCard.getByTestId("handover-ruling")).toContainText("The hall staff say the router was never installed.");
     // A promise the lead says was done is not waiting on anyone, but it does not vanish: it is under "Already done", answerable.
     const doneCard = page.getByTestId("done-items").getByTestId("handover-item").filter({ hasText: /Handover document covering/i }).first();
     await expect(doneCard).toBeVisible();

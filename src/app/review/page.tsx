@@ -9,6 +9,7 @@ import { ErrorState } from "@/components/feedback/error-state";
 import { SignInPrompt } from "@/components/feedback/sign-in-prompt";
 import { PageHeader } from "@/components/page-header";
 import { TabNav } from "@/components/tab-nav";
+import { TabSuspense } from "@/components/tab-suspense";
 import type { AppRole } from "@/lib/access";
 import { getViewer } from "@/lib/session";
 
@@ -67,7 +68,9 @@ export default function ReviewPage(props: PageProps<"/review">) {
         purpose="The outgoing lead checks each item against its quotes and marks the draft ready. The faculty advisor approves it as a version that can never change. The incoming lead sees only approved versions."
       />
       <Suspense fallback={<LoadingBlock label="Loading the review…" variant="list" rows={4} />}>
-        <ReviewContent searchParams={props.searchParams} />
+        <TabSuspense fallback={<LoadingBlock label="Loading this tab…" variant="list" rows={4} />}>
+          <ReviewContent searchParams={props.searchParams} />
+        </TabSuspense>
       </Suspense>
     </main>
   );

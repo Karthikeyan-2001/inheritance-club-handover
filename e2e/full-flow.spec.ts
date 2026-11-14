@@ -28,7 +28,7 @@ const RESTRICTED: { text: string; allowed: Who[] }[] = [
 ];
 const PAGES = [
   "/", "/import",
-  "/ledger?tab=commitments", "/ledger?tab=recurring", "/ledger?tab=docket", "/ledger?tab=gaps", "/ledger?tab=timeline",
+  "/ledger?tab=commitments", "/ledger?tab=recurring", "/check", "/check?tab=gaps", "/messages",
   "/review?tab=draft", "/review?tab=conflicts", "/review?tab=versions", "/review?tab=history", "/review/versions/1",
   "/handover",
 ];
@@ -181,7 +181,7 @@ test.describe("the whole flow on a second synthetic club", () => {
       // A timeline search for each restricted text (the timeline is paged). The page echoes the
       // search term in its search box and links, so only the results list is checked.
       for (const r of RESTRICTED) {
-        const url = `/ledger?tab=timeline&q=${encodeURIComponent(r.text)}`;
+        const url = `/messages?q=${encodeURIComponent(r.text)}`;
         await page.goto(url);
         const results = page.getByTestId("timeline");
         if ((await results.count()) > 0) check(url, await results.innerHTML());

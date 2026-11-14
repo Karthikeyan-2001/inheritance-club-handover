@@ -99,7 +99,7 @@ test.describe.serial("building the ledger", () => {
     await page.goto("/ledger?tab=docket");
     await expect(page.getByTestId("working-ledger-notice")).toBeVisible();
     await expect(page.getByTestId("docket")).toHaveCount(0);
-    // The timeline of messages is unchanged.
+    // Old links still land somewhere sensible; the messages page is open to every role.
     await page.goto("/ledger?tab=timeline");
     await expect(page.getByTestId("working-ledger-notice")).toHaveCount(0);
   });
@@ -121,8 +121,8 @@ test.describe.serial("building the ledger", () => {
     // The folded record keeps its own anchor, so links to it land on this card.
     await expect(kit.getByTestId("links").locator("section[id^=item-]")).toHaveCount(1);
 
-    await page.getByRole("link", { name: "Conflicts", exact: true }).click();
-    await expect(page.getByRole("link", { name: "Conflicts", exact: true })).toHaveAttribute("aria-current", "page");
+    await page.goto("/check");
+    await expect(page.getByRole("link", { name: /^Conflicts/ })).toHaveAttribute("aria-current", "page");
     const entry = page.getByTestId("docket").getByRole("listitem").filter({ hasText: "soldering kit" }).first();
     await expect(entry).toContainText("WhatsApp, 8 Mar 2026: says it was done. WhatsApp, 9 Mar 2026: says it was not.");
     await expect(entry).toContainText("“Returned the soldering kit to the Robotics club.”");
@@ -133,7 +133,7 @@ test.describe.serial("building the ledger", () => {
 
   test("the treasurer sees the same conflict, because both records are committee-level", async ({ page }) => {
     await signInAs(page, "Divya");
-    await page.goto("/ledger?tab=docket");
+    await page.goto("/check");
     await expect(page.getByTestId("docket")).toContainText("still not returned");
   });
 
@@ -155,9 +155,9 @@ test.describe.serial("building the ledger", () => {
     await signInAs(page, "Arun");
     await page.goto("/ledger");
     const kit = page.getByTestId("commitments").getByRole("listitem").filter({ hasText: "“I will return the soldering kit" }).first();
-    await expect(kit.getByRole("link", { name: "See this conflict in the Docket" })).toHaveCount(2); // the card and its folded record
-    await kit.getByRole("link", { name: "See this conflict in the Docket" }).first().click();
-    await expect(page).toHaveURL(/tab=docket#docket-/);
+    await expect(kit.getByRole("link", { name: "See this conflict" })).toHaveCount(2); // the card and its folded record
+    await kit.getByRole("link", { name: "See this conflict" }).first().click();
+    await expect(page).toHaveURL(/\/check\?tab=conflicts#docket-/);
     const entry = page.getByTestId("docket").getByRole("listitem").filter({ hasText: "soldering kit" }).first();
     await entry.getByRole("link", { name: /in the ledger$/ }).first().click();
     await expect(page).toHaveURL(/tab=commitments#item-/);
@@ -166,9 +166,9 @@ test.describe.serial("building the ledger", () => {
 
   test("the Gaps tab lists what has no evidence and what would close it", async ({ page }) => {
     await signInAs(page, "Arun");
-    await page.goto("/ledger");
-    await page.getByRole("link", { name: "Gaps" }).click();
-    await expect(page.getByRole("link", { name: "Gaps" })).toHaveAttribute("aria-current", "page");
+    await page.goto("/check");
+    await page.getByRole("link", { name: /^Gaps/ }).click();
+    await expect(page.getByRole("link", { name: /^Gaps/ })).toHaveAttribute("aria-current", "page");
     const banner = page.getByTestId("gaps").getByRole("listitem").filter({ hasText: "sponsor banner" }).first();
     await expect(banner).toContainText("No evidence kept of what happened after the promise.");
     await expect(banner).toContainText("To close it:");

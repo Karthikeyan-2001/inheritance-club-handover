@@ -24,6 +24,8 @@ export type JourneyFacts = {
   unruledConflicts: number;
   /** Gaps in what the viewer can read (as on the check page). */
   gaps: number;
+  /** Gap questions still waiting for the outgoing lead's answer; counted for that role only. */
+  openQuestions: number;
 };
 
 export type JourneyStage = { key: string; label: string; href: string; state: "done" | "current" | "todo" };
@@ -65,8 +67,8 @@ function stageDone(f: JourneyFacts): boolean[] {
     f.files > 0 || v,
     f.items > 0 || v,
     // Checking the records (conflicts, gaps) comes before reviewing; it is behind you once
-    // reviewing has started.
-    f.accepted > 0 || v,
+    // reviewing has started, and, for the outgoing lead, once the gap questions are answered.
+    (f.accepted > 0 || v) && f.openQuestions === 0,
     v,
     answeredAll,
   ];
@@ -99,7 +101,21 @@ export function journey(f: JourneyFacts): Journey {
         body: `It found ${plural(f.unruledConflicts, "conflict")} between records and ${plural(f.gaps, "gap")} where they say nothing. Look at them first, so nothing is handed over as fact by mistake.`,
         cta: { label: "Check the records", href: "/check" },
         switchTo: null,
-        also: [{ label: `Skip to reviewing ${plural(f.toReview, "item")}`, href: "/review?tab=draft" }],
+        also: [
+          ...(f.openQuestions > 0 ? [{ label: `Answer ${plural(f.openQuestions, "question")} about the gaps`, href: "/check?tab=questions" }] : []),
+          { label: `Skip to reviewing ${plural(f.toReview, "item")}`, href: "/review?tab=draft" },
+        ],
+      };
+    }
+    // What only the outgoing lead can still say, asked before the review (not while a mark waits for the advisor).
+    if (f.openQuestions > 0 && !ask) {
+      return {
+        ...base,
+        title: `Answer ${plural(f.openQuestions, "question")} about the gaps`,
+        body: "The records do not say whether some promises were kept, or when a duty is due or who approves it. Answer what you know while you can still be asked: each answer is saved as a message from you and becomes a quote on its item. \"I don't know\" is a fine answer.",
+        cta: { label: "Answer the questions", href: "/check?tab=questions" },
+        switchTo: null,
+        also: f.toReview > 0 ? [{ label: `Review ${plural(f.toReview, "item")} instead`, href: "/review?tab=draft" }] : [],
       };
     }
     if (f.toReview > 0) {

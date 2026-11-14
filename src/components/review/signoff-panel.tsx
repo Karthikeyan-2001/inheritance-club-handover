@@ -24,9 +24,9 @@ export function SignoffPanel({
 }) {
   const gates = readiness({ role, acceptedCount: counts.accepted, needsRereviewCount: counts.changed, signoff: signoff ? { isCurrent: signoff.is_current } : null });
   return (
-    <section aria-label="Sign-off" className="flex flex-col gap-3 rounded-md border p-4 text-sm" data-testid="signoff">
+    <section aria-label="Sign-off" className="flex flex-col gap-3 rounded-2xl border bg-card p-5 text-sm" data-testid="signoff">
       <div className="flex flex-wrap items-center gap-2">
-        <h2 className="text-lg font-semibold">Sign-off</h2>
+        <h2 className="text-lg font-semibold">3. Sign off</h2>
         <Badge variant="outline">{counts.accepted} accepted</Badge>
         <Badge variant="outline">{counts.draft} draft</Badge>
         <Badge variant="outline">{counts.rejected} rejected</Badge>
@@ -34,8 +34,7 @@ export function SignoffPanel({
         {counts.unruled > 0 && <Badge variant="secondary">{counts.unruled} {counts.unruled === 1 ? "conflict awaits" : "conflicts await"} a ruling</Badge>}
       </div>
       <p className="text-muted-foreground">
-        The outgoing lead checks each item against its quotes and marks the accepted draft ready. The faculty advisor then approves it as a new version, which can never be changed. The
-        incoming lead sees only approved versions.
+        The outgoing lead marks the checked draft ready; the faculty advisor then approves it as a version that can never change.
         {latestNumber ? ` The latest approved version is ${latestNumber}.` : " No version has been approved yet."}
       </p>
       <p data-testid="signoff-status">

@@ -13,6 +13,7 @@ import { REVIEW_LABELS, STATUS_LABELS, TRUST_LABELS, statusLabel } from "@/compo
 import { DiffView } from "./diff-view";
 import { EditForm, ReasonForm } from "./forms";
 import { SignoffPanel, type Signoff } from "./signoff-panel";
+import { ReviewItems, type ItemFilter } from "./review-items";
 import { loadLatestVersion, loadVersionRows } from "./version-data";
 import { EmptyState } from "@/components/feedback/empty-state";
 import { Button } from "@/components/ui/button";
@@ -126,7 +127,7 @@ function ItemCard({ o, links, byId }: { o: Row; links: { a: string; b: string; v
       <ContextList items={o.context_items} />
       <Links item={o} links={links} byId={byId} />
       <div className="mt-3 flex flex-col gap-3 border-t pt-3">
-        <ReasonForm action={reviewItem} hidden={{ id: o.id }} buttons={buttons} />
+        <ReasonForm action={reviewItem} hidden={{ id: o.id }} buttons={buttons} subject={capitalise(o.description)} />
         {state !== "rejected" && (
           <EditForm
             action={editItem}
@@ -140,6 +141,8 @@ function ItemCard({ o, links, byId }: { o: Row; links: { a: string; b: string; v
 }
 
 function Section({ title, hint, rows, links, byId, testId }: { title: string; hint?: string; rows: Row[]; links: Parameters<typeof Links>[0]["links"]; byId: Map<string, Row>; testId: string }) {
+  // "Changed since accepted" is a warning, so it only appears when something changed.
+  if (testId === "group-changed" && rows.length === 0) return null;
   return (
     <section aria-label={title} data-testid={testId} className="flex flex-col gap-2">
       <h3 className="text-base font-semibold">
@@ -151,12 +154,39 @@ function Section({ title, hint, rows, links, byId, testId }: { title: string; hi
   );
 }
 
+/** The three things to do on this page, in order, with where each stands. */
+function Steps({ toCheck, accepted, marked, approved }: { toCheck: number; accepted: number; marked: boolean; approved: boolean }) {
+  const steps = [
+    { n: 1, title: "Check each item", note: toCheck > 0 ? `${toCheck} to go` : "all checked", done: toCheck === 0 },
+    { n: 2, title: "See what the next version holds", note: accepted === 1 ? "1 accepted item" : `${accepted} accepted items`, done: toCheck === 0 && accepted > 0 },
+    { n: 3, title: "Sign off", note: approved ? "approved" : marked ? "waiting for the advisor" : "not marked ready", done: approved },
+  ];
+  return (
+    <ol aria-label="Steps on this page" className="grid gap-2 sm:grid-cols-3" data-testid="review-steps">
+      {steps.map((st) => (
+        <li key={st.n} className="flex items-center gap-3 rounded-2xl border bg-card px-4 py-3 text-sm">
+          <span aria-hidden="true" className={`grid size-7 shrink-0 place-items-center rounded-full text-xs font-semibold ${st.done ? "bg-success text-white" : "bg-secondary text-secondary-foreground"}`}>
+            {st.done ? "✓" : st.n}
+          </span>
+          <span className="flex flex-col">
+            <span className="font-medium">{st.title}</span>
+            <span className="text-xs text-muted-foreground">
+              {st.note}
+              {st.done && <span className="sr-only"> (done)</span>}
+            </span>
+          </span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 /** After sign-off: whose move it is, with the one button that makes it. */
 function ReviewNext({ role, inCopy, waiting, latestNumber, toCheck }: { role: Role; inCopy: boolean; waiting: boolean; latestNumber: number | null; toCheck: number }) {
   if (waiting) {
     return role === "advisor" ? (
       <NextStepBar>
-        <strong>The outgoing lead marked the draft ready.</strong> Approve it in the sign-off panel above to make it a version.
+        <strong>The outgoing lead marked the draft ready.</strong> Approve it in the sign-off step at the bottom of this page to make it a version.
       </NextStepBar>
     ) : (
       <NextStepBar action={<SwitchPersonButton personKey="meena" label="Dr. Meena" primary inCopy={inCopy} />}>
@@ -221,13 +251,37 @@ export async function Draft({ role, workspaceId, inCopy }: { role: Role; workspa
   const diff = diffVersions(prevRows, nextRows);
   const signoff = (signoffRes.data?.[0] ?? null) as Signoff;
 
-  return (
-    <div className="flex flex-col gap-6">
-      <SignoffPanel role={role} counts={counts} signoff={signoff} latestNumber={latest.version?.number ?? null} />
-      <ReviewNext role={role} inCopy={inCopy} waiting={awaitingApproval({ signoff: signoff ? { isCurrent: signoff.is_current, markedAt: signoff.marked_at } : null, version: latest.version ? { number: latest.version.number, createdAt: latest.version.created_at, itemCount: 0 } : null })} latestNumber={latest.version?.number ?? null} toCheck={counts.draft + counts.changed} />
+  const waiting = awaitingApproval({ signoff: signoff ? { isCurrent: signoff.is_current, markedAt: signoff.marked_at } : null, version: latest.version ? { number: latest.version.number, createdAt: latest.version.created_at, itemCount: 0 } : null });
+  const toCheck = counts.draft + counts.changed;
+  // Approved: a version exists and nothing pending differs from it.
+  const approved = !!latest.version && toCheck === 0 && diff.added.length === 0 && diff.removed.length === 0 && diff.changed.length === 0;
+  const filterCounts: Record<ItemFilter, number> = { check: toCheck, accepted: counts.accepted, rejected: counts.rejected, all: rows.length };
+  const section = (title: string, hint: string | undefined, list: Row[], testId: string) => <Section title={title} hint={hint} rows={list} links={linkData.links} byId={byId} testId={testId} />;
 
-      <section aria-label="Pending changes" className="flex flex-col gap-2 rounded-md border p-4" data-testid="pending-diff">
-        <h2 className="text-lg font-semibold">{latest.version ? `What the next version changes from version ${latest.version.number}` : "What the first version would contain"}</h2>
+  return (
+    <div className="flex flex-col gap-8">
+      <Steps toCheck={toCheck} accepted={counts.accepted} marked={!!signoff?.is_current} approved={approved} />
+      <ReviewNext role={role} inCopy={inCopy} waiting={waiting} latestNumber={latest.version?.number ?? null} toCheck={toCheck} />
+
+      <section aria-labelledby="step-items" className="flex flex-col gap-3">
+        <h2 id="step-items" className="text-lg font-semibold">
+          1. Check each item
+        </h2>
+        <p className="text-sm text-muted-foreground">Read the quotes under an item, give a short reason, then accept or reject it. Your reason goes in the audit log.</p>
+        <ReviewItems
+          counts={filterCounts}
+          initial={toCheck > 0 ? "check" : "all"}
+          sections={{
+            changed: section("Changed since accepted", "The records moved after you accepted these. Look again before they go any further.", changed, "group-changed"),
+            draft: section("Draft", "Found by the pipeline. Nothing here is handed over until you accept it.", drafts, "group-draft"),
+            accepted: section("Accepted", undefined, accepted, "group-accepted"),
+            rejected: section("Rejected", "Kept on record, left out of every version.", rejected, "group-rejected"),
+          }}
+        />
+      </section>
+
+      <section aria-label="Pending changes" className="flex flex-col gap-2 rounded-2xl border bg-card p-5" data-testid="pending-diff">
+        <h2 className="text-lg font-semibold">2. {latest.version ? `What the next version changes from version ${latest.version.number}` : "What the first version would contain"}</h2>
         {nextRows.length === 0 ? (
           <p className="text-sm text-muted-foreground">No item is accepted yet, so there is nothing to hand over.</p>
         ) : (
@@ -235,10 +289,9 @@ export async function Draft({ role, workspaceId, inCopy }: { role: Role; workspa
         )}
       </section>
 
-      <Section title="Changed since accepted" hint="The records moved after you accepted these. Look again before they go any further." rows={changed} links={linkData.links} byId={byId} testId="group-changed" />
-      <Section title="Draft" hint="Found by the pipeline. Nothing here is handed over until you accept it." rows={drafts} links={linkData.links} byId={byId} testId="group-draft" />
-      <Section title="Accepted" rows={accepted} links={linkData.links} byId={byId} testId="group-accepted" />
-      <Section title="Rejected" hint="Kept on record, left out of every version." rows={rejected} links={linkData.links} byId={byId} testId="group-rejected" />
+      <div id="signoff-step" className="scroll-mt-4">
+        <SignoffPanel role={role} counts={counts} signoff={signoff} latestNumber={latest.version?.number ?? null} />
+      </div>
     </div>
   );
 }

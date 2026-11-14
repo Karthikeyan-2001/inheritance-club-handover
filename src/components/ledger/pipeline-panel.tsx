@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef, useState, useTransition } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
+import { ArrowRightIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { cancelRun, startRun } from "@/app/ledger/actions";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
-import { emptyProgress, type RunProgress, type StepResult } from "@/lib/pipeline/progress";
+import { emptyProgress, timeLeft, type RunProgress, type StepResult } from "@/lib/pipeline/progress";
 
 const DROP_LABELS: Record<string, string> = {
   quote_not_found: "quote not found in the cited message",
@@ -51,13 +52,27 @@ const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? o
 type Body = { done?: boolean; waiting?: boolean; step?: StepResult | null; progress?: RunProgress; error?: string };
 
 /** Starts a run and drives it step by step from the browser. */
-export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; provider: string; model: string }) {
+export function PipelinePanel({
+  canRun,
+  provider,
+  model,
+  built,
+}: {
+  canRun: boolean;
+  provider: string;
+  model: string;
+  /** What the ledger already holds, as this role reads it. */
+  built: { promises: number; duties: number };
+}) {
   const router = useRouter();
-  const [pending, startTransition] = useTransition();
   const [runId, setRunId] = useState<string | null>(null);
   const [progress, setProgress] = useState<RunProgress | null>(null);
   const [lastError, setLastError] = useState<string | null>(null);
-  const [state, setState] = useState<"idle" | "running" | "done" | "stopped">("idle");
+  // "preparing" is the moment between the click and the plan coming back (gathering every
+  // readable message can take a few seconds): it shows at once, so the click never looks ignored.
+  const [state, setState] = useState<"idle" | "preparing" | "running" | "done" | "stopped">("idle");
+  const [runStartedAt, setRunStartedAt] = useState<number | null>(null);
+  const [now, setNow] = useState(0);
   const cancelled = useRef(false);
 
   async function drive(id: string) {
@@ -79,6 +94,7 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
         return;
       }
       if (body.progress) setProgress(body.progress);
+      setNow(Date.now());
       if (body.done) break;
       if (body.waiting) {
         // An earlier step is still running in another tab or request; it is reclaimed after two minutes.
@@ -106,21 +122,28 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
     router.refresh();
   }
 
-  function start() {
+  async function start() {
+    if (state === "preparing" || state === "running") return;
     cancelled.current = false;
     setLastError(null);
     setProgress(null);
-    startTransition(async () => {
-      const r = await startRun();
-      if ("error" in r) {
-        setLastError(r.error);
-        return;
-      }
-      setRunId(r.runId);
-      setProgress({ ...emptyProgress(), total: r.total, pending: r.total });
-      setState("running");
-      await drive(r.runId);
-    });
+    setState("preparing");
+    let r: Awaited<ReturnType<typeof startRun>>;
+    try {
+      r = await startRun();
+    } catch {
+      r = { error: "Could not reach the server. Check your connection and try again." };
+    }
+    if ("error" in r) {
+      setLastError(r.error);
+      setState("idle");
+      return;
+    }
+    setRunId(r.runId);
+    setProgress({ ...emptyProgress(), total: r.total, pending: r.total });
+    setRunStartedAt(Date.now());
+    setState("running");
+    await drive(r.runId);
   }
 
   async function stop() {
@@ -136,6 +159,9 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
   const planned = (progress?.stages.plan_followups.done ?? 0) > 0;
   const m = progress?.stages.match_items;
   const matchPlanned = (progress?.stages.plan_matches.done ?? 0) > 0;
+  const busy = state === "preparing" || state === "running";
+  const eta = state === "running" && progress && runStartedAt ? timeLeft(finished, progress.total, now - runStartedAt) : null;
+  const hasLedger = built.promises + built.duties > 0;
   const statuses = STATUS_WORDS.map(([k, label]) => [progress?.followup.statuses[k] ?? 0, label] as const).filter(([n]) => n > 0);
 
   return (
@@ -143,10 +169,19 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
       <h2 id="pipeline-heading" className="text-lg font-semibold">
         Build the ledger
       </h2>
-      <p className="text-muted-foreground">
-        Reads every message your role may read and lists the promises and yearly duties in them. Code checks that each quote really appears in its message; anything that fails is left out
-        and counted. Results are drafts for you to review.
-      </p>
+      {hasLedger && state === "idle" ? (
+        <p data-testid="ledger-built">
+          <strong>
+            Built: {plural(built.promises, "promise")} and {plural(built.duties, "yearly duty", "yearly duties")}.
+          </strong>{" "}
+          <span className="text-muted-foreground">Build it again after adding files; items already found are kept and not repeated.</span>
+        </p>
+      ) : (
+        <p className="text-muted-foreground">
+          Reads every message your role may read and lists the promises and yearly duties in them. Code checks that each quote really appears in its message; anything that fails is left out
+          and counted. Results are drafts for you to review.
+        </p>
+      )}
       <details className="text-muted-foreground">
         <summary className="w-fit cursor-pointer font-medium text-foreground">How it works</summary>
         <p className="mt-2">
@@ -156,10 +191,18 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
       </details>
       {canRun ? (
         <div className="flex flex-wrap gap-2">
-          <Button size="sm" onClick={start} disabled={pending || state === "running"}>
-            {state === "running" && <Spinner />}
-            {state === "running" ? "Reading…" : state === "done" ? "Build again" : "Build the ledger"}
+          <Button size={hasLedger ? "sm" : "default"} variant={hasLedger && state !== "running" ? "outline" : "default"} onClick={start} disabled={busy} aria-busy={busy}>
+            {busy && <Spinner />}
+            {state === "preparing" ? "Starting…" : state === "running" ? "Reading…" : hasLedger || state === "done" ? "Build the ledger again" : "Build the ledger"}
           </Button>
+          {hasLedger && state === "idle" && (
+            <Button asChild size="sm">
+              <Link href="/check">
+                Next: check the records
+                <ArrowRightIcon aria-hidden="true" />
+              </Link>
+            </Button>
+          )}
           {state === "running" && (
             <Button size="sm" variant="outline" onClick={stop}>
               Stop
@@ -168,6 +211,19 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
         </div>
       ) : (
         <p>Only the outgoing lead or the faculty advisor can run this.</p>
+      )}
+
+      {state === "preparing" && (
+        <div className="rise-in flex flex-col gap-1.5" role="status" aria-live="polite" data-testid="pipeline-preparing">
+          <span className="font-medium">Getting ready</span>
+          <div className="h-3 overflow-hidden rounded-full bg-secondary">
+            <div className="progress-stripes route-bar h-full w-2/5 rounded-full bg-primary" />
+          </div>
+          <p className="flex items-center gap-2 text-muted-foreground">
+            <Spinner className="size-3.5 text-primary" />
+            Gathering the messages you can read and splitting them into small steps…
+          </p>
+        </div>
       )}
 
       {progress && (
@@ -194,20 +250,26 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
             {state === "running" && (
               <p className="flex items-center gap-2 text-muted-foreground">
                 <Spinner className="size-3.5 text-primary" />
-                {!planned ? "Reading messages for promises and yearly duties…" : !matchPlanned ? "Checking each item for follow-up…" : "Linking items recorded twice…"}
-                <span className="text-xs">Keep this tab open until it finishes.</span>
+                {!planned
+                  ? `Reading part ${Math.min(finished + 1, c?.total ?? 1)} of ${c?.total ?? 1} for promises and yearly duties…`
+                  : !matchPlanned
+                    ? "Checking each item for follow-up…"
+                    : "Linking items recorded twice…"}
+                <span className="text-xs">{eta ? `${eta}. ` : ""}Keep this tab open until it finishes.</span>
               </p>
             )}
             {state === "done" && (
               <p className="flex flex-wrap items-center gap-2 font-medium text-success">
-                Done. Next, check the items.
+                Done. Next, see where the records disagree or say nothing.
                 <Button asChild size="sm">
-                  <Link href="/review?tab=draft">Review the items</Link>
+                  <Link href="/check">Next: check the records</Link>
                 </Button>
               </p>
             )}
           </div>
-          <ol className="flex list-decimal flex-col gap-1 pl-5">
+          <details open className="text-sm">
+          <summary className="w-fit cursor-pointer font-medium">What each step found</summary>
+          <ol className="mt-2 flex list-decimal flex-col gap-1 pl-5">
             {c && (
               <li>
                 Commitments: found <strong>{plural(c.created, "new commitment")}</strong>
@@ -246,6 +308,7 @@ export function PipelinePanel({ canRun, provider, model }: { canRun: boolean; pr
               )}
             </li>
           </ol>
+          </details>
           {progress.cachedSteps > 0 && <p>{plural(progress.cachedSteps, "step")} reused saved answers.</p>}
           {dropped.length > 0 && <p>Left out: {dropped.map(([k, n]) => `${n} ${DROP_LABELS[k] ?? k}`).join("; ")}.</p>}
           {progress.failed > 0 && <p>{plural(progress.failed, "step")} could not be completed.</p>}

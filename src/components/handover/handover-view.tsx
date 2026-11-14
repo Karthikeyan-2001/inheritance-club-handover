@@ -9,10 +9,12 @@ import {
   ACK_LABELS,
   ackSummary,
   canReplyTo,
+  doneCommitments,
   dutyCalendar,
   latestAckByItem,
   peopleWaiting,
   repliesByAck,
+  statedQuotes,
   toHandoverItem,
   type AckRow,
   type HandoverItem,
@@ -30,6 +32,7 @@ import { loadQuoteSources, type QuoteSource } from "@/components/check/stated";
 import { EmptyState } from "@/components/feedback/empty-state";
 
 const TIMING: Record<string, string> = { overdue: "Overdue", start_now: "Start now", upcoming: "Upcoming", undated: "No date recorded" };
+const STATED_WORDS: Record<string, string> = { fulfils: "Says it was done", contradicts: "Says it was not done", supports: "Added to the item", past_instance: "A past time it happened" };
 const NOTE_LABELS: Record<string, string> = { decision: "Decision", contact: "Contact", risk: "Unknown or at risk", dependency: "Depends on" };
 const RELATION: Record<string, string> = { supports: "The promise or duty", fulfils: "Says it was done", contradicts: "Says it was not done", past_instance: "A past time it happened" };
 
@@ -93,17 +96,36 @@ function AckState({ ack, who }: { ack: AckRow | undefined; who: string }) {
 function Card({ item, ctx, facts, timing }: { item: HandoverItem; ctx: Ctx; facts: string; timing?: string }) {
   const ack = ctx.acks.get(item.id);
   const ev = ctx.evidence.get(item.id) ?? [];
+  // What the outgoing lead said when asked about a gap, in their own words: shown on the card, not only inside "Quotes".
+  const stated = statedQuotes(ev, ctx.sources);
+  const doneByLead = item.kind === "commitment" && item.status === "fulfilled" && stated.some((s) => s.relation === "fulfils");
   return (
     <li id={`item-${item.id}`} className="rounded-md border p-3 text-sm" data-testid="handover-item">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <p className="font-medium">{capitalise(item.description)}</p>
         <span className="flex flex-wrap gap-1">
           {timing && <Badge variant={timing === "overdue" ? "destructive" : timing === "start_now" ? "secondary" : "outline"}>{TIMING[timing]}</Badge>}
+          {doneByLead && <Badge variant="secondary">Done, per the outgoing lead</Badge>}
           {item.kind === "commitment" && item.status && item.status in STATUS_LABELS && <Badge variant="outline">{statusLabel(item.status as keyof typeof STATUS_LABELS, null)}</Badge>}
           <Trust item={item} />
         </span>
       </div>
       <p className="mt-1 text-muted-foreground">{facts}</p>
+      {stated.length > 0 && (
+        <div className="mt-2 rounded-lg bg-accent/60 p-2" data-testid="lead-statement">
+          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">The outgoing lead told us, when asked about a gap in the records</p>
+          <ul className="mt-1 flex flex-col gap-2">
+            {stated.map((s, i) => (
+              <li key={i}>
+                <blockquote className="border-l-2 pl-3">“{s.quote}”</blockquote>
+                <p className="mt-1 pl-3 text-xs text-muted-foreground">
+                  {s.author ?? "The outgoing lead"}, {formatIst(s.ts)} · {STATED_WORDS[s.relation] ?? "Added to the item"}. Their own word, not a document.
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       {ev.length === 0 ? (
         <p className="mt-2">No evidence kept.</p>
       ) : (
@@ -223,6 +245,7 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
   const replies = repliesByAck((repliesRes.data ?? []) as ReplyRow[]);
   const roleOf = new Map((membersRes.data ?? []).map((m) => [m.user_id, m.role as AppRole]));
   const waiting = peopleWaiting(items);
+  const done = doneCommitments(items);
   const calendar = dutyCalendar(items, today);
   const summary = ackSummary(items.map((i) => i.id), acks);
   const ctx: Ctx = { versionId: version.id, me: userId, role, acks, evidence, sources, notes, replies, roleOf };
@@ -266,6 +289,20 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
           ))
         )}
       </section>
+
+      {done.length > 0 && (
+        <section aria-labelledby="done-h" className="flex flex-col gap-3">
+          <div>
+            <h2 id="done-h" className="text-xl font-semibold">Already done <span className="text-sm font-normal text-muted-foreground">({done.length})</span></h2>
+            <p className="text-sm text-muted-foreground">Promises the records, or the outgoing lead, say were kept. Nobody is waiting on them, but they are part of this version: read the quotes, and accept, ask or decline as for any item.</p>
+          </div>
+          <ul className="flex flex-col gap-2" aria-label="Already done" data-testid="done-items">
+            {done.map((i) => (
+              <Card key={i.id} item={i} ctx={ctx} facts={commitmentFacts(i)} />
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section aria-labelledby="calendar-h" className="flex flex-col gap-3">
         <h2 id="calendar-h" className="text-xl font-semibold">Calendar of recurring duties</h2>

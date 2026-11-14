@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ackSummary, canReplyTo, dutyCalendar, dutyTiming, latestAckByItem, monthLabel, peopleWaiting, repliesByAck, toHandoverItem, type HandoverItem } from "./handover.ts";
+import { ackSummary, canReplyTo, doneCommitments, dutyCalendar, dutyTiming, latestAckByItem, monthLabel, peopleWaiting, repliesByAck, statedQuotes, toHandoverItem, type HandoverItem } from "./handover.ts";
 
 const base: HandoverItem = { id: "x", kind: "commitment", description: "d", owedBy: null, owedTo: null, dueText: null, dueDate: null, nextDue: null, startBy: null, cadence: null, approval: null, approver: null, status: "open", trust: "sourced" };
 const mk = (o: Partial<HandoverItem>): HandoverItem => ({ ...base, ...o });
@@ -84,3 +84,36 @@ describe("replies to questions", () => {
     expect(canReplyTo(undefined)).toBe(false);
   });
 });
+
+describe("doneCommitments", () => {
+  it("lists fulfilled commitments (which are not waiting on anyone) and nothing else", () => {
+    const items = [
+      mk({ id: "a", description: "Zed done", status: "fulfilled" }),
+      mk({ id: "b", description: "Still open", status: "open" }),
+      mk({ id: "c", description: "Alpha done", status: "fulfilled" }),
+      mk({ id: "d", description: "A duty", kind: "recurring", status: "fulfilled" }),
+    ];
+    expect(doneCommitments(items).map((i) => i.id)).toEqual(["c", "a"]);
+    // Together with the waiting list, every commitment is on the page exactly once.
+    const waiting = peopleWaiting(items).flatMap((g) => g.items.map((i) => i.id));
+    expect([...waiting, ...doneCommitments(items).map((i) => i.id)].sort()).toEqual(["a", "b", "c"]);
+  });
+});
+
+describe("statedQuotes", () => {
+  const sources = new Map([
+    ["e1", { author: "Arun", ts: "2026-11-14T10:00:00+05:30", type: "statement" }],
+    ["e2", { author: "Priya", ts: "2026-02-01T10:00:00+05:30", type: "whatsapp" }],
+    ["e3", { author: "Arun", ts: "2026-11-13T10:00:00+05:30", type: "statement" }],
+  ]);
+  const ev = (event_id: string, quote: string, relation = "supports") => ({ event_id, quote, relation });
+  it("keeps only the outgoing lead's own answers, oldest first", () => {
+    const out = statedQuotes([ev("e1", "Done: set up.", "fulfils"), ev("e2", "we will set up"), ev("e3", "Not done: set up.", "contradicts")], sources);
+    expect(out.map((s) => [s.quote, s.relation])).toEqual([["Not done: set up.", "contradicts"], ["Done: set up.", "fulfils"]]);
+  });
+  it("ignores a message the viewer cannot read, and has none when there are none", () => {
+    expect(statedQuotes([ev("hidden", "x")], sources)).toEqual([]);
+    expect(statedQuotes([], sources)).toEqual([]);
+  });
+});
+

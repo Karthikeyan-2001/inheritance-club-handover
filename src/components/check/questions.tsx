@@ -36,6 +36,7 @@ function QuestionCard({ q, canAnswer, today }: { q: GapQuestion; canAnswer: bool
               {a.text ? <blockquote className="border-l-2 pl-3">“{a.text}”</blockquote> : <p className="text-muted-foreground">An answer you cannot read.</p>}
               <p className="mt-1 text-xs text-muted-foreground">
                 {a.access_level ? `Readable at ${ACCESS_LABELS[a.access_level]}. ` : ""}
+                The incoming lead sees it once the next version is approved.{" "}
                 {answerSummary(a)}
               </p>
             </li>
@@ -90,7 +91,7 @@ export function Questions({ questions, canAnswer, today }: { questions: GapQuest
           </p>
           <p className="mt-1 text-muted-foreground">
             {canAnswer
-              ? "Answer what you know while you can still be asked. Each answer is saved as a message from you, labelled “Stated by the outgoing lead”, and becomes a quote on the item, so its trust follows the usual rule. “I don't know” is fine: it is handed over as unknown."
+              ? "Answer what you know while you can still be asked. Each answer is saved as a message from you, labelled “Stated by the outgoing lead”, and becomes a quote on the item, so its trust follows the usual rule. “I don't know” is fine: it is handed over as unknown. The incoming lead sees your answers on the handover page only once they are in an approved version: accept the changed items again, mark ready, and have the advisor approve."
               : "Only the outgoing lead answers these. Their answers are saved as messages labelled “Stated by the outgoing lead” and appear as quotes on each item."}
           </p>
         </div>

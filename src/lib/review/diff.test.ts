@@ -35,7 +35,7 @@ describe("diffVersions", () => {
     const next = [row("a", item({ status: "fulfilled", trust_state: "corroborated" }, { evidence: [ev("it is done", "fulfils")] }))];
     const [c] = diffVersions(prev, next).changed;
     expect(c.fields.map((f) => [f.label, f.before, f.after])).toEqual([["Status", "open", "fulfilled"], ["Trust", "sourced", "corroborated"]]);
-    expect(c.quotesAdded).toEqual([{ quote: "it is done", relation: "fulfils" }]);
+    expect(c.quotesAdded).toEqual([{ quote: "it is done", relation: "fulfils", eventId: "e-it is done" }]);
     expect(c.quotesRemoved).toEqual([{ quote: "we will send them", relation: "supports" }]);
   });
 

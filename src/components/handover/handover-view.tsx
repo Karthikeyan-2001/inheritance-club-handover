@@ -26,9 +26,11 @@ import { AckForm } from "./ack-form";
 import { ReplyForm } from "./reply-form";
 import { SealForm } from "./seal-form";
 import { ErrorState } from "@/components/feedback/error-state";
+import { loadQuoteSources, type QuoteSource } from "@/components/check/stated";
 import { EmptyState } from "@/components/feedback/empty-state";
 
 const TIMING: Record<string, string> = { overdue: "Overdue", start_now: "Start now", upcoming: "Upcoming", undated: "No date recorded" };
+const NOTE_LABELS: Record<string, string> = { decision: "Decision", contact: "Contact", risk: "Unknown or at risk", dependency: "Depends on" };
 const RELATION: Record<string, string> = { supports: "The promise or duty", fulfils: "Says it was done", contradicts: "Says it was not done", past_instance: "A past time it happened" };
 
 function Trust({ item }: { item: HandoverItem }) {
@@ -43,6 +45,10 @@ type Ctx = {
   role: AppRole;
   acks: Map<string, AckRow>;
   evidence: Map<string, VersionItem["evidence"]>;
+  /** Messages behind the quotes that the viewer can read: who said it, when, and from which kind of file. */
+  sources: Map<string, QuoteSource>;
+  /** The version's notes per item, as RLS lets this role read them. */
+  notes: Map<string, { kind: string; text: string }[]>;
   replies: Map<string, ReplyRow[]>;
   roleOf: Map<string, AppRole>;
 };
@@ -104,14 +110,34 @@ function Card({ item, ctx, facts, timing }: { item: HandoverItem; ctx: Ctx; fact
         <details className="mt-2">
           <summary className="cursor-pointer text-xs font-medium uppercase tracking-wide text-muted-foreground">Quotes ({ev.length})</summary>
           <ul className="mt-1 flex flex-col gap-2" aria-label="Evidence">
-            {ev.map((e, i) => (
-              <li key={i}>
-                <p className="text-xs text-muted-foreground">{e.relation === "fulfils" && e.inferred ? "Suggests it was done (inferred)" : (RELATION[e.relation] ?? e.relation)}</p>
-                <blockquote className="border-l-2 pl-3">“{e.quote}”</blockquote>
-              </li>
-            ))}
+            {ev.map((e, i) => {
+              const src = ctx.sources.get(e.event_id);
+              return (
+                <li key={i}>
+                  <p className="text-xs text-muted-foreground">
+                    {e.relation === "fulfils" && e.inferred ? "Suggests it was done (inferred)" : (RELATION[e.relation] ?? e.relation)}
+                    {src?.type === "statement" && (
+                      <span data-testid="handover-stated">
+                        {" "}
+                        · Stated by the outgoing lead{src.author ? ` (${src.author}, ${formatIst(src.ts)})` : ""}, when asked about a gap in the records
+                      </span>
+                    )}
+                  </p>
+                  <blockquote className="border-l-2 pl-3">“{e.quote}”</blockquote>
+                </li>
+              );
+            })}
           </ul>
         </details>
+      )}
+      {(ctx.notes.get(item.id) ?? []).length > 0 && (
+        <ul className="mt-2 flex flex-col gap-1" aria-label="Notes" data-testid="handover-notes">
+          {(ctx.notes.get(item.id) ?? []).map((n, i) => (
+            <li key={i} className="rounded-sm bg-muted/50 px-2 py-1 text-xs">
+              <span className="font-medium">{NOTE_LABELS[n.kind] ?? "Note"}:</span> {n.text}
+            </li>
+          ))}
+        </ul>
       )}
       {ctx.role === "incoming_lead" ? (
         <>
@@ -160,12 +186,13 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
     );
   }
 
-  const [rowsRes, acksRes, releases] = await Promise.all([
+  const [rowsRes, acksRes, releases, notesRes] = await Promise.all([
     supabase.from("version_items").select("obligation_id, item, access_level").eq("version_id", version.id),
     supabase.from("latest_acks").select("id, obligation_id, user_id, action, note, created_at").eq("version_id", version.id),
     supabase.from("releases").select("target_id, to_role").eq("workspace_id", workspaceId).eq("target_type", "obligation"),
+    supabase.from("version_context_items").select("obligation_id, kind, text").eq("version_id", version.id).order("context_item_id"),
   ]);
-  if (rowsRes.error || acksRes.error || releases.error) return <ErrorState title="Could not load the handover">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
+  if (rowsRes.error || acksRes.error || releases.error || notesRes.error) return <ErrorState title="Could not load the handover">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
 
   const evidence = new Map<string, VersionItem["evidence"]>();
   const items: HandoverItem[] = [];
@@ -178,6 +205,11 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
     evidence.set(r.obligation_id, item.evidence ?? []);
     levels.set(r.obligation_id, r.access_level);
   }
+  const notes = new Map<string, { kind: string; text: string }[]>();
+  for (const n of notesRes.data ?? []) notes.set(n.obligation_id, [...(notes.get(n.obligation_id) ?? []), { kind: n.kind, text: n.text }]);
+  // Who said each quoted message, read through RLS: a message the role cannot read stays unnamed.
+  const { sources, error: sourcesError } = await loadQuoteSources(supabase, [...evidence.values()].flat().map((e) => e.event_id));
+  if (sourcesError) return <ErrorState title="Could not load the handover">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const mine = role === "incoming_lead";
   // The incoming lead sees only their own answers; reviewers see the incoming lead's.
   const acks = latestAckByItem((acksRes.data ?? []) as AckRow[], mine ? userId : ((acksRes.data ?? [])[0]?.user_id ?? userId));
@@ -193,7 +225,7 @@ export async function HandoverView({ workspaceId, role, userId, today }: { works
   const waiting = peopleWaiting(items);
   const calendar = dutyCalendar(items, today);
   const summary = ackSummary(items.map((i) => i.id), acks);
-  const ctx: Ctx = { versionId: version.id, me: userId, role, acks, evidence, replies, roleOf };
+  const ctx: Ctx = { versionId: version.id, me: userId, role, acks, evidence, sources, notes, replies, roleOf };
 
   const sealedIds = new Set((sealed.data ?? []).map((s) => s.obligation_id));
   const released = new Set((releases.data ?? []).filter((r) => r.to_role === "incoming_lead").map((r) => r.target_id));

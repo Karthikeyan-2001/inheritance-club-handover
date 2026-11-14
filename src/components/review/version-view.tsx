@@ -10,6 +10,7 @@ import { STATUS_LABELS, TRUST_LABELS, statusLabel } from "@/components/ledger/co
 import { DiffView } from "./diff-view";
 import { loadVersionRows } from "./version-data";
 import { ErrorState } from "@/components/feedback/error-state";
+import { loadQuoteSources } from "@/components/check/stated";
 
 const RELATION: Record<string, string> = { supports: "The promise or duty", fulfils: "Says it was done", contradicts: "Says it was not done", past_instance: "A past time it happened" };
 const KIND = { decision: "Decision", contact: "Contact", risk: "Risk", dependency: "Depends on" } as const;
@@ -35,6 +36,9 @@ export async function VersionView({ workspaceId, number }: { workspaceId: string
   if (current.error || before?.error) return <ErrorState title="Could not load this version">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
   const diff = diffVersions(before?.rows ?? null, current.rows);
   const notes = new Map(current.rows.map((r) => [r.obligation_id, r.notes ?? []]));
+  const quoted = await loadQuoteSources(supabase, current.rows.flatMap((r) => r.item.evidence.map((e) => e.event_id)));
+  if (quoted.error) return <ErrorState title="Could not load this version">Nothing was changed. Try again in a minute, or reload the page.</ErrorState>;
+  const stated = new Set([...quoted.sources].filter(([, s]) => s.type === "statement").map(([id]) => id));
 
   return (
     <div className="flex flex-col gap-6">
@@ -47,7 +51,7 @@ export async function VersionView({ workspaceId, number }: { workspaceId: string
 
       <section aria-label="Changes" className="flex flex-col gap-2 rounded-md border p-4">
         <h3 className="text-base font-semibold">{previous ? `What changed from version ${previous.number}` : "Everything in this first version"}</h3>
-        <DiffView diff={diff} against={previous ? `version ${previous.number}` : "nothing"} empty={`Nothing you can read differs from version ${previous?.number}.`} />
+        <DiffView diff={diff} against={previous ? `version ${previous.number}` : "nothing"} empty={`Nothing you can read differs from version ${previous?.number}.`} stated={stated} />
       </section>
 
       {current.rows.length === 0 ? (
@@ -77,6 +81,7 @@ export async function VersionView({ workspaceId, number }: { workspaceId: string
                       <li key={i}>
                         <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                           {e.relation === "fulfils" && e.inferred ? "Suggests it was done (inferred)" : (RELATION[e.relation] ?? e.relation)}
+                          {stated.has(e.event_id) && <span className="normal-case tracking-normal"> · Stated by the outgoing lead</span>}
                         </p>
                         <blockquote className="border-l-2 pl-3">“{e.quote}”</blockquote>
                       </li>
